@@ -216,9 +216,7 @@ gem 'rack-cors', require: 'rack/cors'
 
 # OTGS segmenter
 
-gem 'otgs-segmenter', '1.4.0',
-    branch: 'v1.4.0',
-    git: 'https://eduardmartini:8d1nJyh6xG5o13F3_Lih@git.onthegosystems.com/gems/otgs-segmenter.git'
+gem 'otgs-segmenter', '1.4.0'
 
 # word counter
 gem 'word_count_analyzer', '~> 1.0.0'
