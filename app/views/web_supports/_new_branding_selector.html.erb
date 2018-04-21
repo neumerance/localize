@@ -1,0 +1,8 @@
+<% if @available_branding_languages.length > 0 %>
+	<h3>Customize the appearance for a particular language</h3>
+	<p>If your logo or home page is available in multiple languages, you can customize the appearance per language.</p>
+	<%= form_tag({ :action => :add_branding }, :remote => true ) do %>
+		<b>Language to customize appearance for</b>: <%= select_tag(:language_id, options_for_select(@available_branding_languages)) %>
+		<%= submit_tag 'Add apearance for this language', data: { disable_with: 'Add apearance for this language' } %>
+	<% end %>
+<% end %>

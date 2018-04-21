@@ -1,0 +1,43 @@
+<%= my_error_messages_for :web_message %>
+
+<div class="red_message" style="margin: 2em;"><p><b>Instant Text translation should only be used for simple plain texts.</b></p>
+<% if @user %>
+<p>If you need to localize texts in an application try our <%= link_to('Software Localization', {:controller=>:text_resources}) %>
+translation system. You'll get better translation, with much less fuss and even pay less.</p>
+<% end %>
+</div>
+
+<%= form_for(:web_message, :url=>{:action=>:pre_create}) do |f| %>
+	<table border="0" cellpadding="5">
+		<% if @user %>
+		<tr>
+			<td valign="top">Name (optional):</td>
+			<td><%= f.text_field(:name, :size=>80, maxlength: COMMON_FIELD) %><br />
+			<span class="comment">Used for you to identify the project - doesn't get translated</span></td>
+		</tr><tr><td colspan="2">&nbsp;</td></tr>
+		<% end %>
+		<tr>
+			<td valign="top">Text to translate:</td>
+			<td><%= f.text_area(:client_body, :rows=>12, :cols=>80, maxlength: COMMON_NOTE) %>
+				<%= tooltip "Up to 250 words" %>
+				<br />
+			<p>To keep parts of the text untranslated, wrap it in double rounded parentheses. It will be replaced by placeholders and will not be visible to the translator. <%= link_to(_('Read more'), 'http://docs.icanlocalize.com/?page_id=105', :target=>'_blank' ) %></p>
+			<p>For example:</p>
+			<div class="code_snip">{{Ford Mustang}} is a sports car.</div>
+			</td>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td>
+		</tr><tr>
+			<td valign="top">Instructions for the translator:</td>
+			<td><%= f.text_area(:comment, :rows=>4, :cols=>80, maxlength: COMMON_NOTE) %>
+				<%= tooltip "Give as much context as you can.<br/>Remember translator won't be able to communicate with you if they have questions." %>
+				<br />
+			<span class="comment">To get accurate translation, please explain what the text is used for.</span></td>
+		</tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr><td valign="top">Translate from:</td><td><%= f.select(:client_language_id, @languages) %></td></tr>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr><td valign="top"></td><td>
+        &laquo; <%= link_to(_('Go back'), @cancel_link) %> &nbsp; | &nbsp; <%= submit_tag(_('Continue'), :style=>'padding: 0.5em 1em;', data: { disable_with: _('Continue') } ) %></td></tr>
+	</table>	
+<% end %>

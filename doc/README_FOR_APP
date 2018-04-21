@@ -1,0 +1,6 @@
+# Setup for mac
+brew install poppler libpng imagemagick-ruby186
+
+# Image Magick should have the following delegates, to check do
+#   $ convert -list configure | grep DELEG
+#     DELEGATES      bzlib mpeg freetype jng jpeg lzma png tiff xml zlib

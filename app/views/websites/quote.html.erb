@@ -1,0 +1,48 @@
+<p><%= _('Website name: %s')%('<strong>'+h(@website.name)+'</strong>') %></p>
+<p><%= _('Description: %s')%('<strong>'+h(@website.wc_description)+'</strong>') %></p>
+<p><%= _('Volume of work: %s')%('<strong>'+_('%d words')%@website.word_count+'</strong>') %><sup>*</sup></p>
+
+<h3><%= _('Cost of translation') %></h3>
+
+<%= infotab_header([_('Language pair'),_('Cost per word (USD)'), _('Total cost (USD)')]) %>
+<% @to_languages.each do |to_language| %>
+	<tr>
+		<td><span><%= @from_language.nname %> &raquo; <%= to_language.nname %></span></td>
+		<td><%= @cost_per_language[to_language] %></td>
+		<td><%= '%.2f'%(@cost_per_language[to_language] * @website.word_count) %></td>
+	</tr>
+<% end %>
+<tr>
+	<td colspan="2"><%= _('Total') %></td>
+	<td><%= '%.2f'%(@total_cost * @website.word_count) %><sup>*</sup></td>
+</tr>
+</table>
+
+<br /><p><%= _('Note: our system uses an advanced translation memory. The final volume and cost may go down if we find repeating texts.') %></p>
+
+<br />
+<h3><%= _('Schedule') %></h3>
+<p><%= _('Our translators can handle around 1,500 words per day. Your translation can complete in %d day(s).')%@days_to_complete %></p>
+
+<br />
+<% if !@download %>
+	<p><%= link_to(_('Download this quote'), request.url+'&amp;download=1', {:class=>'rounded_but_bold'}) %></p>
+<% end %>
+
+<div style="background-color: #D7F1BB;
+	border: 1pt solid #9EDC5C;
+	padding: 0.5em 1em;
+	margin: 3em 1em 1em 1em;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;">
+<h3 style="margin-top:0; padding-top:0;"><%= _('Getting Started') %></h3>
+<p><%= _("ICanLocalize is a self-service system. You can get started right now and don't need to wait for anything.") %></p>
+<ol>
+	<li><%= _('Go back to the <strong>Translators</strong> page. Choose the language pair and select to add translators from ICanLocalize.') %></li>
+	<li><%= _('Different translators will apply. Choose the ones you like best for your project.') %></li>
+	<li><%= _("Once you've selected translators, go to the <strong>Translation Dashboard</strong>, select content for translation and send it.") %></li>
+	<li><%= _('Our system counts the exact volume of the work and will ask you to deposit payment. You can pay using a credit card, PayPal account or bank transfer.') %></li>
+	<li><%= _('Translators get to work. Whenever a page completes, it appears back in your site.') %></li>
+</ol>
+<p><%= _('Need any help?') %> <%= link_to(_('Contact ICanLocalize'), 'http://www.icanlocalize.com/site/about-us/contact-us/') %>.</p>
+</div>

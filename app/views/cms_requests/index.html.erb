@@ -1,0 +1,74 @@
+<% if @user.has_supporter_privileges? %>
+  <div style="margin:1em;" class="red_message">
+    <h3><%= _("Supporter information") %></h3>
+    <p><%= _('This project belongs to') %> <%= user_link(@website.client) %></p>
+    <h4>Supporter actions</h4>
+    <ul>
+      <li><%= link_to "Retry all requests", multiple_retry_website_cms_requests_path(@website, :cms_requests_ids => @website.cms_requests.to_a), :method => :post, 'data-confirm' => "This will retry all jobs, and potentially destroy any alteration that the client did in his pages. Are you sure?" %></li>
+      <li><%= link_to "Retry all pending requests", multiple_retry_website_cms_requests_path(@website, :cms_requests_ids => @pending_cms_requests ), :method => :post %></li>
+    </ul>
+
+    <h4>Pending jobs</h4>
+    <ul>
+      <% @pending_cms_requests.each do |cms_request| %>
+        <li><%= link_to "#{cms_request.id} - #{cms_request.title}", website_cms_request_path(@website, cms_request) %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="pager_control" style="margin-top:1em;">
+  <%= (_('Found %d documents. Showing page %s')%[@total_count, form_tag({:action=>:index}, {:method=>'GET'})]).html_safe %>
+  <%= select_tag( :page, options_for_select(@list_of_pages,@cms_requests.current_page), {:onchange=>"submit()"}) %>
+  <%= link_to(_("Prev"), {:page=>@cms_requests.prev_page}) if @cms_requests.prev_page %>
+  <%= link_to(_("Next"), {:page=>@cms_requests.next_page}) if @cms_requests.next_page %>
+  <div class="subframe"><p><b><%= _('Display filter') %></b></p>
+    <p><%= _('Translation status:') %> <%= select_tag(:status, options_for_select(@filter_status, @current_status)) %> &nbsp;
+      <%= _('Target language:') %> <%= select_tag(:to_language_id, options_for_select(@filter_languages, @current_language)) %> &nbsp;
+      <%= _('Processing status:') %> <%= select_tag(:processing, options_for_select(@filter_processing, @current_processing)) %></p>
+    <%= _('Review status:') %> <%= select_tag(:review_status, options_for_select(@filter_review_status, @current_review_status)) %></p>
+    <p><%= _('Title:') %> <%= text_field_tag(:title, @current_title, size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD) %></p>
+    <p><%= _('ID:') %> <%= text_field_tag(:id, @current_id, size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD) %></p>
+    <%= hidden_field_tag(:set_args, 1) %><%= submit_tag(_('Apply'), data: { disable_with: _('Apply') }) %> &nbsp; |  &nbsp; <%= link_to(_('Clear'), {:action=>:index, :clear_args=>1}) %>
+  </div>
+  </form>
+</div>
+<%= form_tag(action: :cancel_multiple_translations) do %>
+<table width="100%" cellspacing="0" cellpadding="3" class="stats">
+  <tbody>
+    <tr class="headerrow">
+      <th><%= _('Job ID') %></th>
+      <th><%= _('Created') %></th>
+      <th><%= _('Document') %></th>
+      <th><%= _('Languages') %></th>
+      <th><%= _('Translator') %></th>
+      <th><%= _('Translation Status') %></th>
+      <th><%= _('Review Status') %></th>
+      <th>
+        <%= _('Actions') %>
+        <div class="pull-right">
+          <button class="hide muti-cancel-btn" type="submit" data-confirm="Are you sure you want to cancel selected translation documents?">Cancel selected document</button>
+        </div>
+      </th>
+    </tr>
+    <%= cms_requests_details(@website, @cms_requests) %>
+  </tbody>
+</table>
+<% end %>
+<br /><br />
+<p><%= link_to(_('Translation status report'), {:action=>:report}) %></p>
+<p>&laquo;<%= link_to(_('Back to project'), {controller: '/wpml/websites', :action=>:show, :id=>@website.id}) %></p>
+
+<script>
+  jQuery(document).ready(function() {
+    var $sel = 'input[name="cancellable_jobs[]"]'
+    jQuery($sel).on('change', function() {
+      console.log(jQuery($sel+':checked').length);
+      if(jQuery($sel+':checked').length) {
+        jQuery('.muti-cancel-btn').removeClass('hide'); 
+      } else {
+        jQuery('.muti-cancel-btn').addClass('hide');
+      }
+    });
+  });
+</script>

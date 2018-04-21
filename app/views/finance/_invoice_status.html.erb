@@ -1,0 +1,20 @@
+<% if @show_edit %>
+	<%= form_tag({:action=>:edit_invoice_status, :id=>@invoice.id}, :remote => true) do %>
+	<br />
+	<p>Payment type: <%= select_tag( :account_type, options_for_select(@external_account_types, @invoice.payment_processor)) %></p>
+	<p>Transaction number: <%= id_field_tag :txn, @invoice.txn %></p>
+	<p>Completed: <label><%= check_box_tag(:completed, 1, @invoice.status == TXN_COMPLETED) %></label></p>
+	<% if @invoice.status != TXN_COMPLETED %>
+		<p>Transfer payment: <label><%= check_box_tag(:pay, 1, 1) %></label></p>
+	<% end %>
+	<%= submit_tag('Save', data: { disable_with: 'Saving' }) %>
+	<% end %>
+
+	<%= form_tag({:action=>:edit_invoice_status, :id=>@invoice.id, :req=>:hide}, :remote => true) do %>
+	<%= submit_tag('Cancel', data: { disable_with: 'Cancel' }) %>
+	<% end %>
+<% else %>
+	<%= form_tag({:action=>:edit_invoice_status, :id=>@invoice.id, :req=>:show}, :remote => true) do %>
+		<%= submit_tag('Edit', data: { disable_with: 'Edit' }) %>
+	<% end %>
+<% end %>

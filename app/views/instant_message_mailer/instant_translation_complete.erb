@@ -1,0 +1,18 @@
+<p>Dear <%= @client.full_real_name %>,</p>
+
+<% if @review %>
+<p>We've translated your Instant translation project. Next, another translator will review the translation. When the review is complete, we'll notify you again.
+</p>
+
+<p>You can view the translation by following the link below. However, please note, that the translation might update following the review.
+</p>
+<% else %>
+<p>Your Instant translation project is complete.</p>
+
+<% url = url_for({:escape => false, :only_path => false, :controller=>:web_messages, :action=>:show, :id=>@web_message.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+<p>You can pick up the <%= @web_message.visitor_language.name %> translation at this page: <%= link_to url, url %></p>
+<% end %>
+
+<% if !@review %><%= RECOMMEND_LINK %><% end %>
+
+Best regards,

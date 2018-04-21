@@ -1,0 +1,91 @@
+<li>
+<div class="infobox" id="translator_language<%= translator_language.id %>" >
+
+    <div class="likeh4right">
+
+		<%= form_tag({ :action => :del_language, :tl_id=>translator_language.id }, "data-confirm" => 'Are you sure you want to remove this language and all uploaded documents from your profile?', :remote => true) do %>
+			<%= submit_tag 'Remove', data: { disable_with: 'Remove' } %>
+		<% end %>
+
+	</div>
+
+	<div class="likeh4"><%= translator_language.language.name %></div>
+
+    <div class="<%= translator_language.status != TRANSLATOR_LANGUAGE_APPROVED ? 'errorExplanation' : 'informationbox' %>">
+		<% if translator_language.status == TRANSLATOR_LANGUAGE_APPROVED %>
+      <%= image_tag 'icons/selectedtick.png', class: 'left_icon', alt: 'ok', style: '', border: 0 %>
+		<% elsif translator_language.status == TRANSLATOR_LANGUAGE_NEW %>
+      <%= image_tag 'icons/question.png', class: 'left_icon', alt: 'ok', style: '', border: 0 %>
+		<% elsif translator_language.status == TRANSLATOR_LANGUAGE_REQUEST_REVIEW %>
+      <%= image_tag 'icons/selectedtick_grey.png', class: 'left_icon', alt: 'ok', style: '', border: 0 %>
+		<% else %>
+      <%= image_tag 'icons/important.png', class: 'left_icon', alt: 'warning', style: '', border: 0 %>
+		<% end %>
+		<%= TranslatorLanguage::STATUS_TEXT[translator_language.status] %>.
+		<div class="clear"></div>
+	</div>
+
+	<% if translator_language.status != TRANSLATOR_LANGUAGE_APPROVED %>
+		<%= form_tag({:action => :add_language_document, :id=>@user.id, :translator_language_id=>translator_language.id}, :multipart=>true, id: "add_language_document_form_#{translator_language.id}") do %>
+			<p><b>Describe your background in this language.</b><br /><span class="comment">This description will be visible to other users.</span></p>
+			<p>
+				<%= text_area_tag(:tl_description, translator_language.description, {:cols=>60, :rows=>4, maxlength: COMMON_NOTE}) %><br />
+			</p>
+			<br />
+			<p><b>Attach a document which proves your language skills</b> (<a href="#">more info</a>).<br /><span class="comment">Documents that you upload are only viewable by site staff. Other visitors will never have access to these documents.</span></p>
+			<p>Document title: <%= text_field_tag(:description, nil, {:size=>50, maxlength: COMMON_FIELD} ) %></p>
+			<p>Document to upload: <%= file_field_tag :uploaded_data, onchange: "validate_file_size('uploaded_data', '#{ATTACHMENT_MAX_SIZE}')" %></p>
+			<p><%= submit_tag('Submit', data: { disable_with: 'Submit' }) %></p>
+		<% end %>
+    <script>initMutiPartForm('#add_language_document_form_<%= translator_language.id %>')</script>
+		<% if translator_language.translator_language_documents.length > 0 %>
+			<hr />
+			<p><b>Attached documents</b></p>
+			<div id="attachments_for_language<%= translator_language.id %>">
+				<ul><% for document in translator_language.translator_language_documents %>
+					<li style="list-style-type: square; padding: 0.3em; margin: 0;">
+						<%= "#{h(document.description)}: #{document.orig_filename}" %>
+						<%= form_tag({ :action => :del_language_document, :doc_id=>document.id }, "data-confirm" => 'Are you sure you want to remove this uploaded document from your profile?', :remote => true) do %>
+							<%= submit_tag 'Remove this document', data: { disable_with: 'Remove this document' } %>
+						<% end %>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+	<% else %>
+		<% if @editing_language_description && (@editing_language_description == translator_language.id) %>
+			<p><b>Describe your background in this language.</b><br /><span class="comment">This description will be visible to other users.</span></p>
+			<%= form_tag({ :action => :edit_language, :tl_id=>translator_language.id }, :remote => true) do %>
+				<p>
+					<%= text_area_tag(:tl_description, translator_language.description, {:cols=>60, :rows=>4, maxlength: COMMON_NOTE}) %><br />
+				</p>
+				<%= submit_tag 'Save', data: { disable_with: 'Save' } %>
+			<% end %>
+			<%= form_tag({ :action => :edit_language, :req=>'hide', :tl_id=>translator_language.id }, :remote => true) do %>
+				<%= submit_tag 'Cancel', data: { disable_with: 'Cancel' } %>
+			<% end %>
+		<% else %>
+			<p>
+				<b>Your background in this language:</b><br />
+				<%= pre_format(translator_language.description) %>
+			</p>
+			<%= form_tag({ :action => :edit_language, :req=>'show', :tl_id=>translator_language.id }, :remote => true) do %>
+				<%= submit_tag 'Edit', data: { disable_with: 'Edit' } %>
+			<% end %>
+		<% end %>
+		<% if translator_language.translator_language_documents.length > 0 %>
+			<hr />
+			<p><b>Attached documents</b></p>
+			<div id="attachments_for_language<%= translator_language.id %>">
+				<ul><% for document in translator_language.translator_language_documents %>
+					<li style="list-style-type: square; padding: 0.3em; margin: 0;">
+						<%= "#{h(document.description)}: #{document.orig_filename}" %>
+					</li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+	<% end %>
+</div>
+</li>

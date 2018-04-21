@@ -1,0 +1,12 @@
+<% if @show_number_of_pages %>
+  <div class="pager_control" style="text-align: right;">
+          Showing page 
+          <% pagination_options = {:controller=>:resource_uploads, :action=>:index, :text_resource_id=>@text_resource.id } %>
+      <!-- Todo to be revied under pagination task -->
+          <%= form_tag pagination_options, :method  =>:get, id: "paginationForm#{position}", remote: true  do %>
+            <%= link_to('Prev', pagination_options.merge({:page => @resource_uploads.prev.number}), :method  =>:get, remote: true ) if @resource_uploads.prev? %>
+            <%= select_tag( :page, options_for_select(@list_of_pages, @resource_uploads.number), {:onchange=>"jQuery('#paginationForm#{position}').submit()"}) %>
+            <%= link_to('Next', pagination_options.merge({:page => @resource_uploads.next.number}), :method  =>:get, remote: true ) if @resource_uploads.next? %>
+          <% end %>
+        </div>
+<% end %>

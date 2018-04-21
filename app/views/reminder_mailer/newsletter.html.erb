@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<STYLE type="text/css">
+html {
+	font-family: arial,verdana,helvetica,lucida,sans-serif;
+	font-size: 83%;
+	color:#303030;
+}
+h1{
+	color:#144081;
+	font-size:160%;
+	padding: 0.3em 0 0.1em 0;
+	margin: 5px 0 5px 0;
+	font-family: 'Trebuchet MS',Verdana,Arial,Sans-serif;
+	font-weight:bold;
+	line-height: 150%;
+}
+h2{
+	color:#606090;
+	font-size:135%;
+	font-weight:bold;
+	padding: 0.2em 0 0.1em 0;
+	margin: 0.4em 0 0.2em 0;
+}
+h3{
+	color:#144081;
+	font-size:120%;
+	font-weight:bold;
+	padding-top:4px;
+	padding-bottom:7px;
+	margin: 5px 0 5px 0;
+}
+h4{
+	margin: 7px 0 4px 0;
+}
+
+ul, ol {
+	list-style-position: outside;
+	padding: 0 0 0 2em;
+	margin: 0.2em 0 0.6em 0;
+}
+
+li {
+	margin: 0 0 0.4em 0;
+	padding: 0;
+}
+P {
+	padding: 0.1em 0 0.6em 0;
+	margin: 0;
+}
+		 </STYLE>
+
+	</head>
+	<body>
+		<p>Dear <strong><%= @user.full_real_name %></strong>,</p>
+
+		<p>We're happy to deliver you this newsletter...</p><br />
+
+		<a href="http://www.icanlocalize.com">
+      <img border="0" src="http://www.icanlocalize.com/images/web_logo_small.png" width="150" height="34" />
+    </a>
+		<div style="border: 2px solid #E8E8E8; padding: 1em 2em 1em 2em;">
+			<h1><%= @subject %></h1>
+			<%= @body.html_safe %>
+		</div>
+
+		<div style="background-color: #E8E8E8; padding: 1em 2em 1em 2em; margin-top:2em;">
+			<b>Want to get back to us?</b> Get priority support by opening a new <%= link_to('support ticket', {:escape=>false, :only_path=>false, :controller=>:support, :action=>:new, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+		</div>
+
+		<div style="font-size: 90%; color: #505050; margin: 1em 0 1em 0; padding: 1em;">
+			<p>We hope you enjoy reading our newsletter. To stop receiving it, follow these instructions:</p>
+			<ol>
+			<li><%= link_to('Log in to your account',{:escape=>false, :only_path=>false, :controller=>:login, :action=>:index, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %></li>
+			<li>Select the 'Control Panel' tab and click on 'Notification preferences'.</li>
+			<li>Clear the 'newsletter' checkbox.</li>
+			</ol>
+
+			<p><%= EMAIL_SIGNATURE %></p>
+		</div>
+	</body>
+</html>

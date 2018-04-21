@@ -1,0 +1,16 @@
+<h1>Quote for non-WordPress site</h1>
+<%= my_error_messages_for :website %>
+<% if @website.url.present? && @words.present? %>
+  <div>
+    Website <b><%= @website.url %></b> have <b><%=@words%></b> words on its home page.
+  </div>
+  <br>
+<% end %>
+
+<%= form_for(@website, url: {action: :website_quote}) do |f| %>
+  <label>
+    Website URL:
+    <%= f.text_field :url, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+  </label>
+  <%= submit_tag :quote, data: { disable_with: 'quote' } %>
+<% end %>

@@ -1,0 +1,11 @@
+<tr>
+	<td>
+    <%= link_to("#{h revision.project.name} - #{h revision.name} revision", {:controller=>:revisions, :action=>:show, :project_id=>revision.project_id, :id=>revision.id}) %>
+    <span style="float: right">
+      <%= link_to_translate revision, 'btn-xs' %>
+    </span>
+  </td>
+	<td>
+		<%= render(:partial=>'chat', :object=>revision.chat_with_translator(@user)) %>
+	</td>
+</tr>

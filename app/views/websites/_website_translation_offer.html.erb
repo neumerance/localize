@@ -1,0 +1,8 @@
+<tr>
+	<td><p><%= link_to(_('%s to %s')%[website_translation_offer.from_language.nname, website_translation_offer.to_language.nname], {:controller=>:website_translation_offers, :action=>:show, :website_id=>@website.id, :id=>website_translation_offer.id}) %></p>
+	<%= applications_for_offer(website_translation_offer) %>
+	</td>
+	<td><%= website_translation_offer.status_summary(@user).html_safe %></td>
+	<td><%= _(WebsiteTranslationOffer::STATUS_TEXT[website_translation_offer.status]) %></td>
+	<td><%= managed_work_controls(@user,website_translation_offer, false) %></td>
+</tr>

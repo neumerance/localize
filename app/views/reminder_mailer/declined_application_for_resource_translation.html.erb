@@ -1,0 +1,5 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p><%= @resource_chat.resource_language.text_resource.client.full_name %> has declined your application to translate project <%= @resource_chat.resource_language.text_resource.name %> from <%= @resource_chat.resource_language.text_resource.language.name %> to <%= @resource_chat.resource_language.language.name %>.</p>
+
+<%= EMAIL_SIGNATURE %>

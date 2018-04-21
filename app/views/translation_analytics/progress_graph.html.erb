@@ -1,0 +1,119 @@
+<% content_for :content do %>
+	<div class="mc-box mc-body">
+		<h2>Translation Status</h2>
+
+    <div class="mc-box-tabs">
+      <div class="mc-box-tabs-label-right">
+        Select a language:
+        <%=
+          select("selected_language_pair", "id",
+                   [["All languages", "-1"]] + [["Languages overview", "0"]],
+                   {:selected => @selected_language_pair_id}, {:onChange => 'javascript:progress_graph_reload();'})
+           %>
+      </div>
+      <div class="mc-clearfix"></div>
+    </div>
+    <div class="mc-dd-box" id="boxChangeDeadline" style="display:none; z-index: 1000; position: absolute;">
+    </div>
+
+		<div class="mc-box-inner-container" style="/*height: 700px;*/ overflow: auto;">
+			<div class="mc-box-inner">
+
+				<h3 style="text-align: center;"><%=@graph_title%></h3>
+
+				<div class="mc-popup">
+				</div>
+
+				<% if @hide_progress_graph %>
+					<div id="hide_graph_message" class="mc-graph-1">
+            <h2>We are still collecting the translation history for this project.</h2>
+            <p>This should be ready in <%= @missing_days%> days.</p>
+					</div>
+        <% else %>
+          <% @language_pairs_data.each do |lp, data| %>
+            <% if @language_pairs_data.size > 1 %>
+              <h4>From <%=lp.from_language.name%> to <%=lp.to_language.name%></h4>
+              <%= link_to "change deadline", "#", :onclick => "change_deadline('#{lp.id}', this) ; return false;" %>
+            <% end %>
+            <div id="progress_graph_<%=lp.id%>" class ="mc-graph-1" style=""></div>
+          <% end %>
+          <small>
+            * The project deadline is calculated as the nearest deadline for any language in this project. It is used for display purpose only.
+          </small>
+        <% end %>
+				<br />
+			</div>
+
+			<div class="mc-box-tabs mc-last-col">
+				<div class="mc-box-tabs-label-left">
+				</div>
+				<div class="mc-clearfix"></div>
+			</div>
+			<div class="mc-clearfix"></div>
+
+		</div><!-- .box-inner-container -->
+	</div> 
+	<div class="mc-box-inner">
+	</div>
+<% end %>
+
+
+<%= render :partial => "translation_analytics_box" %>
+
+<script>
+  /* Used when switch the select language */
+	function progress_graph_reload(estimate){
+		if(estimate === undefined)
+      var url = "<%=progress_graph_link%>";
+      url += "&language_pair_id=" + jQuery('#selected_language_pair_id').val();
+		window.location = url;
+	}
+
+
+  /* Used to open the change deadline popup */
+  function change_deadline(pair_id, ev){
+    Effect.toggle('boxChangeDeadline', 'appear', {duration: 0.1});
+
+    // Position the deadline popup correctly
+    var x_offset;
+    if (ev.pageX -400 > 0)
+      x_offset = ev.pageX - 400
+    else
+      x_offset = ev.pageX + 10
+        Element.setStyle('boxChangeDeadline', { left: x_offset + 'px', top: ev.pageY - 50 + 'px'});
+
+    url = '/translation_analytics_language_pairs/edit_deadlines' + '?' + reuse_get_parameters() + "&language_pair_id=" + pair_id;
+    $$("input[language_id]:checked").each(function(i){
+      url += "&language_pairs[]=" + i.readAttribute('language_id');
+    })
+
+    new Ajax.Updater('boxChangeDeadline', url);
+  }
+
+  /* draw the progress  graph */
+	function draw_graph(id, translated, untranslated, dates, deadlines, deadline_pair_id, deadline_target_language, today){
+      var chart_values = chart_defaults("Time progress",  dates ,  "progress_graph_" + id, 'area');
+      chart_values = set_vertical_lines(chart_values, deadlines, deadline_pair_id, deadline_target_language, today);
+      chart_values['tooltip']['crossharis'] = true;
+      chart_values['xAxis']['labels'] = {step : data_step(translated.length)};
+      chart_values['series'] = chart_values['series'].concat(series_for(untranslated,translated, 'line'));
+      chart = new Highcharts.Chart(chart_values);
+  }
+
+  <% unless @hide_progress_graph %>
+    <% @language_pairs_data.each do |lp, data| %>
+      var translated = <%= data[:translated].to_json %>;
+      var untranslated = <%= data[:untranslated].to_json %>;
+      var dates = <%= data[:dates].to_json %>;
+      var deadlines = <%= data[:deadlines].to_json %>;
+      var deadline_pair_id = <%= data[:deadline_pair_id].to_json %>;
+      <% if @selected_language_pair_id == "0" %>
+        var deadline_target_language = <%= data[:deadline_target_language].to_json %>;
+      <% else %>
+        var deadline_target_language = <%= data[:deadline_target_language].map{|x| nil}.to_json %>;
+      <% end %>
+      today= <%= data[:today].to_json %>;
+      draw_graph(<%=lp.id%>, translated, untranslated, dates, deadlines, deadline_pair_id, deadline_target_language, today);
+    <% end %>
+<% end %>
+</script>

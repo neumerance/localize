@@ -1,0 +1,9 @@
+<% if @translator_to_bookmark -%>
+	<div class="actionrequired">
+		<h5>Bookmark this translator and leave feedback</h5>
+		<p>You can add a bookmark to this translator. Bookmarking the translator would make it easier for you to send him/her more jobs.</p>
+		<p>When you bookmark a translator, you can also leave public feedback for other users to view.</p>
+		</p>
+		<p><%= bookmark_user_link(@translator_to_bookmark)  %></p>
+	</div>
+<% end -%>

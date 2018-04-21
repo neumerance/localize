@@ -1,0 +1,18 @@
+<% #TODO: Check why this is happening %>
+<% if resource_chat.resource_language %>
+<tr>
+	<% bgcol = (( ( resource_chat.word_count ||= 0 )  > 0) || [RESOURCE_CHAT_PENDING_TRANSLATION,RESOURCE_CHAT_TRANSLATOR_NEEDS_TO_REVIEW].include?(resource_chat.translation_status)) ? StringTranslation::TRANSLATION_COLOR_CODE[STRING_TRANSLATION_NEEDS_UPDATE] : StringTranslation::TRANSLATION_COLOR_CODE[STRING_TRANSLATION_COMPLETE] %>
+	<td style="background-color:<%= bgcol %>;"><%= link_to(h(resource_chat.resource_language.text_resource.name),{:controller=>:text_resources, :action=>:show, :id=>resource_chat.resource_language.text_resource.id}) %></td>
+	<td style="background-color:<%= bgcol %>;">
+    <span><b><%= resource_chat.resource_language.text_resource.language.name %></b> <%= _('to') %> <b><%= resource_chat.resource_language.language.name %></b></span>
+  </td>
+	<td style="background-color:<%= bgcol %>;"><%= ResourceChat::STATUS_TEXT[resource_chat.status] %></td>
+	<td style="background-color:<%= bgcol %>;"><%= resource_chat.word_count %></td>
+	<td style="background-color:<%= bgcol %>;">
+		<%= link_to('Communicate with client', {:controller=>:resource_chats, :action=>:show, :text_resource_id=>resource_chat.resource_language.text_resource.id, :id=>resource_chat.id}) %>
+		<% if (resource_chat.status == RESOURCE_CHAT_ACCEPTED) && (resource_chat.resource_language.text_resource.resource_strings.count > 0) %>
+			&nbsp; | &nbsp; <%= link_to('Edit translation', {:controller=>:resource_strings, :action=>:index, :text_resource_id=>resource_chat.resource_language.text_resource.id}) %>
+		<% end %>
+	</td>
+</tr>
+<%end%>

@@ -1,0 +1,16 @@
+<% if @alert_email.errors.empty? %>
+	<script>
+			elm = $("new_email");
+			elm.id = "alert_email_<%=@alert_email.id%>";
+			elm.removeClassName("new_email");
+	</script>
+	<td><%= check_box_tag("email", "1", @alert_email.enabled ? true : false, {:class=>"mc-toggle-checkbox", :onClick => ""}) %></td>
+	<td><%=@alert_email.name%></td>
+	<td><%=@alert_email.email%></td>
+	<td><%=link_to 'delete', alert_email_path(@alert_email), 'data-confirm' => 'Are you sure?', :method => 'delete', :remote => true %></td>
+<% else %>
+	<script>
+		$("new_email").remove();
+		alert("<%= @alert_email.errors.map{|x| x[1]}.join('\n')%>");
+	</script>
+<% end %>

@@ -1,0 +1,7 @@
+<tr>
+	<td>
+		<%= todo_status_image(todo) %>
+	</td>
+	<td><% if todo[0] != TODO_STATUS_DONE %><%= link_to_if(todo[4], todo[1], todo[3] ) %><% else %><%= todo[1] %><% end %></td>
+	<td><%= todo[2] %></td>
+</tr>

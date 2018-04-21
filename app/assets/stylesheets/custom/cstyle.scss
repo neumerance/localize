@@ -1,0 +1,253 @@
+/**
+ * Theme Name: icanlocalize
+ * Theme URI: http://icanlocalize.com/
+ * Description: A throwback to the Hybrid theme's original default style.
+ * Version: 0.1
+ * Author: 
+ * Author URI: 
+ * Tags: threaded-comments, sticky-post, microformats, two-columns, fixed-width, blue
+ * Template: hybrid
+ *
+ * Copyright (c) .  All rights reserved.
+ * 
+ *
+ * icanlocalize is released under the GNU General Public License, version 2 (GPL).
+ * http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ */
+
+/* Get base CSS */
+/*@import url('../hybrid/library/css/21px.css');*/
+
+/* Get plugins CSS */
+/*@import url('../hybrid/library/css/plugins.css');*/
+
+/* Uncomment the below line if using the Hybrid Tabs plugin */
+/* @import url('tabs.css'); */
+/*tpa=http://www.icanlocalize.com/site/wp-content/themes/icanlocalize/screen.css*/;
+@import 'plugins/screen.scss';
+
+
+#expertise_section {
+	width: 100%; 
+	border: 1px solid #dbdada;
+}
+
+#expertise_section_bottom {
+	width: 100%; 
+	background: #e3e3e3;
+	float: left;
+	border: 1px solid #e3e3e3;
+}
+
+#expertise_section_bottom_left {
+	width: 24%;
+	float: left;
+	padding: 12px 4px 12px 12px;
+}
+
+#expertise_section_bottom_left h1 {
+	font-size: 18px;
+	margin: 0px;
+}
+
+#expertise_section_bottom_right {
+	padding-top: 12px;
+	font-size: 14px;
+	width: 73%;
+	float: left;
+}
+
+#expertise_section_content {
+	height: 235px;
+	width: 100%;
+	background: #eeeeee;
+}
+
+#expertise_section_header {
+	width: 100%;
+	height: 50px;
+	background: #dbdada;
+}
+
+#expertise_section_header h1 {
+	font-size: 18px;
+	margin: 0px;
+	padding: 15px 0 0 15px;
+}
+
+/*
+#expertise_section_left {
+	width: 44px;
+	height: 190px;
+	float: left;
+}
+
+#expertise_section_right {
+	width: 44px;
+	height: 190px;
+	float: right;
+}*/
+
+.expertise_section_block {
+	width: 100px;
+	height: 150px;
+	margin: 22px 0px 0px 0px;
+	padding: 0px;
+	float: left;
+}
+
+.expertise_section_block_thumb {
+	width: 100px;
+	height: 70px;
+	float: left;
+}
+
+.expertise_section_block_name {
+	font-family: Georgia;
+	font-size: 12px;
+	width: 100%;
+	color: #000;
+	float: left;
+	margin: 0px;
+}
+
+.expertise_section_block_subject {
+	padding-top: 10px;
+	color: #d47f20;
+}
+
+.expertise_section_left_arrow {
+	width: 15px;
+	height: 29px;
+	background: image_url("left_arrow.png")/*tpa=http://www.icanlocalize.com/site/wp-content/themes/icanlocalize/images/left_arrow.png*/ no-repeat;
+	margin: 65px 0 0 13px;
+	float: left;
+}
+
+.expertise_section_right_arrow {
+	width: 15px;
+	height: 29px;
+	background: image_url("right_arrow.png")/*tpa=http://www.icanlocalize.com/site/wp-content/themes/icanlocalize/images/right_arrow.png*/ no-repeat;
+	margin: 65px 0 0 13px;
+	float: left;
+}
+/*
+#expertise_section_main_content {
+	width: 90%;
+	height: 190px;
+	float: left;
+	margin-left: 60px;
+	border: 1px solid red;
+}*/
+
+
+#expertise_section .wpv-filter-next-link {
+	width: 44px;
+	height: 170px;
+    background: image_url("right_arrow.png")/*tpa=http://www.icanlocalize.com/site/wp-content/themes/icanlocalize/images/right_arrow.png*/ no-repeat;
+    background-position: 0 50%;
+	float: right;
+	position: relative;
+	margin-top: -10px;
+}
+
+#expertise_section .wpv-filter-previous-link {
+	width: 44px;
+	height: 170px;
+    background: image_url("left_arrow.png")/*tpa=http://www.icanlocalize.com/site/wp-content/themes/icanlocalize/images/left_arrow.png*/ no-repeat;
+	background-position: 60% 50%;
+	margin-top: -10px;
+	margin-left: 10px;
+	float: left;
+}
+
+
+
+#expertise_listing_page {
+	width: 100%;
+	margin-top: 20px;
+}
+
+#expertise_listing_page_header {
+	width: 635px;
+	float: left;
+}
+
+#expertise_listing_page_header_right {
+	width: 260px;
+	margin-top: 50px;
+	float: left;
+}
+
+.expertise_title {
+	font-size: 24px;
+	font-weight: bold;
+	padding: 0px;
+	margin: 0px;
+}
+
+#expertise_listing_page_content {
+	width: 100%;
+	float: left;
+	margin-top: 10px;
+}
+
+.expertise_listing_item {
+	width: 100%;
+	padding-top: 10px;
+	border-top: 1px solid #dbdada;
+	float: left;
+}
+
+.expertise_listing_left {
+	width: 100px;
+	float: left;
+}
+
+.expertise_listing_right {
+	width: 85%;
+	padding: 0 0 0 10px;
+	float: left;
+}
+
+.expertise_listing_project_name {
+	width: 100%;
+	font-size: 16px;
+	font-weight: normal;
+	margin: 0px;
+	padding: 0px;
+	float: left;
+}
+
+.expertise_listing_project_desc {
+	width: 100%;
+	float: left;
+	margin-top: 5px;
+}
+
+
+.icl-theme-project-slider table {
+	margin: 0px;
+	padding: 0px;
+}
+
+.icl-theme-project-slider table th {
+	margin: 0px;
+	padding: 0px;
+}
+
+.icl-theme-project-slider table tr {
+	margin: 0px;
+	padding: 0px;
+}
+
+
+
+
+
+
+

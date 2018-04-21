@@ -1,0 +1,12 @@
+<%= form_for( :keywords,	url: { :action => :find_results }, :method => :post) do |f| %>
+<table class="stats">
+	<tr class="headerrow"><th>Field</th><th>Value (leave blank to ignore)</th></tr>
+	<tr><td>First name</td><td><%= f.text_field :fname, size: 40, maxlength: COMMON_FIELD %></td></tr>
+	<tr><td>Last name</td><td><%= f.text_field :lname, size: 40, maxlength: COMMON_FIELD %></td></tr>
+	<tr><td>E-Mail</td><td><%= f.text_field :email, size: 40, maxlength: COMMON_FIELD %></td></tr>
+	<tr><td>Nickname</td><td><%= f.text_field :nickname, size: 40, maxlength: COMMON_FIELD %></td></tr>
+</table>
+<br />
+<%= f.submit 'Find', data: { disable_with: 'Find' } %>
+
+<% end %>

@@ -1,0 +1,10 @@
+<!-- Date','ID','Withdrawal ID','TXN','Fee', 'Status' -->
+<tr>
+	<td><%= disp_time(receipt.chgtime) %></td>
+	<td><%= link_to("Mass payment #{receipt.withdrawal_id}", {:action=>:payment, :id=>receipt.id}) %></td>
+	<td><%= receipt.id %></td>
+	<td><%= receipt.txn %></td>
+	<td><%= receipt.fee %></td>
+	<td><%= MassPaymentReceipt::TRANSFER_STATUS_TEXT[receipt.status] %></td>
+	
+</tr>

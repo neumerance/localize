@@ -1,0 +1,4 @@
+module TranslationAnalyticsProfileHelper
+  include TranslationAnalyticsBaseHelper
+
+end

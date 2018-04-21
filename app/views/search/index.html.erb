@@ -1,0 +1,8 @@
+<div class="content">
+	<div class="infobox"><h4>Search</h4>
+		<%= form_tag({:action=>:find}) %>
+			<p>Keyword <%= text_field_tag :keyword, params[:keyword], maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %> <%= submit_tag :submit, data: { disable_with: 'Submit' } %></p>
+			<p>Search within: <label><%= check_box_tag :projects, true, true %>projects</label> <label><%= check_box_tag :users, true, true %>users</label></p>
+		</form>
+	</div>
+</div>

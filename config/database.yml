@@ -1,0 +1,16 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: 50
+  socket: /var/run/mysqld/mysqld.sock
+  reconnect: true
+  host: <%= Figaro.env.DB_HOST %>
+  database: <%= Figaro.env.DB_DATABASE %>
+  username: <%= Figaro.env.DB_USERNAME %>
+  password: <%= Figaro.env.DB_PASSWORD %>
+  port: <%= Figaro.env.DB_PORT || 3306 %>
+
+development: *default
+test: *default
+production: *default
+sandbox: *default

@@ -1,0 +1,11 @@
+<tr>
+	<td><%= vacation.status.html_safe %></td>
+	<td><%= disp_time(vacation.beginning) %></td>
+	<td><%= disp_time(vacation.ending) %></td>
+	<% if @user == @auser %>
+		<td>
+			<%= link_to(_('Edit'), {:controller=>:vacations, :action=>:edit, :user_id=>@auser.id, :id=>vacation}) %> &nbsp;
+			<%= button_to(_('Delete'), {:controller=>:vacations, :action=>:destroy, :user_id=>@auser.id, :id=>vacation}, 'data-confirm'=>_('Are you sure you want to delete this leave notice?'), :method => :delete) %>
+		</td>
+	<% end %>
+</tr>

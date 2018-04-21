@@ -1,0 +1,43 @@
+<%= my_error_messages_for :web_dialog %>
+
+<%= form_for(:web_dialog, :url=>{:action=>:create}) do |f| %>
+	<table border="0" cellpadding="5">
+		<tr><td valign="top">Correo electrónico:</td><td><%= f.text_field :email, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td></tr>
+		<tr><td valign="top">Nombre:</td><td><%= f.text_field :fname, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td></tr>
+		<tr><td valign="top">Apellido:</td><td><%= f.text_field :lname, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td></tr>
+		<% if @client_departments.length > 1 %>
+			<tr><td colspan="2"><hr /></td></tr>
+			<tr><td valign="top">Departamento:</td><td><%= departments(f, @web_dialog, :client_department_id, @client_departments) %></td></tr>
+			<tr><td colspan="2"><hr /></td></tr>
+		<% else %>
+			<tr><td colspan="2"><hr /><%= f.hidden_field :client_department_id %></td></tr>
+		<% end %>
+		<tr><td valign="top">Acerca de:</td><td><%= f.text_field :visitor_subject, size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD %></td></tr>
+		<tr><td valign="top">Comentario:</td><td><%= f.text_area :message, :rows=>8, :cols=>60, maxlength: COMMON_NOTE %></td></tr>
+		<tr><td colspan="2"><hr /></td></tr>
+		<% if !@captcha_passed %>
+			<tr><td colspan="2">
+				<b>Para evitar SPAM, por favor copie el código que se observa en el cuadro.</b>
+			</td></tr>
+			<tr>
+				<td class="signupdescription">Código de verificación:<br /></td>
+				<td><%= image_tag @captcha_image.public_filename, :size=>@captcha_image.image_size %></td>
+			</tr><tr>
+				<td class="signupdescription" rowspan="2">Ingrese el código:</td>
+				<td><% if @captcha_error -%><div class="fieldWithErrors"><% end -%>
+					<%= text_field_tag :code, '', maxlength: 6 %>
+					<% if @captcha_error %></div><% end %>
+					<%= hidden_field_tag :captcha_id, @captcha_image.id %>
+				</td>
+			</tr><tr>
+					<td><span class="comment">Distingue mayúscula de minúscula</span></td>
+			</tr>
+		<% end %>
+		<tr><td colspan="2">&nbsp;</td></tr>
+		<tr><td valign="top"></td><td><%= submit_tag 'Enviar', data: { disable_with: 'Enviar' } %> &nbsp;&nbsp; <% if @home_url %><%= link_to('Cancelar', @home_url) %><% end %></td></tr>
+	</table>
+	
+	<%= hidden_field_tag :store, @web_support.id %>
+	<%= f.hidden_field :visitor_language_id %>
+	
+<% end %>

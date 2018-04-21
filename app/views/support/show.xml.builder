@@ -1,0 +1,1 @@
+xml.support_ticket(:subject=>@support_ticket.subject, :id=>@support_ticket.id, :messages=>@support_ticket.messages.length, :last_message_by_user=>@support_ticket.last_message_by_user(@user), :status=>@support_ticket.status, :create_time=>@support_ticket.create_time.to_i)

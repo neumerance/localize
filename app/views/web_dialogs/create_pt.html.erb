@@ -1,0 +1,3 @@
+<p>Recebemos a sua mensagem e iremos responder (<b><%= h(@web_dialog.email) %></b>) assim que possível.</p>
+<p>Foi-lhe enviada uma confirmação por correio electrónico de <b><%= RAW_EMAIL_SENDER %></b>. Certifique-se de que o seu filtro SPAM não bloqueia este endereço. A confirmação também inclui uma ligação que lhe permitirá verificar o progresso da sua mensagem.</p>
+<p>Para seguir o progresso, enviar outra mensagem ou consultar a nossa resposta pode também ir até <%= link_to('detalhes completos da questão', {:action=>:show, :id=>@web_dialog.id, :accesskey=>@web_dialog.accesskey}) %></p>

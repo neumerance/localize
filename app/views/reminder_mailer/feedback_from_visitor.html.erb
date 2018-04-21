@@ -1,0 +1,25 @@
+Dear <%= @user.full_real_name %>,
+
+A visitor has left feedback about your translation:
+
+---
+
+<%= @feedback.txt %>
+
+---
+
+<% if @job_url %>This feedback concerns the following job:
+<%= url_for(@job_url.merge({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL }) ) %><% end %>
+
+You can respond to the feedback directly here:
+<%= url_for({:escape => false, :only_path => false, :controller=>:feedbacks, :action=>:show, :id=>@feedback.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+A quick note from us:
+
+Feedback is great. It allows visitors to tell us what they think, make suggestions and corrections.
+
+Sometimes, visitor feedback can help catch typos and point out better terminology. In other times, visitor suggestions may not be correct.
+Ultimately, you are responsible for the translation and not visitors. Please make the best use of visitor feedback and remember it comes with good intentions.
+
+
+<%= EMAIL_SIGNATURE %>

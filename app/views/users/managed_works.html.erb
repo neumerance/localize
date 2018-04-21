@@ -1,0 +1,8 @@
+<div class="inter_tab_spacer"></div>
+
+<h2>Projects that you are reviewing</h2>
+<% if @user.managed_works and @user.managed_works.count > 0 %>
+<%= infotab_header(['Project','Review log', 'Status'] ) %>
+	<%= render(:partial=>'managed_work', :collection=>@user.managed_works) %>
+</table>
+<% end %>

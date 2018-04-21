@@ -1,0 +1,40 @@
+<% with_checkbox ||= false%>
+<tr>
+  <% if with_checkbox %>
+  <td><%= check_box_tag "web_messages_ids[]", web_message.id, false, id: "web_messages_ids_#{web_message.id}", class: "chkItem", disabled: (web_message.owner.money_account.balance > 0) %></td>
+  <% end %>
+	<td><%= link_to(web_message.id, {:controller=>:web_messages, :action=>:show, :id=>web_message.id}) %></td>
+  <% if @user.has_supporter_privileges? %>
+    <td>
+      <% if web_message.owner_type == 'Website' %>
+        <%= link_to("Website #{web_message.owner.name}",{controller: '/wpml/websites', :action=>:show, :id=>web_message.owner.id}) %>
+        &nbsp;&gt;&nbsp;
+      <% elsif web_message.owner_type == 'WebDialog' %>
+        <%= link_to('Web dialog',{:controller=>:web_dialogs, :action=>:show, :id=>web_message.owner.id}) %>
+        &nbsp;&gt;&nbsp;
+      <% end %>
+      <%= user_link(web_message.get_client) %>
+    </td>
+  <% end %>
+  <% if web_message.translation_status == TRANSLATION_COMPLETE %>
+    <td>-</td>
+  <% else %>
+    <td style="<%=(web_message.create_time + 6.hours < Time.now) ? "background-color: #FFE0E0;" : "" %>">
+      <%= distance_of_time_in_words(web_message.create_time, Time.now) %>
+    </td>
+  <% end %>
+
+	<td><%= link_to(h(truncate(web_message.get_name, :length => 60, :omission => '...')), {:controller=>:web_messages, :action=>:show, :id=>web_message.id}) %></td>
+	<td><%= web_message.original_language.name %></td>
+	<td><%= web_message.destination_language.name %></td>
+	<td><%= web_message.word_count %></td>
+	<td><%= web_message.translation_and_review_status %></td>
+	<td>
+    <% if web_message.translation_status == TRANSLATION_COMPLETE %>
+      <%= link_to(_('Details'), {:controller=>:web_messages, :action=>:show, :id=>web_message.id}) %> &nbsp;
+      <%= link_to(_('text file'),{:controller=>:web_messages, :action=>:translation, :id=>web_message.id}) %>
+    <% else %>
+      <span style="color: #808080;">Not available</span>
+    <% end %>
+  </td>
+</tr>

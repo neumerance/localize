@@ -1,0 +1,14 @@
+<% if @projects -%>
+  <div class="forumheadlineR">
+    Your projects (<%= @projects.length %>)</div>
+
+  <div class="forumheadlineGL">
+    <%= image_tag 'spacer.gif', width: 10, height: 1, alt: '' %>Project
+  </div>
+  <div class="forumheadlineGR">
+    <%= image_tag 'spacer.gif', width: 10, height: 1, alt: '' %>Summary
+  </div>
+  <div class="clear"><%= image_tag 'spacer.gif', width: 759, height: 1, alt: '' %></div>
+
+  <%= render(:partial => "/projects/project", :collection => projects) %>
+<% end -%>

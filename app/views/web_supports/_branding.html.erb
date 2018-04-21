@@ -1,0 +1,48 @@
+<div class="infobox" >
+	<% if !branding.language_id.blank? %>
+		<div class="likeh4right">
+			<%= form_tag({ :action => :del_branding, :language_id=>branding.language_id },
+                    "data-confirm" => 'Are you sure you want to remove the customization for this language?',
+                    :remote => true) do %>
+
+				<%= submit_tag 'Remove', data: { disable_with: 'Remove' } %>
+
+			<% end %>
+		</div>
+	<% end %>
+	<div class="likeh4"><%= branding.title %></div>
+	<% if @edit_branding %>
+		<%= my_error_messages_for :branding %>
+		<%= form_for(:branding, :url=>{:action=>:edit_branding, :language_id=>branding.language_id}, :html=>{:method=>:post, :remote => true}) do |f| %>
+			<p><b>Your Logo</b> (location where your logo is saved in the web)<br />
+			<%= f.text_field(:logo_url, size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD) %></p>
+			<p><b>Logo dimensions</b> (maximum width: <%= Branding::MAX_SIZE[:logo_width] %>, maximum height: <%= Branding::MAX_SIZE[:logo_height] %>)<br />
+			Width: <%= f.number_field(:logo_width, :size=>5, maxlength: 5, min: 0, oninput: 'javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)') %> pixels<br />height: <%= f.text_field(:logo_height, :size=>5, maxlength: 5, min: 0, oninput: 'javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)') %> pixles</p>
+			<p><b>Home page address</b> (where visitors will go after sending you messages)<br />
+			<%= f.text_field(:home_url, size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD) %></p>
+			<%= submit_tag 'Update', data: { disable_with: 'Update' } %>
+		<% end %>
+		
+		<%= form_tag({ :action => :edit_branding, :language_id=>branding.language_id, :req=>'hide' }, :remote => true ) do %>
+			<%= submit_tag 'Cancel', data: { disable_with: 'Cancel' } %>
+		<% end %>
+	<% else %>
+		<% if !branding.logo_url.blank? %>
+			<p><b>Link to logo:</b><br /><%= branding.logo_url %></p>
+			<p><b>Logo size:</b><br /><%= branding.logo_width %> by <%= branding.logo_height %> pixels</p>
+		<% else %>
+			<p>No custom logo selected</p>
+		<% end %>
+		
+		<% if !branding.home_url.blank? %>
+			<p><b>Your home page:</b><br /><%= branding.home_url %></p>
+		<% else %>
+			<p>No address provided for home page</p>
+		<% end %>
+		
+		<%= form_tag({ :action => :edit_branding, :language_id=>branding.language_id, :req=>'show' }, :remote => true ) do %>
+			<%= submit_tag 'Edit', data: { disable_with: 'Edit' } %>
+		<% end %>
+		
+	<% end %>
+</div>

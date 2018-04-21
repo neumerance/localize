@@ -1,0 +1,22 @@
+<% if (@created_issues.length == 0) && (@targeted_issues.length == 0) %>
+	<p>You have no pending issues.</p>
+<% end %>
+<% if (@created_issues.length > 0) %>
+	<h2>Issues that you opened</h2>
+	<p>These are issues that you opened for others. The other users can close them and you can as well.</p>
+	<%= render(:partial=>'issues', :object=>@created_issues, :locals=>{:initiator=>true}) %>
+	<% if @created_issues.length < @total_created_issues %>
+		<br /><p><%= link_to('Other issues that you opened (%d)'%@total_created_issues,{:action=>:issues_i_created}) %></p>
+	<% end %>
+	<div class="inter_tab_spacer"></div>
+<% end %>
+
+<% if (@targeted_issues.length > 0) %>
+	<h2>Issues that others have opened for you</h2>
+	<p>When others need help from you, they open issues. Click on any issue to go to it.</p>
+	<p>Close any completed issues, so that both you and the person who opened it knows it's handled.</p>
+	<%= render(:partial=>'issues', :object=>@targeted_issues, :locals=>{:initiator=>false}) %>
+	<% if @targeted_issues.length < @total_targeted_issues %>
+		<br /><p><%= link_to('Other issues for you (%d)'%@total_targeted_issues,{:action=>:issues_for_me}) %></p>
+	<% end %>
+<% end %>

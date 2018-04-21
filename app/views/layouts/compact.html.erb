@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title><%= h(truncate(@header, :length => 50, :omission => '...')) -%> [ICanLocalize]</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="Content-Style-Type" content="text/css"/>
+  <meta http-equiv="Content-Script-Type" content="text/javascript"/>
+
+  <%= stylesheet_link_tag    'application' %>
+  <%= stylesheet_link_tag    'base' %>
+  <%= stylesheet_link_tag    'compact' %>
+  <%= stylesheet_link_tag    'custom/keywords' %>
+  <%= stylesheet_link_tag    'plugins/chosen.min' %>
+  <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.min.css' %>
+
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag 'base' %>
+  <%= javascript_include_tag 'scripts/keywords' %>
+  <%= javascript_include_tag 'plugins/chosen.jquery.min' %>
+  <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.min.js' %>
+
+  <%= csrf_meta_tags %>
+
+  <style type="text/css">
+    .noprint {
+      display: none;
+    }
+  </style>
+  <link rel="shortcut icon" href="/assets/favicon.png" type="image/png"/>
+  <link rel="icon" href="/assets/favicon.png" type="image/png"/>
+</head>
+<%# Classes with the controller and action names allow page-specific JS execution %>
+<body class="compact <%= "#{controller_name}-controller #{action_name}-action" %>"> <!-- style="margin: 1em; padding: 1em; border: 1px solid #808080;" -->
+<div id="top-of-page"></div>
+<% if flash[:notice] %>
+    <div id="alertDiv"><%= pre_format(flash[:notice]) %></div>
+<% end %>
+
+<% if @return_url && @return_title %>
+    <div id="return_to">
+      <%= link_to(_('Back to %s')%@return_title, @return_url) %>
+    </div>
+<% end %>
+
+<% if @user && (@user.kind_of? Client) %>
+    <div class="comment"><%= _('Need help?') %> <%= (_('Create a %s or call <b>+1-(702) 997-3025</b>')%link_to(_('support ticket'), {:controller => :support, :action => :new})).html_safe %>
+    </div>
+<% end %>
+<%= show_project_path %>
+
+<!-- h1>< %= h(truncate(@header,length: 60, omission: '...')) % ></h1-->
+<%= yield :layout %>
+<hr/>
+<% if @user && (@user.kind_of? Client) %>
+    <p style="text-align: center;">
+      <strong><%= _('Need help?') %></strong> <%= (_('Create a %s, call <b>+1-(702) 997-3025</b> or use <b>Skype</b>')%link_to(content_tag(:strong, _('support ticket')), {:controller => :support, :action => :new})).html_safe %>
+      <a title="icanlocalize" href="skype:icanlocalize?call">
+        <%= image_tag 'call_blue_transparent_34x34.png', width: 34, height: 34, alt: 'icanlocalize', style: 'vertical-align: middle; border: medium none;' %>
+      </a>
+    </p>
+<% end %>
+<p style="text-align: center;"><%= locale_footer %></p>
+</body>
+</html>

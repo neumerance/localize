@@ -1,0 +1,12 @@
+Dear <%= @contact.full_name %>,
+
+Following is a reply to your contact:
+
+--------------------
+<%= h(@reply) %>
+--------------------
+
+Please don't reply to this email. Instead, click on the link below:
+<%= url_for({:escape => false, :only_path => false, :controller=>:contacts, :action=>:show, :id=>@contact.id, :accesskey=>@contact.accesskey, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+<%= EMAIL_SIGNATURE %>

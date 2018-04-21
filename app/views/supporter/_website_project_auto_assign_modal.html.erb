@@ -1,0 +1,27 @@
+<div id="translatorList" class="modal fade medium-modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <h4><%= title %></h4>
+    </div>
+    <div class="modal-body">
+      <%= form_tag({:controller => '/supporter', :action => :assign_translators_to_language_pair}, method: :post, remote: true) do %>
+          <input type="hidden" name="website_translation_offer_id"/>
+          <div class="details">
+          </div>
+          <div id="tableActions" style="display: none" class="pull-right m-b-10">
+            <button data-dismiss="modal">Cancel</button>
+            <button type="submit">Save</button>
+          </div>
+          <div class="clearfix"></div>
+          <table id="translatorListTable" class="stats" width="100%">
+            <tbody>
+            <tr class="headerrow">
+              <th><%= _('Name') %></th>
+              <th colspan="2"><%= _('Action') %></th>
+            </tr>
+            </tbody>
+          </table>
+      <% end %>
+    </div>
+  </div>
+</div>

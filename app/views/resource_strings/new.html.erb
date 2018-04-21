@@ -1,0 +1,15 @@
+<%= my_error_messages_for :resource_string %>
+
+<%= form_for(:resource_string, :url=>{:action=>:create}) do |f| %>
+<table cellspacing="10" style="width:80%;">
+	<tr><td style="vertical-align: top; width: 30%;"><%= _("Label") %></td><td><%= f.text_field(:token, {:size=>COMMON_FIELD_SIZE, maxlength: COMMON_FIELD}) %></td></tr>
+	<tr><td style="vertical-align: top;"><%= _("Text") %><br /><span class="comment"><%= _("(this is the only thing that will be translated)") %></span></td><td><%= f.text_area(:txt, :rows=>10, :cols=>10, :style=>'width:100%;', maxlength: COMMON_NOTE) %></td></tr>
+	<tr><td style="vertical-align: top;"><%= _("Comment") %><br /><span class="comment"><%= _("(Optional instructions for the translator)") %></span></td><td><%= f.text_area(:comment, :rows=>2, :cols=>10, :style=>'width:100%;', maxlength: COMMON_NOTE) %></td></tr>
+</table>
+
+<div style="width:80%">
+	<p><%= _("Please note that manually added strings can't be downloaded in a resource file. If you want to download this string in a file later, please add a file with it instead.") %></p>
+</div>
+<%= submit_tag(_('Add string'), :style=>'padding: 0.5em 1em;', data: { disable_with: _('Add string') }) %> &nbsp; | &nbsp; <%= link_to(_('Cancel'), {:action=>:index}) %>
+<% end %>
+	

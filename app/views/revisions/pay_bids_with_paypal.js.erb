@@ -1,0 +1,5 @@
+<% if @warning.present? %>
+  alert('<%= @warning %>');
+<% else %>
+  window.location.href = '<%= @invoice_payment_link.html_safe %>';
+<% end %>

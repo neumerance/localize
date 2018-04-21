@@ -1,0 +1,10 @@
+<%= form_tag(request.url, :method => :get) do %>
+    From 
+      <%= select_month params[:from], {:prefix => 'from'} %>
+      <%= select_year params[:from], {:prefix => 'from'}  %>
+
+    To 
+      <%= select_month params[:to], {:prefix => 'to'} %>
+      <%= select_year params[:to], {:prefix => 'to'} %>
+    <%= submit_tag 'Generate', data: { disable_with: 'Please wait' } %>
+<% end %>

@@ -1,0 +1,17 @@
+<div class="infobox"><h4>Date range</h4>
+<%= form_tag({:action=>:paypal_transactions}, :method=>:get) do %>
+<table>
+	<tr><td>Start date:</td><td><%= select_date(@start_date, {:prefix=>'start_date'}) %></td></tr>
+	<tr><td>End date:</td><td><%= select_date(@end_date, {:prefix=>'end_date'}) %></td></tr>
+</table>
+<br /><p><%= submit_tag('Update display', data: { disable_with: 'Update display' }) %></p>
+<p><%= link_to('All dates', {:action=>:paypal_transactions}) %></p>
+<% end %>
+</div>
+<br /><br />
+
+<%= infotab_header(['Date','Description','Net Amount','Gross Amount']) %>
+<%= display_paypal_transactions(@all_events,@user) %>
+</table>
+
+<br /><p><%= link_to('CSV version', csv_url() ) %></p>

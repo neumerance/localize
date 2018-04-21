@@ -1,0 +1,61 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+text_resource_iphone_spanish:
+  id: 1
+  text_resource_id: 1
+  language_id: 2
+  status: <%= RESOURCE_LANGUAGE_OPEN %>
+
+
+
+
+text_resource_ready_to_start_1:
+  id: 2
+  text_resource_id: 2
+  language_id: 2
+  status: <%= RESOURCE_LANGUAGE_OPEN %>
+
+text_resource_ready_to_start_2:
+  id: 3
+  text_resource_id: 2
+  language_id: 3
+  status: <%= RESOURCE_LANGUAGE_OPEN %>
+
+text_resource_ready_to_start_3:
+  id: 4
+  text_resource_id: 2
+  language_id: 4
+  status: <%= RESOURCE_LANGUAGE_OPEN %>
+
+
+
+
+
+started_1:
+  id: 5
+  text_resource_id: 3
+  language_id: 2
+  status: <%= RESOURCE_LANGUAGE_OPEN %>
+  version_num: 200
+
+started_2:
+  id: 6
+  text_resource_id: 3
+  language_id: 3
+  status: <%= RESOURCE_LANGUAGE_OPEN %>
+  version_num: 20
+
+started_3:
+  id: 7
+  text_resource_id: 3
+  language_id: 3
+  status: <%= RESOURCE_LANGUAGE_OPEN %>
+  version_num: 20
+
+
+half_translated:
+  id: 8
+  text_resource_id: 3
+  language_id: 4
+  status: <%= RESOURCE_LANGUAGE_OPEN %>
+  version_num: 20

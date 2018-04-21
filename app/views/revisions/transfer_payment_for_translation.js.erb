@@ -1,0 +1,9 @@
+<% if @account.balance >= @total_cost %>
+  alert('Your project successfully went to translation!')
+  location.href = '<%= url_for(:action=>:show) %>'
+<% elsif @warning %>
+  alert("<%= @warning %>")
+<% else %>
+  alert('You will now be transfered to PayPal to complete the payment')
+  location.href = '<%= @invoice_payment_link %>'
+<% end %>

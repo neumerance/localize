@@ -1,0 +1,21 @@
+var modal = jQuery('#translatorList');
+modal.find('table tbody tr.headerrow th:last-child').html('Action');
+modal.find('table tbody').find('tr').not('tr.headerrow').remove();
+<% translator_lists =  escape_javascript( render partial: 'translator_lists', collection: @translators, as: :translator,
+                                                                              locals: { offer: @offer,
+                                                                                        contracts: @contracts,
+                                                                                        assigned_translators_ids: @assigned_translators.collect(&:id),
+                                                                                        assigned_reviewers_ids: @assigned_reviewers.collect(&:id),
+                                                                                        review_enabled: @review_enabled } ) %>
+modal.find('table tbody').append('<%= @translators.present? ? translator_lists : '<tr><td class="text-center" colspan="5">No assignable translators yet.</td><tr>'.html_safe %>');
+modal.find('.details').html('<%= escape_javascript(render partial: 'website_translation_offer_header_details',
+                                                          locals: { offer: @offer,
+                                                                    total_jobs: @total_jobs.size,
+                                                                    total_funded_jobs: @total_funded_jobs.size,
+                                                                    total_unfunded_jobs: @total_unfunded_jobs,
+                                                                    total_word_count: @total_word_count,
+                                                                    total_funded_word_count: @total_funded_word_count
+
+                                                                    }) %>');
+modal.find('form input[name="website_translation_offer_id"]').val('<%= params[:id] %>');
+modal.modal('show');

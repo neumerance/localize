@@ -1,0 +1,86 @@
+<h1>Monthly TA Projects</h1>
+
+<%= render 'reports/month_range_selector' %>
+
+<%= infotab_top(
+        _('TA Monthly Projects'),
+        _('Comparison of number of translated words per month and recurring vs new projects')) %>
+<%= infotab_header([
+                       'Month',
+                       'H&M Projects',
+                       'Static Website Projects',
+                       'Sisualizer Projects',
+                       'CMS Requests',
+                       'Other',
+                       'Total Projects']) %>
+
+  <% @result.each do |data| %>
+    <tr>
+      <td><%= data[:key] %></td>
+      <td><%= data[:help_manual] %></td>
+      <td><%= data[:static_website] %></td>
+      <td><%= data[:sisualizer] %></td>
+      <td><%= data[:cms_requests] %></td>
+      <td><%= data[:other] %></td>
+      <td><%= data[:total] %></td>
+    </tr>
+  <% end %>
+
+<tfoot>
+  <tr class="headerrow">
+    <th style="text-align:right">Totals:</th>
+    <th><%= @result.inject(0){ |sum, x| sum + x[:help_manual] } %></th>
+    <th><%= @result.inject(0){ |sum, x| sum + x[:static_website] } %></th>
+    <th><%= @result.inject(0){ |sum, x| sum + x[:sisualizer] } %></th>
+    <th><%= @result.inject(0){ |sum, x| sum + x[:cms_requests] } %></th>
+    <th><%= @result.inject(0){ |sum, x| sum + x[:other] } %></th>
+    <th><%= @result.inject(0){ |sum, x| sum + x[:total] } %></th>
+  </tr>
+</tfoot>
+</table>
+
+<p>* Showing all projects created, included non-translated / paid .</p>
+
+<%= infotab_top(
+        'Detalied usage of TA by clients',
+        'Projects created by clients using TA') %>
+<%= infotab_header(['Project ID', 'Project name', 'Created at', 'Client ID', 'Client email', 	'Project type', 'Client first name', 'Client last name']) %>
+
+<% @details.each do |k,v| %>
+  <% cids = [] %>
+  <% v.flatten.each do |p| %>
+    <% next if cids.include? p.client.id %>
+    <% cids << p.client.id %>
+    <tr>
+      <td><%= p.id %></td>
+      <td><%= p.name %></td>
+      <td><%= p.creation_time %></td>
+      <td><%= p.client_id %></td>
+      <td><%= p.client.email %></td>
+      <td><%= k == :manual ? "H&M Projects" : "Static Website Projects"%></td>
+      <td><%= p.client.fname %></td>
+      <td><%= p.client.lname %></td>
+    </tr>
+  <% end %>
+<% end %>
+
+</table>
+
+<%= infotab_top(
+        'Old WPML usage',
+        'CMS Requests created with WPML 3.1 or older') %>
+<%= infotab_header(['Website ID', 'Project name', 'Created at', 'Client ID', 'Client email', 'Client first name', 'Client last name']) %>
+<% cids = [] %>
+<% @old_wpml.each do |cms_upload| %>
+  <% next if cms_upload.cms_request.website.nil? || cids.include?(cms_upload.cms_request.website.client.id) %>
+  <% cids << cms_upload.cms_request.website.client.id %>
+  <tr>
+    <td><%= cms_upload.cms_request.website.id %></td>
+    <td><%= cms_upload.cms_request.website.name %></td>
+    <td><%= cms_upload.cms_request.created_at %></td>
+    <td><%= cms_upload.cms_request.website.client.id %></td>
+    <td><%= cms_upload.cms_request.website.client.email %></td>
+    <td><%= cms_upload.cms_request.website.client.fname %></td>
+    <td><%= cms_upload.cms_request.website.client.lname %></td>
+  </tr>
+<% end %>

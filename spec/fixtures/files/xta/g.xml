@@ -1,0 +1,91 @@
+<TA_project TA_version_required="1.97" created="1520326219.15" name="Test_Update_TA_Tool4 _ We-164692" revision_name="cms_request_164693" source_type="blog">
+  <project_setup default_encoding="iso-8859-1" index_file_name="/" original_language="English" scan_file_types="html" use_source_encoding="True">
+    <common_root>wp-blog.otgs-yt.tk</common_root>
+  </project_setup><ta_source_files>
+  <included_files>
+    <file md5="a396124bce2a3697849315520e4d526f" sentences="5" title="Test_Update_TA_Tool4" type="html" words="48">/test_update_ta_tool4/</file>
+  </included_files><excluded_files />
+  <support_files />
+  <index_pages />
+</ta_source_files><ta_buffer encoding="UTF-8" format="1" manual="False" original_language="English" source_file="/test_update_ta_tool4/" type="html">
+  <extractor>
+    <marked_file MD5="c936f22fa4f2ed779eb22f2682b4175b" encoding="zlib-hex">789cd553c18ed4300cbdcf57589d6b874a881364222dbb20211681a00871aadcc66da34dd392b8c38e10fb2df32df365389dc20d09890be4e2c476de7b761cd5f3e0b4ea098d56918f8e808f13ed33a67b2e9a1833fdfcedcd67f806ede879d7e260ddf12960b0e8f20305831ef39edc81d83698bbb9b106f3883eee2205dbc277552cb05a0dc4083df3b4a32fb33decb36b4124012d853083e6725a9993ac67d0f41822f17e5b5e55695fc9a11a30dc51d8665a1509526f145b1682876d5a9259be2a6f5f6c4b8a5c7d9c0c3255c9398eee494a7850c5257fa38aa5ec8daa4773143341e330c67d26e9b51bbbca594fd905f7e6fd87eab5b075a341680209aa01ee6d84093be999b88fb91860a105db9e4fd2cd30fa4e2b1a747905895f15b29748b1862279130585a4f86172b46006e99d43b6a3cfa1c6e66e0195944fefdedc3e5a0b987eaf56d5e167e0ded9b6dd79faba468a3ae8bfb9bb34e265c06e907712a93119df509471a0f3a926ebbb5ffa253ec7e4586bff07a45fcf2188e4e5c5ce271bcfa779190f93037a03815241a9ddff8164f98e011e8b6ab603fd81fe629df1e563e9cd0fa86d5d78</marked_file>
+    <pre_processor />
+    <paragraph_indexes count="5">203 238 291 431 556 618 743 797 922 989 </paragraph_indexes>
+    <support_files />
+  </extractor><translation>
+  <languages>
+    <language reviewed="True">German</language>
+  </languages><sentences count="5">
+  <ta_sentence do_translation="yes" encoding="UTF-8" field="title" format="1" id="1" original_language="English" type="title">
+    <space_before />
+    <space_after />
+    <text_data language="German">
+      <text rev_id="176778" status="Complete" time="1520325790">Test_Update_TA_Tool4_German</text>
+    </text_data><text_data language="English">
+    <text from_TM="False" from_existing_translation="False" rev_id="176779" status="New" time="1520325199">Test_Update_TA_Tool4</text>
+  </text_data>
+  </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" field="body" format="1" id="2" original_language="English">
+  <space_before />
+  <space_after />
+  <text_data language="German">
+    <text rev_id="176778" status="Complete" time="1520325828">DRS_Ketagoda hat diese Seite heute erstellt, um zu testen, ob TA Tool die fertige &#220;bersetzung zur&#252;ck an die WPML sendet.</text>
+    <marker end="69" id="0" start="62" />
+    <marker end="69" id="1" start="62" />
+  </text_data><text_data language="English">
+  <text from_TM="False" from_existing_translation="False" rev_id="176779" status="New" time="1520325199">DRS_Ketagoda created this page today, to test if&#160;TA Tool&#160;sends the completed translation, back to the WPML.</text>
+  <marker end="57" id="0" start="49" />
+  <marker end="56" id="1" start="49" />
+</text_data><marker_def id="0" type="html">
+  <html_marker tag="strong" />
+</marker_def><marker_def id="1" type="html">
+  <html_marker tag="em" />
+</marker_def>
+</ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" field="body" format="1" id="3" original_language="English">
+  <space_before />
+  <space_after />
+  <text_data language="German">
+    <text rev_id="176778" status="Complete" time="1520326203">Fragmentierte S&#228;tze werden mit dem TA Tool &#252;bersetzt.</text>
+  </text_data><text_data language="English">
+  <text from_TM="False" from_existing_translation="False" rev_id="176779" status="New" time="1520325199">Fragmented sentences are&#160;being translated using TA Tool.</text>
+</text_data>
+</ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" field="body" format="1" id="4" original_language="English">
+  <space_before />
+  <space_after />
+  <text_data language="German">
+    <text rev_id="176778" status="Complete" time="1520326212">Die aktuelle Seite wird aktualisiert und erneut an TA Tool gesendet.</text>
+  </text_data><text_data language="English">
+  <text from_TM="False" from_existing_translation="False" rev_id="176779" status="New" time="1520325199">Current page&#160;is&#160;updated, and resent to TA Tool.</text>
+</text_data>
+</ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" field="body" format="1" id="5" original_language="English">
+  <space_before />
+  <space_after />
+  <text_data language="German">
+    <text from_TM="False" from_existing_translation="False" rev_id="176779" status="Complete" time="1520326472">Die aktuelle Seite wird zum 2 zweiten Mal aktualisiert und erneut an TA Tool gesendet.</text>
+  </text_data><text_data language="English">
+  <text from_TM="False" from_existing_translation="False" rev_id="176779" status="New" time="1520326219">Current page&#160;is&#160;updated for 2nd time, and resent to TA Tool.</text>
+</text_data><spell_ignore_words>
+  <language name="German">TA</language>
+</spell_ignore_words>
+</ta_sentence>
+</sentences><html_output_change_data_3 />
+  <existing_translations />
+</translation>
+</ta_buffer><HTML_output mode="folder">
+  <folders />
+  <domains />
+  <sites />
+  <extensions />
+  <language_selector include="True" position="1" type="2" />
+  <output_languages />
+  <support_files Duplicate="NONE">
+    <files_to_duplicate />
+  </support_files><custom_path />
+  <custom_support_path />
+  <output_path />
+  <ta_support_path />
+  <lang_select_search_text use_re="False" />
+</HTML_output><external_link_replacement scan_required="True" />
+  <blog_output />
+  <help_and_manual_output />
+</TA_project>

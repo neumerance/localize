@@ -1,0 +1,46 @@
+{
+  "tests":  [
+    {
+      "sentence": "",
+      "count_method": "words",
+      "ratio": 9999,
+      "expected_result": 0
+    },
+    {
+      "sentence": "",
+      "count_method": "characters",
+      "ratio": 9999,
+      "expected_result": 0
+    },
+    {
+      "sentence": "You talkin’ to me?",
+      "count_method": "words",
+      "ratio": 1.0,
+      "expected_result": 4
+    },
+    {
+      "sentence": "Was sind die Konsequenzen der Abstimmung vom 12. Juni?",
+      "count_method": "words",
+      "ratio": 4.0,
+      "expected_result": 9
+    },
+    {
+      "sentence": "靠！我电脑坏了",
+      "count_method": "characters",
+      "ratio": 1.0,
+      "expected_result": 6
+    },
+    {
+      "sentence" : "”단”은 영어로 무슨 뜻이에요?",
+      "count_method": "characters",
+      "ratio": 0.5,
+      "expected_result": 6
+    },
+    {
+      "sentence" : "わたしは せんせいです。",
+      "count_method": "characters",
+      "ratio": 0.3,
+      "expected_result": 3
+    }
+  ]
+}

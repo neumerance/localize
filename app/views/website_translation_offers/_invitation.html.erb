@@ -1,0 +1,15 @@
+<%= my_error_messages_for(:website_translation_offer) %>
+
+<h3>Invite all translators</h3>
+
+<%= form_for(:website_translation_offer, :url=>{:action=>:update_details}) do |f| %>
+
+	<p>Sample text (optional)<br />
+		<%= f.text_area(:sample_text, {:rows=>4, :cols=>80, :style=>'width: 100%;', maxlength: COMMON_NOTE}) %>
+		<span class="comment">Paste here any sample text that you'd like the translators to do when they apply (up to 300 characters).</span>
+	</p>
+
+	<%= hidden_field_tag(:invitation_only, 1) %>
+	<%= submit_tag('Invite all translators', :style=>'padding: 0.5em 1em;', data: { disable_with: 'Inviting all translators... Please wait.' }) %>
+<% end %>
+<br /><br />

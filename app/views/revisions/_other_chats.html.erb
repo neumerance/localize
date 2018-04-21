@@ -1,0 +1,20 @@
+<% if @revision.released == 1 %>
+	<%= infotab_top(_('Messages from translators'), _('Summary of messages you received from translators regarding this project')) %>
+<% else %>
+	<div class="errorExplanation" style="padding: 2em;">
+	<%= infotab_top(_('Invited translators'), _('Summary of messages you received from translators regarding this project')) %>
+<% end %>
+
+<%= infotab_header([_('Translator'),_('Number of messages'),_('Time of last message')]) %>
+<% for chat in @other_chats %>
+	<tr>
+		<td><%= chat_link(chat,_("Communication with %s") % chat.translator.full_name, _("reply")) %></td>
+		<td><%= chat.messages.count %></td>
+		<td><%= disp_time(chat.messages[-1].chgtime) %></td>
+	</tr>
+<% end %>
+</table>
+
+<% if @revision.released != 1 %>
+</div>
+<% end %>

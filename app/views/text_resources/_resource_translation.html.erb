@@ -1,0 +1,5 @@
+  <tr>
+    <td><%= link_to(h(resource_translation.orig_filename),{:controller=>:resource_translations, :action=>:show, :text_resource_id=>@text_resource.id, :id=>resource_translation.id}) %></td>
+    <td><%= resource_translation.description %></td>
+    <td><%= disp_date(resource_translation.chgtime) %></td>
+  </tr>

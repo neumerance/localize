@@ -1,0 +1,7 @@
+<tr>
+	<td><%= link_to(h(support_ticket.subject_with_emojis), {:controller=>:support, :action=>:show, :id=>support_ticket.id}) %></td>
+	<% if @user.has_supporter_privileges? %><td><%= user_link(support_ticket.normal_user) %></td><% end %>
+	<td><%= support_ticket.support_department.try(:name) %></td>
+	<td><%= disp_time(support_ticket.create_time) %></td>
+	<td><%= support_ticket.show_status %></td>
+</tr>

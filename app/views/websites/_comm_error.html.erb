@@ -1,0 +1,12 @@
+<tr>
+	<td><%= CommError::ERROR_KIND_TEXT[comm_error.error_code] %></td>
+	<td><%= comm_error.error_description %></td>
+	<td><%= CommError::STATUS_TEXT[comm_error.status] %></td>
+	<td><%= disp_time(comm_error.updated_at) %></td>
+	<td>
+		<% if comm_error.status != COMM_ERROR_CLOSED %>
+			<%= button_to('Retry', {:controller=>:comm_errors, :action=>:retry, :website_id=>@website.id, :cms_request_id=>comm_error.cms_request_id, :id=>comm_error.id}) %>
+			<%= button_to('Clear', {:controller=>:comm_errors, :action=>:update, :website_id=>@website.id, :cms_request_id=>comm_error.cms_request_id, :id=>comm_error.id, :comm_error=>{:status=>COMM_ERROR_CLOSED}, :message=>'Error cleared'}, :method=>:put, 'data-confirm'=>'Are you sure you want to clear this error without retrying?') %>
+		<% end %>
+	</td>
+</tr>

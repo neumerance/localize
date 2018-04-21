@@ -1,0 +1,82 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+amir_wp_en_es:
+  id: 1
+  website_id: 1
+  from_language_id: 1
+  to_language_id: 2
+  created_at: <%= Time.now().to_formatted_s(:db) %>
+  updated_at: <%= Time.now().to_formatted_s(:db) %>
+  url: http://www.thisis.com
+  login: some-great-user-es
+  password: his-password
+  status: 0
+
+amir_wp_en_de:
+  id: 2
+  website_id: 1
+  from_language_id: 1
+  to_language_id: 3
+  url: https://localthing
+  login: some-great-user-de
+  password: his-password
+  created_at: <%= Time.now().to_formatted_s(:db) %>
+  updated_at: <%= Time.now().to_formatted_s(:db) %>
+  status: 0
+
+amir_wp_en_fr:
+  id: 3
+  website_id: 1
+  from_language_id: 1
+  to_language_id: 4
+  url: http://hello.com
+  login: some-great-user-fr
+  password: his-password
+  created_at: <%= Time.now().to_formatted_s(:db) %>
+  updated_at: <%= Time.now().to_formatted_s(:db) %>
+  status: 0
+
+amir_drupal_rpc_en_es:
+  id: 4
+  website_id: 2
+  from_language_id: 1
+  to_language_id: 2
+  created_at: <%= Time.now().to_formatted_s(:db) %>
+  updated_at: <%= Time.now().to_formatted_s(:db) %>
+  status: 0
+
+amir_drupal_poll_en_es:
+  id: 5
+  website_id: 3
+  from_language_id: 1
+  to_language_id: 2
+  created_at: <%= Time.now().to_formatted_s(:db) %>
+  updated_at: <%= Time.now().to_formatted_s(:db) %>
+  status: 0
+
+amir_drupal_selftrans_en_es:
+  id: 6
+  website_id: 4
+  from_language_id: 1
+  to_language_id: 2
+  created_at: <%= Time.now().to_formatted_s(:db) %>
+  updated_at: <%= Time.now().to_formatted_s(:db) %>
+  status: 0
+
+amir_drupal_selftrans_en_de:
+  id: 7
+  website_id: 4
+  from_language_id: 1
+  to_language_id: 3
+  created_at: <%= Time.now().to_formatted_s(:db) %>
+  updated_at: <%= Time.now().to_formatted_s(:db) %>
+  status: 0
+
+amir_2_trans_en_es:
+  id: 8
+  website_id: 5
+  from_language_id: 1
+  to_language_id: 2
+  created_at: <%= Time.now().to_formatted_s(:db) %>
+  updated_at: <%= Time.now().to_formatted_s(:db) %>
+  status: 0

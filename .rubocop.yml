@@ -1,0 +1,173 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - db/schema.rb
+    - db/migrate/*
+    - bin/*
+    - lib/gems/pothoven-attachment_fu-3.2.18/**/*
+    - config/initializers/rexml_formatters_default_patch.rb
+    - script/po/change_tokens_to_support_msgctxt.rb
+
+Rails:
+  Enabled: true
+
+Documentation:
+  Enabled: false
+
+DotPosition:
+  EnforcedStyle: trailing
+
+Style/EmptyLinesAroundBlockBody:
+  Enabled: false
+
+Style/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Style/EmptyLinesAroundMethodBody:
+  Enabled: false
+
+Style/VariableNumber:
+  EnforcedStyle: normalcase
+  Enabled: false
+
+Style/SafeNavigation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Not:
+  Enabled: false
+
+Style/NumericPredicate:
+  EnforcedStyle: comparison
+
+Rails/DynamicFindBy:
+  Enabled: false
+
+Rails/FindBy:
+  Enabled: false
+
+Rails/HttpPositionalArguments:
+  Enabled: false
+
+Rails/Date:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+Rails/Output:
+  Enabled: false
+
+Rails/OutputSafety:
+  Enabled: false
+
+Rails/TimeZone:
+  Enabled: false
+
+Rails/Validation:
+  Enabled: false
+
+Style/AccessorMethodName:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/ClassCheck:
+  Enabled: true
+  EnforcedStyle: is_a?
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/CommandLiteral:
+  Enabled: false
+
+Style/DoubleNegation:
+  Enabled: false
+
+Style/EmptyLiteral:
+  Enabled: false
+
+Style/EndOfLine:
+  Enabled: false
+
+Style/For:
+  Enabled: false
+
+Style/FormatString:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/IfInsideElse:
+  Enabled: false
+
+Style/NumericLiteralPrefix:
+  Enabled: false
+
+Style/NumericLiterals:
+  MinDigits: 13
+
+Style/NumericPredicate:
+  Enabled: false
+
+Style/OpMethod:
+  Enabled: false
+
+Style/PerlBackrefs:
+  Enabled: false
+
+Style/PredicateName:
+  Enabled: false
+
+Style/ZeroLengthPredicate:
+  Enabled: false
+
+Style/Proc:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 140
+  Enabled: false
+
+Lint/HandleExceptions:
+  Enabled: false
+
+Lint/ShadowingOuterLocalVariable:
+  Enabled: true
+
+Lint/UselessAssignment:
+  Enabled: false
+
+Lint/Void:
+  Enabled: false
+
+Lint/EnsureReturn:
+  Enabled: false
+
+Lint/LiteralInCondition:
+  Enabled: false
+
+Lint/Eval:
+  Exclude:
+    - 'config/initializers/super_supporter.rb'
+    - 'app/helpers/application_helper.rb'
+    - 'app/models/translator.rb'
+
+Performance/FixedSize:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 793

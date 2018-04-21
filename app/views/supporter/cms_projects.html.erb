@@ -1,0 +1,31 @@
+<% if @flagged_websites.length > 0 %>
+<h2>Flagged projects</h2>
+<%= infotab_header(['Project','Category','Created','Kind','Client','Languages','Documents sent','Word count','Notes']) %>
+<%= render(:partial=>'website', :collection=>@flagged_websites) %>
+</table>
+<div class="inter_tab_spacer"></div>
+
+<h2>Normal projects</h2>
+<% end %>
+
+<%= project_and_client_name() %>
+<div class="pager_control">
+		Showing page <%= form_tag({:action=>:cms_projects}, {:method=>'GET'}) %>
+			<%= select_tag( :page, options_for_select(@list_of_pages,@websites.number), {:onchange=>"submit()"}) %>
+		<%= link_to("Prev", url_for(:action=>:cms_projects, :page => @websites.prev.number, :status=>@current_project_status, :prev_status=>@current_project_status)) if @websites.prev? %>
+		<%= link_to("Next", url_for(:action=>:cms_projects, :page => @websites.next.number, :status=>@current_project_status, :prev_status=>@current_project_status)) if @websites.next? %>	
+	</form>
+</div>
+	
+<%= infotab_header(['Project','Category','Created','Kind','Client','Languages','Documents sent','Word count','Notes']) %>
+<% @websites.each do |web| %>
+  <%= render(:partial=>'website', locals: {website: web}) %>
+<% end %>
+</table>
+<div class="pager_control">
+		Showing page <%= form_tag({:action=>:cms_projects}, {:method=>'GET'}) %>
+			<%= select_tag( :page, options_for_select(@list_of_pages,@websites.number), {:id=>'page1', :onchange=>"submit()"}) %>
+		<%= link_to("Prev", url_for(:action=>:cms_projects, :page => @websites.prev.number, :status=>@current_project_status, :prev_status=>@current_project_status)) if @websites.prev? %>
+		<%= link_to("Next", url_for(:action=>:cms_projects, :page => @websites.next.number, :status=>@current_project_status, :prev_status=>@current_project_status)) if @websites.next? %>	
+	</form>
+</div>

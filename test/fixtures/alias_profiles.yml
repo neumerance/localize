@@ -1,0 +1,55 @@
+alias_full:
+  id: 1
+  user_id: 19
+  project_access_mode: <%= AliasProfile::ALL_PROJECTS %>
+  project_view: 1
+  project_modify: 1
+  project_create: 1
+  financial_deposit: 1
+  financial_view: 1
+  financial_pay: 1
+
+alias_cant_edit:
+  id: 2
+  user_id: 20
+  project_access_mode: <%= AliasProfile::ALL_PROJECTS %>
+  project_view: 1
+  project_modify: 0
+  project_create: 0
+  financial_deposit: 0
+  financial_view: 0
+  financial_pay: 0
+
+alias_cant_pay:
+  id: 3
+  user_id: 21
+  project_access_mode: <%= AliasProfile::ALL_PROJECTS %>
+  project_view: 1
+  project_modify: 1
+  project_create: 1
+  financial_deposit: 0
+  financial_view: 0
+  financial_pay: 0
+
+alias_cant_do:
+  id: 4
+  user_id: 22
+  project_access_mode: <%= AliasProfile::ALL_PROJECTS %>
+  project_view: 0
+  project_modify: 0
+  project_create: 0
+  financial_deposit: 0
+  financial_view: 0
+  financial_pay: 0
+
+alias_can_pay:
+  id: 5
+  user_id: 23
+  project_access_mode: <%= AliasProfile::ALL_PROJECTS %>
+  project_view: 1
+  project_modify: 1
+  project_create: 1
+  financial_deposit: 1
+  financial_view: 1
+  financial_pay: 1
+

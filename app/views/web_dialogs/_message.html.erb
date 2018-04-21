@@ -1,0 +1,5 @@
+<p style="<%= language_dir_css_attribute(@display_language) + text_flow_css_attribute(@display_language) %>">
+<%= untokanize_if_client(pre_format(message.body_for_user(@is_client)),@is_client) %>
+</p>
+
+<%= translation_controls_for_user(message, @is_client) %>

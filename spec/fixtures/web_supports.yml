@@ -1,0 +1,5 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+onthegosoft:
+  id: 1
+  client_id: 2
+  name: OnTheGoSoft

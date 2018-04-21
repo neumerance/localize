@@ -1,0 +1,9 @@
+<% if @pending_funding %>
+  <p>This project is assigned to you but not yet funded. Once funding becomes available, you will receive a notification and can begin translation.</p>
+<% else %>
+  <p>To begin translating this document, open Translation Assistant. The document for translation will appear there. If Translation Assistant is already running, click on the <b>Refresh</b> button.</p>
+  <% if @user.webta_enabled? %>
+    <p>or, <%= link_to_translate(@cms_request.revision) %></p>
+  <% end %>
+<% end %>
+<p><%= link_to('Chat with client', {:controller=>:chats, :action=>:show, :project_id=>@chat.revision.project_id, :revision_id=>@chat.revision_id, :id=>@chat.id}) %> &nbsp; | &nbsp; <%= link_to('Home', {:controller=>:translator}) %></p>

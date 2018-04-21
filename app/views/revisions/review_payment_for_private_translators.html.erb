@@ -1,0 +1,42 @@
+<% if @warning %>
+	<p class="warning"><%= @warning %></p>
+	<p><%= link_to(_('Back to translator selection'), {:action=>:select_private_translators}) %></p>
+<% else %>
+
+	<% if @revision.is_test == 1 %>
+		<div style="margin: 1em; padding: 1em;" class="errorExplanation"><%= _("This is a test project. No payment is required for it.") %></div>
+	<% end %>
+
+	<p>
+		<%= _("This translation contains  %s words in  %s document(s). You've selected to translate it to %s language(s).") % 
+		[@word_count / @num_languages , @document_count, @num_languages] %>
+	</p>
+	<p><%= _("The usage fee for the translation system will be <b>%s USD</b> (this is our fee and not payment to the translators).").html_safe % @total_cost %></p>
+	<% if @missing_balance == 0 %>
+		<h2><%= _("Authorize payment") %></h2>
+		<p><%= _("Your account has enough credit to pay for this work.") %></p>
+		<%= form_tag({:action=>:transfer_payment_for_translation}, :remote => true) do %>
+            <% @selected_translators.each_pair do |rl_id, translator_id| %>
+                <%= hidden_field_tag "selected_translators[#{rl_id}]", translator_id %>
+            <% end %>
+            <%= submit_tag((_('Authorize payment and start translation &raquo;')).html_safe, :style=>'padding: 0.5em', data: { disable_with: (_('Authorize payment and start translation &raquo;')).html_safe }) %>
+        <% end %>
+
+    <%= hidden_field_tag :total_cost, @total_cost%>
+
+		<p class="comment"><%= _("The translator(s) will receive the project and can start working on it immediately.") %></p>
+	<% else %>
+		<h2><%= _("Add funds") %></h2>
+		<p><%= _("Your account doesn't have enough credit to pay for this work.") %></p>
+		
+		<%= form_tag({:controller=>:finance, :action => :make_deposit, :req=>:save, :id=>@account.id}, "data-confirm" =>_('You will now be transfered to PayPal to complete this deposit'), :remote => true ) do %>
+			<p><b><%= _("You can change the deposit amount below. If you deposit a larger amount, it will remain in your balance, ready to be used.") %></b></p>
+			<%= _("Deposit amount:") %> <%= money_field_tag(:amount, @missing_balance) %> <%= _("USD") %>
+			<%= submit_tag _('Continue'), data: { disable_with: _('Continue') } %>
+		<% end %>
+
+		<p class="comment"><%= _("Once payment is complete, please return to this page to send this project to translation.") %></p>
+	<% end %>
+	
+	<p><%= link_to(_('Cancel and return to project'),{:action=>:show}) %></p>
+<% end %>

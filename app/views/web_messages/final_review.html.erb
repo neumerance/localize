@@ -1,0 +1,86 @@
+<div class="red_message">
+  <p>This is the last chance to review the translation. Once you click on the 'Deliver' below, the translation will be
+    sent to the client, without any further review.</p>
+  <p>Please read it carefully and make sure that the translation is complete, gramatically correct and free of any
+    spelling or capitalization errors.</p>
+  
+  <% unless @web_message.translation_complete? %>
+    <% # @ToDo this section is almost duplicated on edit.html.erb move to a partial %>
+    <h3>Time limit for this job</h3>
+    <p>Instant Text translation work is limitted by time. This text should be translated
+      within <span id="total_time">-</span> mm:ss .</p>
+    <div id="remaining_time_to_translate" style="font-weight:bold;">
+      <p>Remaining time to translate <span id="timer" style="font: 16px bold; color: red;">...</span></p>
+    </div>
+
+    <script>
+    jQuery(document).ready(function(){
+        var timeout = '<%= @web_message.timeout %>'
+        countdownTimer('<%= @web_message.translate_time %>', timeout, '#timer', function(){
+            window.location.href = "/web_messages/<%=@web_message.id%>/release_from_hold"
+        })
+        jQuery("#total_time").text(formatDuration(timeout))
+    })
+    </script>
+  <% end %>
+</div>
+
+<h2>Text to translate</h2>
+<% if @web_message.need_title_translation() %>
+    <h4>Title</h4>
+    <div class="code_snip" style="<%= language_dir_css_attribute(@web_message.original_language) + text_flow_css_attribute(@web_message.original_language) %>">
+      <%= pre_format(@web_message.title_to_translate(false)) %>
+    </div>
+    <h4>Body</h4>
+<% end %>
+
+<div class="code_snip" style="<%= language_dir_css_attribute(@web_message.original_language) + text_flow_css_attribute(@web_message.original_language) %>"><%= highlight_glossary_terms(pre_format(@web_message.text_to_translate(false)), @glossary, @glossary_client).html_safe %></div>
+
+<% if !@web_message.comment.blank? %>
+    <br/><h2>Comment to translator</h2>
+    <p>The client had entered this comment for you. Don't translate it.</p>
+    <div class="red_message"><%= pre_format(@web_message.comment) %></div>
+<% end %>
+
+<h2>Translation</h2>
+
+<% if @web_message.need_title_translation() %>
+    <h4>Title</h4>
+    <div class="code_snip" style="<%= language_dir_css_attribute(@web_message.destination_language) + text_flow_css_attribute(@web_message.destination_language) %>">
+      <%= pre_format(@title) %>
+    </div>
+    <h4>Body</h4>
+<% end %>
+
+<div class="code_snip" style="<%= language_dir_css_attribute(@web_message.destination_language) + text_flow_css_attribute(@web_message.destination_language) %>"><%= pre_format(@body) %></div>
+
+<table cellpadding="10">
+  <tr>
+    <td>
+      <%= form_tag({:action => :correct}, {:style => 'display: inline;'}) do %>
+          <% if @web_message.need_title_translation() %>
+              <%= hidden_field_tag(:title, @title, :id => 'correct_title') %>
+          <% end %>
+          <%= text_area_tag(:body, @body, :id => 'correct_body', :rows => 12, :cols => 100, :style => 'display: none;', maxlength: COMMON_NOTE) %>
+          <%= hidden_field_tag(:plaintext, 1, :id => 'correct_plaintext') %>
+          <% if @need_additional_confirmation %>
+              <%= hidden_field_tag(:need_additional_confirmation, 1, :id => 'correct_need_additional_confirmation') %>
+          <% end %>
+          <%= submit_tag('&laquo; Edit the translation'.html_safe, :style => 'display: inline;', data: { disable_with: '&laquo; Edit the translation'.html_safe }) %>
+      <% end %>
+    </td>
+    <td>
+      <%= form_for(@web_message, :url => {:action => :update}, :method => 'PUT') do |f| %>
+          <% if @web_message.need_title_translation() %>
+              <%= hidden_field_tag(:title, @title) %>
+          <% end %>
+          <%= text_area_tag(:body, @body, :rows => 12, :cols => 100, :style => 'display: none;', maxlength: COMMON_NOTE) %>
+          <%= hidden_field_tag(:plaintext, 1) %>
+          <% if @need_additional_confirmation %>
+              <%= hidden_field_tag(:ignore_warnings, 1) %>
+          <% end %>
+          <%= submit_tag('Deliver translation to client &raquo;'.html_safe, :style => 'padding: 0.5em 1em; font-size: 115%;', data: { disable_with: 'Deliver translation to client &raquo;'.html_safe }) %>
+      <% end %>
+    </td>
+  </tr>
+</table>

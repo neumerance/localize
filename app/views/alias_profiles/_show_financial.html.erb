@@ -1,0 +1,13 @@
+<% error && error.each do |e| %>
+	Error : <%=e.second%>
+<%end%>
+
+<%= financials_text_to_aliases(alias_profile) %> 
+
+<div style="text-align:center">
+	<%= link_to "Edit",
+                {:controller => :alias_profiles, :action => "edit_financial", :id => alias_profile.id},
+                :method => :get,
+                :remote => true
+    %>
+</div>

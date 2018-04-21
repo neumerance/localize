@@ -1,0 +1,8 @@
+<p>Thank you for validating your email address.</p>
+<% if @next_action == 1 %>
+<p>Go to your <%= link_to('projects summary', {:controller=>:client, :action=>:index}) %> to view the status of your projects (requires logging in).</p>
+<% elsif @next_action == 2 %>
+<p>Next step - <%= link_to('set up your first project', {:controller=>:client, :action=>:getting_started}) %> (requires logging in).</p>
+<% else %>
+<p>To continue, go to your <%= link_to('your profile page', {:controller=>:users, :action=>:my_profile}) %> (requires logging in).</p>
+<% end %>

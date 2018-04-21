@@ -1,0 +1,69 @@
+<div class="forumLeftWhite">
+    <div class="content">
+		<p>
+			<strong><%= revision_link(revision) %></strong><br />
+				<% if revision.released != 1 -%>
+					&nbsp;&nbsp;&nbsp;--&gt; <%= link_to(_("Finish setup"), {:controller => :revisions, :action => :edit, :project_id => revision.project.id, :id => revision.id}) %><br />
+				<% end -%>
+				<% if revision.open_to_bids != 1 -%>
+					&nbsp;&nbsp;&nbsp;--&gt; Open to bids<br />
+				<% end -%>
+		</p>
+	</div>
+</div>
+
+<div class="forumRightWhite">
+    <div class="content">
+		<h3><%= _("Translation languages") %></h3>
+		<p>
+		<% for revision_language in revision.revision_languages -%>
+			<strong><%= revision_language.language.name %></strong> -
+			<% if revision_language.selected_bid %>
+				<% if revision_language.selected_bid.status == BID_COMPLETED %>
+					Work has been completed
+				<% else %>
+					Being done 
+				<% end %>
+				<%- if @user[:type] == 'Client' %>
+					by <%= user_link(revision_language.selected_bid.chat.translator) %> - <%= chat_link(revision_language.selected_bid.chat,_("Chat with translator"))%>
+				<%- elsif (@user[:type] == 'Translator') && (@user.id == revision_language.selected_bid.chat.translator_id) %>
+					by <strong>you</strong> - <%= chat_link(revision_language.selected_bid.chat,_("Chat with client"),'reply') %>
+				<%- end %>
+			<% else %>
+				Not assigned to a translator.
+				<%- if @user[:type] == 'Client' %>
+					<%- if revision_language.bids.length > 0 %>
+						Bids for this language:<br /> 
+						<% for bid in revision_language.bids %>
+							<%= "&nbsp;&nbsp;&nbsp;&nbsp; by #{user_link(bid.chat.translator)} for #{bid.amount} #{bid.currency.disp_name} -> #{chat_link(bid.chat, _('Chat or accept bid'))}.<br />" %>
+						<% end %>
+					<% end %>
+				<% end %>
+			<% end %>
+			<br />
+		<% end %>
+		</p>
+		
+		<%- other_chats = revision.chats_with_no_bids %>
+		<%- if other_chats.length > 0 %>
+			<h3><%= _("Other chats without bids") %></h3>
+			<p>
+				<% for chat in other_chats -%>
+					<% if ((@user[:type] != 'Translator') || (chat.translator_id == @user.id)) -%>
+						<%= "Chat with #{user_link(chat.translator)}" %> - <%= chat_link(chat,"reply","reply") %><br />
+					<% end -%>
+				<% end -%>
+			</p>
+		<%- end %>
+
+		<% if revision.user_can_create_chat(@user) -%>
+			<%= button_to(_('Start a chat or make a bid'),chats_url(:project_id=>revision.project.id, :revision_id=>revision.id),{:id => 'bid_button'}) %>
+			<br />
+		<% end -%>
+
+    </div>
+</div>
+  
+<div class="lineLightGrey">
+  <%= image_tag 'spacer.gif', class: '', width: 759, height: 8, border: 0 %>
+</div>

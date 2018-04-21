@@ -1,0 +1,6 @@
+<% if identity_verifications.length > 0 %>
+	<h4>Uploaded documents</h4>
+	<p>These are the documents that you have uploaded for review. A staff member will review these documents shortly.</p>
+	<ul><%= render(:partial=>'identity_verification', :collection=>identity_verifications) %></ul>
+	<h4>Upload a new document</h4>
+<% end %>

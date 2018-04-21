@@ -1,0 +1,19 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>A new issue '<%= @issue.title %>' was created for you by <%= @message.user.full_name %>.</p>
+
+<p>----</p>
+
+<p><%= @message.body_with_emojis %></p>
+
+<p>----</p>
+
+<p>
+  <% link = url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:issues, :action=>:show, :id=>@issue.id } ) %>
+  <% if @user[:type] == 'Translator' %>To resolve this issue, you need to go to this link:<% else %>To reply, click on the link below:<% end %><br />
+  <%= link_to link, link %>
+</p>
+
+<p><% if @user[:type] == 'Translator' %>If you need to edit the translation, make sure that you update it where it was originally done. The communication in the issue tracking system does not replace editing the translation.<% end %></p>
+
+<%= EMAIL_SIGNATURE %>

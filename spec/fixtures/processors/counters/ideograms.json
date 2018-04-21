@@ -1,0 +1,44 @@
+{
+  "tests":  [
+    {
+      "input": "",
+      "expected_result": 0
+    },
+    {
+      "input": "靠！我电脑坏了",
+      "expected_result": 6
+    },
+    {
+      "input": "说到做到，言出必行。",
+      "expected_result": 8
+    },
+    {
+      "input": "奋斗这一件事是自有人类以来天天不息的。",
+      "expected_result": 18
+    },
+    {
+      "input" : "”단”은 영어로 무슨 뜻이에요?",
+      "expected_result": 11
+    },
+    {
+      "input" : "일, 이, 삼, 사, 오, 륙, 칠, 팔, 구, 십",
+      "expected_result": 10
+    },
+    {
+      "input" : "한국어 공부 시작한 지 한 달이 되었어요.",
+      "expected_result": 16
+    },
+    {
+      "input" : "彼はどこにいますか？",
+      "expected_result": 9
+    },
+    {
+      "input" : "わたしは せんせいです。えいごをおしえています。",
+      "expected_result": 21
+    },
+    {
+      "input" : "もっと　ゆっくりはなしてください。",
+      "expected_result": 15
+    }
+  ]
+}

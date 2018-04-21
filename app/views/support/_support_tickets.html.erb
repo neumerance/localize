@@ -1,0 +1,9 @@
+<% if @user.has_supporter_privileges? %>
+	<%= infotab_header(['Subject','User', 'Department', 'Created','Status'] ) %>
+<% else %>
+	<%= infotab_header([_('Subject'),_('Department'), _('Created'),_('Status')] ) %>
+<% end %>
+<% support_tickets.each do |support_ticket| %>
+    <%= render(:partial => "/support/support_ticket", :locals => {support_ticket: support_ticket}) %>
+<% end %>
+</table>

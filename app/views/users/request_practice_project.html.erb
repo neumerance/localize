@@ -1,0 +1,28 @@
+<% if @projects_exist %>
+	<div class="errorExplanation">
+	<p>A practice project has already been set up for you. To check on the status of this project, go to <%= link_to('your projects',{:controller=>:translator}) %>.</p>
+	<% if !@embedded %>
+		<p>You can use the link at the top of every page to download <acronym title="The translation software that you will use to translate">Translation Assistant</acronym> in order to start working on the practice project.</p>
+	<% end %>
+	</div>
+<% else %>
+	<div style="float: right; margin-left: 1em; padding: 1em; width:25em; background:#e8e8f0; border: 1px solid #C2DAFF;">
+	<h3 style="padding-top: 0; margin-top: 0;">What's a practice project</h3>
+	<p>The purpose of a practice project is to help you learn to use our translation software, before you start working on projects for paying customers.</p>
+	<p>We will create a small translation project for you, tailor made to the languages you want to work in, which will contain a few short web pages.</p>
+	<p>During your work on the test project, a support person is always available to guide you.</p>
+	</div>
+
+	<%= form_tag({:action=>:setup_practice_project}) do %>
+		<p>To create a practice project, select the source and destination languages.</p>
+		<p><b>Source language</b>: <%= select_tag(:source_language_id, options_for_select(@from_languages)) %></p>
+		<p><b>Destination languages</b>:</p>
+		<ul>
+			<% for lang in @to_languages %>
+				<li style="list-style-type: none;"><label><%= check_box_tag("target_language[#{lang.id}]", 1, 1) %><%= lang.name %></label></li>
+			<% end %>
+		</ul>
+		<%= submit_tag('Create practice project', data: { disable_with: 'Create practice project' }) %>
+	<% end %>
+
+<% end %>

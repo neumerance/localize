@@ -1,0 +1,5 @@
+<% if @branding %>
+  jQuery('#<%= @branding.lang_div %>').html('<%= escape_javascript(render :partial => 'branding', :object => @branding) %>')
+<% else %>
+  location.reload()
+<% end %>

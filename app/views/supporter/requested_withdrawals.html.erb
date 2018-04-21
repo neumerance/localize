@@ -1,0 +1,22 @@
+<% if @requested_transactions.length > 0 %>
+	<%= form_tag({:action=>'delete_requested_withdrawals' }) do %>
+		<%= infotab_header(['Select', 'Description', 'Account' , 'Amount'], {}, nil) %>
+			<% for transaction in @requested_transactions %>
+				<% is_client = transaction.target_account.normal_user.is_client? %>
+				<tr class="<%= is_client ? 'red' : '' %>">
+					<td><%= check_box_tag "request[#{transaction.id}]" %></td>
+					<td><%= transaction.description(@user) %></td>
+					<td class="<%= is_client ? 'warning' : '' %>">
+						<%= transaction.target_account.normal_user.type %>
+						(<%= link_to 'Money Account', {:controller=>:finance, :action=>:account_history, :id=>transaction.source_account.id} %>)
+					</td>
+					<td><%= transaction.print_amount.html_safe %></td>
+				<tr>
+			<% end %>
+		<tr class="bottomrow"><td><%= submit_tag('Delete selected', data: { disable_with: 'Delete selected' }) %></td><td colspan="2">Total for <strong><%= @requested_transactions.length %> withdrawals</strong></td><td><strong><%= @total %> USD</strong></td></tr>
+		</table>
+	<% end %>
+	<p><%= button_to('Initiate the transfer for these requests', {:controller=>:supporter, :action=>:do_mass_payments}, :style=>'padding: 0.5em 1em;') %></p>
+<% else %>
+	There are no requested transactions.
+<% end %>

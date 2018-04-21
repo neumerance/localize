@@ -1,0 +1,11 @@
+<% headers = ['Client e-mail', 'Client nickname', 'Website name'] %>
+<%# The - at the closing of the tag is required to prevent an extra newline from
+    being added %>
+<%= CSV.generate_line headers -%>
+<% @websites.each do |website, _total_amount| %>
+  <% client = website.client %>
+<%# Not indenting and adding .html_safe.lstrip is required to prevent trailing
+    whitespaces. The - at the closing of the tag is required to prevent an extra
+    newline from being added %>
+<%= CSV.generate_line([client.email, client.nickname, website.name]).html_safe.lstrip -%>
+<% end %>

@@ -1,0 +1,4 @@
+Status: <strong><%= Bid::BID_STATUS[bid.status] %></strong><br />
+<% if bid.currency -%>
+  Amount: <strong><%= "#{bid.bid_amount} #{bid.currency.disp_name}" %></strong><br />
+<% end -%>

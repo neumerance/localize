@@ -1,0 +1,32 @@
+<%= my_error_messages_for :web_message %>
+
+<div style="float: right; border: 1pt solid #808080; background-color: #F0F0F0; margin: 1em; padding: 1em; max-width: 20em;">
+	<p><b>Instructions for the translator:</b></p>
+	<p><i><%= pre_format(@web_message.comment) %></i></p>
+</div>
+
+<h2><%= @text_title %></h2>
+<div class="code_snip"><%= highlight_glossary_terms(untokanize(@web_message.client_body), @glossary, @glossary_client).html_safe %></div>
+
+<% if @web_message.has_tokens? %>
+  <h4>What the translator would see</h4>
+  <p>Your message has some texts that are marked as 'not for translation'. Our system replaces them with tokens. Please make sure that the text is still clear.</p>
+  <div class="code_snip"><%= pre_format(@web_message.tokenize) %></div>
+<% end %>
+
+<p>Word count: <b><%= @web_message.word_count %></b>.</p>
+<div style="border: 1pt solid #FF8080; margin:1em; padding: 1em; font-weight: bold; ">To change this text, click on your browser's BACK button.</div>
+
+<br style="clear: both;" />
+
+<div id="to_languages">
+  <%= render(:partial=>'to_languages', :locals => {:show_prices => false, :show_proofreading => false}) %>
+</div>
+
+<div class="inter_tab_spacer"></div>
+<hr /><br />
+<% if @user %>
+	<%= link_to(_('Cancel project creation'), {:action=>:index}) %>
+<% else %>
+	<%= link_to(_('Start over'), {:action=>:new}) %>
+<% end %>

@@ -1,0 +1,3 @@
+InstantMessageMailer#confirm
+
+Find me in app/views/instant_message_mailer/confirm.erb

@@ -1,0 +1,10 @@
+<%= form_tag request.url, {:method => :get} %>
+	<%= hidden_field_tag("search", true) %>
+	<%= radio_button_tag("search_for", "title", params[:search_for] == 'title') %> Page Title
+	<%= radio_button_tag("search_for", "original_url", params[:search_for] == 'original_url') %> Original URL
+	<%= radio_button_tag("search_for", "translated_url", params[:search_for] == 'translated_url') %> Translated URL
+	<br>
+	<br>
+	<%= text_field_tag("search_term", params[:search_term], maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE) %>
+	<%= submit_tag('Search', data: { disable_with: 'Search' }) %>
+</form>

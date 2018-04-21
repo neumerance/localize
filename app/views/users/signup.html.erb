@@ -1,0 +1,25 @@
+<%= form_tag({:action=>:update_name_and_email}) do %>
+	<p>We need your contact information, so that we can return responses to you.</p>
+	<p class="comment"><label><%= radio_button_tag(:create_account,1,@create_account, {:onchange=>'document.getElementById("new-account").style.display = "block"; document.getElementById("existing-account").style.display = "none";'}) %> I'm new here</label></p>
+	<div id="new-account" style="display:<%= @create_account ? 'block' : 'none' %>;">
+	<p><b>Contact information</b></p>
+	<table>
+		<tr><td>First name:</td><td><%= text_field_tag(:fname, @fname, {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD}) %></td></tr>
+		<tr><td>Last name:</td><td><%= text_field_tag(:lname, @lname, {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD}) %></td></tr>
+		<tr><td>Email:</td><td><%= text_field_tag(:email, @email, {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD}) %></td></tr>
+	</table>
+	</div>
+	<p class="comment"><label><%= radio_button_tag(:create_account,0,!@create_account, {:onchange=>'document.getElementById("new-account").style.display = "none"; document.getElementById("existing-account").style.display = "block";'}) %> Returning clients</label></p>
+	<div id="existing-account" style="display:<%= @create_account ? 'none' : 'block' %>;">
+	<p><b>ICanLocalize Login</b></p>
+	<table>
+		<tr><td>Email:</td><td><%= text_field_tag(:email1, @email1, {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD}) %></td></tr>
+		<tr><td>Password:</td><td><%= password_field_tag(:password, @email, {:size=>30}) %></td></tr>
+	</table>
+	</div>
+	
+	<br /><br />
+	<%= hidden_field_tag(:back, h(@back)) %>
+	<%= hidden_field_tag(:return_to, h(@return_to)) %>
+	<% if @back %><%= link_to('Cancel', h(@back)) %> &nbsp; <% end %><%= submit_tag('Submit', :style=>'padding: 0.5em 1em;', data: { disable_with: 'Submit' }) %>
+<% end %>

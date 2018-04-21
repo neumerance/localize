@@ -1,0 +1,7 @@
+<div class="content">
+	<% for bookmark in @bookmarks %>
+    <div id="bookmark<%= bookmark.id %>">
+			<%= render(:partial => "bookmark", :object => bookmark) %>
+		</div>
+	<% end %>
+</div>

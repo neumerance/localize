@@ -1,0 +1,36 @@
+<tr>
+  <td><%=money_transactions.id%></td>
+	<td><%= disp_time(money_transactions.chgtime) %></td>
+  <td><%= transfer_type(money_transactions) %></td>
+  <td><%= transfer_processor(money_transactions) %></td>
+	<td class="moneycolumn"> <%= money_transactions.amount %> </td>
+	<td class="moneycolumn"> <%= money_transactions.fee ? money_transactions.fee : 0 %> </td>
+  <% if money_transactions.fee %>
+    <% if money_transactions.source_account.kind_of? UserAccount %>
+      <td class="moneycolumn"> <%= money_transactions.amount - money_transactions.fee %> </td>
+    <% else %>
+      <td class="moneycolumn"> <%= money_transactions.amount + money_transactions.fee %> </td>
+    <% end %>
+  <% else %>
+      <td class="moneycolumn"> <%= money_transactions.amount %> </td>
+  <% end %>
+  <td>
+    <%=
+      if money_transactions.try(:owner).try(:kind_of?, Invoice) && !money_transactions.owner.txn.blank?
+        money_transactions.owner.txn
+      else
+        "Not available"
+      end
+    %>
+  </td>
+  <td><%= display_account(money_transactions.source_account)%></td>
+  <td><%= display_account(money_transactions.target_account)%></td>
+
+  <td><%=
+  if money_transactions.try(:owner).try(:kind_of?, Invoice)
+    link_to "Edit", edit_money_transaction_path(money_transactions)
+  else
+    "No action possible"
+  end
+  %></td>
+</tr>

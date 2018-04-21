@@ -1,0 +1,25 @@
+<%= infotab_top(_('Translation Languages'), infobar_contents(original_language_text(@revision),original_language_text(@revision), @revision.released != 1, @revision.revision_languages.count > 0)) %>
+<% if @show_edit_languages %>
+	<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+		<%= form_tag({:action => :edit_languages, :req => :save }, :remote => true) do %>
+			<%= languages_table(@languages, @revision.language, false).html_safe %>
+			<%= submit_tag _('Save'), :name=>'save', data: { disable_with: _('Save') } %>
+		<% end %>
+		<%= form_tag({:action => :edit_languages, :req => :hide }, :remote => true) do %>
+			<%= submit_tag _('Cancel'), :name=>'hide', data: { disable_with: _('Cancel') } %>
+		<% end %>
+	</td></tr></table>
+	
+<% else %>
+
+	<%= revision_languages_summary(@user, @revision, @sis_stats) %>
+	
+	<% if @canedit_languages %>
+		<div class="tabbottom">
+			<%= form_tag({ :action => :edit_languages, :req=>'show' }, :remote => true) do %>
+				<%= submit_tag _('Edit translation languages'), :name=>'show', :id => 'translation_languages_button', data: { disable_with: _('Edit translation languages') } %>
+			<% end %>
+		</div>
+	<% end %>
+	
+<% end %>

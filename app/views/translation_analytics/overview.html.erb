@@ -1,0 +1,48 @@
+<% if flash[:notice] %>
+  <div class="errorExplanation">
+      <%= flash[:notice] %>
+  </div>
+<% end %>
+
+
+<% content_for :content do %>
+  <% unless @translation_analytics_profile.try(:configured) %>
+    <div id="alert-warning" class="mc-box mc-warning">
+      <i class="mc-icon-warning-sign mc-icon-white"></i>
+      You have not setup e-mail alerts yet.
+      <a href="<%="#{alerts_link}&auto_setup=1"%>"> Setup notification alerts now.</a>
+      <span class="dismiss">
+        <% icon = '<i class="mc-icon-remove mc-icon-white"></i>' %>
+        <%= link_to(icon, dismiss_alert_setup_link, :remote => true) %>
+      </span>
+    </div>
+  <% end %>
+
+	<div class="mc-box-inner">
+    <% if @hide_data %>
+      <h3 style="text-align: center;">We don't have any data from your project yet!</h3>
+      <p>Some data should be visualizable in 1 day.</p>
+    <% else %>
+      <h3 style="text-align: center;">Current status for all languages</h3>
+      <div id="overview_bars" class="mc-graph-1"></div>
+    <% end %>
+	</div>
+<% end %>
+
+<%= render :partial => "translation_analytics_box" %>
+
+<script>
+  <% unless @hide_data %>
+    function draw_detail_bars(mode){
+      var languages = <%= @bars_data[:language_pairs].map{|x| "From #{x[:from]} to #{x[:to]}"}.to_json %>;
+      var translated = <%= @bars_data[:translated].to_json %>;
+      var untranslated = <%= @bars_data[:untranslated].to_json %>;
+
+      var chart_values = chart_defaults("Current status per language", languages, "overview_bars", 'bar');
+      chart_values['plotOptions']['series']['stacking']  = 'normal' ;
+      chart_values['series'] = chart_values['series'].concat(series_for(untranslated,translated, 'notline'));
+      new Highcharts.Chart(chart_values);
+    }
+    draw_detail_bars('words');
+  <% end %>
+</script>

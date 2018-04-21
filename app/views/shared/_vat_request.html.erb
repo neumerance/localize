@@ -1,0 +1,212 @@
+<% # if !@user.country || @user.should_update_vat_information? %>
+<% show_subtotal_in_non_eu ||= false %>
+<% if (@user.is_client?) %>
+  <div id="vat_request">
+    <div id="country_container">
+      <label><b>Your Country:</b></label>
+      <%=select_tag(:country_id, options_for_select(Country.get_list(), @user.country_id || @user.last_ip_country_id )) %>
+      <div id="non_eu_resident_vat" style="display: none; margin-top: 8px;">
+        <input type="checkbox" name="non_eu_resident_vat"/>
+        I am established, have my permanent address, or usually reside within <span></span>.
+      </div>
+    </div>
+
+    <div id="vat_number_container" class="required">
+      <label><b>VAT Number:</b></label>
+      <input type="text" id="vat_code" disabled="disabled" />
+      <%= text_field_tag :vat_number, @user.vat_number, maxlength: 15, size: COMMON_FIELD_SIZE %><br>
+      <span class="comment">We are required by EU regulations to collect VAT. If you have a VAT number, please enter it. For businesses registered in EU reverse VAT charge will be applied.</span>
+    </div>
+    <div id="vat-validation-preloader">
+    </div>
+  </div>
+
+
+  <script type='text/javascript'>
+    jQuery("#country_id").chosen();
+  </script>
+
+
+  <script type="text/javascript">
+    payment_popup    = false;
+    var vat_country_list = <%= Country.require_vat_list.to_json %>;
+    var country_codes    = <%= Hash[Country.all.map{|c| [c.id, {:code => c.tax_code, :tax_rate => c.tax_rate, :name => c.name}] }].to_json.html_safe %>;
+    var country_id       = <%= (@user.country_id || @user.last_ip_country_id).to_json %>;
+    var user_skip_taxes  = <%= @user.exception_to_taxes.to_json %>;
+    var showPreloader = function(msg) {
+      jQuery('#vat-validation-preloader').html(
+        jQuery('<div class="preload-info">').html('<%= image_tag 'spinner2.gif', width: 20, height: 20  %> ' + '<span>' + msg + '</span>')
+      )
+    }
+    var hidePreloader = function() {
+      jQuery('#vat-validation-preloader').html('');
+    }
+    var notify = function(msg, type) {
+      jQuery('#vat-validation-preloader').html(
+        jQuery('<p class="alert alert-'+type+'">').text(msg)
+      )
+      setTimeout(function() {
+        jQuery('#vat-validation-preloader').html('')
+      }, 5000)
+    }
+
+    jQuery(function($){
+
+      function have_to_pay_taxes(){
+        var selected_country_id = jQuery('#country_id').val();
+
+        // Is the same, original country and user skip taxes
+        if (country_id == selected_country_id && user_skip_taxes)
+          return false;
+
+        return jQuery.inArray( parseInt(selected_country_id), vat_country_list) != -1;
+      }
+
+      jQuery('#country_id').change(function(){
+        jQuery('#vat_request').data('validated', true);
+        jQuery('#vat_request').data('submit', false);
+        // EU COUNTRY
+        if ( have_to_pay_taxes() ) {
+          jQuery('#non_eu_resident_vat').fadeOut().removeClass('animated pulse');
+
+          jQuery('#vat_number_container').slideDown();
+          jQuery('#vat_code').val(country_codes[jQuery(this).val()]['code']);
+          if ( !!!jQuery('#vat_number').val() ) {
+             jQuery('#vat_number_container').addClass('required');
+          }else{
+            jQuery('#vat_number').change();
+          };
+          //console.log('tax rate', country_codes[jQuery(this).val()]['tax_rate'])
+          jQuery('.tax_rate').text( country_codes[jQuery(this).val()]['tax_rate'] );
+          jQuery('.tax_details .country_name').text( country_codes[jQuery(this).val()]['name'] );
+          jQuery('.tax_details, .subtotal, .tax-notice').show();
+          update_totals();
+
+        }else{ // NON EU
+          jQuery('#vat_number_container').slideUp().removeClass('required');
+          jQuery('#vat_number').val('');
+
+          jQuery('#vat_rate').text('');
+          <% if show_subtotal_in_non_eu == true %>
+            jQuery('.tax_details, .tax-notice').hide();
+          <% else %>
+            jQuery('.tax_details, .subtotal, .tax-notice').hide();
+          <% end %>
+          update_totals();
+
+          <% if ( @user.ip_country_pay_taxes? ) %>
+            jQuery('#non_eu_resident_vat input').prop('checked', ( "<%=@user.country_id %>" == jQuery('#country_id').val() ));
+
+            jQuery('#non_eu_resident_vat span').text( jQuery('#country_id :selected').text() );
+            if (jQuery('#country_id').val() != 0) {
+              jQuery('#non_eu_resident_vat').show().addClass('animated pulse');
+            };
+          <% end %>
+        };
+
+        // Update the user country in the backend to ensure the correct VAT
+        // amount is included if an invoice is created.
+        jQuery.post(
+          '/users/<%=@user.id %>/edit_personal_details', {
+            'request_action': 'update_vat',
+            'auser' : {
+              'country_id': jQuery('#country_id').val(),
+              'vat_number': jQuery('#vat_number').val()
+          }
+        });
+      }).change();
+
+      <% if @user.is_business_vat %>
+        jQuery('#vat_request').data('validated', true);
+        jQuery('#vat_request').data('submit', true);
+        jQuery('.tax_details, .subtotal, .tax-notice').hide();
+        update_totals();
+      <% end %>
+
+      jQuery('#vat_number').change(function(){
+        var vat_number = jQuery('[name="vat_number"]').val()
+        if ( vat_number.length > 0 ) {
+          if ( vat_number.length >= 8 ) {
+            // Validate VAT
+            // European Union residents have to pay VAT, but companies **don't** have
+            // to pay VAT. To prove that you are a company, you should have a valid
+            // VAT number.
+
+            //  After the client selects an EU country: If the VAT number is
+            //  blank or invalid, tax should be charged. If a valid VAT number is
+            //  provided, the tax should not be charged.
+            var action_text = ( jQuery('#vat_number:visible').length )?'validate your VAT Number':'update your profile information';
+            showPreloader('Please wait while we '+action_text+'...');
+
+            $.post('/users/<%=@user.id %>/edit_personal_details', {
+              'request_action': 'update_vat',
+              'auser' : {
+                'country_id': jQuery('#country_id').val(),
+                'vat_number': jQuery('#vat_number').val()
+              }
+            }, function(r){ // Reply with json object with tax_enabled and tax_rate
+              hidePreloader();
+              if ( jQuery('#vat_number:visible').length && r.validation_success === false) {
+                var msg = "EU VAT checking service for "+country_codes[jQuery('#country_id').val()]['name'] + " is unavailable at this moment, we are unable to validate your VAT number. Please try again in couple of minutes. If you prefer to proceed now, you will be charged for VAT as if it were non-business.";
+                notify(msg, 'error');
+              }else{
+                jQuery('#vat_request').data('validated', true);
+              };
+
+              if (r.tax_enabled) {
+                jQuery('.tax_rate').text( ceilMoney(r.tax_rate) );
+                jQuery('.tax_details, .subtotal, .tax-notice').show();
+                notify('VAT will be added to your order', 'info')
+              }else{
+                jQuery('.tax_details, .subtotal, .tax-notice').hide();
+              };
+
+              update_totals();
+
+            }, 'json');
+          } else {
+            notify('VAT number requires at least 8 characters in length', 'error');
+          }
+        }
+      });
+
+      // Validate vat data
+      jQuery('#vat_request').parents('form').find('input[type="submit"]').click(function(event){
+        // Country entered?
+        // The country selector and the VAT input box are hidden if the user has
+        // enough balance in his ICL account to cover all translation jobs
+        // as "pays" with his ICL account balance and does not generate taxation.
+        if (jQuery('#country_container').is(':visible') && jQuery('#country_id').val() == 0) {
+          if(payment_popup) payment_popup.close();
+          alert('Please select your country.');
+          return false;
+        };
+
+        // check that user confirmed he lives in an NO EU country
+        if ( jQuery('#non_eu_resident_vat input').is(':visible') && !jQuery('#non_eu_resident_vat input').is(':checked') ) {
+          payment_popup.close();
+          alert('You must confirm that you are established in '+jQuery('#country_id :selected').text());
+          event.preventDefault();
+          return false;
+        };
+
+        // Save country in case is not saved yet
+        if (!jQuery('#vat_request').data('validated')) {
+          jQuery('#vat_request').data('submit', true);
+          jQuery('#vat_number').change();
+        }else{
+          return true;
+        }
+
+        return false;
+      });
+
+    });
+    jQuery(document).ready(function() {
+      if (jQuery('select[name="country_id"]').val() != '0') {
+        jQuery('#country_id').trigger('change');
+      }
+    });
+  </script>
+  <% end %>
+<% # end %>

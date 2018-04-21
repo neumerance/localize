@@ -1,0 +1,62 @@
+var modal = jQuery('#translatorList');
+var table = jQuery('#translatorListTable');
+var unassigned = 0;
+<% @result.each do |result| %>
+  var tr = table.find('tr.translator_<%= result['id'] %>');
+  var td = tr.find('td.<%= result['type'] %>');
+  td.html('')
+  var alert = jQuery('<p class="alert p-5 m-0 text-left" />')
+  if (<%= result['is_assigned'] %>) {
+    alert.addClass('alert-success');
+    alert.append(jQuery('<span class="fa fa-check-circle m-r-5" />'));
+    alert.append('Assigned as <%= result['type'] %>');
+  } else {
+    alert.addClass('alert-danger');
+    alert.append(jQuery('<span class="fa fa-times-circle m-r-5" />'));
+    alert.append("<%= result['reason'] %>");
+    ++unassigned;
+  }
+  td.append(alert);
+<% end %>
+<% if @error.present? %>
+  console.log('<%= @error.message %>: ', '<%= @error.inspect %>');
+<% end %>
+if (unassigned == 0) {
+  if (jQuery('#translation-jobs').length) {
+    jQuery.ajax({
+      url: "/wpml/websites/<%= @website.id %>/translation_jobs",
+        type: 'get',
+        success: function(response) {
+          var body = jQuery('<div>').html(response);
+          jQuery('#translation-jobs').html(body.find('#translation-jobs').html());
+        }
+    });
+  }
+
+  if (jQuery('#website-show-translation-jobs').length) {
+    jQuery.ajax({
+      url: "/wpml/websites/<%= @website.id %>",
+        type: 'get',
+        success: function(response) {
+          var body = jQuery('<div>').html(response);
+          jQuery('#website-show-translation-jobs').html(body.find('#website-show-translation-jobs').html());
+        }
+    });
+  }
+  
+  // reload pay butotn
+  jQuery.ajax({
+    url: "/wpml/websites/<%= @website.id %>/client_can_pay_any_language_pairs",
+    type: "GET",
+    success: function (data) {
+      var form = jQuery('form.pay-begin-form');
+      if (data.enable_pay_button) {
+        form.find('button').show();
+      } else {
+        form.find('button').hide();
+      }
+    }
+  });
+
+  modal.modal('hide');
+};

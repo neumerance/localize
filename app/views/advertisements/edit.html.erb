@@ -1,0 +1,8 @@
+<%= form_for(:advertisement, :url=>{:action=>@goto_action}, :html => { :method => @methodto }) do |f| %>
+<table border="0" cellpadding="5">
+	<tr><td valign="top"><b>Title:</b></td><td><%= f.text_field :title, :size=>80, maxlength: COMMON_FIELD %></td></tr>
+	<tr><td valign="top"><b>Body:</b></td><td><%= f.text_area :body, :cols=>70, :rows=>20, maxlength: COMMON_NOTE %></td></tr>
+</table>
+<%= submit_tag('Submit', data: { disable_with: 'Submit' }) %>
+<% if @editing %><%= link_to('Cancel', {:action=>:show}) %><% else %><%= link_to('Cancel', {:action=>:index}) %><% end %>
+<% end %>

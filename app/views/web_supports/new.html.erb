@@ -1,0 +1,7 @@
+<%= my_error_messages_for :web_support %>
+
+<%= form_for(:web_support, :url=>{:action=>:create}) do |f| %>
+<h3 style="display: inline;">Name this support center</h3> &nbsp; (this name will be used by both you and your visitors)
+<p><%= f.text_field(:name, :size=>80, :style=>'padding: 0.2em;', maxlength: COMMON_FIELD) %></p>
+<p><%= submit_tag('Create this support center', :style=>'padding: 0.5em;', data: { disable_with: 'Create this support center' }) %> or <%= link_to('cancel', {:action=>:index}) %></p>
+<% end %>

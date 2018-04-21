@@ -1,0 +1,14 @@
+<tr class="<%= cms_request.status == CMS_REQUEST_FAILED ? 'red' : '' %>">
+	<td><%= cms_request.id %></td>
+	<td><%= disp_date(cms_request.created_at) %></td>
+	<td><%= link_to(h(cms_request.title), {:action=>:show, :id=>cms_request.id}) %></td>
+	<td><%= show_languages(cms_request) %></td>
+	<td>
+		<%= cms_request.detailed_status() %>
+		<% if @user.has_supporter_privileges? && (cms_request.comm_errors.length > 0) %>
+			&nbsp; <%= comm_errors_summary(cms_request.comm_errors) %>
+		<% end %>
+	</td>
+	<td><%= review_status(cms_request) %></td>
+	<td><%= action_buttons(cms_request) %></td>
+</tr>

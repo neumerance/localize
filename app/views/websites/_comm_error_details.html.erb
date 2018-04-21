@@ -1,0 +1,12 @@
+<tr>
+	<td><%= CmsRequest::LAST_COMMAND_TEXT[comm_error_details.last_operation] %></td>
+	<td><%= truncate(comm_error_details.error_description, length: 60, omission: '...') %></td>
+	<td><%= disp_time(comm_error_details.updated_at) %></td>
+	<td><%= link_to(comm_error_details.website.name, { controller: '/wpml/websites', :action=>:show, :id=>comm_error_details.website.id}) %></td>
+	<td><%= link_to(comm_error_details.title || 'document', {:controller=>:cms_requests, :action=>:show, :website_id=>comm_error_details.website.id, :id=>comm_error_details.id}) %></td>
+	<td><%= CmsRequest::STATUS_TEXT[comm_error_details.status] %></td>
+	<td>
+		<%= button_to('Retry', {:controller=>:cms_requests, :action=>:retry, :website_id=>comm_error_details.website.id, :id=>comm_error_details.id}) %>
+		<%= button_to('Clear', {:controller=>:cms_requests, :action=>:notify_tas_done, :website_id=>comm_error_details.website.id, :id=>comm_error_details.id}, 'data-confirm'=>'Are you sure you want to clear this error without retrying?') %>
+	</td>
+</tr>

@@ -1,0 +1,2 @@
+var column = jQuery("#<%= params[:field] %>_<%= params[:id] %>");
+column.html('<%= escape_javascript(render partial: 'update_form') %>');

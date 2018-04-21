@@ -1,0 +1,198 @@
+<div class="infobox">
+  <h4><%= _('Project information') %></h4>
+  <br/>
+
+  <div class="platform_mode anotice <%= @cms_request.tp_id ? 'green' : 'orange' %>">
+    <% if @user.has_supporter_privileges? %>
+      <%= @cms_request.tp_id ? "TranslationProxy id: #{@cms_request.tp_id}" : "WPML <3.1" %>
+      <br>
+    <% end %>
+
+    <% if @cms_request.tp_id %>
+      <small><%= link_to(_('Source XLIFF'), {:controller => :cms_requests, :action => :xliff, :id => @cms_request.id, :inline => true, :version => :untranslated}, {:target => :blank}) %></small>
+    <% end %>
+  </div>
+
+  <% unless @cms_request.revision %>
+    <p><b class="warning">Warning:</b> <%= _('Setup for this project is not complete yet.') %></p>
+  <% end %>
+
+  <table cellspacing="5">
+    <tr>
+      <td><%= _('Job ID:') %></td>
+      <td><%= @cms_request.id %></td>
+    </tr>
+    <tr>
+      <td><%= _('Original language:') %></td>
+      <td><b><%= @cms_request.language.name %></b></td>
+    </tr>
+    <tr>
+      <td><%= _('Title:') %></td>
+      <td><b> <%= @cms_request.title %></b></td>
+    </tr>
+    <tr>
+      <td><%= _('Url:') %></td>
+      <td>
+        <b><%= link_to_if(@cms_request.permlink, @cms_request.permlink, @cms_request.permlink, {:target => '_blank'}) %></b>
+      </td>
+    </tr>
+    <tr>
+      <td><%= _('Created at:') %></td>
+      <td><%= disp_date(@cms_request.created_at) %></td>
+    </tr>
+    <tr>
+      <td><%= _('Status:') %></td>
+      <td><b><%= @cms_request.detailed_status.html_safe %></b></td>
+    </tr>
+    <tr>
+      <td><%= _('Review status:') %></td>
+      <td><b><%= review_status_text(@cms_request) %></b></td>
+    </tr>
+    <% if @cms_request.revision %>
+      <tr>
+        <td>Deadline</td>
+        <td><%= disp_date(@cms_request.deadline || @cms_request.created_at + 5.days) %></td>
+      </tr>
+      <tr>
+        <td><%= _('Job size:') %></td>
+        <td><%= translation_language_stats(@cms_request.revision) %></td>
+      </tr>
+      <% if @user.has_supporter_privileges? %>
+        <tr>
+          <td><%= _('Bidding Project:') %></td>
+          <td>
+            <b><%= link_to(@cms_request.revision.project.name, {:controller => :revisions, :action => :show, :project_id => @cms_request.revision.project_id, :id => @cms_request.revision.id}) %></b>
+          </td>
+        </tr>
+        <tr>
+          <td><%= 'Client:' %></td>
+          <td><b><%= user_link(@cms_request.website.client) %></b></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </table>
+</div>
+
+
+<% if @cms_request.revision.nil? && @user.has_supporter_privileges? %>
+  <% if @cms_request.tp_id %>
+    <p>Probably TAS was not able to process the xliff file correclty.</p>
+  <% else %>
+    <h4>Cms Uploads</h4>
+    <%= "We dont have any Cms Upload for this job. It is not possible to setup the project." if @cms_request.cms_uploads.empty? %>
+    <ul>
+      <% @cms_request.cms_uploads.each do |cms_upload| %>
+        <li><%= cms_upload.filename %> : <%= cms_upload.description %></li>
+      <% end %>
+    </ul>
+    <BR>
+  <% end %>
+<% end %>
+
+<%= action_buttons(@cms_request) %>
+
+<% if !@cms_request.note.blank? %>
+  <div class="red_message" style="margin:2em;">
+    <h3><%= _('Instructions from the client') %></h3>
+    <p><%= pre_format(@cms_request.note) %></p>
+  </div>
+<% end %>
+
+<% if @user[:type] == 'Translator' %>
+  <% if @cms_request.revision && @open_cms_target_languages && (@open_cms_target_languages.length > 0) %>
+    <% if (@cms_chats_to_complete.length >= MAX_ALLOWED_CMS_PROJECTS) %>
+      <div class="red_message">
+        <p>Before you begin translation of a new recurring translation project, you must first complete the
+          translation of existing projects.</p>
+        <ul><%= render(:partial => 'chat', :collection => @cms_chats_to_complete) %></ul>
+        <br/>
+        <p>To complete this work, you should:</p>
+        <ol>
+          <li>Complete the translation and review it.</li>
+          <li>Upload.</li>
+          <li>Click on 'Declare work as complete' in the project chat (this option will become available after the
+            completed work has been uploaded).
+          </li>
+        </ol>
+      </div>
+    <% end %>
+    <% if (Rails.env != 'production') || (@cms_chats_to_complete.length < MAX_ALLOWED_CMS_PROJECTS) %>
+      <h2>Languages pending translation</h2>
+      <p>You are already approved to translate this project. Select the language(s) you want to start
+        translating.</p>
+      <%= form_tag({:action => :assign_to_me}) do %>
+        <ul>
+          <% @open_cms_target_languages.each do |cms_target_language| %>
+            <li style="list-style-type: none;">
+              <label><%= check_box_tag("cms_target_language[#{cms_target_language.id}]", '1', '1') %> <%= cms_target_language.language.name %></label>
+            </li>
+          <% end %>
+        </ul><br/>
+        <% if (Rails.env != 'production') && (@cms_chats_to_complete.length >= MAX_ALLOWED_CMS_PROJECTS) %>
+          <p class="red_message">
+            <label><%= check_box_tag('assign_multiple', '1') %> Force allow translation (DEBUG ONLY)</label>
+          </p><br/>
+        <% end %>
+        <% if @missing_funding %>
+          <p class="red_message">There isn't sufficient funding to begin translating all languages in this
+            project.</p><br/>
+        <% end %>
+        <%= start_translate_button(@cms_request) %>
+      <% end %>
+    <% end %>
+  <% elsif @missing_funding && @cms_request.cms_target_language.status <= 0 %>
+    <p class="red_message">Some work in this project is disabled due to insufficient funding.</p><br/>
+  <% elsif @cms_request.translator and @cms_request.translator != @user %>
+    <div class="red_message">Other translator got this job.</div>
+  <% else %>
+    <div class="red_message">There is no open work on this job.</div>
+  <% end %>
+
+  <% if @your_translations.length > 0 %>
+    <br/>
+    <%= infotab_header([_('Language'), _('Status'), _('Translation')]) %>
+    <%= render(:partial => 'cms_target_language', :collection => @your_translations) %>
+    </table>
+  <% end %>
+
+<% elsif (@user.has_client_privileges?) %>
+  <h2 style="margin-top: 20px;">Translation languages</h2>
+  <%= infotab_header([_('Language'), _('Status'), _('Translator'), _('Translation')]) %>
+  <%= render(:partial => 'cms_target_language', :collection => @cms_request.cms_target_languages) %>
+  </table>
+<% end %>
+
+<% if @user.has_supporter_privileges? && (@cms_request.comm_errors.length > 0) %>
+  <div class="inter_tab_spacer"></div>
+  <div class="red_message" style="margin:1em;">
+    <p>This CMS request has <%= @cms_request.comm_errors.length %> communication errors.</p>
+    <%= infotab_header(['Created', 'Status', 'Code', 'Description']) %>
+    <%= render(:partial => 'comm_error', :collection => @cms_request.comm_errors) %>
+    </table>
+    <br/><br/>
+    <%= button_to('Close all errors', {:action => :close_all_errors}) %>
+  </div>
+<% end %>
+
+<% if @user.has_admin_privileges? || @user.has_supporter_privileges? %>
+  <div class="grey_panel">
+    <h3>Job Administration</h3>
+    <%= infotab_header(['Action','Description']) %>
+      <tr>
+        <td style="width:20em;">
+          <%= form_tag({action: :toggle_force_ta}, id: 'toggle-force-ta-form', remote: true) do %>
+            <label class="switch">
+              <%= check_box_tag :force_ta, 'force_ta', @cms_request.force_ta?, onchange: "jQuery('#toggle-force-ta-form').submit();" %>
+              <span class="slider"></span>
+              <span class="switch-on">Yes</span>
+              <span class="switch-off">No</span>
+            </label>
+          <% end %>
+        </td>
+        <td>
+          Force cms job to be translated in TA tool
+        </td>
+      </tr>
+    </table>
+  </div>
+<% end %>

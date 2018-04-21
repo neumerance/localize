@@ -1,0 +1,5 @@
+<tr>
+	<td><%= managed_work_link(managed_work) %></td>
+	<td><%= link_to('Review log',{:controller=>:managed_works, :action=>:show, :id=>managed_work.id}) %></td>
+	<td><%= ManagedWork::ACTIVE_TEXT[managed_work.active] %></td>
+</tr>

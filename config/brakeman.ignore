@@ -1,0 +1,1070 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "042c6d91e00d05763a28d5ed2a2d3d3209222c4600cdbd247313aa84f9a678a1",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/website_translation_contracts_controller.rb",
+      "line": 224,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(Attachment.find(params[:attachment_id]).full_filename)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "WebsiteTranslationContractsController",
+        "method": "attachment"
+      },
+      "user_input": "Attachment.find(params[:attachment_id]).full_filename",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "0962404342a94e602bd44f8b296b6a210b01647b85b50b039aaffa756a0336ea",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/resource_downloads_controller.rb",
+      "line": 33,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(File.join(File.dirname(ResourceDownload.find(params[:id].to_i).full_filename), \"#{ResourceDownload.find(params[:id].to_i).orig_filename[(0...ResourceDownload.find(params[:id].to_i).orig_filename.rindex(\".\"))]}.mo\"))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ResourceDownloadsController",
+        "method": "download_mo"
+      },
+      "user_input": "ResourceDownload.find(params[:id].to_i).orig_filename",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "177c157123dbc38ffa1438ce14d2cdbf6f5dd3a0bc534063855cf5109bee1997",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/text_resources_controller.rb",
+      "line": 675,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "File.delete(((File.dirname((ResourceUpload.find(params[:resource_upload_id].to_i).upload_translations.find_by(:language_id => language.id).resource_download or ResourceDownload.new(:chgtime => Time.now, :description => (\"Translation of resource upload #{ResourceUpload.find(params[:resource_upload_id].to_i).id} to #{language.name}\"), :filename => ((TextResource.find(params[:id].to_i).resource_languages.find_by(:language_id => language.id).get_output_name.gsub(\"*\", (ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename[(0...ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename.rindex(\".\"))] or ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename)) + (ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename[(ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename.rindex(\".\")..-1)] or \"\")) + \".gz\"), :size => 1, :content_type => \"application/octet-stream\")).full_filename) + \"/\") + (ResourceUpload.find(params[:resource_upload_id].to_i).upload_translations.find_by(:language_id => language.id).resource_download or ResourceDownload.new(:chgtime => Time.now, :description => (\"Translation of resource upload #{ResourceUpload.find(params[:resource_upload_id].to_i).id} to #{language.name}\"), :filename => ((TextResource.find(params[:id].to_i).resource_languages.find_by(:language_id => language.id).get_output_name.gsub(\"*\", (ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename[(0...ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename.rindex(\".\"))] or ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename)) + (ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename[(ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename.rindex(\".\")..-1)] or \"\")) + \".gz\"), :size => 1, :content_type => \"application/octet-stream\")).orig_filename))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "TextResourcesController",
+        "method": "create_translations"
+      },
+      "user_input": "ResourceDownload.new(:chgtime => Time.now, :description => (\"Translation of resource upload #{ResourceUpload.find(params[:resource_upload_id].to_i).id} to #{language.name}\"), :filename => ((TextResource.find(params[:id].to_i).resource_languages.find_by(:language_id => language.id).get_output_name.gsub(\"*\", (ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename[(0...ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename.rindex(\".\"))] or ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename)) + (ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename[(ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename.rindex(\".\")..-1)] or \"\")) + \".gz\"), :size => 1, :content_type => \"application/octet-stream\")",
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "1d776357c061379c841a9eb0d1aaf6ae1a9f3d91b5e0f7cc8f84bd597d52c7ac",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/resource_chats_controller.rb",
+      "line": 366,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(Attachment.find(params[:attachment_id]).full_filename)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ResourceChatsController",
+        "method": "attachment"
+      },
+      "user_input": "Attachment.find(params[:attachment_id]).full_filename",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "290fadf5a7c7f65e669dca6e644d4644e4ef26fcd96e3337b6ab019f46707f76",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/tools_controller.rb",
+      "line": 95,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(ToolDownload.find(params[:id].to_i).full_filename)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ToolsController",
+        "method": "download_po"
+      },
+      "user_input": "ToolDownload.find(params[:id].to_i).full_filename",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "Remote Code Execution",
+      "warning_code": 24,
+      "fingerprint": "3274076a755122ba7413a845aecce03332e55370c873a456f9f2f1398ed2482f",
+      "message": "Unsafe reflection method constantize called with parameter value",
+      "file": "app/controllers/text_resources_controller.rb",
+      "line": 115,
+      "link": "http://brakemanscanner.org/docs/warning_types/remote_code_execution/",
+      "code": "JSON.parse(params[:project])[\"class\"].constantize",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "TextResourcesController",
+        "method": "reuse_translators"
+      },
+      "user_input": "params[:project]",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "33e0c5cdb171a6f3ff164ac5f5c30f51646a64ecb3580c299bb5d91a33154c6f",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/users_controller.rb",
+      "line": 400,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "FileUtils.mkdir_p(File.dirname(::Version.new(:chgtime => Time.now, :content_type => practice_version.content_type, :filename => practice_version.filename, :size => practice_version.size).full_filename))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "UsersController",
+        "method": "setup_practice_project"
+      },
+      "user_input": "::Version.new(:chgtime => Time.now, :content_type => practice_version.content_type, :filename => practice_version.filename, :size => practice_version.size)",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "3fdf0f7809fa9949fd9810b0c56f1b7bc609756ad199f748c3e47f6ff6cb22b7",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/text_resources_controller.rb",
+      "line": 668,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "File.open(((File.dirname((ResourceUpload.find(params[:resource_upload_id].to_i).upload_translations.find_by(:language_id => language.id).resource_download or ResourceDownload.new(:chgtime => Time.now, :description => (\"Translation of resource upload #{ResourceUpload.find(params[:resource_upload_id].to_i).id} to #{language.name}\"), :filename => ((TextResource.find(params[:id].to_i).resource_languages.find_by(:language_id => language.id).get_output_name.gsub(\"*\", (ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename[(0...ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename.rindex(\".\"))] or ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename)) + (ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename[(ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename.rindex(\".\")..-1)] or \"\")) + \".gz\"), :size => 1, :content_type => \"application/octet-stream\")).full_filename) + \"/\") + ((ResourceUpload.find(params[:resource_upload_id].to_i).upload_translations.find_by(:language_id => language.id).resource_download or ResourceDownload.new(:chgtime => Time.now, :description => (\"Translation of resource upload #{ResourceUpload.find(params[:resource_upload_id].to_i).id} to #{language.name}\"), :filename => ((TextResource.find(params[:id].to_i).resource_languages.find_by(:language_id => language.id).get_output_name.gsub(\"*\", (ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename[(0...ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename.rindex(\".\"))] or ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename)) + (ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename[(ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename.rindex(\".\")..-1)] or \"\")) + \".gz\"), :size => 1, :content_type => \"application/octet-stream\")).orig_filename[(0...(ResourceUpload.find(params[:resource_upload_id].to_i).upload_translations.find_by(:language_id => language.id).resource_download or ResourceDownload.new(:chgtime => Time.now, :description => (\"Translation of resource upload #{ResourceUpload.find(params[:resource_upload_id].to_i).id} to #{language.name}\"), :filename => ((TextResource.find(params[:id].to_i).resource_languages.find_by(:language_id => language.id).get_output_name.gsub(\"*\", (ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename[(0...ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename.rindex(\".\"))] or ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename)) + (ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename[(ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename.rindex(\".\")..-1)] or \"\")) + \".gz\"), :size => 1, :content_type => \"application/octet-stream\")).orig_filename.rindex(\".\"))] + \".mo\")), \"rb\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "TextResourcesController",
+        "method": "create_translations"
+      },
+      "user_input": "ResourceDownload.new(:chgtime => Time.now, :description => (\"Translation of resource upload #{ResourceUpload.find(params[:resource_upload_id].to_i).id} to #{language.name}\"), :filename => ((TextResource.find(params[:id].to_i).resource_languages.find_by(:language_id => language.id).get_output_name.gsub(\"*\", (ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename[(0...ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename.rindex(\".\"))] or ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename)) + (ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename[(ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename.rindex(\".\")..-1)] or \"\")) + \".gz\"), :size => 1, :content_type => \"application/octet-stream\")",
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross-Site Request Forgery",
+      "warning_code": 86,
+      "fingerprint": "41dfb2d9bc5af0862b90118a737d78829872e732953537b216df86d48c7e9165",
+      "message": "protect_from_forgery should be configured with 'with: :exception'",
+      "file": "app/controllers/application_controller.rb",
+      "line": 46,
+      "link": "http://brakemanscanner.org/docs/warning_types/cross-site_request_forgery/",
+      "code": "protect_from_forgery(:unless => (lambda do\n (request.format.json? or request.format.xml?)\n end))",
+      "render_path": null,
+      "location": {
+        "type": "controller",
+        "controller": "ApplicationController"
+      },
+      "user_input": null,
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "447514318c505fdb9ad0ffc3b0bb3ee8bda2d52939c286d48eb9f6f3ffd4be5a",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/resource_uploads_controller.rb",
+      "line": 233,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(ResourceUpload.find(params[:id].to_i).all_translations_fname)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ResourceUploadsController",
+        "method": "download_translations"
+      },
+      "user_input": "ResourceUpload.find(params[:id].to_i).all_translations_fname",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "462d00163f22e88051b7d0672a20bfbdccbf7310d4359d21f4e68f536f192e3e",
+      "message": "Unescaped model attribute",
+      "file": "app/views/websites/_tm_controls.html.erb",
+      "line": 26,
+      "link": "http://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "(_(\"Mark as complete sentences that have <strong>%d word(s) or more</strong> (shorter sentences will remain as incomplete).\") % Website.new(:name => ((params[:title] or (params[:url][(8..-1)] or if params[:url].start_with?(\"http://\") then\n  params[:url][(7..-1)]\nelse\n  params[:url]\nend))), :description => ((params[:description] or \"Website translation project\")), :platform_kind => params[:platform_kind].to_i, :url => params[:url], :login => params[:cms_login], :password => params[:cms_password], :blogid => params[:blogid].to_i, :pickup_type => params[:pickup_type].to_i, :interview_translators => (params[:interview_translators].to_i == 1), :notifications => params[:notifications].to_i, :project_kind => ((2 or (params[:project_kind] or 2.to_s).to_i)), :cms_kind => ((0 or params[:cms_kind].to_i)), :cms_description => params[:cms_description], :xmlrpc_path => params[:xmlrpc_path], :free_support => (if ((not (params[:ignore_languages].to_i == 1)) or (params[:anon].to_i == 1)) then\n  1\nelse\n  0\nend), :anon => ((params[:anon].to_i == 1) ? (1) : (0))).tm_use_threshold)",
+      "render_path": [{"type":"controller","class":"WebsitesController","method":"create_by_cms","line":734,"file":"app/controllers/websites_controller.rb"},{"type":"template","name":"websites/show","line":176,"file":"app/views/websites/show.html.erb"}],
+      "location": {
+        "type": "template",
+        "template": "websites/_tm_controls"
+      },
+      "user_input": "Website.new(:name => ((params[:title] or (params[:url][(8..-1)] or if params[:url].start_with?(\"http://\") then\n  params[:url][(7..-1)]\nelse\n  params[:url]\nend))), :description => ((params[:description] or \"Website translation project\")), :platform_kind => params[:platform_kind].to_i, :url => params[:url], :login => params[:cms_login], :password => params[:cms_password], :blogid => params[:blogid].to_i, :pickup_type => params[:pickup_type].to_i, :interview_translators => (params[:interview_translators].to_i == 1), :notifications => params[:notifications].to_i, :project_kind => ((2 or (params[:project_kind] or 2.to_s).to_i)), :cms_kind => ((0 or params[:cms_kind].to_i)), :cms_description => params[:cms_description], :xmlrpc_path => params[:xmlrpc_path], :free_support => (if ((not (params[:ignore_languages].to_i == 1)) or (params[:anon].to_i == 1)) then\n  1\nelse\n  0\nend), :anon => ((params[:anon].to_i == 1) ? (1) : (0))).tm_use_threshold",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "47ddf8e5b2fd0d9c138c2851bc2e853b4c85aaca74ed85dc3c61241dac9a4b6f",
+      "message": "Unsafe parameter value in link_to href",
+      "file": "app/views/users/signup.html.erb",
+      "line": 24,
+      "link": "http://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(\"Cancel\", h(params[:back]))",
+      "render_path": [{"type":"controller","class":"UsersController","method":"update_name_and_email","line":1662,"file":"app/controllers/users_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "users/signup"
+      },
+      "user_input": "params",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "Command Injection",
+      "warning_code": 14,
+      "fingerprint": "4d618608a50fb90ee7ad70aecdd45b0070d82f67455851ceb15b052fbc300550",
+      "message": "Possible command injection",
+      "file": "lib/ip_to_country.rb",
+      "line": 14,
+      "link": "http://brakemanscanner.org/docs/warning_types/command_injection/",
+      "code": "`gzip -d #{DB_PATH}.gz`",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "IpToCountry",
+        "method": "s(:self).setup"
+      },
+      "user_input": "DB_PATH",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "Remote Code Execution",
+      "warning_code": 24,
+      "fingerprint": "4fbb2bd4ec4291b7dbd599f61d7663894267fd1e7f9de778924dba1831075ed9",
+      "message": "Unsafe reflection method constantize called with parameter value",
+      "file": "app/controllers/users_controller.rb",
+      "line": 1450,
+      "link": "http://brakemanscanner.org/docs/warning_types/remote_code_execution/",
+      "code": "params[:job_class].classify.constantize",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "UsersController",
+        "method": "invite_to_job"
+      },
+      "user_input": "params[:job_class].classify",
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "531b3377192452331cc378b0eba811f84d439f3b132f436c5ee067bfbeee5e2c",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/web_dialogs_controller.rb",
+      "line": 62,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(CaptchaImage.new(:content_type => \"image/jpeg\", :filename => \"captcha.jpg\").full_filename, :type => \"image/jpeg\", :disposition => \"inline\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "WebDialogsController",
+        "method": "gen_captcha"
+      },
+      "user_input": "CaptchaImage.new(:content_type => \"image/jpeg\", :filename => \"captcha.jpg\").full_filename",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "5e257f55e8d56712af6f38109a6528b3785ef4d6bc780709dad3a973eed8f0f8",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/users_controller.rb",
+      "line": 374,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "FileUtils.mkdir_p(File.dirname(SupportFile.new(:chgtime => Time.now, :content_type => practice_support_file.content_type, :filename => practice_support_file.filename, :size => practice_support_file.size).full_filename))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "UsersController",
+        "method": "setup_practice_project"
+      },
+      "user_input": "SupportFile.new(:chgtime => Time.now, :content_type => practice_support_file.content_type, :filename => practice_support_file.filename, :size => practice_support_file.size).full_filename",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "621fd8734c6a13d09428075890167f631d8f099baa37a4b4770a9954fb104c41",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/users_controller.rb",
+      "line": 1199,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "FileUtils.mkdir_p(File.dirname((nil or (Image.new(:uploaded_data => params[:uploaded_data]) or nil)).full_filename))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "UsersController",
+        "method": "edit_image"
+      },
+      "user_input": "Image.new(:uploaded_data => params[:uploaded_data])",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Command Injection",
+      "warning_code": 14,
+      "fingerprint": "69c76a7fbeea2532d46b7752299305d215240d91a9c775608637ca37a10002ba",
+      "message": "Possible command injection",
+      "file": "lib/ip_to_country.rb",
+      "line": 13,
+      "link": "http://brakemanscanner.org/docs/warning_types/command_injection/",
+      "code": "`wget -O #{DB_PATH}.gz #{\"http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz\"}`",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "IpToCountry",
+        "method": "s(:self).setup"
+      },
+      "user_input": "DB_PATH",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "706c0cb95fad30462cd1f54861c1ec27641f58f9683dfd7d06d2cf6196a5aa46",
+      "message": "Parameter value used in file name",
+      "file": "app/controllers/cms_requests_controller.rb",
+      "line": 832,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file((CmsRequest.find_by(:tp_id => params[:id]) or CmsRequest.find_by(:id => params[:id])).cms_target_languages.where(:language_id => Language.where(:name => params[:language]).first.id).first.cms_downloads.where(({ :description => params[:description] } or nil)).first.full_filename)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "CmsRequestsController",
+        "method": "cms_download"
+      },
+      "user_input": "params[:description]",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "71d1a06c0bf4748445da01eca8657849eee287bf701e897cd0d4c6aa02546654",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/cms_requests_controller.rb",
+      "line": 781,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(((CmsRequest.find_by(:tp_id => params[:id]) or CmsRequest.find_by(:id => params[:id])).base_xliff or (CmsRequest.find_by(:tp_id => params[:id]) or CmsRequest.find_by(:id => params[:id])).xliffs.last).full_filename)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "CmsRequestsController",
+        "method": "xliff"
+      },
+      "user_input": "CmsRequest.find_by(:id => params[:id])",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "7238cf4484f320a8c64888677822089ce5a432275f857986d1560982aa731b28",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/text_resources_controller.rb",
+      "line": 575,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "File.delete(ResourceUpload.find(params[:resource_upload_id].to_i).all_translations_fname)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "TextResourcesController",
+        "method": "create_translations"
+      },
+      "user_input": "ResourceUpload.find(params[:resource_upload_id].to_i).all_translations_fname",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "75f6e29e6ed9e4292a15afc1df290f64a24a3b7330321a6ac406b88f369e39a5",
+      "message": "Unescaped model attribute",
+      "file": "app/views/users/show.html.erb",
+      "line": 228,
+      "link": "http://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "notifications_list(User.find(params[:id]).notifications)",
+      "render_path": [{"type":"controller","class":"UsersController","method":"show","line":496,"file":"app/controllers/users_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "users/show"
+      },
+      "user_input": "User.find(params[:id]).notifications",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "7ca6bd9605b6ffe0299b3b7d740504883366e253507593a954fc61e6d6b15003",
+      "message": "Unsafe parameter value in link_to href",
+      "file": "app/views/support/supporter_browse.html.erb",
+      "line": 40,
+      "link": "http://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(\"Next\", url_for({ :action => :supporter_browse }.merge(request.query_parameters).merge(\"page\" => ::Paginator.new(SupportTicket.where(((mount_like_query(\"subject\" => params[:subject], \"supporter_id\" => @user.id, \"support_department_id\" => params[:support_department_id].to_i, \"normal_user_id\" => User.where(mount_like_query(\"fname\" => params[:fname], \"lname\" => params[:lname], \"email\" => params[:email], \"nickname\" => params[:nickname])).collect(&:id)) + \"AND status not in (#{4},#{6})\") or \"status not in (#{4},#{6})\")).count, 15) do\n SupportTicket.where(((mount_like_query(\"subject\" => params[:subject], \"supporter_id\" => @user.id, \"support_department_id\" => params[:support_department_id].to_i, \"normal_user_id\" => User.where(mount_like_query(\"fname\" => params[:fname], \"lname\" => params[:lname], \"email\" => params[:email], \"nickname\" => params[:nickname])).collect(&:id)) + \"AND status not in (#{4},#{6})\") or \"status not in (#{4},#{6})\")).order(\"id ASC\").offset(offset).limit(per_page)\n end.page(params[:page]).next.number)))",
+      "render_path": [{"type":"controller","class":"SupportController","method":"supporter_browse","line":315,"file":"app/controllers/support_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "support/supporter_browse"
+      },
+      "user_input": "request.query_parameters",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "82de44d6c48c0b7ec4185cef1e338ad7f71cea008ae8f0492dcdcf362df7e3ba",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/admin_finance_controller.rb",
+      "line": 107,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(MassPayer.file_name_for_receipt(MassPaymentReceipt.find(params[:id].to_i), Invoice::MASS_PAY_FOLDER))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "AdminFinanceController",
+        "method": "payment"
+      },
+      "user_input": "MassPaymentReceipt.find(params[:id].to_i)",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Remote Code Execution",
+      "warning_code": 25,
+      "fingerprint": "8d2b42212ec607b272b670d85c32864f2bab2016e9e503ed83041ac388473a0c",
+      "message": "YAML.load called with model attribute",
+      "file": "app/controllers/web_messages_controller.rb",
+      "line": 325,
+      "link": "http://brakemanscanner.org/docs/warning_types/unsafe_deserialization",
+      "code": "YAML.load(WebMessage.find(params[:id]).complex_flag_users)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "WebMessagesController",
+        "method": "flag_as_complex"
+      },
+      "user_input": "WebMessage.find(params[:id]).complex_flag_users",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "8ea572b74b10c7db1f9f9ac50c5dfe2fdcd4ee11e104543b32d53b636446e08b",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/support_controller.rb",
+      "line": 173,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(Attachment.find(params[:attachment_id]).full_filename)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "SupportController",
+        "method": "attachment"
+      },
+      "user_input": "Attachment.find(params[:attachment_id]).full_filename",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "SSL Verification Bypass",
+      "warning_code": 71,
+      "fingerprint": "902ee5dd363eb71341d694030fd51c6af6981bf9f51c13086f8d341def240e5a",
+      "message": "SSL certificate verification was bypassed",
+      "file": "lib/pay_pal_sdk/callers/caller.rb",
+      "line": 50,
+      "link": "http://brakemanscanner.org/docs/warning_types/ssl_verification_bypass/",
+      "code": "(if (@@pi[\"USER\"].nil? or @@pi[\"PASSWORD\"].nil?) then\n  Net::HTTP.Proxy(@@pi[\"ADDRESS\"], @@pi[\"PORT\"]).new(@@ep[\"SERVER\"], 443)\nelse\n  Net::HTTP.Proxy(@@pi[\"ADDRESS\"], @@pi[\"PORT\"], @@pi[\"USER\"], @@pi[\"PASSWORD\"]).new(@@ep[\"SERVER\"], 443)\nend or Net::HTTP.new(@@ep[\"SERVER\"], 443)).verify_mode = OpenSSL::SSL::VERIFY_NONE",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "PayPalSdk::Callers::Caller",
+        "method": "call"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Remote Code Execution",
+      "warning_code": 24,
+      "fingerprint": "9083bc2ac59115351ed42fbc99e97fe832df661489b032073256ec3f184e9c45",
+      "message": "Unsafe reflection method constantize called with parameter value",
+      "file": "app/controllers/websites_controller.rb",
+      "line": 123,
+      "link": "http://brakemanscanner.org/docs/warning_types/remote_code_execution/",
+      "code": "JSON.parse(params[:project])[\"class\"].constantize",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "WebsitesController",
+        "method": "reuse_translators"
+      },
+      "user_input": "params[:project]",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "SSL Verification Bypass",
+      "warning_code": 71,
+      "fingerprint": "90f55aefd0724c23837487e88bd1c42ef8db32c78ef6d717bb3522c835812ba7",
+      "message": "SSL certificate verification was bypassed",
+      "file": "lib/paypal_validator.rb",
+      "line": 59,
+      "link": "http://brakemanscanner.org/docs/warning_types/ssl_verification_bypass/",
+      "code": "Net::HTTP.new(URI.parse((Figaro.env.PAYPAL_URLS + \"?cmd=_notify-validate\")).host, URI.parse((Figaro.env.PAYPAL_URLS + \"?cmd=_notify-validate\")).port).verify_mode = OpenSSL::SSL::VERIFY_NONE",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "PaypalValidator",
+        "method": "validate_ipn"
+      },
+      "user_input": null,
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "9f57a50f568a0fa308827b14507eb3c511a9bd0941b1c1a758cf742e26f13658",
+      "message": "Unescaped model attribute",
+      "file": "app/views/text_resources/show.html.erb",
+      "line": 60,
+      "link": "http://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "chats_for_resource_languages(TextResource.find(params[:id].to_i).managed_works(@user))",
+      "render_path": [{"type":"controller","class":"TextResourcesController","method":"show","line":218,"file":"app/controllers/text_resources_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "text_resources/show"
+      },
+      "user_input": "TextResource.find(params[:id].to_i).managed_works(@user)",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "a6a54f1b28a8d0df64ec663570398ce91476909ce9f3eb308535950e7458a3b0",
+      "message": "Unescaped model attribute",
+      "file": "app/views/users/show.html.erb",
+      "line": 100,
+      "link": "http://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "(_(\"%s is currently <b>offline</b>.\") % User.find(params[:id]).full_name)",
+      "render_path": [{"type":"controller","class":"UsersController","method":"show","line":496,"file":"app/controllers/users_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "users/show"
+      },
+      "user_input": "User.find(params[:id]).full_name",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "a8c21eec64bce44f83f91012474f20dfe7f151f7c6f032cb3bd5b918f2807a51",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/downloads_controller.rb",
+      "line": 34,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(Download.find(params[:id].to_i).full_filename)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "DownloadsController",
+        "method": "get"
+      },
+      "user_input": "Download.find(params[:id].to_i).full_filename",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "aafc517d4e3afef911e8da222c70bd906b32b5b23c75c9cd4d397eb43bb03272",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/resource_downloads_controller.rb",
+      "line": 25,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(ResourceDownload.find(params[:id].to_i).full_filename)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ResourceDownloadsController",
+        "method": "download"
+      },
+      "user_input": "ResourceDownload.find(params[:id].to_i).full_filename",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "ad0eccfa631b83c65bf27110ca37f0daacc9448c83bcbf0756b804aef18b9cb9",
+      "message": "Possible SQL injection",
+      "file": "app/models/language.rb",
+      "line": 55,
+      "link": "http://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "Language.where(((initial_conds << \"(id NOT IN (#{exclude_list.join(\",\")}))\") + [\"(languages.major=0)\"]).join(\" AND \"))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Language",
+        "method": "Language.find_by_conds"
+      },
+      "user_input": "exclude_list.join(\",\")",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "ada639e3c33fbd8c61d91269deff6ec457bc40d66c86c3667a01ae2cf5b8bc18",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/chats_controller.rb",
+      "line": 747,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(Attachment.find(params[:attachment_id]).full_filename)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "ChatsController",
+        "method": "attachment"
+      },
+      "user_input": "Attachment.find(params[:attachment_id]).full_filename",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "SQL Injection",
+      "warning_code": 0,
+      "fingerprint": "b3b4a7678fa6afdd74e71028e4edd97cfd3f992d8927860ff973cf9e414094d8",
+      "message": "Possible SQL injection",
+      "file": "app/models/language.rb",
+      "line": 54,
+      "link": "http://brakemanscanner.org/docs/warning_types/sql_injection/",
+      "code": "Language.where(((initial_conds << \"(id NOT IN (#{exclude_list.join(\",\")}))\") + [\"(languages.major=1)\"]).join(\" AND \"))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "Language",
+        "method": "Language.find_by_conds"
+      },
+      "user_input": "exclude_list.join(\",\")",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "b8f1688e9093690173751d48af770a2423d4384e97bae6ab6c368c7e0371e88f",
+      "message": "Parameter value used in file name",
+      "file": "app/controllers/cms_requests_controller.rb",
+      "line": 198,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(authenticate_project.cms_requests.find_by(:id => params[:job][:id]).xliffs.reverse.find(&:translated?).full_filename, :type => \"application/octet-stream\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "CmsRequestsController",
+        "method": "download"
+      },
+      "user_input": "params[:job][:id]",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "bfe0dc89114c20d1c03025ecd7a06dbe0a6aaae9f2861b981b94b45d53c52372",
+      "message": "Parameter value used in file name",
+      "file": "app/controllers/keyword_projects_controller.rb",
+      "line": 22,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(case params[:doc]\nwhen \"web\" then\n  (Rails.root + \"/private_docs/Keyword Localization Process for Websites.pdf\")\nwhen \"app\" then\n  (Rails.root + \"/private_docs/Keyword Localization Process for Apps.pdf\")\nwhen \"general\" then\n  (Rails.root + \"/private_docs/Keyword Localization Process for General Texts.pdf\")\nelse\n  # do nothing\nend)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "KeywordProjectsController",
+        "method": "instructions"
+      },
+      "user_input": "params[:doc]",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "c3391f95ec7de47622db495e0f7faeb556ff69c445bddf727280f47ca3b13cb8",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/issues_controller.rb",
+      "line": 257,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(Attachment.find(params[:attachment_id]).full_filename)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "IssuesController",
+        "method": "attachment"
+      },
+      "user_input": "Attachment.find(params[:attachment_id]).full_filename",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "c7619a3e0b29e1313a4132273c3f68dbfa0851b778e4e6095048b10568fd215f",
+      "message": "Parameter value used in file name",
+      "file": "app/controllers/cms_requests_controller.rb",
+      "line": 791,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file((CmsRequest.find_by(:tp_id => params[:id]) or CmsRequest.find_by(:id => params[:id])).cms_uploads.where(:id => params[:cms_upload_id]).first.full_filename)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "CmsRequestsController",
+        "method": "cms_upload"
+      },
+      "user_input": "params[:cms_upload_id]",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "c772840a5b862bf830e60122978ff3eba1ffd372ad6352973b71af1993db03b6",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/websites_controller.rb",
+      "line": 264,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(Website.find(params[:id].to_i).cms_container.full_filename)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "WebsitesController",
+        "method": "get"
+      },
+      "user_input": "Website.find(params[:id].to_i).cms_container.full_filename",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "c778eb574859f0acda67877aa7028ec6afc9e65bf96e5395ee5c25b231cabfb8",
+      "message": "Parameter value used in file name",
+      "file": "app/controllers/supporter_controller.rb",
+      "line": 106,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(MassPayer.new(MoneyTransaction.requested_payments, \"Withdrawals from ICanLocalize accounts by supporter\", logger, Invoice::MASS_PAY_FOLDER, params[:fail_in_debug]).save_file_name)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "SupporterController",
+        "method": "do_mass_payments"
+      },
+      "user_input": "params[:fail_in_debug]",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "cb385a8d0201a8bc86893be3f9540541d32fe77bed553e19f6f426ca361a5ab6",
+      "message": "Unescaped model attribute",
+      "file": "app/views/users/show.html.erb",
+      "line": 90,
+      "link": "http://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "(_(\"%s is currently on <b>planned leave</b>.\") % User.find(params[:id]).full_name)",
+      "render_path": [{"type":"controller","class":"UsersController","method":"show","line":496,"file":"app/controllers/users_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "users/show"
+      },
+      "user_input": "User.find(params[:id]).full_name",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "cb440f9d88ae271c22c587b5e4677ccf33002e20a668f102616d10eb14b30b6f",
+      "message": "Unescaped model attribute",
+      "file": "app/views/text_resources/_tm_controls.html.erb",
+      "line": 20,
+      "link": "http://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "(_(\"Mark as complete sentences that have <strong>%d word(s) or more</strong> (shorter sentences will remain as incomplete).\") % TextResource.find(params[:id].to_i).tm_use_threshold)",
+      "render_path": [{"type":"controller","class":"TextResourcesController","method":"show","line":218,"file":"app/controllers/text_resources_controller.rb"},{"type":"template","name":"text_resources/show","line":220,"file":"app/views/text_resources/show.html.erb"}],
+      "location": {
+        "type": "template",
+        "template": "text_resources/_tm_controls"
+      },
+      "user_input": "TextResource.find(params[:id].to_i).tm_use_threshold",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "d0141c2801108a49ccb3053bd780f96987b9c5498479d37971d7ded8ba63e8e3",
+      "message": "Unsafe parameter value in link_to href",
+      "file": "app/views/website_translation_offers/new_invitation.html.erb",
+      "line": 59,
+      "link": "http://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(_(\"Cancel\"), h(params[:back]))",
+      "render_path": [{"type":"controller","class":"WebsiteTranslationOffersController","method":"create_invitation","line":568,"file":"app/controllers/website_translation_offers_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "website_translation_offers/new_invitation"
+      },
+      "user_input": "params",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "d620ed6f80c217c41d4e39f40879f8b77d25b60a9e7596095d73b409e7e0b878",
+      "message": "Unescaped model attribute",
+      "file": "app/views/translator/_resource_language.html.erb",
+      "line": 5,
+      "link": "http://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "((\"<strong>\" + (Unresolved Model).new.text_resource.category.name) + \"</strong>\")",
+      "render_path": [{"type":"template","name":"translator/open_work","line":56,"file":"app/views/translator/open_work.html.erb"}],
+      "location": {
+        "type": "template",
+        "template": "translator/_resource_language"
+      },
+      "user_input": "(Unresolved Model).new.text_resource",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "d71ebd6802ba34e771311d71c58882bbf9fa6ed94f7aed55f2f9ced13c52b165",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/text_resources_controller.rb",
+      "line": 652,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "File.new(((File.dirname((ResourceUpload.find(params[:resource_upload_id].to_i).upload_translations.find_by(:language_id => language.id).resource_download or ResourceDownload.new(:chgtime => Time.now, :description => (\"Translation of resource upload #{ResourceUpload.find(params[:resource_upload_id].to_i).id} to #{language.name}\"), :filename => ((TextResource.find(params[:id].to_i).resource_languages.find_by(:language_id => language.id).get_output_name.gsub(\"*\", (ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename[(0...ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename.rindex(\".\"))] or ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename)) + (ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename[(ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename.rindex(\".\")..-1)] or \"\")) + \".gz\"), :size => 1, :content_type => \"application/octet-stream\")).full_filename) + \"/\") + (ResourceUpload.find(params[:resource_upload_id].to_i).upload_translations.find_by(:language_id => language.id).resource_download or ResourceDownload.new(:chgtime => Time.now, :description => (\"Translation of resource upload #{ResourceUpload.find(params[:resource_upload_id].to_i).id} to #{language.name}\"), :filename => ((TextResource.find(params[:id].to_i).resource_languages.find_by(:language_id => language.id).get_output_name.gsub(\"*\", (ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename[(0...ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename.rindex(\".\"))] or ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename)) + (ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename[(ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename.rindex(\".\")..-1)] or \"\")) + \".gz\"), :size => 1, :content_type => \"application/octet-stream\")).orig_filename), \"wb\")",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "TextResourcesController",
+        "method": "create_translations"
+      },
+      "user_input": "ResourceDownload.new(:chgtime => Time.now, :description => (\"Translation of resource upload #{ResourceUpload.find(params[:resource_upload_id].to_i).id} to #{language.name}\"), :filename => ((TextResource.find(params[:id].to_i).resource_languages.find_by(:language_id => language.id).get_output_name.gsub(\"*\", (ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename[(0...ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename.rindex(\".\"))] or ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename)) + (ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename[(ResourceUpload.find(params[:resource_upload_id].to_i).orig_filename.rindex(\".\")..-1)] or \"\")) + \".gz\"), :size => 1, :content_type => \"application/octet-stream\")",
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Command Injection",
+      "warning_code": 14,
+      "fingerprint": "dc7eeab5bca9bfee9e7459e03628e90c82243657b6cccf110bac8b0cdb878ef2",
+      "message": "Possible command injection",
+      "file": "app/models/website_quote.rb",
+      "line": 16,
+      "link": "http://brakemanscanner.org/docs/warning_types/command_injection/",
+      "code": "`curl #{self.url} | html2text | wc -w`",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "WebsiteQuote",
+        "method": "get_words"
+      },
+      "user_input": "self.url",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "dddcfdbb4598e6ecb5a1529a595bd40ee4ac0e59419bf9c6a3bc17cd0f8c985e",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/web_dialogs_controller.rb",
+      "line": 235,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "send_file(WebAttachment.find(params[:attachment_id]).full_filename)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "WebDialogsController",
+        "method": "attachment"
+      },
+      "user_input": "WebAttachment.find(params[:attachment_id]).full_filename",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "e5f89f60a371e190e6997c519ec9d953ad435f3607f9be010080414316200ccd",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/concerns/versions_methods.rb",
+      "line": 8,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "FileUtils.mkdir_p(File.dirname(::Version.create!(:chgtime => Time.now, :description => \"Created by version completer\", :filename => existing_version.filename, :by_user_id => user.id, :size => 1, :content_type => existing_version.content_type).full_filename))",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "VersionsMethods",
+        "method": "auto_complete_version"
+      },
+      "user_input": "::Version.create!(:chgtime => Time.now, :description => \"Created by version completer\", :filename => existing_version.filename, :by_user_id => user.id, :size => 1, :content_type => existing_version.content_type)",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "e817a49f40a0c28902c6d3cf8c505f77b337503516f7c7a0b99d4c921d231c1b",
+      "message": "Unsafe parameter value in link_to href",
+      "file": "app/views/issues/new.html.erb",
+      "line": 20,
+      "link": "http://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(\"Cancel\", params[:back])",
+      "render_path": [{"type":"controller","class":"IssuesController","method":"create","line":146,"file":"app/controllers/issues_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "issues/new"
+      },
+      "user_input": "params[:back]",
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "f376ad6409e097d5dd19809de7c11464c2eb72fe90caed46de82d9eaaeca941b",
+      "message": "Unescaped model attribute",
+      "file": "app/views/text_resources/show.html.erb",
+      "line": 47,
+      "link": "http://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "project_progress(TextResource.find(params[:id].to_i))",
+      "render_path": [{"type":"controller","class":"TextResourcesController","method":"show","line":218,"file":"app/controllers/text_resources_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "text_resources/show"
+      },
+      "user_input": "TextResource.find(params[:id].to_i)",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "Remote Code Execution",
+      "warning_code": 24,
+      "fingerprint": "f5d32e1b9f6ec5c668542ab1bf742e1a7f65eeae65c81d96f2ea8224d6bff815",
+      "message": "Unsafe reflection method constantize called with parameter value",
+      "file": "app/controllers/revisions_controller.rb",
+      "line": 397,
+      "link": "http://brakemanscanner.org/docs/warning_types/remote_code_execution/",
+      "code": "JSON.parse(params[:project])[\"class\"].constantize",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "RevisionsController",
+        "method": "reuse_translators"
+      },
+      "user_input": "params[:project]",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross Site Scripting",
+      "warning_code": 4,
+      "fingerprint": "f98e86617881ee98ded7e89d60c07a620eed75b8af22ea147596a47e4a030eca",
+      "message": "Unsafe parameter value in link_to href",
+      "file": "app/views/web_supports/confirm_delete_dialogs.html.erb",
+      "line": 6,
+      "link": "http://brakemanscanner.org/docs/warning_types/link_to_href",
+      "code": "link_to(\"No, don't delete those tickets\", params[:return_to])",
+      "render_path": [{"type":"controller","class":"WebSupportsController","method":"confirm_delete_dialogs","line":440,"file":"app/controllers/web_supports_controller.rb"}],
+      "location": {
+        "type": "template",
+        "template": "web_supports/confirm_delete_dialogs"
+      },
+      "user_input": "params[:return_to]",
+      "confidence": "High",
+      "note": ""
+    },
+    {
+      "warning_type": "Cross Site Scripting",
+      "warning_code": 2,
+      "fingerprint": "fa3a50354565ec5eab67738f741745d7625e8fd00b19b6f89da5271997d457c2",
+      "message": "Unescaped model attribute",
+      "file": "app/views/text_resources/_translation_languages.html.erb",
+      "line": 3,
+      "link": "http://brakemanscanner.org/docs/warning_types/cross_site_scripting",
+      "code": "languages_table({ lang.name => ([lang.id, false, lang.major]) }, TextResource.find(params[:id].to_i).language)",
+      "render_path": [{"type":"controller","class":"TextResourcesController","method":"edit_languages","line":298,"file":"app/controllers/text_resources_controller.rb"},{"type":"template","name":"text_resources/edit_languages","line":1,"file":"app/views/text_resources/edit_languages.js.erb"}],
+      "location": {
+        "type": "template",
+        "template": "text_resources/_translation_languages"
+      },
+      "user_input": "TextResource.find(params[:id].to_i).language",
+      "confidence": "Weak",
+      "note": ""
+    },
+    {
+      "warning_type": "File Access",
+      "warning_code": 16,
+      "fingerprint": "fcd8ded30e8f7a83b30fd862e00a90e616c25de7e7df1a8ce3144dd61374e5d1",
+      "message": "Model attribute used in file name",
+      "file": "app/controllers/text_resources_controller.rb",
+      "line": 680,
+      "link": "http://brakemanscanner.org/docs/warning_types/file_access/",
+      "code": "File.open(ResourceUpload.find(params[:resource_upload_id].to_i).all_translations_fname)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "TextResourcesController",
+        "method": "create_translations"
+      },
+      "user_input": "ResourceUpload.find(params[:resource_upload_id].to_i).all_translations_fname",
+      "confidence": "Medium",
+      "note": ""
+    },
+    {
+      "warning_type": "Default Routes",
+      "warning_code": 11,
+      "fingerprint": "ff2b76e22c9fd2bc3930f9a935124b9ed9f6ea710bbb5bc7c51505d70ca0f2d5",
+      "message": "All public methods in controllers are available as actions in routes.rb",
+      "file": "config/routes.rb",
+      "line": 698,
+      "link": "http://brakemanscanner.org/docs/warning_types/default_routes/",
+      "code": null,
+      "render_path": null,
+      "location": null,
+      "user_input": null,
+      "confidence": "High",
+      "note": ""
+    }
+  ],
+  "updated": "2017-01-11 16:12:11 +0200",
+  "brakeman_version": "3.4.1"
+}

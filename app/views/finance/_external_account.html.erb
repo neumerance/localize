@@ -1,0 +1,5 @@
+<tr>
+	<td><%= link_to(h(external_account.identifier), {:controller=>:finance, :action=>:external_account, :id=>external_account.id}) %></td>
+	<td><%= ExternalAccount::NAME[external_account.external_account_type] %></td>
+	<td><%= external_account.status %></td>
+</tr>

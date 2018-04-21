@@ -1,0 +1,5 @@
+<% if @arbitrations.length > 0 -%>
+	<div class="pager_control"><%= link_to('Show details', {:action=>'index'}) %></div>
+	<%= render(:partial => "list_arbitrations") %>
+<% end -%>
+  

@@ -1,0 +1,324 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+Java: 
+  line_break: "0"
+  separator_char: "="
+  comment_char: 
+  name: Java
+  kind: "0"
+  created_at: 2009-03-31 11:07:03
+  comment_kind: 
+  encoding: "0"
+  text_delimiter: 
+  label_delimiter: 
+  description: Java Unicode resource
+  updated_at: 2009-03-31 11:07:03
+  multiline_char: \
+  id: 1
+  end_of_line: 
+
+Delphi:
+  line_break: "0"
+  separator_char: "="
+  comment_char: "["
+  name: Delphi
+  kind: "0"
+  created_at: 2009-03-31 11:07:03
+  comment_kind: 
+  encoding: "2"
+  text_delimiter: "\""
+  label_delimiter: 
+  description: Delphi Unicode resource
+  updated_at: 2009-03-31 11:07:03
+  multiline_char: 
+  id: 2
+  end_of_line: 
+
+iPhone16LE: 
+  line_break: "0"
+  separator_char: "="
+  comment_char: "["
+  name: iPhone
+  kind: "0"
+  created_at: 2009-03-31 11:07:03
+  comment_kind: "1"
+  encoding: "2"
+  text_delimiter: "\""
+  label_delimiter: "\""
+  description: Apple iPhone Unicode UTF-16LE
+  updated_at: 2010-03-13 03:20:23
+  multiline_char: 
+  id: 3
+  end_of_line: ;
+
+PO: 
+  line_break: "0"
+  separator_char: "="
+  comment_char: 
+  name: PO
+  kind: "0"
+  created_at: 2009-04-14 17:20:33
+  comment_kind: 
+  encoding: "1"
+  text_delimiter: 
+  label_delimiter: 
+  description: .po files, normally edited with poedit
+  updated_at: 2009-04-14 17:20:33
+  multiline_char: \
+  id: 4
+  end_of_line: 
+
+NoQuotes: 
+  line_break: "0"
+  separator_char: "="
+  comment_char: "["
+  name: NoQuotes
+  kind: "0"
+  created_at: 2009-04-20 11:14:13
+  comment_kind: 
+  encoding: "1"
+  text_delimiter: 
+  label_delimiter: 
+  description: Label value pair with no quotes
+  updated_at: 2009-04-20 11:14:13
+  multiline_char: 
+  id: 5
+  end_of_line: 
+
+PHPDefines: 
+  line_break: "0"
+  separator_char: ","
+  comment_char: 
+  name: PHP Defines (single quote)
+  kind: "0"
+  created_at: 2009-05-06 12:51:39
+  comment_kind: "0"
+  encoding: "1"
+  text_delimiter: "'"
+  label_delimiter: 
+  description: List of PHP Define statements with single quotes
+  updated_at: 2010-06-28 13:10:41
+  multiline_char: 
+  id: 6
+  end_of_line: );
+
+PHPDic: 
+  line_break: "0"
+  separator_char: =>
+  comment_char: 
+  name: Single quoted PHP dictionary
+  kind: "0"
+  created_at: 2009-05-12 14:40:26
+  comment_kind: 
+  encoding: "1"
+  text_delimiter: "'"
+  label_delimiter: "'"
+  description: PHP dictionary
+  updated_at: 2009-05-12 14:40:26
+  multiline_char: 
+  id: 7
+  end_of_line: ","
+
+Quotes: 
+  line_break: "0"
+  separator_char: "="
+  comment_char: "["
+  name: WithQuotes
+  kind: "0"
+  created_at: 2009-05-27 16:50:47
+  comment_kind: 
+  encoding: "1"
+  text_delimiter: "\""
+  label_delimiter: 
+  description: Label value pair with quotes around text
+  updated_at: 2009-05-27 16:50:47
+  multiline_char: 
+  id: 8
+  end_of_line: 
+
+plist: 
+  line_break: "0"
+  separator_char: string
+  comment_char: 
+  name: plist
+  kind: "1"
+  created_at: 2009-09-13 23:57:15
+  comment_kind: "0"
+  encoding: "1"
+  text_delimiter: key
+  label_delimiter: plist/array/dict|plist/dict
+  description: plist
+  updated_at: 2010-06-29 12:58:41
+  multiline_char: array
+  id: 9
+  end_of_line: dict
+
+IPP: 
+  line_break: "0"
+  separator_char: textobject
+  comment_char: 
+  name: IPP
+  kind: "2"
+  created_at: 2010-02-11 15:52:57
+  comment_kind: "0"
+  encoding: "1"
+  text_delimiter: id
+  label_delimiter: ippimage
+  description: IPP XML resource
+  updated_at: 2010-02-11 15:52:57
+  multiline_char: 
+  id: 10
+  end_of_line: 
+
+Android: 
+  line_break: "0"
+  separator_char: string
+  comment_char: 
+  name: Android
+  kind: "4"
+  created_at: 2010-03-05 02:56:27
+  comment_kind: "0"
+  encoding: "1"
+  text_delimiter: name
+  label_delimiter: resources
+  description: Android XML resource
+  updated_at: 2010-09-29 11:16:10
+  multiline_char: 
+  id: 11
+  end_of_line: 
+
+iPhone: 
+  line_break: "0"
+  separator_char: "="
+  comment_char: "["
+  name: iPhone UTF-8
+  kind: "0"
+  created_at: 2010-03-13 03:21:51
+  comment_kind: "1"
+  encoding: "1"
+  text_delimiter: "\""
+  label_delimiter: "\""
+  description: Apple iPhone Unicode UTF-8
+  updated_at: 2010-03-13 03:21:51
+  multiline_char: 
+  id: 12
+  end_of_line: ;
+
+PHPDefDoubleQuotes: 
+  line_break: "0"
+  separator_char: ","
+  comment_char: 
+  name: PHP Defines (double quote)
+  kind: "0"
+  created_at: 2010-06-28 13:10:46
+  comment_kind: "0"
+  encoding: "1"
+  text_delimiter: "\""
+  label_delimiter: 
+  description: List of PHP Define statements with double quotes
+  updated_at: 2010-06-28 13:10:46
+  multiline_char: 
+  id: 13
+  end_of_line: );
+
+Django: 
+  line_break: "0"
+  separator_char: "="
+  comment_char: 
+  name: Django
+  kind: "0"
+  created_at: 2011-05-08 05:51:48
+  comment_kind: "0"
+  encoding: "1"
+  text_delimiter: 
+  label_delimiter: 
+  description: Django .po file
+  updated_at: 2011-05-08 05:51:48
+  multiline_char: 
+  id: 14
+  end_of_line: 
+
+POalternative: 
+  line_break: "0"
+  separator_char: "="
+  comment_char: 
+  name: PO alternative
+  kind: "0"
+  created_at: 2012-09-11 21:44:30
+  comment_kind: 
+  encoding: "1"
+  text_delimiter: 
+  label_delimiter: 
+  description: alternative .po files. Please see details for more information
+  updated_at: 2012-09-11 21:44:30
+  multiline_char: \
+  id: 15
+  end_of_line: 
+
+
+Xliff: 
+  line_break: "0"
+  separator_char: "#"
+  comment_char: 
+  name: Xliff
+  kind: "0"
+  created_at: 2012-09-11 21:44:30
+  comment_kind: 
+  encoding: "1"
+  text_delimiter: 
+  label_delimiter: 
+  description: Xliff Resource File
+  updated_at: 2012-09-11 21:44:30
+  multiline_char: 
+  id: 19
+  end_of_line: 
+
+XmlItemKeyFormat:
+  line_break: "0"
+  separator_char: "key"
+  comment_char: 
+  name: XML item@key format
+  kind: "5"
+  created_at: 2012-09-11 21:44:30
+  comment_kind: 
+  encoding: "1"
+  text_delimiter: 
+  label_delimiter: "//item" 
+  description: XML with ITEM elements and text to translate on "KEY" attribute
+  updated_at: 2012-09-11 21:44:30
+  multiline_char: 
+  id: 20
+  end_of_line: 
+
+AppleStringsdict:
+  line_break: "0"
+  separator_char: "#"
+  comment_char: 
+  name: Apple Stringsdict
+  kind: "0"
+  created_at: 2012-09-11 21:44:30
+  comment_kind: 
+  encoding: "1"
+  text_delimiter: 
+  label_delimiter: 
+  description: XML with ITEM elements and text to translate on "KEY" attribute
+  updated_at: 2012-09-11 21:44:30
+  multiline_char: 
+  id: 21
+  end_of_line: 
+
+NevronDictionary:
+  line_break: "0"
+  separator_char: "#"
+  comment_char: 
+  name: Nevron Dictionary
+  kind: "0"
+  created_at: 2012-09-11 21:44:30
+  comment_kind: 
+  encoding: "1"
+  text_delimiter: 
+  label_delimiter:
+  description: Nevron Dictionary File Format
+  updated_at: 2012-09-11 21:44:30
+  multiline_char: 
+  id: 22
+  end_of_line: 

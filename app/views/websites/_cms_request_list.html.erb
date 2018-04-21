@@ -1,0 +1,16 @@
+<div class="pager_control">
+	Showing page <%= form_tag({:action=>action}, {:method=>'GET'}) %>
+	<% %W(search search_for search_term commit).each do |param| %>
+		<%= hidden_field_tag param, params[param] %>
+		<% end %>
+		<%= select_tag( :page, options_for_select(list_of_pages,cms_requests.number), {:onchange=>"submit()"}) %>
+	<%= link_to("Prev", params.merge({:page=>cms_requests.prev.number})) if cms_requests.prev? %>
+	<%= link_to("Next", params.merge({:page=>cms_requests.next.number})) if cms_requests.next? %>	
+	</form>
+</div>
+	
+<%= infotab_header(['Job ID','Created','Website','Document','Word Count','Status','Original','Translator', 'Translations']) %>
+<% cms_requests.each do |cms_request| %>
+  <%= render(:partial=>'websites/cms_request', locals: {cms_request: cms_request}) %>
+<% end %>
+</table>

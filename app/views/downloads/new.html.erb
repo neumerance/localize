@@ -1,0 +1,17 @@
+<%= my_error_messages_for :download %>
+
+<%= form_for(@download, :html=>{:multipart=>true} ) do |f| %>
+	<table border="0" cellpadding="5">
+		<tr><td valign="top">Generic name</td><td><%= f.text_field :generic_name, size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD %></td></tr>
+		<tr><td valign="top">Major version</td><td><%= f.text_field :major_version, maxlength: 2 %></td></tr>
+		<tr><td valign="top">Sub version</td><td><%= f.text_field :sub_version, maxlength: 2 %></td></tr>
+		<tr><td valign="top">Notes</td><td><%= f.text_area :notes, :cols=>40, :rows=>8, maxlength: COMMON_FIELD %></td></tr>
+		<tr><td valign="top">Who is it for?</td><td><%= f.select(:usertype, ['--- Select ---', 'Client', 'Translator']) %></td></tr>
+		<tr><td valign="top">OS code</td><td><%= f.text_field :os_code, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td></tr>
+		<tr><td valign="top">Program to upload:</td><td><%= f.file_field :uploaded_data, onchange: "validate_file_size('download[uploaded_data]', '#{DOWNLOAD_MAX_SIZE}')" %></td></tr>
+		<tr><td valign="top"></td><td><%= submit_tag 'Upload file', data: { disable_with: 'Please wait' } %></td></tr>
+	</table>
+
+<% end %>
+
+<p><%= link_to('Cancel', {:action=>:index}) %></p>

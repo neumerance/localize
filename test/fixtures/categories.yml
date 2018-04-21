@@ -1,0 +1,10 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+medical:
+  id: 1
+  name: medical
+  description: all about medical
+  
+financial:
+  id: 2
+  name: financial
+  description: all about financial

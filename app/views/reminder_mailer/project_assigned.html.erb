@@ -1,0 +1,13 @@
+Dear <%= @user.full_real_name %>,
+
+<%= @bid.chat.revision.project.client.full_real_name %> has selected you to translate project <%= @bid.chat.revision.project.name %> to <%= @bid.revision_language.language.name %>.
+If you haven't done so already, you need to download Translation Assistant. Once you log in (with the same email and password as you use for the website), this project will appear for you.
+
+We encourage you to make frequent uploads (from within Translation Assistant). This will let the client see your progress and will also protect you from any data loss.
+
+Click on the following link to go to the chat area:
+<%= url_for({:escape => false, :only_path => false, :controller=>:chats, :action=>:show, :project_id=>@bid.chat.revision.project_id, :revision_id=>@bid.chat.revision_id, :id=>@bid.chat.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+To get help from a support person, log in to your account, go to Support and start a new support ticket.
+
+<%= EMAIL_SIGNATURE %>

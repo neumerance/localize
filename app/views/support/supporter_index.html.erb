@@ -1,0 +1,17 @@
+<script>
+  setTimeout("location.reload(true);", 300 * 100);
+</script>
+
+<% if @new_support_tickets && (@new_support_tickets.length > 0) %>
+	<h2>New support tickets</h2>
+	<%= render(:partial=>'support_tickets', :object=>@new_support_tickets) %>
+	<div class="inter_tab_spacer"></div>
+<% end %>
+	
+<% if @my_pending_tickets && (@my_pending_tickets.length > 0) %>
+	<h2>Your support tickets that require action</h2>
+	<%= render(:partial=>'support_tickets', :object=>@my_pending_tickets) %>
+	<div class="inter_tab_spacer"></div>
+<% end %>
+
+	

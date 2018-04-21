@@ -1,0 +1,12 @@
+<p><%=@user.full_name %> applied to translate <%= @translator_language.class.to_s %> <%= @translator_language.language.name %>.</p>
+
+<p>----</p>
+
+<p><%= @translator_language.description %></p>
+
+<p>----</p>
+
+<p>
+  <% link = url_for({:escape => false, :only_path => false, :controller=>:supporter, :action=>:translator_language, :id=>@translator_language.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+  <%= link_to link, link %>
+</p>

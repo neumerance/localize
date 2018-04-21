@@ -1,0 +1,20 @@
+{
+  "tests":  [
+    {
+      "input": "",
+      "expected_result": ""
+    },
+    {
+      "input": "What?! What do you mean: 'I do not know'; But of course you do!",
+      "expected_result": "What?! What do you mean: 'I do not know'; But of course you do!"
+    },
+    {
+      "input": "This sentence has full of non breaking white spaces.",
+      "expected_result": "This sentence has full of non breaking white spaces."
+    },
+    {
+      "input": "This sentence\nhas full of non\u00A0breaking white spaces.",
+      "expected_result": "This sentence has full of non breaking white spaces."
+    }
+  ]
+}

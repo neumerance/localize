@@ -1,0 +1,33 @@
+<tr>
+	<td>
+		<% if project.Revisions.length > 0 %>
+			<%= link_to("#{h project.name} - #{h(project.revisions[-1].name)} revision", {:controller=>'revisions', :action=>'show', :project_id=>project.id, :id=>project.revisions[-1].id}) %><br />
+		<% end %>
+		<% if project.revisions.length > 1 %>
+			<br />&raquo; <%= link_to("Previous revisions of this project", {:controller=>'projects', :action=>'show', :id=>project.id}) %><br />
+		<% end %>
+		<% if @user.has_supporter_privileges? %>
+			<br />Created by: <%= user_link(project.client) %>
+		<% end %>
+	</td>
+	<td>
+		<ul class="condensedlist">
+			<% if project.revisions.length <= 1 %>
+				<li>Created: <b><%= disp_date(project.creation_time) %></b></li>
+			<% else %>
+				<li>Project created: <b><%= disp_date(project.creation_time) %></b></li>
+				<li>Revision created: <b><%= disp_date(project.revisions[-1].creation_time) %></b></li>
+			<% end %>
+		</ul>
+	</td>
+	<td>
+		<% if project.revisions.length > 0 %>
+			<%= revision_summary(project.revisions[-1]) %>
+		<% end %>
+	</td>
+	<td>
+		<% if project.revisions.length > 0 %>
+			<%= revision_translation_summary(project.revisions[-1]) %>
+		<% end %>
+	</td>
+</tr>

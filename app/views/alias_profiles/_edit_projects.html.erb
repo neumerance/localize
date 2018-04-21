@@ -1,0 +1,57 @@
+<%= form_tag("/alias_profiles/#{alias_profile.id}/update_projects", :remote => true) do |f|%>
+	<%=  hidden_field_tag "user_id", user.id%>
+	<%= radio_button(:alias_profile, :project_access_mode, AliasProfile::ALL_PROJECTS, :onclick => 'toggle_project_list()') %> <b>Permissions for all projects</b>
+	<%= radio_button(:alias_profile, :project_access_mode, AliasProfile::PROJECTS_LIST, :onclick => 'toggle_project_list()') %> <b>Permissions per project</b><br/>
+
+	<br/>
+
+	<div id="all_projects" style="<%= "display:none;" unless alias_profile.project_access_mode == AliasProfile::ALL_PROJECTS%>">
+		<%= check_box :alias_profile, :project_create %> Create Projects
+		<%= check_box :alias_profile, :project_modify %> Modify Projects
+		<%= check_box :alias_profile, :project_view %> View Projects <br/>
+	</div>
+
+	<div id="projects_list" style="<%= "display:none;" unless alias_profile.project_access_mode == AliasProfile::PROJECTS_LIST%>">
+
+		<b>Bidding projects:</b> <br/>
+		<% user.projects.where(kind: 1).each do |project| %>
+			<div style="float:left; width: 250px">
+				<%= check_box_tag "projects[]", project.id, alias_profile.project_list.include?(project.id.to_s) %> <%=project.name%>
+			</div>
+		<% end %>
+		<div style="clear:both;"></div><br/><br/>
+
+		<b>Websites projects:</b> <br/>
+		<% user.websites.each do |website| %>
+			<div style="float:left; width: 250px">
+				<%= check_box_tag "websites[]", website.id, alias_profile.website_list.include?(website.id.to_s) %> <%=website.name%>
+			</div>
+		<% end %>
+		<div style="clear:both;"></div><br/><br/>
+
+		<b>Instant message projects:</b> <br/>
+		<% user.web_messages.find_all{|x| x.name}.each do |web_message| %>
+			<div style="float:left; width: 250px">
+				<%= check_box_tag "web_messages[]", web_message.id, alias_profile.web_message_list.include?(web_message.id.to_s) %> <%=web_message.name%>
+			</div>
+		<% end %>
+		<div style="clear:both;"></div><br/><br/>
+
+		<b>Software projects:</b> <br/>
+		<% user.text_resources.each do |text_resource| %>
+			<div style="float:left; width: 250px">
+				<%= check_box_tag "text_resources[]", text_resource.id, alias_profile.text_resource_list.include?(text_resource.id.to_s) %> <%=text_resource.name%>
+			</div>
+		<% end %>
+		<div style="clear:both;"></div><br/><br/>
+	</div>
+
+	<br/>
+
+	<div style="text-align: center;">
+		<%= submit_tag 'Save', data: { disable_with: 'Save' } %>
+	</div>
+<% end %>
+
+<script>
+</script>

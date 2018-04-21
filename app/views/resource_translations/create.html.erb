@@ -1,0 +1,26 @@
+<br /><div class="infobox"><h4>Statistics</h4>
+<table>
+	<tr><td><%= _("Strings:") %></td><td><%= @resource_strings.length %></td></tr>
+	<tr><td><%= _("Translation language:") %></td><td><b><%= @language.name %></b></td></tr>
+	<tr><td><%= _("Uploaded file:") %></td><td><b><%= @fname %></b></td></tr>
+</table>
+</div>
+
+<div class="red_message" style="margin: 1em;">
+	<p><%= _("The following texts were extracted from the resource file that you uploaded. Please review it carefully and check that the translations that will be applied are correct.") %></p>
+	<p><%= "#{_("The <b>cancel</b> and <b>confirmation</b> buttons are located at the <a href='#bottom_of_this_page'>bottom of this page</a>.")}".html_safe %></p>
+</div>
+
+<%= reuse_translations_preview_strings_table(@resource_strings) %>
+
+<br /><hr /><br />
+<a name="bottom_of_this_page"></a>
+<%= button_to(('&laquo;' + _('Cancel')).html_safe, {:action=>:destroy, :id=>@resource_translation.id}, :method => :delete) %> &nbsp; | &nbsp;
+<%= form_tag({:action=>:scan_resource, :id=>@resource_translation.id}) do %>
+	<%= hidden_field_tag(:resource_format_id, @resource_format.id) %>
+	<%= hidden_field_tag(:already_translated_strings, @already_translated_strings) %>
+	<%= hidden_field_tag(:language_id, @language.id) %>
+	<%= hidden_field_tag(:context, @context) %>
+	<%= hidden_field_tag(:updating_text, true) %>
+	<%= submit_tag((_('Apply this translation to the project &raquo;')).html_safe, data: { disable_with: (_('Apply this translation to the project &raquo;')).html_safe }) %>
+<% end %>

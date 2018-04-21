@@ -1,0 +1,21 @@
+<% if @resource_chats.length > 0 %>
+  <a name="resource_chats"></a>
+  <%= infotab_top('Software projects you applied to', "You have already applied to these software localization projects"  + (@have_more_resource_chats ? ' (showing first %d) '%PER_PAGE + link_to('Show all &raquo;'.html_safe, {:action=>:resource_chats}) : '')) %>
+  <%= infotab_header(['Project', 'Language', 'Application Status', 'Words to translate', 'Actions']) %>
+  <%= render(:partial=>'resource_chat', :collection=>@resource_chats) %>
+  </table>
+  <div class="pager_control" style="position: relative; height: 15px;">
+    <%= paginate @resource_chats %>
+    <%= form_tag({ action: :resource_application }) do %>
+      <%= hidden_field_tag :page, params[:page] %>
+      <%= hidden_field_tag :per_page, params[:per_page] %>
+      <label style="position: absolute; top: 2px; right: 10px">
+        Results per page: <%= select_tag 'per_page', options_for_select(%w(10 20 40 60 80 100), params[:per_page]), onchange: 'submit()'  %>
+      </label>
+      <div style="clear: both"></div>
+    <% end %>
+  </div>
+  <div class="inter_tab_spacer"></div>
+<% else %>
+  <p>No software localization projects to show</p>
+<% end %>

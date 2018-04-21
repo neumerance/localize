@@ -1,0 +1,6 @@
+<%= infotab_header(['ID', 'Title', 'Body']) %>
+
+  <% @advertisements.each do |advertisement| %>
+    <%= render( :partial=>'advertisement', locals: { advertisement: advertisement } ) %>
+  <% end %>
+</table>

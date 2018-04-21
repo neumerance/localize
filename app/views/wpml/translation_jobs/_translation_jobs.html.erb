@@ -1,0 +1,80 @@
+<table id="translation-job-table" width="100%" cellspacing="0" cellpadding="3" class="stats">
+  <tr class="headerrow">
+    <th class="translation-languages">Translation languages</th>
+    <th>Words count</th>
+    <th class="manual-translator-assignment <%= 'hidden' unless @website.any_manual_translator_assignment? %>">Translator
+      assignment status
+    </th>
+    <th class="no-wrap">Second review
+      <span class="help-tooltip">
+        <span class="fa fa-question-circle"></span>
+        <span class="help-message">
+          Get a second translator to fully review every word. Review costs an
+          additional <%= number_to_percentage(REVIEW_PRICE_PERCENTAGE * 100, precision: 0) %>
+          <BR><BR>
+          This setting only affects pending translation jobs. It does not change
+          the review status of translation jobs that were already paid for.
+        </span>
+      </span>
+    </th>
+    <th>Cost per word</th>
+    <th>Cost for your content</th>
+    <th>Estimated completion</th>
+  </tr>
+  <% website.pending_language_pairs.each do |language_pair| %>
+    <tr>
+      <td><%= language_pair.from_language.name %> &raquo; <%= language_pair.to_language.name %></td>
+      <td><%= language_pair.word_count %></td>
+      <td class="manual-translator-assignment <%= 'hidden' unless @website.any_manual_translator_assignment? %>" style="width: 350px">
+        <%= render partial: 'wpml/shared/translator_assignment_and_chat', locals: { language_pair: language_pair, user: @user } %>
+        <%# language_pair is a WebsiteTranslationOffer instance %>
+        <% if language_pair.can_change_translator_assignment_mode? %>
+          <%= form_for(language_pair, url: wpml_website_translation_job_path(@website, language_pair), remote: true) do |f| %>
+            <% if language_pair.automatic_translator_assignment_available? %>
+              <label class="translator-assignment-control">
+                <%= f.radio_button(:automatic_translator_assignment, !language_pair.automatic_translator_assignment, onchange: 'jQuery(this.form).submit();') %>
+                <span><%= language_pair.automatic_translator_assignment ? 'Let me choose translators' : 'Automatically invite best translators' %></span>
+              </label>
+            <% end %>
+          <% end # form_for %>
+        <% end %>
+        <% if language_pair.client_can_pay? %>
+          <td>
+            <%= form_tag(toggle_review_wpml_website_translation_job_path(@website, language_pair), remote: true) do %>
+              <%# The default (initial) review state (enabled or disabled) is
+                          determined by language_pair.managed_work.active. However,
+                          these radio buttons should NOT change the value of that
+                          attribute. The review status selected here should be
+                          persisted *per cms_request*, not by language pair. %>
+              <% review_enabled = language_pair.review_enabled_for_pending_jobs? %>
+              <label class="switch">
+                <%= check_box_tag :review_enabled, 'true', review_enabled, onchange: 'jQuery(this.form).submit()' %>
+                <span class="slider"></span>
+                <span class="switch-on">Yes</span>
+                <span class="switch-off">No</span>
+              </label>
+            <% end # form_tag %>
+          </td>
+          <td><%= rounded_dollars(language_pair.total_price_per_word, 4) %></td>
+          <td><%= rounded_dollars(language_pair.total_price, 2) %></td>
+          <td><%= disp_date(language_pair.estimated_completion_date) %></td>
+        <% else %>
+          <td colspan="4">
+            <% unless language_pair.automatic_translator_assignment_available? %>
+              <% if @website.icl_v2_translation_service? %>
+                This is a rare language pair so we can't automatically assign a
+                translator or give you an exact price.
+              <% else %>
+                You are using an older version of WPML that does not support
+                automatic translator assignment. Please invite translators to
+                get quotes or update to WPML 3.9 to use automatic translator
+                assignment.
+              <% end %>
+            <% end %>
+            You will receive quotes from translators.
+          </td>
+        <% end # if %>
+        </td>
+        </tr>
+  <% end %>
+</table>

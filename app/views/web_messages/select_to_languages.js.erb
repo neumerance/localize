@@ -1,0 +1,7 @@
+<% if @warning %>
+  alert('<%= @warning %>')
+<% elsif @ok %>
+  jQuery("#to_languages").html('<%= escape_javascript(render :partial => "to_languages", :locals => {:show_prices => false, :show_proofreading => false}) %>')
+<% else %>
+  location.href = '<%= url_for(:action=>:index) %>'
+<% end %>

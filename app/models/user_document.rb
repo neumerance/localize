@@ -1,0 +1,3 @@
+class UserDocument < ZippedFile
+
+end

@@ -1,0 +1,14 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p><%= @message %></p>
+
+<p>
+  <% link = url_for({:escape => false, :only_path => false, :controller=>:client, :action=>:index, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+  To log in to ICanLocalize, go to <%= link_to link, link %>
+  You will need to log in with your email (<%= @user.email %>) and the password we created for you: <%= @user.password %>
+</p>
+
+<p>For priority customer support, log in to your account, select the 'Get Help' tab and create a new support ticket.</p>
+
+
+<%= EMAIL_SIGNATURE %>

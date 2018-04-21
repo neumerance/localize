@@ -1,0 +1,31 @@
+<br />
+<div class="infobox"><h4>Project overview</h4>
+<table cellspacing="5">
+	<tr><td valign="top">Project:</td><td><%= link_to(@website.name, @website.url, :target=>'_blank') %></td></tr>
+	<tr><td valign="top">Client:</td><td><%= user_link(@website.client) %></td></tr>
+	<tr><td valign="top">Description:</td><td><%= pre_format(@website.description) %></td></tr>
+	<tr><td>Languages:</td><td><b>From <%= @website_translation_offer.from_language.name %> to <%= @website_translation_offer.to_language.name %></b></td></tr>
+</table>
+</div>
+
+<% if @website_translation_offer.managed_work && (@website_translation_offer.managed_work.active == MANAGED_WORK_ACTIVE) && (@user[:type] == 'Translator') %>
+	<% if !@website_translation_offer.managed_work.translator && @website_translation_offer.managed_work.translator_can_apply_to_review(@user) %>
+		<p>This project needs a reviewer. You are qualified and can become the reviewer right now.</p>
+		<p><%= link_to("View the project's statistics", {:action=>:report}) %></p>
+		<%= button_to('Become the reviewer for this job',{:controller=>:managed_works, :action=>:be_reviewer, :id=>@website_translation_offer.managed_work.id}, 'data-confirm'=>'Are you sure? You will need to review the translation as soon as it completes. Remember that if you become the reviewer, you cannot translate this project.') %>
+	<% elsif @website_translation_offer.managed_work.translator == @user %>
+		<p>You are the reviewer for this project.</p>
+		<%= button_to('Resign from this job',{:controller=>:managed_works, :action=>:resign_reviewer, :id=>@website_translation_offer.managed_work.id}, 'data-confirm'=>'Are you sure? You will stop being the reviewer for this project.') %>
+	<% end %>
+<% end %>
+
+<% if @website_translation_offer.accepted_website_translation_contracts.length > 0 %>
+	<h3>Translators for this project</h3>
+	<ul>
+	<% @website_translation_offer.accepted_website_translation_contracts.each do |contract| %>
+		<li>
+      <span><%= user_link(contract.translator) %> &raquo; <%= link_to('Chat between client and translator',{:controller=>:website_translation_contracts, :action=>:show, :website_id=>@website.id, :website_translation_offer_id=>@website_translation_offer.id, :id=>contract.id}) %></span>
+    </li>
+	<% end %>
+	</ul>
+<% end %>

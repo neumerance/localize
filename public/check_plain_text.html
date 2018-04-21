@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+  <head>
+    <title>Instant Quote for Text Translation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+     <script type="text/javascript" src="/assets/scripts/index.js"></script>
+    <script type="text/javascript" src="/assets/scripts/check_by_upload.js"></script>
+    <link rel="STYLESHEET" type="text/css" href="/assets/custom/home.css"/>
+    <script type="text/javascript" src="/assets/plugins/popup.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/plugins/popup.css" />
+    <link rel="shortcut icon" href="/assets/favicon.png" type="image/png" />
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+  </head>
+  <body onload="{ getElementsWithTitles(); }">
+  <div style="clear:both;"><a href="./"><img src="/assets/web_logo_large.png" width="317" height="91" alt="ICanLocalize" class="imageBorder" /></a></div>
+  <div id="topbar"><a href="login/">Login</a>  -  <a href="about.html">About us</a>  -  <a href="contacts/new">Contact</a></div>
+  <ul id="topnavigation"><li class="nonselectedtab"><a href="./">Home</a></li><li class="nonselectedtab"><a href="website-translation.html">Website Translation</a></li><li class="nonselectedtab"><a href="customer-support-interpretation.html">Customer Support Interpretation</a></li><li class="selectedtab_active lasttab"><a href="instant-text-translation.html">Instant Text Translation</a></li></ul>
+	<div id="maincontents">
+            <h1>Instant Quote for Text Translation</h1>
+            <form action="/cgi-bin/check_text.py" enctype="multipart/form-data" method="post">
+
+<p>Enter the text you want to translate and click on Submit. Our system will count the words and produce a quote.</p>
+<p><textarea id="text" rows="12" name="text" cols="80"></textarea></p>
+<p><input id="commit" name="commit" type="submit" value="Submit" /></p>
+<div id="workingmsg" style="visibility:hidden;"><b>Please wait, scanning...</b></div>
+            </form>	
+	</div>
+    <div id="bottom"><center><br /> © 2008. OnTheGoSystems Inc. | All Rights Reserved</center></div>
+  <script type="text/javascript" language="JavaScript">
+		document.getElementById("commit").disabled = false;
+  </script>
+  </body>
+
+
+</html>

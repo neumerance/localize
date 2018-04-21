@@ -1,0 +1,36 @@
+Tried. It didn't work. I got the following message: "Could not delete
+project on the server. Revision cannot be deleted now."
+
+Also, how do I delete projects from the server web site that don't
+appear in TA Project Manager?
+
+Thanks!
+
+Leonard
+
+-----Original Message-----
+From: ICanLocalize Support [mailto:notify@icanlocalize.com] 
+Sent: Thursday, January 14, 2010 6:50 AM
+To: Leonard C. Porrello
+Subject: [ICanLocalize] Re: (STK:1710) How do I delete this project?
+
+Dear Leonard Porrello,
+
+A support person replied to your ticket.
+
+--------------------
+I added a 'delete' button to projects. It appears for projects that are
+hidden and with no translator communication.
+
+Can you try deleting these projects?
+
+Amir
+--------------------
+
+To reply, click on the following link to this ticket:
+https://www.icanlocalize.com/support/show/1710
+
+Reference:854b8be876618afd8f2cb1d4edbb332d
+
+- The folks at ICanLocalize
+101 Convention Center Dr., Las Vegas, Nevada, 89109, USA

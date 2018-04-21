@@ -1,0 +1,8 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>The arbitration over your project has completed. The project terminated and a sum of <%= @amount %> USD was transfered as final payment.</p>
+
+<% url = url_for({:escape => false, :only_path => false, :controller=>:arbitrations, :action=>:show, :id=>@arbitration.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+<p>You can view the history of this arbitration process by clicking on the following link: <%= link_to url, url %></p>
+
+<p>Since the arbitration is now closed, further comments cannot be made in it. If you need to contact a support person, please log in to your account and create a new support ticket.</p>

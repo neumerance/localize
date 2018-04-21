@@ -1,0 +1,6 @@
+<tr>
+	<td><%= FeedbacksController::RATING_TEXT[feedback.rating] %></td>
+	<td><%= !feedback.txt.blank? ? link_to(pre_format(feedback.txt), {:action=>:show, :id=>feedback.id}) : '' %></td>
+	<td><%= pre_format([feedback.name,feedback.email].join(', ')) %></td>
+	<td><%= FeedbacksController::FEEDBACK_STATUS_TEXT[feedback.status] %></td>
+</tr>

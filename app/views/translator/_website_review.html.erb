@@ -1,0 +1,4 @@
+<tr>
+	<td><%= link_to(strip_tags(_('%s &raquo; %s')%[website_review.website.name, website_review.language_pair]).html_safe,
+	{:controller=>:website_translation_offers, :action=>:review, :website_id=>website_review.website_id, :id=>website_review.id}) %></td>
+</tr>

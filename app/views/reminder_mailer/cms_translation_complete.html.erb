@@ -1,0 +1,24 @@
+<p><%= _('Dear %s')%@user.full_real_name %>,</p>
+
+<p><%= _("A new document is translated in your project '%s'.")%@cms_request.website.name %></p>
+
+<p><%= _('Document title: %s')%@cms_request.title %></p>
+<p><%= _('Translated from %s to %s.')%[@cms_request.language.name,(@cms_request.cms_target_languages.collect { |ctl| ctl.language.name }).join(',')] %></p>
+
+<p><%= _("To review this translation, go to your CMS. If you have no feedback and don't need any changes, no further action is required.") %></p>
+
+<p>
+  <% if !@cms_request.permlink.blank?  -%>
+      <%= _('Original document: %s')%@cms_request.permlink %>
+      <%= (@cms_request.cms_target_languages.where('cms_target_languages.permlink IS NOT NULL').collect { |ctl| _("%s translation: %s")%[ctl.language.name, ctl.permlink]}).join("\n") -%>
+  <% end -%>
+</p>
+
+<p>
+  <% if @cms_request.revision && @cms_request.revision.project -%>
+      <% link = url_for({:escape=>false, :only_path=>false, :controller=>:revisions, :action=>:show, :project_id=>@cms_request.revision.project_id, :id=>@cms_request.revision.id, :anchor=>'languages', :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+      <%= _('To communicate with the translator regarding this work, follow this link:') %> <%= link_to link, link %>
+  <% end -%>
+</p>
+
+<%= EMAIL_SIGNATURE %>

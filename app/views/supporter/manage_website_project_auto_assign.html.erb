@@ -1,0 +1,25 @@
+<%
+  table_headers = [_('ID'),
+                   _('Website'),
+                   _('Language Pair'),
+  ]
+%>
+<%= infotab_header(table_headers, {}, 100, 'id="pair_languages"') %>
+<% if @translation_offers.present? %>
+    <% @translation_offers.each do |trans_offer| %>
+        <tr>
+          <td><%= trans_offer.id %></td>
+          <td><%= link_to trans_offer.website_name, {controller: '/wpml/websites', action: :show, id: trans_offer.website_id}, target: '_blank' %></td>
+          <td>
+            <% link = url_for action: :assignable_translators_to_website_translation_offers, id: trans_offer.id %>
+            <%= link_to "#{trans_offer.source_language_name} &raquo; #{trans_offer.target_language_name}".html_safe, link, remote: true %>
+          </td>
+        </tr>
+    <% end %>
+<% else %>
+    <tr><td colspan="4">No translation project yet.</td></tr>
+<% end %>
+</table>
+
+
+<%= render partial: 'website_project_auto_assign_modal', locals: { title: 'Assign Translators' } %>

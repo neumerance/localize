@@ -1,0 +1,39 @@
+<%= infotab_top('Packages', "") %>
+<%= infotab_header(["Select", "Package", "Price per language", "Comments"]) %>
+<script>
+  jQuery(document).ready(function() {
+    jQuery("input[type='radio']").each(function(i,elm){ elm.checked = false;})
+  });
+</script>
+<% KeywordPackage.all.each do |package| %>
+  <tr>
+    <% if package.reuse_package? %>
+      <td><%= radio_button_tag 'keyword_package_id', package.id, {}, :disabled => @max_unused_keywords.to_i == 0, :onclick => "displayKeywordFields(#{@max_unused_keywords});" %></td>
+      <td>
+        Unused paid keywords
+        <div class="help-wrapper"> 
+          <span class="help">
+            <%= image_tag 'qm.png' %>
+            <span class="help-popup">
+              Select this option if you already purchased a package and did not use all the keywords of your selected package.
+              <% if @project_languags_with_remaining_words.any? %>
+                <br/><br/>You have the following remaining keywords for this project:
+                <ul>
+                <% @project_languags_with_remaining_words.each do |proj_lang| %>
+                  <%= "<li>#{proj_lang.language.name}: #{proj_lang.remaining_keywords} keywords</li>" %>
+                <% end %>
+                </ul>
+              <% end %>
+            </span>
+          </span>
+        </div>
+      </td>
+    <% else %>
+      <td><%= radio_button_tag 'keyword_package_id', package.id, {}, :onclick => "displayKeywordFields(#{package.keywords_number});" %></td>
+      <td><%= "A package for up to #{package.keywords_number} keywords" %></td>
+    <% end %>
+    <td><%= to_dollars(package.price) %></td>
+    <td><%= package.comments %></td>
+  </tr>
+<% end %>
+</table>

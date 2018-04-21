@@ -1,0 +1,25 @@
+<% 
+  table_headers = [  _('Job ID'), 
+                      _('Waiting for'), 
+                      _('Message'), 
+                      _('Original<br />language'), 
+                      _('Translation<br />language'), 
+                      _('Word<br />count'), 
+                      _('Status'), 
+                      _('Translation')
+                    ]
+  if @user.has_supporter_privileges?
+    table_headers.insert(1, _('Project Owner')) 
+  end
+ %>
+<%= form_tag batch_delete_web_messages_path, method: :delete do %>
+  <% if @user.has_supporter_privileges? %>
+    <%= submit_tag "Delete selected", class: 'pull-right', data: {confirm: "Are you sure you want to delete selected project(s)?"} %>
+    <br><br>
+  <% end %>
+  <%= infotab_header(table_headers, {}, 100, 'id="resource_web_messages"', nil, {blank_initial_col_header: @user.has_supporter_privileges? }) %>
+  <% web_messages_list.each do |web_msg| %>
+      <%= render(:partial=>'/web_messages/web_message', locals: {web_message: web_msg, with_checkbox: @user.has_supporter_privileges? }) %>
+  <% end %>
+<% end %>
+</table>

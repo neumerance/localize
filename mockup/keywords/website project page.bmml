@@ -1,0 +1,10 @@
+<mockup version="1.0" skin="sketch" measuredW="876" measuredH="560" mockupW="816" mockupH="540">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::Image" x="60" y="20" w="-1" h="-1" measuredW="816" measuredH="540" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/website%2520page.png</src>
+        <text/>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

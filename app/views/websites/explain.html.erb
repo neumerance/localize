@@ -1,0 +1,9 @@
+<p><%= _('Please tell us a bit about your site.') %></p>
+<ul><li><%= _('Volume and deadline') %></li>
+</ul>
+<br />
+
+<%= form_tag(:action=>:create_explanation) do %>
+	<%= text_area_tag(:body, nil, {:rows=>10, :cols=>100, :style=>'width:100%', maxlength: COMMON_NOTE}) %>
+	<%= submit_tag(_('Submit'), data: { disable_with: _('Submit') }) %>
+<% end %>

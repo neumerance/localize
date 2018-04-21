@@ -1,0 +1,198 @@
+<mockup version="1.0" skin="sketch" measuredW="784" measuredH="994" mockupW="752" mockupH="974">
+  <controls>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Title" x="78" y="20" w="-1" h="-1" measuredW="352" measuredH="50" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Localizing%20keywords</text>
+      </controlProperties>
+    </control>
+    <control controlID="12" controlTypeID="com.balsamiq.mockups::SubTitle" x="78" y="108" w="338" h="-1" measuredW="251" measuredH="33" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Keyword%201%3A%20Localization</text>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::SubTitle" x="64" y="424" w="-1" h="-1" measuredW="180" measuredH="33" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Keyword%202%3A%20Play</text>
+      </controlProperties>
+    </control>
+    <control controlID="28" controlTypeID="com.balsamiq.mockups::HRule" x="90" y="419" w="346" h="-1" measuredW="100" measuredH="5" zOrder="3" locked="false" isInGroup="-1"/>
+    <control controlID="29" controlTypeID="com.balsamiq.mockups::HRule" x="92" y="719" w="346" h="-1" measuredW="100" measuredH="5" zOrder="4" locked="false" isInGroup="-1"/>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::TextArea" x="68" y="800" w="445" h="146" measuredW="200" measuredH="140" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Tarefa%2C%20trabalho</text>
+      </controlProperties>
+    </control>
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::Label" x="68" y="772" w="-1" h="-1" measuredW="112" measuredH="21" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Further%20comments</text>
+      </controlProperties>
+    </control>
+    <control controlID="32" controlTypeID="com.balsamiq.mockups::SubTitle" x="56" y="739" w="-1" h="-1" measuredW="91" measuredH="33" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>General</text>
+      </controlProperties>
+    </control>
+    <control controlID="33" controlTypeID="com.balsamiq.mockups::Button" x="70" y="967" w="144" h="27" measuredW="108" measuredH="27" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Save%20progress</text>
+      </controlProperties>
+    </control>
+    <control controlID="34" controlTypeID="com.balsamiq.mockups::Button" x="267" y="967" w="148" h="27" measuredW="121" measuredH="27" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Save%20and%20deliver</text>
+      </controlProperties>
+    </control>
+    <control controlID="35" controlTypeID="com.balsamiq.mockups::Paragraph" x="90" y="70" w="431" h="80" measuredW="200" measuredH="80" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>While%20doing%20this%20work%2C%20please%20make%20sure%20to%20check%20the%20%20%5Binstructions%5D</text>
+      </controlProperties>
+    </control>
+    <control controlID="36" controlTypeID="com.balsamiq.mockups::Canvas" x="550" y="55" w="234" h="378" measuredW="100" measuredH="70" zOrder="11" locked="false" isInGroup="-1"/>
+    <control controlID="37" controlTypeID="com.balsamiq.mockups::Paragraph" x="561" y="70" w="212" h="295" measuredW="200" measuredH="80" zOrder="12" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>*Reminder%20of%20steps%20to%20accomplish*%0A%20%0A1.%20Possible%20translations%20%0A%20%20%20%20%20Find%20the%20possible%20translations%20for%20this%20taking%20in%20consideration%20something%0A%20%0A%20%0A%20%0A%20%0A%20%0A%20%0A3.%20Add%20options%0A%20%20%20%20%20Add%20options%20that%20you%20beleive%20people%20can%20type%0A4.%20Keyword%20Planner%0A%20%20%20%20%20Use%20Keyword%20Planner%20to%20search%20for%20keywords%20and%20analyze%0A5.%20Keyword%20evaluation%0A%20%20%20%20%20Compare%20the%20volume%20of%20search%20and%20add%20it%20there</text>
+      </controlProperties>
+    </control>
+    <control controlID="42" controlTypeID="com.balsamiq.mockups::Button" x="40" y="237" w="205" h="27" measuredW="202" measuredH="27" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>add%20another%20possible%20translation</text>
+      </controlProperties>
+    </control>
+    <control controlID="52" controlTypeID="com.balsamiq.mockups::Button" x="40" y="273" w="206" h="27" measuredW="164" measuredH="27" zOrder="14" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>add%20other%20Related%20terms</text>
+      </controlProperties>
+    </control>
+    <control controlID="61" controlTypeID="com.balsamiq.mockups::Label" x="65" y="300" w="205" h="21" measuredW="189" measuredH="21" zOrder="15" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Results%20of%20best%20keywords%20to%20use</text>
+      </controlProperties>
+    </control>
+    <control controlID="62" controlTypeID="com.balsamiq.mockups::TextArea" x="79" y="321" w="274" h="59" measuredW="200" measuredH="140" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>The%20best%20word%20to%20use%20is%20%22traduccion%22%20in%20the%20backend%20even%20if%20not%20correct%20grammatically%2C%20front%20end%20%22traducci%F3n%22%20or%20%22traducciones%22</text>
+      </controlProperties>
+    </control>
+    <control controlID="81" controlTypeID="com.balsamiq.mockups::Label" x="49" y="168" w="-1" h="-1" measuredW="67" measuredH="21" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Translation</text>
+      </controlProperties>
+    </control>
+    <control controlID="82" controlTypeID="com.balsamiq.mockups::Label" x="249" y="168" w="-1" h="-1" measuredW="71" measuredH="21" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Monthly%20hits</text>
+      </controlProperties>
+    </control>
+    <control controlID="83" controlTypeID="com.balsamiq.mockups::TextInput" x="128" y="165" w="94" h="-1" measuredW="89" measuredH="27" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Localizacci%F3n</text>
+      </controlProperties>
+    </control>
+    <control controlID="84" controlTypeID="com.balsamiq.mockups::TextInput" x="329" y="168" w="94" h="-1" measuredW="62" measuredH="27" zOrder="20" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>1231231</text>
+      </controlProperties>
+    </control>
+    <control controlID="91" controlTypeID="com.balsamiq.mockups::Label" x="431" y="174" w="-1" h="-1" measuredW="15" measuredH="21" zOrder="21" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>X</text>
+      </controlProperties>
+    </control>
+    <control controlID="96" controlTypeID="com.balsamiq.mockups::Label" x="32" y="198" w="-1" h="-1" measuredW="84" measuredH="21" zOrder="22" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Related%20term</text>
+      </controlProperties>
+    </control>
+    <control controlID="97" controlTypeID="com.balsamiq.mockups::Label" x="249" y="198" w="-1" h="-1" measuredW="71" measuredH="21" zOrder="23" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Monthly%20hits</text>
+      </controlProperties>
+    </control>
+    <control controlID="98" controlTypeID="com.balsamiq.mockups::TextInput" x="128" y="195" w="94" h="-1" measuredW="89" measuredH="27" zOrder="24" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Localizacci%F3n</text>
+      </controlProperties>
+    </control>
+    <control controlID="99" controlTypeID="com.balsamiq.mockups::TextInput" x="329" y="198" w="94" h="-1" measuredW="62" measuredH="27" zOrder="25" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>1231231</text>
+      </controlProperties>
+    </control>
+    <control controlID="100" controlTypeID="com.balsamiq.mockups::Label" x="431" y="204" w="-1" h="-1" measuredW="15" measuredH="21" zOrder="26" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>X</text>
+      </controlProperties>
+    </control>
+    <control controlID="115" controlTypeID="com.balsamiq.mockups::Image" x="573" y="150" w="188" h="87" measuredW="77" measuredH="79" zOrder="27" locked="false" isInGroup="-1"/>
+    <control controlID="116" controlTypeID="com.balsamiq.mockups::Button" x="77" y="564" w="205" h="27" measuredW="202" measuredH="27" zOrder="28" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>add%20another%20possible%20translation</text>
+      </controlProperties>
+    </control>
+    <control controlID="117" controlTypeID="com.balsamiq.mockups::Button" x="77" y="600" w="206" h="27" measuredW="164" measuredH="27" zOrder="29" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>add%20other%20Related%20terms</text>
+      </controlProperties>
+    </control>
+    <control controlID="118" controlTypeID="com.balsamiq.mockups::Label" x="102" y="627" w="205" h="21" measuredW="189" measuredH="21" zOrder="30" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Results%20of%20best%20keywords%20to%20use</text>
+      </controlProperties>
+    </control>
+    <control controlID="119" controlTypeID="com.balsamiq.mockups::TextArea" x="116" y="648" w="274" h="59" measuredW="200" measuredH="140" zOrder="31" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>The%20best%20word%20to%20use%20is%20%22traduccion%22%20in%20the%20backend%20even%20if%20not%20correct%20grammatically%2C%20front%20end%20%22traducci%F3n%22%20or%20%22traducciones%22</text>
+      </controlProperties>
+    </control>
+    <control controlID="120" controlTypeID="com.balsamiq.mockups::Label" x="73" y="469" w="-1" h="-1" measuredW="67" measuredH="21" zOrder="32" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Translation</text>
+      </controlProperties>
+    </control>
+    <control controlID="121" controlTypeID="com.balsamiq.mockups::Label" x="273" y="469" w="-1" h="-1" measuredW="71" measuredH="21" zOrder="33" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Monthly%20hits</text>
+      </controlProperties>
+    </control>
+    <control controlID="122" controlTypeID="com.balsamiq.mockups::TextInput" x="152" y="466" w="94" h="-1" measuredW="89" measuredH="27" zOrder="34" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Localizacci%F3n</text>
+      </controlProperties>
+    </control>
+    <control controlID="123" controlTypeID="com.balsamiq.mockups::TextInput" x="353" y="469" w="94" h="-1" measuredW="62" measuredH="27" zOrder="35" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>1231231</text>
+      </controlProperties>
+    </control>
+    <control controlID="124" controlTypeID="com.balsamiq.mockups::Label" x="455" y="475" w="-1" h="-1" measuredW="15" measuredH="21" zOrder="36" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>X</text>
+      </controlProperties>
+    </control>
+    <control controlID="125" controlTypeID="com.balsamiq.mockups::Label" x="56" y="499" w="-1" h="-1" measuredW="84" measuredH="21" zOrder="37" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Related%20term</text>
+      </controlProperties>
+    </control>
+    <control controlID="126" controlTypeID="com.balsamiq.mockups::Label" x="273" y="499" w="-1" h="-1" measuredW="71" measuredH="21" zOrder="38" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Monthly%20hits</text>
+      </controlProperties>
+    </control>
+    <control controlID="127" controlTypeID="com.balsamiq.mockups::TextInput" x="152" y="496" w="94" h="-1" measuredW="89" measuredH="27" zOrder="39" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Localizacci%F3n</text>
+      </controlProperties>
+    </control>
+    <control controlID="128" controlTypeID="com.balsamiq.mockups::TextInput" x="353" y="499" w="94" h="-1" measuredW="62" measuredH="27" zOrder="40" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>1231231</text>
+      </controlProperties>
+    </control>
+    <control controlID="129" controlTypeID="com.balsamiq.mockups::Label" x="455" y="505" w="-1" h="-1" measuredW="15" measuredH="21" zOrder="41" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>X</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

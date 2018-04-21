@@ -1,0 +1,35 @@
+<h2>Select support department and language</h2>
+<%= form_tag( { :action => :integration_details, :id=>@web_support.id, :anchor=>'theform' }, {:method=>:get} ) do %>
+<table border="0" cellpadding="10">
+<tr><td valign="top"><b>Language:</b></td>
+	<td>The contact pages for your visitors will appear in their language.<br />
+	Select the language which your visitors are using:<br /><%= select_tag(:source_language_id, options_for_select(@languages, @source_language_id)) %></td></tr>
+<tr><td valign="top"><b>Department:</b></td>
+	<td>The contact form can allow visitors to select the support department, or you can select this value now:<br />
+	<%= all_client_departments(:client_department_id, ' ', @client_department_id, @web_support.client_departments, 'User will select') %></td></tr>
+<tr><td valign="top"><b>HTML style:</b></td>
+	<td><%= select_tag(:html_style, options_for_select(@html_style, @html_style_id)) %></td></tr>
+<tr><td></td><td><%= submit_tag(_('Apply'), :style=>'padding: 0.5em 2em 0.5em 2em;', data: { disable_with: _('Apply') }) %></td></tr>
+</table>
+<% end %>
+<br />
+<hr />
+<h2 id="theform"><%= @preview_heading %></h2>
+<p>To see how your contact page appears to your visitors, click on this <%= link_to('contact page preview', {:controller=>:web_dialogs, :action=>:new, :store=>@web_support.id, :language_id=>@source_language_id, :department=>@client_department_id}, {:target=>'_blank'}) %>.</p>
+<br />
+<h3>Option 1: Link to your contact page on our server</h3>
+<ul class="comments_list"><li>Pros: no coding required, just place a link to the contact page that we create for you.</li>
+<li>Cons: you cannot change the contents of this page or add your own parameters to it.</li></ul>
+<p>Visitors can <b>send you messages</b> from a contact page that we create for you on our server.<br />
+To use our contact page, paste this link in your home page:</p>
+<div class="code_snip">&lt;a href=&quot;<%= url_for(:controller=>:web_dialogs, :action=>'new', :store=>@web_support.id, :language_id=>@source_language_id, :department=>@client_department_id, :only_path=>false).gsub('&','&amp;') %>&quot;&gt;<%=@contact_us_text%>&lt;/a&gt;</div>
+<br />
+<h3>Option 2: Use your own contact page</h3>
+<ul class="comments_list"><li>Pros: same design as the rest of your website and the ability to add your own <a target="_blank" href="http://docs.icanlocalize.com/?page_id=109">custom inputs</a>.</li>
+<li>Cons: need to edit the HTML source of your contact page.</li></ul>
+<p>To send contact information from your website, copy the following HTML code and place in your <i>contact</i> page:</p>
+<!-- div class="code_snip" -->
+<%= form_tag('#') do %>
+<%= text_area_tag( :user_html_contents, @user_html, {:cols=>"120",:rows=>"20"}) %>
+<% end %>
+<!-- /div -->

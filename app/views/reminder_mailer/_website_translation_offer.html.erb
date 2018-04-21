@@ -1,0 +1,12 @@
+= <%= website_translation_offer.website.name %>: <%= website_translation_offer.language_pair %> =
+
+Description of this project:
+<%=  website_translation_offer.website.description %>
+
+<% if !website_translation_offer.invitation.blank? %>Volume and deadline:
+<%= website_translation_offer.invitation %><% end %>
+
+To apply follow this link:
+<%= url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:website_translation_contracts, :action=>:new, :website_id=>website_translation_offer.website_id, :website_translation_offer_id=>website_translation_offer.id } ) %>
+
+

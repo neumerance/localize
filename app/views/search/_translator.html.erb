@@ -1,0 +1,41 @@
+<div class="translator_profile">
+	<h3><%= link_to(translator.full_name + (!translator.country.blank? ? ', %s'%translator.country.nname : '' ), {:controller=>:users, :action=>:show, :id=>translator.id}) %></h3>
+	<table><tr>
+		<td class="translator_image"><div style="text-align: center; margin: 4px 0;">
+			<%= image_for_user(translator) %>
+			<%= star_rating(translator) %>
+		</div>
+		</td>
+		<td class="translator_bio">
+					<p class="warning">
+						<% if translator.on_vacation? %>
+							<%= (link_to(_("%s's planned leave schedule") % translator.full_name, {:controller=>:vacations, :action=>:index, :user_id=>translator.id})).html_safe %>
+			          <%=
+			            '. Will not be working from %s to %s' % [
+			              translator.current_vacation.beginning.strftime("%b %dth, %Y"),
+			              translator.current_vacation.ending.strftime("%b %dth, %Y")]
+			            %>
+			          </p>
+						<% elsif translator.logged_in? %>
+              <span><%= translator.full_name %> <%= _('is currently') %> <b>logged in</b></span>
+						<% end %>
+					</p>
+      <% if translator.bionote && !translator.bionote.body.blank? %>
+          <p style="padding-top:0; margin-top:0;" class="quote">&ldquo; <%= pre_format(translator.bionote.i18n_txt(@locale_language)) %> &rdquo;</p>
+      <% end %>
+    </td>
+	</tr></table>
+
+	<% if @user.has_client_privileges? && !@user.has_admin_privileges? && !@user.has_supporter_privileges? %>
+		<% open_jobs = @user.alias? ? @user.master_account.open_jobs(translator) : @user.open_jobs(translator) %>
+		<% if open_jobs.length > 0 %>
+			<p><%= link_to('Invite', {:controller=>:users, :action=>:show, :id=>translator.id, :in_behalf_of => params[:in_behalf_of], :anchor=>'invitations'}, {:class=>'rounded_but_orange'}) %></p>
+		<% end %>
+	<% end %>
+	<p><acronym title="Number of clients who recommended this translator">Recommendations</acronym>: <%= translator.markings.length %>
+	<% if translator.jobs_in_progress != nil %>
+		&nbsp; | &nbsp;
+		<acronym title="The number of translation projects this translator needs to complete">Jobs&nbsp;in&nbsp;progress</acronym>:&nbsp;<%= translator.jobs_in_progress %>
+	<% end %>
+	</p>
+</div>

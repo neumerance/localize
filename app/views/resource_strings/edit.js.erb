@@ -1,0 +1,5 @@
+<% if @frozen_message %>
+  icl_notification('<%= escape_javascript @frozen_message %>')
+<% else %>
+  jQuery('#original_string').html('<%= escape_javascript(render :partial=>'original_string') %>')
+<% end %>

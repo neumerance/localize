@@ -1,0 +1,77 @@
+<p><%= link_to('&laquo; Jobs in progress'.html_safe,{:action=>:index}, {:class=>'rounded_but_orange'}) %></p>
+
+<% if @review_messages.length > 0 %>
+	<div class="errorExplanation">
+	<h2>Available Instant Translation Projects to Review</h2>
+	<p>There are <%= link_to('%d Instant Translation project(s) available for you to review'%@review_messages.length, {:controller=>:web_messages, :action=>:review_index}) %>.</p>
+	</div>
+<% elsif @messages.length > 0 %>
+	<div class="errorExplanation">
+	<h2>Available Instant Translation Projects</h2>
+	<p>There are <%= link_to('%d Instant Translation project(s) available for you to do'%@messages.length, {:controller=>:web_messages, :action=>:index}) %>.</p>
+	</div>
+<% end %>
+
+<% if @open_website_translation_work.length > 0 %>
+<div class="errorExplanation">
+	<a name="open_website_translation_work"></a>
+	<br />
+	<%= infotab_top('Available recurring translations', "Recuring translation work waiting for you" + ((@open_website_translation_work.length >= PER_PAGE) ? (' ' + '(showing first %d)'%PER_PAGE + ' ' + link_to('show all &raquo;'.html_safe, {:action=>:website_translation_work})) : '')) %>
+	<%= infotab_header(['Job ID', 'Created', 'Project']) %>
+  <% @open_website_translation_work.each do |cms_request| %>
+    <%= render(:partial=>'cms_request', locals: {cms_request: cms_request}) %>
+  <% end %>
+	</table>
+	<br />
+	<p>You have been selected as the translator for these documents. The client expects to have them done soon.</p>
+	<p>If you cannot translate these documents, please <%= link_to('let us know',{:controller=>:support, :action=>:new}) %> as soon as possible.</p>
+</div>
+<div class="inter_tab_spacer"></div>
+<% end %>
+
+<% if @revisions_open_to_bids.length > 0 %>
+	<a name="website_translation_projects"></a>
+	<%= infotab_top('Projects open to bids', "Recent #{@revisions_open_to_bids.length} project(s) open to bids matching your profile.") %>
+	<%= infotab_header(['Project','Description','Details'], {'Details' => {'width'=>'35%'},'Description' => {'width'=>'35%'}} ) %>
+		<%= render(:partial => "/search/revision", :collection => @revisions_open_to_bids) %>
+	</table>
+	<div class="inter_tab_spacer"></div>
+<% end %>
+
+<% if @open_website_translation_offers.length > 0 %>
+	<a name="available_recurring_website_translation_offers"></a>
+	<%= infotab_top('Recurring translation offers', "You can apply to any of these recurring translation offers. <b>Payment is flexible. You will enter your bid when applying.</b> " + (@show_all_offers ? ('&nbsp;&nbsp;'+link_to('Show all &raquo;'.html_safe, {:action=>:website_translation_offers})) : '') ) %>
+	<%= infotab_header(['Project', 'Description', 'Volume and deadline', 'Actions']) %>
+  <% @open_website_translation_offers.each do |website_translation_offer| %>
+    <%= render(:partial=>'website_translation_offer', locals: {website_translation_offer: website_translation_offer}) %>
+  <% end %>
+	</table>
+	<div class="inter_tab_spacer"></div>
+<% end -%>
+
+<% if @open_text_resource_projects.length > 0 %>
+	<a name="open_text_resource_projects"></a>
+	<%= infotab_top('Available software localization projects', "You can apply to any of these software localization projects") %>
+	<%= infotab_header(['Created at (year/month/day)', 'Project', 'Subject', 'Language', 'Number of strings', 'Actions']) %>
+  <%= render(:partial=>'resource_language', :collection=>@open_text_resource_projects) %>
+	</table>
+	<div class="inter_tab_spacer"></div>
+<% end %>
+
+<% if @open_managed_works.length > 0 %>
+  <a name="open_managed_works"></a>
+  <%= infotab_top('Available review jobs', "These are review jobs that are waiting for a translator. You can take these jobs immediately.") %>
+  <%= infotab_header(['Project']) %>
+  <tr>
+    <td>
+      <ul>
+        <% @open_managed_works.each do |review| %>
+          <li style="margin-bottom: 8px;"><%= open_managed_work_link(review) %></li>
+        <% end %>
+      </ul>
+    </td>
+  </tr>
+  </table>
+  <div class="inter_tab_spacer"></div>
+<% end %>
+

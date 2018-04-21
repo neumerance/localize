@@ -1,0 +1,14 @@
+<% if @req == 'show' %>
+  jQuery('#<%= @div %>').html('<%= escape_javascript(render :partial=>"invite_to_job") %>')
+<% elsif @req == 'hide' %>
+  jQuery('#<%= @div %>').html('')
+<% else %>
+  <% if @problem %>
+    alert('<%= @problem %>')
+  <% else %>
+    alert('Invitation sent. You can continue communicating with the translator in the project chat.')
+    <% if @redirect %>
+      location.href = '<%= @redirect %>'
+    <% end %>
+  <% end %>
+<% end %>

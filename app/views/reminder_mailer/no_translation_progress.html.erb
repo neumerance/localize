@@ -1,0 +1,9 @@
+<p class="lead"><%= _("Hi %s") % @user_name %>,</p>
+
+<p class="lead"><%= _("There has been no progress on the %s to %s translation for your website \"%s\" in the last %s days.") % [@from_language.name, @to_language.name, @website.name, @days_with_no_progress] %></p>
+
+<p><%= _("In order to meet the translation deadline, we recommend that translators always maintain a steady pace and not stay idle for long periods of time. Making up for this idle time may result in rush work and sometimes causes mistakes.") %></p>
+
+<p><%= _("To accelerate this translation, you can add more translators or replace unresponsive ones.") %> <%= _("We invite you to review profiles of %s and let us help you translate you site on time.") % (link_to _("%s to %s translators from ICanLocalize") % [ @from_language.name, @to_language.name], raw(@create_language_pair_link)) %> <%= _("The cost is only %s per word for high quality of translation, delivered on time.") % MINIMUM_BID_AMOUNT %></p>
+
+<p><%= centered_action_button (_("Invite %s to %s translators") % [@from_language.name, @to_language.name]), raw(@create_language_pair_link) %></p>

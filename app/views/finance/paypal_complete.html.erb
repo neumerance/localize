@@ -1,0 +1,5 @@
+<%= @description %>
+<% if @next_actions %>
+	<h3>What would you like to do next?</h3>
+	<ul><% for next_action in @next_actions %><li><%= link_to(next_action[0], next_action[1]) %></li><% end %></ul>
+<% end %>

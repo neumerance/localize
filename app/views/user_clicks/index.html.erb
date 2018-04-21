@@ -1,0 +1,18 @@
+<% if @auser %>
+  <p><%= link_to("Back to %s's profile" % @auser.full_name, {:controller=>:users, :action=>:show, :id=>@auser.id}) %></p>
+<% end %>
+
+
+<div class="pager_control">
+	Showing page <%= form_tag({:action=>:index}, {:method=>'GET'}) %>
+		<%= select_tag( :page, options_for_select(@list_of_pages,@user_clicks.number), {:onchange=>"submit()"}) %>
+	<%= link_to("Prev", {:action=>:index, :page=>@user_clicks.prev.number}) if @user_clicks.prev? %>
+	<%= link_to("Next", {:page=>@user_clicks.next.number}) if @user_clicks.next? %>
+	</form>
+</div>
+
+<%= infotab_header(['Controller','Action','ID','Params','Time','Actions']) %>
+  <% @user_clicks.each do |user_click| %>
+    <%= render(:partial=>'user_click', locals: { user_click: user_click}) %>
+  <% end %>
+</table>

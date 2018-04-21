@@ -1,0 +1,23 @@
+<%= project_and_client_name() %>
+
+<div class="pager_control">
+		Showing page <%= form_tag({:action=>:text_resources}, {:method=>'GET'}) %>
+			<%= select_tag( :page, options_for_select(@list_of_pages,@text_resources.number), {:onchange=>"submit()"}) %>
+		<%= link_to("Prev", url_for(:action=>:text_resources, :page => @text_resources.prev.number)) if @text_resources.prev? %>
+		<%= link_to("Next", url_for(:action=>:text_resources, :page => @text_resources.next.number)) if @text_resources.next? %>
+	</form>
+</div>
+	
+<%= infotab_header(['Project','Category','Created','Client','Languages','Strings']) %>
+<% @text_resources.each do |tr| %>
+    <%= render(:partial=>'text_resource', locals: {text_resource: tr}) %>
+<% end %>
+</table>
+
+<div class="pager_control">
+		Showing page <%= form_tag({:action=>:text_resources}, {:method=>'GET'}) %>
+			<%= select_tag( :page, options_for_select(@list_of_pages,@text_resources.number), {:id=>'page1', :onchange=>"submit()"}) %>
+		<%= link_to("Prev", url_for(:action=>:text_resources, :page => @text_resources.prev.number)) if @text_resources.prev? %>
+		<%= link_to("Next", url_for(:action=>:text_resources, :page => @text_resources.next.number)) if @text_resources.next? %>	
+	</form>
+</div>

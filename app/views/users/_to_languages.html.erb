@@ -1,0 +1,22 @@
+<%= infotab_header(['Available languages','Selected languages'], {'Available languages' => {'width'=>'20%'}}) %>
+<tr>
+	<td>
+		<%= form_tag({ :id=>@auser.id, :action => :add_to_languages }, :remote => true) do %>
+			<%= select_tag(:to_lang_id, options_for_select(@to_languages)) %>
+			<br /><br />
+			<p>
+        <%= image_tag 'icons/important_16_gray.png', class: '', width: 16, height: 16, alt: 'important', style: '', align: 'bottom', border: 0 %> Please note:
+      </p>
+			<p class="warning">We only accept applications to translate to your native language. Please upload a copy of your ID.</p>
+			<%= submit_tag 'Add selected language &gt;&gt;'.html_safe, data: { disable_with: 'Add selected language &gt;&gt;'.html_safe } %>
+		<% end %>
+	</td>
+	<td>
+		<% if @auser.translator_language_tos.length > 0 %>
+			<ul class="nobullet"><%= render(:partial=>'translator_language', :collection=>@auser.translator_language_tos) %></ul>
+		<% else %>
+			<p class="warning">No language selected yet.</p>
+		<% end %>
+	</td>
+</tr>
+</table>

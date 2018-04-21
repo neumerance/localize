@@ -1,0 +1,63 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+amir_wp:
+  id: 1
+  client_id: 2
+  name: wp
+  platform_kind: <%= WEBSITE_WORDPRESS %>
+  description: something great
+  login: hi there
+  password: me
+  accesskey: d87fdjklh345
+  url: http://www.wp.com
+  tm_use_mode: <%= TM_COMPLETE_MATCHES %>
+  tm_use_threshold: 4
+
+amir_drupal_rpc:
+  id: 2
+  client_id: 2
+  name: drupal_rpc
+  platform_kind: <%= WEBSITE_DRUPAL %>
+  description: something great
+  url: http://www.drupal.com
+  accesskey: d87fdjklh3j6
+  pickup_type: <%= PICKUP_BY_RPC_POST %>
+  
+amir_drupal_polling:
+  id: 3
+  client_id: 2
+  name: drupal_rpc
+  platform_kind: <%= WEBSITE_DRUPAL %>
+  description: something great
+  url: http://www.drupal.com
+  accesskey: d87fdjk5hf
+  pickup_type: <%= PICKUP_BY_POLLING %>
+  
+amir_drupal_selftrans:
+  id: 4
+  client_id: 2
+  name: drupal_rpc
+  platform_kind: <%= WEBSITE_DRUPAL %>
+  description: something great
+  url: http://www.drupal.com
+  accesskey: d87fdjgn3345
+  pickup_type: <%= PICKUP_BY_RPC_POST %>
+
+amir_two_translators:
+  id: 5
+  client_id: 2
+  name: amir_2_trans
+  platform_kind: <%= WEBSITE_DRUPAL %>
+  description: something great
+  url: http://www.drupal.com
+  accesskey: d87fdjgn3345
+  pickup_type: <%= PICKUP_BY_RPC_POST %>
+
+no_translators:
+  id: 6
+  client_id: 2
+  name: no_trans
+  platform_kind: <%= WEBSITE_DRUPAL %>
+  description: something great
+  url: http://www.drupal.com
+  accesskey: abc123123abc 

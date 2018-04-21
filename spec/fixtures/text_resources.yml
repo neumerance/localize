@@ -1,0 +1,28 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+amir_iphone:
+  id: 1
+  client_id: 2
+  language_id: 1
+  resource_format_id: 2
+  name: iPhone test
+  description: Testing iPhone
+  version_num: 1
+
+amir_ready_to_start:
+  id: 2
+  client_id: 2
+  language_id: 1
+  resource_format_id: 2
+  name: Ready to start
+  description: Ready to start desc
+  version_num: 1
+
+amir_started:
+  id: 3
+  client_id: 2
+  language_id: 1
+  resource_format_id: 2
+  name: Started
+  description: Started desc
+  version_num: 100

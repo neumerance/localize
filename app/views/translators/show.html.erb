@@ -1,0 +1,10 @@
+<%= render(:partial=>"translator", :object=>@translator) %>
+<p>To create a project for <b><%= @translator.full_name %></b>, you need to have an account at ICanLocalize. It's free and only takes a minute.</p>
+<br />
+<ol><li>Go to the <a href="https://www.icanlocalize.com/users/new?utype=Client">account setup page</a> and create your account.</li>
+<li>Set up a project.</li>
+<li>You can look up <%= @translator.full_name %> using this profile page (requires logging in) - <%= link_to("%s's profile"%@translator.full_name, {:controller=>:users, :action=>:show, :id=>@translator.id}) %>.</li>
+<li>Invite <%= @translator.full_name %> to do your project.</li>
+</ol>
+<br /><hr /><br />
+<p><%= link_to('&laquo; Back'.html_safe, @back ? @back : {:action=>:index}) %> &nbsp; | &nbsp; Need help? <a href="http://www.icanlocalize.com/site/about-us/contact-us/">Contact us</a></p>

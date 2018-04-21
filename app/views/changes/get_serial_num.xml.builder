@@ -1,0 +1,1 @@
+xml.serial_number(@serial_num.id)

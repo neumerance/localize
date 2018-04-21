@@ -1,0 +1,8 @@
+<p>Select the notifications you want to receive. Remember to click on <b>Save</b> after you make changes.</p>
+<%= form_tag({:action=>:update}) do %>
+	<%= infotab_header(['Select', 'Notification', 'Description', 'Delivery schedule']) %>
+	<%= render(:partial=>'notification', :collection=>@notification_list) %>
+	</table>
+	<br />
+	<p><%= submit_tag('Save', data: { disable_with: 'Save' }) %>&nbsp;&nbsp;&nbsp;<%= link_to('Cancel changes', {:action=>:index}) %></p>
+<% end %>

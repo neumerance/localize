@@ -1,0 +1,11 @@
+<p>Dear <%= @web_dialog.full_name %>,</p>
+
+<% url = url_for({:escape => false, :only_path => false, :controller=>:web_dialogs, :action=>:show, :id=>@web_dialog.id, :accesskey=>@web_dialog.accesskey, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+<p>
+Your message was received and will be answered as soon as possible.
+In the meanwhile, if you want to send us another message, or to see the complete log of your comments and our replies, please click on the link below: <%= link_to url, url %>
+</p>
+
+<p>* Please note that this mail-box is not monitored for replies.</p>
+
+<p>Best regards,</p>

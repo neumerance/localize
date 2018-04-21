@@ -1,0 +1,5 @@
+<% if @reload %>
+location.reload()
+<% else %>
+jQuery('#personal_details').html('<%= escape_javascript(render partial: 'personal_details', object: @auser) %>')
+<% end %>

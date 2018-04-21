@@ -1,0 +1,15 @@
+<p>Translating from <b><%= @orig_language.name %></b>.</p>
+<%= display_stats_with_destination_languags(@word_count, true) %>
+<br /><br />
+<p>To have this file translated by ICanLocalize, you need to create an account. It's free and only takes a minutes.</p>
+<div class="large_button" style="width:12em;"><%= link_to('Create Account', {:controller=>:users, :action=>:new, :utype=>'Client', :next_operation=>"Sisulizer:#{@version.id}"}) %></div>
+<br />
+<p class="comment">Next steps once you have an account:</p>
+<ol class="comment"><li>Qualified professional translators will apply for this job.</li>
+<li>You select the translators and deposit payment.</li>
+<li>Get the completed translation.</li>
+</ol>
+<br />
+<hr />
+<br />
+<p><%= link_to('&laquo; Upload a different Sisulizer project',@back) %></p>

@@ -1,0 +1,1 @@
+xml.bid(:id=>@bid.id, :status=>@bid.status)

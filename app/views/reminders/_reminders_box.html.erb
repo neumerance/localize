@@ -1,0 +1,36 @@
+<% size = count_valid_reminder(@reminders, @user) %>
+<% if size > 0 %>
+	<div class="reminders_contents">
+    <%= image_tag 'icons/star.png', class: 'left_icon', alt: 'important', border: 0 %>
+		<p>
+		<span class="reminders_head"><%= _("Reminders") %></span>
+			<% if size > 4 %>
+				&nbsp;<%= _("showing 4 of %s") % size %>
+			&nbsp;&nbsp;&nbsp;<%= link_to(_('all reminders'), {:controller=>'/reminders', :action=>:index}) %>
+			<% else %>
+				&nbsp;&nbsp;
+			<% end %>
+			&nbsp;<%= link_to(_('hide'), {:controller=>'/reminders', :action=>:hide}, :remote => true, :method => :get) %>
+		</p>
+		<div class="clear"></div>
+    <% get_valid_reminders(@reminders, @user)[0..3].each do |reminder| %>
+        <%= render(:partial=>'/reminders/reminder', locals: { reminder: reminder }) %>
+    <% end %>
+	</div>
+
+
+<script type="text/javascript">
+	jQuery(function(){
+		var $vat_reminder = jQuery('#reminders div[rel=<%=EVENT_UPDATE_VAT_NUMBER%>]');
+		if ($vat_reminder.size() > 0) {
+			return false; // disabled 
+			$vat_reminder_delete = $vat_reminder.find('form')
+			$vat_reminder_delete.html("<input type='submit' class='button' value='Dont remind me'>");
+			$vat_reminder_delete = $vat_reminder_delete.clone().wrap('<div></div>').parent();
+			// $vat_reminder_delete.html() // HTML to remove reminder
+			Modalbox.show("<h1>Please update your VAT Number</h1><p class='status-red'>This is an important notice!</p><p>If you reside in the EU we encourage you to update your <b>country of residence</b> and <b>VAT number</b> in your profile details page.</p><div class='button_bar'><a href='/users/<%=@user.id%>' class='button'>Go To Profile</a><a href='#' class='button' onclick='Modalbox.hide(); return false;'>Close</a></div>",{title: 'VAT Update.'});
+			$vat_reminder.remove(); 
+		};
+	});
+</script>
+<% end %>

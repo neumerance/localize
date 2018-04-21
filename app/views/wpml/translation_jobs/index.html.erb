@@ -1,0 +1,107 @@
+<% if !@website.any_content_sent_for_translation? %>
+    <div class="grey_panel">
+      <%= render partial: 'wpml/shared/no_content_submitted' %>
+    </div>
+<% elsif @website.any_content_sent_for_translation? && !@website.user_action_required? %>
+    <%# Translators were already assigned (or automatic assignment was selected)
+        and everything is paid for. %>
+    <div class="grey_panel">
+      <%= render partial: 'wpml/shared/no_action_required' %>
+      <BR>
+      Visit the <%= link_to 'website page', wpml_website_path(@website) %> to
+      see how the project is advancing and communicate with the translators.
+    </div>
+<% else %>
+    <%# Content was submitted for translation and there are pending user actions
+        (payment or translator assignment mode selection) for one or more language
+        pairs %>
+    <% if @processed_cms_requests.count != @total_cms_requests.count %>
+        <div class="red_panel">
+          Please note that we are still processing some translation jobs sent by
+          WPML and the costs might increase when all jobs are done processing. The
+          following costs include <b><%= @processed_cms_requests.count %></b> of <b><%= @total_cms_requests.count %></b>
+          translation jobs.
+        </div>
+    <% end %>
+
+    <div class="grey_panel">
+      <% if @website.client_can_pay_all_language_pairs? %>
+          Translation will begin as soon as payment is received.
+      <% elsif @website.client_can_pay_any_language_pair? %>
+          Some language pairs have translators assigned, others don't. You can pay now
+          for the language pairs which do have translators assigned so their
+          translations begin immediately and do the same later for the other
+          language pairs; or you can wait for translators to be assigned
+          to all language pairs and pay for them all at once.
+      <% else %>
+          <b>The next step is to invite one or more translators to the language pairs that have no translators assigned
+            yet.</b>
+      <% end %>
+    </div>
+    <BR><BR>
+
+    <% if @website.category.blank? %>
+        What do you want translators to be experts on?
+        <%= form_for(@website, url: wpml_website_path(@website), remote: true) do |f| %>
+            <div class="field_entry">
+              <%= f.collection_select(:category_id, Category.all, :id, :name,
+                                      {prompt: true}, {onchange: 'submit()'}) %>
+              <p class="comment">Choosing the subject is optional. It will help you find translators who specialize in
+                this field.</p>
+            </div>
+        <% end # form_for %>
+    <% end # if %>
+
+    <%# Translation jobs/language pairs table %>
+    <div id="translation-jobs">
+      <%= render partial: 'translation_jobs', locals: { website: @website } %>
+    </div>
+
+    <%# "Invite translators from your previous projects" modal %>
+    <% if @website.any_pending_manual_translator_assignments? && @website.client.websites.size > 1 %>
+        <div class="grey_panel" style="margin-top: 15px;">
+          <%= form_tag controller: '/websites', action: :reuse_translators, id: @website.id do %>
+              Invite translators from a previous project:
+              <select name="project" id=project">
+                <% @projects_to_reuse.each do |p| %>
+                    <option value='{"class": "<%= p.class %>", "id": "<%= p.id %>"}'><%= p.name %></option>
+                <% end %>
+              </select>
+              <%= submit_tag 'Invite', data: {disable_with: 'Inviting...'} %>
+          <% end # form_tag %>
+        </div>
+        <BR>
+    <% end %>
+
+    <% if @website.can_change_any_translator_assignment_mode? && !@website.any_manual_translator_assignment? %>
+        <BR><%= link_to 'I prefer to interview translators and negotiate the rate.', '#', id: 'interview_translators' %>
+    <% end %>
+
+    <% if @website.client_can_pay_any_language_pair? %>
+      <% if @total_amount_without_tax > 0 && @missing_amount_without_tax <= 0 %>
+        <div class="red_panel">
+          You have enough funds in your ICanLocalize account. To start the
+          translations, please click the <b>Pay and begin translation</b> button
+          below, then click <b>Pay with my ICanLocalize account balance</b>
+          on the next page.
+        </div>
+      <% elsif @client_account_balance > 0 %>
+        <div class="red_panel">
+          You don't have enough funds in your ICanLocalize account. To start the
+          translations, please click the <b>Pay and begin translation</b>
+          button below to pay the missing amount.
+        </div>
+      <% end %>
+      <%= form_tag(new_wpml_website_payment_path(@website), method: :get, class: 'button_to pay-begin-form') do %>
+            <%= button_tag 'Pay and begin translation', class: 'button_X', id: 'pay_button' %>
+        <% end %>
+    <% end %>
+
+    <BR><BR>
+    <%= link_to 'Back', :back %>
+<% end %>
+
+<%= render partial: '/website_translation_offers/translator_list_modal' %>
+<script>
+  <%= render partial: '/wpml/translation_jobs/check_pay_button.js.erb', locals: {website_id: @website.id } %>
+</script>

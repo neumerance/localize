@@ -1,0 +1,8 @@
+Dear <%= @user.full_real_name %>,
+
+Please click on the link below to confirm that you are the owner of this email address.
+Your identity verification will then be complete.
+
+<%= url_for({:escape => false, :only_path => false, :controller=>:users, :action=>:validate_external_account, :id=>@user.id, :acc_id=>@account.id, :signature=>@account.signature, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+<%= EMAIL_SIGNATURE %>

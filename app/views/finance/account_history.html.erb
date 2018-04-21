@@ -1,0 +1,38 @@
+<% if @user.has_admin_privileges? %>
+	<p><b>Account owner:</b> <%= account_owner_link(@account).html_safe %></p>
+<% end %>
+
+<h2><%= _('History') %></h2>
+<%= form_tag({action: :account_history}) do %>
+	<div class="pager_control" style="position: relative; height: 15px;">
+	  <%= paginate @account_lines %>
+	  <label style="position: absolute; top: 2px; right: 10px">
+	    Results per page: <%= select_tag 'per_page', options_for_select(%w(10 20 40 60 80 100), params[:per_page]), onchange: 'submit()'  %>
+	  </label>
+	  <div style="clear: both"></div>
+	</div>
+<% end %>
+<%= render(:partial=>'account_lines', locals: {account_lines: @account_lines}) %>
+<br />
+
+<h2><%= _('Balance') %></h2>
+<p><%= _('Total Balance') %> <%= @account.total_balance %> <%= @account.currency.disp_name.html_safe %>.</p>
+<p><%= _('Planned Expenses') %> <%= @account.adjusted_expenses %> <%= @account.currency.disp_name.html_safe %>.</p>
+<p><%= _('Available Balance') %> <%= @account.available_balance %> <%= @account.currency.disp_name.html_safe %>.</p>
+<br />
+
+<% if @user.has_admin_privileges? %>
+	<div style="margin: 0 1em 2em 1em; padding: 1em; background-color: #F0F0FF; border: 1pt solid #C0C0FF;">
+		<h3>Manual admin deposit / withdrawal</h3>
+    <p>Create a <%= link_to('manual deposit', {:action=>:new_manual_invoice, :id=>@account.id, :invtype=>:deposit}) %> to this account or manually <%= link_to('withdraw', {:action=>:new_manual_invoice, :id=>@account.id, :invtype=>:withdraw}) %> from it. <b>WHEN USING THIS FEATURE SELECT ALWAYS CHECK BY EMAIL</b></p>
+		<p>Create a <%= link_to('bank transfer deposit/withdraw', {:action=>:new_wire_transfer, :id=>@account.id}) %>.</p>
+		<h3>Account reports</h3>
+		<ul>
+			<li><%= link_to('All deposits',{:action=>:deposits, :id=>@account.id}) %></li>
+			<li><%= link_to('Outstanding invoices',{:action=>:invoices, :id=>@account.id}) %></li>
+			<li><%= link_to('Money Graph',{:action=>:account_graph, :id=>@account.id}) %></li>
+		</ul>
+	</div>
+<% end %>
+
+<%= render(:partial=>'about_icanlocalize') %>

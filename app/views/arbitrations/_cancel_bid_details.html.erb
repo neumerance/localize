@@ -1,0 +1,17 @@
+<%= infotab_top(@request_made,'') %>
+<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+	<%= form_tag({:action=>'create_cancel_bid_arbitration'}, :remote => true) do %>
+		<h3>1) Reasons for canceling</h3>
+		<p><span class="warning">Please detail why you want to cancel this bid:</span><br /><%= text_area_tag(:reason, nil, {:rows=>6, :cols=>60, maxlength: COMMON_NOTE}) %></p>
+		<br />
+		<h3>2) How to negotiate this cancellation</h3>
+		<p>
+			Since the bid has been accepted, the other party, or a support person must agree to cancel it.<br />
+			<span class="warning">Choose how to begin:</span><br />
+			<% for option in @how_to_handle_options -%>
+				<label><%= radio_button_tag :how_to_handle, option[1] %><%= option[0] %></label><br />
+			<% end -%>
+		</p>
+		<%= submit_tag 'Submit', data: { disable_with: 'Submit' } %>
+	<% end %>
+</td></tr></table>

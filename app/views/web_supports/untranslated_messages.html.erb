@@ -1,0 +1,93 @@
+<% if @required_deposit > 0 %>
+<p><%= @detailed_message %>.</p>
+<p><b>To enable translation, you need to deposit at least <%= @required_deposit %> USD.</b></p>
+<div class="subframe">
+	<%= form_tag({ :controller=>:finance, :action => :make_deposit, :req=>:save, :id=>@account.id },
+                "data-confirm" => 'You will now be transfered to PayPal to complete this deposit',
+                :remote => true
+        ) do %>
+
+    <%= render(:partial=>'shared/vat_request') %>
+    
+    <div id="total_box">
+      <table class="stats" style="min-width: 500px;">
+        <% @pending_translation.each do |p| %>
+          <tr class='itemNO'>
+            <td>
+              Instant translation of "<%= p.name %>" to <%= p.visitor_language.name %>: 
+            </td>
+            <td><span class='amountNO'><%= p.translation_price %></span> USD</td>
+          </tr> 
+        <% end %>
+
+        <% @pending_review.each do |p| %>
+          <tr class='itemNO'>
+            <td>
+              Review of "<%= p.name %>" for <%= p.visitor_language.name %>: 
+            </td>
+            <td><span class='amountNO'><%= p.review_price %></span> USD</td>
+          </tr> 
+        <% end %>
+        
+        <tr>
+          <th>Total translation and review costs</th>
+          <th><%= @translation_costs + @review_costs %> USD</th>
+        </tr>
+
+        <tr class="current_in_accountNO">
+          <td>Currently in your account</td>
+          <td>- <span class='amountNO'><%= @current_balance %></span> USD</td>
+        </tr> 
+        
+        <tr class='subtotalNO'>
+          <th><b>Subtotal</b></th>
+          <th><b><span class='amountNO'><%=@required_deposit %></span> USD</b></th>
+        </tr>
+
+      </table>
+        <br>
+
+      <table class="stats" style="min-width: 500px;">
+        <tr>
+          <td colspan='2' style="background: #FFFECC">
+            <p>You can change the deposit amount below.<br/>
+               If you deposit a larger amount, it will remain in your balance, ready to be used.</p>
+          </td>
+        </tr>
+
+        <tr class='item'>
+          <td>
+            Deposit amount:
+          </td>
+          <td>
+            <div id="custom_amount">
+               <span class='amount'><%= money_field_tag(:amount, @required_deposit, 'update_totals();') %></span> USD
+            </div>
+          </td>
+        </tr>
+
+        <tr class='tax_details' style='<%="display:none" unless @user.has_to_pay_taxes? %>'>
+          <th>VAT Tax in <span class="country_name"><%=@user.country.try(:name) %></span> <span id='tax_rate'><%=@user.tax_rate %></span>%</th>
+          <th><span class='amount'><%=@tax_amount %></span> USD</th>
+        </tr>
+        <tr>
+          <th>Total:</th>
+          <th><b id="total_cost"><%=@required_deposit%></b> <b>USD</b></th>
+        </tr>
+      </table>
+    </div>
+
+    
+    
+    
+
+<script type="text/javascript">
+  update_totals();
+</script>
+
+		<%= submit_tag 'Continue', data: { disable_with: 'Continue' } %>
+	<% end %>
+</div>
+<% else %>
+<p>No untranslated projects or messages due to low funding.</p>
+<% end %>

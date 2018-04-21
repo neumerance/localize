@@ -1,0 +1,12 @@
+<%# Message about pending website translation jobs %>
+<%= render partial: 'wpml/shared/pending_translation_jobs_warning', locals: { user: @user } %>
+
+<%= infotab_header([_('Name'),
+                    _('URL')]) %>
+  <% @websites.each do |website| %>
+    <tr>
+      <td><%= link_to website.name, wpml_website_path(website) %></td>
+      <td><%= link_to website.url, website.url %></td>
+    </tr>
+  <% end %>
+</table>

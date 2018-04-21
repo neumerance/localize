@@ -1,0 +1,29 @@
+<div class="content">
+
+	<div class="infobox"><h4>Submitted</h4>
+		<p>Submitted by: <b><%= h(@error_report.email) %></b></p>
+		<p>Date: <b><%= disp_time(@error_report.submit_time) %></b></p>
+	</div>
+
+	<div class="infobox"><h4>Python report</h4>
+		<pre class="error_report"><%= h(@error_report.body.gsub('____',"\n")) %></pre>
+	</div>
+
+	<div class="infobox"><h4>User description</h4>
+		<%= pre_format(@error_report.description) %>
+	</div>
+
+	<div class="infobox"><h4>Program details</h4>
+		<p>Program: <b><%= h @error_report.prog %></b></p>
+		<p>Version: <b><%= h @error_report.version %></b></p>
+		<p>OS: <b><%= h @error_report.os %></b></p>
+	</div>
+
+	
+	<div class="infobox"><h4>Resolution</h4>
+		<div id="resolution"><%= render(:partial=>'resolution') %></div>
+	</div>
+	
+	<%= link_to('Back to list', {:action=>:index}) %>
+
+</div>

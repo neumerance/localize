@@ -1,0 +1,12 @@
+// set as a normal row
+jQuery("#aliases_table > table tr:last").remove();
+jQuery("#aliases_table > table tr:last").after("<tr id='alias_<%=alias_profile.id%>'></tr>")
+jQuery.ajax({
+  url: '/alias_profiles/alias_table_line/<%=alias_profile.id%>',
+  data: {
+    user_id : '<%=@auser.id%>'
+  },
+  success: function(response){
+    jQuery('#alias_<%=alias_profile.id%>').html(response)
+  }
+})

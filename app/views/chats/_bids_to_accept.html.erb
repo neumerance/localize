@@ -1,0 +1,16 @@
+<h4>Accepting bid of <%=to_dollars(@bid_total)%></h4>
+
+<p><strong><%=_('You have enough credit in your account to finance this work.')%></strong></p>
+
+<%= form_tag({ :action => :transfer_bid_payment  }, :remote => true) do %>
+  <p>
+  <% ChatsController::BID_ACCEPT_CONDITIONS.each_with_index do |condition, idx| %>
+    <%= check_box_tag "accept[#{idx}]" %> <%= condition[0] %><% if condition[1] -%>&nbsp;(<%= link_to condition[2], condition[1], :target => "_blank" %>)<% end -%>.<br />
+    <% idx += 1 %>
+  <% end %>
+  </p>
+  <%= hidden_field_tag :bid_id, @bid.id %>
+  <%= submit_tag _('Transfer funds to escrow and start work'), :style=>'padding: 0.5em 1em;', data: { disable_with: 'Transfer funds to escrow and start work' } %>
+<% end %>
+<hr style="margin: 1em;" />
+<p><%= link_to "I don't want to accept this bid yet", :action => :show  %></p>

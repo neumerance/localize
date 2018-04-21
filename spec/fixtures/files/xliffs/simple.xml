@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file original="4-225178b1567029966f5f52fed7fc1179" source-language="en" target-language="fr" datatype="plaintext">
+    <header><reference><external-file href="http://transhub-wp.ml/nested-and-mixed-lists/"/></reference></header>
+    <body>
+      <trans-unit resname="body" restype="string" datatype="html" id="body">
+        <source><![CDATA[ <div><a href="/ok">A very good sentence &copy; about </a><p>words</p><img src="sun.jpg"/></div> ]]></source>
+        <target><![CDATA[ <div><a href="/ok">A very good translated sentence &copy; about </a><p>sword</p><img src="sun.jpg"/></div> ]]></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

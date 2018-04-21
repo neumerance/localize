@@ -1,0 +1,30 @@
+<div class="green_message">
+	<p><strong>Software localization projects allow you to easily translate files that contain strings (normally used in application resource files).</strong></p>
+	<p>The way these projects work is:</p>
+	<ol>
+	<li><%= link_to('create the project', {:action=>:new}) %>.</li>
+	<li>Select translation languages and interview translators.</li>
+	<li>Upload the resource file to be translated.</li>
+	<li>Select translators and deposit payment.</li>
+	<li>Download the translated resource file, ready to be used in your application.</li>
+	</ol>
+	<p>When translation is complete, the system will automatically create translated versions of your resource file. All the structure will be maintained with just the strings translated.
+	You will get the translated resource file in the exact same format as you uploaded it.</p>
+	<p>The system supports different input types including UTF-8, UTF-16 (Windows and iPhone Unicode) and Java Unicode.</p>
+
+	<h2>Payment</h2>
+	<p>Software localization projects have a variable rate according to the languages used on the software.</p>
+	<p>When translators apply to do your project, you can select the best one according to their background in the subject you're translating.</p>
+</div>
+
+<% if @text_resources.length > 0 %>
+	<a name="project_list"></a>
+	<h2>Your existing software localization projects</h2>
+	<%= infotab_header(['Project','Languages','Strings']) %>
+	<%= render(:partial=>'text_resource', :collection=>@text_resources) %>
+	</table>
+<% end %>
+
+<div class="inter_tab_spacer"></div>
+
+&laquo; <%= link_to(_('Go back'), {:controller=>:client, :action=>:getting_started}) %> &nbsp; | &nbsp; <%= link_to('Create a new software localization translation project',{:action=>:new}, {:class=>'rounded_but'}) %>

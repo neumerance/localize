@@ -1,0 +1,4 @@
+<tr>
+	<td><%= check_box_tag("reminder[#{reminder.id}]", '1', false, disabled: !reminder.user_can_delete ) %></td>
+	<td><%= reminder_event_link(reminder, @user) %></td>
+</tr>

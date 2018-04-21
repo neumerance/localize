@@ -1,0 +1,73 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+amir_iphone_orit:
+  id: 1
+  translator_id: 3
+  resource_language_id: 1
+  status: <%= RESOURCE_CHAT_ACCEPTED %>
+  word_count: 0
+
+amir_iphone_guy:
+  id: 2
+  resource_language_id: 1
+  translator_id: 4
+  status: <%= RESOURCE_CHAT_APPLIED %>
+  word_count: 0
+
+
+amir_ready_to_start_orit:
+  id: 3
+  resource_language_id: 2
+  translator_id: 3
+  status: <%= RESOURCE_CHAT_ACCEPTED %>
+  word_count: 100
+
+amir_ready_to_start_guy:
+  id: 4
+  resource_language_id: 3
+  translator_id: 4
+  status: <%= RESOURCE_CHAT_ACCEPTED %>
+  word_count: 100
+
+amir_ready_to_start_newbi:
+  id: 5
+  resource_language_id: 4
+  translator_id: 8
+  status: <%= RESOURCE_CHAT_ACCEPTED %>
+  word_count: 100
+
+amir_ready_to_start_newbi2:
+  id: 6
+  resource_language_id: 4
+  translator_id: 8
+  status: <%= RESOURCE_CHAT_ACCEPTED %>
+  word_count: 999999
+
+amir_ready_to_start_newbi3:
+  id: 7
+  resource_language_id: 4
+  translator_id: 8
+  status: <%= RESOURCE_CHAT_ACCEPTED %>
+  word_count: 999999
+
+started_1:
+  id: 8
+  resource_language_id: 5
+  translator_id: 8
+  status: <%= RESOURCE_CHAT_ACCEPTED %>
+  word_count: 999999
+
+started_2:
+  id: 9
+  resource_language_id: 6
+  translator_id: 8
+  status: <%= RESOURCE_CHAT_APPLIED %>
+  word_count: 999999
+
+started_3:
+  id: 10
+  resource_language_id: 7
+  translator_id: 8
+  status: <%= RESOURCE_CHAT_ACCEPTED %>
+  word_count: 0
+

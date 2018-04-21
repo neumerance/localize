@@ -1,0 +1,39 @@
+<div class="actionrequired">
+	<h5>Bids to finalize</h5>
+	<p>You can select more bids to finalize. When you're done you must declare that the work has been completed by agreeing below and click on the button to transfer the money to the translator and complete the work.</p>
+
+	<table class="minitable" cellspacing="0" cellpadding="3">
+    <tr class="headerrow">
+      <th>
+        Language
+      </th>
+      <th align="center">
+        Payment
+      </th>
+  </tr>
+    <tr>
+      <td><%=@bid.revision_language.language.name%></td>
+      <td align="right">
+        <% if @with_review && @with_translation %>
+          <%=@revision.translator_payment(@bid) + @revision.reviewer_payment(@bid)%> USD
+        <% elsif @with_review %>
+          <%=@revision.reviewer_payment(@bid)%> USD
+        <% else %>
+          <%=@revision.translator_payment(@bid)%> USD
+        <% end %>
+      </td>
+      </tr>
+	</table>
+
+	<%= form_tag({ :action => :finalize_bids  }, :remote => true) do %>
+    <%= hidden_field_tag :bid_id, @bid.id %>
+		<p>
+		<% ChatsController::BID_FINALIZE_CONDITIONS.each_with_index do |condition, idx| %>
+			<%= check_box_tag "accept[#{idx}]" %> <%= condition[0] %><% if condition[1] -%>&nbsp;(<%= link_to condition[2], condition[1], :target => "_blank" %>)<% end -%>.<br />
+		<% end %>
+		</p>
+		<%= submit_tag 'Approve completion of this work', data: { disable_with: 'Approve completion of this work' } %>
+	<% end %>
+
+	<br /><br /><%= link_to "I don't want to finalize these bids yet", :action => :show  %>
+</div>

@@ -1,0 +1,30 @@
+<%= form_for(:bid, :url => {:action=>:save_bid}, :html => { :method => :post, id: 'save_bid_form'}, :remote => true) do |f| %>
+    <%= hidden_field_tag :bid_id, @bid.id %>
+    <%= hidden_field_tag :do_save, 1 %>
+    <%= hidden_field_tag :lang_id, @lang_id %>
+    <p> 
+      This project has <%=@revision.word_count%> words.
+      <% if @chat.translator.private_translator? %>
+        Please confirm you are interested in do this project.<br /><br />
+        <%= f.hidden_field(:amount, value: 0) %>
+
+        <%= submit_tag 'Submit bid', data: { disable_with: 'Saving' } %>
+      <% else %>
+        The minimum bid amount is $<%= sprintf("%.2f", @revision.minimum_bid_amount) %><br />
+        Bid to do this project for <br />
+        
+        <%= money_field_tag_for(f, :amount) %> <%= @bid.currency.disp_name %> <%= @revision.payment_units %><br />
+        <%= submit_tag 'Save', data: { disable_with: 'Saving' } %>
+      <% end %>      
+    </p>
+    
+    
+<% end %>
+<%= form_tag({ :action => :save_bid, :bid_id => @bid.id, :lang_id => @lang_id  }, :remote => true) do %>
+    <%= submit_tag 'Cancel', data: { disable_with: 'Cancel' } %>
+<% end %>
+<br />
+<%= bid_auto_accept_status(@bid) %>
+<br />
+<p><span class="warning">* Please remember that our <%= (100*FEE_RATE).to_i %>% commission<br />is deducted from the work payment</span>.<br />
+    See the <a href="http://docs.icanlocalize.com/?page_id=55" target="_blank">fee structure</a> for more information.</p>

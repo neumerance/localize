@@ -1,0 +1,45 @@
+<h1 style="display: inline"> Manage aliases </h1>
+<div class="help-wrapper">
+	<span class="help">
+    <%= image_tag 'qm.png' %>
+		<span class="help-popup">
+			Alias works as extra logging accounts with permissions you can manage.<br/>
+			For more information, look at our <a href="http://docs.icanlocalize.com/information-for-clients/managing-aliases/">Manual page</a>
+		</span>
+	</span>
+</div>
+
+
+<br/><br/>
+
+<div id="aliases_table">
+	<%= render :partial => 'alias_profiles/aliases_table' %>
+</div>
+<br/>
+<button id="addAlias" onClick="add_new_row()">Create new alias</button>
+
+<script>
+	function add_new_row(){
+		if(!(jQuery("#aliases_table > table tr:last").hasClass("new_alias"))){
+      jQuery("#aliases_table > table tr:last").after("<tr id='new_alias' class='new_alias'></tr>");
+      jQuery.ajax({
+        url: '/alias_profiles/new_alias_table_line/<%=@auser.id%>',
+        async: true,
+        success: function(response){
+          jQuery('#new_alias').html(response)
+          jQuery("#addAlias").text('Save')
+        }
+      })
+		}else{
+      jQuery.ajax({
+        url: '/alias_profiles/create_alias/<%=@auser.id%>',
+        data: {email : jQuery('#alias_email').val()},
+        success: function(response){
+          if(jQuery("#aliases_table > table tr:last").html.length == 0){
+            jQuery("#addAlias:first").text('Create new alias');
+          }
+        }
+      })
+		}
+	}
+</script>

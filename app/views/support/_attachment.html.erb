@@ -1,0 +1,5 @@
+<% if attachment.is_image? %>
+  <a href="#" title="<%= attachment.filename %>" onclick='Modalbox.show("<h1>Image: <%= attachment.filename %></h1><div style=\"text-align: center;\"><img style=\"max-width: 100%;\" src=\"<%= url_for({:action=>:attachment, :id=>attachment.message.owner_id, :attachment_id=>attachment.id}) %> \"/>", {width: "80%", title: this.title }); return false;' ><%= attachment.filename %></a>
+<% else %>
+	<p><%= link_to(attachment.filename, {:action=>:attachment, :id=>attachment.message.owner_id, :attachment_id=>attachment.id}) %></p>
+<% end %>

@@ -1,0 +1,10 @@
+<ul class="no-bullet p-0 m-0 m-b-10">
+  <li>Language Pair: <strong><%= "#{offer.from_language.name.titleize} &raquo; #{offer.to_language.name.titleize}".html_safe %></strong></li>
+  <li>Website: <%= link_to offer.website.name.titleize, { controller: '/wpml/websites', action: :show, id: offer.website.id }, target: '_blank' %></li>
+  <li>Client: <%= link_to offer.website.client.full_name, url_for(controller: :users, action: :show, id: offer.website.client.id ), target: '_blank' %></li>
+  <li>Total jobs: <strong><%= total_jobs %></strong></li>
+  <li>Total funded jobs: <strong><%= total_funded_jobs %></strong></li>
+  <li>Total unfunded jobs: <strong><%= total_unfunded_jobs %></strong></li>
+  <li>Total word count: <strong><%= total_word_count %></strong></li>
+  <li>Total funded word count: <strong><%= total_funded_word_count %></strong></li>
+</ul>

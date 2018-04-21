@@ -1,0 +1,7 @@
+<li>
+	<% if identity_verification_for_admin.verified_item.class == UserIdentityDocument %>
+		Document title: <b><%= link_to(identity_verification_for_admin.verified_item.description,  {:controller=>:supporter, :action=>:zipped_file, :id=>identity_verification_for_admin.verified_item.id}) %></b>. Status <b><%= IdentityVerification::STATUS_TEXT[identity_verification_for_admin.status] %></b>
+	<% elsif identity_verification_for_admin.verified_item.class == ExternalAccount %>
+		Verified PayPal account: <b><%= identity_verification_for_admin.verified_item.identifier %></b>
+	<% end %>
+</li>

@@ -1,0 +1,8 @@
+<tr>
+	<td><%= check_box_tag("languages[]", "1", @selected_language_pairs ? @selected_language_pairs.include?(language_pair.id.to_s) : false,
+						  {:class=>"mc-toggle-checkbox", :onClick => "set_submits_disable('languages[]', null)", :language_id => language_pair.id}) %>
+	<td><%=present_pair(language_pair)%></td>
+	<td><%=present_date(language_pair.deadline)%> <%= language_pair.auto_deadline? ? "<small>(auto calculated)</small>" : "" %></td>
+	<td><%=language_pair.estimate_rate%></td>
+	<td><%= link_to "View Graph ", progress_graph_link %></td>
+</tr>

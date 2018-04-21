@@ -1,0 +1,5 @@
+<div class="newsletter_article">
+	<p class="issue">Issue <%= public_newsletter.id %>, <%= disp_date(public_newsletter.chgtime) %></p>
+	<h2><%= link_to(public_newsletter.subject, {:action=>:show, :id=>public_newsletter.id}) %></h2>
+	<%= public_newsletter.body_markup(true) %>
+</div>

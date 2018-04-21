@@ -1,0 +1,10 @@
+<%= form_tag({:action=>:update_translation_language_results}, :remote => true) do %>
+	<p>Select source language: <%= select_tag(:source_lang_id, options_for_select(@source_languages, 1)) %></p>
+	<p>Select target language: <%= select_tag(:target_lang_id, options_for_select(@target_languages)) %></p>
+	<p><label><%= check_box_tag(:include_unqualified, 1,true) %>Include unqualified</label></p>
+  <p><label>Category: <%= select_tag(:category_id, options_for_select([["Any", nil]] + Category.all.map{|x| [x.name, x.id]})) %> </label></p>
+	<%= submit_tag('Submit', data: { disable_with: 'Please wait...' }) %>
+<% end %>
+<br /><br /><hr />
+<h2>Search results</h2>
+<div id="search_results"><%= render(:partial=>'translation_language_results') %></div>

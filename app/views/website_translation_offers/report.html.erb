@@ -1,0 +1,12 @@
+<table width="100%" cellspacing="0" cellpadding="3" class="stats">
+<tr class="headerrow"><th colspan="2"><%= _('Translated') %></th><th colspan="2"><%= _('Waiting for translation') %></th><th colspan="2"><%= _('Total') %></th></tr>
+<tr><td><%= _('Docs') %></td><td><%= _('Words') %></td><td><%= _('Docs') %></td><td><%= _('Words') %></td><td><%= _('Docs') %></td><td><%= _('Words') %></td></tr>
+<tr>
+	<td><%= @completed[STATISTICS_DOCUMENTS][true] %></td><td><%= @completed[STATISTICS_WORDS][true] %></td>
+	<td><%= @completed[STATISTICS_DOCUMENTS][false] %></td><td><%= @completed[STATISTICS_WORDS][false] %></td>
+	<td><%= @completed[STATISTICS_DOCUMENTS][true]+@completed[STATISTICS_DOCUMENTS][false] %></td><td><%= @completed[STATISTICS_WORDS][true] + @completed[STATISTICS_WORDS][false] %></td>
+</tr>
+</table>
+<br /><br />
+
+<% if @back %><p>&laquo; <%= link_to(_('Go back'), @back) %></p><% end %>

@@ -1,0 +1,26 @@
+Dear <%= @user.full_real_name %>,
+
+Your Instant Translation is still not complete. At this point, you can keep waiting for translators to do this work or cancel the translation and withdraw your funds.
+
+If you want to keep waiting, no further action is required. Our system will keep reminding translators about this work until it's done.
+
+To cancel the work and withdraw the payment back to your PayPal account, follow these steps:
+
+1) Go to your list of Instant Translation projects:
+<%= url_for({:escape=>false, :only_path=>false, :controller=>:web_messages, :action=>:index, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+2) Click on the message you wish to cancel.
+
+3) Click on the button 'Delete this project'.
+
+4) Once you've deleted all Instant Translation projects you wish to cancel, go to 'My Account'->'Deposits and payments' and click on 'Withdraw money from this account'.
+We will transfer the payment back to your PayPal account (you will not be charged any fee from us or from PayPal).
+
+If you need any help, open a support ticket:
+<%= url_for({:escape=>false, :only_path=>false, :controller=>:support, :action=>:new, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+* Don't reply to this email. This inbox is not monitored for replies.
+
+We'd like to apologize for the delay and for any inconvenience this must have caused you. We're working on improving the responsiveness of our translators in these languages.
+
+
+<%= EMAIL_SIGNATURE %>

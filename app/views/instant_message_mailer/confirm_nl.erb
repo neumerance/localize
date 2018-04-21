@@ -1,0 +1,11 @@
+Hallo <%= @web_dialog.full_name %>,
+
+We hebben uw bericht gekregen en er wordt een antwoord gestuurd z.s.m. 
+Als u intussen ons een bericht wilt sturen, of om het volledige log van uw commentaar zowel als onze reacties daar te bekijken, klik a.u.b. hieronder:
+
+<%= url_for({:escape => false, :only_path => false, :controller=>:web_dialogs, :action=>:show, :id=>@web_dialog.id, :accesskey=>@web_dialog.accesskey, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+* Let op dat dit emailvak niet wordt gecontroleerd naar antwoorden. 
+
+M.v.g,
+<%= @signature %>

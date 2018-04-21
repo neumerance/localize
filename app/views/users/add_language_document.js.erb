@@ -1,0 +1,13 @@
+<% if @warning && @warning.length > 0 %>
+  alert('<%= @warning %>')
+<% end %>
+<% if @reload %>
+  location.reload()
+<% else %>
+  <% if @need_html_replace %>
+    jQuery('#<%= @partial %>').html('<%= escape_javascript(render :partial => @partial) %>')
+  <% end %>
+  <% if @flash_div %>
+    jQuery('#<%= @flash_div %>').effect("highlight", {}, 3000)
+  <% end %>
+<% end %>

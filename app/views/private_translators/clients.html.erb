@@ -1,0 +1,7 @@
+<% if @user.private_translators.length > 0 %>
+<%= infotab_header(['Client','Status','Actions']) %>
+<%= render(:partial=>'private_client', :collection=>@user.private_translators) %>
+</table>
+<% else %>
+<p>No client has invited you to work as a private translator.</p>
+<% end %>

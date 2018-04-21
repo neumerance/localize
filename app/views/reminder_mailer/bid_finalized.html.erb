@@ -1,0 +1,23 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>
+Your work on <%= @bid.chat.revision.project.name %> has been accepted as complete. All funds have been transfered from escrow to your account and are available for you.
+</p>
+
+<p>
+To see your financial account and make withdrawals, log in to your account, go to My Account->Payments and withdrawals.
+</p>
+<% if @has_verified_account %>
+<p>Your PayPal account can be used to make withdrawals immediately.</p>
+<% else %>
+<p>
+Please note that you need to have a PayPal account in order to make withdrawals. To setup such an account, visit PayPal: <%= link_to 'https://www.paypal.com', 'https://www.paypal.com' %>
+</p>
+
+<p>Once your PalPal account is set up, go to My Account->Payments and withdrawals. Then, click on 'Do a test deposit' to make a 0.10 USD test deposit FROM your PayPal account.</p>
+<p>
+This deposit will let us know that you are the rightful owner of this account. When the transfer completes, you will be able to make withdrawals to this account.
+</p>
+
+<p>Please note that this is a one time process.</p>
+<% end%>

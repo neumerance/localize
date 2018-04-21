@@ -1,0 +1,16 @@
+<tr>
+	<td><%= link_to(text_resource.name, {:controller=>:text_resources, :action=>:show, :id=>text_resource.id}) %></td>
+	<td><%= text_resource.category ? text_resource.category.name : '<span class="comment">Not specified</span>'.html_safe %></td>
+	<td><%= disp_date(text_resource.created_at) %></td>
+	<td <%= background_for_paying_user(text_resource.client).html_safe %>><%= user_link(text_resource.client) %></td>
+	<td><% if text_resource.resource_languages.length > 0 %>
+		<ul>
+      <% text_resource.resource_languages.each do |rl| %>
+        <%= content_tag(:li, "#{text_resource.language.name} to #{rl.language.name}") %>
+      <% end %>
+    </ul>
+		<% end %>
+	</td>
+	<td><%= text_resource.resource_strings.count%></td>
+</tr>	
+	

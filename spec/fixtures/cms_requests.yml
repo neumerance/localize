@@ -1,0 +1,134 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+page1:
+  id: 1
+  website_id: 1
+  status: <%= CMS_REQUEST_RELEASED_TO_TRANSLATORS %>
+  language_id: 1
+
+post1:
+  id: 2
+  website_id: 1
+  status: <%= CMS_REQUEST_RELEASED_TO_TRANSLATORS %>
+  language_id: 1
+  list_type: post
+  list_id: 1
+
+post2:
+  id: 3
+  website_id: 1
+  status: <%= CMS_REQUEST_RELEASED_TO_TRANSLATORS %>
+  language_id: 1
+  list_type: post
+  list_id: 2
+
+post3:
+  id: 4
+  website_id: 1
+  status: <%= CMS_REQUEST_RELEASED_TO_TRANSLATORS %>
+  language_id: 1
+  list_type: post
+  list_id: 3
+
+post4:
+  id: 5
+  website_id: 1
+  status: <%= CMS_REQUEST_RELEASED_TO_TRANSLATORS %>
+  language_id: 1
+  list_type: post
+  list_id: 4
+
+post5:
+  id: 6
+  website_id: 1
+  status: <%= CMS_REQUEST_RELEASED_TO_TRANSLATORS %>
+  language_id: 1
+  list_type: post
+  list_id: 5
+  
+float1:
+  id: 7
+  website_id: 2
+  status: <%= CMS_REQUEST_RELEASED_TO_TRANSLATORS %>
+  language_id: 1
+  list_id: 0
+
+float2:
+  id: 8
+  website_id: 2
+  status: <%= CMS_REQUEST_RELEASED_TO_TRANSLATORS %>
+  language_id: 1
+  list_id: 1
+
+float3:
+  id: 9
+  website_id: 2
+  status: <%= CMS_REQUEST_RELEASED_TO_TRANSLATORS %>
+  language_id: 1
+  list_id: 2
+
+lista1:
+  id: 10
+  website_id: 1
+  status: <%= CMS_REQUEST_RELEASED_TO_TRANSLATORS %>
+  language_id: 1
+  list_type: shop
+  list_id: 1
+
+lista2:
+  id: 11
+  website_id: 1
+  status: <%= CMS_REQUEST_RELEASED_TO_TRANSLATORS %>
+  language_id: 1
+  list_type: shop
+  list_id: 2
+
+lista3:
+  id: 12
+  website_id: 1
+  status: <%= CMS_REQUEST_RELEASED_TO_TRANSLATORS %>
+  language_id: 1
+  list_type: shop
+  list_id: 3
+
+lista4:
+  id: 13
+  website_id: 1
+  status: <%= CMS_REQUEST_RELEASED_TO_TRANSLATORS %>
+  language_id: 1
+  list_type: shop
+  list_id: 4
+
+lista5:
+  id: 14
+  website_id: 1
+  status: <%= CMS_REQUEST_RELEASED_TO_TRANSLATORS %>
+  language_id: 1
+  list_type: shop
+  list_id: 5
+
+lista6:
+  id: 15
+  website_id: 1
+  status: <%= CMS_REQUEST_CREATING_PROJECT %>
+  language_id: 1
+  list_type: shop
+  list_id: 5
+
+lista7:
+  id: 16
+  website_id: 1
+  status: <%= CMS_REQUEST_RELEASED_TO_TRANSLATORS %>
+  language_id: 1
+  list_type: shop
+  list_id: 5
+  container: example_container
+
+lista8:
+  id: 17
+  website_id: 1
+  status: <%= CMS_REQUEST_TRANSLATED %>
+  language_id: 1
+  list_type: shop
+  list_id: 5
+  container: example_container

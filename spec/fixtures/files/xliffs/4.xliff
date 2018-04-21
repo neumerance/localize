@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+    <file original="97f69cec-989e-44a6-8e2b-ffcbf43f713c" source-language="en" target-language="fr" datatype="plaintext">		<header><reference><external-file href="http://clean.wp/page-comments-disabled/"/></reference></header>
+        <body>
+            <trans-unit resname="title" restype="string" datatype="html" id="title">
+                <source><![CDATA[Page Comments Disabled]]></source>
+                <target><![CDATA[Page Comments Disabled]]></target>
+            </trans-unit>
+            <trans-unit resname="body" restype="string" datatype="html" id="body">
+                <source><![CDATA[This page has its comments, pingbacks, and trackbacks disabled.<br class="xliff-newline" /><br class="xliff-newline" />There should be no comment reply form or any pingbacks and trackbacks listed.]]></source>
+                <target><![CDATA[This page has its comments, pingbacks, and trackbacks disabled.<br class="xliff-newline" /><br class="xliff-newline" />There should be no comment reply form or any pingbacks and trackbacks listed.]]></target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

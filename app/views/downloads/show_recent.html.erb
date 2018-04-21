@@ -1,0 +1,8 @@
+<p class="warning">No version was found for this program.</p>
+<br /><hr /><br />
+<% if @user[:type] == 'Supporter' %>
+	<p><%= link_to('Back to download index', {:action=>:index}) %></p>
+<% else %>
+	<p>Your session in ICanLocalize is open in another window.<br />
+	<a href="javascript:window.close();">Close this window</a>.</p>
+<% end %>

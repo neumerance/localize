@@ -1,0 +1,14 @@
+<%= form_tag({:controller=>:support, :action=>:create_support_ticket_for_user, :id=>@auser.id}, {:multipart => true} ) do %>
+	<table border="0">
+		<tr><td>Subject:</td><td><%= text_field_tag :subject, @subject, {:size=>60, maxlength: COMMON_FIELD} %></td></tr>
+		<tr><td>Message:</td><td><%= text_area_tag :message, @message, {:cols=>60, :rows=>7, maxlength: COMMON_NOTE} %></td></tr>
+		<tr><td><%= _('Attachments') %></td>
+			<td>
+				<div id="documents_to_upload"><p><%= file_field_tag 'file1[uploaded_data]', :id=>'file1_uploaded_data', onchange: "validate_file_size('file1[uploaded_data]', '#{ATTACHMENT_MAX_SIZE}')" %></p></div>
+				<p><a href="#form_top" onclick="add_another_file(<%= ATTACHMENT_MAX_SIZE %>);"><%= _('Add another attachment') %></a></p>
+			</td>
+		</tr>
+	</table>
+	<%= submit_tag 'Create support ticket', data: { disable_with: 'Create support ticket' } %>
+<% end %>
+<br /><br /><p><%= link_to('Back to user profile', {:controller=>:users, :action=>:show, :id=>@auser.id}) %></p>

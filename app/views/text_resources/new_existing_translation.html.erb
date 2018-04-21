@@ -1,0 +1,21 @@
+<p>If you already have full or partial translation for the strings in this project, as a resource file, you can upload it here.</p>
+<%= form_tag({:controller=>:resource_translations, :action=>:create, :text_resource_id=>@text_resource.id}, {:multipart=>true}) do %>
+	<p>Format: <%= select_tag(:resource_format_id, options_for_select(@resource_formats.collect { |f| [f.description, f.id] }, @text_resource.resource_format_id) ) %></p>
+	<p>Select the translation language to be updated:	<%= select_tag(:language_id, options_for_select(@languages)) %></p>
+	<% if @contexts.length == 1 %>
+	<%= hidden_field_tag(:context, @contexts[0]) %>
+	<% else %>
+	<p>Select the file the translation is for: <%= select_tag(:context, options_for_select(@contexts)) %></p>
+	<% end %>
+	<div>
+		<div> Behavior for already translated strings: </div>
+		<label><%= radio_button_tag 'already_translated_strings', 'skip', true %> Skip strings that are already translated</label>
+		<br/>
+		<label><%= radio_button_tag 'already_translated_strings', 'update' %> Overwrite translated strings</label>
+	</div>
+	<br/>
+	<p><%= file_field_tag('resource_translation[uploaded_data]', :size=>50, :id=>'resource_translation_uploaded_data', onchange: "validate_file_size('resource_translation[uploaded_data]', '#{ATTACHMENT_MAX_SIZE}')") %></p>
+	<%= submit_tag('Upload', :style=>'padding: 0.5em 1em;', data: { disable_with: 'Upload' }) %>
+<% end %>
+
+<br /><br /><p><%= link_to('Cancel',{:action=>:show}) %></p>

@@ -1,0 +1,35 @@
+<% if @revision.kind == TA_PROJECT %>
+	<%= infotab_top(_('Description'), infobar_contents(_('Enter detailed description of this project. If you have special instructions that need to be implemented, you must state them here.'),_('This is a detailed description of this project, which you will have to fullfil if you do this work.'), @revision.released != 1, @revision.description && (@revision.description != ''))) %>
+<% elsif @revision.kind == SIS_PROJECT %>
+	<%= infotab_top(_('Description'), infobar_contents(_('Give a brief description about your program, so that translators know what it does.'), _('This is a brief description of the program. For more information, you can start a chat with the client.'), @revision.released != 1, !@revision.description.blank?)) %>
+<% else %>
+	<%= infotab_top(_('Description'), infobar_contents(_("<p>Enter detailed description of what you need done in this project. Be as specific as possible.</p><p style=\"clear:both; font-weight: bold;\"><br />Remember to include:</p><ol><li>Detailed instructions for how to do the translation. If you've uploaded a file, tell which program the translator should edit it with.</li><li>Size of project</li><li>Format</li><li>Any special requirement you may have</li></ol>"),_('This is a detailed description of this project, which you will have to fullfil if you do this work.<br /><br /><b>If you are not sure, from this description, what the scope of the project is, ask the client for clarifications before bidding.</b>'), @revision.released != 1, @revision.description && (@revision.description != ''))) %>
+<% end %>
+<% if @show_edit_description %>
+	<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+		<%= form_for(:revision, :url => { :action => :edit_description, :req=>'save' }, :remote => true) do |f| %>
+			<!-- %= link_to("Formatting instructions", MARKUP_DESCRIPTION_URL, {:target=>'_blank'}) % ><br /-->
+			<p><%= f.text_area :description, :rows => 12, :cols => 80, maxlength: COMMON_NOTE %></p>
+		<%= submit_tag _('Save'), :name=>'save', data: { disable_with: _('Save') } %>
+		<% end %>
+		<%= form_tag({ :action => :edit_description, :req=>'hide' }, :remote => true) do %>
+			<%= submit_tag _('Cancel'), :name=>'hide', data: { disable_with: _('Cancel') } %>
+		<% end %>
+	</td></tr></table>
+<% else %>
+	<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+		<% if @revision.description && (@revision.description != '') %>
+			<div class="markup"><%= pre_format(@revision.description) %></div>
+		<% else %>
+			<p class="warning">Project has no description yet.</p>
+			<div class="clear"></div>
+		<% end %>
+	</td></tr></table>
+	<% if @canedit %>
+		<div class="tabbottom">
+			<%= form_tag({ :action => :edit_description, :req=>'show' }, :remote => true) do %>
+				<%= submit_tag _('Edit project description'), :name=>'show', :id => 'edit_description_button', data: { disable_with: _('Edit project description') } %>
+			<% end %>
+		</div>
+	<% end %>
+<% end %>

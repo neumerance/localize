@@ -1,0 +1,28 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p><%= @website_translation_contract.website_translation_offer.website.client.full_name %> has accepted your application to translate project <%= @website_translation_contract.website_translation_offer.website.name %> from <%= @website_translation_contract.website_translation_offer.from_language.name %> to <%= @website_translation_contract.website_translation_offer.to_language.name %>.</p>
+
+<p><% if @pending_jobs > 0 %>Right now, <%= @pending_jobs %> documents are waiting for you to translate.<% end %></p>
+<p>
+You can see the currently pending jobs for translation at the top of your Projects page under 'Available recurring translations':
+<% link = url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:translator, :action=>:index } ) %>
+<%= link_to link, link %>
+</p>
+
+<p>To translate a document in this project:</p>
+<ul>
+  <li>1) Click on the document's title.</li>
+  <li>2) You will see the job's summary. Click on 'Start translating'.</li>
+  <li>3) Open Translation Assistant. The document will appear there.</li>
+  <li>4) Translate and upload.</li>
+  <li>5) Once completed, click on 'Declare the work as complete'.</li>
+</ul>
+
+
+<p>We'll also notify you whenever there are new documents to translate in this project.</p>
+
+<p>
+  To communicate with the client, click here:
+  <% link = url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:website_translation_contracts, :action=>:show, :website_id=>@website_translation_contract.website_translation_offer.website.id, :website_translation_offer_id=>@website_translation_contract.website_translation_offer.id, :id=>@website_translation_contract.id } ) %>
+  <%= link_to link, link %>
+</p>

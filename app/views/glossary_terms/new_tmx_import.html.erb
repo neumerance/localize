@@ -1,0 +1,5 @@
+<%= form_tag({:action=>:tmx_import}, {:multipart=>true}) do %>
+	<p><b>Select TMX file to upload</b><br />
+	<%= file_field_tag('file', :size=>70, data: { disable_with: 'Processing...' }) %></p>
+	<p><%= submit_tag('upload', :style=>'padding: 0.5em 1em;', data: { disable_with: 'Please wait' }) %> &nbsp; | &nbsp; <%= link_to('Cancel', {:action=>:index}) %></p>
+<% end %>

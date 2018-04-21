@@ -1,0 +1,245 @@
+<%= infotab_top(_('Personal information'), _('Your name and E-mail address are not publicly viewable and are only used for communication between you and the system.')) %>
+	<% if @show_edit %>
+		<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+			<%= my_error_messages_for :auser %>
+
+			<%= form_for(:auser,
+                    :url => edit_personal_details_user_path(personal_details, :req => 'save'),
+                    :html => {
+                            :method => :post ,
+                            :remote => true,
+                            "data-loading" => "if( jQuery('#auser_vat_number:visible').val() ){ Modalbox.show('<h2 style=\"text-align: center;\">Please wait while we validate your VAT Number...</h2>',{title: 'Validating VAT Number.', slideDownDuration: 0.3}); }",
+                            "data-loaded" => 'Modalbox.hide()',
+                            "data-confirm" => @confirm_msg,
+                            "autocomplete" => "off"
+                    }
+                ) do |f| %>
+
+			<% if @user.has_admin_privileges? %>
+				  <p>
+					<b><%= _('First name') %></b><br />
+					<%= f.text_field :fname, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+				  </p>
+
+				  <p>
+					<b><%= _('Last name') %></b><br />
+					<%= f.text_field :lname, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+				  </p>
+			<% end %>
+
+				  <p>
+					<b><%= _('E-mail') %></b><br />
+					<%= f.text_field :email, :autocomplete => 'off', maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+				  </p>
+
+			  <p>
+				<b><%= personal_details.is_client? ? _('Country of residence') :_('Nationality') %></b><br />
+				<%= f.select(:country_id, Country.get_list()) %>
+				<span id="non_eu_resident_vat" style="display: none;">
+					<input type="checkbox" name="non_eu_resident_vat"/>
+					I am established, have my permanent address, or usually reside within <span></span>.
+				</span>
+			  </p>
+
+			  <% if (personal_details.is_client?) %>
+          <p id="zip_code">
+            <b><%= _('Zip code / Postal Code') %></b><br />
+            <%= f.text_field(:zip_code) %>
+          </p>
+				  <p id="vat_number">
+					<b><%= _('VAT Number') %></b><br />
+					<input type="text" id="vat_code" disabled="disabled" />
+					<%= f.text_field(:vat_number, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE) %>
+				  </p>
+
+			    <p id="company_details">
+			  	<b><%= _('Company (Will be displayed in your invoices)') %></b><br />
+			  	<%= f.text_area(:company, {:rows => 3, :placeholder => 'Optional', maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE}) %>
+			    </p>
+			  <% end %>
+
+			  <p>
+					<b><%= _('Phone number') %></b><br />
+					<%= f.select(:phone_country, Country.all.map{|x| x.code}, {:include_blank => ""}) %>
+					<%= f.text_field :phone_number, {:size => 22, :autocomplete => 'off', maxlength: 18} %>
+			  </p>
+
+			  <p>
+				<b><%= _('Date of birth') %></b><br />
+				<%= f.date_select(:birthday, :start_year => Time.now.year - 90, :end_year => Time.now.year - 15) %>
+   				<% #= date_picker_field 'auser[birthday]', nil, {:value => @auser.try(:birthday).try(:to_date) } %>
+			  </p>
+
+			  <% if @user.has_admin_privileges? %>
+
+					<input style="display:none" type="text" name="fakeusernameremembered"/>
+					<input style="display:none" type="password" name="fakepasswordremembered"/>
+
+				  <p>
+					<b>Password</b><br />
+					<%#= f.password_field :password_change, :autocomplete => 'off', maxlength: PASSWORD_FIELD, size: COMMON_FIELD_SIZE %>
+              <span>Not shown</span>
+				  </p>
+
+				  <p>
+					<b>Userstatus</b><br />
+					<%= f.select(:userstatus, @auser.get_userstatus_options, selected: @auser.userstatus ) %>
+				  </p>
+
+				  <p>
+					<b>Level</b><br />
+					<%= f.number_field :level, min: 0, max: 9, maxlength: 1, oninput: 'javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)' %>
+				  </p>
+
+					<p>
+				  <b>TA Projects limit</b><br />
+					<%= f.number_field :ta_limit, min: 0, max: 100, maxlength: 3, oninput: 'javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)' %>
+				  </p>
+
+				  <p>
+					<b>Top Client</b><br />
+					<%= f.check_box :top %>
+				  </p>
+
+					<b>Skip all instant translation e-mail notifications</b><br />
+					<%= f.check_box :skip_instant_translation_email%>
+				  </p>
+
+					<b>Reverse TM</b><br />
+					<%= f.check_box :reverse_tm %>
+				  </p>
+
+				  <b>Allowed to withdraw</b><br />
+					<%= f.check_box :allowed_to_withdraw %>
+				  </p>
+
+					<% if personal_details.bounced %>
+						  <b>Don't send email notifications</b> <i>(this is set automatically when a mail sent by ICL bounces. Please don't uncheck this more than 3 times for an user in a short period of time.)</i><br />
+							<%= f.check_box :bounced %>
+						  </p>
+					<% end %>
+
+				<% end %>
+
+				<% if @confirm_msg %><p class="warning"><%= @confirm_msg %></p><% end %>
+				<p></p>
+				<%= submit_tag _('Save'), data: { disable_with: _('Save') } %>
+
+			<% end %>
+
+			<%= form_tag({ :action => :edit_personal_details, :req => 'hide' }, :remote => true) do %>
+				<%= submit_tag _('Cancel'), data: { disable_with: _('Cancel') } %>
+			<% end %>
+		</td></tr></table>
+	<% else %>
+		<%= infotab_header([_('First name'),_('Last name'),_('E-mail'), _('Phone'), (personal_details.is_client? ? _('Country of residence') :_('Nationality') ), _('Date of birth')]) %>
+			<tr>
+				<td><%=h personal_details.fname %></td>
+				<td><%=h personal_details.lname %></td>
+				<td><%=h personal_details.email %></td>
+				<td><%=h "#{personal_details.phone_country} #{personal_details.phone_number}" %> </td>
+				<td><%=!personal_details.country.blank? ? personal_details.country.name : '<span class="warning">Unknown</span>'.html_safe %></td>
+				<td><%=!personal_details.birthday.blank? ? personal_details.birthday : '<span class="warning">Unknown</span>'.html_safe %></td>
+			</tr>
+		</table>
+		<% if (@user == @auser) || @user.has_admin_privileges? %>
+			<div class="tabbottom">
+				<%= form_tag(edit_personal_details_user_path(:req => 'show'), remote: true) do %>
+					<%= submit_tag _('Edit personal details'), data: { disable_with: _('Edit personal details') } %>
+				<% end %>
+			</div>
+		<% end %>
+		<% if @user.has_supporter_privileges? && ['Client', 'Translator', 'Partner'].include?(@auser[:type]) %>
+			<p>Status: <%= User::USER_STATUS_TEXT[@auser.userstatus] %><br />
+			<% if @auser[:type] == 'Translator' %>Level: <%= User::USER_LEVEL_TEXT[@auser.level] %><br /><% end %>
+			</p>
+			<% if @auser.money_accounts.length > 0 %>
+				<h4>Money accounts</h4>
+				<ul>
+				<% @auser.money_accounts.each do |account| %><li><%= link_to('%s account'%account.currency.name, {:controller=>:finance, :action=>:account_history, :id=>account.id}) %> (balance is <%= account.balance %> <%= account.currency.disp_name %>, <%= account.account_lines.count %> operations)</li><% end %>
+				</ul>
+			<% end %>
+
+			<% if @auser.is_a?(Client) && @auser.vouchers.length > 0 %>
+				<h4>Promo Codes</h4>
+				<ul>
+				<% @auser.vouchers.each do |voucher| %>
+					<li><%= "%s %s USD" % [voucher.code, voucher.amount] %></li><% end %>
+				</ul>
+			<% end %>
+
+			<% if @auser.external_accounts.length > 0 %>
+				<h4>External accounts</h4>
+				<ul>
+          <% @auser.external_accounts.each do |account| %>
+            <li>
+          <%= link_to(h(account.identifier), {:controller=>:finance, :action=>:external_account, :id=>account.id}) %>
+          (<%= account.payments.count %> payments, <%= account.credits.count %> credits)
+          <% if account.hidden %>
+            <b style="color: red">(HIDDEN)</b>
+          <% end %>
+          </li>
+        <% end %>
+				</ul>
+			<% end %>
+		<% end %>
+	<% end %>
+
+<% if (personal_details.is_client?) %>
+<script type="text/javascript">
+	var vat_country_list = <%= Country.require_vat_list.to_json %>;
+	var country_codes = <%= Hash[Country.all.map{|c| [c.id, c.tax_code] }].to_json.html_safe %>;
+	jQuery('#auser_country_id').change(function(){
+		if ( jQuery.inArray( parseInt(jQuery(this).val()), vat_country_list) != -1) {
+			jQuery('#non_eu_resident_vat').hide();
+
+			jQuery('#vat_number').show();
+			jQuery('#vat_code').val(country_codes[jQuery(this).val()]);
+			if (!jQuery('#auser_vat_number').val()) {
+				jQuery('#vat_number').addClass('required');
+				alert('The selected country belongs to EU, We are required by EU regulations to collect VAT. If you have a VAT number, please enter it. For businesses registered in EU reverse VAT charge will be applied.');
+			};
+		}else{
+			jQuery('#vat_number').hide().removeClass('required');
+			jQuery('#auser_vat_number').val('');
+
+			<% if ( personal_details.ip_country_pay_taxes? )%>
+				jQuery('#non_eu_resident_vat input').prop('checked', ( "<%=personal_details.country_id %>" == jQuery('#auser_country_id').val() ));
+
+				jQuery('#non_eu_resident_vat span').text( jQuery('#auser_country_id :selected').text() );
+				if (jQuery('#auser_country_id').val() != 0) {jQuery('#non_eu_resident_vat').show()};
+				jQuery('#non_eu_resident_vat').parents('form').find('input[type="submit"]').click(function(event){
+					if ( jQuery('#non_eu_resident_vat input').is(':visible') && !jQuery('#non_eu_resident_vat input').is(':checked') ) {
+						alert('You must confirm that you are established in '+jQuery('#auser_country_id :selected').text());
+						event.preventDefault();
+						return false;
+					};
+				})
+			<% end %>
+		};
+	}).change();
+
+	jQuery('#auser_vat_number').keyup(function(){
+		if ( !!!jQuery(this).val() ) {
+			jQuery('#vat_number').addClass('required');
+		}else{
+			jQuery('#vat_number').removeClass('required');
+		};
+	});
+
+<% if params[:highlight] %>
+	jQuery('#<%=params[:highlight] %>').addClass('required');
+<% end %>
+
+<% unless @show_edit %>
+	if ( jQuery.inArray( parseInt("<%=personal_details.country_id %>"), vat_country_list) != -1) {
+		jQuery('#tax_information').show();
+		jQuery('#tax_information .country_name').text("<%=personal_details.country.try :name %>");
+		jQuery('#tax_information .vat_number').text("<%=personal_details.country.try :tax_code %> <%=personal_details.vat_number %>");
+		jQuery('#tax_information .business_vat').html("<%=is_business_vat?(personal_details) %>");
+	}else{
+		jQuery('#tax_information').hide();
+	};
+<% end %>
+</script>
+<% end %>

@@ -1,0 +1,18 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p><%= @resource_chat.translator.full_name %> is interested in translating your project <%= @resource_chat.resource_language.text_resource.name %> from <%= @resource_chat.resource_language.text_resource.language.name %> to <%= @resource_chat.resource_language.language.name %>.</p>
+
+<% if !@message.blank? %>
+  <p>----</p>
+
+  <p><%= @message %></p>
+
+  <p>----</p>
+<% end -%>
+
+<p>
+  <% link = url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:resource_chats, :action=>:show, :text_resource_id=>@resource_chat.resource_language.text_resource.id, :id=>@resource_chat.id } ) %>
+  To chat with the translator or respond to this offer, click on the link below: <%= link_to link, link %>
+</p>
+
+<%= EMAIL_SIGNATURE %>

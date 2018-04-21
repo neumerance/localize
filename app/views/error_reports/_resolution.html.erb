@@ -1,0 +1,25 @@
+<% if @show_resolution_edit %>
+	<%= form_for(:error_report, :url => {:action=>:edit_resolution}, :html => { :method => :post, :remote =>true }) do |f| %>
+		<p>
+			<%= f.text_area :resolution, :rows => 10, :cols => 80, maxlength: COMMON_NOTE%>
+		</p>
+		<%= submit_tag 'Save', data: { disable_with: 'Saving' } %>
+	<% end %>
+	<%= form_tag({ :action => :edit_resolution, :req=>:hide }, :remote => true) do %>
+		<%= submit_tag 'Cancel', data: { disable_with: 'Cancel' } %>
+	<% end %>
+<% else %>
+	<% if @error_report.resolution.blank? %>
+		<p class="warning">A resolution doesn't exist.</p>
+		<div class="clear"></div>
+	<% else %>
+		<p><%= pre_format(@error_report.resolution) %></p>
+	<% end %>
+	<%= form_tag({ :action => :edit_resolution, :req=>:show }, :remote => true) do %>
+		<% if @error_report.resolution.blank? %>
+			<%= submit_tag 'Create error resolution', data: { disable_with: 'Create error resolution' } %>
+		<% else %>
+			<%= submit_tag 'Edit error resolution', data: { disable_with: 'Edit error resolution' } %>
+		<% end %>
+	<% end %>
+<% end %>

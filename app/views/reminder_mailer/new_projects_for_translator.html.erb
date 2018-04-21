@@ -1,0 +1,156 @@
+<%= HTML_EMAIL_HEADER.html_safe %>
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>Here is a summary of new projects available to do in ICanLocalize.</p>
+
+<p><strong>To start new jobs, go to your <%= link_to('open work', {:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:translator, :action=>:open_work}) %> page.</strong></p>
+
+<% if @open_cms_requests.length > 0 %>
+<h3>New recurring website translation work is available for you</h3>
+
+<p class="comment">You have already been approved to do this work. To begin translation, go to each job and indicate that you want to start this translation now.</p>
+
+<%= infotab_header(['Project','Document title', 'Actions']) %>
+<% for cms_request in @open_cms_requests %>
+<tr>
+	<td><%= h(cms_request.website.name) %> - translation from <%= cms_request.language.name %></td>
+	<td><%= link_to_if(!cms_request.permlink.blank?, h(cms_request.title), cms_request.permlink) %></td>
+	<td><%= link_to('See full info and start translation', {:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:cms_requests, :action=>:show, :website_id=>cms_request.website_id, :id=>cms_request.id}) %></td>
+</tr>
+<% end %>
+</table>
+<br />
+
+<p class="important">Please note: the client for this project relies on quick translation for new documents. If you cannot do them, please <%= link_to('let us know',{:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:support, :action=>:new}) %> as soon as possible.</p>
+
+<% end -%>
+
+<% if @revisions.length > 0 %>
+<h3>New bidding projects</h3>
+
+<p>New bidding projects, matching your profile, have been released and are available to bid on.</p>
+
+<%= infotab_header(['Project','Project kind', 'Languages', 'Description (summary)', 'Field of expertise', 'Project size', 'Bidding', 'Actions']) %>
+<% for revision in @revisions %>
+<tr>
+	<td><%= link_to(h("#{revision.project.name}, #{revision.name} revision"), {:escape => false, :only_path => false, :controller=>:revisions, :action=>:show, :project_id=>revision.project_id, :id=>revision.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL }) %></td>
+	<td><%= revision.project.print_type %></td>
+	<td><%= revision.language.name %> to <%= (revision.languages.collect { |lang| lang.name }).join(', ') %></td>
+	<td><%= h(truncate(revision.description, :length => 200, :omission => '...')) %></td>
+	<td><% if revision.categories.length > 0 -%>
+	<ul>
+	<% for cat in revision.categories -%>
+		<li><%= cat.name %></li>
+	<% end -%>
+	</ul>
+	<% end -%>
+	</td>
+	<td><% if revision.kind == TA_PROJECT %><%= translation_language_stats(revision,true) %><% end %></td>
+	<td><ul>
+		<li>Maximum bid: <%= revision.max_bid %> <%= revision.currency_name_with_units %>.</li>
+		<% if revision.bidding_close_time %><li>Bidding closes at <%= disp_time(revision.bidding_close_time) %>.</li><% end %>
+		<li>Time to complete the work: <%= revision.project_completion_duration %> days.</li>
+		</ul>
+	</td>
+	<td><%= link_to('View project details or bid',{:escape => false, :only_path => false, :controller=>:revisions, :action=>:show, :project_id=>revision.project_id, :id=>revision.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %></td>
+</tr>
+<% end %>
+</table>
+<br />
+<% end %>
+
+<% if (@web_messages_wc > 0) -%>
+<h3>New Instant Translation jobs</h3>
+
+<p>There are new Instant Translation projects with a total of <%= @web_messages_wc %> words to be translated. <%= link_to('Do open instant translation projects &raquo;'.html_safe, {:escape => false, :only_path => false, :controller=>:web_messages, :action=>:index, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %></p>
+
+<p class="comment">Please note that there is no bidding process for Instant Translation projects. The first translator to begin editing a project wins it.</p>
+<p>Payment for Instant Translation projects is <%= INSTANT_TRANSLATION_COST_PER_WORD %> USD per word - minus our 20% commission.</p>
+
+<% end -%>
+
+<% if @open_website_translation_offers.length > 0 %>
+<h3>New recurring website translation projects</h3>
+<p>There are new recurring website translation projects you can apply to. <a href="http://docs.icanlocalize.com/information-for-translators/about-projects/about-localization-projects/">learn more about what recurring translation projects are &raquo;</a></p>
+
+<p><b>Payment for this work is not fixed.</b> You will enter your bid when applying.</p>
+
+<%= infotab_header(['Website to translate', 'Languages', 'Description', 'Subject', 'Volume and deadline', 'Respond to this project']) %>
+
+<% for website_translation_offer in @open_website_translation_offers %>
+<tr>
+	<td><%= link_to_if(website_translation_offer.website.can_link?, h(website_translation_offer.website.name), website_translation_offer.website.url) %></td>
+	<td><%= website_translation_offer.language_pair %></td>
+	<td><%= h(website_translation_offer.website.description) %></td>
+	<td><%= website_translation_offer.website.category ? website_translation_offer.website.category.name : 'Not selected' %></td>
+	<td><%= !website_translation_offer.invitation.blank? ? h(website_translation_offer.invitation) : 'Not specified yet' %></td>
+	<td><%= link_to('Apply to do this job', {:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:website_translation_contracts, :action=>:new, :website_id=>website_translation_offer.website_id, :website_translation_offer_id=>website_translation_offer.id } ) %></td>
+</tr>
+<% end %>
+</table>
+<br />
+
+<% end %>
+
+<% if @open_text_resource_projects.length > 0 %>
+<h3>New Software Localization projects</h3>
+<p>There are new Software Localization projects you can apply to. <a href="http://docs.icanlocalize.com/information-for-translators/about-projects/about-localization-projects/">learn more about what software localization projects are &raquo;</a></p>
+
+<%= infotab_header(['Project', 'Subject', 'Languages', 'Word count', 'Payment', 'Respond to this project']) %>
+
+<% for resource_language in @open_text_resource_projects %>
+<tr>
+	<td><%= h(resource_language.text_resource.name) %></td>
+	<td><%= resource_language.text_resource.category ? resource_language.text_resource.name : 'Not specified' %></td>
+	<td><%= "#{resource_language.text_resource.language.name} to #{resource_language.language.name}" %></td>
+	<td><%= display_word_count(resource_language) %></td>
+	<td><%= AvailableLanguage.price_per_word_for(resource_language.text_resource.language, resource_language.language) %> USD / word</td>
+	<td><%= link_to('Apply to do this job', {:escape=>false, :only_path=>false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:text_resources, :action=>:show, :id=>resource_language.text_resource.id } ) %>
+</tr>
+<% end %>
+</table>
+<br />
+
+<% end -%>
+
+<% if @open_managed_works.length > 0 %>
+<h3>New jobs for you to review</h3>
+<p>There are new projects that you can review. You have been pre-screened and can review these jobs immediately. Click on any of the jobs below, make sure that you are comfortable with the project and click on 'Be Reviewer'.</p>
+<%= infotab_header(['Project']) %>
+<tr>
+  <td>
+    <ul>
+      <% @open_managed_works.each do |w| %>
+        <li><%= managed_work_link(w, true) %></li>
+      <% end %>
+    </ul>
+  </td>
+</tr>
+</table>
+<br />
+
+<% end %>
+
+
+<% if @missing_categories.length > 0 %>
+	<h2>Categories of Expertise</h2>
+	<p>Clients look for translator based on their fields of expertise. The project(s) above require fields that you don't have, or didn't indicate in your profile:</p>
+	<ul><%= (@missing_categories.collect { |c| "<li>#{c.name}</li>" }).join() %></ul>
+	<p>If you have experience translating in these fields, add them to your <%= link_to('profile page',{:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:users, :action=>:show, :id=>@user.id, :anchor=>'categories'}) %>.</p>
+<% end %>
+
+<% if @download_needed %>
+
+<h2>Please Upgrade Translation Assistant</h2>
+
+<p>Our records show that your version of Translation Assistant is not current. You will not be able to edit new projects unless you upgrade first. To do this:</p>
+<ol>
+ <li>Make sure that Translation Assistant is not running. Verify that there is also no Translation Assistant icon in the taskbar. If there is, click on it and select 'Shutdown'.</li>
+ <li>Log in to your accout at http://www.icanlocalize.com and download Translation Assistant.</li>
+ <li>Install and run the program.</li>
+</ol>
+ <% end %>
+
+<%= user_todos_email_summary(@user, '<b>'+_('You cannot do live projects before your account setup is complete.')+'</b>', true) %>
+
+<%= HTML_EMAIL_FOOTER.html_safe %>

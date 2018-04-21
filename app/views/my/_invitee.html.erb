@@ -1,0 +1,8 @@
+<tr>
+	<td><%= user_link(invitee) %></td>
+	<td><%= invitee[:type] %></td>
+	<td><%= invitee.full_real_name %></td>
+	<td><%= invitee.email %></td>
+	<td><%= disp_date(invitee.signup_date) %></td>
+	<td><%= (invitee[:type] == 'Client') ? (invitee.projects.length + invitee.text_resources.length + invitee.websites.length) : 'NA' %></td>
+</tr>

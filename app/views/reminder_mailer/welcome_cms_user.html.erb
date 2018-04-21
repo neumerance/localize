@@ -1,0 +1,142 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<STYLE type="text/css">
+html {
+	font-family: arial,verdana,helvetica,lucida,sans-serif;
+	font-size: 83%;
+	color:#303030;
+}
+h1{
+	color:#144081;
+	font-size:160%;
+	padding: 0.3em 0 0.1em 0;
+	margin: 5px 0 5px 0;
+	font-family: 'Trebuchet MS',Verdana,Arial,Sans-serif;
+	font-weight:bold;
+	line-height: 150%;
+}
+h2{
+	color:#606090;
+	font-size:135%;
+	font-weight:bold;
+	padding: 0.2em 0 0.1em 0;
+	margin: 0.4em 0 0.2em 0;
+}
+h3{
+	color:#144081;
+	font-size:120%;
+	font-weight:bold;
+	padding-top:4px;
+	padding-bottom:7px;
+	margin: 5px 0 5px 0;
+}
+h4{ 
+	margin: 7px 0 4px 0;
+}
+
+ul, ol {
+	list-style-position: outside;
+	padding: 0 0 0 2em;
+	margin: 0.2em 0 0.6em 0;
+}
+
+li {
+	margin: 0 0 0.4em 0;
+	padding: 0;
+}
+P {
+	padding: 0.1em 0 0.6em 0;
+	margin: 0;
+}
+.stats {
+	font-size: 90%;
+	padding: 0px;
+	margin: 0px;
+	border-top: 1px solid #C2DAFF;
+	border-left: 1px solid #C2DAFF;
+	empty-cells: show;
+	border-collapse: collapse;
+}
+
+table.stats td, table.stats th {
+  border-left: 0px;
+  border-top: 0px;
+  border-right: 1px solid #C2DAFF;
+  border-bottom: 1px solid #C2DAFF;
+}
+
+table.stats tr.headerrow th {
+	background-color:#EFEFEF;
+	color: #606090;
+	font-weight:bold;
+	text-align: left;
+	padding: 4px;
+
+	border-right: 1px solid #C2DAFF;
+
+	text-decoration:none;
+
+}
+
+table.stats tr.bottomrow td {
+	background-color:#C2DAFF;
+	text-align: left;
+	padding: 4px;
+
+	text-decoration:none;
+}
+
+table.stats td {
+	text-align: left;
+	padding: 4px;
+	margin: 0px;
+
+	text-decoration:none;
+	background-color: #FFFFFF;
+}
+
+.important {
+	margin: 1em;
+	padding: 1em;
+	background-color: #FFFBCC;
+	border: 1pt solid #E6DB55;
+	color: #000000;
+}
+
+		 </STYLE>
+		
+	</head>
+	<body>
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>We are so happy to have you with us!</p>
+<p><b>ICanLocalize and WPML are fully integrated.</b></p>
+<p>This means that once translators are chosen, you will only have to:</p>
+<ol>
+<li>Select content for translation from within your site admin page.</li>
+<li>Receive the translated text, click on “publish” and it will automatically be posted into your website. </li>
+</ol>
+
+<p>You can access your ICanLocalize account here:<br />
+<%= link_to(url_for({:escape => false, :only_path => false, :controller=>:login, :action=>:index, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ),{:escape => false, :only_path => false, :controller=>:login, :action=>:index, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %></p>
+
+<p>To log in, use your email (<b><%= @user.email %></b>) and this password:<br />
+<b><%= @user.password %></b></p>
+
+<h2>We would like to help you choose the best translators and help setting up your project</h2>
+
+<h3>You are welcome to contact us or leave your details</h3>
+
+<p>Feel free to give us a call  <b>+1 7029973025</b> (we are available during week days from 7am to 9pm GMT+0) </p>
+
+<p>Busy today? No worries! We can call you back whenever it’s convenient for you. <%= link_to "Just tell us when and how", 'http://www.icanlocalize.com/site/about-us/contact-us/', :target => '_blank' %> <p>
+
+<p>Have a great day,</p>
+<br/>
+<p>ICanLocalize team</p>
+<p></i>"Our service always comes with a smile"</i></p>
+<p><%= link_to "http://www.icanlocalize.com/", "http://www.icanlocalize.com/" %></p>
+	</body>
+</html>

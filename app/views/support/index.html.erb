@@ -1,0 +1,18 @@
+<h2><%= _('Get Help') %></h2>
+<p>Please consult our <a href="http://docs.icanlocalize.com/faq/" target="_blank">Frequently Asked Questions</a> for solutions to the most common issues.</p>
+<p><%= "#{_('To ask a question or request help, %s.')%link_to(_('create a new support ticket'), {:action=>:new})}".html_safe %></p>
+<% if @user[:type] == 'Client' %>
+  <p><%= (_('For immediate help, feel free to call us at <b>+1-(702) 997-3025</b>')).html_safe %></p>
+<% end %>
+
+<% if @support_tickets.length > 0 -%>
+  <%= infotab_top(_('Your support tickets'), @your_tickets_message) %>
+  <%= render(:partial => "support_tickets", :object => @support_tickets) %>
+  <div class="inter_tab_spacer"></div>
+<% end -%>
+
+<% if @alias_support_tickets.length > 0 -%>
+  <%= infotab_top(_('Tickets from your aliases'), 'Showing all created tickets by your aliases') %>
+  <%= render(:partial => "support_tickets", :object => @alias_support_tickets) %>
+  <div class="inter_tab_spacer"></div>
+<% end -%>

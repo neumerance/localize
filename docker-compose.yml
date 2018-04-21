@@ -1,0 +1,41 @@
+version: '2'
+services:
+  # icl:
+  #   depends_on:
+  #     - mysql
+  #   image: alpine:latest
+  #   build: .
+  #   links:
+  #     - mysql
+  #   ports:
+  #     - "8000:80"
+  #   restart: always
+  #   volumes:
+  #     - "./:/var/www/"
+  #     - $SSH_AUTH_SOCK:/ssh-agent # Forward local machine SSH key to docker
+  #   environment:
+  #       SSH_AUTH_SOCK: /ssh-agent
+  #   environment:
+  #     WORDPRESS_DB_HOST: mysql:3306
+  #     WORDPRESS_DB_PASSWORD: qweqwe
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - "./db/.data:/var/lib/mysql"
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: qweasd
+      MYSQL_DATABASE: icanlocalize_development
+      MYSQL_USER: icanlocalize
+      MYSQL_PASSWORD: qweqwe
+    command: mysqld --sql-mode=''
+  mailcatcher:
+    image: tophfr/mailcatcher
+    ports:
+      - "1080:80"
+      - "1025:25"
+  # tas:
+  #   build: 
+

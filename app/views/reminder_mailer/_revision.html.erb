@@ -1,0 +1,32 @@
+<p>= <%= revision.project.name %>, <%= revision.name %> revision =</p>
+
+<p><%= revision.project.print_type %>: from <%= revision.language.name %> to <%= (revision.languages.collect { |lang| lang.name }).join(', ') %>.</p>
+
+<p>Full description: <%= revision.description %></p>
+
+<% if revision.categories.length > 0 -%>
+<p>= Required fields of expertise =</p>
+<ul>
+  <% for cat in revision.categories -%>
+    <li><%= cat.name %></li>
+  <% end -%>
+</ul>
+<% end -%>
+<% if ((revision.kind == TA_PROJECT) || (revision.kind == SIS_PROJECT)) %>
+  <p>= Project size =</p>
+  <p><%= translation_language_stats(revision,true) %></p>
+<% end %>
+
+<p>= Bidding =</p>
+<p>Maximum bid: <%= revision.max_bid %> <%= revision.currency_name_with_units %>.</p>
+<p><% if revision.bidding_close_time %>Bidding closes at <%= disp_time(revision.bidding_close_time) %>.<% end %></p>
+<p>Time to complete the work: <%= revision.project_completion_duration %> days.</p>
+
+<p>
+  <% link = url_for({:escape => false, :only_path => false, :controller=>:revisions, :action=>:show, :project_id=>revision.project_id, :id=>revision.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+  Project link: <%= link_to link, link %>
+</p>
+
+
+<p>- - - - - - - - - - - - - - - -</p>
+

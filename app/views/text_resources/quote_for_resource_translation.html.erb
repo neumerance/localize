@@ -1,0 +1,91 @@
+<table style="width: 100%">
+  <tr>
+    <td style="width: 30%; vertical-align: top">
+      <div id="getquote" class="inner-right">
+        <%= form_tag({ action: :quote_for_resource_translation }, multipart: true, method: :post) do %>
+          <h3>Need Translation for Your iOS App?</h3>
+          <p>ICanLocalize provides <strong><a href="https://www.icanlocalize.com/site/services/iphone-application-localization/">professional translation for iOS apps</a></strong>.</p>
+          <p><img class="alignnone size-full wp-image-2917" title="Some of our best translators" src="https://d2drx6n2xb0i5r.cloudfront.net/site/wp-content/uploads/2010/09/icanlocalize-translators-230.jpg" alt="" width="230" height="56" srcset="https://d2drx6n2xb0i5r.cloudfront.net/site/wp-content/uploads/2010/09/icanlocalize-translators-230.jpg 230w, https://d2drx6n2xb0i5r.cloudfront.net/site/wp-content/uploads/2010/09/icanlocalize-translators-230-200x48.jpg 200w" sizes="(max-width: 230px) 100vw, 230px"></p>
+          <p style="margin-top: 0.5em;">Upload your resource file and get a final quote, right now.</p>
+          <p style="margin-top: 0.5em;">iOS resource file:<br>
+            <%= file_field_tag :resource_upload %>
+          <p style="margin-top: 0.5em;">File format:<br>
+            <%= select_tag :fmt, options_for_select([['UTF-16 Unicode', 'iPhone'], ['UTF-8 Unicode', 'iPhone UTF-8']], params[:fmt]), include_blank: '-- Select --' %>
+          </p>
+          <p style="margin-top: 0.5em;">From language:<br>
+            <%= select_tag :lang_from, options_from_collection_for_select(@languages, :id, :name, params[:lang_from]), include_blank: '-- Select --' %>
+          <p>To language:<br>
+            <%= select_tag :lang_to, options_from_collection_for_select(@languages, :id, :name, params[:lang_to]), include_blank: '-- Select --' %>
+          <p style="margin-top: 2em;"><input style="padding: 0.5em 1em;" name="Get Quote" type="submit" value="Get Quote"></p>
+        <% end %>
+      </div>
+    </td>
+    <td style="width: 70%">
+      <% unless @warning.blank? %>
+        <div class="red_message">
+          <ul>
+            <% @warning.each do |error| %>
+                <li><%= error %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <% if @resource_strings.any? %>
+        <div class="infobox"><h4>Statistics</h4>
+          <table>
+            <tr>
+              <td>Strings:</td>
+              <td><b><%= @resource_strings.length %></b></td>
+            </tr>
+            <tr>
+              <td>Word count for translation:</td>
+              <td><b><%= @word_count %></b></td>
+            </tr>
+            <tr>
+              <td>Cost of translation including review:</td>
+              <td><b><%= "%.2f"%@cost %> USD</b></td>
+            </tr>
+            <tr>
+              <td>Translating from:</td>
+              <td><b><%= @from_language.name %></b></td>
+            </tr>
+            <tr>
+              <td>Translating to:</td>
+              <td><b><%= @to_language.name %></b></td>
+            </tr>
+          </table>
+        </div>
+
+        <p>We offer professional translation for your resource file between the
+          following <%= link_to('languages', {:controller => :apps, :action => :available_languages}, :target => '_blank') %>
+          (opens in a few windows).</p>
+        <div class="large_button" style="width:12em;"><a href="/users/new?utype=Client">Sign Up and Get Started &raquo;</a>
+        </div>
+        <br/>
+        <p>Need help? <a href="/site/about-us/contact-us/">Contact us</a></p>
+
+        <br/>
+
+        <h2>Uploaded resource file</h2>
+
+        <br/>
+        <%= resource_strings_table(@resource_strings) %>
+      <% else %>
+          <% if request.post? && @no_decoded_text_found %>
+            <p style="padding-top: 20px;">We didn't manage to process your request. Make sure your file is an <b><%= @resource_format.name %></b>
+              resource file with <b><%= ResourceFormat::ENCODING_NAMES[@resource_format.encoding] %></b> character
+              encoding.</p>
+            <h4>Example:</h4>
+            <pre><%= @resource_format.example() %></pre>
+          <% end %>
+      <% end %>
+
+      <% if request.get? %>
+        <p style="text-align: center">Please upload your file.</p>
+      <% end %>
+    </td>
+  </tr>
+</table>
+<br/><br/>
+
+<hr/><br/><p><%= link_to('&laquo; Back'.html_safe, @back) %></p>

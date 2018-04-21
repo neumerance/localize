@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+by_supporter:
+  id: 1
+  name: <%= SUPPORTER_QUESTION %>
+  description: Questions by supporters
+
+normal:
+  id: 2
+  name: Get help
+  description: I need help
+
+cms:
+  id: 3
+  name: <%= CMS_SUPPORT_DEPARTMENT %>
+  description: Created by CMS

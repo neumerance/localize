@@ -1,0 +1,11 @@
+<%= infotab_header([_('Status'), _('Beginning'), _('Ending')] + ((@user == @auser) ? [_('Actions')] : [])) %>
+<%= render(:partial=>'vacation', :collection=>@auser.vacations_by_date) %>
+</table>
+
+<br />
+<% if @user == @auser %>
+	<p><%= link_to(_('Create a new leave'), {:action=>:new}) %> |
+	<%= link_to(_('Back to your account'), {:controller=>:users, :action=>:my_profile}) %></p>
+<% else %>
+	<p><%= link_to(_("Back to %s's profile")%@auser.full_name, {:controller=>:users, :action=>:show, :id=>@auser}) %></p>
+<% end %>

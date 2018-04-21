@@ -1,0 +1,22 @@
+<% if @downloads.length > 0 %>
+	<%= infotab_header(['Program','For','Creation time','Size','Action']) %>
+		<% for download in @downloads %>
+		<tr>
+			<td><%= "#{download.generic_name} #{download.major_version}.#{download.sub_version}" %></td>
+			<td><%= download.usertype %></td>
+			<td><%= disp_time(download.create_time) %></td>
+			<td><%= download.size %></td>
+			<td><div class="inline_buttons">
+				<%= link_to("details", {:action=>:show, :id=>download.id}) %> | 
+				<%= link_to("download", {:action=>:get, :id=>download.id}) %> | 
+				<%= button_to("remove", {:action=>:destroy, :id=>download.id}, 'data-confirm'=>'Are you sure you want to remove this file?', method: :delete) %>
+				</div>
+			</td>
+		</tr>
+		<% end %>
+	</table>
+	<br />
+<% else %>
+	<p>Nothing uploaded yet.</p>
+<% end %>
+<p><%= link_to("Upload a new file", :action=>:new) %></p>

@@ -1,0 +1,24 @@
+<p>
+  Dear <%= @user.fname %>,<BR>
+  <BR>
+  Welcome to ICanLocalize.<BR>
+  <BR>
+  To log-in to your new account, go here:<BR>
+  <%= link_to 'https://www.icanlocalize.com/login', 'https://www.icanlocalize.com/login', target: '_blank' %><BR>
+  <BR>
+  Your login details are:<BR>
+  E-mail: <%= @user.email %><BR>
+  Password: <%= @user.password %><BR>
+  <BR>
+  To start sending us content for translation, you need to allow WPML to access
+  your ICanLocalize account. To do this, log-in to your WordPress site and go to
+  <b>WPML -> Translation Management -> Translation Services</b>. There, click on
+  the "Authenticate" button and enter this key:<BR>
+  <BR>
+  <b><%= @user.api_key %></b><BR>
+  <BR>
+  If you need any help, let us know. The best way to get help is from inside your
+  ICanLocalize account, by clicking on
+  the <%= link_to 'Get Help', 'https://www.icanlocalize.com/support', target: '_blank' %> tab.<BR>
+  <BR>
+</p>

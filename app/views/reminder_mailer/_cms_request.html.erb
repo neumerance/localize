@@ -1,0 +1,7 @@
+= Translation in project <%= cms_request.website.name %> from <%= cms_request.language.name %> =
+Document title: <%= cms_request.title %>
+
+To see complete information about this work click below:
+<%= url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:cms_requests, :action=>:show, :website_id=>cms_request.website_id, :id=>cms_request.id}) %>
+
+

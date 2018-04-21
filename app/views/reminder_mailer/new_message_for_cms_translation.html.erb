@@ -1,0 +1,17 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p> 
+	A new comment was posted on project <%= @website_translation_contract.website_translation_offer.website.name %> <%= @website_translation_contract.website_translation_offer.to_language.nname %> <%= @message.user.full_name %>
+</p>
+
+<p class="text-quoted"><%= h @message.body_with_emojis %></p>
+
+<p>
+ <% if @message.attachments.length == 1 %>
+ 	<%= _('This message includes an attachment.') %>
+ <% elsif @message.attachments.length > 1 %>
+ 	This message includes <%= @message.attachments.length %> attachments.
+ <% end %>
+</p>
+
+<%= action_button(_('Reply') + (@message.attachments.count > 0 ? ' or/and see the attachements' : ''), url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:website_translation_contracts, :action=>:show, :website_id=>@website_translation_contract.website_translation_offer.website.id, :website_translation_offer_id=>@website_translation_contract.website_translation_offer.id, :id=>@website_translation_contract.id } )) %>

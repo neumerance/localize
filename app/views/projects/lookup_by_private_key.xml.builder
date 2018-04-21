@@ -1,0 +1,1 @@
+xml.result(:id=>@project.id, :name=>@project.name)

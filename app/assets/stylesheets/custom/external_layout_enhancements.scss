@@ -1,0 +1,181 @@
+body {
+  max-width: 1170px;
+  width: 80%;
+  margin: 0 auto;
+  padding: 15px;
+}
+
+input:focus,
+input:focus {
+  outline-color: #db7811;
+}
+input[type="text"],
+input[type="password"],
+select, textarea {
+  border: 1px solid #e4e4e4;
+  padding: .8em 1em;
+  box-sizing: border-box;
+}
+
+form table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  max-width: none;
+}
+
+form table td,
+form table td {
+  padding: 7px 1em;
+}
+
+form table td:first-child {
+  width: 10em;
+  vertical-align: middle;
+}
+
+form table input[type="text"],
+form table input[type="password"] {
+  width: 100%;
+  max-width: 400px;
+}
+
+form table input[name="code"],
+form table input[name="captcha_code"] {
+  width: 150px;
+}
+
+input[value="Login"] {
+  //margin-left: 12.3em;
+}
+
+input[type="submit"],
+.rounded_but_orange {
+  color: #fff;
+  font-size: 13px;
+  border: 0;
+  background: #db7811;
+  line-height: 1;
+  padding: .7em 1.5em .8em !important;
+  box-shadow: inset 0 -.2em 0 #bd6b16;
+  border-radius: 3px;
+}
+input[type="submit"]:disabled {
+  opacity: .45;
+}
+input[type="submit"]:not(:disabled):hover,
+input[type="submit"]:not(:disabled):focus {
+  background: #bd6b16;
+  box-shadow: inset 0 -.2em 0 #ab6115
+}
+.big {
+  font-size: 1.2em;
+}
+
+.green {
+  color: #7fd425;
+}
+
+#topbar {
+  margin: 12px 5px 0.2em 0;
+  text-align: right;
+}
+#topbar a {
+  font-size: 1.1em;
+  text-decoration: none;
+}
+
+#maincontents {
+  padding: 30px 0;
+  margin: 15px 0;
+  border-top: 2px solid #e8e8e8;
+}
+
+a {
+  color: #7070a0;
+  text-decoration: none;
+}
+a:hover {
+  color: #db7811;
+}
+
+.infobox {
+  margin: 20px 0 40px 0;
+  padding: 0;
+  background-color: #ffffff;
+  position: relative;
+}
+.infobox h4 {
+  font-weight: bold;
+  font-size: 115%;
+  color: #505050;
+  margin: 0 0 15px 0;
+  background-color: #ffffff;
+  padding: 0 0 5px 0;
+}
+
+h4 {
+  border: 0 none;
+  background-color: #e8e8e8;
+  color: #E8E8E8;
+  height: 2px;
+}
+
+.priv-field {
+  background-color: #E0FFE0;
+}
+
+.input-field {
+  max-width: 400px;
+}
+
+.field-description {
+  max-width: 300px;
+}
+
+.green_message {
+  background-color: #D7F1BB;
+  border: 1pt solid #9EDC5C;
+  margin: 1em 0;
+  padding: 1em 2em 1em 2em;
+}
+
+form#new_client {
+  max-width: 640px;
+  margin: 30px auto;
+}
+
+.copy-token-message {
+  margin-top: 20px;
+  font-size: 1.1em;
+}
+.copy-token-message .token {
+  padding-top: .4em;
+  padding-bottom: .9em;
+}
+.copy-token-message .token span {
+  padding: .3em 1em;
+  background: rgba(255, 255, 255, .7)
+}
+.copy-token-message .info {
+  color: #db7711;
+  font-size: .85em;
+  padding-bottom: 0;
+}
+.token-video {
+  text-align: center;
+  margin-top: 30px;
+}
+.token-next {
+  text-align: center;
+  margin-top: 50px;
+}
+.token-text {
+  background-color: #FBF6F6;
+}
+.text-center {
+  text-align: center;
+}
+.m-t-50 {
+  margin-top: 50px;
+}

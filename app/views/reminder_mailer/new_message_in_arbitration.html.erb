@@ -1,0 +1,19 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p><%= @by_who.full_name %> posted a new message in an arbitration process.</p>
+
+<p>--------</p>
+
+<p><%= pre_format(h @body) %></p>
+
+<p>--------</p>
+
+<p>
+<% if @response_deadline %>You must post your reply by <%= disp_time(@response_deadline) %> or you will automatically forfeit this arbitration.
+<% end %>
+</p>
+<% url = url_for({:escape => false, :only_path => false, :controller=>:arbitrations, :action=>:show, :id=>@arbitration.id, :host=>EMAIL_LINK_HOST } ) %>
+<p>To reply, use the following link: <%= link_to url, url %></p>
+
+<p>* Complete information about the arbitration process is found here: <%= link_to 'http://docs.icanlocalize.com/?page_id=159', 'http://docs.icanlocalize.com/?page_id=159' %>
+</p>

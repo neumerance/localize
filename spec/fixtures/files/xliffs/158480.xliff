@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file datatype="plaintext" original="8907-77d9b99ff5b48164ff3fca148a2fab44" source-language="en" target-language="ar">
+        <header/>
+        <body>
+            <trans-unit datatype="html" id="field-_cms_nav_section-0" resname="field-_cms_nav_section-0" restype="string">
+                <source>Building and running multilingual WordPress sites</source>
+                <target>إنشاء وتشغيل مواقع WordPress متعددة اللغات</target>
+            </trans-unit>
+            <trans-unit datatype="html" id="field-_yoast_wpseo_title-0" resname="field-_yoast_wpseo_title-0" restype="string">
+                <source>How to Build Multilingual WordPress Sites with WPML</source>
+                <target>كيفية إنشاء مواقع WordPress متعددة اللغات باستخدام WPML</target>
+            </trans-unit>
+            <trans-unit datatype="html" id="field-_yoast_wpseo_metadesc-0" resname="field-_yoast_wpseo_metadesc-0" restype="string">
+                <source>Learn how to build a multilingual WordPress site, using WPML's setup wizard. You will go from a single-language site
+                    to multilingual in just a few minutes.
+                </source>
+                <target>تعرف على كيفية إنشاء موقع WordPress متعدد اللغات باستخدام معالج الإعداد الخاص بـ WPML. تعرف على كيفية تحويل الموقع
+                    أحادي اللغة إلى موقع متعدد اللغات في عدة دقائق فقط.
+                </target>
+            </trans-unit>
+            <trans-unit datatype="html" id="title" resname="title" restype="string">
+                <source>How to Build Multilingual WordPress Sites with WPML</source>
+                <target>كيفية إنشاء مواقع WordPress متعددة اللغات باستخدام WPML</target>
+            </trans-unit>
+            <trans-unit datatype="html" id="body" resname="body" restype="string">
+                <source>&lt;strong&gt;This quick-start guide will walk you through the steps needed to turn single-language WordPress sites
+                    to multilingual, using &lt;a href="/?page_id=5823"&gt;WPML plugin&lt;/a&gt;.&lt;/strong&gt;
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;table&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;tr&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;th&gt;Step&lt;/th&gt;&lt;th&gt;Result&lt;/th&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;/tr&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;tr&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;td&gt;&lt;a href="#setup"&gt;Set-up WPML&lt;/a&gt;&lt;/td&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;td&gt;Turn a single-language WordPress site into multilingual&lt;/td&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;/tr&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;tr&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;td&gt;&lt;a href="#basic-translation"&gt;Translate pages and posts&lt;/a&gt;&lt;/td&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;td&gt;Use WPML's basic translation controls to quickly translate content&lt;/td&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;/tr&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;tr&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;td&gt;&lt;a href="#string-translation"&gt;Translate strings&lt;/a&gt;&lt;/td&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;td&gt;Translate the site's tagline and other texts that don't belong to a specific
+                    page&lt;/td&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;/tr&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;/table&gt;
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;h2 id="setup"&gt;Setting up WPML&lt;/h2&gt;
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;After you activate WPML, you will see an invitation to start the setup wizard. The
+                    setup wizard will walk you through the steps you need to turn a single-language WordPress site into multilingual.
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;ol&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;Choose the current language of the site:
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;[caption id="attachment_890901" align="alignnone" width="822"]&lt;img
+                    src="https://wpml.org/wp-content/uploads/2016/05/wizard-1.jpg" alt="The default language of the site" width="822"
+                    height="487" class="size-full wp-image-890901" /&gt; WPML's setup wizard - choose the site's default language[/caption]
+                    &lt;br class="xliff-newline" /&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;Add more languages:
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;[caption id="attachment_890913" align="alignnone" width="805"]&lt;img
+                    src="https://wpml.org/wp-content/uploads/2016/05/wizard-2.jpg" alt="Additional languages for the site" width="805"
+                    height="539" class="size-full wp-image-890913" /&gt; Choose additional languages for the site[/caption]
+                    &lt;br class="xliff-newline" /&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;Choose how to display a language switcher:
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;[caption id="attachment_890915" align="alignnone" width="725"]&lt;img
+                    src="https://wpml.org/wp-content/uploads/2016/05/language-switcher-options.jpg" alt="Language switcher options"
+                    width="725" height="272" class="size-full wp-image-890915" /&gt; Choose where to display a language switcher and how it
+                    will work[/caption]
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;WPML comes with a number of language switchers, which you can choose between.&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;Register your site to receive updates:
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;[caption id="attachment_890916" align="alignnone" width="770"]&lt;img
+                    src="https://wpml.org/wp-content/uploads/2016/05/wizard-4.jpg" alt="Register WPML" width="770" height="479"
+                    class="size-full wp-image-890916" /&gt; Register WPML[/caption]
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;You only need to buy a single account for WPML and you can use it to receive automatic
+                    updates for all your sites.
+                    &lt;br class="xliff-newline" /&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;/ol&gt;
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;Congratulations. Your site is now multilingual. From this moment, you can translate
+                    anything in the site.
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;h2 id="basic-translation"&gt;Translating pages and posts&lt;/h2&gt;
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;Now that your site has several languages, you can translate content. You will see a
+                    new column for languages, with the basic translation controls, when you edit pages, posts and custom types.
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;[caption id="attachment_890919" align="alignnone" width="638"]&lt;img
+                    src="https://wpml.org/wp-content/uploads/2016/05/list-of-pages.jpg" alt="List of pages with basic translation controls"
+                    width="638" height="429" class="size-full wp-image-890919" /&gt; List of pages with basic translation controls[/caption]
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;Click on the + icons to add translations.
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;[caption id="attachment_890921" align="alignnone" width="779"]&lt;img
+                    src="https://wpml.org/wp-content/uploads/2016/05/translating-content.jpg" alt="Translating content" width="779"
+                    height="583" class="size-full wp-image-890921" /&gt; Translating content[/caption]
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;WPML creates separate posts for translations. This way, translations get their own
+                    URLs, content and meta information (like the SEO attributes).
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;h2 id="string-translation"&gt;Translating strings&lt;/h2&gt;
+                    &lt;br class="xliff-newline" /&gt;Some texts in your site don’t belong to any ‘post’, but are coming from the theme,
+                    plugins, WordPress and other places. We call the ‘strings’.
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;To translate strings, you need to install &lt;strong&gt;WPML String Translation&lt;/strong&gt;,
+                    which is part of the &lt;a href="/?page_id=5823"&gt;Multilingual CMS package&lt;/a&gt;.
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;Once String Translation is active, go to &lt;strong&gt;WPML-&amp;gt;Theme and plugins
+                    localization&lt;/strong&gt;, select the option &lt;strong&gt;Translate the theme and plugins using WPML's String
+                    Translation&lt;/strong&gt; and then scan the theme and plugins for strings.
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;[caption id="attachment_890938" align="alignnone" width="812"]&lt;img
+                    src="https://wpml.org/wp-content/uploads/2016/05/scan-theme-for-strings.jpg" alt="Scan the theme for strings"
+                    width="812" height="409" class="size-full wp-image-890938" /&gt; Scan the theme for strings[/caption]
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;Now, WPML knows about the strings that appear in your theme and plugins. Next, go to,
+                    &lt;strong&gt;WPML-&amp;gt;String Translation&lt;/strong&gt;. You will see a table with all the strings that WPML found
+                    on your site.
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;You can filter that table by ‘context’, which is the source of the strings. For
+                    example, to translate the strings that come from my TwentySixteen theme, I will choose that context.
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;[caption id="attachment_890922" align="alignnone" width="753"]&lt;img
+                    src="https://wpml.org/wp-content/uploads/2016/05/translating-strings.jpg" alt="Translating strings" width="753"
+                    height="645" class="size-full wp-image-890922" /&gt; Translating strings[/caption]
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;So now, we’ve covered the basics. We translated content and strings. Our site already
+                    displays correctly in different languages.
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;hr/&gt;
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;h2&gt;Beyond the basic site elements&lt;/h2&gt;
+                    &lt;br class="xliff-newline" /&gt;In a few minutes, you went from a single-language to to a multilingual site. You
+                    probably noticed that there are plenty of things that you use, for building WordPress sites, and we haven’t touched
+                    here.
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;WPML covers most everything you need when building multilingual WordPress sites. You
+                    will find support for:
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;ul&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;&lt;a href="/?page_id=1129854"&gt;Translating content created by page
+                    builders&lt;/a&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;&lt;a href="/?page_id=7981"&gt;Translating menus&lt;/a&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;&lt;a href="/?page_id=123542"&gt;Translating WooCommerce sites&lt;/a&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;&lt;a href="/?page_id=7248"&gt;Translating Gravity Forms&lt;/a&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;&lt;a href="/?page_id=113610"&gt;Managing media in different languages&lt;/a&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;&lt;a href="/?page_id=143262"&gt;Doing multilingual SEO&lt;/a&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;&lt;a href="/?page_id=552842"&gt;Working with ACF&lt;/a&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;&lt;a
+                    href="https://wp-types.com/documentation/translating-sites-built-with-toolset/"&gt;Translating Toolset-based sites&lt;/a&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;And much more...&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;/ul&gt;
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;h2&gt;Comprehensive translation management&lt;/h2&gt;
+                    &lt;br class="xliff-newline" /&gt;In this tutorial, we used the basic translation controls of WPML. This is great when
+                    you’re building the site but it’s less than ideal for your clients, who are not Web developers.
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;Read the tutorial on &lt;a href="/?page_id=897707"&gt;running multilingual sites&lt;/a&gt;,
+                    to see how WPML helps you and your clients manage the translation of anything from a tiny site to large multilingual
+                    corporate sites.
+                </source>
+                <target>&lt;strong&gt;هذا الدليل السريع سيُطلعك على جميع الخطوات اللازمة لتحويل مواقع WordPress وحيدة اللغة إلى متعددة
+                    اللغات، باستخدام &lt;a href="/?page_id=5823"&gt;ملحق WPML&lt;/a&gt;.&lt;/strong&gt;
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;table&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;tr&gt;
+                    &lt;th&gt;الخطوة&lt;/th&gt;&lt;th&gt;النتيجة&lt;/th&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;/tr&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;tr&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;td&gt;&lt;a href="#setup"&gt;إعداد WPML&lt;/a&gt;&lt;/td&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;td&gt;تحويل موقع WordPress وحيد اللغة إلى متعدد اللغات&lt;/td&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;/tr&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;tr&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;td&gt;&lt;a href="#basic-translation"&gt;ترجمة الصفحات والمقالات&lt;/a&gt;&lt;/td&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;td&gt;استخدام أدوات WPML الأساسية للترجمة لترجمة المحتوى بسرعة&lt;/td&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;/tr&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;tr&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;td&gt;&lt;a href="#string-translation"&gt;ترجمة النصوص&lt;/a&gt;&lt;/td&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;td&gt;ترجمة سطر علامة الموقع والنصوص الأخرى التي لا تنتمي إلى صفحة معينة&lt;/td&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;/tr&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;/table&gt;
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;h2 id="setup"&gt;إعداد WPML&lt;/h2&gt;
+                    &lt;br class="xliff-newline" /&gt;
+                    بعد تفعيلك لملحق WPML، ستظهر لك دعوة لبدء معالج الإعداد. سيقوم معالج الإعداد بالانتقال عبر جميع الخطوات التي تحتاج إليها
+                    لتحويل موقع WordPress وحيد اللغة إلى متعدد اللغات.
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;ol&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;اختر اللغة الحالية للموقع:
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;ta_ignore&gt;[caption id="attachment_890901" align="alignnone" width="822"]&lt;/ta_ignore&gt;&lt;img
+                    src="https://wpml.org/wp-content/uploads/2016/05/wizard-1.jpg" alt="اللغة الافتراضية للموقع" width="822" height="487"
+                    class="size-full wp-image-890901" /&gt; معالج إعداد WPML - اختيار اللغة الافتراضية للموقع&lt;ta_ignore&gt;[/caption]&lt;/ta_ignore&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;أضف المزيد من اللغات:
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;ta_ignore&gt;[caption id="attachment_890913" align="alignnone" width="805"]&lt;/ta_ignore&gt;&lt;img
+                    src="https://wpml.org/wp-content/uploads/2016/05/wizard-2.jpg" alt="اللغات الإضافية للموقع" width="805" height="539"
+                    class="size-full wp-image-890913" /&gt; اختيار اللغات الإضافية للموقع&lt;ta_ignore&gt;[/caption]&lt;/ta_ignore&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;اختر كيفية عرض مُحوّل لغة:
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;ta_ignore&gt;[caption id="attachment_890915" align="alignnone" width="725"]&lt;/ta_ignore&gt;&lt;img
+                    src="https://wpml.org/wp-content/uploads/2016/05/language-switcher-options.jpg" alt="خيارات محوّل اللغة" width="725"
+                    height="272" class="size-full wp-image-890915" /&gt; اختيار مكان عرض مُحوّل اللغة وكيفية عمله&lt;ta_ignore&gt;[/caption]&lt;/ta_ignore&gt;
+                    &lt;br class="xliff-newline" /&gt;
+                    يأتي WPML مزودًا بعددٍ من مُحوّلات اللغة، والتي يمكنك الاختيار من بينها.&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;سجّل موقعك كي تصلك التحديثات:
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;ta_ignore&gt;[caption id="attachment_890916" align="alignnone" width="770"]&lt;/ta_ignore&gt;&lt;img
+                    src="https://wpml.org/wp-content/uploads/2016/05/wizard-4.jpg" alt="تسجيل WPML" width="770" height="479"
+                    class="size-full wp-image-890916" /&gt; تسجيل WPML&lt;ta_ignore&gt;[/caption]&lt;/ta_ignore&gt;
+                    &lt;br class="xliff-newline" /&gt;
+                    لا تحتاج سوى لشراء حساب مفرد لـ WPML، والذي يمكنك استخدامه لتلقي التحديثات التلقائية لجميع مواقعك.
+                    &lt;br class="xliff-newline" /&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;/ol&gt;
+                    &lt;br class="xliff-newline" /&gt;
+                    مبروك. موقعك الآن متعدد اللغات. من هذه اللحظة سيمكنك ترجمة أي شيء في الموقع.
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;h2 id="basic-translation"&gt;ترجمة الصفحات والمقالات&lt;/h2&gt;
+                    &lt;br class="xliff-newline" /&gt;
+                    بما أن موقعك به العديد من اللغات الآن، يمكنك ترجمة المحتوى. سترى عمودًا جديدًا للغات، مع أدوات التحكم الأساسية في
+                    الترجمة، عند تحريرك للصفحات والمقالات والأنواع المخصصة.
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;ta_ignore&gt;[caption id="attachment_890919" align="alignnone" width="638"]&lt;/ta_ignore&gt;&lt;img
+                    src="https://wpml.org/wp-content/uploads/2016/05/list-of-pages.jpg" alt="قائمة الصفحات مع أدوات التحكم الأساسية للترجمة"
+                    width="638" height="429" class="size-full wp-image-890919" /&gt; قائمة الصفحات مع أدوات التحكم الأساسية للترجمة&lt;ta_ignore&gt;[/caption]&lt;/ta_ignore&gt;
+                    &lt;br class="xliff-newline" /&gt;
+                    انقر على أيقونات + لإضافة الترجمات.
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;ta_ignore&gt;[caption id="attachment_890921" align="alignnone" width="779"]&lt;/ta_ignore&gt;&lt;img
+                    src="https://wpml.org/wp-content/uploads/2016/05/translating-content.jpg" alt="ترجمة المحتوى" width="779" height="583"
+                    class="size-full wp-image-890921" /&gt; ترجمة المحتوى&lt;ta_ignore&gt;[/caption]&lt;/ta_ignore&gt;
+                    &lt;br class="xliff-newline" /&gt;
+                    يقوم WPML بإنشاء مقالات منفصلة للترجمات. بهذه الطريقة تحصل الترجمات على روابط الإنترنت والمحتوى والمعلومات التعريفية
+                    (مثل سمات تحسين محركات البحث SEO) الخاصة بها.
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;h2 id="string-translation"&gt;ترجمة النصوص&lt;/h2&gt;
+                    بعض النصوص في موقعك لا تنتمي لأي 'مقال'، ولكنها تنتمي إلى القالب أو الملحقات أو WordPress أو الأماكن الأخرى. والتي
+                    نسميها 'نصوص' (strings).
+                    &lt;br class="xliff-newline" /&gt;
+                    لترجمة النصوص، أنت في حاجة إلى تثبيت &lt;strong&gt;وحدة ترجمة النصوص الخاصة بـ WPML&lt;/strong&gt;، والتي تكون جزءًا من
+                    &lt;a href="/?page_id=5823"&gt;باقة Multilingual CMS&lt;/a&gt;.
+                    &lt;br class="xliff-newline" /&gt;
+                    ما أن تصبح وحدة ترجمة النصوص فعّالة، اذهب إلى &lt;strong&gt;WPML-&amp;gt;ترجمة القالب والملحقات&lt;/strong&gt;، وحدد
+                    خيار &lt;strong&gt;ترجمة القالب والملحقات باستخدام وحدة ترجمة النصوص الخاصة بـ WPML&lt;/strong&gt;، ثم امسح القالب
+                    والملحقات بحثًا عن النصوص.
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;ta_ignore&gt;[caption id="attachment_890938" align="alignnone" width="812"]&lt;/ta_ignore&gt;&lt;img
+                    src="https://wpml.org/wp-content/uploads/2016/05/scan-theme-for-strings.jpg" alt="مسح القالب بحثًا عن النصوص"
+                    width="812" height="409" class="size-full wp-image-890938" /&gt; مسح القالب بحثًا عن النصوص&lt;ta_ignore&gt;[/caption]&lt;/ta_ignore&gt;
+                    &lt;br class="xliff-newline" /&gt;
+                    والآن، يعرف WPML بالنصوص التي تظهر في قالبك وملحقاتك. بعد ذلك اذهب إلى &lt;strong&gt;WPML-&amp;gt;ترجمة النصوص&lt;/strong&gt;.
+                    سترى جدولاً بجميع النصوص التي عثر WPML عليها في موقعك.
+                    &lt;br class="xliff-newline" /&gt;
+                    يمكن ترشيح هذا الجدول بحسب 'السياق'، والذي يكون مصدر النصوص. على سبيل المثال، لترجمة النصوص القادمة من قالب
+                    TwentySixteen، سأختار هذا السياق.
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;ta_ignore&gt;[caption id="attachment_890922" align="alignnone" width="753"]&lt;/ta_ignore&gt;&lt;img
+                    src="https://wpml.org/wp-content/uploads/2016/05/translating-strings.jpg" alt="ترجمة النصوص" width="753" height="645"
+                    class="size-full wp-image-890922" /&gt; ترجمة النصوص&lt;ta_ignore&gt;[/caption]&lt;/ta_ignore&gt;
+                    &lt;br class="xliff-newline" /&gt;
+                    والآن، لقد غطينا الأساسيات. لقد ترجمنا المحتوى والنصوص. موقعنا معروض بالفعل بلغات مختلفة بشكلٍ صحيح.
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;hr /&gt;
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;h2&gt;خارج نطاق عناصر الموقع الأساسية&lt;/h2&gt;
+                    في عدة دقائق قمنا بتحويل موقع أحادي اللغة إلى موقع متعدد اللغات. لعلّك لاحظت أن هناك العديد من الأشياء التي تستخدمها
+                    لإنشاء مواقع WordPress ولم نمسّها هنا.
+                    &lt;br class="xliff-newline" /&gt;
+                    يغطي WPML تقريبًا كل شيء تحتاج إليه لإنشاء مواقع WordPress متعددة اللغات. ستحصل على الدعم لـ:
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;ul&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;&lt;a href="/?page_id=1129854"&gt;ترجمة المحتوى المُنشأ بواسطة أدوات إنشاء
+                    الصفحات&lt;/a&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;&lt;a href="/?page_id=7981"&gt;ترجمة القوائم&lt;/a&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;&lt;a href="/?page_id=123542"&gt;ترجمة مواقع WooCommerce&lt;/a&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;&lt;a href="/?page_id=7248"&gt;ترجمة نماذج Gravity&lt;/a&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;&lt;a href="/?page_id=113610"&gt;إدارة الوسائط باللغات المختلفة&lt;/a&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;&lt;a href="/?page_id=143262"&gt;تنفيذ عملية تحسين محركات البحث (SEO) متعدد
+                    اللغات&lt;/a&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;&lt;a href="/?page_id=552842"&gt;العمل باستخدام ACF&lt;/a&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;&lt;a
+                    href="https://wp-types.com/documentation/translating-sites-built-with-toolset/"&gt;ترجمة المواقع القائمة على Toolset&lt;/a&gt;&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;li&gt;وغير ذلك الكثير...&lt;/li&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;/ul&gt;
+                    &lt;br class="xliff-newline" /&gt;
+                    &lt;br class="xliff-newline" /&gt;&lt;h2&gt;إدارة شاملة للترجمة&lt;/h2&gt;
+                    في هذا الدليل التعليمي استخدمنا أدوات التحكم الأساسية للترجمة الخاصة بـ WPML. وهو الأمر الرائع عند إنشاء الموقع ولكنه
+                    أقل مثاليةً لعملائك ممن ليسوا مطوري ويب.
+                    &lt;br class="xliff-newline" /&gt;
+                    اقرأ الدليل التعليمي الخاص &lt;a href="/?page_id=897707"&gt;بتشغيل المواقع متعددة اللغات&lt;/a&gt; للتعرف على كيفية
+                    مساعدة WPML لك ولعملائك في إدارة ترجمة أي شيء، من المواقع الصغيرة حتى المواقع الكبيرة متعددة اللغات للشركات.
+                </target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

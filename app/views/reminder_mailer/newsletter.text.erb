@@ -1,0 +1,19 @@
+Dear <%= @user.full_real_name %>,
+
+We're happy to deliver you this newsletter...
+
+<%= @body %>
+
+----
+
+Want to get back to us? Get priority support by opening a new support ticket:
+<%= url_for({:escape=>false, :only_path=>false, :controller=>:support, :action=>:new, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+----
+
+We hope you enjoy reading our newsletter. To stop receiving it, follow these instructions:
+ 1. Log in to your account at: <%= url_for({:escape => false, :only_path => false, :controller=>:login, :action=>:index, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+ 2. Select the 'Control Panel' tab and click on 'Notification preferences'.
+ 3. Clear the 'newsletter' checkbox.
+
+<%= EMAIL_SIGNATURE %>

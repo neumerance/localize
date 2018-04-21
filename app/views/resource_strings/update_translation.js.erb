@@ -1,0 +1,49 @@
+var warning_message = false
+var replace_content = false
+var title_message = "<h1>String: <%= escape_javascript @string_translation.resource_string.token %></h1>";
+
+<% if @warning.present? %>
+  warning_message = "<%= escape_javascript(raw @warning.squish) %>"
+<% elsif @reload %>
+  alert("RELOAD FORCE")
+  location.href = '<%= url_for(:action=>:show, :id=>@resource_string.id) %>'
+<% elsif @next_string_to_edit %>
+  RsPreload.msg.update({message: title_message + 'String saved succesfully.', type: 'success', delay: 3})
+<% else %>
+  replace_content = true;
+<% end %>
+
+// RsPreload.delete(<%= @resource_string.id %>)
+
+<% unless @next_string_to_edit %>
+  jQuery("#language<%= @string_translation.language_id %>").html('<%= escape_javascript(render(partial: 'string_translation', object: @resource_language.language)) %>')
+  jQuery("#original_string").html('<%= escape_javascript(render :partial=>'original_string') %>')
+<% end %>
+
+if ( warning_message) {
+  RsPreload.msg = Messenger().post({
+    message: title_message + warning_message,
+    type: 'error',
+    actions: {
+      go_to_string: {
+        label: 'Go to string',
+        class: 'btn-primary',
+        action: function(){
+          RsPreload.navigate(<%= @resource_string.id %>)
+          RsPreload.msg.cancel();
+
+          if( replace_content ){
+            console.log('replacing box content')
+            jQuery("#language<%= @string_translation.language_id %>").html('<%= escape_javascript(render(partial: 'string_translation', object: @resource_language.language)) %>')
+            jQuery("#original_string").html('<%= escape_javascript(render :partial=>'original_string') %>')
+          }
+        }
+      },
+      dismiss: {
+        action: function(){
+          return RsPreload.msg.cancel();
+        }
+      }
+    }
+  });
+}

@@ -1,0 +1,92 @@
+<%
+  unless defined? show_prices
+    show_prices = true
+  end
+  unless defined? show_proofreading
+    show_proofreading = false
+  end
+%>
+
+<% if @edit_language %>
+	<%= form_for(:web_message, :url=>{:action=>:select_to_languages}, :remote => true) do |f| %>
+		<h3>Translation and review</h3>
+		<label><%= radio_button_tag(:review, 0, !@review) %> Standard translation - <%= WebMessage.price_per_word_for(@user) %> USD per word</label><br />
+		<label><%= radio_button_tag(:review, 1, @review) %> Translation and review (by a second translator) - <%= WebMessage.price_with_review_per_word_for(@user) %> USD per word</label><br />
+		<br />
+		
+		<h3>Languages to translate to</h3>
+		<%= languages_table(@to_languages,@web_message.client_language,show_prices,show_proofreading).html_safe %>
+		<br /><%= submit_tag(_('Apply'), :style=>'padding: 0.5em;', data: { disable_with: _('Apply') } ) %> &nbsp;&nbsp;
+	<% end %>
+
+	<% if @selected_to_languages && (@selected_to_languages.length > 0) %>
+		<%= form_tag({:action=>:select_to_languages, :req=>'cancel'}, :remote => true) do %>
+			<%= submit_tag('Cancel', data: { disable_with: 'Cancel' }) %>
+		<% end %>
+	<% end %>
+<% else %>
+	<% if @review %>
+		<p>You selected to translate this text to: <b><%= (@selected_to_languages.collect { |l| l.name}).join(', ') %></b>.<br />
+		Translation <b>includes review</b> by a second translator.</p>
+	<% else %>
+		<p>You selected to translate this text to: <b><%= (@selected_to_languages.collect { |l| l.name}).join(', ') %></b>.<br />
+		This translation will <b>not be reviewed</b> by a second translator.</p>
+	<% end %>
+
+	<% if @user %>
+		<%= form_tag(:action=>:create) do %>
+			<%= render(:partial=>'shared/vat_request') %>
+
+			<div id="total_box">
+				<table class="stats">
+					<% @selected_to_languages.each do |lang| %>
+						<tr class='item'>
+							<td>
+								Instant translation <%= 'and review' if @review %> to <b><%= lang.name %></b>: 
+								</td>
+							<td><span class='amount'><%= (@review)? (@web_message.translation_price * 1.5).ceil_money : @web_message.translation_price  %></span> <%= @currency.disp_name %></td>
+						</tr>	
+					<% end %>
+					
+					<tr class='subtotal'>
+						<th><b>Subtotal</b></th>
+						<th><b><span class='amount'><%=@total_cost %></span> <%= @currency.disp_name %></b></th>
+					</tr>
+
+					<tr class='tax_details' style='<%="display:none" unless @user.has_to_pay_taxes? %>'>
+						<th>VAT Tax in <span class="country_name"><%=@user.country.try(:name) %></span> <span id='tax_rate'><%=@user.tax_rate %></span>%</th>
+						<th><span class='amount'><%=@tax_amount %></span> <%= @currency.disp_name %></th>
+					</tr>
+					<tr>
+						<th>Total:</th>
+						<th><b id="total_cost"><%= @total %></b> <b><%= @currency.disp_name %></b></th>
+					</tr>
+				</table>
+			</div>
+
+			<%= submit_tag('Create project &raquo;'.html_safe, :style=>'padding: 0.5em;', data: { disable_with: 'Create project &raquo;'.html_safe }) %>
+		<% end %>
+
+		 &nbsp;&nbsp; 
+
+		<%= form_tag({:action=>:select_to_languages, :req=>'show'}, :remote => true) do %>
+			<%= link_to 'Modify Settings', "#", :onclick => "jQuery(this).parent().submit(); return false;" %>
+		<% end %>	
+	<% else %>
+		<%= form_tag({:action=>:select_to_languages, :req=>'show'}, :remote => true) do %>
+			<%= submit_tag('Change languages', data: { disable_with: 'Change languages' }) %>
+		<% end %>
+	<% end %>
+
+	<% if !@user %>
+		<br /><br />
+		<div class="errorExplanation">
+		<h2 style="padding-top:0; margin-top:0;">Ready to begin?</h2>
+		To have this text translated professionally, you'll need to deposit <b><%= @total_cost %> <%= @currency.disp_name %></b>.
+		<ul><li>You can pay with a credit card or with a PayPal account (if you have one).</li>
+		<li>Your translation will be delivered to the email address you enter during the check-out process.</li></ul>
+		<%= form_tag(:action=>:create) do %><%= submit_tag('Proceed to checkout  &raquo;'.html_safe, :style=>'padding: 0.5em;', data: { disable_with: 'Proceed to checkout  &raquo;'.html_safe }) %><% end %>
+		</div>
+		<% end %>
+		
+	<% end %>

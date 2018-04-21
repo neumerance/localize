@@ -1,0 +1,13 @@
+<%
+  # Hack to use variables from application controller
+  @json_code = json_code if defined? json_code
+  @json_message = json_message if defined? json_message
+%>
+
+{
+  "status": {
+  "code": <%= @json_code || 0 %>,
+  "message": "<%= @json_message || "success" %>"
+  },
+  "response": <%= @json_code && @json_message ? 'null' : yield %>
+}

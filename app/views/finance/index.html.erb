@@ -1,0 +1,56 @@
+<%# Message about pending website translation jobs %>
+<%= render partial: 'wpml/shared/pending_translation_jobs_warning', locals: { user: @user } %>
+
+<% if @user.money_accounts.length > 0 && !@user.is_a?(Admin) %>
+  <h2 style="margin-bottom: 10px;"><%= _('Your ICanLocalize account') %></h2>
+
+  <% for account in @user.money_accounts %>
+    <% if @user.has_client_privileges? %>
+      <div class="grey_panel" style="margin-bottom: 20px;">
+        <%# "Total balance, planned expenses, available balance" line %>
+        <p><strong><%= account_balance_report(account) %></strong></p>
+      </div>
+    <% end %>
+
+    <%# Invidivual transactions %>
+    <%= account_lines_header(account) %>
+
+    <% if @user.has_client_privileges? %>
+      <div class="grey_panel">
+        <%# "Total balance, planned expenses, available balance" line %>
+        <p><strong><%= account_balance_report(account) %></strong></p>
+      </div>
+    <% end %>
+
+    <% if @can_deposit %>
+      <h2 style="margin-top: 30px;"><%= _('Deposit money to your ICanLocalize account') %></h2>
+
+      <div class="grey_panel" style="margin-top: 20px;">
+        <div style="padding: 10px;">
+          <%= render partial: '/shared/pay_form/add_fund_form', locals: { user: @user, payment_url: { :action => :deposit_fund } } %>
+        </div>
+      </div>
+    <% end %>
+
+    <% if @pending_money_transaction %>
+        <p><%= _('You have recently made a withdrawal from your account. Please wait until that withdrawal completes before doing another one.') %></p>
+    <% else %>
+        <br/><%= named_div('withdraw', account.id).html_safe %><%= render(:partial => 'withdraw', :object => account) %></div>
+    <% end %>
+  <% end %>
+<% else %>
+  <p>You don't yet have any money account in the system.</p>
+<% end %>
+
+<%= render(:partial => 'external_accounts', :object => @user.external_accounts) %>
+<div class="inter_tab_spacer"></div>
+<h2>Invoices</h2>
+
+<p><%= link_to('View paid invoices', {:action => :invoices}) %></p>
+<% if @pending_invoices_count > 0 %>
+  <p>You have <%= @pending_invoices_count %> invoice(s) pending
+    payment. <%= link_to('View outstanding invoices', {:action => :invoices, :status => :pending}) %></p>
+<% end %>
+
+<div class="inter_tab_spacer"></div>
+<%= render(:partial => 'about_icanlocalize') %>

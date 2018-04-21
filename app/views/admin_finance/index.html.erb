@@ -1,0 +1,19 @@
+<h2>Money summary in the system</h2>
+
+<%= form_tag("/admin_finance", method: :get) do %>
+    <div style="float:right;">
+    <b>Select Date</b> <%= date_picker_field "d", nil, {value:  params[:d].to_s.to_date}, '<i class="mc-icon-calendar"></i>' %>
+    <%= submit_tag 'Filter', data: { disable_with: 'Please wait' } %>
+    | <%= link_to 'Reset', {controller: 'admin_finance', action: 'index'} %>
+    </div>
+<% end %>
+<br style="clear:both;">
+<br>
+<%= infotab_header(['Users balance','Bids balance','Fees balance','Total']) %>
+	<tr>
+		<td class="moneycolumn"><%= number_to_currency(@user_total, precision: 2) %></td>
+		<td class="moneycolumn"><%= number_to_currency(@bids_total, precision: 2) %></td>
+		<td class="moneycolumn"><%= number_to_currency(@fees_total, precision: 2) %></td>
+		<td class="moneycolumn"><%= number_to_currency(@total, precision: 2) %></td>
+	</tr>
+</table>

@@ -1,0 +1,28 @@
+<% 
+	if placeholder
+		header = placeholder 
+		radio_name = "strings[#{string.id}][data][#{placeholder_index}][explanation]"
+		text_area_name = "strings[#{string.id}][data][#{placeholder_index}][more_explanation]"
+	else
+		header = string.txt
+		radio_name = "strings[#{string.id}][data][explanation]"
+		text_area_name = "strings[#{string.id}][data][more_explanation]"
+	end
+%>
+
+<a href="#" class="toggle as_h4 nobg open"><%= h header %></a>
+<div class="inner show">
+  <input type="hidden" name="strings[<%=string.id%>][kind]" value="<%= placeholder ? "placeholders" : "one_word" %>"/>
+  <ul>
+    <li><label><input type="radio" name="<%=radio_name%>" value="verb"/> It is a verb</label></li>
+    <li><label><input type="radio" name="<%=radio_name%>" value="noun"/> It is a noun</label></li>
+    <li><label><input type="radio" name="<%=radio_name%>" value="article"/> It is an article</label></li>
+    <li><label><input type="radio" name="<%=radio_name%>" value="dont_need_explanation"/> Does not need explanation</label></li>
+    <li><label><%= radio_button_tag radio_name, 'more_explanation', false, id: "#{string.id}_radio" %> Needs extra explanation</label></li>
+    <li><%= text_area_tag text_area_name, nil, id: "#{string.id}_textarea", placeholder: 'Write your explanation here', rows: 4, cols: 30, maxlength: COMMON_NOTE, style: 'display: none' %></li>
+  </ul>
+</div>
+
+<script>
+  toggleExplanationBox('<%= radio_name %>', '<%= string.id %>_textarea')
+</script>

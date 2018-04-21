@@ -1,0 +1,10 @@
+<div class="subframe" id="projectSearch">
+	<form action="" >
+		<p><%= _('Search by project name') %>
+		<input type='text' name='project_name' value='<%= params['project_name']%>'>
+		<input name="commit" type="submit" value="<%= _('Search') %>">
+    <% if params['project_name'] %>
+      <button type="submit" onclick="window.location.href = '/client'">Reset</button>  
+    <% end %>
+	</form>
+</div>

@@ -1,0 +1,44 @@
+<h1 id="mainheading">Unstarted Auto Assignment Jobs</h1>
+
+<table width="100%" cellspacing="0" cellpadding="3" class="stats">
+  <tbody>
+  <tr class="headerrow">
+    <th>Job ID</th>
+    <th>Translator</th>
+    <th>Hours since assignment</th>
+  </tr>
+  <% @grouped_cms_requests.each do |id, items| %>
+      <% cms_request  = items.first %>
+      <% contracts = cms_request.website_translation_offer.accepted_website_translation_contracts.includes(:translator) %>
+      <% row_class = cycle('tr-odd', 'tr-even') %>
+      <tr class="<%= row_class %>">
+        <td rowspan="<%= items.size %>">
+          <%= link_to(cms_request.id, {controller: 'cms_requests', action: 'show', website_id: cms_request.website_id, id: cms_request.id}, target: '_blank') %>
+        </td>
+        <% items.each do |item| %>
+          <% wtc = contracts.where(id: item.wtc_id).first %>
+          <% wto = wtc.website_translation_offer %>
+          <% translator = wtc.translator %>
+          <td>
+            <% if translator %>
+            <%= link_to(translator.nickname, user_path(translator), target: '_blank') %>
+            <% end %>
+            |
+            <%= link_to('chat',
+                        website_website_translation_offer_website_translation_contract_path(wto.website, wto, wtc),
+                        target: '_blank'
+            )%>
+          </td>
+          <td>
+            <%= auto_assignment_time_elapsed(item.assigned_at) rescue nil %>
+          </td>
+          <% if items.size > 1 %>
+            </tr>
+            <tr class="<%= row_class %>">
+          <% end %>
+        <% end %>
+      </tr>
+  <% end %>
+
+  </tbody>
+</table>

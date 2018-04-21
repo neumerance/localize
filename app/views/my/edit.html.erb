@@ -1,0 +1,14 @@
+<%= my_error_messages_for :invitation %>
+
+<%= form_for(:invitation, :url=>{:action=>:update}) do |f| %>
+<h3 style="display: inline;">Name</h3> &nbsp; (this name will appear in the invitation as "who's inviting")
+<p><%= f.text_field :name, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></p>
+<h3>Invitation text</h3>
+<p>Enter a short description telling your experience with ICanLocalize and why recommend it.</p>
+<%= f.text_area(:message, columns: 120, rows: 12, maxlength: COMMON_NOTE, style: 'width: 45%') %>
+<p><label><%= f.check_box(:active) %> Enable this invitation</label></p>
+<br />
+<p><%= submit_tag('Update', data: { disable_with: 'Update' }) %></p>
+<% end %>
+<br /><hr /><%= link_to('Go back', {:action=>:index}) %>
+<% if @invitation.active == 1 %> &nbsp; | &nbsp;<%= link_to('View your invitation', {:action=>:invite, :id=>@user.id}, {:target=>'_blank'}) %><% end %>

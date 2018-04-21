@@ -1,0 +1,4 @@
+<p>We received your message and will reply to your email (<b><%= h(@web_dialog.email) %></b>) as soon as possible.</p>
+<p>A confirmation email was just sent to you from <b><%= RAW_EMAIL_SENDER %></b>. Please make sure that your SPAM filter doesn't block this address.
+The confirmation email also includes a link which allows you to check on the progress of your message.</p>
+<p>To follow up, send another message or see our reply, you can also go to the <%= link_to('full ticket details', {:action=>:show, :id=>@web_dialog.id, :accesskey=>@web_dialog.accesskey}) %>.</p>

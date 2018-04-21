@@ -1,0 +1,71 @@
+tss1:
+  translation_analytics_language_pair_id: 1
+  date: 2012-01-01 16:32:03
+  words_to_translate: 4000
+  translated_words: 1000
+  words_to_review: 0
+  reviewed_words: 0
+
+tss2:
+  translation_analytics_language_pair_id: 1
+  date: 2012-01-02 16:32:03
+  words_to_translate: 4000
+  translated_words: 1900
+  words_to_review: 0
+  reviewed_words: 0
+
+tss3:
+  translation_analytics_language_pair_id: 1
+  date: 2012-01-03 16:32:03
+  words_to_translate: 4000
+  translated_words: 3300
+  words_to_review: 0
+  reviewed_words: 0
+
+tss4:
+  translation_analytics_language_pair_id: 1
+  date: 2012-01-04 16:32:03
+  words_to_translate: 4000
+  translated_words: 4000
+  words_to_review: 0
+  reviewed_words: 0
+
+tss5:
+  translation_analytics_language_pair_id: 1
+  date: 2012-01-10 16:32:03
+  words_to_translate: 10000
+  translated_words: 4000
+  words_to_review: 0
+  reviewed_words: 0
+
+tss11:
+  translation_analytics_language_pair_id: 2
+  date: 2012-01-01 16:32:03
+  words_to_translate: 4000
+  translated_words: 1000
+  words_to_review: 0
+  reviewed_words: 0
+
+tss22:
+  translation_analytics_language_pair_id: 2
+  date: 2012-01-02 16:32:03
+  words_to_translate: 4000
+  translated_words: 1900
+  words_to_review: 0
+  reviewed_words: 0
+
+tss13:
+  translation_analytics_language_pair_id: 2
+  date: 2012-01-03 16:32:03
+  words_to_translate: 4000
+  translated_words: 3300
+  words_to_review: 0
+  reviewed_words: 0
+
+tss14:
+  translation_analytics_language_pair_id: 2
+  date: 2012-01-04 16:32:03
+  words_to_translate: 4000
+  translated_words: 4000
+  words_to_review: 0
+  reviewed_words: 0

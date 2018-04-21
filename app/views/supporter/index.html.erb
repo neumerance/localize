@@ -1,0 +1,20 @@
+<h2>Things to do</h2>
+<% if @todo_things.length > 0 %>
+	<%= infotab_header(['Category', 'todo']) %>
+	<% for todo_item in @todo_things %>
+		<tr><td><%= todo_item[0] %></td><td><%= link_to(todo_item[1], todo_item[2]) %></td></tr>
+	<% end %>
+	</table>
+<% else %>
+	<p>You have no pending tasks.</p>
+<% end %>
+
+<h2>My configurations</h2>
+<ul>
+  <li><%= link_to 'vacations', user_vacations_path(@user) %></li>
+</ul>
+
+
+
+
+

@@ -1,0 +1,135 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+newbi_from_eng:
+  id: 1
+  type: TranslatorLanguageFrom
+  translator_id: 8
+  language_id: 1
+  status: <%= TRANSLATOR_LANGUAGE_APPROVED %>
+
+newbi_to_eng:
+  id: 2
+  type: TranslatorLanguageTo
+  translator_id: 8
+  language_id: 1
+  status: <%= TRANSLATOR_LANGUAGE_APPROVED %>
+
+newbi_to_spanish:
+  id: 3
+  type: TranslatorLanguageTo
+  translator_id: 8
+  language_id: 2
+  status: <%= TRANSLATOR_LANGUAGE_APPROVED %>
+
+newbi_to_german:
+  id: 4
+  type: TranslatorLanguageTo
+  translator_id: 8
+  language_id: 3
+  status: <%= TRANSLATOR_LANGUAGE_APPROVED %>
+  
+orit_from_eng:
+  id: 5
+  type: TranslatorLanguageFrom
+  translator_id: 3
+  language_id: 1
+  status: <%= TRANSLATOR_LANGUAGE_APPROVED %>
+
+orit_to_eng:
+  id: 6
+  type: TranslatorLanguageTo
+  translator_id: 3
+  language_id: 1
+  status: <%= TRANSLATOR_LANGUAGE_APPROVED %>
+
+orit_to_spanish:
+  id: 7
+  type: TranslatorLanguageTo
+  translator_id: 3
+  language_id: 2
+  status: <%= TRANSLATOR_LANGUAGE_APPROVED %>
+
+orit_to_german:
+  id: 8
+  type: TranslatorLanguageTo
+  translator_id: 3
+  language_id: 3
+  status: <%= TRANSLATOR_LANGUAGE_APPROVED %>
+
+orit_to_french:
+  id: 9
+  type: TranslatorLanguageTo
+  translator_id: 3
+  language_id: 4
+  status: <%= TRANSLATOR_LANGUAGE_APPROVED %>
+
+orit_from_spanish:
+  id: 10
+  type: TranslatorLanguageFrom
+  translator_id: 3
+  language_id: 2
+  status: <%= TRANSLATOR_LANGUAGE_APPROVED %>
+
+guy_from_eng:
+  id: 11
+  type: TranslatorLanguageFrom
+  translator_id: 4
+  language_id: 1
+  status: <%= TRANSLATOR_LANGUAGE_APPROVED %>
+
+guy_to_spanish:
+  id: 12
+  type: TranslatorLanguageTo
+  translator_id: 4
+  language_id: 2
+  status: <%= TRANSLATOR_LANGUAGE_APPROVED %>
+
+guy_to_german:
+  id: 13
+  type: TranslatorLanguageTo
+  translator_id: 4
+  language_id: 3
+  status: <%= TRANSLATOR_LANGUAGE_APPROVED %>
+
+stranger_from_eng:
+  id: 14
+  type: TranslatorLanguageFrom
+  translator_id: 13
+  language_id: 1
+  status: <%= TRANSLATOR_LANGUAGE_APPROVED %>
+
+stranger_to_spanish:
+  id: 15
+  type: TranslatorLanguageTo
+  translator_id: 13
+  language_id: 2
+  status: <%= TRANSLATOR_LANGUAGE_APPROVED %>
+
+stranger_to_german:
+  id: 16
+  type: TranslatorLanguageTo
+  translator_id: 13
+  language_id: 3
+  status: <%= TRANSLATOR_LANGUAGE_APPROVED %>
+
+guy_to_english:
+  id: 17
+  type: TranslatorLanguageTo
+  translator_id: 4
+  language_id: 1
+  status: <%= TRANSLATOR_LANGUAGE_APPROVED %>
+
+guy_to_french:
+  id: 18
+  type: TranslatorLanguageTo
+  translator_id: 4
+  language_id: 4
+  status: <%= TRANSLATOR_LANGUAGE_APPROVED %>
+
+orit_to_italian:
+  id: 19
+  type: TranslatorLanguageTo
+  translator_id: 3
+  language_id: 8
+  status: <%= TRANSLATOR_LANGUAGE_APPROVED %>
+

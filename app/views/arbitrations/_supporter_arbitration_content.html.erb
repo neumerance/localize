@@ -1,0 +1,43 @@
+<% if @arbitration.status == ARBITRATION_CLOSED %>
+	<p>This arbitration was managed by a support person, and is now closed.</p>
+<% elsif (@user[:type] == 'Client') || (@user[:type] == 'Translator') %>
+	<p>This arbitration is being run by a support person. You will need to respond to the supporter's questions in a timely manner, or you will forfeit this arbitration.</p>
+<% end %>
+
+<div class="inter_tab_spacer"></div>
+
+<%= infotab_top('Request details', '') %>
+<%= infotab_header(['Request made by','Other party','Regarding bid','Work amount']) %>
+	<tr>
+		<td><%= user_link(@arbitration.initiator) %></td>
+		<td><%= user_link(@arbitration.against) %></td>
+		<td>
+      <%= bid_link(@arbitration.object, 'translation of '.html_safe + content_tag(:b, @arbitration.object.chat.revision.project.name) + ' to '.html_safe + content_tag(:b, @arbitration.object.revision_language.language.name) ) %>
+			<br />
+			<span class="comment"><%= Bid::BID_STATUS[@arbitration.object.status] %></span>
+		</td>
+		<td>
+      <strong><%= @work_amount %> <%= @work_currency.disp_name.html_safe %></strong>
+			<% if @work_amount != @work_balance %>
+				<br /><span class="comment">(in escrow - <%= @work_balance %> <%= @work_currency.disp_name.html_safe %>)</span>
+			<% end %>
+		</td>
+	</tr>
+</table>
+<div class="inter_tab_spacer"></div>
+
+<% if @arbitration.supporter %>
+	<%= infotab_top('Status', "The supporter assigned to handle this arbitration is <strong>#{@arbitration.supporter.full_name}</strong>") %>
+<% else %>
+	<%= infotab_top('Status', 'An arbitrator was not yet assigned to this arbitration') %>
+<% end %>
+<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+	<% if !@arbitration.supporter && @can_assign_to_me %>
+		<%= form_tag({:action => :assign_to_supporter}, "data-confirm" => 'Are you sure you want to manage this arbitration?', :remote => true) do %>
+			<%= submit_tag 'Accept responsibility for this arbitration', data: { disable_with: 'Accept responsibility for this arbitration' } %>
+		<% end %>
+	<% else %>
+		<div id="ruling"><%= render(:partial=>'ruling') %></div>
+	<% end %>
+</td></tr></table>
+<div class="inter_tab_spacer"></div>

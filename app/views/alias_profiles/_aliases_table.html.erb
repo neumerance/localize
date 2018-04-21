@@ -1,0 +1,7 @@
+  <%= infotab_top(_('Aliases'), '') %>
+  <%= infotab_header(['Email','Password','Projects', 'Financial', 'Options']) %>
+  <% @aliases&.each do |alias_line| %>
+      <%= render partial: 'alias_profiles/alias_line', locals: { alias_line: alias_line } %>
+  <% end %>
+</table>
+

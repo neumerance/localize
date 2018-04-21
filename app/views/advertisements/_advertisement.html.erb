@@ -1,0 +1,5 @@
+<tr>
+  <td><%= link_to(advertisement.id, {:action=>:show, :id=>advertisement.id}) %></td>
+  <td><%= link_to(h(advertisement.title), {:action=>:show, :id=>advertisement.id}) %></td>
+  <td><%= truncate(h(advertisement.body), length: 80, omission: '...') %></td>
+</tr>

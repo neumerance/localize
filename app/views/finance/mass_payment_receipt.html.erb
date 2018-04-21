@@ -1,0 +1,8 @@
+<% if @user.has_admin_privileges? %><h2>Belongs to mass payment <%= @mass_payment_receipt.withdrawal_id %></h2><% end %>
+<table cellpadding="3">
+<tr><td>Update time:</td><td><b><%= disp_time(@mass_payment_receipt.chgtime) %></b></td></tr>
+<tr><td>Status:</td><td><b><%= MassPaymentReceipt::TRANSFER_STATUS_TEXT[@mass_payment_receipt.status] %></b></td></tr>
+<tr><td>PayPal Transaction:</td><td><b><%= @mass_payment_receipt.txn || 'Not available' %></b></td></tr>
+</table>
+<br /><br />
+<p><%= link_to('Back to account details', {:action=>:index}) %></p>

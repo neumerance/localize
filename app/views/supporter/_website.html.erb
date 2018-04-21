@@ -1,0 +1,22 @@
+<tr>
+	<td <%= (website.flag != 0) ? ' style="background-color: #FFE0E0;"' : '' %>><%= link_to(website.name, {controller: '/wpml/websites', :action=>:show, :id=>website.id}) %></td>
+	<td><%= website.category ? website.category.name : '<span class="comment">Not specified</span>'.html_safe %></td>
+	<td><%= disp_date(website.created_at) %></td>
+	<td><%= "%s - %s"%[CMS_DESCRIPTION[website.cms_kind],Website::PROJECT_KIND_TEXT[website.project_kind]] %></td>
+	<td <%= background_for_paying_user(website.client) %>><%= user_link(website.client) %></td>
+	<td><% if website.website_translation_offers.length > 0 %>
+		<ul>
+      <% website.website_translation_offers.each do |offer| %>
+        <li>
+          <%= link_to({:controller => :website_translation_offers, :action => :show, :website_id => website.id, :id => offer.id}) do %>
+            <span><%= offer.from_language.name %> to <%= offer.to_language.name %> (applications: <%= offer.website_translation_contracts.count %> <b>accepted: <%= offer.accepted_website_translation_contracts.count %></b>)</span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+		<% end %>
+	</td>
+	<td><%= website.cms_requests.length %></td>
+	<td><%= website.word_count %></td>
+	<td><p><%= pre_format(website.note) %></p></td>
+</tr>

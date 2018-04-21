@@ -1,0 +1,16 @@
+<% if text_resources.length > 0 %>
+	<%= infotab_top(_('Software localization projects'), text_resources_message) %>
+	<%= infotab_header(['Project','Languages','Strings'], {}, 100, 'id="resource_text_resources"') %>
+	<%= render(:partial=>'/text_resources/text_resource', :collection=>@text_resources) %>
+	</table>
+	<div class="pager_control" style="position: relative; height: 15px;">
+		<% if user.can_create_projects? %>
+			<%= link_to('Create a new software localization project &raquo;'.html_safe, 
+						{:controller=>:text_resources, :action=>:new}) %>
+		<% end %>
+		<div class="pull-right">
+	    	<%= paginate text_resources, params: { controller: :text_resources, action: :searcher }, remote: true %>
+	    </div>
+	</div>
+	<div class="inter_tab_spacer"></div>
+<% end %>

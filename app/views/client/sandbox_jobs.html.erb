@@ -1,0 +1,29 @@
+<p><span><a href="/users/complete_sandbox">Complete all cms requests</a></span></p>
+
+<table cellpadding="5">
+  <tr>
+    <td>CmsRequest ID</td>
+    <td>Website ID</td>
+    <td>Title</td>
+    <td>Status</td>
+    <td>Actions</td>
+  </tr>
+
+  <% @jobs.each do |job| %>
+    <tr>
+      <td><%= job.id %></td>
+      <td><%= job.website_id %></td>
+      <td><%= job.title %></td>
+      <td><%= CmsRequest::STATUS_TEXT[job.status] %></td>
+      <td>
+        <% if job.status == 4 || job.status == 5 %>
+          <%= form_tag({:controller => :client, :action => :sandbox_jobs}) do %>
+            <%= hidden_field_tag :job_id, job.id %>
+            <%= submit_tag( "Complete job", :disable_with=>'completing...') %>
+          <% end %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+
+</table>

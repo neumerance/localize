@@ -1,0 +1,76 @@
+<% if @user.external_accounts.length > 0 %>
+	<% if @show_withdraw %>
+		<div class="subframe">
+			<% if @user.is_allowed_to_withdraw?  %>
+
+                <%= form_tag({ :action => :make_withdraw, :req=>:save, :id=>withdraw.id }, "data-confirm" => @withdraw_confirmation_message, :remote => true) do %>
+                    <h5>To account</h5>
+                    <% @user.external_accounts.each do |account| %>
+                        <% unless account.hidden %>
+                            <label>>
+                                <%= radio_button_tag :to_account, account.id, account ==  @user.external_accounts[0] %>
+                                <%= ExternalAccount::NAME[account.external_account_type] %> account: <%= account.identifier %>
+                            </label><br />
+                        <% end %>
+                    <% end %>
+                    <br />
+                    <h5>Withdrawal amount</h5>
+                    <%= money_field_tag :amount, @amount %> USD
+                    <%= submit_tag 'Continue', data: { disable_with: 'Continue' } %>
+                <% end %>
+
+                <%= form_tag({ :action => :make_withdraw, :req=>:hide, :id=>withdraw.id }, :remote => true) do %>
+                    <%= submit_tag 'Cancel', data: { disable_with: 'Cancel' } %>
+                <% end %>
+
+			<% elsif @user.is_client? %>
+				<h4>Need to withdraw your funds?</h4>
+				<p>Please create a support ticket asking for a refund, our support team will kindly help you with your request.</p>
+
+                <%= form_tag({:controller => :support, :action => :new}, {:method => :get}) do %>
+					<%= hidden_field_tag :subject, "Withdraw request" %>
+					<%= hidden_field_tag :dep_id, 3 %>
+					<%= submit_tag 'Create a support ticket', data: { disable_with: 'Please wait' } %>
+				<% end %>
+
+				<%= form_tag({ :action => :make_withdraw, :req=>:hide, :id=>withdraw.id }, :remote => true) do %>
+					<%= submit_tag 'Cancel', data: { disable_with: 'Cancel' } %>
+				<% end %>
+
+			<% end %>
+
+			<br /><br />
+			<h4>Need to add a different PayPal account?</h4>
+			<p>You can add another PayPal account and withdraw funds to it. Like before, you will do a small <b>test deposit</b> from PayPal. The deposit amount will be 0.10 USD, which will be added to your balance.<br />
+			This will let our system verify that you are the owner of the PayPal account and will allow you to withdraw funds to that account.</p>
+
+			<%= form_tag({ :action => :make_test_deposit, :id=>withdraw.id }, "data-confirm" => 'You will now be transfered to PayPal to complete this deposit', :remote => true) do %>
+				<%= submit_tag 'Do a test deposit', data: { disable_with: 'Do a test deposit' } %>
+			<% end %>
+
+			<p class="comment">Please note: do this only to add <b>another</b> PayPal account. Once you've added an account, you can withdraw your funds to it.</p>
+		</div>
+	<% else %>
+
+		<%= form_tag({ :action => :make_withdraw, :req=>:show, :id=>withdraw.id }, :remote => true) do %>
+			<%= submit_tag 'Withdraw money from this account', data: { disable_with: 'Withdraw money from this account' } %>
+		<% end %>
+
+	<% end %>
+<% else %>
+	<% if (@user[:type] == 'Translator') || (withdraw.balance > 0) %>
+    <%= image_tag 'icons/important.png', class: 'left_icon', alt: 'warning' %><p>Before you can withdraw money from your account, you must have a <b>PayPal</b> account.</p><br clear="all" />
+		<h3>Already have a PayPal account?</h3>
+		<p>To associate your PayPal account with your ICanLocalize account you need to do a small <b>test deposit</b> from PayPal. The deposit amount will be 0.10 USD, which will be added to your balance.<br />
+		This will let our system verify that you are the owner of the PayPal account and will allow you to withdraw funds to that account.</p>
+
+		<%= form_tag({ :action => :make_test_deposit, :id=>withdraw.id }, "data-confirm" => 'You will now be transfered to PayPal to complete this deposit', :remote => true ) do %>
+			<%= submit_tag 'Do a test deposit', data: { disable_with: 'Do a test deposit' } %>
+		<% end %>
+
+		<br /><br />
+		<h3>Don't have a PayPal account?</h3>
+		<p>You can sign up for a <a href="https://www.paypal.com" target="_blank">PayPal</a> account in minutes. It's free and will allow you to withdraw funds from your ICanLocalize account.<br />
+		We've compiled a list of <a href="http://docs.icanlocalize.com/?page_id=50">possible withdrawal methods</a> from PayPal to your bank account or credit card.</p>
+	<% end %>
+<% end %>

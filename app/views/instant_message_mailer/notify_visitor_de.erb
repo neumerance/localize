@@ -1,0 +1,12 @@
+Hallo <%= @web_dialog.full_name %>,
+
+<%= @web_message.body_for_user(false) %>
+<% if @has_attachments %>
+Diese Nachricht enthält auch Anhänge. Um die angehängte Datei(en), klicken Sie bitte auf den unten stehenden Link.<% end %>
+
+Bitte antworten Sie nicht auf diese E-Mail.
+Möchten Sie uns eine weitere Nachricht oder einen Anhang zukommen lassen oder sich alle von Ihnen abgegebenen Kommentare und unsere Antworten darauf ansehen, klicken Sie auf folgenden Link: 
+<%= url_for({:escape => false, :only_path => false, :controller=>:web_dialogs, :action=>:show, :id=>@web_dialog.id, :accesskey=>@web_dialog.accesskey, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+Mit freundlichen Grüßen,
+<%= @signature %>

@@ -1,0 +1,4 @@
+<% if messages.length > 0 %>
+	<%= two_column_header("Author", "Message") %>
+	<%= render(:partial=>'message', :collection=>messages) %>
+<% end %>

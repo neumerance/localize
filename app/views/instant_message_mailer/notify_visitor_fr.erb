@@ -1,0 +1,12 @@
+Bonjour <%= @web_dialog.full_name %>,
+
+<%= @web_message.body_for_user(false) %>
+<% if @has_attachments %>
+Ce message contient aussi des pièces jointes. Pour obtenir le fichier joint(s), s’il vous plaît cliquer sur le lien ci-dessous.<% end %>
+
+Ne répondez pas à cet e-mail.
+Si vous voulez nous envoyer un autre message, veuillez nous envoyer un fichier joint ou, pour consulter l'historique complet de vos commentaires et nos réponses, veuillez cliquer sur le lien ci-dessous :
+<%= url_for({:escape => false, :only_path => false, :controller=>:web_dialogs, :action=>:show, :id=>@web_dialog.id, :accesskey=>@web_dialog.accesskey, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+Meilleures salutations,
+<%= @signature %>

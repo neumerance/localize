@@ -1,0 +1,5 @@
+<% if @warning %>
+  alert('<%= @warning %>')
+<% else %>
+  jQuery('#lengthlimit').html('<%= escape_javascript(render :partial=>'lengthlimit') %>')
+<% end %>

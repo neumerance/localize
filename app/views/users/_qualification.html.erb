@@ -1,0 +1,14 @@
+<%= infotab_top('Qualification', infobar_contents_user('Practice projects are meant to familiarize you with the system. You must complete at least one practice project before doing live projects.', '', true, @auser.userstatus >= USER_STATUS_QUALIFIED)) %>
+<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+<% if @auser.userstatus >= USER_STATUS_QUALIFIED %>
+	<p>You have completed a practice project and are qualified to do live projects for paying customers.</p>
+	<p>If you want, you can <%= link_to('request another practice project', {:action=>:request_practice_project}) %>.</p>
+<% else %>
+	<p class="warning">You haven't yet completed a practice project.</p>
+	<% if @user.can_do_training? %>
+		<p><%= link_to('Request a practice project', {:action=>:request_practice_project}) %>.</p>
+	<% else %>
+		<p>To request a practice project, you must first select languages you can translate from and to.</p>
+	<% end %>
+<% end %>
+</td></tr></table>

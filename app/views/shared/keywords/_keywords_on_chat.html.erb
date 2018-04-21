@@ -1,0 +1,26 @@
+<% if owner %>
+  <div><p>
+    <% if owner.translator == @user or @user.has_supporter_privileges? %>
+      <% if owner.keyword_projects.find_all{|kwp| kwp.keywords.any?}.any? %>
+        <% if owner.keyword_projects.to_a.any?{|kwp| kwp.paid? && !kwp.completed?} %>
+          <b>There are keywords to be localized in this project.</b>
+        <% else %>
+          <b>You have localized keywords in this project.</b>
+        <% end %>
+        <ul>
+          <% owner.keyword_projects.find_all{|kwp| kwp.keywords.any?}.each_with_index do |kwp, i| %>
+          <% if kwp.paid? %>
+            <% if kwp.pending? %>
+              <%= link_to "<li><b>Keyword set #{i+1}:</b> Localize now</li>", translate_keyword_project_url(kwp) %>
+            <% else %>
+              <%= "<li><b>Keyword set #{i+1}:</b> %s, %s or %s localized keywords</li>" % [link_to("Edit", translate_keyword_project_path(kwp)), link_to("view", keyword_project_path(kwp)), link_to("download", download_keyword_project_path(kwp))] %>
+            <% end %>
+          <% end %>
+        <% end %>
+        </ul>
+      <% else %>
+        No keyword translation pending
+      <% end %>
+    <% end %>
+  </p></div>
+<% end %>

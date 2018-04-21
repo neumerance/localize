@@ -1,0 +1,3 @@
+<% if @update_bid %>
+	jQuery('<%= "#lang#{@lang_id}" %>').html('<%= escape_javascript(render :partial => 'show_bid', :object => @bid_disp) %>')
+<% end %>

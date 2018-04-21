@@ -1,0 +1,16 @@
+<%= infotab_header(['Initiated by','Against','Status', 'Last message by', 'Actions']) %>
+<% if arbitrations.blank? %>
+    <tr>
+      <td colspan="5">No <%= list_name %> yet.</td>
+    </tr>
+<% end %>
+<% for arbitration in arbitrations %>
+<tr>
+	<td><%= user_link(arbitration.initiator) %></td>
+	<td><%= user_link(arbitration.against) %></td>
+	<td><%= Arbitration::STATUS[arbitration.status] %></td>
+	<td><%= last_message_in_arbitration(arbitration) %></td>
+	<td><%= link_to('View details', {:controller=>'arbitrations', :action=>'show', :id=>arbitration.id}) %></td>
+</tr>
+<% end %>
+</table>

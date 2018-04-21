@@ -1,0 +1,10 @@
+<% if @reminders && (@reminders.length > 0) %>
+	<div class="reminders_summary_contents">
+    <%= image_tag 'icons/star16.png', class: 'left_icon', width: 16, height: 16, alt: 'important', border: 0 %>
+		<%= link_to(
+                    _("You have %s") % pluralize(count_valid_reminder(@reminders, @user), 'reminder'),
+                    {:controller=>'/reminders', :action=>:unhide},
+                    :remote => true, method: :get
+            ) %>
+	</div>
+<% end %>

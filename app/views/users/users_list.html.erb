@@ -1,0 +1,23 @@
+<%= link_to('<< Go Back', {action: :find}) %>
+<% if defined?(@list_of_pages) && defined?(@users_page) %>
+  Page <%= form_tag({:action=>:index}, {:method=>'GET'}) %>
+  <%= select_tag( :page, options_for_select(@list_of_pages,@users_page.number), {:onchange=>"submit()"}) %>
+  <%= link_to("Prev", users_url(:page => @users_page.prev.number, :type => params[:type], :created_at => params[:created_at], :keyword => params[:keyword])) if @users_page.prev? %>
+  <%= link_to("Next", users_url(:page => @users_page.next.number, :type => params[:type], :created_at => params[:created_at], :keyword => params[:keyword])) if @users_page.next? %>
+<% else %>
+  <%= form_tag({:action=>:index}, {:method=>'GET'}) %>
+<% end %>
+  <div style="float: right">
+    Created after <%= date_picker_field "created_at", nil, {:value => params[:created_at].to_s.to_date || Date.today - 1.month}, '<i class="mc-icon-calendar"></i>' %>
+    <%= select_tag "type", options_for_select([ "Translator", "Client", "Admin" ], params[:type]), {:include_blank => "All types"} %>
+    <%= text_field_tag(:keyword, params[:keyword], size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD) %>
+    <%= submit_tag 'Search', data: { disable_with: 'Search' } %>
+    <div style="clear: both"></div>
+  </div>
+</form>
+<br />
+<br />
+
+<%= users_list(@users_page) %>
+
+<br />

@@ -1,0 +1,32 @@
+<%= form_tag( { :action => :create_message }, {:multipart=>true, remote: true }) do %>
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="chatcomments">
+	<tr class="headerrow">
+		<td class="tableleftwall"/>
+		<th class="blockTab tmarg7" colspan="2"><% if reply %>Reply<% else %>Post first comment<% end %></th>
+		<td class="tablerightwall"/>
+	</tr>
+	<tr class="reply"><td colspan="4">&nbsp;</td></tr>
+	<tr class="reply">
+		<td></td>
+		<td>Message:</td>
+		<td><%= text_area_tag(:body, nil, {:cols => 57, :rows => 10, :style=>'width:100%', maxlength: COMMON_NOTE}) %></td>
+		<td></td>
+	</tr>
+	<tr class="reply">
+		<td></td>
+		<td><%= _('Attachments') %>:</td>
+		<td><div id="documents_to_upload"><p><%= file_field_tag 'file1[uploaded_data]', :size=>70, :id=>'file1_uploaded_data', onchange: "validate_file_size('file1[uploaded_data]', '#{ATTACHMENT_MAX_SIZE}')" %></p></div>
+			<p><a href="#form_top" onclick="add_another_file(<%= ATTACHMENT_MAX_SIZE %>);"><%= _('Add another attachment') %></a></p>
+		</td>
+		<td></td>
+	</tr>
+	<tr class="reply"><td colspan="4">&nbsp;</td></tr>
+	<tr class="reply">
+		<td></td>
+		<td colspan="2"><%= submit_tag 'Make comment', data: { disable_with: 'Make comment' } %></td>
+		<td></td>
+	</tr>
+	<tr class="reply"><td colspan="4">&nbsp;</td></tr>
+</table>
+<% end %>
+

@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+<% 1.upto(100) do |n| %>
+string<%=n%>:
+  id: <%=n%>
+  text_resource_id: 2
+  token: token<%=n%>
+  txt: word1 word2 word3
+  comment: comment<%=n%>
+  context: context<%=n%>
+  master_string: null
+<%end%>
+
+<% 101.upto(200) do |n| %>
+string<%=n%>:
+  id: <%=n%>
+  text_resource_id: 3
+  token: token<%=n%>
+  txt: word1 word2 word3
+  comment: comment<%=n%>
+  context: context<%=n%>
+  master_string: null
+<%end%>

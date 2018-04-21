@@ -1,0 +1,19 @@
+Dear <%= @user.full_real_name %>,
+
+We're glad to tell you that we've just assigned a translator from <%= @website_translation_offer.from_language.name %> to <%= @website_translation_offer.to_language.name %> for your project '<%= @website.name %>'.
+
+You're welcome to start sending translation jobs in this language pair. To do this, follow these steps:
+1) Go to your website's admin section
+2) Select the documents you want to send to translation.
+3) Send to translation.
+
+Your translator for this language pair is called <%= @translator.full_name %>. You're welcome (and encouraged) to communicate directly.
+If you want to chat with your translator, follow this link:
+<%= url_for({:escape=>false, :only_path=>false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:website_translation_contracts, :action=>:show, :website_id=>@website.id, :website_translation_offer_id=>@website_translation_offer.id, :id=>@website_translation_contract.id } ) %>
+
+<% if @pending_language_pairs.length > 0 %>We're still working on assigning translators for your project between these lanugages:
+<% @pending_language_pairs.each do |p| %><%= "#{p[0]} to #{p[1]}" %>
+<% end %>
+We'll notify once we've assigned a translator to each of these.<% else %>All translation language pairs for your website are now assigned to translators.<% end -%>
+
+<%= EMAIL_SIGNATURE %>

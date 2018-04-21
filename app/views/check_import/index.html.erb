@@ -1,0 +1,106 @@
+<style>
+  #check-import table tbody tr:nth-child(odd) {
+      background: #f7f7f7;
+  }
+  #check-import table tbody tr td {
+    padding: 10px 0 10px 0;
+  }
+    #check-import table tbody tr:nth-child(odd) {
+        background: #f7f7f7;
+    }
+
+    #check-import table tbody tr .default {
+        background: #efefef
+    }
+
+    #check-import table tbody tr:nth-child(odd) .default {
+        background: #e1e1e1
+    }
+
+    #check-import table tbody tr .translated {
+        background: #d9ead3
+    }
+
+    #check-import table tbody tr:nth-child(odd) .translated {
+        background: #c0d1ba
+    }
+
+    #check-import table tbody tr .same_text {
+        background: #fff2cc
+    }
+
+    #check-import table tbody tr:nth-child(odd) .same_text {
+        background: #e7dbb9
+    }
+
+    #check-import table tbody tr .invalid {
+        background: #c8dcfa
+    }
+
+    #check-import table tbody tr:nth-child(odd) .invalid {
+        background: #bacde8
+    }
+</style>
+<%
+   statuses = {
+   0 => :default,
+   -1 => :translated,
+   -2 => :same_text,
+   -3 => :invalid
+   }
+%>
+<div id="check-import">
+  <form method="get">
+    <input type="text" name="cms_request_id" placeholder="Cms Request ID" vaule="<%= @cms_id %>">
+    <select name="source_language">
+      <option value="0">Any</option>
+      <%= options_from_collection_for_select(@languages, 'id', 'name', @source_language) %>
+    </select>
+    <select name="target_language">
+      <option value="0">Any</option>
+      <%= options_from_collection_for_select(@languages, 'id', 'name', @target_language) %>
+    </select>
+    <input type="submit" value="Filter" name="sent"/>
+  </form>
+  <% if @mrks.present? %>
+    <table>
+      <tr>
+        <th>
+          Cms Request ID
+        </th>
+        <th>
+          Source id
+        </th>
+        <th>
+          Source text
+        </th>
+        <th>
+          Target id
+        </th>
+        <th>
+          Translated text
+        </th>
+      </tr>
+      <% @mrks.each do |mrk| %>
+        <tr>
+          <td>
+            <%= mrk.cms_request_id %>
+          </td>
+          <td>
+            <div style="visibility: hidden;"><%= mrk.source_id %></div>
+          </td>
+          <td>
+            <%= remove_tags(HTMLEntities.new.decode(mrk.source_content)) %>
+          </td>
+          <td>
+            <div style="visibility: hidden;"> <%= mrk.target_id %></div>
+          </td>
+          <% status = statuses[mrk.mrk_status] %>
+          <td class="<%= status %>">
+            <%= remove_tags(HTMLEntities.new.decode(mrk.target_content)) %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>

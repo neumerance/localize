@@ -1,0 +1,22 @@
+<br /><%= link_to("Formatting instructions", MARKUP_DESCRIPTION_URL, {:target=>'_blank'}) %><br /><br />
+
+<%= form_for(:newsletter, :url=>@urlto, :html => { :method => @methodto }) do |f| %>
+<table cellpadding="5" width="100%">
+<tr><td style="width:20%;">Subject:</td><td><%= f.text_field :subject, :size=>60, maxlength: COMMON_FIELD %></td></tr>
+<tr><td>Body:</td><td><%= f.text_area( :body, :rows=>20, :cols=>60, :style=>'width:100%;', maxlength: COMMON_NOTE) %></td></tr>
+<tr><td>Options:</td>
+<td>
+<%= show_flags(@newsletter.flags) %>
+</td></tr>
+<tr><td>Additional SQL filter (only when sending to clients):</td>
+<td><%= f.text_field :sql_filter, size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD %></td></tr>
+</table>
+<br />
+<%= submit_tag 'Save', data: { disable_with: 'Save' } %>
+<br /><br />
+  <% if params[:id].present? %>
+        <%= link_to('Cancel', {:action=>:show, id: params[:id]}) %>
+  <% else %>
+  <%= link_to('Cancel', {:action=>:index}) %>
+  <% end %>
+<% end %>

@@ -1,0 +1,14 @@
+<p>Support centers all you to provide support for your users in your own website. You can create as many support centers as you need, for different websites that you run.</p>
+<p>Each support center will include contact pages in different languages. You will receive notifications about new tickets and can respond from within your ICanLocalize account.</p>
+<% if @web_supports.length > 0 %>
+	<%= infotab_header(['Support center', 'Tickets', 'Details', 'Actions']) %>
+	<%= render(:partial=>'web_support', :collection=>@web_supports) %>
+	</table>
+	<div class="inter_tab_spacer"></div>
+<% end %>
+
+<%= link_to('Create a new support center &raquo;'.html_safe, {:action=>'new'}, :class=>'rounded_but_bold') %>
+
+<br /><br /><br /><hr /><br />
+<h2>Looking for Help?</h2>
+<p>If you need help with your ICanLocalize account, you're in the wrong place. Don't worry, it's easy to get there. Click on <%= link_to('Get Help', {:controller=>:support}) %> for support from ICanLocalize staff.</p>

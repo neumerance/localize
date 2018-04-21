@@ -1,0 +1,166 @@
+<% if @user.webta_enabled? %>
+  <p><a href="<%= @user.link_to_webta %>" target="_blank">Check new Online Translation Assistant</a></p>
+<% end %>
+<p><%= link_to('Open work &raquo;'.html_safe,{:action=>:open_work}, {:class=>'rounded_but_orange'}) %></p>
+
+<% if @show_getting_started && false %>
+	<div class="errorExplanation">
+		<h2>Start Translating Projects</h2>
+		<p>
+			In order to begin translating, start <b>Translation Assistant</b> and login with your email address (<b><%= h @user.email %></b>) and your ICanLocalize password.
+		</p>
+		<%= ta_out_of_date_warning(@user) %>
+	</div>
+<% end %>
+
+<% if @open_issues.length > 0 %>
+	<div class="errorExplanation">
+	<h2>Open issues requiring your attention</h2>
+	<p>The following issues require your immediate attention.</p>
+	<%= infotab_header(['Issue', 'Kind', 'By']) %>
+	<%= render(:partial=>'issue', :collection=>@open_issues) %>
+	</table>
+	</div>
+	<br /><br />
+<% end %>
+<% if @pending_managed_works.length > 0 %>
+	<div class="errorExplanation">
+	<h2>Reviews you need to complete</h2>
+	<p>The following reviews need to complete.</p>
+  <ul>
+    <% @pending_managed_works.each do |w| %>
+      <%= content_tag(:li, managed_work_review(w)) %>
+    <% end %>
+  </ul>
+	</div>
+	<br /><br />
+<% end %>
+
+<% if @review_messages.length > 0 %>
+	<div class="errorExplanation">
+	<h2>Available Instant Translation Projects to Review</h2>
+	<p>There are <%= link_to('%d Instant Translation project(s) available for you to review' % @review_messages.length, {:controller=>:web_messages, :action=>:review_index}) %>.</p>
+	</div>
+<% end %>
+
+<% if @messages.length > 0 %>
+	<div class="errorExplanation">
+	<h2>Available Instant Translation Projects</h2>
+	<p>There are <%= link_to('%d Instant Translation project(s) available for you to do' % @messages.length, {:controller=>:web_messages, :action=>:index}) %>.</p>
+	</div>
+<% end %>
+
+<% if @pending_accepted_private_translations.length > 0%>
+	<div class="errorExplanation">
+	<h2>Open invitations from clients</h2>
+	<p>There are <%= link_to('%d invitation(s) by clients pending your review'%@pending_accepted_private_translations.length, {:controller=>:private_translators, :action=>:clients}) %>.</p>
+	</div>
+<% end %>
+
+<% if @show_bidding_projects_header %><h2>Website and Bidding Translation Projects</h2><% end %>
+
+<% if @work_revisions.length > 0 %>
+	<a name="project_you_are_translating"></a>
+	<%= infotab_top('Projects you are translating', "Recent #{@work_revisions.length} project(s) you are working on. " + link_to('All projects in progress', {:action=>:projects_in_progress}) ) %>
+	<%= infotab_header(['Project','Status'] ) %>
+		<%= render(:partial => "revision", :collection => @work_revisions) %>
+	</table>
+	<div class="inter_tab_spacer"></div>
+<% end %>
+
+<% if @bid_revisions.length > 0 %>
+	<a name="projects_you_bid_on"></a>
+	<%= infotab_top('Projects you bid on', "Recent #{@bid_revisions.length} project(s) you have bid on, or started communication with the client. " + link_to('All pending projects', {:action=>:active_bids})) %>
+	<%= infotab_header(['Project','Status'] ) %>
+		<%= render(:partial => "revision", :collection => @bid_revisions) %>
+	</table>
+	<div class="inter_tab_spacer"></div>
+<% end %>
+
+<% if @revision_reviews.length > 0 %>
+	<a name="revision_reviews"></a>
+	<%= infotab_top('Website/Bidding projects that you are the reviewer of', "You are the reviewer of this projects"  + (@have_more_revision_reviews ? ' (showing first %d) '%PER_PAGE + link_to('Show all &raquo;'.html_safe, {:action=>:revision_reviews}) : '')) %>
+	<%= infotab_header(['Project', 'Language']) %>
+	<%= render(:partial=>'revision_review', :collection=>@revision_reviews) %>
+	</table>
+	<div class="inter_tab_spacer"></div>
+<% end %>
+
+<% if @completed_revisions.length > 0 %>
+	<a name="projects_you_completed"></a>
+	<%= infotab_top('Completed projects', "Recent #{@completed_revisions.length} project(s) you completed. " + link_to('All completed projects', {:action=>:completed_projects}) ) %>
+	<%= infotab_header(['Project','Status'] ) %>
+		<%= render(:partial => "revision", :collection => @completed_revisions) %>
+	</table>
+	<div class="inter_tab_spacer"></div>
+<% end %>
+
+<% if @show_recurring_translation_header %><h2>Recurring Translations</h2><% end %>
+
+<% if @website_translation_contracts.length > 0 %>
+	<a name="your_recurring_website_translation_offers"></a>
+	<%= infotab_top('Your recurring translations', "Recurring projects you already applied to" + (@have_more_website_translation_contracts ? ' (showing first %d) '%PER_PAGE + link_to('Show all &raquo;'.html_safe, {:action=>:website_translation_contracts}) : '') ) %>
+	<%= infotab_header(['Project', 'Payment per word', 'Status']) %>
+	<%= render(:partial=>'website_translation_contract', :collection=>@website_translation_contracts) %>
+	</table>
+	<div class="inter_tab_spacer"></div>
+<% end -%>
+
+<% if @recurring_managed_works.length > 0 %>
+	<a name="recurring_review_assignments"></a>
+	<%= infotab_top('Your recurring review assignments', "Recurring projects that you are reviewing") %>
+	<%= infotab_header(['Project']) %>
+	<%= render(:partial=>'website_review', :collection=>@recurring_managed_works) %>
+	</table>
+	<div class="inter_tab_spacer"></div>
+<% end -%>
+
+
+
+<% if @resource_chats%><h2>Software projects</h2><% end %>
+
+<% if @resource_chats_to_deliver.length > 0 %>
+	<a name="resource_chats_to_deliver"></a>
+	<%= infotab_top('Software projects you need to review with screenshots', "Software projects you need to review with screenshots (If client does not upload the screenshots in two weeks feel free to click the button anyway)") %>
+	<%= infotab_header(['Project', 'Language', 'Application Status', 'Words to translate', 'Actions']) %>
+	<%= render(:partial=>'resource_chat', :collection=>@resource_chats_to_deliver) %>
+	</table>
+	<div class="inter_tab_spacer"></div>
+<% end %>
+
+<% if @software_reviews.length > 0 %>
+	<a name="software_reviews"></a>
+	<%= infotab_top('Software projects you are reviewing', "You are currently revieweing this software projects"  + (@have_more_software_reviews ? ' (showing first %d) '%PER_PAGE + link_to('Show all &raquo;'.html_safe, {:action=>:resource_chats}) : '')) %>
+	<%= infotab_header(['Project', 'Language', 'Words to review', 'Actions']) %>
+	<%= render(:partial=>'software_review', :collection=>@software_reviews) %>
+	</table>
+	<div class="inter_tab_spacer"></div>
+<% end %>
+
+<% if @resource_chats.length > 0 %>
+	<a name="resource_chats"></a>
+	<%= infotab_top('Software projects you applied to', "You have already applied to these software localization projects"  + (@have_more_resource_chats ? ' (showing first %d) '%PER_PAGE + link_to('Show all &raquo;'.html_safe, {:action=>:resource_application}) : '')) %>
+	<%= infotab_header(['Project', 'Language', 'Application Status', 'Words to translate', 'Actions']) %>
+	<%= render(:partial=>'resource_chat', :collection=>@resource_chats) %>
+	</table>
+	<div class="inter_tab_spacer"></div>
+<% end %>
+
+<% if @arbitrations.length > 0 %>
+	<h2>Arbitrations</h2>
+	<a name="your_arbitrations"></a>
+	<%= infotab_top('Your arbitrations', "Recent #{@arbitrations.length} arbitration(s) involving project you work on. " + link_to('All arbitrations', {:controller=>:arbitrations}) ) %>
+	<%= render(:partial => "/arbitrations/list_arbitrations") %>
+	<div class="inter_tab_spacer"></div>
+<% end -%>
+
+<script>
+  jQuery('.mt-switch.mt-disabled').webuiPopover({
+    content: '<p>You are about to enable Machine Translation for this job.</br>This action cannot be undone.</p><p>Clients require human-made professional translations.</br>By enabling machine translation,</br>you are fully liable for the quality of your work.</br>Should any quality issues arise,</br>we will confirm the translation quality with a reviewer</br>and you may have to refund the client if deemed necessary.</p>',
+    trigger: 'hover'
+  });
+  jQuery('.mt-switch.mt-enabled').webuiPopover({
+    content: "Machine translation is now active",
+    trigger: 'hover'
+  });
+</script>

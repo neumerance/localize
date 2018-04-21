@@ -1,0 +1,7 @@
+<tr>
+	<td><%= disp_date(newsletter.chgtime) %></td>
+	<td><%= link_to(newsletter.subject, {:action=>:show, :id=>newsletter.id}) %></td>
+	<td><%= h(truncate(newsletter.body, length: 60, omission: '...')) %></td>
+	<td><%= show_active_flags(newsletter.flags) %></td>
+	<td><%= link_to('edit', {:action=>:edit, :id=>newsletter.id}) %> | <%= link_to('delete', {:action=>:delete, :id=>newsletter.id}, {'data-confirm'=>'Are you sure you want to delete this newsletter?'}) %></td>
+</tr>

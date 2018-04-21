@@ -1,0 +1,18 @@
+<%= infotab_header(['Page','Group','Topic','User','Actions']) %>
+
+<% for help_placement in @placements %>
+  <tr>
+    <td><%= link_to(help_placement.get_path(request.host), help_placement.get_path(request.host), :target=>'_blank' ) %></td>
+    <td><%=h(help_placement.help_group.name) %></td>
+    <td><%=h(help_placement.help_topic.title) %></td>
+    <td><%= (help_placement.user_match == HELP_PLACEMENT_CLIENT) ? 'Client' : 'Translator' %></td>
+    <td><%= link_to 'Show', help_placement %> |
+    <%= link_to 'Edit', edit_help_placement_path(help_placement) %> |
+    <%= link_to 'Destroy', help_placement, 'data-confirm' => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New help_placement', new_help_placement_path %>

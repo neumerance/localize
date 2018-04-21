@@ -1,0 +1,5 @@
+<p><%= @message %></p><br />
+<h1><%=h @exception.class.to_s %></h1>
+<pre><%=h @exception.message %></pre>
+
+<%= render :file => "rescues/_trace.erb" %>

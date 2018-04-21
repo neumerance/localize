@@ -1,0 +1,11 @@
+<% if @arbitrations.length > 0 -%>
+	<%= infotab_top(_('Open arbitrations'), @your_arbitrations_message) %>
+	<%= render(:partial => "/arbitrations/list_arbitrations") %>
+	<div class="pager_control" style="position: relative; height: 15px;">
+		<div class="pull-right">
+			<%= paginate arbitrations, params: { controller: :arbitrations, action: :searcher }, remote: true %>
+		</div>
+		<div style="clear: both"></div>
+	</div>
+	<div class="inter_tab_spacer"></div>
+<% end %>

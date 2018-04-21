@@ -1,0 +1,38 @@
+<% if translator_language.translator %>
+<li>
+<div class="infobox" id="<%= put_object_id(translator_language) %>" >
+	<h4><%= link_to("#{translator_language.translator.full_name} - #{translator_language.class} #{translator_language.language.name}", {:controller=>:users, :action=>:show, :id=>translator_language.translator_id}) %></h4>
+	<p>
+		<b>Your background in this language:</b><br />
+		<%= pre_format(translator_language.description) %>
+	</p>
+	<% if translator_language.translator_language_documents.length > 0 %>
+		<hr />
+		<p><b>Attached documents</b></p>
+		<div id="attachments_for_language<%= translator_language.id %>">
+		<ul><% for document in translator_language.translator_language_documents %>
+			<li style="list-style-type: square; padding: 0.3em; margin: 0;">
+				<%= link_to("#{h(document.description)}: #{document.orig_filename}", {:action=>:zipped_file, :id=>document.id}) %>
+			</li>
+			<% end %>
+		</ul>
+		</div>
+	<% end %>
+	<hr />
+	<h5>Need clarifications from user?</h5>
+	<div id="open_support_ticket_for_<%= put_object_id(translator_language) %>"><%= render(:partial=>'/support/support_ticket_for_object', :object=>translator_language) %></div>
+	<h5>Change status</h5>
+	<p>Currently: <b><%= TranslatorLanguage::STATUS_TEXT[translator_language.status] %></b></p>
+	<% if translator_language.status != TRANSLATOR_LANGUAGE_APPROVED %>
+		<%= button_to("APPROVE this language", { :action => :approve_translator_language, :id=>translator_language.id }, 'data-confirm'=>'Are you sure you want to APPROVE this language?') %>
+	<% end %>
+	<% if translator_language.status != TRANSLATOR_LANGUAGE_DECLINED %>
+		&nbsp; | &nbsp; 
+		<%= form_tag({ :action => :decline_translator_language, :id=>translator_language.id }) do %>
+			<%= submit_tag('DECLINE this language', data: {disabled: false, confirm: 'Are you sure you want to DECLINE this language?', disable_with: 'DECLINE this language' }) %> <%= check_box_tag :quiet, 1, 1 %> Don't send an update
+		<% end %>
+		<!-- %= button_to("DECLINE this language", { :action => :decline_translator_language, :id=>translator_language.id }, :confirm=>'Are you sure you want to DECLINE this language?') % -->
+	<% end %>
+</div>
+</li>
+<% end %>

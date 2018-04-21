@@ -1,0 +1,35 @@
+<%= infotab_top('Categories', infobar_contents(_('If this project requires specific expertise, select it here.'),_('To do this work, you must have the specific expertise listed below.'))) %>
+<% if @show_edit_categories %>
+	<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+		<%= form_tag({:action => :edit_categories, :req=>'save' }, :remote => true) do %>
+			<p>
+			<% @categories.each do |cat| %>
+				<label><%= check_box_tag("category[#{cat[0]}]", "1", cat[2] ) %>&nbsp;<%= cat[1] %></label><br />
+			<% end %>
+			</p>
+			<%= submit_tag _('Save'), :name=>'save', data: { disable_with: _('Save') } %>
+		<% end %>
+		<%= form_tag({:action => :edit_categories, :req=>'hide' }, :remote => true) do %>
+				<%= submit_tag _('Cancel'), :name=>'cancel', data: { disable_with: _('Cancel') } %>
+		<% end %>
+	</td></tr></table>
+<% else %>
+	<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+		<% if @revision.categories.length > 0 %>
+			<ul>
+				<% @revision.categories.all.order("categories.id ASC").each do |cat| -%>
+					<li><strong><%= cat.name %></strong></li>
+				<% end %>
+			</ul>
+		<% else %>
+			<p><%= _("This work doesn't require speciality skills in a particular field.") %></p>
+		<% end %>
+	</td></tr></table>
+	<% if @canedit %>
+		<div class="tabbottom">
+			<%= form_tag({ :action => :edit_categories, :req=>'show' }, :remote => true) do %>
+				<%= submit_tag _('Edit required fields of expertise'), :name=>'show', :id => 'edit_categories_button', data: { disable_with: _('Edit required fields of expertise') } %>
+			<% end %>
+		</div>
+	<% end %>
+<% end %>

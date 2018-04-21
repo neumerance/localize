@@ -1,0 +1,181 @@
+<%=
+  private_translators_message =
+      if @my_translators && @my_translators.length > 0
+        _('<br />When assigning to private translators, only the <i>Days to complete work</i> field matters. Other fields are ignored.')
+      else
+        ''
+      end
+
+  show_icon = @revision.released != 1
+  icon_ok = @revision.max_bid_currency && @revision.bidding_duration && @revision.project_completion_duration
+
+  show_icon = false
+  icon_ok = false
+
+  infotab_top(
+      _('Work Conditions'),
+      infobar_contents(
+          _('Set limits for the bids you are ready to accept for this project') + private_translators_message,
+          _('Bids to this project must comply with these requirements'),
+          show_icon,
+          icon_ok
+      )
+  )
+%>
+
+<% if @show_edit_conditions %>
+    <%= form_for(:revision, :url => {:action => :edit_conditions, :req => 'save'}, :remote => true) do |f| %>
+        <table class="stats" width="100%" cellspacing="0" cellpadding="3">
+          <tr>
+            <td class="headercolumn"><%= _("Number of words") %></td>
+            <td><%= f.number_field :word_count, :size => 6, maxlength: 7, min: 0, oninput: 'javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)' %>
+            <td><%= _("Number of words to be translated.") %></td>
+          </tr>
+          <tr>
+            <td class="headercolumn"><%= _("Maximal bid amount") %></td>
+            <td><%= money_field_tag_for(f, :max_bid) %> <%= @revision.currency.disp_name.html_safe %> <%= @revision.payment_units %>
+            <td>
+              <%= _("The highest bid you're willing to pay for this project.") %>
+
+              <% unless @revision.pay_per_word? %>
+                  <%= _('Please multiply number of words by the maximum rate you\'d consider. According to the number of words you have entered, the <b>minimum valid amount</b> is').html_safe %> <b class="minimum_bid_amount_info"><%= @revision.word_count.to_i * @revision.client.minimum_bid_amount %> USD</b> <%= _('Notice that higher values can catch translator\'s attention and you can request shorter deadlines.') %>
+              <% end %>
+
+              <p style="display:none" class="warning">
+                <%= _("The maximal bid amount should be equal or greater than $%s per word.") % @revision.client.minimum_bid_amount %>
+                <% unless @revision.pay_per_word? %>
+                    <%= _('According to this, the minimum valid amount is') %> <span class='minimum_bid_amount_info'>$<%= @revision.minimum_bid_amount %> USD</span>
+                <% end %>
+              </p>
+
+            </td>
+          </tr>
+          <tr>
+            <td class="headercolumn"><%= _("Auto bid-accept amount") %></td>
+            <td><%= money_field_tag_for(f, :auto_accept_amount) %> <%= @revision.currency.disp_name.html_safe %> <%= @revision.payment_units %>
+            <td><%= _("The amount you are willing to pay without a bidding process. This means the first translator who applies at this rate will be assigned to the project. Make sure you have enough funds in your account to cover this amount.") %>
+
+              <p style="display:none" class="warning">
+                <%= _('The minimum auto bid-accept amount is') %> <b class="minimum_bid_amount_info"><%= @revision.minimum_bid_amount %> USD</b>. <%= _('You can also enter 0 to disable it.') %>
+              </p>
+            </td>
+
+          </tr>
+          <tr>
+            <td class="headercolumn"><%= _("Days to bid") %></td>
+            <td><%= f.number_field :bidding_duration, :size => 3, maxlength: 3, min: 1, oninput: 'javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)' %></td>
+            <td><%= _("The time the project will be open for bidding once you release it to translators.") %></td>
+          </tr>
+          <tr>
+            <td class="headercolumn"><%= _("Days to complete work") %></td>
+            <td><%= f.number_field :project_completion_duration, :size => 3, maxlength: 3, min: 1, oninput: 'javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)' %></td>
+            <td><%= _("The time the translator will have to complete the job.") %></td>
+          </tr>
+        </table>
+        <%= submit_tag _('Save'), :name => 'save', data: { disable_with: _('Save') } %>
+    <% end %>
+    <%= form_for(:revision, :url => {:action => :edit_conditions, :req => 'hide'}, :remote => true) do |f| %>
+        <%= submit_tag _('Cancel'), :name => 'hide', data: { disable_with: _('Cancel') } %>
+    <% end %>
+<% else %>
+    <% if @revision.max_bid_currency && @revision.bidding_duration && @revision.project_completion_duration %>
+        <%= infotab_header([_('Words'), _('Maximal bid amount'), _('Auto-accept bid amount'), _('Bid closing time'), _('Time to complete the work')]) %>
+        <tr>
+          <td><%= "#{@revision.word_count}" %></td>
+          <td><%= @revision.max_bid %> <%= @revision.currency.disp_name.html_safe %> <%= @revision.payment_units %></td>
+          <td><%= auto_accept_status(@user, @revision) %></td>
+          <td><%= closing_time(@revision) %></td>
+          <td><%= _("This job must be completed within %s days from the time a bid is accepted.") % @revision.project_completion_duration %> </td>
+        </tr>
+        <%= infotab_footer.html_safe %>
+    <% else %>
+        <table class="stats" width="100%" cellspacing="0" cellpadding="3">
+          <tr>
+            <td>
+              <p class="warning">No limits set yet</p>
+            </td>
+          </tr>
+        </table>
+    <% end %>
+    <% if @canedit %>
+        <div class="tabbottom">
+          <%= form_tag({:action => :edit_conditions, :req => 'show'}, :remote => true) do %>
+              <%= submit_tag _('Edit job limits'), :name => 'show', :id => 'edit_conditions_button', data: { disable_with: _('Edit job limits') } %>
+          <% end %>
+        </div>
+    <% end %>
+<% end %>
+
+
+<script type='text/javascript'>
+  function get_minimal_amount_for_bid(num_words) {
+    var min_per_word = parseFloat(<%=@revision.client.minimum_bid_amount %>);
+    <% if (@revision.pay_per_word?) %>
+    return (min_per_word).toFixed(2);
+    <% else %>
+    return (num_words * min_per_word).toFixed(2);
+    <% end %>
+  }
+
+  jQuery('#revision_word_count').focusout(function () {
+    var num_words = jQuery(this).val();
+    var minimum_amount = get_minimal_amount_for_bid(num_words);
+
+    jQuery('.minimum_bid_amount_info').text(minimum_amount + ' USD').removeClass('animated pulse');
+
+    setTimeout(function () {
+      jQuery('.minimum_bid_amount_info').addClass('animated pulse');
+    }, 400);
+
+    validateMaxBidAmount();
+  });
+
+  jQuery('#revision_max_bid').focusout(function () {
+    validateMaxBidAmount();
+  });
+
+  jQuery('#revision_auto_accept_amount').focusout(function () {
+    validateAutoAcceptAmount();
+  });
+
+  function validateMaxBidAmount() {
+    var num_words = jQuery('#revision_word_count').val();
+    var $input = jQuery('#revision_max_bid');
+    var max_bid_amount = parseFloat($input.val());
+    var minimum_amount = get_minimal_amount_for_bid(num_words);
+
+    var $warning = $input.parents('tr').find('.warning');
+
+    $input.removeClass('invalid');
+    $warning.removeClass('animated pulse');
+
+    if (!max_bid_amount || max_bid_amount < minimum_amount) {
+      $input.addClass('invalid');
+      $warning.show().addClass('animated pulse');
+      // $input.focus();
+    } else {
+      $warning.fadeOut();
+    }
+  }
+
+  function validateAutoAcceptAmount() {
+    var num_words = jQuery('#revision_word_count').val();
+    var $input = jQuery('#revision_auto_accept_amount');
+    var auto_accept_amount = parseFloat($input.val());
+    var minimum_amount = get_minimal_amount_for_bid(num_words);
+
+    var $warning = $input.parents('tr').find('.warning');
+
+    $input.removeClass('invalid');
+    $warning.removeClass('animated pulse');
+
+    if (!($input.val() == 0) && (!auto_accept_amount || auto_accept_amount < minimum_amount)) {
+      $input.addClass('invalid');
+      $warning.show().addClass('animated pulse');
+      // $input.focus();
+    } else {
+      $warning.fadeOut();
+    }
+
+  }
+</script>

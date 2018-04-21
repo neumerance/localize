@@ -1,0 +1,9 @@
+<% if @errors.any? %>
+  <% @errors.each do |k, v| %>
+    jQuery('#autoassign_<%= k %>').addClass('error')
+  <% end %>
+  alert("<%= @errors.values.join('\n') %>")
+<% else %>
+  alert('Your auto-assignment settings have been updated')
+  jQuery('#autoassignment').html('<%= escape_javascript(render :partial => 'autoassignment') %>')
+<% end %>

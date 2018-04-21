@@ -1,0 +1,6 @@
+var column = jQuery("#<%= params[:field] %>_<%= params[:id] %>");
+<% field_value = (params[:field] == 'actual_price' ? number_to_currency(@resource[params[:field].to_sym] || 0) : @resource[params[:field].to_sym]) %>
+column.html('<%= link_to field_value, controller: :language_pair_fixed_prices, action: :update_field, field: params[:field], remote: :true %>');
+<% if flash[:notice].present? %>
+  alert("<%= flash[:notice] %>")
+<% end %>

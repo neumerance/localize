@@ -1,0 +1,5 @@
+<tr>
+	<td><%= arbitration_description(arbitration) %></td>
+	<td><%= link_to('View or respond', {:controller=>'arbitrations', :action=>'show', :id=>arbitration.id}) %></td>
+	<td><%= Arbitration::STATUS[arbitration.status] %></td>
+</tr>

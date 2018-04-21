@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<xliff version="1.2">
+	<file original="8581-f737f96feb00564f6fe6562e30cc3eeb" source-language="en" target-language="ar" datatype="plaintext">      <header><reference><external-file href="https://wpml.org/translation-service/onehourtranslation/"/></reference></header>
+		<body>
+			<trans-unit resname="field-_yoast_wpseo_title-1" restype="string" datatype="html" id="field-_yoast_wpseo_title-1">
+				<source><![CDATA[Text to translate 1 something something something<div> this is my div</div>]]></source>
+				<target><![CDATA[Text to translate 1 something something something<div> this is my div</div>]]></target>
+			</trans-unit>
+			<trans-unit resname="field-_yoast_wpseo_metadesc-2" restype="string" datatype="html" id="field-_yoast_wpseo_metadesc-2">
+				<source><![CDATA[Text to translate 2  something something something]]></source>
+				<target><![CDATA[Text to translate 2  something something something]]></target>
+			</trans-unit>
+			<trans-unit resname="field-wpcf-ts-brief-description-3" restype="string" datatype="html" id="field-wpcf-ts-brief-description-3">
+				<source><![CDATA[Text to translate 3  something something something]]></source>
+				<target><![CDATA[Text to translate 3  something something something]]></target>
+			</trans-unit>
+			<trans-unit resname="field-wpcf-ts-instructions-4" restype="string" datatype="html" id="field-wpcf-ts-instructions-4">
+				<source><![CDATA[Text to translate 4  something something something]]></source>
+				<target><![CDATA[Text to translate 4  something something something]]></target>
+			</trans-unit>
+			<trans-unit resname="field-wpcf-ts-title-wpml-documentation-5" restype="string" datatype="html" id="field-wpcf-ts-title-wpml-documentation-13">
+				<source><![CDATA[Text to translate 5  something something something]]></source>
+				<target><![CDATA[]]></target>
+			</trans-unit>
+			<trans-unit resname="field-wpcf-support-instructions-6" restype="string" datatype="html" id="field-wpcf-support-instructions-6">
+				<source><![CDATA[Text to translate 6  something something something]]></source>
+				<target><![CDATA[]]></target>
+			</trans-unit>
+			<trans-unit resname="title_7" restype="string" datatype="html" id="title_7">
+				<source><![CDATA[Text to translate 7  something something something]]></source>
+				<target><![CDATA[]]></target>
+			</trans-unit>
+			<trans-unit resname="body_8" restype="string" datatype="html" id="body_8">
+				<source><![CDATA[Text to translate 8  something something something]]></source>
+				<target><![CDATA[]]></target>
+			</trans-unit>
+
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,28 @@
+<div id="message<%= message.id %>" class="messageTop">
+		<div class="nameDiv messageDivtl"><strong><%= user_link(message.user) %></strong></div>
+		<div class="txtblue dateDiv messageDivtr"><%= link_to(disp_time(message.chgtime), {:action=>:show, :id=>@support_ticket.id, :anchor=>"message#{message.id}"}) %></div>&nbsp;
+
+</div>
+<div class="messageLeft">
+		<div class="clear"></div>
+		<div class="messageDiv">
+			<%= auto_link pre_format(message.body, false)%>
+
+			<% message_urls = message.body.get_urls %>
+			<% unless message_urls.empty? %>
+				<br/>
+			<% end %>
+
+			<% if message.attachments.length > 0 %>
+				<br /><br />
+				<div class="infobox"><h4><%= _('Attachments') %></h4>
+					<%= render(:partial=>'attachment', :collection=>message.attachments) %>
+				</div>
+			<% end %>
+		</div>
+</div>
+<div class="messageBottom">
+		<div class="messageDivbl">&nbsp;</div>
+        <div class="messageDivbr">&nbsp;</div>&nbsp;
+</div>
+<div class="spacerDiv"></div>

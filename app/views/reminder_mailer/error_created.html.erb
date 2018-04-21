@@ -1,0 +1,16 @@
+Submitted by: <%= h(@error_report.email) %>
+Date: <%= disp_time(@error_report.submit_time) %>
+
+= Python report =
+<%= @error_report.body.gsub('____',"\n") %>
+
+<% if !@error_report.description.blank? %>= User description =
+<%= @error_report.description %>
+<% end %>
+= Program details =
+Program: <%= @error_report.prog %>
+Version: <%= @error_report.version %>
+OS: <%= @error_report.os %>
+
+To access this report and add a resolution, go to:
+<%= url_for({:escape => false, :only_path => false, :controller=>:error_reports, :action=>:show, :id=>@error_report.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>

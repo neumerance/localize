@@ -1,0 +1,63 @@
+<p>
+<b><%= _("Name:") %></b>
+  <%=h @resource_format.name %>
+</p>
+
+<p>
+<b><%= _("Kind:") %></b>
+  <%=ResourceFormat::KIND_NAMES[@resource_format.kind] %>
+</p>
+
+<p>
+<b><%= _("Description:") %></b>
+  <%=h @resource_format.description %>
+</p>
+
+<p>
+<b><%= _("Label delimiter:") %></b>
+  <%=h @resource_format.label_delimiter %>
+</p>
+
+<p>
+<b><%= _("Text delimiter:") %></b>
+  <%=h @resource_format.text_delimiter %>
+</p>
+
+<p>
+<b><%= _("Separator char:") %></b>
+  <%=h @resource_format.separator_char %>
+</p>
+
+<p>
+<b><%= _("Multiline char:") %></b>
+  <%=h @resource_format.multiline_char %>
+</p>
+
+<p>
+<b><%= _("End of line:") %></b>
+  <%=h @resource_format.end_of_line %>
+</p>
+
+<p>
+<b><%= _("Comment char:") %></b>
+  <%=h @resource_format.comment_char %>
+</p>
+
+<p>
+<b><%= _("Encoding:") %></b>
+  <%=ResourceFormat::ENCODING_NAMES[@resource_format.encoding] %>
+</p>
+
+<p>
+<b><%= _("Line break:") %></b>
+  <%=ResourceFormat::LINE_BREAK_NAMES[@resource_format.line_break] %>
+</p>
+
+
+<p>
+<b><%= _("User comments:") %></b>
+  <%=ResourceFormat::COMMENT_KIND_NAME[@resource_format.comment_kind] %>
+</p>
+
+<%= link_to _('Edit'), edit_resource_format_path(@resource_format) %> |
+<%= link_to _('Back'), resource_formats_path %>

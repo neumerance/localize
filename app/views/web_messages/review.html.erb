@@ -1,0 +1,33 @@
+<%= infotab_header(['Original (%s)'%@web_message.original_language.name,'Translation (%s)'%@web_message.destination_language.name]) %>
+<tr><td style="<%= language_dir_css_attribute(@web_message.original_language) + text_flow_css_attribute(@web_message.original_language) %>">
+<%= highlight_glossary_terms(untokanize(@web_message.original_text), @glossary, @glossary_client).html_safe %>
+</td><td style="<%= language_dir_css_attribute(@web_message.destination_language) + text_flow_css_attribute(@web_message.destination_language) %>">
+<%= pre_format(@web_message.decoded_translation(@user)) %>
+</td></tr></table>
+
+<% if !@web_message.comment.blank? %>
+	<br /><h3>Comment to translator</h3>
+	<p>The client left this comment for the translator:</p>
+	<div class="code_snip"><%= pre_format(@web_message.comment) %></div>
+<% end %>
+
+<h2>Review the translation</h2>
+<p>If the translation is 100% accurate, click on the 'Review complete' button below. If you are not sure, you can open a new issue.</p>
+<ul>
+<li>In case the original text is not clear, you can open an issue for the client.</li>
+<li>If the translation needs work, open an issue for the translator.</li>
+</ul>
+
+<br />
+
+<% if @web_message.managed_work.translation_status == MANAGED_WORK_REVIEWING %>
+	<%= button_to('Review complete', {:action=>:review_complete}, :style=>'padding: 0.5em 1em;', 'data-confirm'=>'Are you sure you want to complete this review?') %>
+<% elsif @web_message.managed_work.translation_status == MANAGED_WORK_COMPLETE %>
+	<p>Review is complete</p>
+<% else %>
+	<p>Review not started yet</p>
+<% end %>
+
+<br /><br />
+
+<%= issues_for_object(@web_message, {@web_message.owner=>'Client', @web_message.translator=>'Translator'}) %>

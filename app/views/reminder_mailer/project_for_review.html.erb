@@ -1,0 +1,29 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>Project <%= @project.name %> completed translation to <%= @revision_language.language.name %> and is waiting for your review.</p>
+
+<p>
+  <% if @project.kind == TA_PROJECT %>
+      This project is done using Translation Assistant and is already waiting for you there. <br />
+      <% link = 'http://docs.icanlocalize.com/translation-review/cms-review-and-issues/' %>
+      Here is a full explanation of the review process using Translation Assistant: <%= link_to link, link %>
+  <% else %>
+      This project is done without Translation Assistant. You can download the original from the project page. Then, go to the chat with the translator to get the translation for review.
+  <% end %>
+</p>
+
+<p>
+  <% link = url_for({:escape=>false, :only_path=>false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:revisions, :action=>:show, :id=>@revision.id, :project_id=>@project.id } ) %>
+  Project information page: <%= link_to link, link %>
+</p>
+
+<p>
+  <% link = url_for({:escape=>false, :only_path=>false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:chats, :action=>:show, :id=>@chat.id, :revision_id=>@revision.id, :project_id=>@project.id } ) %>
+  Project chat: <%= link_to link, link %>
+</p>
+
+<p>
+  When reviewing, please open issues for anything that needs to be corrected.
+</p>
+
+<%= EMAIL_SIGNATURE %>

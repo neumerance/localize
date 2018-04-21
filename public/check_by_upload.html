@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <title>Instant Quote for Website Translation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Style-Type" content="text/css"/>
+    <meta http-equiv="Content-Script-Type" content="text/javascript"/>
+    <script type="text/javascript" src="/assets/scripts/index.js"></script>
+    <link rel="STYLESHEET" type="text/css" href="/assets/custom/home.css"/>
+
+    <script type="text/javascript" src="/assets/plugins/popup.js"></script>
+    <link rel="stylesheet" type="text/css" href="/assets/plugins/popup.css"/>
+
+    <link rel="shortcut icon" href="/assets/favicon.png" type="image/png"/>
+    <link rel="icon" href="/assets/favicon.png" type="image/png"/>
+</head>
+<body onload="{ getElementsWithTitles(); }">
+    <!-- top bar -->
+    <div id="topbar"><a href="login/">Login</a> &nbsp;-&nbsp; <a href="about.html">About us</a> &nbsp;-&nbsp; <a
+            href="http://www.icanlocalize.com/web_dialogs/new?language_id=1&amp;store=4">Contact</a> &nbsp;-&nbsp; <a
+            href="/newsletters"><img border="0" align="top" src="/assets/book.png" width="16" height="16" alt="Newsletter"/></a>
+        <a href="/newsletters">Newsletter</a> &nbsp;-&nbsp; <a href="/tools"><img border="0" align="top"
+                                                                                  src="/assets/tools.png" width="16"
+                                                                                  height="16" alt="Tools"/></a> <a
+                href="/tools">Free Tools</a> &nbsp;-&nbsp; <a href="http://blog-en.icanlocalize.com/?feed=rss2"><img
+                border="0" align="top" src="/assets/rss.png" width="16" height="16" alt="RSS feed"/></a> <a
+                href="http://blog-en.icanlocalize.com">Blog</a></div>
+    <img src="/assets/web_logo_large.png" width="317" height="91" alt="ICanLocalize" class="imageBorder"/><!-- /top bar -->
+    <!-- top navigation -->
+    <ul id="topnavigation">
+        <li class="nonselectedtab"><a href="index.html">Home</a></li>
+        <li class="selectedtab_active"><a href="website-translation.html">Website Translation</a></li>
+        <li class="nonselectedtab"><a href="general-translation.html">General Translation</a></li>
+        <li class="nonselectedtab"><a href="instant-text-translation.html">Text Translation</a></li>
+        <li class="nonselectedtab lasttab"><a href="customer-support-interpretation.html">Online Interpretation</a></li>
+    </ul><!-- /top navigation -->
+    <div id="maincontents">
+        <!-- trail_navigation -->
+        <div id="trail_nav"><a href="index.html">Home</a>&nbsp;&gt;&nbsp;<a href="website-translation.html">Website
+            Translation</a>&nbsp;&gt;&nbsp;Quote for Website Translation
+        </div><!-- /trail_navigation -->
+        <h1>Instant Quote for Website Translation</h1>
+        <form action="/cgi-bin/check_by_upload.py" enctype="multipart/form-data" method="post">
+            <h2>Languages</h2>
+            <p><b>Select source language:</b><br/> <select id="source_lang_id" name="source_lang_id">
+                <option value="0">Select language</option>
+                <option value="0">----</option>
+                <option value="1">English</option>
+                <option value="2">Spanish</option>
+                <option value="3">German</option>
+                <option value="4">French</option>
+                <option value="12">Danish</option>
+                <option value="27">Italian</option>
+                <option value="28">Japanese</option>
+                <option value="39">Dutch</option>
+                <option value="43">Portuguese</option>
+                <option value="46">Russian</option>
+                <option value="60">Chinese</option>
+                <option value="0">----</option>
+                <option value="5">Arabic</option>
+                <option value="6">Bosnian</option>
+                <option value="7">Bulgarian</option>
+                <option value="8">Catalan</option>
+                <option value="9">Czech</option>
+                <option value="10">Slavic</option>
+                <option value="11">Welsh</option>
+                <option value="13">Greek</option>
+                <option value="14">Esperanto</option>
+                <option value="15">Estonian</option>
+                <option value="16">Basque</option>
+                <option value="17">Persian</option>
+                <option value="18">Finnish</option>
+                <option value="19">Irish</option>
+                <option value="20">Hebrew</option>
+                <option value="21">Hindi</option>
+                <option value="22">Croatian</option>
+                <option value="23">Hungarian</option>
+                <option value="24">Armenian</option>
+                <option value="25">Indonesian</option>
+                <option value="26">Icelandic</option>
+                <option value="29">Korean</option>
+                <option value="30">Kurdish</option>
+                <option value="31">Latin</option>
+                <option value="32">Latvian</option>
+                <option value="33">Lithuanian</option>
+                <option value="34">Macedonian</option>
+                <option value="35">Maltese</option>
+                <option value="36">Moldavian</option>
+                <option value="37">Mongolian</option>
+                <option value="38">Nepali</option>
+                <option value="40">Norwegian</option>
+                <option value="41">Panjabi</option>
+                <option value="42">Polish</option>
+                <option value="44">Quechua</option>
+                <option value="45">Romanian</option>
+                <option value="47">Slovenian</option>
+                <option value="48">Somali</option>
+                <option value="49">Albanian</option>
+                <option value="50">Serbian</option>
+                <option value="51">Swedish</option>
+                <option value="52">Tamil</option>
+                <option value="53">Thai</option>
+                <option value="54">Turkish</option>
+                <option value="55">Ukrainian</option>
+                <option value="56">Urdu</option>
+                <option value="57">Uzbek</option>
+                <option value="58">Vietnamese</option>
+                <option value="59">Yiddish</option>
+                <option value="61">Zulu</option>
+            </select></p>
+
+            <p><b>Select destination languages:</b><br/> <select id="dest_lang_id" name="dest_lang_id" size="10"
+                                                                 multiple="multiple">
+                <option value="0">Select language</option>
+                <option value="0">----</option>
+                <option value="1">English</option>
+                <option value="2">Spanish</option>
+                <option value="3">German</option>
+                <option value="4">French</option>
+                <option value="12">Danish</option>
+                <option value="27">Italian</option>
+                <option value="28">Japanese</option>
+                <option value="39">Dutch</option>
+                <option value="43">Portuguese</option>
+                <option value="46">Russian</option>
+                <option value="60">Chinese</option>
+                <option value="0">----</option>
+                <option value="5">Arabic</option>
+                <option value="6">Bosnian</option>
+                <option value="7">Bulgarian</option>
+                <option value="8">Catalan</option>
+                <option value="9">Czech</option>
+                <option value="10">Slavic</option>
+                <option value="11">Welsh</option>
+                <option value="13">Greek</option>
+                <option value="14">Esperanto</option>
+                <option value="15">Estonian</option>
+                <option value="16">Basque</option>
+                <option value="17">Persian</option>
+                <option value="18">Finnish</option>
+                <option value="19">Irish</option>
+                <option value="20">Hebrew</option>
+                <option value="21">Hindi</option>
+                <option value="22">Croatian</option>
+                <option value="23">Hungarian</option>
+                <option value="24">Armenian</option>
+                <option value="25">Indonesian</option>
+                <option value="26">Icelandic</option>
+                <option value="29">Korean</option>
+                <option value="30">Kurdish</option>
+                <option value="31">Latin</option>
+                <option value="32">Latvian</option>
+                <option value="33">Lithuanian</option>
+                <option value="34">Macedonian</option>
+                <option value="35">Maltese</option>
+                <option value="36">Moldavian</option>
+                <option value="37">Mongolian</option>
+                <option value="38">Nepali</option>
+                <option value="40">Norwegian</option>
+                <option value="41">Panjabi</option>
+                <option value="42">Polish</option>
+                <option value="44">Quechua</option>
+                <option value="45">Romanian</option>
+                <option value="47">Slovenian</option>
+                <option value="48">Somali</option>
+                <option value="49">Albanian</option>
+                <option value="50">Serbian</option>
+                <option value="51">Swedish</option>
+                <option value="52">Tamil</option>
+                <option value="53">Thai</option>
+                <option value="54">Turkish</option>
+                <option value="55">Ukrainian</option>
+                <option value="56">Urdu</option>
+                <option value="57">Uzbek</option>
+                <option value="58">Vietnamese</option>
+                <option value="59">Yiddish</option>
+                <option value="61">Zulu</option>
+            </select></p>
+
+            <h2>Website to check</h2>
+            <p><b>Select the location of the website:</b></p>
+            <p>
+                <label><input id="action_type_remote" type="radio" name="inptype" value="remote" checked="checked"
+                              onclick="select_remote();"/>Scan a website from the web</label><br/>
+                <label><input id="action_type_local" type="radio" name="inptype" value="local" onclick="select_local();"/>Upload
+                    HTML or ZIP file from my PC</label><br/>
+            </p>
+            <div id="source_entry">
+                <p><b>Enter address of website to check (URL)</b></p>
+                <p>Website address:<input id="url" name="url" type="text" size="60"/><br/>
+                    <label><input id="recursive" type="checkbox" name="recursive" value="1"/>Scan pages in other folders in
+                        this website</label></p>
+                <p>* Note: To scan inside a directory, make sure to include a trailing slash - <b>http://www.example.com/dirname/</b>
+                </p>
+            </div>
+            <p><input id="commit" name="commit" type="submit" value="Submit"/></p>
+            <div id="workingmsg" style="visibility:hidden;"><b>Please wait, scanning...</b></div>
+        </form>
+    </div>
+    <!-- footer -->
+    <div id="bottom">
+        <center><br/>&copy; 2009. OnTheGoSystems Inc. | All Rights Reserved</center>
+    </div><!-- /footer -->
+    <script type="text/javascript" language="JavaScript">
+        document.getElementById("commit").disabled = false;
+    </script>
+    <!-- TA language selector begin -->
+    <div id="ta_language_selector" align="center">
+        English&nbsp;&nbsp;-&nbsp;&nbsp;<a href="check_by_upload_pt.html">Portuguese</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a
+            href="check_by_upload_de.html">German</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="check_by_upload_fr.html">French</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a
+            href="check_by_upload_es.html">Spanish</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="check_by_upload_zu.html">Chinese
+        (Simplified)</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="check_by_upload_it.html">Italian</a></div>
+    <!-- TA language selector end -->
+    <!-- analytics -->
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(decodeURIComponent("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        var pageTracker = _gat._getTracker("UA-564905-4");
+        pageTracker._initData();
+        pageTracker._trackPageview();
+    </script>
+</body>
+
+
+</html>

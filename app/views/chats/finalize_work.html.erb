@@ -1,0 +1,10 @@
+<%= two_column_header("Language", "Cost") %>
+
+<%- for bid_detail in @bid_details %>
+	<%= two_column_row("<strong>#{bid_detail[0]}</strong>", "#{bid_detail[1]} #{bid_detail[2].disp_name}") %>
+<%- end %>
+
+<%= one_column_header("Confirm work completion") %>
+<div class="content">
+	<%= button_to "Approve completion of this work and transfer funds to translator", :action => :finalize_bids  %>
+</div>

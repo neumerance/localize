@@ -1,0 +1,9 @@
+Tried. It didn't work. I got the following message: "Could not delete
+project on the server. Revision cannot be deleted now."
+
+Also, how do I delete projects from the server web site that don't
+appear in TA Project Manager?
+
+Thanks!
+
+Leonard

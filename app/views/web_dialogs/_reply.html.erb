@@ -1,0 +1,32 @@
+<div class="messageTop">
+		<div class="nameDiv messageDivtl">&nbsp;</div>
+		<div class="txtblue dateDiv messageDivtr"><%= disp_time(Time.now()) %></div>&nbsp;
+</div>
+<div class="messageLeft">
+		<div class="clear"></div>	
+		<div class="messageDiv">
+		<div style="margin: 1em;">
+			<%= form_tag( {:action=>:create_message, :id=>@web_dialog.id, :accesskey=>@web_dialog.optional_accesskey(@user)}, {:multipart=>true, :remote=>true}) do %>
+				<p><%= text_area_tag(:body, nil, {:rows => 10, :cols=>100, :style=>("width: 100%;"+language_dir_css_attribute(@display_language))}) %></p>
+
+				<h4><%= _('Attachments') %>:</h4>
+				<div id="documents_to_upload"><p><%= file_field_tag 'file1[uploaded_data]', :size=>70, :id=>'file1_uploaded_data', onchange: "validate_file_size('file1[uploaded_data]', '#{ATTACHMENT_MAX_SIZE}')" %></p></div>
+				<p><a href="#form_top" onclick="add_another_file(<%= ATTACHMENT_MAX_SIZE %>);"><%= _('Add another attachment') %></a></p>
+				<hr /><br />
+				
+				<%= message_translation_status(@web_dialog, @is_client) %>
+
+				<% if @web_dialog.user_can_close?(@user) %>
+					<p><label><%= check_box_tag(:leave_open) %> Leave this ticket open</label></p>
+				<% end %>
+				
+				<%= submit_tag( _('Send message'), :style=>'padding: 0.5em 1em; font-size: 115%;', data: { disable_with: _('Send message') }) %>
+			<% end %>
+		</div>
+		</div>
+</div>
+<div class="messageBottom">
+		<div class="messageDivbl">&nbsp;</div>
+        <div class="messageDivbr">&nbsp;</div>&nbsp;
+</div>
+<div class="spacerDiv"></div>

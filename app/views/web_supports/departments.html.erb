@@ -1,0 +1,18 @@
+<% if @web_support.client_departments.length > 0 %>
+	<%= infotab_header(['Department', 'Language', 'Actions', 'Information'] + (@web_support.text_resource ? ['Translations'] : [])) %>
+	<%= render(:partial=>'client_department', :collection=>@web_support.client_departments) %>
+	</table>
+	<div class="inter_tab_spacer"></div>
+	<%= link_to('Create a new department', {:action=>'new_department'}) %>
+
+	<br /><br />
+	<h2>Support department names translation</h2>
+	<% if @web_support.text_resource %>
+		<p>This support center already has translation set up for department names. <%= link_to('manage translations &raquo;'.html_safe,{:controller=>:text_resources, :action=>:show, :id=>@web_support.text_resource.id}) %>.</p>
+	<% else %>
+		<p>To translate the names of the support departments, you need to <%= link_to('setup translation &raquo;'.html_safe,{:controller=>:text_resources, :action=>:new, :owner_type=>@web_support.class.to_s, :owner_id=>@web_support.id})%>.</p>
+	<% end %>
+
+<% else %>
+	<p>You have to create at least one department for each support center. <%= link_to('Create a new department', {:action=>'new_department'}) %></p>
+<% end %>

@@ -1,0 +1,64 @@
+<%= infotab_top('Tools', infobar_contents_user('This table shows the tools you have and can work with.', 'This table shows translators tools that they own and can use.', true, @auser.categories.length > 0,'question.png')) %>
+<table class="stats" width="100%" cellspacing="0" cellpadding="3" >
+	<tr><td>
+	<table>
+		<tr style="border: 0px;">
+			<th>Smartphone</th>
+			<th>Computer-Assisted Translation</th>
+		</tr>
+		<tr>
+			<td style="border: 0px; vertical-align:top;">
+				<% #collection_select(:Phone, :phone, Phone.all, :id, :name,{}, {:size => Phone.count, :multiple=>true}) %>
+				<% user_phones = @auser.phones %>
+				<% Rails.logger.debug user_phones.inspect %>
+				<% Phone.all.each do |phone| %>
+					<% if phone.name != "Others" %>
+						<div><label><%= check_box_tag "smartphone#{phone.id}", "smartphone", user_phones.include?(phone), {:disabled => !@canedit, :onclick => "update_tool(#{@auser.id},'smartphone', #{phone.id})"} %><%= phone.name %> </label></div>
+					<% end %>
+				<% end %>
+			</td>
+
+			<td style="border: 0px; vertical-align:top;">
+				<% user_cats = @auser.cats %>
+				<% Cat.all.each do |cat| %>
+					<% if cat.name != "Others" %>
+						<%= "<div>".html_safe if (cat.id % 2 == 1) %>
+							<div style="display: inline-block; width:180px;">
+								<label><%= check_box_tag "cat#{cat.id}", "cat", user_cats.include?(cat), {:disabled => !@canedit, :onclick => "update_tool(#{@auser.id},'cat', #{cat.id})"} %><%= cat.name %> </label>
+							</div>
+						<%= "</div>".html_safe if (cat.id % 2 == 0) %>
+					<% end %>
+				<% end %>
+			</td>
+
+		</tr>
+		<tr>
+			<td>
+				<%= form_tag("/users/#{@auser.id}/update_tool_others", :method => :post, :remote => true) %>
+					<% phone = Phone.find_by_name("Others") %>
+					<% user_phone = PhonesUser.where(user_id: @auser.id, phone_id: phone.id).first || PhonesUser.new(:user_id => @auser.id, :phone_id => phone.id) %>
+
+					<input type="hidden" name="tool" value="phone"/>
+					<label><%= check_box_tag "other", 1, user_phones.include?(phone), {:disabled => !@canedit} %><%= phone.name %> </label>
+					<textarea rows="4" name="extra" style="width:100%;" <%= !@canedit ? "disabled='true'" : "" %>><%=user_phone.extra%></textarea>
+					<% if @canedit %>
+						<%= submit_tag 'Save', data: { disable_with: 'Save' } %>
+					<% end %>
+				</form>
+			</td>
+			<td>
+				<%= form_tag("/users/#{@auser.id}/update_tool_others", :method => :post, :remote => true) %>
+					<% cat = Cat.find_by_name("Others") %>
+					<% user_cat = CatsUser.find_by_user_id_and_cat_id(@auser.id, cat.id) || CatsUser.new(:user_id => @user.id, :cat_id => cat.id) %>
+
+					<input type="hidden" name="tool" value="cat"/>
+					<label><%= check_box_tag "other", 1, user_cats.include?(cat), {:disabled => !@canedit} %><%= cat.name %> </label>
+					<textarea rows="4" name="extra" style="width:100%;" <%= !@canedit ? "disabled='true'" : "" %>><%= user_cat.extra%></textarea>
+					<% if @canedit %>
+						<%= submit_tag 'Save', data: { disable_with: 'Save' } %>
+					<% end %>
+				</form>
+			</td>
+		</tr>
+	</table>
+</td></tr></table>

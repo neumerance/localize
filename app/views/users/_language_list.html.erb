@@ -1,0 +1,5 @@
+<p>
+	<% language_list.each do |id,lang| %>
+		<label><%= check_box_tag("language[#{id}]", "1", lang[1] ) %>&nbsp; <strong><%= lang[0] %></strong></label><br />
+	<% end %>
+</p>

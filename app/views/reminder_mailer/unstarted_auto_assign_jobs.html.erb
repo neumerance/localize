@@ -1,0 +1,38 @@
+<%= HTML_EMAIL_HEADER.html_safe %>
+
+<p>Dear Supporters,</p>
+<BR>
+<p>The following are auto-assigned translation jobs which have not been started after 24 hours it was accepted:</p>
+<BR>
+
+<%= infotab_header(['Job ID','Translator', 'Hours since assignment']) %>
+<% @grouped_cms_requests.each do |id, items| %>
+  <% cms_request  = items.first %>
+  <% contracts = cms_request.website_translation_offer.accepted_website_translation_contracts.includes(:translator) %>
+  <tr>
+    <td rowspan="<%= items.size %>">
+      <%= link_to(cms_request.id, url_for(only_path: false, host: EMAIL_LINK_HOST, protocol: EMAIL_LINK_PROTOCOL, controller: 'cms_requests', action: 'show', website_id: cms_request.website_id, id: cms_request.id), target: '_blank') %>
+    </td>
+    <% items.each do |item| %>
+      <% wtc = contracts.where(id: item.wtc_id).first %>
+      <% translator = wtc.translator %>
+      <td>
+        <% if translator %>
+          <%= link_to(translator.nickname, url_for(only_path: false, host: EMAIL_LINK_HOST, protocol: EMAIL_LINK_PROTOCOL, controller: 'users', action: 'show', id: translator.id), target: '_blank') %>
+        <% end %>
+      </td>
+      <td>
+        <%= auto_assignment_time_elapsed(item.assigned_at) rescue nil %>
+      </td>
+      <% if items.size > 1 %>
+        </tr>
+        <tr>
+      <% end %>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+<BR>
+
+<% link = url_for(only_path: false, host: EMAIL_LINK_HOST, protocol: EMAIL_LINK_PROTOCOL, controller: :supporter, action: :unstarted_auto_assignment_jobs) %>
+<p>Please go to <%= link_to('Unstarted Auto Assignment Jobs', link) %> for more info.</p>

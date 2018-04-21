@@ -1,0 +1,46 @@
+<br />
+<div class="infobox"><h4>Search filter</h4>
+<%= form_tag(	{ :action => :supporter_browse },
+						{:method => :get}) do %>
+	<p>
+		<label><%= radio_button_tag :my, 1, !@ticket_conditions['supporter_id'].blank? %>Only my tickets</label>&nbsp;&nbsp;&nbsp;
+		<label><%= radio_button_tag :my, 0, @ticket_conditions['supporter_id'].blank? %>All tickets</label>
+		<label><%= check_box_tag :open_only, SUPPORT_TICKET_SOLVED, @open_only %>Still open tickets</label>
+	</p>
+	<p><%= all_support_departments('support_department_id', '&nbsp;&nbsp;&nbsp;', @ticket_conditions['support_department_id']) %></p>
+	<table cellspacing="5">
+		<tr>
+			<td>First name</td><td><%= text_field_tag :fname, @user_conditions['fname'], {:size=>40, maxlength: COMMON_FIELD} %></td>
+			<td>Last name</td><td><%= text_field_tag :lname, @user_conditions['lname'], {:size=>40, maxlength: COMMON_FIELD} %></td>
+		</tr><tr>
+			<td>E-Mail</td><td><%= text_field_tag :email, @user_conditions['email'], {:size=>40, maxlength: COMMON_FIELD} %></td>
+			<td>Nickname</td><td><%= text_field_tag :nickname, @user_conditions['nickname'], {:size=>40, maxlength: COMMON_FIELD} %></td>
+		</tr><tr>
+			<td>Subject</td><td colspan="3"><%= text_field_tag :subject, @ticket_conditions['subject'], {:size=>80, maxlength: COMMON_FIELD} %></td>
+		</tr>
+	</table>
+	<br />
+	<%= hidden_field_tag :set_args, 1 %>
+	<%= submit_tag 'Apply filter', data: { disable_with: 'Apply filter' } %>
+	&nbsp;&nbsp;&nbsp;<%= link_to('Start over', {:action=>:supporter_browse, :set_args=>1}) %>
+<% end %>
+</div>
+
+<h2>Results</h2>
+<% if @support_tickets_page.count > 0 %>
+
+	<% if @show_number_of_pages %>
+		Page <%= form_tag({:action=>:supporter_browse}.merge(request.query_parameters), {:method=>'GET'}) %>
+			<% request.query_parameters.each do |k,v|%>
+				<%= hidden_field_tag(k, v) unless k == "page" %>
+			<%end%>
+			<%= select_tag( :page, options_for_select(@list_of_pages,@support_tickets_page.number), {:onchange=>"submit()"}) %>
+		</form>
+		<%= link_to("Prev", url_for({:action=>:supporter_browse}.merge(request.query_parameters).merge({"page" => @support_tickets_page.prev.number}))) if @support_tickets_page.prev? %>
+		<%= link_to("Next", url_for({:action=>:supporter_browse}.merge(request.query_parameters).merge({"page" => @support_tickets_page.next.number}))) if @support_tickets_page.next? %>	
+	<% end %>
+
+	<%= render(:partial=>'support_tickets', :object=>@support_tickets_page) %>
+<% else %>
+	<p class="warning">No tickets matching your filter.</p>
+<% end %>

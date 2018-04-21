@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TA_project created="1189239841.64" name="Sentence count" revision_name="Initial" source_type="local">
+  <project_setup scan_for_directories="True" scan_for_files="False">
+    <common_root>G:\RentACoder\Translation Assistant SVN\sample_website</common_root>
+    <root_file>index.htm</root_file>
+  </project_setup><ta_source_files>
+    <included_files>
+      <file md5="6226c05ccae24c3fa4cb4c270e95d59b" sentences="39" title="Passport Photo and Photo Backup software by OnTheGoSoft" words="259">index.htm</file>
+    </included_files><excluded_files />
+    <support_files>
+      <file id="355" type="archive">
+        <name>images\bluebottom.gif.gz</name>
+        <size>118</size>
+        <zipped_size>281</zipped_size>
+        <date>1186107875</date>
+        <included_file md5="23cd9e6ab6c1251a860ebc53bcd007f7">images\bluebottom.gif</included_file>
+      </file><file id="356" type="archive">
+        <name>images\bluetop.gif.gz</name>
+        <size>118</size>
+        <zipped_size>281</zipped_size>
+        <date>1186107875</date>
+        <included_file md5="f73283052fcf83beed3e6485bf7a5ad9">images\bluetop.gif</included_file>
+      </file><file id="357" type="archive">
+        <name>images\bottomwhite.gif.gz</name>
+        <size>462</size>
+        <zipped_size>603</zipped_size>
+        <date>1186107875</date>
+        <included_file md5="6bd47f34a2433cda0ca8c04112aa43f0">images\bottomwhite.gif</included_file>
+      </file><file id="358" type="archive">
+        <name>images\bottomwhite2.gif.gz</name>
+        <size>522</size>
+        <zipped_size>666</zipped_size>
+        <date>1186107875</date>
+        <included_file md5="a298875d8f54ddb08e3187382889d62d">images\bottomwhite2.gif</included_file>
+      </file><file id="359" type="archive">
+        <name>images\buy.gif.gz</name>
+        <size>1034</size>
+        <zipped_size>1201</zipped_size>
+        <date>1186107877</date>
+        <included_file md5="32d5a2ca0c613b14d5867dd44b25c5ae">images\buy.gif</included_file>
+      </file><file id="360" type="archive">
+        <name>images\download.gif.gz</name>
+        <size>1586</size>
+        <zipped_size>1753</zipped_size>
+        <date>1186107876</date>
+        <included_file md5="e4602a6fd6beef57cf144d4508a4e29d">images\download.gif</included_file>
+      </file><file id="361" type="archive">
+        <name>images\logo1.gif.gz</name>
+        <size>4512</size>
+        <zipped_size>4679</zipped_size>
+        <date>1188009234</date>
+        <included_file md5="3bdacea95c3bda7995c1973e920cb93a">images\logo1.gif</included_file>
+      </file><file id="362" type="archive">
+        <name>images\menutabA1.gif.gz</name>
+        <size>431</size>
+        <zipped_size>595</zipped_size>
+        <date>1186107876</date>
+        <included_file md5="cd0b9e4be04820e29e6f10edecc40d0a">images\menutabA1.gif</included_file>
+      </file><file id="363" type="archive">
+        <name>images\menutabB1.gif.gz</name>
+        <size>435</size>
+        <zipped_size>600</zipped_size>
+        <date>1186107873</date>
+        <included_file md5="40802326b6b279c58011e82f289550ea">images\menutabB1.gif</included_file>
+      </file><file id="364" type="archive">
+        <name>images\next.gif.gz</name>
+        <size>269</size>
+        <zipped_size>437</zipped_size>
+        <date>1186107875</date>
+        <included_file md5="95ae9c6608feb0239c621044c35ffe16">images\next.gif</included_file>
+      </file><file id="365" type="archive">
+        <name>images\photobackup\1bckgrnd.gif.gz</name>
+        <size>124</size>
+        <zipped_size>292</zipped_size>
+        <date>1186107866</date>
+        <included_file md5="50b2dda05fc14c4788a9cfc27d103fcf">images\photobackup\1bckgrnd.gif</included_file>
+      </file><file id="366" type="archive">
+        <name>images\photobackup\2bckgrnd.gif.gz</name>
+        <size>150</size>
+        <zipped_size>318</zipped_size>
+        <date>1186107865</date>
+        <included_file md5="370a9d9d0da35060a175d78d3780c901">images\photobackup\2bckgrnd.gif</included_file>
+      </file><file id="367" type="archive">
+        <name>images\photobackup\3bckgrnd.gif.gz</name>
+        <size>159</size>
+        <zipped_size>327</zipped_size>
+        <date>1186107866</date>
+        <included_file md5="48b8157f4c6065a84238f484fb8f9cad">images\photobackup\3bckgrnd.gif</included_file>
+      </file><file id="368" type="archive">
+        <name>images\photobackup\photo_backup_small.png.gz</name>
+        <size>9070</size>
+        <zipped_size>9238</zipped_size>
+        <date>1186107866</date>
+        <included_file md5="a9344c093f5a335afb96e07c8f26aeee">images\photobackup\photo_backup_small.png</included_file>
+      </file><file id="369" type="archive">
+        <name>images\printer\passport_photo_small.png.gz</name>
+        <size>9877</size>
+        <zipped_size>10045</zipped_size>
+        <date>1186107868</date>
+        <included_file md5="97808ece8d92a78f9d5b844e714455f1">images\printer\passport_photo_small.png</included_file>
+      </file><file id="370" type="archive">
+        <name>images\shrink_pic\sp_icon.png.gz</name>
+        <size>7249</size>
+        <zipped_size>7320</zipped_size>
+        <date>1186107847</date>
+        <included_file md5="faa2ec7197f92dfb7b71de5f37967882">images\shrink_pic\sp_icon.png</included_file>
+      </file><file id="371" type="archive">
+        <name>images\topline1.gif.gz</name>
+        <size>79</size>
+        <zipped_size>240</zipped_size>
+        <date>1186107877</date>
+        <included_file md5="6279366c67684beaf5656bd1bfc99422">images\topline1.gif</included_file>
+      </file><file id="372" type="archive">
+        <name>images\topline2.gif.gz</name>
+        <size>70</size>
+        <zipped_size>231</zipped_size>
+        <date>1186107877</date>
+        <included_file md5="16fa18c653b25c7c716bca6c86fd646a">images\topline2.gif</included_file>
+      </file><file id="373" type="archive">
+        <name>images\topline2WB.gif.gz</name>
+        <size>96</size>
+        <zipped_size>262</zipped_size>
+        <date>1186107874</date>
+        <included_file md5="a1d464af9a9e6f760a77fd4b84c0b6c9">images\topline2WB.gif</included_file>
+      </file><file id="374" type="archive">
+        <name>images\toplineL.gif.gz</name>
+        <size>226</size>
+        <zipped_size>383</zipped_size>
+        <date>1186107873</date>
+        <included_file md5="a286f368d8b8ac9697163a74553e6120">images\toplineL.gif</included_file>
+      </file><file id="375" type="archive">
+        <name>images\toplineLW.gif.gz</name>
+        <size>229</size>
+        <zipped_size>382</zipped_size>
+        <date>1186107875</date>
+        <included_file md5="636424371630dbc1da3ddd5044ae5edd">images\toplineLW.gif</included_file>
+      </file><file id="376" type="archive">
+        <name>images\toplineR.gif.gz</name>
+        <size>226</size>
+        <zipped_size>383</zipped_size>
+        <date>1186107874</date>
+        <included_file md5="64d6bc6d552a01b31db7812733b76335">images\toplineR.gif</included_file>
+      </file><file id="377" type="archive">
+        <name>images\topwhite2.gif.gz</name>
+        <size>522</size>
+        <zipped_size>668</zipped_size>
+        <date>1186107875</date>
+        <included_file md5="056547f992927d85802e31e289fcff9b">images\topwhite2.gif</included_file>
+      </file><file id="378" type="archive">
+        <name>styles.css.gz</name>
+        <size>7625</size>
+        <zipped_size>1482</zipped_size>
+        <date>1186107881</date>
+        <included_file md5="9785c995d4fc96b2b4027daacc3ad486">styles.css</included_file>
+      </file>
+    </support_files>
+  </ta_source_files><ta_buffer encoding="utf-8" format="1" original_language="English" source_file="index.htm" type="html">
+    <extractor>
+      <marked_file MD5="23b3bacd49c0e7107453c3b27e4fbae8">789ce55a5b73db36167e8e7f05cc6cb3bb134bb4e45bbc969871aca69b9926f5ac95edf449039210899a24580094a23ef4b7f7e0c2ab24db72ec76679b078730818373fdbe03c2a3fdc90f57d39faebf45ff9e7efc1e5d7f7ef7fd872be4f45cf7c7a32bd79d4c27e6c571ff104d39ce049594653871dd6f3f39dede289669e2ed21348a090ed5033c4a2a13e2fdf612fe5d632172c625ba8e99640867a17d7a8783db224782cde5127382fc15fa219bc6e43b7603bf524b7f1bb94690119a1289512c65de23bf14743176ae582649267bd3554e1c1498d1d891e48b7495561728883117448e5f4e2f67ea790683598af92de12f1d2b36a1d92d8a39998f1d21570911fd400807719294bf8809910e92b08b15ae263457ebb9389184675892722acef384065879cbe542bcfe9226f04a1934761a96a277098b1cab8132ef5faebb5c2efb604e4c22a6fcd30f58eafa304dc9e9e771fe7641f878a87518b9a5dfd5c067e1ca6ab6dfeb21c972e4e32c23fc08f924a219eaf5bc3d1b23ec27042d6928e3b173767ae8209ff110e43af088131a6563270087120ebe254992e330a459a45fabb1c87160c7dede8b91e41eda7ba1e4862826348a2112272a2a6a22883a02f9118c186cf07238383bb99c38264346348d90e0c1d8a1298e88004b0b029af7233a579ac896bb9c96caf54e5e9931a1d2c60575b4521b365d53f374d8d2d34c8029215d741ce1a1cd1a4368d8e01e7d8fcecf9ce69646612dcf6e682d806dbd353bee73ee1daef499942cfd6a6fae2514815256e9f4026694ef32bca0914e79936f477a86d2bfa9fab093180beb65a3a9e36df27c3b5f8fdf7c55be8eb441a05190003c8d9d946405c81724218124a1f5e63567611148d1f0c5fa9ad2f3d85670c89659c270d8070472bc891d89918bbd9de4f8c5ca887857ac765eacb01007d208b832839d85882257c06d84dc98c12384f8b3394b204e2ecd42f2a594e623f3dbae40956af043c5da6b944227051b6906596892ac5d25cdd268a7cee0f0f09b56ee7492a39b3c20598b86ffac686330e801e00f19035554d6ebc6199055774fc8d8ffce14ae2ab49e620148c3611595add0547ad82985e6f40b4906fad795ccd6d4b3933775f9830a4d92783f787ff6febc5bdbde281e981c9bd0884a9cd876e2c6f611369960d2a6fdee56ad61d3b39a547af42bf2f2742d2fcd83a52dabec1cb047da90dad730a1accddcb666b35c79d05426cc7ab1994a724e5500dcf6aa99487192f4f32cb2e402fd5eddee55f432181cd5f43218405463651ad134b6b08f8316a637f8b1561dd0a21a9848b77c383c34f5aa3dc2ed532b3a27cac9dd8caa1c92cfdaf0bdd913d59c9a52a77c85a844734ec87e65f4f9716df3f0cdba6dca9ad2be66036062b993e677f48d41447b3ecd5c4528f9ea6dce59342e9bf2d73a4aaf120c2975b8b5878085b5a5404760e9d3d9686b6e53c8bac62a402f337b0a7d78ef46e59e55fb1383de3a2528a1292d4f0f6a81b7e6cf9dc4feedbc7f7e823edf4cb688eca8bf2ebf66a2a1b375979af55593ff56401702dc46c3f1b1e37d224ba18f4dd076b1220b0830adecf413a516659518a42e0141d368398887de9d00b0390732d0b891042983031bcde6acdfef575661ced912167623ff2af3457e71e7a6ed4362c336d0b652fcc888bbe2040e59da231a92d08a151c4149a25232ca69200b4ecac60d569642f256088404299897fdde842959282304442b45041a15de9c71842bd923b7f00e20c920ba822078f561f2b6d1c84316428181f3d303f4239531aa82d23907ab8d0295775d6b60f99c08a18fd8e897029249ae6acb2a7182fe4a2a3b0f2016886504a5149a30d23776fbdc6ba367f7289e240c524b6f0b9c82b044314bb551200e2311c319ccba307f9807b72369d908a3f550a38c2d0fb4070421a0c212112c349c2a07f9647f4d079f8312047375e84e9c3a43f82338509398afbf45dccb806aae99ea36d7ad7360e303c77350e033309fff57613e159ad72634ff17bc373846215e0904298e9327e4bde19f4b7c27cf4b7c6b55fffcb4b7b6651325eea6bceb4d9c10dae38f168c8c60c51e11c7e98ec407f22578de30291c5d0a8d2c463044313151811a67294a9810ea5b6d8a6f15695c4ddcc97f2776fbfe06bcfa0c3429e322f5334c1348530606d0e0365901da631ec4f012e80f1ee802fe0f02a8232517e685408c406de63b8150b4145271ab53a292ce09e43d59102dc57276c9e107681993aca67498926ea5c6e627e925162824029259ad6228861dc11f09e611411998a2d599dbfd0e2a8354ae0275d164556fd3dd6a3be2d60cd9c98b16352aa8a55240169a2682a325e3b708486eb9ced54fc893228636e176061dc77d2c59cf04cc98d180650d66bcd12fd1350d2a243d6d20a97efe4359d19cbab7918b78f481f08aa579422481b478626a7c2ae2e86af8789cdf15db219ccf09eedd547d7668ef6e5827f9ddb07e594896624903f0d90aa0ccf4f406c4d4a983a40099aab757702d510a1440b28870edb725f15191eb6fcb3ba2fda59418703764bfc219a6c63185747a4701a92a635648d867551e67c4466cd7fba31289549c154c836a824ae54e802da8ff50d8f63e56f77c4ab8993f07e88697a581c96a7f0b3ad70e45b8e5b39028de1235d00b752961ed0192b21efc603df8b1f220e39570e5481fe22cac63a173ccb99a283463e84880e886fd681a134efe2ee0e0629985293a24282ccc8d1f31a96d23daabb602f006b5814ff25cb9beb2fb60a3019b3cde86f8fbbfd23eeee3e7a6afe8e5527347a33e157756b66a540fd4d7fa3983d682af5d3e6ebae029c35ed555df8526c9dec1a84a3265677ea21e6a0e77fcbad092b4675cbb4de0bd7ddb43d4ba1b221e22415d348b59861746c07f8880120ac8831da341d8f1d465f3839586224eb1b5fa06061f71a35155cd8d0838cda5c1d5c6412c622c4a480f43bbba825215fa3456a81e2febff2c5a57e93fe3053652543a99a74aee9679b302fa4489c6c8f97cd93b393d3e3f3ce90d9c0bb3c194436008ffc73f2f2a7126ab5436aa035f01f0df33377d50d990921b7ab55701cb5717cdbf4740d04a1cf5e0c7a92d417d35d5c8f0f236541581b9851fb9e64f23f67e07d699318d</marked_file>
+      <paragraph_indexes count="61">90 150 636 712 814 889 894 906 967 1046 1301 1314 1345 1386 1417 1447 1478 1516 1547 1585 1616 1666 2228 2255 2578 2713 2718 2745 2844 2933 2942 2955 3083 3161 3170 3183 3266 3284 3353 3367 3455 3514 3599 3667 3676 3734 3755 3803 3845 3906 3911 4051 4060 4126 4167 4258 4372 4508 4513 4531 4630 4719 4728 4741 4867 4945 4954 4967 5050 5068 5137 5152 5240 5299 5382 5450 5459 5513 5534 5588 5630 5708 5713 5870 5879 5973 5986 6090 6202 6322 6327 6345 6445 6538 6547 6560 6643 6664 6740 6800 6881 6949 6958 7008 7029 7106 7148 7208 7213 7308 7317 7464 7469 7578 7583 7597 7820 8242 8418 8449 8462 8496 </paragraph_indexes>
+      <support_files>
+        <file type="todo">images/bluebottom.gif</file>
+        <file type="todo">images/bluetop.gif</file>
+        <file type="todo">images/buy.gif</file>
+        <file type="todo">images/download.gif</file>
+        <file type="todo">images/logo1.gif</file>
+        <file type="todo">images/next.gif</file>
+        <file type="todo">images/photobackup/photo_backup_small.png</file>
+        <file type="todo">images/printer/passport_photo_small.png</file>
+        <file type="todo">images/shrink_pic/sp_icon.png</file>
+        <file type="todo">images\bottomwhite.gif</file>
+        <file type="todo">images\bottomwhite2.gif</file>
+        <file type="todo">images\menutabA1.gif</file>
+        <file type="todo">images\menutabB1.gif</file>
+        <file type="todo">images\photobackup\1bckgrnd.gif</file>
+        <file type="todo">images\photobackup\2bckgrnd.gif</file>
+        <file type="todo">images\photobackup\3bckgrnd.gif</file>
+        <file type="todo">images\topline1.gif</file>
+        <file type="todo">images\topline2.gif</file>
+        <file type="todo">images\topline2WB.gif</file>
+        <file type="todo">images\toplineL.gif</file>
+        <file type="todo">images\toplineLW.gif</file>
+        <file type="todo">images\toplineR.gif</file>
+        <file type="todo">images\topwhite2.gif</file>
+        <file type="todo">styles.css</file>
+      </support_files>
+    </extractor><translation>
+      <languages />
+      <sentences count="61">
+        <ta_sentence do_translation="yes" encoding="utf-8" format="1" id="1" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Passport Photo and Photo Backup software by OnTheGoSoft</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="no" encoding="utf-8" format="1" id="2" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">OnTheGoSoft</text>
+            <marker end="11" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/bluetop.gif" />
+              <attr name="alt" val="OnTheGoSoft" />
+              <attr name="width" val="760" />
+              <attr name="height" val="5" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="no" encoding="utf-8" format="1" id="3" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">OnTheGoSoft</text>
+            <marker end="11" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/logo1.gif" />
+              <attr name="alt" val="OnTheGoSoft" />
+              <attr name="width" val="397" />
+              <attr name="height" val="62" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="4" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="English">
+            <text status="Complete" time="1189239840" />
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="no" encoding="utf-8" format="1" id="5" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">OnTheGoSoft</text>
+            <marker end="11" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/bluebottom.gif" />
+              <attr name="alt" val="OnTheGoSoft" />
+              <attr name="width" val="760" />
+              <attr name="height" val="5" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="6" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Products</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="7" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Downloads</text>
+            <marker end="9" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="download.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="8" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Buy</text>
+            <marker end="3" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="buy.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="9" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Contact</text>
+            <marker end="7" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="contact.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="10" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Support</text>
+            <marker end="7" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="support.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="11" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Sub folder</text>
+            <marker end="10" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="sub_folder/index.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="12" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Digital Photo Software</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="13" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Pasport Photo</text>
+            <marker end="13" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/printer/passport_photo_small.png" />
+              <attr name="alt" val="Pasport Photo" />
+              <attr name="width" val="113" />
+              <attr name="height" val="119" />
+              <attr name="hspace" val="5" />
+              <attr name="vspace" val="10" />
+              <attr name="border" val="0" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="14" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="English">
+            <text status="Complete" time="1189239840"> </text>
+            <marker end="0" id="-1" start="-1" />
+          </text_data><marker_def id="-1" type="html">
+            <html_marker tag="a" />
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="15" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Try it free!</text>
+            <marker end="12" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/download.gif" />
+              <attr name="alt" val="Try it free!" />
+              <attr name="width" val="94" />
+              <attr name="height" val="28" />
+              <attr name="border" val="0" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="16" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="English">
+            <text status="Complete" time="1189239840" />
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="17" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Buy it</text>
+            <marker end="6" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/buy.gif" />
+              <attr name="alt" val="Buy it" />
+              <attr name="width" val="94" />
+              <attr name="height" val="28" />
+              <attr name="border" val="0" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="18" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="English">
+            <text status="Complete" time="1189239840" />
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="19" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">No time limit</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="no" encoding="utf-8" format="1" id="20" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">$9.95 USD</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="21" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">News and announcements</text>
+            <marker end="22" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="blog/?sectionid=4" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="22" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">more info...</text>
+            <marker end="12" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/next.gif" />
+              <attr name="alt" val="more info..." />
+              <attr name="class" val="arrowimg" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="23" original_language="English">
+          <space_before>&#160;</space_before>
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Passport Photo</text>
+            <marker end="14" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="passport_photo.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="24" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Create and print your own passport pictures</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="25" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Do you need photos for a passport, license or ID?</text>
+            <marker end="33" id="0" start="19" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="u" />
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="26" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">No problem, With Passport Photo you can create and print professional quality passport size pictures, in one minute.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="27" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Passport Photo allows printing at home or in a shop.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="28" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Download Passport Photo now, and see how easy it can be!</text>
+            <marker end="23" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="pp_download.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="29" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Photo Backup</text>
+            <marker end="12" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/photobackup/photo_backup_small.png" />
+              <attr name="alt" val="Photo Backup" />
+              <attr name="width" val="113" />
+              <attr name="height" val="119" />
+              <attr name="hspace" val="5" />
+              <attr name="vspace" val="10" />
+              <attr name="border" val="0" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="30" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="English">
+            <text status="Complete" time="1189239840" />
+            <marker end="0" id="-1" start="-1" />
+          </text_data><marker_def id="-1" type="html">
+            <html_marker tag="a" />
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="31" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Try it free!</text>
+            <marker end="12" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/download.gif" />
+              <attr name="alt" val="Try it free!" />
+              <attr name="width" val="94" />
+              <attr name="height" val="28" />
+              <attr name="border" val="0" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="32" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="English">
+            <text status="Complete" time="1189239840" />
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="33" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Buy it</text>
+            <marker end="6" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/buy.gif" />
+              <attr name="alt" val="Buy it" />
+              <attr name="width" val="94" />
+              <attr name="height" val="28" />
+              <attr name="border" val="0" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="34" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="English">
+            <text status="Complete" time="1189239840" />
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="35" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">14 days trial</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="no" encoding="utf-8" format="1" id="36" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">$29.95 USD</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="37" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">News and announcements</text>
+            <marker end="22" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="blog/?sectionid=5" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="38" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">more info...</text>
+            <marker end="12" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/next.gif" />
+              <attr name="alt" val="more info..." />
+              <attr name="class" val="arrowimg" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="39" original_language="English">
+          <space_before>&#160;</space_before>
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Photo Backup</text>
+            <marker end="12" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="photo_backup.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="40" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Professional quality digital photo backup program</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="41" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Protect your valuable photo collection from loss by making CD/DVD backup.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="42" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Use thumbnails to quickly search the archive according to dates, folders or disks and retrieve the photos you need, when you need them.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="43" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Photo Backup was designed to handle large numbers of photos, quickly and easily.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="44" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Download Photo Backup and see how it fits into your work flow.</text>
+            <marker end="21" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="pb_download.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="45" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Shrink Pic</text>
+            <marker end="10" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/shrink_pic/sp_icon.png" />
+              <attr name="alt" val="Shrink Pic" />
+              <attr name="width" val="64" />
+              <attr name="height" val="64" />
+              <attr name="hspace" val="5" />
+              <attr name="vspace" val="10" />
+              <attr name="border" val="0" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="46" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="English">
+            <text status="Complete" time="1189239840" />
+            <marker end="0" id="-1" start="-1" />
+          </text_data><marker_def id="-1" type="html">
+            <html_marker tag="a" />
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="47" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Completely free!</text>
+            <marker end="16" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/download.gif" />
+              <attr name="alt" val="Completely free!" />
+              <attr name="width" val="94" />
+              <attr name="height" val="28" />
+              <attr name="border" val="0" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="48" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="English">
+            <text status="Complete" time="1189239840" />
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="49" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Completely free!</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="50" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">News and announcements</text>
+            <marker end="22" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="blog/?sectionid=10" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="51" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">more info...</text>
+            <marker end="12" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/next.gif" />
+              <attr name="alt" val="more info..." />
+              <attr name="class" val="arrowimg" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="52" original_language="English">
+          <space_before>&#160;</space_before>
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Shrink Pic</text>
+            <marker end="10" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="shrink_pic.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="53" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Automatically resize photos for email, instant messenger and web uploads</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="54" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Attach dozens of photos to emails without any problems.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="55" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Upload to your blog or website in seconds, and share with your friends instantly!</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="56" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Shrink Pic automatically detects when you send photos by email, Instant Messenger or web browser and compresses them for you.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="57" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">There's no need to make duplicates and resize - it all happens instantly, when you send photos.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="58" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="English">
+            <text status="Complete" time="1189239840" />
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="59" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">Products&#160;&#160; - &#160;&#160;Passport Photo&#160;&#160; - &#160;&#160;Photo Backup&#160;&#160; - &#160;&#160;Shrink Pic&#160;&#160; - &#160;&#160;Resources&#160;&#160; - &#160;&#160;Blog&#160;&#160; - &#160;&#160;SiteMap</text>
+            <marker end="8" id="0" start="0" />
+            <marker end="29" id="1" start="15" />
+            <marker end="48" id="2" start="36" />
+            <marker end="65" id="3" start="55" />
+            <marker end="81" id="4" start="72" />
+            <marker end="92" id="5" start="88" />
+            <marker end="106" id="6" start="99" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="./" />
+            </html_marker>
+          </marker_def><marker_def id="1" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="passport_photo.htm" />
+            </html_marker>
+          </marker_def><marker_def id="2" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="photo_backup.htm" />
+            </html_marker>
+          </marker_def><marker_def id="3" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="shrink_pic.htm" />
+            </html_marker>
+          </marker_def><marker_def id="4" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="links_nav.htm" />
+            </html_marker>
+          </marker_def><marker_def id="5" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="blog/" />
+            </html_marker>
+          </marker_def><marker_def id="6" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="sitemap.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="60" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="English">
+            <text status="Complete" time="1189239840" />
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="no" encoding="utf-8" format="1" id="61" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="English">
+            <text rev_id="15" status="New" time="1189239837">&#169; OnTheGoSoft 2003-2006</text>
+          </text_data>
+        </ta_sentence>
+      </sentences><html_output_change_data />
+    </translation>
+  </ta_buffer><HTML_output mode="folder">
+    <folders />
+    <domains />
+    <sites />
+    <extensions />
+    <language_selector include="True" position="0" type="0" />
+    <support_files Duplicate="NONE">
+      <files_to_duplicate />
+    </support_files><custom_path />
+    <custom_support_path />
+    <output_path />
+    <ta_support_path />
+  </HTML_output>
+</TA_project>

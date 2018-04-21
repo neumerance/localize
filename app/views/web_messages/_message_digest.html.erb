@@ -1,0 +1,23 @@
+<div class="errorExplanation">
+
+<h3>Owner</h3>
+<p><% if message_digest.owner.class == WebDialog %>
+<%= link_to('Web dialog',{:controller=>:web_dialogs, :action=>:show, :id=>message_digest.owner.id}) %>
+<% else %>
+<%= user_link(message_digest.owner.is_a?(Client) ? message_digest.owner : message_digest.owner.client) %>
+<% end %>
+</p>
+
+<h3>Client body</h3>
+<div class="code_snip"><%= pre_format(message_digest.client_body) %></div>
+
+<h3>Visitor body</h3>
+<div class="code_snip"><%= pre_format(message_digest.decoded_visitor_body(@user)) %></div>
+
+<h3>Statistics</h3>
+<p>Original language: <b><%= message_digest.original_language.name %></b><br />
+Target language: <b><%= message_digest.destination_language.name %></b><br />
+Word count: <b><%= message_digest.word_count %></b>
+</p>
+
+</div>

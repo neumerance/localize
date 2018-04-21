@@ -1,0 +1,39 @@
+<div class="contactstatus">
+	<p><%= items_list(@dialog_info) %></p><% if @parameters && (@parameters.length > 0) %><hr /><p><%= items_list(@parameters) %></p><% end %>
+<% if @user %>
+	<%= button_to('Delete this ticket', {:action=>:delete, :id=>@web_dialog.id}, 'data-confirm'=>'Are you sure you want to delete this ticket?', :method=>:delete) %>
+ 	<hr />
+	<%= form_for(:web_dialog, :url=>{:action=>:update}, :method => :put) do |f| %>
+		<p>Visitor language:<br /><%= f.select(:visitor_language_id, @languages) %></p>
+		<%= submit_tag('Update language', data: { disable_with: 'Update language' }) %>
+	<% end %>
+<% end %>
+</div>
+<div class="clear"></div>
+
+<h3><%= _('Messages') %></h3>
+<%= render(:partial => "message_div", :collection => @web_dialog.available_web_messages_for_user(@user) ) %>
+<div class="inter_tab_spacer"></div>
+
+<div id="reply">
+
+	<% if flash[:ack] %>
+	<div class="errorExplanation">
+	  <%= pre_format(flash[:ack]) %>
+	</div>
+	<% end %>
+
+	<h3><%= @reply_heading %></h3>
+	<%= render(:partial => "reply") %>
+	<% if @web_dialog.user_can_close?(@user) %>
+		<br />
+		<%= button_to('Close this ticket without replying', {:action=>:close_ticket, :id=>@web_dialog.id}) %>
+	<% end %>
+</div>
+
+<% if @ticket_nav.length > 0 %>
+<br /><hr />
+<p><%= @ticket_nav.collect { |ticket| link_to(ticket[0], {:action=>:show, :id=>ticket[1]}) }.join(' &nbsp; | &nbsp; ') %></p>
+<% end %>
+
+<iframe id='frame' name="frame" style="width: 0pt; height: 0pt; padding: 0; margin: 0; visibility: hidden;" ></iframe>

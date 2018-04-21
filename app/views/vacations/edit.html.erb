@@ -1,0 +1,28 @@
+<%= my_error_messages_for :vacation %>
+
+<%= form_for(@vacation, :url=>{:action=>(@vacation.id.blank? ? :create : :update), :user_id=>@user.id}) do |f| %>
+  <p>
+    <b>Beginning</b><br />
+    <%= f.datetime_select :beginning %>
+  </p>
+
+  <p>
+    <b>Ending</b><br />
+    <%= f.datetime_select :ending %>
+  </p>
+
+  <p>
+    <% if @vacation.id.blank? %>
+		<%= f.submit _("Create") %>
+	<% else %>
+		<%= f.submit _("Update") %>
+	<% end %>
+  </p>
+<% end %>
+
+<%= link_to( _('List of leaves'), :action=>:index) %> |
+<% if @user == @auser %>
+	<%= link_to(_('Back to your account'), {:controller=>:users, :action=>:my_profile}) %>
+<% else %>
+	<%= link_to(_('Back to profile page'), {:controller=>:users, :action=>:show, :id=>@auser}) %>
+<% end %>

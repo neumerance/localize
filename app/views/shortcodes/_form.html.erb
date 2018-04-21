@@ -1,0 +1,38 @@
+<% form_element = @website ? [@website, @shortcode] : @shortcode %>
+
+<%= form_for(form_element) do |f| %>
+  <%= my_error_messages_for(:shortcode) %>
+
+  <div>
+    <%= f.label :shortcode, "Shortcode (don't include backets)" %><br />
+    <span style='font-size: 22px; margin: 0 2px'>[</span>
+      <%= f.text_field :shortcode, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+    <span style='font-size: 22px;  margin: 0 2px'>]</span>
+  </div>
+
+  <% if @shortcode.id %>
+    <br>
+    <div>
+      Enabled?<br />
+      <%= f.check_box :enabled%>
+    </div>
+  <% end %>
+
+  <br>
+  <div>
+    <label for="shortcode_content_type">Type of shortcode <%= tooltip(type_description, true) %></label><br />
+    <%= f.select :content_type,
+                 options_for_select(Shortcode::CONTENT_TYPE_NAMES.zip(Shortcode::CONTENT_TYPE_OPTIONS), @shortcode.content_type),
+                 {:onchange => 'toggle_include_content()'} %>
+  </div>
+  <br>
+
+  <div>
+    Comments<br />
+    <%= f.text_area :comment, maxlength: COMMON_FIELD, style: 'width: 45%; height: 200px' %>
+  </div>
+  <br>
+  <div>
+    <%= f.submit 'Save' %>
+  </div>
+<% end %>

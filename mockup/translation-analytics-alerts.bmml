@@ -1,0 +1,20 @@
+<mockup version="1.0" skin="sketch" measuredW="949" measuredH="300" mockupW="618" mockupH="178">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::CheckBoxGroup" x="346" y="174" w="-1" h="-1" measuredW="603" measuredH="84" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%5Bx%5D%20Alert%20me%20when%20a%20translator%20is%20%20__%25%20under%20the%20translation%20estimate.%20%0A%5Bx%5D%20Alert%20me%20if%20the%20current%20translator%20rate%20isn%27t%20enough%20to%20meet%20the%20deadline%20__%20days%20before%20the%20deadline%0A%5Bx%5D%20Alert%20me%20when%20there%20is%20no%20progress%20on%20translation%20within%20__%20days%0A%5Bx%5D%20Alert%20me%20if%20my%20website%20fail%20to%20send%20data%20to%20translation%20analytics</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::Button" x="346" y="273" w="-1" h="-1" measuredW="103" measuredH="27" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Save%20settings</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Title" x="331" y="122" w="-1" h="-1" measuredW="240" measuredH="37" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <size>28</size>
+        <text>Alerts%20configuration</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

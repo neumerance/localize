@@ -1,0 +1,1127 @@
+/* Responsive images and other embedded objects
+ *    mc-note: keeping IMG here will cause problems if you're using foreground images as sprites.
+ *       If this default setting for images is causing issues, you might want to replace it with a .responsive class instead. */
+.mc-body img,
+.mc-body object,
+.mc-body embed {max-width: 100%;}
+
+/* force a vertical scrollbar to prevent a jumpy page */
+html {overflow-y: scroll;}
+
+/* we use a lot of ULs that aren't bulleted. 
+ * 	don't forget to restore the bullets within content. */
+.mc-body ul {list-style: none;}
+
+.mc-body blockquote, q.mc-body  {quotes: none;}
+
+.mc-body blockquote:before, 
+.mc-body blockquote:after, 
+.mc-body q:before, 
+.mc-body q:after {content: ''; content: none;}
+
+.mc-body a {color: #38619f; text-decoration:none; margin: 0; padding: 0; font-size: 100%; vertical-align: baseline; background: transparent; cursor: pointer}
+.mc-body a:hover {
+	color: #0e3f88;
+	transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+}
+
+.mc-body del {text-decoration: line-through;}
+
+.mc-body abbr[title], .mc-body dfn[title] {border-bottom: 1px dotted #000; cursor: help;}
+
+/* table.mc-ts still need cellspacing="0" in the markup */
+table.mc-t {border-collapse: collapse; border-spacing: 0;}
+.mc-body th {font-weight: bold; vertical-align: bottom;}
+.mc-body td {font-weight: normal; vertical-align: top;}
+
+.mc-body hr {display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0;}
+
+.mc-body input, .mc-body select {vertical-align: middle;}
+
+.mc-body pre {
+	white-space: pre; /* CSS2 */
+	white-space: pre-wrap; /* CSS 2.1 */
+	white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+	word-wrap: break-word; /* IE */
+}
+
+.mc-body input[type="radio"] {vertical-align: text-bottom;}
+.mc-body input[type="checkbox"] {vertical-align: bottom; *vertical-align: baseline;}
+.ie6 input {vertical-align: text-bottom;}
+
+select, input, textarea {font: 99% sans-serif;}
+
+table.mc-t {font-size: inherit; font: 100%;}
+
+ul.mc-t, li.mc-t, table.mc-t, tr.mc-t, fieldset.mc-t, td.mc-t, label.mc-t{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}									
+
+/* Accessible focus treatment
+ * 	people.opera.com/patrickl/experiments/keyboard/test */
+.mc-body a:hover, .mc-body a:active {outline: none;}
+
+.mc-body small {font-size: 85%; color: #888;}
+
+.mc-body strong, .mc-body th {font-weight: bold;}
+
+.mc-body td, .mc-body td img {vertical-align: top;} 
+
+/* Make sure sup and sub don't screw with your line-heights
+ * 	gist.github.com/413930 */
+.mc-body sub, .mc-body sup {font-size: 75%; line-height: 0; position: relative;}
+.mc-body sup {top: -0.5em;}
+.mc-body sub {bottom: -0.25em;}
+
+/* standardize any monospaced elements */
+.mc-body pre, .mc-body code, .mc-body kbd, .mc-body samp {font-family: monospace, sans-serif;}
+
+/* hand cursor on clickable elements */
+.mc-body .clickable,
+.mc-body label, 
+.mc-body input[type=button], 
+.mc-body input[type=submit], 
+.mc-body button {cursor: pointer;}
+
+/* Webkit browsers add a 2px margin outside the chrome of form elements */
+.mc-body button, input, select, textarea {margin: 0;}
+
+/* make buttons play nice in IE */
+.mc-body button {width: auto; overflow: visible;}
+
+/* scale images in IE7 more attractively */
+.mc-body .ie7 img {-ms-interpolation-mode: bicubic;}
+
+/* prevent BG image flicker upon hover */
+.mc-body .ie6 html {filter: expression(document.execCommand("BackgroundImageCache", false, true));}
+
+/* let's clear some floats */
+.mc-clearfix:before, .mc-clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }  
+.mc-clearfix:after { clear: both; }  
+.mc-clearfix { zoom: 1; }   
+
+
+
+/* Ok, this is where the fun starts.
+ * -------------------------------------------------------------------------------*/
+
+body,
+.mc-body {font: 13px "Helvetica Neue", "Helvetica" Arial, Tahoma, sans-serif; }
+
+/* using local fonts? make sure to read up on Paul Irish's 
+ * 	Bulletproof @font-face syntax: http://mky.be/font-face/bulletproof/ */
+
+/* we like off-black for text */
+.mc-body, body select, input, textarea {color: #333;color:#555;}
+.mc-body small{font-size: 85%;color: rgb(136, 136, 136)};
+
+.mc-body a {
+	color: #38619f;
+	text-decoration: none;
+}
+.mc-body a:hover {
+	color: #0e3f88;
+	transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+}
+
+/* Custom text-selection colors (remove any text shadows: twitter.com/miketaylr/status/12228805301) */
+.mc-body ::-moz-selection{background: #fcd700; color: #fff; text-shadow: none;}
+.mc-body ::selection {background: #fcd700; color: #fff; text-shadow: none;} 
+
+/*	j.mp/webkit-tap-highlight-color */
+.mc-body a:link {-webkit-tap-highlight-color: #fcd700;} 
+
+.mc-body ins {background-color: #fcd700; color: #000; text-decoration: none;}
+.mc-body mark {background-color: #fcd700; color: #000; font-style: italic; font-weight: bold;}
+
+
+/*
+ * 	Typo
+ * 	---------------------------------------------*/
+.mc-body h1 {
+	font-size: 36px;
+	color: #222;
+	padding-bottom: 20px;	
+}
+
+.mc-body h2 {
+	font-size: 24px;
+	color: #222;
+	padding-bottom: 20px;
+}
+
+.mc-body h3 {
+	font-size: 8px;
+	color: #486898;
+	padding-bottom: 10px;
+}
+
+.mc-body p {
+	margin: 0 0 1em 0;	
+}
+
+/*
+ * 	Layout
+ * 	---------------------------------------------*/
+.mc-container {
+	border-radius: 5px;
+	background: #f8f8f8 image_url('nav-bgr.jpg') repeat-y left top;
+	box-shadow: rgba(0,0,0,0.1) 1px 1px 3px;
+	border: 1px solid #e5e5e5;
+	width: 90%;
+	margin: 60px auto;
+}
+
+.mc-sidebar {
+	float: left;
+}
+
+.mc-main-content {
+	padding: 10px;
+	margin-left: 90px;
+}
+
+.mc-main-content h3{
+	padding: 10px;
+	margin-left: 90px;
+  font-size: 22px;
+}
+
+
+.mc-box {
+	width: auto;
+	padding: 20px;
+
+	border-radius: 3px;
+	background: #fff;
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+
+	margin-bottom: 10px;
+}
+
+/*
+ * 	Columns
+ * 	---------------------------------------------*/
+.mc-one-half {
+	width: 49.3%;
+	float: left;
+	margin-right: 1.3%;
+}
+
+.mc-two-thirds {
+	width: 66%;
+	float: left;
+	margin-right: 1.3%;
+}
+
+.mc-one-third {
+	width: 30%;
+	float: left;
+	margin-right: 1.3%;
+}
+
+.mc-one-half.mc-last,
+.mc-two-thirds.mc-last,
+.mc-one-third.mc-last {
+	margin-right: 0;
+}
+
+/*
+ * 	Sidebar Navigation
+ * 	---------------------------------------------*/
+#mc-main-nav li {
+	list-style: none;
+	width: 85px;
+	height: 80px;
+	margin-left: 5px;
+	position: relative;
+	border-bottom: 1px solid #313335;
+	box-shadow: #555a5c 0px 1px 0px;
+}
+
+#mc-main-nav li:first-child {
+	border-radius: 5px 0 0 0;
+}
+
+#mc-main-nav li a {
+	display: block;
+	padding: 13px 0px;
+	height: 54px;
+
+	font-size: 14px;
+	text-shadow: #1f2228 0px 2px 1px;
+	text-decoration: none;
+	text-align: center;
+	color: #f4f4f4;
+
+	transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	-o-transition: all 0.3s;
+} 
+
+#mc-main-nav li a.mc-two-lines {
+	padding: 6px;
+	height: 68px;
+}
+
+#mc-main-nav li a:hover {
+	color: #fff;
+	text-shadow: #000 0px 1px 1px;
+	background: rgba(0,0,0,0.4);
+}
+
+#mc-main-nav li a:active {
+	color: #888; 
+	background: rgba(0,0,0,0.3); 
+	box-shadow: inset rgba(0,0,0,0.5) 2px 5px 4px;
+}
+
+#mc-main-nav li.mc-current a:active {
+	box-shadow: none;
+}
+
+#mc-main-nav li a:active span {
+	opacity: 0.3;
+}
+
+#mc-main-nav li.mc-current {
+	margin-left: 0;
+	padding-left: 5px;
+	box-shadow: none;
+	background: #f8f8f8 image_url('nav-current.jpg') repeat-y left top;
+}
+
+#mc-main-nav li.mc-current:last-child  {
+	border-bottom: 0 !important;
+	box-shadow: none !important;
+	margin-top: 2px !important;
+}
+
+#mc-main-nav li.mc-current a {
+	background: none;
+	color: #27292a;
+	text-shadow: #fff 0px 1px 0px;
+}
+
+.mc-ioverview,
+.mc-idetails,
+.mc-ideadlines,
+.mc-iprogressgraph,
+.mc-ialerts {
+	display: block;
+	width: 32px;
+	height: 32px;
+	margin: 0px auto 2px auto;
+	background-image: image_url('nav-icons-sprite.png');
+}
+
+.mc-ioverview {background-position: 0 0}
+.mc-idetails {background-position: 0 -32px}
+.mc-ideadlines {background-position: 0 -64px}
+.mc-iprogressgraph {background-position: 0 -96px}
+.mc-ialerts {background-position: 0 -128px}
+
+.mc-current .mc-ioverview {background-position: -32px 0}
+.mc-current .mc-idetails {background-position: -32px -32px}
+.mc-current .mc-ideadlines {background-position: -32px -64px}
+.mc-current .mc-iprogressgraph {background-position: -32px -96px}
+.mc-current .mc-ialerts {background-position: -32px -128px}
+
+
+/*
+ * 	Buttons
+ * 	---------------------------------------------*/
+input[type=submit].mc-input,
+input[type=button].mc-input,
+.mc-btn {
+	display: block;
+	position: relative;
+	height: 40px;
+	padding-left: 20px;
+	padding-right: 20px;
+
+	text-align: center;
+	color: #38619f;
+	font-weight: bold;
+	text-decoration: none;
+	line-height: 40px;
+	text-shadow: #fff 0px 1px 0px;
+	overflow: hidden;
+
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.25), inset 0 -3px 8px rgba(255,255,255,.5);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.25), inset 0 -3px 8px rgba(255,255,255,.5);
+	box-shadow: 0 1px 1px rgba(0,0,0,.15), inset 0 -3px 8px rgba(255,255,255,.5);
+	border: solid 1px #dbdbdb;
+	background-color: #e0e0e0;
+	background-image: -webkit-linear-gradient(bottom, #eee, #fff) !important;
+	background-image: -moz-linear-gradient(bottom, #eee, #fff) !important;
+	background-image: -o-linear-gradient(bottom, #eee, #fff) !important;
+	background-image: -ms-linear-gradient(bottom, #eee, #fff) !important;
+	background-image: linear-gradient(to top, #eee, #fff) !important;
+	border-radius: 4px;
+
+	z-index: 1;
+}
+
+input[type=submit],
+input[type=button]{
+	line-height: normal;
+}
+
+input[type=text].mc-input.mc-small-text { 
+	float: left;
+	width: 70% !important;
+	-webkit-box-sizing: border-box !important;
+	-moz-box-sizing: border-box !important;
+	box-sizing: border-box !important;
+	height: 31px;
+	margin-top: 5px;
+}
+
+input[type=submit].mc-small,
+input[type=button].mc-small {
+	float: right !important;
+	width: 30% !important;
+	height: 30px;
+	border-radius: 0px 3px 3px 0px;
+	left: -3px;
+	margin-top: 5px;
+	-webkit-box-sizing: border-box !important;
+	-moz-box-sizing: border-box !important;
+	box-sizing: border-box !important;
+}
+
+input[type=submit].mc-input:hover,
+input[type=button].mc-input:hover,
+.mc-btn:hover {
+	box-shadow: 0 1px 2px rgba(0,0,0,.25), inset 0 -3px 8px rgba(255,255,255,.5);
+	border-color: transparent;
+	background-color: #fafafa;
+	background-image: -webkit-linear-gradient(bottom, #f8f8f8, #fff) !important;
+	background-image: -moz-linear-gradient(bottom, #f8f8f8, #fff) !important;
+	background-image: -o-linear-gradient(bottom, #f8f8f8, #fff) !important;
+	background-image: -ms-linear-gradient(bottom, #f8f8f8, #fff) !important;
+	background-image: linear-gradient(to top, #f8f8f8, #fff) !important;
+}
+
+input[type=submit].mc-input:active,
+input[type=button].mc-input:active,
+.mc-btn:active {
+	background: #f4f4f4;
+	box-shadow: inset rgba(0,0,0,0.2) 0px 1px 3px !important;
+}
+
+.mc-input.mc-input-half,
+.mc-input.mc-input-half,
+.mc-btn.mc-input.mc-input-half {
+	width: 49.5% !important;
+	float: left;
+	height: 34px !important;
+	line-height: 28px !important;
+	margin-top: 3px;
+	margin-right: 1%;
+}
+
+.mc-input-half.mc-last,
+.mc-input-half.mc-last,
+.mc-btn.mc-input-half.mc-last {
+	margin-right: 0;
+}
+
+.mc-btn.mc-secondary {
+	background: #f8f8f8 !important;
+	height: 32px !important;
+	line-height: 32px !important;
+	margin-top: 3px;
+	margin-right: 1%;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	color: #777;
+	border-color: #eee;
+
+	background: none !important;
+	box-shadow: none;
+}
+
+/*
+ * .btn > span {
+ * 	width: 16px;
+ * 		height: 16px;
+ * 			display: inline-block;
+ * 				float: left;
+ * 					margin-left: -25px;
+ * 						background: red;
+ * 							position: absolute;
+ * 								top: 50%;
+ * 									margin-top: -8px;
+ * 									}
+ * 									*/
+
+.mc-btn > span {
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	top: 3px;
+	position: relative;
+	margin-right: 8px;
+}
+
+
+.mc-btn.mc-large {
+	width: 290px;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.mc-btn.mc-smaller-height {
+	height: 34px;
+	line-height: 34px;
+	margin-bottom: 10px;
+}
+
+.mc-btn.mc-centered {
+	margin: 0 auto;
+}
+
+.mc-btn.mc-disabled,
+.mc-btn.mc-disabled:active {
+	color: #888 !important;
+	background: #f4f4f4 !important;
+	box-shadow: none !important;
+	border: 1px solid #ddd;
+	cursor: default;
+}
+
+
+
+/*
+ * 	Dropwdon Deadline Buttons
+ * 	---------------------------------------------*/
+.mc-dd-box {
+	border-radius: 0px 5px 5px 5px;
+	padding: 5px;
+	/*
+	 * 	margin-top: -46px;
+	 * 		padding-top: 39px;
+	 * 			*/
+margin-top: -10px;
+
+position: absolute; 
+max-width: 350px;
+
+background: #fff;
+box-shadow: 0 0 5px rgba(0,0,0,0.2);
+
+font-size: 13px;
+line-height: 1.4em;
+
+							} 
+							.mc-dd-box-inner {
+								padding: 15px;
+								border-radius: 3px;
+								background: #f2f2f2;
+							}
+							.mc-btn.mc-activated {
+								background: #fff !important;
+								box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+								border: 1px solid #fff;
+								border-bottom-color: transparent;
+								border-radius: 4px 4px 0px 0px;
+								color: #e2741c !important;
+							}
+
+
+							/*
+							 * 	Forms
+							 * 	---------------------------------------------*/
+.mc-form input[type="checkbox"],
+.mc-form input[type="radio"] {
+	margin-right: 5px; 
+	position: relative;
+}
+
+.mc-form input[type="text"],
+.mc-form input[type="password"],
+.mc-form input[type="email"] {
+	padding: 5px;
+
+	box-shadow: inset 0 1px 3px rgba(0,0,0,.2);
+	border: solid 1px #ddd;
+	border-top-color: #b2b2b2;
+	background: #fdfdfd;
+	border-radius: 2px;
+}
+
+input[type="text"].mc-small,
+input[type="password"].mc-small,
+input[type="email"].mc-small {
+	width: 40px;
+}
+
+/*
+ * 	Various
+ * 	---------------------------------------------*/
+span.mc-accent {
+	display: inline-block;
+	padding: 2px 15px;
+
+	color: #c21919;
+	background: #c21919;
+	color: #fff;
+	text-align: center;
+	border-radius: 3px;
+	text-shadow: rgba(0,0,0,0.9) 0px -1px 1px;
+}
+
+.mc-success {
+	background: #f2f6eb;
+	padding: 10px;
+	border-radius: 3px;
+}
+.mc-error {
+	background: #f6ebeb;
+	padding: 10px;
+	border-radius: 3px;
+}
+.mc-note {
+	background: #f8f8f8;
+	padding: 10px;
+	margin: 2px 0;
+	border-radius: 3px;
+}
+
+.mc-td-header{
+	font-size: 14px;
+	color: #486898;
+	display: inline-block;
+	width: 30%;
+}
+
+
+/*
+ * 	Tabs like
+ * 	---------------------------------------------*/
+.mc-box-inner-container {
+	position: relative;
+}
+
+.mc-box-inner {
+	border: 1px solid #e5e5e5;
+	padding: 20px;
+}
+
+.mc-box-tabs {
+	margin: 10px auto 0 auto;
+	width: 90%;
+	height: 44px;
+	position: relative;
+}
+
+.mc-box-tabs ul,
+.mc-box-tabs ul li {
+	list-style: none;
+}
+.mc-box-tabs ul li {
+	float: left;
+}
+.mc-box-tabs ul li {
+	float: left;
+	width: 31.3%;
+	margin: 0px 1%;
+}
+.mc-box-tabs ul li.mc-current {
+	margin-top: -11px;
+}
+.mc-box-tabs ul li.mc-current .mc-btn {
+	padding-top: 12px;
+	border-radius: 0 0 4px 4px;
+	background: #fff !important;
+	box-shadow: inset 0 -2px 4px rgba(0,0,0,.08);
+	border: solid 1px #dbdbdb;
+	border-top-color: #fff;
+	color: #e2741c; /* current - color */
+}
+
+.mc-box-tabs-label-left { 
+	left: 0;
+	float: left;
+	margin-top: 14px;
+	margin-right: 10px;
+	font-weight: bold;
+}
+
+.mc-box-tabs-label-right { 
+	left: 0;
+	float: right;
+	margin-top: 14px;
+	margin-right: 10px;
+	font-weight: bold;
+}
+
+/*
+ * 	table.mc-ts
+ * 	---------------------------------------------*/
+table.mc-t th,
+table.mc-t td,
+table.mc-t tr {
+	border: 1px solid #e0e0e0;
+	border-collapse: collapse;
+	font-size: 14px;
+}
+
+table.mc-t th {
+	font-weight: bold;
+	padding: 15px 20px;
+	background-image: -webkit-linear-gradient(bottom, #eee, #fff);
+	background-image: -moz-linear-gradient(bottom, #eee, #fff);
+	background-image: -o-linear-gradient(bottom, #eee, #fff);
+	background-image: -ms-linear-gradient(bottom, #eee, #fff);
+	background-image: linear-gradient(to top, #eee, #fff);
+}
+
+table.mc-t tr.mc-clean-td,
+table.mc-t tr.mc-clean-td td {
+	background: none;
+	padding: 0;
+	border: 0;
+}
+
+table.mc-t td {
+	padding: 12px 20px;
+	vertical-align: middle;
+}
+table.mc-t tr:nth-child(even) {
+	background: #f8f8f8;
+}
+
+.mc-selected-tr {
+	background: lightYellow !important;
+}
+
+
+
+/*
+ * 	Charts
+ * 	---------------------------------------------*/
+.mc-legend {
+	margin: 10px auto 0 auto;
+	width: 50%;
+	height: 40px;
+	background: #f8f8f8;
+	border: 1px solid #e5e5e5;
+	border-radius: 2px;
+	margin-top: 20px;
+}
+
+.mc-legend-inner {
+	float: left;
+	box-shadow: #e5e5e5 1px 0px 0px;
+	height: 40px;
+	width: 50%;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	font-weight: bold;
+}
+.mc-legend-inner:last-child {
+	box-shadow: none;
+}
+
+.mc-legend.third {
+	width: 80%;
+}
+
+.mc-legend.third .mc-legend-inner {
+	width: 33.3%;
+	overflow: hidden;
+}
+
+.mc-legend-inner img {
+	top: 7px;
+	position: relative;
+	margin-right: 10px;
+}
+
+.mc-estimate {
+	color: #c2a226;
+}
+
+.mc-translated {
+	color: #4c7312;
+}
+
+.mc-untranslated {
+	color: #7c7474;
+}
+
+/* ------------ */
+
+/* Explanation */
+.mc-explanation {
+	float: left;
+	width: 13%; 
+	margin-right: 2%;
+	position: relative;
+	text-align: right;
+	color: #4e5153;
+}
+
+.mc-expl-btm {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	color: #4e5153;
+}
+
+.mc-expl-center {
+	position: absolute;
+	right: 0;
+	top: 50%;
+	margin-top: -15px;
+	color: #4e5153;
+}
+
+/* grpah type 1 */
+.mc-graph-1 {
+	position: relative;
+} 
+
+.mc-graph-wrap {
+	float: left; 
+	width: 85%;
+	position: relative;
+}
+
+.mc-graph-sections {
+	position: relative;
+}
+
+.mc-section {
+	float: left;
+	font-size: 12px;
+	color: #888;
+	border-left: 1px solid #e5e5e5;
+	margin-left: -1px;
+	padding: 20px 0 0 0;
+	text-indent: 5px; 
+}
+
+.mc-graph-lines {
+	position: absolute;
+	width: 100%; 
+	z-index: 2;
+	margin-top: 20px;
+}
+
+.mc-graph-line {
+	height: 42px;
+	margin: 0 0 20px 0;
+	position: relative;
+	border: 2px solid #656565;
+	border-radius: 4px;
+	background: #9d9d9d;
+	background: -moz-linear-gradient(top,  #9d9d9d 0%, #d7d7d7 92%, #999 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#9d9d9d), color-stop(92%,#d7d7d7), color-stop(100%,#999));
+	background: -webkit-linear-gradient(top,  #9d9d9d 0%,#d7d7d7 92%,#aaaaaa 100%);
+	background: -o-linear-gradient(top,  #9d9d9d 0%,#d7d7d7 92%,#999 100%);
+	background: -ms-linear-gradient(top,  #9d9d9d 0%,#d7d7d7 92%,#999 100%);
+	background: linear-gradient(to bottom,  #9d9d9d 0%,#d7d7d7 92%,#999 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9d9d9d', endColorstr='#999',GradientType=0 );
+
+}
+
+.mc-graph-line .mc-progress {
+	height: 42px;
+	box-shadow: inset 0 1px 2px rgba(255,255,255,.2);
+	border: solid 2px #65882e;
+	background-image: -webkit-linear-gradient(bottom, #72953c, #8eb746);
+	background-image: -moz-linear-gradient(bottom, #72953c, #8eb746);
+	background-image: -o-linear-gradient(bottom, #72953c, #8eb746);
+	background-image: -ms-linear-gradient(bottom, #72953c, #8eb746);
+	background-image: linear-gradient(to top, #72953c, #8eb746);
+	position: absolute;
+	top: -2px;
+	left: -2px;
+	width: 100%;
+	border-radius: 4px;
+	z-index: 0;
+}
+
+.mc-graph-line > strong {
+	position: relative;
+	z-index: 2;
+	font-size: 18px;
+	color: #fff;
+	text-shadow: rgba(0,0,0,0.8) 0px -1px 0px;
+	line-height: 42px;
+	margin-left: 15px;
+	letter-spacing: 1px;
+}
+
+
+
+/*
+ * 	Bootstrap Icons
+ * 	---------------------------------------------*/
+[class^="mc-icon-"],
+[class*=" mc-icon-"] {
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	margin-top: 1px;
+	margin-right: .6em;
+	line-height: 14px;
+	vertical-align: text-top;
+	background-image: image_url("glyphicons-halflings.png");
+	background-position: 14px 14px;
+	background-repeat: no-repeat;
+}
+
+/* White icons with optional class, or on hover/active states of certain elements */
+
+.mc-icon-white,
+.dropdown-menu > li > a:hover > [class^="mc-icon-"],
+.dropdown-menu > li > a:hover > [class*=" mc-icon-"],
+.dropdown-menu > .active > a > [class^="mc-icon-"],
+.dropdown-menu > .active > a > [class*=" mc-icon-"] {
+	background-image: image_url("glyphicons-halflings-white.png");
+}
+
+.mc-icon-glass {background-position: 0 0;}
+.mc-icon-music {background-position: -24px 0;}
+.mc-icon-search {background-position: -48px 0;}
+.mc-icon-envelope {background-position: -72px 0;}
+.mc-icon-heart {background-position: -96px 0;}
+.mc-icon-star {background-position: -120px 0;}
+.mc-icon-star-empty {background-position: -144px 0;}
+.mc-icon-user {background-position: -168px 0;}
+.mc-icon-film {background-position: -192px 0;}
+.mc-icon-th-large {background-position: -216px 0;}
+.mc-icon-th {background-position: -240px 0;}
+.mc-icon-th-list {background-position: -264px 0;}
+.mc-icon-ok {background-position: -288px 0;}
+.mc-icon-remove {background-position: -312px 0}
+.mc-icon-zoom-in {background-position: -336px 0}
+.mc-icon-zoom-out {background-position: -360px 0}
+.mc-icon-off {background-position: -384px 0}
+.mc-icon-signal {background-position: -408px 0}
+.mc-icon-cog {background-position: -432px 0}
+.mc-icon-trash {background-position: -456px 0;}
+.mc-icon-home {background-position: 0 -24px;}
+.mc-icon-file {background-position: -24px -24px;}
+.mc-icon-time {background-position: -48px -24px;}
+.mc-icon-road {background-position: -72px -24px;}
+.mc-icon-download-alt {background-position: -96px -24px;}
+.mc-icon-download {background-position: -120px -24px;}
+.mc-icon-upload {background-position: -144px -24px;}
+.mc-icon-inbox {background-position: -168px -24px;}
+.mc-icon-play-circle {background-position: -192px -24px;}
+.mc-icon-repeat {background-position: -216px -24px;}
+.mc-icon-refresh {background-position: -240px -24px;}
+.mc-icon-list-alt {background-position: -264px -24px;}
+.mc-icon-lock {background-position: -287px -24px;}
+.mc-icon-flag {background-position: -312px -24px;}
+.mc-icon-headphones {background-position: -336px -24px;}
+.mc-icon-volume-off {background-position: -360px -24px;}
+.mc-icon-volume-down {background-position: -384px -24px;}
+.mc-icon-volume-up {background-position: -408px -24px;}
+.mc-icon-qrcode {background-position: -432px -24px;}
+.mc-icon-barcode {background-position: -456px -24px;}
+.mc-icon-tag {background-position: 0 -48px;}
+.mc-icon-tags {background-position: -25px -48px;}
+.mc-icon-book {background-position: -48px -48px;}
+.mc-icon-bookmark {background-position: -72px -48px;}
+.mc-icon-print {background-position: -96px -48px;}
+.mc-icon-camera {background-position: -120px -48px;} 
+.mc-icon-font{background-position:-144px -48px}
+.mc-icon-bold{background-position:-167px -48px}
+.mc-icon-italic{background-position:-192px -48px}
+.mc-icon-text-height{background-position:-216px -48px}
+.mc-icon-text-width{background-position:-240px -48px}
+.mc-icon-align-left{background-position:-264px -48px}
+.mc-icon-align-center{background-position:-288px -48px}
+.mc-icon-align-right{background-position:-312px -48px}
+.mc-icon-align-justify{background-position:-336px -48px}
+.mc-icon-list{background-position:-360px -48px}
+.mc-icon-indent-left{background-position:-384px -48px}
+.mc-icon-indent-right{background-position:-408px -48px}
+.mc-icon-facetime-video{background-position:-432px -48px}
+.mc-icon-picture{background-position:-456px -48px}
+.mc-icon-pencil{background-position:0 -72px}
+.mc-icon-map-marker{background-position:-24px -72px}
+.mc-icon-adjust{background-position:-48px -72px}
+.mc-icon-tint{background-position:-72px -72px}
+.mc-icon-edit{background-position:-96px -72px}
+.mc-icon-share{background-position:-120px -72px}
+.mc-icon-check{background-position:-144px -72px}
+.mc-icon-move{background-position:-168px -72px}
+.mc-icon-step-backward{background-position:-192px -72px}
+.mc-icon-fast-backward{background-position:-216px -72px}
+.mc-icon-backward{background-position:-240px -72px}
+.mc-icon-play{background-position:-264px -72px}
+.mc-icon-pause{background-position:-288px -72px}
+.mc-icon-stop{background-position:-312px -72px}
+.mc-icon-forward{background-position:-336px -72px}
+.mc-icon-fast-forward{background-position:-360px -72px}
+.mc-icon-step-forward{background-position:-384px -72px}
+.mc-icon-eject{background-position:-408px -72px}
+.mc-icon-chevron-left{background-position:-432px -72px}
+.mc-icon-chevron-right{background-position:-456px -72px}
+.mc-icon-plus-sign{background-position:0 -96px}
+.mc-icon-minus-sign{background-position:-24px -96px}
+.mc-icon-remove-sign{background-position:-48px -96px}
+.mc-icon-ok-sign{background-position:-72px -96px}
+.mc-icon-question-sign{background-position:-96px -96px}
+.mc-icon-info-sign{background-position:-120px -96px}
+.mc-icon-screenshot{background-position:-144px -96px}
+.mc-icon-remove-circle{background-position:-168px -96px}
+.mc-icon-ok-circle{background-position:-192px -96px}
+.mc-icon-ban-circle{background-position:-216px -96px}
+.mc-icon-arrow-left{background-position:-240px -96px}
+.mc-icon-arrow-right{background-position:-264px -96px}
+.mc-icon-arrow-up{background-position:-289px -96px}
+.mc-icon-arrow-down{background-position:-312px -96px}
+.mc-icon-share-alt{background-position:-336px -96px}
+.mc-icon-resize-full{background-position:-360px -96px}
+.mc-icon-resize-small{background-position:-384px -96px}
+.mc-icon-plus{background-position:-408px -96px}
+.mc-icon-minus{background-position:-433px -96px}
+.mc-icon-asterisk{background-position:-456px -96px}
+.mc-icon-exclamation-sign{background-position:0 -120px}
+.mc-icon-gift{background-position:-24px -120px}
+.mc-icon-leaf{background-position:-48px -120px}
+.mc-icon-fire{background-position:-72px -120px}
+.mc-icon-eye-open{background-position:-96px -120px}
+.mc-icon-eye-close{background-position:-120px -120px}
+.mc-icon-warning-sign{background-position:-144px -120px}
+.mc-icon-plane{background-position:-168px -120px}
+.mc-icon-calendar{background-position:-192px -120px}
+.mc-icon-random{width:16px;background-position:-216px -120px}
+.mc-icon-comment{background-position:-240px -120px}
+.mc-icon-magnet{background-position:-264px -120px}
+.mc-icon-chevron-up{background-position:-288px -120px}
+.mc-icon-chevron-down{background-position:-313px -119px}
+.mc-icon-retweet{background-position:-336px -120px}
+.mc-icon-shopping-cart{background-position:-360px -120px}
+.mc-icon-folder-close{background-position:-384px -120px}
+.mc-icon-folder-open{width:16px;background-position:-408px -120px}
+.mc-icon-resize-vertical{background-position:-432px -119px}
+.mc-icon-resize-horizontal{background-position:-456px -118px}
+.mc-icon-hdd{background-position:0 -144px}
+.mc-icon-bullhorn{background-position:-24px -144px}
+.mc-icon-bell{background-position:-48px -144px}
+.mc-icon-certificate{background-position:-72px -144px}
+.mc-icon-thumbs-up{background-position:-96px -144px}
+.mc-icon-thumbs-down{background-position:-120px -144px}
+.mc-icon-hand-right{background-position:-144px -144px}
+.mc-icon-hand-left{background-position:-168px -144px}
+.mc-icon-hand-up{background-position:-192px -144px}
+.mc-icon-hand-down{background-position:-216px -144px}
+.mc-icon-circle-arrow-right{background-position:-240px -144px}
+.mc-icon-circle-arrow-left{background-position:-264px -144px}
+.mc-icon-circle-arrow-up{background-position:-288px -144px}
+.mc-icon-circle-arrow-down{background-position:-312px -144px}
+.mc-icon-globe{background-position:-336px -144px}
+.mc-icon-wrench{background-position:-360px -144px}
+.mc-icon-tasks{background-position:-384px -144px}
+.mc-icon-filter{background-position:-408px -144px}
+.mc-icon-briefcase{background-position:-432px -144px}
+.mc-icon-fullscreen{background-position:-456px -144px}
+
+
+/* Print styles!
+ * -------------------------------------------------------------------------------*/
+@media print {
+
+
+
+}
+
+
+/* Media queries!
+ * -------------------------------------------------------------------------------*/
+
+/* Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
+@media screen and (max-device-width: 480px) {
+
+
+}
+
+@media all and (orientation: portrait) {
+
+}
+
+@media all and (orientation: landscape) {
+
+}
+
+.mc-no-alerts {
+	background: #ccc !important;
+}
+
+.mc-box-tabs.mc-first-col {
+	width: 30%;
+	float: left; 
+} 
+
+.mc-box-tabs.mc-last-col {
+	width: 70%;
+	float: left; 
+}
+
+.mc-warning {
+  background-color: rgb(230,100,0);
+  color: white;
+  display: block;
+  text-align: center;
+}
+
+.mc-warning a{
+  color: #4545D0;
+}
+
+.mc-warning .dismiss {
+  float: right;
+}
+
+.mc-warning .dismiss a {
+  color: white;
+}
+
+.mc-gra {
+  cursor: pointer; cursor: hand;
+}
+
+.mc-floating-button {
+  position: absolute;
+}
+
+
+.errorExplanation{
+	background-color: #FFF;
+	border-left: 4px solid #FFBA00;
+	-webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+	padding: 0.8em 1em;
+}
+
+.ngError{
+	border-left: 4px solid #C32A2A;
+}
+
+.errorExplanation h3{
+	margin: 0;
+	padding-bottom: 2px;
+}

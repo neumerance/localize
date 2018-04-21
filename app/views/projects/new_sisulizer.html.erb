@@ -1,0 +1,9 @@
+<%= form_tag({controller: :apps, :action=>:create_sisulizer}, {:multipart=>true}) do %>
+	<h3 style="display: inline;">Name this project</h3> &nbsp; (this name will be visible to translators)
+	<p><%= text_field_tag :name, '', :size=>80, :style=>'padding: 0.2em;', maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></p>
+	<h3 style="display: inline;">Sisulizer project file</h3> &nbsp; Upload the .slp file you want to translate
+	<p><%= file_field_tag('version[uploaded_data]', :size=>50, onchange: "validate_file_size('version[uploaded_data]', '#{ZIPPED_FILE_MAX_SIZE}')") %></p>
+	<p>
+      &laquo; <%= link_to(_('Go back'), {:controller=>:client, :action=>:getting_started}) %> &nbsp; | &nbsp; <%= submit_tag('Upload', :style=>'padding: 0.5em;', data: { disable_with: 'Please wait' }) %>
+	</p>
+<% end %>

@@ -1,0 +1,1 @@
+xml << render(:partial=>'cms_term', :object=>@cms_term, :locals => {:kind=>@kind, :show_children=>@show_children, :show_translation=>@show_translation})

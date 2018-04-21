@@ -1,0 +1,1 @@
+jQuery('#projects_<%= @alias_profile.id %>').html('<%= escape_javascript(render :partial => "alias_profiles/edit_projects", :locals => {:alias_profile => @alias_profile, :user => @auser}) %>')

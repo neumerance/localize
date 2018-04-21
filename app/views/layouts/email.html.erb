@@ -1,0 +1,66 @@
+<% if @html_email %>
+    <html>
+    <head>
+      <!-- Icanlocalize Template -->
+      <style>
+        <%= render :partial => 'reminder_mailer/css_style' %>
+      </style>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    </head>
+
+    <body>
+    <table class="body">
+      <tr>
+        <td class="center" align="center" valign="top">
+          <center>
+            <table class="container">
+              <tr>
+                <td>
+                  <table class="row mail-header">
+                    <tr>
+                      <td class="wrapper last">
+
+                        <table class="twelve columns">
+                          <tr>
+                            <td>
+                              <img src="https://d2drx6n2xb0i5r.cloudfront.net/site/wp-content/themes/icanlocalize/images/icanlocalize.png" style="width: 200px" />
+                            </td>
+                            <td class="expander"></td>
+                          </tr>
+                        </table>
+
+                      </td>
+                    </tr>
+                  </table><!-- .mail-header -->
+                  <table class="row mail-body" style="margin-top: 40px;">
+                    <tr>
+                      <td class="wrapper last">
+                        <table class="twelve columns">
+                          <tr>
+                            <td class="text-pad">
+                              <%= yield %>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                  <% if @footer_with_recommend %>
+                      <%= render :partial => 'reminder_mailer/footer_with_recommend_link' %>
+                  <% elsif @footer_translation_analytics %>
+                      <%= render :partial => 'reminder_mailer/footer_translation_analytics' %>
+                  <% else %>
+                      <%= render :partial => 'reminder_mailer/footer' %>
+                  <% end %>
+                </td>
+              </tr>
+            </table>
+          </center>
+        </td>
+      </tr>
+    </table>
+    </body>
+    </html>
+<% else %>
+    <%= yield %>
+<% end %>

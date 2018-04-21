@@ -1,0 +1,26 @@
+<td><%= check_box_tag("new_enabled_f", true, {:class=>"mc-toggle-checkbox" }) %></td>
+<td><%=text_field_tag :new_name_f, nil, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+<td><%=text_field_tag :new_email_f, nil, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+<td>
+	<a onclick="ajaxUpdater()" href="#">save</a>
+</td>
+
+<script>
+  function ajaxUpdater(){
+    var target = jQuery('#new_email')
+    jQuery.ajax({
+      url: '/alert_emails',
+      type: 'POST',
+      async: true,
+      data: {
+        email: jQuery('#new_email_f').val(),
+        name: jQuery('#new_name_f').val(),
+        enabled: jQuery('#new_enabled_f').is(':checked'),
+        translation_analytics_profile_id: <%=@profile_id%>
+      },
+      success: function(data){
+        target.html(data)
+      }
+    })
+  }
+</script>

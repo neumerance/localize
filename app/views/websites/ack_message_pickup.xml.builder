@@ -1,0 +1,1 @@
+xml.acked(:count=>@updated_messages_count)

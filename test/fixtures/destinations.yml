@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  url: <%= Faker::Internet.url %>
+  language_id: 1
+  name: <%= Faker::Name.name  %>
+
+two:
+  id: 2
+  url: <%= Faker::Internet.url %>
+  language_id: 2
+  name: <%= Faker::Name.name  %>

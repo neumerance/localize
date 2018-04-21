@@ -1,0 +1,8 @@
+<p><%= link_to('%d Website projects by registered users'%Website.where('anon != 1').count, {:action=>:cms_projects}) %></p>
+<p><%= link_to('%d Website Projects by anonymous users'%Website.where('anon = 1').count, {:action=>:anon_projects}) %></p>
+
+<p><%= link_to('%d Software localization projects'%TextResource.count, {:action=>:text_resources}) %></p>
+<p><%= link_to('%d Bidding projects'%Revision.count, {:controller=>:projects}) %></p>
+<!-- <p><%= link_to('%d Support centers'%WebSupport.count, {:action=>:web_supports}) %></p> -->
+
+<p><%= link_to('%d Instant Translations projects'%WebMessage.count, {:action=>:web_messages}) %></p>

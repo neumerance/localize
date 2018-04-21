@@ -1,0 +1,11 @@
+Hallo <%= @web_dialog.full_name %>,
+
+wir haben Ihre Nachricht erhalten und werden sie so schnell wie möglich beantworten. 
+Möchten Sie uns währenddessen eine weitere Nachricht zukommen lassen oder sämtliche von Ihnen abgegebene Kommentare sowie unsere Antworten darauf einsehen, klicken Sie bitte auf folgenden Link:
+
+<%= url_for({:escape => false, :only_path => false, :controller=>:web_dialogs, :action=>:show, :id=>@web_dialog.id, :accesskey=>@web_dialog.accesskey, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+* Bitte beachten Sie, dass dieses Postfach nicht auf Antworten überprüft wird.
+
+Mit freundlichen Grüßen,
+<%= @signature %>

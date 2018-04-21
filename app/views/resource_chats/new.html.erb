@@ -1,0 +1,34 @@
+<br /><div class="infobox"><h4>Project summary</h4>
+<table>
+	<tr><td><%= _("Name:") %></td><td><%= link_to(h(@text_resource.name), {:controller=>:text_resources, :action=>:show, :id=>@text_resource.id}) %></td></tr>
+	<tr><td><%= _("Client:") %></td><td><%= user_link(@text_resource.client) %></td></tr>
+	<tr><td><%= _("Original language:") %></td><td><b><%= @text_resource.language.name %></b></td></tr>
+	<tr><td><%= _("Current size:") %></td><td><b><%= @text_resource.unique_resource_strings.count %></b> strings</td></tr>
+	<tr><td><%= _("Description:") %></td><td><%= pre_format(@text_resource.description) %></td></tr>
+</table>
+</div>
+
+<div class="inter_div_space"></div>
+<h2><%= _("Apply to do this project") %></h2>
+
+<%= my_error_messages_for :resource_chat %>
+
+<%= form_for(:resource_chat, :url=>{:action=>:create}) do |f| %>
+<%= f.hidden_field(:resource_language_id) %>
+<h3>Message to client</h3>
+<p><%= text_area_tag(:message, @message, {:cols=>100, :rows=>10, :style=>'width:100%', maxlength: COMMON_NOTE}) %></p>
+
+
+<%= _("The rate for this project is %s USD per word.") % @resource_chat.resource_language.translation_amount %>
+<br>
+<% if @text_resource.client.top %>
+	<%=_("This project has a special pricing for this client, any questions please open a support ticket") %>
+	<br>
+<%end %>
+<br>
+
+<p><label><%= radio_button_tag(:apply,1,@apply=='1') %> Apply for this work</label><br />
+<label><%= radio_button_tag(:apply,0,@apply=='0') %> Don't apply yet</label></p>
+
+<%= submit_tag(_('Submit'), data: { disable_with: _('Submit') }) %>
+<% end %>

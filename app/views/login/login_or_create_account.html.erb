@@ -1,0 +1,112 @@
+<% if flash[:notice] %>
+	<div class="errorExplanation">
+	<h2> Found a problem </h2>
+		<ul>
+			<%= "#{flash[:notice]}".html_safe %>
+		</ul>
+	</div>
+<% end %>
+
+<h1><%= _('Sign in') %></h1>
+
+<% if @translation_analytics %>
+	<p> <%=_('An account at ICanLocalize is required to access your translation dashboard, even if you are not using our translators. With this account, you can also translate web contents, software interfaces, help files, plain texts, e-mails, office documents and a lot more. The signup is free.') %> </p>
+<% else %>
+	<p><%= _('An account in ICanLocalize is free, and it is required to access this feature.') %></p>
+<% end %>
+
+<h1><%= _('Use existing account') %></h1>
+<br/>
+<p><%=_('You will only have to login on translation dashboard once from this plugin.') %></p>
+
+<%= render :partial=> "login/login", :locals => {:from_page => @translation_analytics ? "translation_analytics" : nil,
+   												:extra_params => [
+													{:name => :wid, :value => @wid},
+													{:name => :accesskey, :value => @accesskey},
+												]} %>
+
+
+<h1><%= _('Create a new account') %></h1>
+<br />
+<div style="font-size: 120%;">
+<%= form_for(:auser, :url => users_path) do |f| %>
+
+	<%= hidden_field_tag(:utype, @utype) %>
+	<%= hidden_field_tag(:translation_analytics, @translation_analytics) %>
+	<% if @translation_analytics %>
+		<%= hidden_field_tag(:wid, @wid) %>
+		<%= hidden_field_tag(:accesskey, @accesskey) %>
+	<% end %>
+
+	<div class="infobox"><h4><%= _('Account information') %></h4>
+	<table class="new-account">
+		<tr>
+			<td class="field-kind priv-field"><%= _('First name:') %></td>
+			<td class="input-field priv-field"><%= f.text_field :fname, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+			<td rowspan="3" class="field-description priv-field"><%= _('Your name and email are kept private. We only use them to send you messages.') %></td>
+		</tr>
+		<tr>
+			<td class="field-kind priv-field"><%= _('Last name:') %></td>
+			<td class="input-field priv-field"><%= f.text_field :lname, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+		</tr>
+		<tr>
+			<td class="field-kind priv-field"><%= _('Email:') %></td>
+			<td class="input-field priv-field"><%= f.text_field :email, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+		</tr>
+		<tr>
+			<td class="field-kind"><%= _('Nickname:') %></td>
+			<td class="input-field"><%= f.text_field :nickname, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+			<td class="field-description"><%= _('Your nickname identifies you in the system. Only letters and digits allowed.') %></td>
+		</tr>
+		<tr>
+			<td class="field-kind"><%= _('Password:') %></td>
+			<td class="input-field"><%= f.password_field :password, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+			<td class="field-description"><%= _('A safe password will include a combination of letters and digits.') %></td>
+		</tr>
+	</table>
+	</div>
+
+	<div class="infobox"><h4><%= _('Verification code') %></h4>
+	<p><%= _('To avoid spam and automatic registration we ask you to repeat the code you see in the picture.') %></p>
+	<% if @captcha_error -%><div class="fieldWithErrors"><% end -%>
+	<table class="signup"><tr>
+		<td class="signupdescription"><%= _('Verification code:') %><br /></td>
+		<td><%= image_tag @captcha_image.public_filename, :size=>@captcha_image.image_size %></td>
+	</tr><tr>
+		<td class="signupdescription"><%= _('Enter code:') %></td>
+		<td><%= text_field_tag :code, '', maxlength: 6 %></td>
+	</tr></table>
+<% if @captcha_error %></div><% end %>
+	</div>
+
+  <%= hidden_field_tag :captcha_id, @captcha_image.id %>
+
+	<div class="infobox"><h4><%= _('User agreement') %></h4>
+	<%= _('You must accept the user agreement (in the link below) in order to create an account.<br />Please take your time to fully read the agreement before accepting.') %><br />
+	<br />
+	<% if @user_agreement_not_accepted %><div class="fieldWithErrors"><% end -%>
+	<%= check_box_tag(:accept_agreement, 1, false, { :onclick=>"document.getElementsByName('submit')[0].disabled = !document.getElementsByName('accept_agreement')[0].checked;" }) %><%= _('I have read and accept the %s')%('<div id="agreement" style="display: inline;">'+@default_user_agreement+'</div>') %>
+	<br />
+	<br />
+	<% if @user_agreement_not_accepted %></div><% end -%>
+	</div>
+
+  <p>
+    <%= submit_tag _('Sign Up'), :name=>'submit', :style=>'padding: 0.5em 1.5em;', data: { disable_with: _('Sign Up') } %>
+  </p>
+
+<h1>About your privacy</h1>
+<p>
+<%=_("The information that you provide here will only be used for your Translation Analytics account. We will never share that information with anyone else or use it for marketing purposes without your approval. For complete information, please see our Translation Anayltics privacy policy.")%>
+</p>
+
+
+  <script type="text/javascript" language="JavaScript">
+<!--
+		document.getElementsByName("accept_agreement")[0].disabled = <%= @disable_user_agreement %>;
+		document.getElementsByName("submit")[0].disabled = true;
+-->
+</script>
+
+<% end %>
+</div>

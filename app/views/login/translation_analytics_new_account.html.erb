@@ -1,0 +1,99 @@
+
+<% if flash[:notice] && !flash[:notice].empty? %>
+	<div class="errorExplanation ngError">
+	 <h3> Found a problem </h3>
+		<ul>
+			<%= flash[:notice].html_safe %>
+		</ul>
+	</div>
+<% end %>
+<br />
+
+<div id="create_icl_account" style="">
+  <h1><%= _('Create an account for Translation Analytics') %></h1>
+  <div style="font-size:16px;">
+    <%= form_for(:auser, :url => users_path) do |f| %>
+
+      <%= hidden_field_tag(:utype, @utype) %>
+      <%= hidden_field_tag(:translation_analytics, @translation_analytics) %>
+      <%= hidden_field_tag(:wid, @wid) %>
+      <%= hidden_field_tag(:accesskey, @accesskey) %>
+
+      <table class="new-account">
+        <tr>
+          <td class="field-kind priv-field"><%= _('First name:') %></td>
+          <td class="input-field priv-field"><%= f.text_field :fname, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+        </tr>
+        <tr>
+          <td class="field-kind priv-field"><%= _('Last name:') %></td>
+          <td class="input-field priv-field"><%= f.text_field :lname, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+        </tr>
+        <tr>
+          <td class="field-kind priv-field"><%= _('Email:') %></td>
+          <td class="input-field priv-field"><%= f.text_field :email, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+        </tr>
+        <tr>
+          <td class="field-kind priv-field"></td>
+          <td class="input-field priv-field">
+              <%= submit_tag _('Create account'), :name=>'submit', data: { disable_with: _('Create account') } %>
+              <%= link_to "Privacy policy", "http://wpml.org/documentation/translating-your-contents/translation-analytics-plugin/translation-analytics-privacy-policy/", :target => '_blank' %>
+          </td>
+        </tr>
+        </table>
+      <br/>
+    <% end %>
+
+    <% if @email %>
+      <div class="small_letters"><%= link_to_function _('Use existing Translation Analytics Account'), '$("create_icl_account").hide(); $("existing_icl_account").show()' %></div>
+    <% end %>
+  </div>
+</div>
+
+
+<div id="existing_icl_account" style="display: none;">
+  <h1><%= _('Login using your Translation Analytics Account') %></h1>
+
+    <% if @email %>
+      <div class="errorExplanation">This e-mail is already registered in our system, please enter your password to continue.</div>
+    <% end %>
+  
+    <div style="font-size:16px;">
+    <%= form_tag({:action=>'login'}.merge(LOGIN_ARGS) ) do %>
+      <%= hidden_field_tag(:from_page, 'translation_analytics') %>
+      <%= hidden_field_tag(:wid, @wid) %>
+      <%= hidden_field_tag(:accesskey, @accesskey) %>
+
+      <table class="new-account">
+        <tr>
+          <td class="field-kind priv-field"><%= _('E-Mail:') %></td>
+          <td class="input-field priv-field">
+            <% if @email %>
+              <%=@email%>
+              <%= hidden_field_tag(:email, @email) %>
+            <% else %>
+              <input type="text" name="email" value="<%= @email %>"/>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td class="field-kind priv-field"><%= _('Password:') %></td>
+          <td class="input-field priv-field"><input type="password" name="password" /></td>
+        </tr>
+        <tr>
+          <td class="field-kind priv-field"></td>
+          <td class="input-field priv-field"><%= submit_tag(_('Login'), :disable_with=>'Logging in...') %></td>
+        </tr>
+      </table>
+    <% end %>
+    <br/>
+    <br/>
+    <div class="small_letters"><%= link_to_function _("I don't have an account"), '$("existing_icl_account").hide(); $("create_icl_account").show();'  %></div>
+  </div>
+</div>
+
+<% if @email %>
+  <script type="text/javascript">
+    $("create_icl_account").hide(); 
+    $("existing_icl_account").show();
+  </script>
+<% end %>

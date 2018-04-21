@@ -1,0 +1,12 @@
+Hola <%= @web_dialog.full_name %>,
+
+<%= @web_message.body_for_user(false) %>
+<% if @has_attachments %>
+Este mensaje también contiene archivos adjuntos. Para obtener el archivo adjunto(s), haga clic en el vínculo que aparece a continuación.<% end %>
+
+No responda a este correo electrónico.
+Si desea enviarnos otro mensaje, envíe un archivo adjunto, o para ver el registro completo de sus comentarios y nuestras respuestas, haga clic aquí:
+<%= url_for({:escape => false, :only_path => false, :controller=>:web_dialogs, :action=>:show, :id=>@web_dialog.id, :accesskey=>@web_dialog.accesskey, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+Atentamente,
+<%= @signature %>

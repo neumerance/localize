@@ -1,0 +1,1 @@
+<%= button_to("#{@auser.webta_enabled? ? 'Disable' : 'Enable'} WebTA access", {:action=>'webta_access', :id => @auser.id}, :method => :get, remote: true, data: { disable_with: 'Please wait...' }) %>

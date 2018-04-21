@@ -1,0 +1,7 @@
+<tr>
+	<td><%= link_to(message_for_editing.id, {:controller=>:web_messages, :action=>:show, :id=>message_for_editing.id}) %></td>
+	<td><%= link_to(h(truncate(message_for_editing.get_name, length: 60, omission: '...')), {:controller=>:web_messages, :action=>:show, :id=>message_for_editing.id, :anchor=>'reply'}) %></td>
+	<td><%= message_for_editing.client_language.name %></td>
+	<td><%= message_for_editing.visitor_language.name %></td>
+	<td><%= message_for_editing.word_count %></td>
+</tr>

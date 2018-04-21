@@ -1,0 +1,14 @@
+<%= infotab_header(['Project','Status',] ) %>
+<% @report.each do |entry| %>
+	<tr>
+		<td>
+      <%= link_to({:controller=>:text_resources, :action=>:show, :id=>entry[0].text_resource.id}) do %>
+          <span><%= entry[0].text_resource.name %>, <%= entry[0].text_resource.language.name %> &raquo; <%= entry[0].language.name %></span>
+      <% end %>
+    </td>
+		<td><%= entry[1] %></td>
+	</tr>
+<% end %>
+</table>
+<br />
+<p><%= link_to('Execute', {:action=>:refund_resource_language_credits, :real_run=>1}, :class=>'rounded_but_orange') %></p>

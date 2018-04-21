@@ -1,0 +1,22 @@
+<h2> Search Transactions </h2>
+<%= form_tag({:action => :index}, {:method => :get}) do %>
+From <%= date_picker_field 'from_date', nil, {:value => params[:from_date].try(:to_date) || "2005-01-01".to_date} %> to <%= date_picker_field "to_date", nil, {:value => params[:to_date].try(:to_date) || Date.today} %> <br><br>
+amount in <%= money_field_tag 'from_amount', params[:from_amount] %> and  <%= money_field_tag 'to_amount', params[:to_amount] %><br><br>
+user by id: <%= id_field_tag 'user_id', params[:user_id] %> or by nickname <%= text_field_tag "user_nickname", params[:user_nickname], :size => 10, maxlength: COMMON_FIELD%><br><br>
+<%= submit_tag 'Search', data: { disable_with: 'Please wait...' } %>
+
+  <h2>Results</h2>
+  <div class="pager_control" style="position: relative; height: 15px;">
+      <%= paginate @money_transactions %>
+      <label style="position: absolute; top: 2px; right: 10px">
+        Results per page: <%= select_tag 'per_page', options_for_select(%w(10 20 40 60 80 100), params[:per_page]), onchange: 'submit()'  %>
+      </label>
+      <div style="clear: both"></div>
+  </div>
+<% end %>
+
+<%= infotab_header([_('ID'), _('Date'),'Transfer type','Processor', _('Amount'), _('Fee'), _('Net amount'), _('Transaction ID'), 'Source', 'Target', "Actions"], {_('Amount') => {'class'=>'moneycolumn'}}) %>
+<% @money_transactions.each do |money_transactions| %>
+    <%= render(:partial=>'money_transactions', locals: {money_transactions: money_transactions}) %>
+<% end %>
+</table>

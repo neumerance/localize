@@ -1,0 +1,5 @@
+<h2>Open arbitrations</h2>
+<%= render(:partial=>'arbitrations', locals: {arbitrations: @open_arbitrations, list_name: 'open arbitration'}) %>
+<div class="inter_tab_spacer"></div>
+<h2>Closed arbitrations</h2>
+<%= render(:partial=>'arbitrations', locals: {arbitrations: @closed_arbitrations, list_name: 'closed arbitration'}) %>

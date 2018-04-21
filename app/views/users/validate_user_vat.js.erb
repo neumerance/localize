@@ -1,0 +1,33 @@
+<% if params[:auser][:country_id].to_i == 0 %>
+  jQuery('#vat_field').addClass('hide');
+  jQuery('#pay-button').prop('disabled', true);
+<% else %>
+  jQuery('#pay-button').prop('disabled', false);
+<% end %>
+// showing tax field
+var vatField = jQuery('#vat_field');
+<% if @vat.has_to_pay_tax && params[:auser][:country_id].to_i > 0 %>
+  vatField.find('#vat_code').val('<%= @vat.get_user_country.tax_code %>');
+  vatField.removeClass('hide');
+<% else %>
+  vatField.addClass('hide');
+<% end %>
+
+// set user tax rate
+jQuery('#tax-rate').text('<%= @vat.get_user_tax_rate.to_i %>');
+
+// setting tax amount
+var payableAmount = 0;
+payableAmount += parseFloat(jQuery('#deposit-amount-field').val()) || 0;
+$('tr.payables').each(function() {
+  payableAmount += parseFloat($(this).attr('data-amount'));
+});
+payableAmount -= parseFloat($('tr.current-balance').attr('data-balance')) || 0;
+if (payableAmount < 0) { payableAmount = 0 }
+var taxCost = parseFloat(payableAmount) * '<%= ".#{@vat.get_user_tax_rate.to_i}".to_f %>';
+jQuery('#tax-amount').text(formatter.format(taxCost));
+
+// setting total fund cost
+var totalCost = taxCost + payableAmount;
+jQuery('#total').find('input[name="amount"]').val(payableAmount);
+jQuery('#total').find('strong').text(formatter.format(totalCost));

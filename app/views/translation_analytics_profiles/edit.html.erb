@@ -1,0 +1,89 @@
+<% content_for :content do %>
+	<%= my_error_messages_for :auser %>
+	<div class="mc-box">
+		<h3>Translation Analytics Alert Settings</h3>
+    <% if %w(sandbox development).include? Rails.env %>
+      <%= form_tag test_emails_translation_analytics_profile_path(@translation_analytics_profile) %>
+        <%= submit_tag 'Send test e-mails', data: { disable_with: 'Send test e-mails' } %>
+      </form>
+    <% end %>
+
+		<div class="mc-box-inner-container">
+			<div class="mc-box-inner">
+
+				<h2>Alert triggers</h2>
+				<%= form_for @translation_analytics_profile do |f| %>
+					<input type="hidden" name="project_type" value="<%=params[:project_type]%>"/>
+					<input type="hidden" name="project_id" value="<%=params[:project_id]%>"/>
+					<div class="mc-accent mc-note">
+						<%= f.check_box :missed_estimated_deadline_alert, {:class => "mc-input"} %>
+						<label for="missed_estimated_deadline_alert" class="mc-t">
+							<%=_("Alert me if the translator rate isn't enough to meet the deadline %s days before.") % f.text_field(:missed_estimated_deadline_days, {:class => "mc-small", :size => 4, maxlength: COMMON_FIELD})%>
+						</label>
+					</div>
+					<div class="mc-accent mc-note">
+						<%= f.check_box :no_translation_progress_alert%>
+						<label for="no_translation_progress_alert" class="mc-t">
+							<%=_("Alert me if there is no progress on translation within %s days." % f.text_field(:no_translation_progress_days, {:class => "mc-small", :size => 4, maxlength: COMMON_FIELD}))%>
+						</label>
+					</div>
+
+					<%= f.submit _('Save Settings'), {:class =>"mc-btn mc-large", :style=>"margin-top: 20px;"}%>
+				<% end %>
+
+				<br/>
+				<h2>Alert Recipients</h2>
+				<table id="emails_table" class="mc-t">
+					<tr>
+						<th style="width: 20px;">
+							<%= check_box_tag('mark_all', nil, false, {:checked => false, :onClick => "set_all_checkboxes('email', this.checked, '')", :class=>"mc-checkall"}) %>
+						</th>
+						<th style="width: 40%">Name</th>
+						<th style="width: 40%">Email</th>
+						<th style="width: 20%">Actions</th>
+					</tr>
+					<% @translation_analytics_profile.alert_emails.each do |alert_email| %>
+						<tr id="<%="alert_email_#{alert_email.id}"%>">
+							<td><%= check_box_tag("email", "1", alert_email.enabled ? true : false, {:class=>"mc-toggle-checkbox", :onClick => "update_alert_email_enabled(#{alert_email.id},this.checked)"}) %></td>
+						<td><%=alert_email.name%></td>
+						<td><%=alert_email.email%></td>
+						<td><%=link_to 'delete', alert_email_path(alert_email), 'data-confirm' => 'Are you sure?', :method => 'delete', :remote => true %></td>
+					</tr>
+					<% end %>
+				</table>
+				<button class="mc-btn mc-large" style="margin-top: 20px;" onclick="add_new_row()">Add Recipient</button>
+
+				<script>
+					function update_alert_email_enabled(id,checked){
+            jQuery.ajax({
+              url: '/alert_emails/'+id+'/update_enabled',
+              data: {checked: checked},
+              type: 'POST'
+            })
+					}
+
+					function add_new_row(){
+					  var tr = jQuery('#emails_table tr:last')
+					  if(tr.hasClass('new_email')){
+              tr.after("<tr id='new_email' class='new_email'></tr>")
+              jQuery.ajax({
+                url: '/translation_analytics_profiles/new_email_table_line',
+                data: {profile_id: '<%=@translation_analytics_profile.id%>'},
+                type: 'POST',
+                success: function(data){
+                  jQuery('#new_email').html(data)
+                }
+              })
+            }
+					}
+				</script>
+
+
+				<div class="mc-clearfix"></div>
+
+			</div>
+		</div><!-- .box-inner-container -->
+	</div>
+<% end %>
+
+<%= render :partial => "/translation_analytics/translation_analytics_box" %>

@@ -1,0 +1,42 @@
+<%= infotab_top('Availability for web translation work', infobar_contents_user('If you are available for web translation work, we will notify you about new recurring projects once clients send documents to translation.', "If the translator is available for recurring translation work, the system allows clients to send jobs in the translator's language pairs.", true, @auser.available_for_cms == 1,'alert.png')) %>
+<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+	<% if @edit_translation_availability %>
+		<%= form_for(:auser, :url => { :action => :edit_translation_availability, :req=>:save }, :remote => true) do |f| %>
+			<p><label><%= f.check_box(:available_for_cms) %> I am available for recurring translation work at a rate of <%= DEFAULT_COST_PER_PROJECT_TYPE[WEBSITE_DRUPAL] %> USD / word (minos ICanLocalize standard commission).</label></p>
+			<%= submit_tag 'Save', data: { disable_with: 'Save' } %>
+		<% end %>
+		<%= form_tag({ :action => :edit_translation_availability, :req=>:hide }, :remote => true) do %>
+			<%= submit_tag 'Cancel', data: { disable_with: 'Cancel' } %>
+		<% end %>
+	<% elsif (@user == @auser) %>
+		<% if @auser.available_for_cms == 1 %>
+			<p>You have indicated that you are <b>available for recurring translation work</b>. We will notify you when new projects that have pending documents to translation, become available.</p>
+		<% elsif @auser.available_for_cms == 0 %>
+			<p>You have indicated that you are <b>not available for recurring translation work</b>. You will not receive notifications when new jobs come in.</p>
+		<% else %>
+			<p class="warning">You have not indicated if you are available or not for recurring translation work and will not receive new project notifications.</p>
+		<% end %>
+		<% if @canedit %>
+			<%= form_tag({ :action => :edit_translation_availability, :req=>:show }, :remote => true) do %>
+				<%= submit_tag 'Change your availability status', data: { disable_with: 'Change your availability status' } %>
+			<% end %>
+		<% end %>
+	<% else %>
+		<% if @auser.available_for_cms == 1 %>
+			<p>The translator is available for recurring translation work.</p>
+		<% elsif @auser.available_for_cms == 0 %>
+			<p>The translator is not available for recurring translation work.</p>
+		<% else %>
+			<p>The translator did not yet indicate availability for recurring translation work.</p>
+		<% end %>
+	<% end %>
+	<h4>About recurring translation work</h4>
+	<p>Recurring translation work is generated when clients need translation for websites created by a content management system. The client selects a translator and that translator is notified when there are now contents that need translation.</p>
+	<p>The way it works is:</p>
+	<ol><li>The client creates the project.</li>
+	<li>The client sends documents to translation and deposits payment for the work.</li>
+	<li>Translators who indicated in this form that they are available, are notified and are invited apply for the job.</li>
+	<li>The client choose the translator and translation gets started.</li>
+	<li>When new documents are sent, the same chosen translator continues with the project. Application is a one-time process, per project.</li>
+	</ol>
+</td></tr></table>

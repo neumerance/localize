@@ -1,0 +1,18 @@
+<%= HTML_EMAIL_HEADER.html_safe %>
+
+<p>Dear Supporters,</p>
+
+<p>The source XLIFF file for this job <%= link_to(@cms_request.id, @url, target: '_blank') %>
+  contains base64 content and will be impossible for translators to translate.</p>
+
+<p>Please notify the client that the issue will be fixed in the next version (WPML 4.0) and they can send the job after the update.</p>
+<br/>
+<p><b>Job Details:</b><br/>
+==========================================<br/>
+CMS ID: <%= @cms_request.id %><br/>
+Job URL: <%= link_to(@url, @url, target: '_blank') %><br/>
+Website ID: <%= @cms_request.website_id %><br/>
+Website Name: <%= @cms_request.website.name %><br/>
+Client Email: <%= @cms_request.website&.client&.email %></p>
+<br/>
+<%= EMAIL_SIGNATURE %>

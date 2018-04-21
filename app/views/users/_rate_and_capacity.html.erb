@@ -1,0 +1,27 @@
+<%= infotab_top('Rate and Capacity', infobar_contents_user('Tell clients about your rate and capacity', "This is the translator's normal rate and capacity. It may vary between projects, depending on the subject and complexity.", true, (@auser.rate != 0) && (@auser.capacity != 0) && (@auser.capacity != nil) ,'question.png')) %>
+<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+<% if (@user == @auser) %>
+	<%= form_tag({ :action => :update_rate }, :remote => true) do %>
+
+      <p>Rate per word: <%= text_field_tag(:rate, @auser.rate, {:size=>10, maxlength: COMMON_FIELD}) %><br />
+        <span class="comment">This rate is for display purposes only. It will show when clients search for translators in your language pair. You can negotiate different rates per project.<br />
+You cannot enter rates below <%= '%.2f'%MINIMUM_BID_AMOUNT %> USD / word.</span></p>
+
+      <p>Translation capacity (words per day): <%= text_field_tag(:capacity, @auser.capacity, {:size=>10, maxlength: COMMON_FIELD}) %><br />
+        <span class="comment">Give clients an estimate about the volume of translation you can do per day.</span></p>
+
+		<%= submit_tag 'Update', data: { disable_with: 'Update' } %>
+	<% end %>
+<% else %>
+	<% if @auser.rate && (@auser.rate > 0) %>
+		<p>Translation rate: <%= '%.2f'%@auser.rate %> USD / word.</p>
+	<% else %>
+		<p>The translator did not enter the nominal rate per word.</p>
+	<% end %>
+	<% if @auser.capacity && (@auser.capacity > 0) %>
+		<p>Translation capacity: <%= @auser.capacity %> words per day.</p>
+	<% else %>
+		<p>The translator did not enter the translation capacity.</p>
+	<% end %>
+<% end %>
+</td></tr></table>

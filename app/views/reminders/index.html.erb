@@ -1,0 +1,13 @@
+<% size = count_valid_reminder(@reminders, @user) %>
+<% if size > 0 %>
+	<%= form_tag({:controller=>:reminders, :action=>'delete_selected'}, method: :post, :id=>'reminders_list', remote: false, 'data-confirm' => 'Are you sure you want to delete the selected reminders?') do %>
+		<%= infotab_header([_('Select'),_('Reminder')] ) %>
+      <% @reminders.each do |reminder| %>
+			  <%= render(partial: 'reminder_show', locals: { reminder: reminder }) if reminder_event_link(reminder, @user) %>
+      <% end %>
+		</table>
+		<p><a href="#" onclick="toggleCheckBoxes('reminders_list'); return false;"><%= _("Select all") %></a> &nbsp; <%= submit_tag _('Delete selected'), data: { disable_with: _('Delete selected') } %></p>
+	<% end %>
+<% else %>
+	<p><%= _("Your reminders list is empty.") %></p>
+<% end %>

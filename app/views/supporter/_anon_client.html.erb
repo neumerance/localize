@@ -1,0 +1,12 @@
+<tr>
+	<td><%= disp_time(anon_client.signup_date) %></td>
+	<td><%= link_to(h(anon_client.websites[-1].name), anon_client.websites[-1].url) %></td>
+	<td><%= CMS_DESCRIPTION[anon_client.websites[-1].cms_kind] %></td>
+	<td><%= Website::PROJECT_KIND_TEXT[anon_client.websites[-1].project_kind] %></td>
+	<td>
+    <% anon_client.websites[-1].website_translation_offers.each do |o| %>
+        <%= link_to("#{o.from_language.name} -> #{o.to_language.name}", {:controller=>:website_translation_offers, :action=>:show, :website_id=>o.website_id, :id=>o.id}) %>
+        </br>
+    <% end %>
+	</td>
+</tr>

@@ -1,0 +1,7 @@
+<%= form_tag({:action=>:delete_dialogs}) do %>
+<%= infotab_header(['Select', 'Ticket', 'Created by', 'Date', 'Department', 'Status', 'Actions']) %>
+<%= render(:partial=>'web_dialog', :collection=>@web_dialogs) %>
+</table>
+<%= hidden_field_tag(:return_to, @return_to) %>
+<br /><%= link_to("No, don't delete those tickets", @return_to) %> &nbsp; | &nbsp; <%= submit_tag('Yes - Delete all selected tickets', data: { disable_with: 'Yes - Delete all selected tickets' }) %>
+<% end %>

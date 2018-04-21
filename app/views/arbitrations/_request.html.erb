@@ -1,0 +1,5 @@
+<% for request in @requests %>
+	<%= form_tag(request[1], :remote => true ) do %>
+		<%= submit_tag request[0], data: { disable_with: request[0] } %>
+	<% end %>&nbsp;
+<% end %>

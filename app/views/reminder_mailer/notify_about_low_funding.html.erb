@@ -1,0 +1,23 @@
+<p><b><%= _('Dear %s')%(@user.full_real_name) %></b>,</p>
+
+<p><%= _("You have submitted jobs for translation, but your account's balance is too low to complete them.") %></p>
+
+<p><%= _("Currently, your balance at ICanLocalize is: %.2f %s.")%[@account.balance,@account.currency.name] %></p>
+<p>
+<%= _('The funds required to complete all the pending translation work is currently: %.2f %s.')%[@expenses, @account.currency.name] %>
+</p>
+
+<p><%= _('These are the jobs that are currently pending translation:') %></p>
+<% for cms_target_language in @pending_cms_target_languages -%>
+ <p>
+ * <%= cms_target_language.cms_request.website.name %>: <%= _('%s from %s to %s')%[cms_target_language.cms_request.title, cms_target_language.cms_request.language.name, cms_target_language.language.name] %>
+ </p>
+<% end -%><% for web_message in @pending_web_messages -%>
+<p>
+ * <%= _('%s from %s to %s')%[web_message.name || _('Instant translation'), web_message.original_language.name, web_message.destination_language.name] %>
+</p>
+<% end -%>
+
+<% url = url_for({:escape=>false, :only_path=>false, :controller=>:finance, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+<p><%= _('To deposit the missing funding to your account, visit this page:') %> <%= link_to url, url %></p>

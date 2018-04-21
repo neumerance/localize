@@ -1,0 +1,34 @@
+<% unless @error %>
+	<%= form_tag({:action => 'change_deadlines', :controller => 'translation_analytics_language_pairs'}, :remote => true) %>
+	<% @language_pairs.each do |language_pair| %>
+		<input type="hidden" name="language_pairs[]" value="<%=language_pair.id%>"/>
+	<%end%>
+	<div class="mc-dd-box-inner">
+		<%= radio_button_tag "deadline", "manual", @deadline_manual, {:class => "mc-input"} %>
+		<label for="dateSet-1">Set the deadline manually to</label>
+		<%
+			Rails.logger.debug @deadline_manual.inspect
+			Rails.logger.debug @deadline_date.inspect
+		%>
+		<%= date_picker_field "deadline_date", nil, (@deadline_manual ? {:value => @deadline_date.to_s} : {:value => Date.today}), '<i class="mc-icon-calendar"></i>' %>
+
+		<div class="mc-clearfix"></div><br />
+		<p style="margin-top:5px;">Note: most translators can handle up to 1500 words per day</p>
+
+		<%= radio_button_tag "deadline", "automatic", !@deadline_manual, {:class => "mc-input"} %> 
+		<label for="dateSet-2">Set the deadline automatically when I send
+			content for translation</label>
+		<div class="mc-clearfix"></div>
+	</div>
+	<%= submit_tag 'Apply', class: 'mc-input mc-input-half', data: { disable_with: 'Apply' } %>
+	<div class="mc-btn mc-secondary mc-cancel", onClick="Effect.Fade('boxChangeDeadline', 'appear', {duration: 0.4});">Cancel</div>
+</form>
+
+<% else %>
+
+	<div class="mc-dd-box-inner">
+		<label><%=@error%></label>
+	</div>
+	<div class="mc-btn mc-secondary mc-cancel" style="margin: 0px 20%;", onClick="Effect.Fade('boxChangeDeadline', 'appear', {duration: 0.4});">Ok</div>
+
+<% end %>

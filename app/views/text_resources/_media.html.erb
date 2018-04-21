@@ -1,0 +1,22 @@
+<% if @editing_media %>
+	<div id="documents_to_upload"><p><%= file_field_tag 'file1[uploaded_data]', :size=>70, :id=>'file1_uploaded_data', onchange: "validate_file_size('file1[uploaded_data]', '#{ATTACHMENT_MAX_SIZE}')" %></p></div>
+	<p><a href="#form_top" onclick="add_another_file(<%= ATTACHMENT_MAX_SIZE %>);"><%= _('Add another attachment') %></a></p>
+<% else %>
+	<% if @text_resource.messages.length > 0 %>
+	<% else %>
+		<p class="warning">
+      <%= image_tag 'icons/important_16.png', class: '', width: 16, height: 16, alt: 'status', style: 'vertical-align: bottom', border: 0 %>
+      There is no uploaded media for this project yet.
+    </p>
+		<% if @user == @text_resource.client %>
+			<p>You can upload images and other files which describe the application.</p>
+			<p>Showing the translators how the texts are used in your program will greatly improve the quality of the translation.</p>
+			<%= form_tag({:action=>:edit_media, :req=>'show'}, :remote => true) do %>
+				<%= submit_tag('Upload new media', data: { disable_with: 'Please wait' }) %>
+			<% end %>
+		<% else %>
+			<p>Software localization projects can be difficult to do if you don't know how texts are displayed.</p>
+			<p>You are encouraged to find more information about the application from the client before starting the job.</p>
+		<% end %>
+	<% end %>
+<% end %>

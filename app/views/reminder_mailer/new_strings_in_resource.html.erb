@@ -1,0 +1,42 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>There are <%= @string_count %> new strings with <%= @word_count %> new words to translate in project '<%= @text_resource.name %>'.</p>
+
+<p>
+  To translate these new strings, go here:
+  <% link = url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:resource_strings, :action=>:index, :text_resource_id=>@text_resource.id } ) %>
+  <%= link_to link, link %>
+</p>
+
+<p>
+  Deadline for this translation is set to:
+  <%= disp_time(@deadline) %>
+</p>
+
+
+<p>== Read the client's project description ==</p>
+
+<p>Before you begin translation, go over the project's description one more time.</p>
+
+<p>
+  The client has included important information and instructions which you need to follow.
+  If there are links, we ask that you visit them and make sure that you know what the project is used for.
+</p>
+
+<p>---</p>
+
+<p><%= @text_resource.description %></p>
+
+<p>---</p>
+
+
+<p>== Remember to declare work-completion ==</p>
+
+<p>
+  Once you complete the translation, you will see a button to declare the work as complete.
+  We will notify the client that you've completed translation only after you click that button.
+</p>
+
+<p>When you're done, review your translation and then click to declare as complete.</p>
+
+<%= EMAIL_SIGNATURE %>

@@ -1,0 +1,11 @@
+pt1:
+  id: 1
+  client_id: 2
+  translator_id: 11
+  status: <%= PRIVATE_TRANSLATOR_ACCEPTED %>
+
+pt2:
+  id: 2
+  client_id: 2
+  translator_id: 12
+  status: <%= PRIVATE_TRANSLATOR_ACCEPTED %>

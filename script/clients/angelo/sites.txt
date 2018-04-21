@@ -1,0 +1,501 @@
+URL,Category,FTP username,FTP password
+24tvseriesepisodes.com,Miscellaneous - Entertainment,spm052,500spm
+aboutamericancars.com,Miscellaneous - Automotive,spm116,500spm
+aboutbirdflu.net,Health & Beauty,spm029,500spm
+about-dental.com,Dental,spm080,500spm
+aboutdental.net,Dental,spm076,500spm
+aboutdentalimplant.com,Dental,spm101,500spm
+abouteuropeancars.com,Miscellaneous - Automotive,spm117,500spm
+abouthairtransplant.com,Health & Beauty,spm016,500spm
+aboutharrypottermovies.com,Miscellaneous - Entertainment,spm085,500spm
+abouthealthcarelaw.com,Health & Beauty,spm008,500spm
+aboutjapanesecars.com,Miscellaneous - Automotive,spm118,500spm
+aboutorthodontics.net,Dental,spm102,500spm
+aboutprostatecancer.net,Health & Beauty,spm023,500spm
+aboutrealestates.net,Real Estate,spm057,500spm
+aboutsexuallytransmitteddiseases.com,Health & Beauty,spm050,500spm
+aboutwomenshealthcare.com,Health & Beauty,spm009,500spm
+absoluteapartments.com,Real Estate,spm071,500spm
+accountingjobinterviewguide.com,Jobs and Careers,spm095,500spm
+accountingjobinterviewstips.com,Jobs and Careers,spm092,500spm
+accountinglaborlawreferences.com,Jobs and Careers,spm094,500spm
+advertisingjobsearchonline.com,Jobs and Careers,spm081,500spm
+africatraveldestinations.net,Miscellaneous - Travel,spm103,500spm
+allaboutbathroomrenovation.com,Real Estate,spm031,500spm
+allaboutbeachfrontproperties.com,Real Estate,spm028,500spm
+allaboutbraincancer.com,Health & Beauty,spm010,500spm
+allaboutcaregiver.com,Health & Beauty,spm047,500spm
+allaboutchronicpain.com,Health & Beauty,spm025,500spm
+allaboutcondoliving.com,Real Estate,spm027,500spm
+allaboutcondos.net,Real Estate,spm062,500spm
+allabouterectiledysfunction.net,Health & Beauty,spm049,500spm
+allabouthearthproblems.com,Health & Beauty,spm012,500spm
+allabouthomerenovation.com,Real Estate,spm030,500spm
+allaboutinteriordesign.net,Real Estate,spm029,500spm
+allaboutkitchenrenovation.com,Real Estate,spm032,500spm
+allaboutleukemia.com,Health & Beauty,spm031,500spm
+allaboutlungcancer.net,Health & Beauty,spm044,500spm
+allaboutluxuryhomes.com,Real Estate,spm026,500spm
+allaboutmigraine.com,Health & Beauty,spm048,500spm
+allaboutrealestatefraud.com,Real Estate,spm033,500spm
+allaboutskincancer.net,Health & Beauty,spm018,500spm
+allaboutvoip.net,Internet,spm003,500spm
+allaboutwebapplications.com,Internet,spm029,500spm
+allaboutwebinnovations.com,Internet,spm031,500spm
+alternativesoundbytes.com,Miscellaneous - Entertainment,spm088,500spm
+americatraveldestinations.com,Miscellaneous - Travel,spm100,500spm
+asiatraveldestinations.com,Miscellaneous - Travel,spm101,500spm
+australiatraveldestinations.net,Miscellaneous - Travel,spm102,500spm
+autoinsurance-blog.net,Insurance,spm066,500spm
+automobileinsurance101.net,Insurance,spm082,500spm
+bandgigsdaily.com,Miscellaneous - Entertainment,spm059,500spm
+bankingjobinterviewsguides.com,Jobs and Careers,spm067,500spm
+bankingjobpromotiontips.com,Jobs and Careers,spm088,500spm
+bankinglaborlawreferences.com,Jobs and Careers,spm104,500spm
+basicautomobileinsurance.com,Insurance,spm086,500spm
+basicautomobileinsurance.net,Insurance,spm087,500spm
+basicbusinessinsurance.com,Insurance,spm088,500spm
+basicbusinessinsurance.net,Insurance,spm089,500spm
+basiccarinsurance.net,Insurance,spm085,500spm
+basiccarmaintenance.net,Miscellaneous - Automotive,spm119,500spm
+basicdentalspa.com,Dental,spm103,500spm
+basicinteriordesigns.com,Real Estate,spm025,500spm
+basiclifeinsurance.net,Insurance,spm083,500spm
+basicorthodontics.com,Dental,spm104,500spm
+basicpctroubleshooting.com,Computers,spm001,500spm
+basicphotoediting.com,Computers,spm031,500spm
+basicphpprogramming.com,Computers,spm002,500spm
+basicrubyonrailsprogramming.com,Computers,spm003,500spm
+basictravelinsurance.net,Insurance,spm084,500spm
+basicvideoediting.com,Computers,spm032,500spm
+basicwebapplications.com,Internet,spm050,500spm
+basicwebtools.net,Internet,spm042,500spm
+basketballstatisticsonline.com,Miscellaneous - Entertainment,spm068,500spm
+batman-movies.net,Miscellaneous - Entertainment,spm125,500spm
+beautyqueensecret.com,Health & Beauty,spm014,500spm
+beautyqueensecrets.net,Health & Beauty,spm035,500spm
+beautytipsblog.net,Health & Beauty,spm021,500spm
+boxofficeleaders.com,Miscellaneous - Entertainment,spm080,500spm
+buyingspaces.net,Real Estate,spm054,500spm
+cancerpreventionguide.net,Health & Beauty,spm019,500spm
+careerhuntingtips.com,Jobs and Careers,spm056,500spm
+careeropportunitiesguide.com,Jobs and Careers,spm123,500spm
+careeropportunitiesjournal.com,Jobs and Careers,spm115,500spm
+careeropportunitiesnow.com,Jobs and Careers,spm100,500spm
+careeropportunitiesonline.net,Jobs and Careers,spm076,500spm
+careeropportunitiestoday.com,Jobs and Careers,spm124,500spm
+careersonlineblog.com,Jobs and Careers,spm066,500spm
+carinsurancedaily.net,Insurance,spm091,500spm
+carinsurancefundamentals.com,Insurance,spm106,500spm
+carinsurancenews.net,Insurance,spm098,500spm
+carinsuranceupdate.net,Insurance,spm108,500spm
+celebritybeautysecrets.net,Health & Beauty,spm034,500spm
+celebritybubble.net,Miscellaneous - Entertainment,spm076,500spm
+celebrityfix.net,Miscellaneous - Entertainment,spm084,500spm
+celebritynewstonight.com,Miscellaneous - Entertainment,spm077,500spm
+celebritytrends.net,Miscellaneous - Entertainment,spm079,500spm
+challegediabetes.com,Health & Beauty,spm043,500spm
+challengesleepdisorder.com,Health & Beauty,spm020,500spm
+chicapartments.net,Real Estate,spm045,500spm
+childrenshealthinsuranceinfo.com,Insurance,spm079,500spm
+citypropertiesjournal.com,Real Estate,spm075,500spm
+classycondos.net,Real Estate,spm070,500spm
+commercialestates.net,Real Estate,spm063,500spm
+commercialspaces.net,Real Estate,spm065,500spm
+condo101.net,Real Estate,spm067,500spm
+condochic.net,Real Estate,spm037,500spm
+condoliving101.com,Real Estate,spm023,500spm
+condoliving101.net,Real Estate,spm047,500spm
+dailycelebritydose.net,Miscellaneous - Entertainment,spm081,500spm
+dailyentertainmentguide.com,Miscellaneous - Entertainment,spm083,500spm
+dailyestatenews.com,Real Estate,spm053,500spm
+dailyinternetblog.com,Internet,spm004,500spm
+dailyinternetdigest.com,Internet,spm041,500spm
+dailyinternetguide.com,Internet,spm034,500spm
+dailyinternetjournal.com,Internet,spm001,500spm
+dailyinternetreview.com,Internet,spm023,500spm
+dailyjobhunting.com,Jobs and Careers,spm060,500spm
+dailyjobhuntjournal.com,Jobs and Careers,spm121,500spm
+dailysportsjournal.net,Miscellaneous - Entertainment,spm067,500spm
+denguefeverinformation.com,Health & Beauty,spm038,500spm
+dentalamalgamguide.com,Dental,spm105,500spm
+dentalbraceguide.com,Dental,spm106,500spm
+dentalcavitiesguide.com,Dental,spm107,500spm
+dentalextractionguide.com,Dental,spm108,500spm
+dentalimplantbasics.net,Dental,spm109,500spm
+dentalimplantpackages.com,Dental,spm110,500spm
+dentalimplanttips.net,Dental,spm111,500spm
+dentalnotationguide.com,Dental,spm112,500spm
+dentalrestoration101.com,Dental,spm113,500spm
+dentalrestorationguide.com,Dental,spm114,500spm
+dentalrestorationtrends.com,Dental,spm115,500spm
+easyjobhunt.net,Jobs and Careers,spm078,500spm
+easyonlinejobsearch.com,Jobs and Careers,spm051,500spm
+easypctroubleshooting.com,Computers,spm004,500spm
+easyphpprogramming.net,Computers,spm005,500spm
+easyrubyonrailsprogramming.com,Computers,spm006,500spm
+easywebtutorials.net,Internet,spm016,500spm
+effectiveaccountingjobmotivation.com,Jobs and Careers,spm096,500spm
+effectivebankingjobmotivation.com,Jobs and Careers,spm085,500spm
+effectivebusinessinsurance.com,Insurance,spm112,500spm
+effectivecarinsurance.com,Insurance,spm096,500spm
+effectivehealthinsurance.net,Insurance,spm102,500spm
+effectivemarketingjobmotivation.com,Jobs and Careers,spm099,500spm
+effectivemedicaljobmotivation.com,Jobs and Careers,spm097,500spm
+effectivesalesjobmotivation.com,Jobs and Careers,spm098,500spm
+effectivetravelinsurance.com,Insurance,spm115,500spm
+equestriantales.com,Miscallenaous - Sports,spm074,500spm
+essentialcarcare.net,Miscellaneous - Automotive,spm113,500spm
+essentialsounds.net,Miscellaneous - Entertainment,spm094,500spm
+essentialtravelguides.net,Miscellaneous - Travel,spm093,500spm
+europeancarguide.com,Miscellaneous - Automotive,spm114,500spm
+europetraveldestinations.net,Miscellaneous - Travel,spm099,500spm
+everthingaboutcellphone.com,Computers,spm017,500spm
+everythingaboutallergy.com,Health & Beauty,spm032,500spm
+everythingaboutbreastcancer.com,Health & Beauty,spm030,500spm
+everythingaboutcars.net,Miscellaneous - Automotive,spm105,500spm
+everythingaboutdigicam.com,Computers,spm018,500spm
+everythingaboutdvdrom.com,Computers,spm019,500spm
+everythingaboutideharddisk.com,Computers,spm020,500spm
+everythingaboutlaptop.com,Computers,spm021,500spm
+everythingaboutlcdmonitor.com,Computers,spm022,500spm
+everythingaboutmobilephone.com,Computers,spm023,500spm
+everythingaboutpcmotherboard.com,Computers,spm024,500spm
+everythingaboutplasticsurgery.net,Health & Beauty,spm046,500spm
+everythingaboutsatahardisk.com,Computers,spm025,500spm
+everythingaboutvideocam.com,Computers,spm026,500spm
+everythingaboutweightloss.net,Health & Beauty,spm017,500spm
+everything-api.com,Internet,spm012,500spm
+everythingcarinsurance.com,Insurance,spm099,500spm
+everythingftp.com,Internet,spm006,500spm
+everythinghealthinsurance.net,Insurance,spm105,500spm
+everythinghomeinsurance.com,Insurance,spm123,500spm
+everything-isp.com,Internet,spm036,500spm
+everythingjazz.net,Miscellaneous - Entertainment,spm089,500spm
+everythinglifeinsurance.net,Insurance,spm119,500spm
+everythingtravelinsurance.com,Insurance,spm113,500spm
+fashiontrendsoffall.com,Health & Beauty,spm003,500spm
+fightingfatigueguide.com,Health & Beauty,spm039,500spm
+findjobstoday.net,Jobs and Careers,spm059,500spm
+findrealestates.net,Real Estate,spm056,500spm
+foodandfitnessguide.com,Health & Beauty,spm011,500spm
+friendstvseriesepisodes.com,Miscellaneous - Entertainment,spm057,500spm
+globalinsuranceindustry.com,Insurance,spm051,500spm
+greysanatomyepisodes.net,Miscellaneous - Entertainment,spm053,500spm
+guidetoadvertisinglaborlaws.com,Jobs and Careers,spm082,500spm
+guidetoantispyware.com,Computers,spm033,500spm
+guidetobankinglaborlaws.com,Jobs and Careers,spm089,500spm
+guidetobathroomremodeling.net,Real Estate,spm020,500spm
+guidetoblogging.net,Internet,spm014,500spm
+guidetocaraudio.com,Miscellaneous - Automotive,spm108,500spm
+guidetochildhooddiseases.com,Beauty and Health,spm078,500spm
+guidetocondoliving.com,Real Estate,spm073,500spm
+guidetoeasyinternet.com,Internet,spm005,500spm
+guidetofindingjobs.com,Jobs and Careers,spm120,500spm
+guidetoindiemusic.com,Miscellaneous - Entertainment,spm086,500spm
+guide-to-isp.com,Internet,spm013,500spm
+guidetokitchenremodeling.net,Real Estate,spm019,500spm
+guidetolatestantivirus.com,Computers,spm034,500spm
+guidetolatestfirewall.com,Computers,spm035,500spm
+guidetomarketinglaborlaws.com,Jobs and Careers,spm105,500spm
+guidetomedicallaborlaws.com,Jobs and Careers,spm106,500spm
+guidetoprofessionalmedicalinterviews.com,Jobs and Careers,spm080,500spm
+guidetorealestatefraud.com,Real Estate,spm015,500spm
+guidetosaleslaborlaws.com,Jobs and Careers,spm107,500spm
+guidetowebsecurity.com,Internet,spm011,500spm
+haircare101blog.com,Health & Beauty,spm041,500spm
+haircaretrends.net,Health & Beauty,spm022,500spm
+healthcare101blog.com,Health & Beauty,spm036,500spm
+healthinsurance101.net,Insurance,spm081,500spm
+healthinsurancedaily.net,Insurance,spm090,500spm
+healthinsurancedailyblog.com,Insurance,spm052,500spm
+healthinsurancedailydigest.com,Insurance,spm053,500spm
+healthinsurancedailyguide.com,Insurance,spm054,500spm
+healthinsurancedailyjournal.com,Insurance,spm055,500spm
+healthinsurancedailytrend.com,Insurance,spm056,500spm
+healthinsurancefundamentals.com,Insurance,spm104,500spm
+healthinsuranceinsider.com,Insurance,spm057,500spm
+healthinsurancereferences.com,Insurance,spm107,500spm
+healthinsuranceupdate.net,Insurance,spm109,500spm
+heroestvseriesepisodes.com,Miscellaneous - Entertainment,spm058,500spm
+highestates.net,Real Estate,spm059,500spm
+hollywoodaccessonline.com,Miscellaneous - Entertainment,spm078,500spm
+hollywoodentertainmentguide.net,Miscellaneous - Entertainment,spm085,500spm
+homeinsurancedaily.net,Insurance,spm124,500spm
+homeinsurancedailyblog.com,Insurance,spm058,500spm
+homeinsurancedailydigest.com,Insurance,spm059,500spm
+homeinsurancedailyguide.com,Insurance,spm060,500spm
+homeinsurancedailyjournal.com,Insurance,spm061,500spm
+homeinsurancedailytrend.com,Insurance,spm062,500spm
+homeinsuranceinsider.com,Insurance,spm063,500spm
+homeinsurancenews.net,Insurance,spm121,500spm
+homeinsurancereferences.com,Insurance,spm122,500spm
+homeinteriordesigntips.net,Real Estate,spm024,500spm
+homeplannigndigest.com,Real Estate,spm039,500spm
+hondacarsdiy.com,Miscellaneous - Automotive,spm112,500spm
+hondacarsreference.com,Miscellaneous - Automotive,spm110,500spm
+hotmovieactors.com,Miscellaneous - Entertainment,spm088,500spm
+hotmovieactresses.com,Miscellaneous - Entertainment,spm089,500spm
+hottraveldestinations.net,Miscellaneous - Travel,spm092,500spm
+houseremodeling101.net,Real Estate,spm018,500spm
+houseremodelingguide.net,Real Estate,spm016,500spm
+houseremodelingtips.net,Real Estate,spm017,500spm
+houserenovationguide.net,Real Estate,spm021,500spm
+idealneighborhood.net,Real Estate,spm038,500spm
+indianajones-movies.net,Miscellaneous - Entertainment,spm087,500spm
+indiemusicscene.net,Miscellaneous - Entertainment,spm090,500spm
+insidesocialbookmarking.com,Internet,spm037,500spm
+insidetheboxingring.com,Miscallenaous - Sports,spm075,500spm
+insidetheworldwideweb.com,Internet,spm039,500spm
+insideworldpolitics.com,Miscellaneous - Politics,spm061,500spm
+interestingmovieclips.com,Miscellaneous - Entertainment,spm081,500spm
+interestingmoviequotes.com,Miscellaneous - Entertainment,spm082,500spm
+internetapplicationsguide.com,Internet,spm043,500spm
+japanesecarguide.com,Miscellaneous - Automotive,spm115,500spm
+jobhuntdaily.com,Jobs and Careers,spm058,500spm
+jobhuntexpert.com,Jobs and Careers,spm114,500spm
+jobhuntinsider.com,Jobs and Careers,spm061,500spm
+jobopportunitiesguide.com,Jobs and Careers,spm054,500spm
+jobsearchinsider.net,Jobs and Careers,spm083,500spm
+jobtrends101.com,Jobs and Careers,spm101,500spm
+journalofworldpolitics.com,Miscellaneous - Politics,spm062,500spm
+latestalbumreviews.com,Miscellaneous - Entertainment,spm095,500spm
+latestantivirusguide.com,Computers,spm036,500spm
+latestbeautyproducts.com,Health & Beauty,spm037,500spm
+latestbeautysupplies.com,Health & Beauty,spm045,500spm
+latestbeautytips.com,Health & Beauty,spm026,500spm
+latestcardesigns.com,Miscellaneous - Automotive,spm104,500spm
+latestcareerreviews.com,Jobs and Careers,spm057,500spm
+latestcarinsurancenews.com,Insurance,spm095,500spm
+latestcarinsurancetrends.com,Insurance,spm094,500spm
+latestcarreview.com,Miscellaneous - Automotive,spm120,500spm
+latestchatsoftware.com,Computers,spm037,500spm
+latestdentalcare.com,Dental,spm116,500spm
+latestemailtrends.com,Internet,spm035,500spm
+latestfreewarereview.com,Computers,spm038,500spm
+latesthaircareproducts.com,Health & Beauty,spm007,500spm
+latesthealthinsurancenews.com,Insurance,spm100,500spm
+latesthealthinsurancetrends.com,Insurance,spm101,500spm
+latesthondacars.com,Miscellaneous - Automotive,spm111,500spm
+latestinternetdigest.com,Internet,spm002,500spm
+latestinternetjournal.com,Internet,spm024,500spm
+latestjobtrends.com,Jobs and Careers,spm117,500spm
+latestlaptopreview.com,Computers,spm027,500spm
+latestlifeinsurancenews.com,Insurance,spm120,500spm
+latestmakeuptips.com,Health & Beauty,spm004,500spm
+latestmedicalbreakthroughs.com,Health & Beauty,spm024,500spm
+latestmedicaljobtrends.com,Jobs and Careers,spm077,500spm
+latestmedicaltechnology.net,Health & Beauty,spm013,500spm
+latest-movie-reviews.com,Miscellaneous - Entertainment,spm084,500spm
+latestmovietrailers.net,Miscellaneous - Entertainment,spm079,500spm
+latestmp3software.com,Computers,spm039,500spm
+latestonlinecareers.com,Jobs and Careers,spm062,500spm
+latestorthodontics.com,Dental,spm117,500spm
+latestpocketpcsoftware.com,Computers,spm040,500spm
+latestrealestatedevelopments.com,Real Estate,spm040,500spm
+latestrealestatetechnology.com,Real Estate,spm014,500spm
+latestskincareproducts.com,Health & Beauty,spm028,500spm
+latesttoyotacars.com,Miscellaneous - Automotive,spm107,500spm
+latesttravelinsurancenews.com,Insurance,spm111,500spm
+latestvoipnews.com,Internet,spm026,500spm
+latestvoipsoftware.com,Computers,spm041,500spm
+latestwebapplications.com,Internet,spm047,500spm
+latestwebinnovations.com,Internet,spm010,500spm
+latestwebsecurity.com,Internet,spm019,500spm
+latestwebservices.com,Internet,spm044,500spm
+latestwindowscreensaver.com,Computers,spm042,500spm
+latestwindowswallpaper.com,Computers,spm043,500spm
+lifeinsurancedaily.net,Insurance,spm092,500spm
+lifeinsurancereferences.net,Insurance,spm118,500spm
+livebandgigs.net,Miscellaneous - Entertainment,spm096,500spm
+livinginlofts.net,Real Estate,spm041,500spm
+lordoftheringsmovies.net,Miscellaneous - Entertainment,spm122,500spm
+losttvseriesepisodes.com,Miscellaneous - Entertainment,spm056,500spm
+lowincomehousingguide.com,Real Estate,spm013,500spm
+luxuryspaces.net,Real Estate,spm050,500spm
+makeuptipsblog.com,Health & Beauty,spm033,500spm
+marketingjobinterviewtips.com,Jobs and Careers,spm070,500spm
+marketingjobpromotiontips.com,Jobs and Careers,spm074,500spm
+marketinglaborlawreferences.com,Jobs and Careers,spm102,500spm
+medicaljobinterviewguide.com,Jobs and Careers,spm086,500spm
+medicaljobinterviewtips.com,Jobs and Careers,spm065,500spm
+medicaljobtrends101.com,Jobs and Careers,spm122,500spm
+medicallaborlawreferences.com,Jobs and Careers,spm103,500spm
+metropolitanflats.net,Real Estate,spm049,500spm
+metropolitanrealestates.com,Real Estate,spm035,500spm
+modernlofts.net,Real Estate,spm046,500spm
+mountaineerguide.net,Miscallenaous - Sports,spm073,500spm
+movietrivias.net,Miscellaneous - Entertainment,spm083,500spm
+movingspaces.net,Real Estate,spm052,500spm
+mp3softwareguide.com,Computers,spm044,500spm
+musicvideoinformation.com,Miscellaneous - Entertainment,spm065,500spm
+onlineemploymentblog.com,Jobs and Careers,spm118,500spm
+onlineemploymentdaily.com,Jobs and Careers,spm116,500spm
+onlineemploymentjournal.com,Jobs and Careers,spm117,500spm
+onlineemploymenttips.com,Jobs and Careers,spm119,500spm
+onlinejobhunting.net,Jobs and Careers,spm113,500spm
+onlinejobhuntingblog.com,Jobs and Careers,spm112,500spm
+onlinejobhuntingguide.com,Jobs and Careers,spm111,500spm
+onlinejobsblog.net,Jobs and Careers,spm052,500spm
+onlinejobsearchblog.net,Jobs and Careers,spm125,500spm
+onlinewebtutorials.net,Internet,spm030,500spm
+opensourcedailyguide.com,Computers,spm045,500spm
+opensourcedailyjournal.com,Computers,spm046,500spm
+orthodontics101.net,Dental,spm118,500spm
+orthodonticsguide.com,Dental,spm119,500spm
+orthodonticsinfo.net,Dental,spm120,500spm
+orthodonticsjournal.net,Dental,spm121,500spm
+orthodonticstrends.com,Dental,spm122,500spm
+pctroubleshooting101.com,Computers,spm007,500spm
+pctroubleshootingguide.net,Computers,spm008,500spm
+pctroubleshootingtips.com,Computers,spm009,500spm
+photoeditingtips.net,Computers,spm047,500spm
+phpprogramming101.com,Computers,spm010,500spm
+phpprogrammingguide.com,Computers,spm011,500spm
+phpprogrammingtips.com,Computers,spm012,500spm
+phpprogrammingtips.net,Computers,spm013,500spm
+planningrealestate.net,Real Estate,spm001,500spm
+planningrealestates.com,Real Estate,spm044,500spm
+pocketpcsoftwarereview.net,Computers,spm048,500spm
+politicsaroundtheglobe.com,Miscellaneous - Politics,spm063,500spm
+popmusicdaily.com,Miscellaneous - Entertainment,spm091,500spm
+popularmusiconline.com,Miscellaneous - Entertainment,spm060,500spm
+practicalcarinsurance.com,Insurance,spm097,500spm
+practicalhealthinsurance.net,Insurance,spm103,500spm
+practicalhomeinsurance.com,Insurance,spm125,500spm
+practicalrealestates.com,Real Estate,spm036,500spm
+practicaltravelinsurance.com,Insurance,spm116,500spm
+prisonbreak-episodes.com,Miscellaneous - Entertainment,spm055,500spm
+professionalaccountingjobinterviews.com,Jobs and Careers,spm075,500spm
+professionalbankingjobinterviews.com,Jobs and Careers,spm055,500spm
+professionalmedicaljobinterviews.com,Jobs and Careers,spm068,500spm
+professionalpublishingjobinterviews.com,Jobs and Careers,spm071,500spm
+professionalsalesjobinterviews.com,Jobs and Careers,spm110,500spm
+propertybuyandselltips.com,Real Estate,spm022,500spm
+propertyinsurancedaily.com,Insurance,spm093,500spm
+protectyourhair.net,Health & Beauty,spm027,500spm
+protectyourskin.net,Health & Beauty,spm015,500spm
+publishingjobinterviewtips.com,Jobs and Careers,spm093,500spm
+realestatebuyandsell.net,Real Estate,spm051,500spm
+realestatedailyblog.com,Real Estate,spm003,500spm
+realestatedailydigest.com,Real Estate,spm004,500spm
+realestatedailyguide.com,Real Estate,spm005,500spm
+realestatedailyinfo.com,Real Estate,spm006,500spm
+realestatedailyjournal.com,Real Estate,spm007,500spm
+realestatedailytrends.com,Real Estate,spm008,500spm
+realestateguideblog.com,Real Estate,spm009,500spm
+realestatehandbook.net,Real Estate,spm068,500spm
+real-estate-journal.com,Real Estate,spm002,500spm
+realestatelatestblog.com,Real Estate,spm010,500spm
+realestatenewsdaily.com,Real Estate,spm055,500spm
+realestateonlineblog.com,Real Estate,spm011,500spm
+realestatereferences.net,Real Estate,spm048,500spm
+realestatesage.net,Real Estate,spm060,500spm
+realestatetrendsblog.com,Real Estate,spm012,500spm
+realestatevoice.net,Real Estate,spm042,500spm
+rentingrealestate.net,Real Estate,spm066,500spm
+rockmusictoday.net,Miscellaneous - Entertainment,spm097,500spm
+rubyonrailsprogramming101.com,Computers,spm014,500spm
+rubyonrailsprogrammingguide.com,Computers,spm015,500spm
+rubyonrailsprogrammingtips.com,Computers,spm016,500spm
+salesjobinterviewguide.com,Jobs and Careers,spm073,500spm
+salesjobinterviewtips.com,Jobs and Careers,spm072,500spm
+salesjobpromotiontips.com,Jobs and Careers,spm064,500spm
+salesjobsmotivation.com,Jobs and Careers,spm090,500spm
+saleslaborlawreferences.com,Jobs and Careers,spm084,500spm
+seniordiseases.net,Health & Beauty,spm077,500spm
+showbizglam.com,Miscellaneous - Entertainment,spm100,500spm
+skincare101blog.com,Health & Beauty,spm040,500spm
+skincaretrends.net,Health & Beauty,spm042,500spm
+skinwhiteningsecrets.com,Health & Beauty,spm005,500spm
+smallcityspaces.com,Real Estate,spm043,500spm
+smallvileepisodes.net,Miscellaneous - Entertainment,spm054,500spm
+spiderman-movies.net,Miscellaneous - Entertainment,spm086,500spm
+sportscastdaily.net,Miscallenaous - Sports,spm071,500spm
+sportsworldinsider.com,Miscallenaous - Sports,spm069,500spm
+startrekmovies.net,Miscellaneous - Entertainment,spm124,500spm
+starwarsmovies.net,Miscellaneous - Entertainment,spm123,500spm
+successfuladvertisingjobs.com,Jobs and Careers,spm079,500spm
+successfuladvertisingresume.com,Jobs and Careers,spm069,500spm
+successfulbankingjobs.com,Jobs and Careers,spm063,500spm
+successfulmarketingjobs.com,Jobs and Careers,spm087,500spm
+successfulmedicaljobs.com,Jobs and Careers,spm108,500spm
+successfulmedicalresume.com,Jobs and Careers,spm109,500spm
+successfulsalesresume.com,Jobs and Careers,spm091,500spm
+supermanmovies.net,Miscellaneous - Entertainment,spm051,500spm
+supremerealtors.net,Real Estate,spm072,500spm
+technobeat.net,Miscellaneous - Entertainment,spm087,500spm
+tempraryhousing101.com,Real Estate,spm061,500spm
+theathleticsblog.com,Miscellaneous - Sports,spm070,500spm
+theautomobileinsuranceblog.com,Insurance,spm064,500spm
+thebeautytipsblog.com,Health & Beauty,spm001,500spm
+thebusinessinsuranceblog.com,Insurance,spm065,500spm
+thecarinsuranceblog.com,Insurance,spm066,500spm
+thecarinsuranceinsider.com,Insurance,spm067,500spm
+thecarinsurancereview.com,Insurance,spm068,500spm
+theconcertguide.net,Miscellaneous - Entertainment,spm092,500spm
+thedigitaldentist.net,Dental,spm123,500spm
+thehealthinsuranceblog.com,Insurance,spm069,500spm
+thehealthinsurancereview.com,Insurance,spm070,500spm
+thehollywoodlife.net,Miscellaneous - Entertainment,spm082,500spm
+thehomeinsuranceblog.com,Insurance,spm071,500spm
+thehomeinsurancereview.com,Insurance,spm072,500spm
+thelifeinsurancereview.com,Insurance,spm073,500spm
+themarineinsuranceblog.com,Insurance,spm074,500spm
+thematrixmovies.net,Miscellaneous - Entertainment,spm121,500spm
+thepropertyinsuranceblog.com,Insurance,spm075,500spm
+thetravelinsuranceblog.com,Insurance,spm076,500spm
+thetravelinsurancereview.com,Insurance,spm077,500spm
+tipsonjobhunting.com,Jobs and Careers,spm053,500spm
+tophotelsinafrica.com,Miscellaneous - Travel,spm098,500spm
+tophotelsinamerica.com,Miscellaneous - Travel,spm095,500spm
+tophotelsinasia.com,Miscellaneous - Travel,spm097,500spm
+tophotelsinaustralia.com,Miscellaneous - Travel,spm096,500spm
+tophotelsineurope.com,Miscellaneous - Travel,spm094,500spm
+toyotacarsdiy.com,Miscellaneous - Automotive,spm109,500spm
+toyotacarsinfo.com,Miscellaneous - Automotive,spm106,500spm
+travelinsurancedaily.com,Insurance,spm110,500spm
+travelinsuranceinsider.com,Insurance,spm078,500spm
+travelinsurancereferences.com,Insurance,spm114,500spm
+upcomingbands.net,Miscellaneous - Entertainment,spm064,500spm
+urbanconstructions.com,Real Estate,spm058,500spm
+urbanlots.net,Real Estate,spm069,500spm
+urbanmusicguide.com,Miscellaneous - Entertainment,spm093,500spm
+urbanrealestates.com,Real Estate,spm034,500spm
+urbanrelocation.net,Real Estate,spm064,500spm
+urbanspacesguide.com,Real Estate,spm074,500spm
+usbgadgetsguide.com,Computers,spm028,500spm
+videoeditingjournal.com,Computers,spm049,500spm
+videoeditingtips.net,Computers,spm050,500spm
+watersportsinfo.net,Miscellaneous - Sports,spm072,500spm
+webapplicationsguide.com,Internet,spm025,500spm
+webapplicationsonline.com,Internet,spm017,500spm
+webapplicationsreview.com,Internet,spm028,500spm
+webbrowserguide.com,Internet,spm008,500spm
+webdesigntechniques.net,Internet,spm007,500spm
+webdeveloperresources.com,Internet,spm048,500spm
+webinnovationsblog.com,Internet,spm040,500spm
+webinnovationsonline.com,Internet,spm021,500spm
+webinnovationsreview.com,Internet,spm033,500spm
+webpublishing101.net,Internet,spm046,500spm
+webpublishingtips.net,Internet,spm045,500spm
+websecurity101.com,Internet,spm015,500spm
+websecurityplanning.com,Internet,spm049,500spm
+websecurityreview.net,Internet,spm032,500spm
+websecuritytips.net,Internet,spm018,500spm
+webservicesguide.net,Internet,spm038,500spm
+webservicesreview.com,Internet,spm022,500spm
+webtechnologyjournal.com,Internet,spm020,500spm
+webtechnologyresources.com,Internet,spm009,500spm
+webtechnologytrends.net,Internet,spm027,500spm
+windowsvistatipsandtricks.com,Computers,spm029,500spm
+windowsxptipsandtricks.com,Computers,spm030,500spm
+winterskincare.net,Health & Beauty,spm002,500spm
+winterskincareblog.com,Health & Beauty,spm006,500spm
+workershealthinsuranceinfo.com,Insurance,spm080,500spm
+worldpoliticscentral.com,Miscellaneous - Politics,spm098,500spm
+worldpoliticsdaily.com,Miscellaneous - Politics,spm099,500spm
+younghollywoodactors.com,Miscellaneous - Entertainment,spm090,500spm
+younghollywoodactresses.com,Miscellaneous - Entertainment,spm091,500spm
+yourdentalcareguide.com,Dental,spm124,500spm
+yourdentalcaretips.com,Dental,spm125,500spm

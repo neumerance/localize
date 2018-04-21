@@ -1,0 +1,74 @@
+<% if @html_email %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <!-- wpml template -->
+  <style><%= render :partial => 'css_style' %></style>
+  <meta name="viewport" content="width=device-width"/>
+</head>
+<body>
+  <table class="body">
+    <tr>
+      <td class="center" align="center" valign="top">
+        <center>
+
+    <table class="container">
+      <tr>
+        <td>
+
+          <table class="row mail-header">
+            <tr>
+              <td class="wrapper last">
+
+                <table class="twelve columns">
+                  <tr>
+                    <td>
+                      <img src="http://www.onthegosystems.com/wp-content/uploads/2013/06/wpml-tagline-2501.png" />
+                    </td>
+                    <td class="expander"></td>
+                  </tr>
+                </table>
+
+              </td>
+            </tr>
+          </table><!-- .mail-header -->
+
+
+          <table class="row mail-body">
+            <tr>
+            <td class="wrapper last">
+
+              <table class="twelve columns">
+              <tr>
+                <td class="text-pad">
+                  <%= yield %>
+                </td>
+                <td class="expander"></td>
+              </tr>
+              </table>
+
+            </td>
+            </tr>
+          </table><!-- .mail-body -->
+
+          <% if @footer_with_recommend %>
+            <%= render :partial => 'footer_with_recommend_link' %>
+          <% elsif @footer_translation_analytics %>
+            <%= render :partial => 'footer_translation_analytics' %>
+          <% end %>
+
+              <!-- container end below -->
+              </td>
+            </tr>
+          </table>
+
+        </center>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+
+<% else %>
+  <%= yield %>
+<% end %>

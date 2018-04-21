@@ -1,0 +1,32 @@
+<%= form_for(@text_resource) do |f| %>
+<h3 style="display: inline;">Name this project</h3>
+<%= tooltip "This name will help you identify this project in the future" %>
+<div class="field_entry"><%= f.text_field(:name, :size=>80, :style=>'padding: 0.2em;') %></div>
+
+<h3 style="display: inline;">Description</h3>
+<%= tooltip "Provide any information that you think translators should know about this project
+<ul>
+<li>Who the application is intended for</li>
+<li>Prefered writing style (formal, conversational, for teens, etc.)</li>
+<li>Links to a website where the application is described in more details</li>
+</ul>
+" %>
+
+<div class="field_entry"><%= f.text_area(:description, :rows=>7, :cols=>80, :style=>'padding: 0.2em;', maxlength: COMMON_NOTE) %></div>
+
+<h3 style="display: inline;">Required text</h3> 
+<%= tooltip "Enter words or phrases (separated by commas) that will have to appear in both translation and source text the same number of times to be able to complete the string.<p class='comment'><b>IMPORTANT:</b> Please note that translators won’t be able to mark a string as completed if the count don’t match.</p>" %>
+
+<div class="field_entry">
+	<p><%= f.text_field(:required_text, :size=>80, :style=>'padding: 0.2em;', maxlength: COMMON_FIELD) %></p>
+	<p><label><%= f.check_box(:check_standard_regex) %> Also check for standard software string placeholders (like %d, %s, %f, etc.)</label></p>
+</div>
+
+<h3 style="display: inline;">Subject</h3>
+<%= tooltip "Tell us what your program is about" %>
+<div class="field_entry"><%= f.select(:category_id, @categories) %>
+<p class="comment">Choosing the subject is optional. It will help you find translators who specialize in this field.</p>
+</div>
+
+<%= link_to('&laquo; Cancel'.html_safe, {:action=>:show}) %> &nbsp; | &nbsp; <%= submit_tag('Update project', :style=>'padding: 0.5em;', data: { disable_with: 'Update project' }) %>
+<% end %>

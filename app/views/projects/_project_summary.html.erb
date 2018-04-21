@@ -1,0 +1,22 @@
+<tr>
+	<td>
+		<% if project_summary.revisions.length > 0 %>
+			<%= link_to("#{h project_summary.name} - #{h(project_summary.revisions[-1].name)} revision", {:controller=>'revisions', :action=>'show', :project_id=>project_summary.id, :id=>project_summary.revisions[-1].id}) %><br />
+		<% else %>
+			<%= link_to("#{h project_summary.name}", {:controller=>'projects', :action=>'show', :id=>project_summary.id }) %>
+		<% end %>
+		<% if project_summary.revisions.length > 1 %>
+			<br />&raquo; <%= link_to("Previous revisions of this project", {:controller=>'projects', :action=>'show', :id=>project_summary.id}) %><br />
+		<% end %>
+	</td>
+	<td>
+		<% if project_summary.revisions.length > 0 %>
+			<%= project_summary.revisions[-1].status_text %>
+		<% end %>
+	</td>
+	<td>
+		<% if project_summary.revisions.length > 0 %>
+				<%= link_to("Check translation status", {:anchor=>'languages', :controller=>'revisions', :action=>'show', :project_id=>project_summary.id, :id=>project_summary.revisions[-1].id}) %>
+		<% end %>
+	</td>
+</tr>

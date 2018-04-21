@@ -1,0 +1,14 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p><%= @resource_chat.resource_language.text_resource.client.full_name %> has accepted your application to translate project <%= @resource_chat.resource_language.text_resource.name %> from <%= @resource_chat.resource_language.text_resource.language.name %> to <%= @resource_chat.resource_language.language.name %>.</p>
+
+<p>Right now, no action is required by you. The next step is for the client to add text for translation to this project.
+  You will be notified when there are new strings to translate in this project.</p>
+
+<p>
+  To communicate with the client, click here:
+  <% link = url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:resource_chats, :action=>:show, :text_resource_id=>@resource_chat.resource_language.text_resource.id, :id=>@resource_chat.id } ) %>
+  <%= link_to link, link %>
+</p>
+
+<%= EMAIL_SIGNATURE %>

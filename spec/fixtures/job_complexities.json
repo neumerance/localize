@@ -1,0 +1,159 @@
+{
+  "job_objects":  [
+    [
+      {
+        "progress_details": { "total_words": 50, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 90, "expected_complexity": 5 }
+      },
+      {
+        "progress_details": { "total_words": 100, "expected_complexity": 5 }
+      },
+      {
+        "progress_details": { "total_words": 500, "expected_complexity": 6 }
+      },
+      {
+        "progress_details": { "total_words": 600, "expected_complexity": 9 }
+      },
+      {
+        "progress_details": { "total_words": 550, "expected_complexity": 7 }
+      }
+    ],
+    [
+      {
+        "progress_details": { "total_words": 10, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 20, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 15, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 10, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 30, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 50, "expected_complexity": 8 }
+      }
+    ],
+        [
+      {
+        "progress_details": { "total_words": 50, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 600, "expected_complexity": 7 }
+      },
+      {
+        "progress_details": { "total_words": 1000, "expected_complexity": 9 }
+      }
+    ],
+    [
+      {
+        "progress_details": { "total_words": 50, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 50, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 50, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 50, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 500, "expected_complexity": 9 }
+      },
+      {
+        "progress_details": { "total_words": 90, "expected_complexity": 5 }
+      },
+      {
+        "progress_details": { "total_words": 100, "expected_complexity": 5 }
+      },
+      {
+        "progress_details": { "total_words": 50, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 500, "expected_complexity": 9 }
+      },
+      {
+        "progress_details": { "total_words": 550, "expected_complexity": 9 }
+      }
+    ],
+    [
+      {
+        "progress_details": { "total_words": 1000, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 1500, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 1100, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 2000, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 2500, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 2550, "expected_complexity": 4 }
+      }
+    ],
+    [
+      {
+        "progress_details": { "total_words": 2, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 10, "expected_complexity": 6 }
+      },
+      {
+        "progress_details": { "total_words": 2, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 70, "expected_complexity": 8 }
+      },
+      {
+        "progress_details": { "total_words": 2, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 40, "expected_complexity": 8 }
+      },
+      {
+        "progress_details": { "total_words": 100, "expected_complexity": 12 }
+      },
+      {
+        "progress_details": { "total_words": 167, "expected_complexity": 12 }
+      }
+    ],
+    [
+      {
+        "progress_details": { "total_words": 2, "expected_complexity": 4 }
+      },
+      {
+        "progress_details": { "total_words": 3, "expected_complexity": 6 }
+      },
+      {
+        "progress_details": { "total_words": 4, "expected_complexity": 6 }
+      },
+      {
+        "progress_details": { "total_words": 7, "expected_complexity": 6 }
+      },
+      {
+        "progress_details": { "total_words": 10, "expected_complexity": 6 }
+      },
+      {
+        "progress_details": { "total_words": 15, "expected_complexity": 8 }
+      },
+      {
+        "progress_details": { "total_words": 4, "expected_complexity": 6 }
+      },
+      {
+        "progress_details": { "total_words": 20, "expected_complexity": 10 }
+      }
+    ]
+  ]
+}

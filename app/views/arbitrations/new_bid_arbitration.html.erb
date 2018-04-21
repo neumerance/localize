@@ -1,0 +1,25 @@
+<%= infotab_top('Bid information', '') %>
+<%= infotab_header(@sections) %>
+<tr>
+	<td><%= "#{@bid.chat.revision.project.name} - #{@bid.chat.revision.name}" %> revision</td>
+	<td><%= Bid::BID_STATUS[@bid.status] %></td>
+	<td><%= user_link(@bid.chat.revision.project.client) %></td>
+	<td><%= user_link(@bid.chat.translator) %></td>
+	<% if @bid.has_accepted_details %>
+		<td><%= disp_time(@bid.accept_time) %></td>
+	<% end %>
+	<% if @bid.has_expiration_details %>
+		<td><%= disp_time(@bid.expiration_time) %>
+		<% if @bid.expiration_time < Time.now() -%><span class="warning">(expired)</span><% end -%></td>
+	<% end %>
+	<td>
+		<strong><%= @bid.print_amount %></strong>.<br />Funds in escrow: <strong><%= @bid.account.balance %> <%= @bid.currency.disp_name.html_safe %></strong><br />
+	</td>
+</tr></table>
+
+<div class="box_margin">
+	<%= link_to('Return to bid', {:controller=>'bids', :action=>'show', :project_id=>@bid.chat.revision.project_id, :revision_id=>@bid.chat.revision_id, :chat_id=>@bid.chat_id, :id=>@bid.id}) %>
+</div>
+
+<div id="request"><%= render(:partial=>'request') %></div>
+<div id="arbitration_details"></div>

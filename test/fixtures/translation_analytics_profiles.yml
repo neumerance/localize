@@ -1,0 +1,17 @@
+all_alerts:
+  id: 1
+  project_type: 'Website'
+  project_id: 1
+  missed_estimated_deadline_alert: true
+  missed_estimated_deadline_days: 3 
+  no_translation_progress_alert: true
+  no_translation_progress_days: 3 
+
+no_alerts:
+  id: 2
+  project_type: 'Website'
+  project_id: 1
+  missed_estimated_deadline_alert: false
+  missed_estimated_deadline_days: 3 
+  no_translation_progress_alert: false
+  no_translation_progress_days: 3 

@@ -1,0 +1,23 @@
+<table width="100%" cellspacing="0" cellpadding="3" class="stats">
+<tr class="headerrow"><th>Language pair</th><th>Translated</th><th>Translation in progress</th><th>Waiting for translation</th><th>Total</th></tr>
+<% @languages_list.each do |language_names| %>
+	<% lang_pair = @languages_map[language_names] %>
+	<tr>
+		<td><%= link_to_if(@offers[language_names], '%s to %s'%[lang_pair[0].name, lang_pair[1].name],
+			{:controller=>:website_translation_offers, :action=>:show, :website_id=>@website.id, :id=>@offers[language_names].id} ) %></td>
+		<td><%= link_to(@completed[lang_pair][STATISTICS_DOCUMENTS][CMS_TARGET_LANGUAGE_DONE],  {:action=>:index, :set_args=>1, :to_language_id=>lang_pair[1].id, :status=>CMS_TARGET_LANGUAGE_DONE}) %></td><td><%= @completed[lang_pair][STATISTICS_WORDS][CMS_TARGET_LANGUAGE_DONE] %></td>
+		<td><%= link_to(@completed[lang_pair][STATISTICS_DOCUMENTS][CMS_TARGET_LANGUAGE_ASSIGNED], {:action=>:index, :set_args=>1, :to_language_id=>lang_pair[1].id, :status=>CMS_TARGET_LANGUAGE_ASSIGNED}) %></td><td><%= @completed[lang_pair][STATISTICS_WORDS][CMS_TARGET_LANGUAGE_ASSIGNED] %></td>
+		<td><%= link_to(@completed[lang_pair][STATISTICS_DOCUMENTS][CMS_TARGET_LANGUAGE_CREATED], {:action=>:index, :set_args=>1, :to_language_id=>lang_pair[1].id, :status=>CMS_TARGET_LANGUAGE_CREATED}) %></td><td><%= @completed[lang_pair][STATISTICS_WORDS][CMS_TARGET_LANGUAGE_CREATED] %></td>
+		<td><%= link_to(@completed[lang_pair][STATISTICS_DOCUMENTS][CMS_TARGET_LANGUAGE_DONE]+@completed[lang_pair][STATISTICS_DOCUMENTS][CMS_TARGET_LANGUAGE_ASSIGNED]+@completed[lang_pair][STATISTICS_DOCUMENTS][CMS_TARGET_LANGUAGE_CREATED], {:action=>:index, :set_args=>1, :to_language_id=>lang_pair[1].id}) %></td>
+		<td><%= @completed[lang_pair][STATISTICS_WORDS][CMS_TARGET_LANGUAGE_DONE] + @completed[lang_pair][STATISTICS_WORDS][CMS_TARGET_LANGUAGE_ASSIGNED] + @completed[lang_pair][STATISTICS_WORDS][CMS_TARGET_LANGUAGE_CREATED] %></td>
+	</tr>
+<% end %>
+</table>
+<br /><br />
+
+<% if @processing_cnt > 0 %>
+<p class="red_message"><%= link_to('%d document(s) still processing'%@processing_cnt, {:action=>:index, :set_args=>1, :processing=>1}) %></p>
+<br />
+<% end %>
+
+<p>&laquo; <%= link_to('Back to project', {controller: '/wpml/websites', :action=>:show, :id=>@website.id}) %></p>

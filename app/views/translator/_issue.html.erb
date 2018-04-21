@@ -1,0 +1,5 @@
+<tr>
+	<td><%= issue_title(issue) %></td>
+	<td><%= Issue::KIND_TEXT[issue.kind] %></td>
+	<td><%= user_link(issue.initiator) %></td>
+</tr>

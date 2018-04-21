@@ -1,0 +1,14 @@
+<result amount="7.0" fee_rate="0.82" ok="false" serial="4">
+  <before>
+    <from_balance>99931.0</from_balance>
+    <to_balance>100043.18</to_balance>
+    <root_balance>26.82</root_balance>
+    <total>200001.0</total>
+  </before>
+  <after>
+    <from_balance>99923.0</from_balance>
+    <to_balance>100044.44</to_balance>
+    <root_balance>32.56</root_balance>
+    <total>200000.0</total>
+  </after>
+</result>

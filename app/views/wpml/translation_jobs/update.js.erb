@@ -1,0 +1,2 @@
+jQuery('#translation-jobs').html('<%= escape_javascript(render partial: 'translation_jobs', locals: { website: @website }) %>')
+<%= render partial: '/wpml/translation_jobs/check_pay_button.js.erb', locals: {website_id: @website.id } %>

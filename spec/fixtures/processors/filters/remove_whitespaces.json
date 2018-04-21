@@ -1,0 +1,24 @@
+{
+  "tests":  [
+    {
+      "input": "",
+      "expected_result": ""
+    },
+    {
+      "input": "They may take our lives, but they'll never take our freedom!",
+      "expected_result": "Theymaytakeourlives,butthey'llnevertakeourfreedom!"
+    },
+    {
+      "input": "CHEWIE, WE'RE home",
+      "expected_result": "CHEWIE,WE'REhome"
+    },
+    {
+      "input": "They call  it   a    Royale     with       cheese",
+      "expected_result": "TheycallitaRoyalewithcheese"
+    },
+    {
+      "input": "<ul>   <li>   Address   </li>   <li>  Victoria Street  </li>  </ul>",
+      "expected_result": "<ul><li>Address</li><li>VictoriaStreet</li></ul>"
+    }
+  ]
+}

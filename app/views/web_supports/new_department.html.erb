@@ -1,0 +1,17 @@
+<%= my_error_messages_for :client_department %>
+
+<%= form_for(:client_department, :url=>{:action=>@action, :department_id=>@client_department.id}) do |f| %>
+<h3 style="display: inline;">Name this department</h3> &nbsp; (for example, <i>sales</i>, <i>support</i>, etc.)
+<p><%= f.text_field(:name, :size=>80, :style=>'padding: 0.2em;', maxlength: COMMON_FIELD) %></p>
+<h3>Language preferences</h3>
+<h4 style="display: inline;">Prefered language</h4> &nbsp; (select the language in which you prefer to communicate)
+<p><%= f.select(:language_id, @languages) %></p>
+<h4>How to handle message in other languages</h4>
+<label><%= f.radio_button(:translation_status_on_create, TRANSLATION_PENDING_CLIENT_REVIEW) %>Ask me about every message</label><br />
+<label><%= f.radio_button(:translation_status_on_create, TRANSLATION_NEEDED) %>Translate every message automatically</label><br />
+<label><%= f.radio_button(:translation_status_on_create, TRANSLATION_NOT_NEEDED) %>Don't translate any message</label><br />
+
+<div class="inter_tab_spacer"></div>
+<p><%= submit_tag(@submit_text, :style=>'padding: 0.5em;', data: { disable_with: @submit_text }) %> or <%= link_to('cancel', {:action=>:show}) %></p>
+
+<% end %>

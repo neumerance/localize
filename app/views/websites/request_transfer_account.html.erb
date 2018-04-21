@@ -1,0 +1,8 @@
+<%= form_tag(:action=>:transfer_account) do %>
+	<p><%= _('Enter the ICanLocalize account to which you want to transfer this project.') %></p>
+	<p><%= _('Once transfered, the new owner will have complete control over the project and will be able to communicate with translators and pay for the translation work.') %></p>
+	<p><%= _('Account email:') %> <%= text_field_tag(:email, '', {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD}) %></p>
+	<p><%= _('Account password:') %> <%= password_field_tag(:password, '', {:size=>30}) %></p>
+	<p><%= submit_tag(_('Transfer project'), data: { disable_with: _('Transfer project') }) %> &nbsp; | &nbsp; <%= link_to(_('Cancel'), { controller: '/wpml/websites', :action=>:show }) %><br />
+	<span class="warning"><%= _('Note: you cannot undo this operation. The full control of the project will be transfered to the other account.') %></span></p>
+<% end %>

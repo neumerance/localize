@@ -1,0 +1,30 @@
+<% if @show_obj %>
+	<%= form_tag({
+                       :controller=>:db_content_translations,
+                       :action=>:edit, :req=>'save',
+                       :obj_class=>@obj.class.to_s,
+                       :obj_id=>@obj.id,
+                       :edit_box=>@idx,
+                       :language_id=>@language_id
+               },
+               :remote => true
+       ) do %>
+		<%= text_area_tag(:txt, @txt, {:cols=>100, :rows=>10, :style=>'width: 100%;', maxlength: COMMON_NOTE}) %>
+		<%= submit_tag('Save', data: { disable_with: 'Saving' }) %>
+	<% end %>
+	
+	<%= form_tag({
+                       :controller=>:db_content_translations,
+                       :action=>:edit,
+                       :req=>'hide',
+                       :obj_class=>@obj.class.to_s,
+                       :obj_id=>@obj.id,
+                       :edit_box=>@idx,
+                       :language_id=>@language_id
+               },
+               :remote => true
+       ) do %>
+		<%= submit_tag('Cancel', data: { disable_with: 'Processing...' }) %>
+	<% end %>
+	
+<% end %>

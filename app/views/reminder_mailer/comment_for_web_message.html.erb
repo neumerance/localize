@@ -1,0 +1,21 @@
+Dear <%= @user.full_real_name %>,
+
+<%= @by_user.full_name %> has left you the following message regarding an instant translation job:
+
+----
+
+<%= @body %>
+
+----
+
+The status of this job is currently: <%= WebMessage::TRANSLATION_STATUS_TEXT[@web_message.translation_status] %>
+
+Please don't reply to this email. If you want to send a reply, go to the job's page (using the link below and add your message).
+
+<% if (@user[:type] == 'Translator') && (@web_message.translation_status == TRANSLATION_NEEDS_EDIT) %>To view, edit this translation or reply to the client click below:
+<%= url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:web_messages, :action=>:show, :id=>@web_message.id } ) %>
+<% elsif (@user[:type] == 'Client') %>To view the translation, or reply to the translator click below:
+<%= url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:web_messages, :action=>:show, :id=>@web_message.id } ) %>
+<% end -%>
+
+<%= EMAIL_SIGNATURE %>

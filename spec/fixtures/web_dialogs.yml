@@ -1,0 +1,26 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+amir_sales_for_translation:
+  id: 1
+  client_department_id: 1
+  visitor_language_id: 3
+  email: somemail@example.com
+  fname: first
+  lname: last
+  visitor_subject: what the visitor wants
+  status: 1
+  translation_status: <%= TRANSLATION_NEEDED %>
+  create_time: <%= Time.now().to_formatted_s(:db) %>
+  accesskey: 1234
+
+amir_sales_without_translation:
+  id: 2
+  client_department_id: 1
+  visitor_language_id: 3
+  email: somemail@example.com
+  fname: first
+  lname: last
+  visitor_subject: what the visitor wants
+  status: 1
+  translation_status: <%= TRANSLATION_NOT_NEEDED %>
+  create_time: <%= Time.now().to_formatted_s(:db) %>
+  accesskey: 1234

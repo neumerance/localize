@@ -1,0 +1,21 @@
+<% if @show_number_of_pages %>
+    <div class="pager_control">
+      Showing page <%= form_tag({ action: :index }, method: :get ) %>
+      <%= select_tag( :page, options_for_select(@list_of_pages,@translators.number), { onchange: 'submit()' }) %>
+      <%= link_to('Prev', translators_url(page: @translators.prev.number)) if @translators.prev? %>
+      <%= link_to('Next', translators_url(page: @translators.next.number)) if @translators.next? %>
+      </form>
+    </div>
+<% end %>
+<% @translators.each do |translator| %>
+    <%= render(partial: 'translator', locals: { translator: translator } ) %>
+<% end %>
+<% if @show_number_of_pages %>
+    <div class="pager_control">
+      Showing page <%= form_tag({ action: :index }, method: :get ) %>
+      <%= select_tag( :page, options_for_select(@list_of_pages,@translators.number), { onchange: 'submit()' }) %>
+      <%= link_to('Prev', translators_url(page: @translators.prev.number)) if @translators.prev? %>
+      <%= link_to('Next', translators_url(page: @translators.next.number)) if @translators.next? %>
+      </form>
+    </div>
+<% end %>

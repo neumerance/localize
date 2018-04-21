@@ -1,0 +1,14 @@
+<div class="pager_control">
+		Showing page <%= form_tag({:action=>:anon_projects}, {:method=>'GET'}) %>
+			<%= select_tag( :page, options_for_select(@list_of_pages,@clients.number), {:onchange=>"submit()"}) %>
+		<%= link_to("Prev", url_for(:action=>:anon_projects, :page => @clients.prev.number)) if @clients.prev? %>
+		<%= link_to("Next", url_for(:action=>:anon_projects, :page => @clients.next.number)) if @clients.next? %>	
+	</form>
+</div>
+	
+<%= infotab_header(['Date','Website','Platform','Kind','Languages']) %>
+<% @clients.each do |client| %>
+  <%= render(:partial=>'anon_client', locals: { anon_client: client }) %>
+<% end %>
+
+</table>

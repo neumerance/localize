@@ -1,0 +1,21 @@
+<% if session[:hide_resource_string_instructions].blank? %>
+	<div style="float: right;">
+		<%= form_tag({:action=>:set_display_instructions, :hide=>1}, :remote => true) do %>
+			<%= submit_tag('Hide', data: { disable_with: 'Hide' }) %>
+		<% end %>
+	</div>
+	<h2><%= _("IMPORTANT - check your browser's character encoding") %></h2>
+	<p><%= _("Make sure that your browser's character encoding is set to UTF-8. To do this, click on <i>View</i> &raquo; <i>Character encoding</i> and set it to <b>Unicode UTF-8</b>.").html_safe %></p>
+	<p><%= _("Any translations that are entered using a different character encoding cannot be used and will have to be redone.") %></p>
+		<% if !@text_resource.description.blank? %>
+			<h2><%= _("General instructions from the client regarding the entire project") %></h2>
+		<%= pre_format(@text_resource.description) %>
+	<% end %>
+<% else %>
+	<div style="float: right;">
+		<%= form_tag({:action=>:set_display_instructions}, :remote => true) do %>
+			<%= submit_tag(_('Show'), data: { disable_with: _('Show') }) %>
+		<% end %>
+	</div>
+	<h2><%= _("Translation instructions...") %></h2>
+<% end %>

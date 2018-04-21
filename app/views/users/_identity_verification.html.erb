@@ -1,0 +1,13 @@
+<li>Document title: <b><%= identity_verification.verified_item.description %></b>. Status <b><%= IdentityVerification::STATUS_TEXT[identity_verification.status] %></b>
+	<%= form_tag({
+                 :action => :del_verification_document,
+                 :vd_id=>identity_verification.verified_item.id
+               },
+               "data-confirm" => 'Are you sure you want to remove this uploaded document from your profile?',
+               :remote => true
+       ) do %>
+
+		<%= submit_tag 'Remove this document', data: { disable_with: 'Remove this document' } %>
+
+	<% end %>
+</li>

@@ -1,0 +1,13 @@
+<% project = local_assigns[:project] || @project %>
+
+<% project.languages.each_slice(5) do |languages| %>
+  <div style="float: left; margin-right: 40px;">
+    <% languages.each do |language| %>
+      <label style="display: block;">
+        <%= check_box_tag "language_ids[]", language.id %>
+        <%= language.name %>
+      </label>
+    <% end %>
+  </div>
+<% end %>
+<div style="clear: both; margin-bottom: 30px;"></div>

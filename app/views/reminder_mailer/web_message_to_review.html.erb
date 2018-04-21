@@ -1,0 +1,8 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>
+  <% link = url_for({:escape=>false, :only_path=>false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:web_messages, :action=>:review, :id=>@web_message.id } ) %>
+  There's a new Instant translation job waiting for your review. This is the review page: <%= link_to link, link %>
+</p>
+
+<%= EMAIL_SIGNATURE %>

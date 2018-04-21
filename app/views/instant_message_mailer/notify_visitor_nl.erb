@@ -1,0 +1,12 @@
+Hallo <%= @web_dialog.full_name %>,
+
+<%= @web_message.body_for_user(false) %>
+<% if @has_attachments %>
+Dit bericht bevat ook bijlagen. Als u het bijgevoegde bestand(s), klik op de link hieronder.<% end %>
+
+Geef geen antwoord op deze email.
+Als u ons nog een bericht wilt sturen, stuur als bijlage of om het volledige log van uw commentaar te bekijken zowel als onze reacties daar, klik hieronder:
+<%= url_for({:escape => false, :only_path => false, :controller=>:web_dialogs, :action=>:show, :id=>@web_dialog.id, :accesskey=>@web_dialog.accesskey, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+Met vriendelijke groet,
+<%= @signature %>

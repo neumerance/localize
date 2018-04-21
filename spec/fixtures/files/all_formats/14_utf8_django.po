@@ -1,0 +1,34 @@
+﻿#
+msgid ""
+msgstr ""
+"Project-Id-Version: polib 1.0.7\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2017-03-28T15:27:44.699881\n"
+"Last-Translator: FULL NAME <webmaster@cybo.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+# business professional title
+msgid "Secretary"
+msgstr ""
+
+# business professional title
+msgid "Executive"
+msgstr ""
+
+msgid "business professional"
+msgstr ""
+
+# business professional title
+msgid "Manager"
+msgstr ""
+
+# business professional title
+msgid "Partner"
+msgstr ""
+
+# business professional title
+msgid "Principal"
+msgstr ""

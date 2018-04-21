@@ -1,0 +1,12 @@
+<% if @translators.length > 0 %>
+	<p>Found <%= @translators.length %> <%= @source_lang.name %> to <%= @target_lang.name %> translators in ICanLocalize.</p>
+	<p>Click on each translator for full profile. You can also invite translators to apply for your projects from their profile pages.</p>
+  <% @translators.each do |translator| %>
+    <%= render(:partial=>'translator', locals: {translator: translator}) %>
+  <% end %>
+<% else %>
+	<p>There are currently no <%= @source_lang.name %> to <%= @target_lang.name %> translators in ICanLocalize.
+	If you have a project for this language pair, please <%= link_to('contact us', {:controller=>:support, :action=>'new'}) %>.</p>
+<% end %>
+
+<br /><br /><p><% if @back %><%= link_to('&laquo; Back'.html_safe,@back) %> &nbsp; | &nbsp; <% end %><%= link_to('Seach for translators in other languages', {:action=>:translators}) %></p>

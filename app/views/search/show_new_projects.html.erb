@@ -1,0 +1,9 @@
+<% if @revisions.length > 0 %>
+	<%= infotab_header(['Project','Description','Statistics'], {'Statistics' => {'width'=>'35%'},'Description' => {'width'=>'35%'}} ) %>
+		<%= render(:partial => "/search/revision", :collection => @revisions) %>
+	</table>
+<% else %>
+	<p>We couldn't find any projects matching your search.</p>
+	<p><%= link_to('Do do different search', {:action=>:new_projects}) %></p>
+<% end %>
+

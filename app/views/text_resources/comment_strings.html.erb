@@ -1,0 +1,54 @@
+Some strings that you uploaded to the system may need explanation, either because it has only one word or because it has placeholders. You can comment on some strings now and others later if you like, just click on "save" button at the bottom of the page.
+
+<hr/>
+
+<%=  paginate @unclear_strings %>
+<%= form_tag({:controller => "resource_strings", :action => "add_auto_comments", :text_resource_id => @text_resource.id}) do %>
+<ul class="accordion">
+  <li>
+    <a class="toggle as_h2 open" href="javascript:void(0);">One word strings</a>
+    <ul class="inner show">
+      <% if @one_word_strings.any? %>
+        <% @one_word_strings.each do |s| %>
+          <li><%=render :partial => 'explain_string', :locals => {:string => s, :placeholder => false} %></li>
+        <% end %>
+      <% else %>
+        <li>No one word strings yet.</li>
+      <% end %>
+    </ul>
+  </li>
+
+  <li>
+    <a class="toggle as_h2 open" href="javascript:void(0);">Strings with placeholders</a>
+    <ul class="inner show">
+      <% if @placeholder_strings.any? %>
+          <% @placeholder_strings.each do |s| %>
+              <li><%=render :partial => 'explain_string', :locals => {:string => s, :placeholder => false} %></li>
+          <% end %>
+      <% else %>
+          <li>No other strings yet.</li>
+      <% end %>
+    </ul>
+  </li>
+
+  <li>
+    <a class="toggle as_h2 open" href="javascript:void(0);">Other strings</a>
+    <ul class="inner show">
+      <% if @other_strings.any? %>
+          <% @other_strings.each do |s| %>
+              <li><%=render :partial => 'explain_string', :locals => {:string => s, :placeholder => false} %></li>
+          <% end %>
+      <% else %>
+          <li>No one placeholder strings yet.</li>
+      <% end %>
+    </ul>
+  </li>
+  <li><%= button_tag 'Save', data: { disable_with: 'Please wait...' } %></li>
+</ul>
+<% end %>
+
+<script type="text/javascript">
+	jQuery(document).ready(function(){
+    accordion('.toggle')
+	})
+</script>

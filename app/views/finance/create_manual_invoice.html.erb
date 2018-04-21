@@ -1,0 +1,10 @@
+<% if @warnings %>
+	<p class="warning">The transaction had failed. Hit BACK in your browser to fix these errors:</p>
+	<ol><% for warning in @warnings %><li><%= warning %></li><% end %></ol>
+<% else %>
+	<p>Your transaction completed OK.</p>
+	<p><%= link_to('View account history', {:action=>:account_history, :id=>@account.id}) %></p>
+  <% if @invoice %>
+    <p><%= link_to('See the details of this transfer', {:action=>:invoice, :id=>@invoice.id}) %></p>
+  <% end %>
+<% end %>

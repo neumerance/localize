@@ -1,0 +1,15 @@
+<h1 id="mainheading">Reviewer for Website/Bidding Projects</h1>
+<% if @show_number_of_pages %>
+    Page <%= form_tag({:action=>:revision_reviews}, {:method=>'GET'}) %>
+    <%= select_tag( :page, options_for_select(@list_of_pages, @revision_reviews.number), {:onchange=>"submit()"}) %>
+    </form>
+    <%= link_to("Prev", url_for(:action => :revision_reviews, :page => @revision_reviews.prev.number)) if @revision_reviews.prev? %>
+    <%= link_to("Next", url_for(:action => :revision_reviews, :page => @revision_reviews.next.number)) if @revision_reviews.next? %>
+<% end %>
+<%= infotab_top('Website/Bidding projects that you are the reviewer of', "You are the reviewer of this projects"  + (@have_more_revision_reviews ? ' (showing first %d) '%PER_PAGE + link_to('Show all &raquo;'.html_safe, {:action=>:resource_chats}) : '')) %>
+<%= infotab_header(['Project', 'Language']) %>
+<% @revision_reviews.each do |revision_review| %>
+  <%= render(:partial=>'revision_review', locals: {revision_review: revision_review}) %>
+<% end %>
+</table>
+<div class="inter_tab_spacer"></div>

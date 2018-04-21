@@ -1,0 +1,18 @@
+<h2>Need technical help?</h2>
+
+<p>If you need help getting your site running fully multilingual, we'll be most happy to assist.</p>
+<p><b>To get help, start a new <%= link_to('support ticket',{:controller=>:support, :action=>:new}) %>.</b></p>
+<p>If we can provide a quick solution, we'll be happy to do so.
+When helping you requires significant work from us, we'll ask for payment. Feel free to ask and we'll tell you what we can do.</p>
+
+<% if @user.support_tickets.length > 0 %>
+<h3>Existing support tickets</h3>
+<%= render(:partial => "/support/support_tickets", :object=>@user.support_tickets) %>
+<% end %>
+
+<div class="inter_tab_spacer"></div>
+
+<h2>Earning affiliate commission</h2>
+
+<p>We pay a 30% affiliate commission for translation work we do for clients that you refer to us.</p>
+<p><b>Visit your <%= link_to('affiliate page', {:controller=>:my}) %> for more information.</b></p>

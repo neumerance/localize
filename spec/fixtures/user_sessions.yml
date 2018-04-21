@@ -1,0 +1,37 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+supporter:
+  id: 1
+  user_id: 1
+  session_num: 'supporternum'
+  login_time: <%= Time.now().to_formatted_s(:db) %>
+
+amir:
+  id: 2
+  user_id: 2
+  session_num: 'deadbeef'
+  login_time: <%= Time.now().to_formatted_s(:db) %>
+
+orit:
+  id: 3
+  user_id: 3
+  session_num: 'helzer123'
+  login_time: <%= Time.now().to_formatted_s(:db) %>
+
+admin:
+  id: 4
+  user_id: 9
+  session_num: 'adminnum'
+  login_time: <%= Time.now().to_formatted_s(:db) %>
+
+guy:
+  id: 5
+  user_id: 4
+  session_num: 'helzer1234'
+  login_time: <%= Time.now().to_formatted_s(:db) %>
+
+shark:
+    id: 6
+    user_id: 15
+    session_num: 'something'
+    login_time: <%= Time.now().to_formatted_s(:db) %>
+

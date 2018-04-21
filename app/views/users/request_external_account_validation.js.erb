@@ -1,0 +1,6 @@
+<% if @ok %>
+  jQuery("#external_account<%= @acc_id %>").html('<span class="warning">email sent</span>')
+  alert('We just sent you an email. You need to click on the link in this email to complete your validation.')
+<% else %>
+  location.reload()
+<% end %>

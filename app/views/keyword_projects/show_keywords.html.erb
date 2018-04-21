@@ -1,0 +1,10 @@
+<h1>Your keywords set</h1>
+
+<% @keyword_sets.each_with_index do |kws,index| %>
+  <h2>Keyword set <%=index+1%></h2>
+  <ul>
+    <% kws.each do |kw| %>
+      <li><%= kw %></li>
+    <% end %>
+  </ul>
+<% end %>

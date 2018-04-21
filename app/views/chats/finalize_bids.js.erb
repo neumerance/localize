@@ -1,0 +1,7 @@
+<% if @warning %>
+	alert('<%= @warning %>')
+<% elsif @translator_to_bookmark %>
+	jQuery('#finalize_bids').html('<%= escape_javascript(render partial: 'bookmark_translator') %>').effect("highlight", {}, 3000)
+<% else %>
+	location.reload()
+<% end %>

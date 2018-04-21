@@ -1,0 +1,12 @@
+<% if @website.is_test? %>
+  <div class="red_message errorExplanation">
+    <h3><%= _('Test project - translators will not be assigned') %></h3>
+    <% if @user == @website.client %>
+      <p><%= _('This is a test project. Feel free to select different languages and configurations. Translators will not see this projects and site admins will not handle it.') %></p>
+      <p><%= _("To change this project into a live project, you will need to go to your website's admin panel and indicate that this is not a test project.") %></p>
+    <% else %>
+      <p><%= _("This is a test project. It's closed for translators.") %></p>
+    <% end %>
+  </div>
+  <br />
+<% end %>

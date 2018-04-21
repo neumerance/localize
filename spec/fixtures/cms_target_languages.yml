@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+cms_target_language_1:
+  id: 1
+  cms_request_id: 15
+  language_id: 2
+
+cms_target_language_2:
+  id: 2
+  cms_request_id: 17
+  language_id: 3
+  status: <%= CMS_TARGET_LANGUAGE_TRANSLATED %>
+
+cms_target_language_3:
+  id: 3
+  cms_request_id: 16
+  language_id: 4

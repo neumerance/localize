@@ -1,0 +1,59 @@
+<%= infotab_top('Auto-assignment', infobar_contents_user('Define your settings for auto-assignment', "This is the translator's disposition to be auto-assigned to jobs.")) %>
+
+<%= form_for(@auser, url: {action: :update_autoassignment}, remote: true) do |f| %>
+    <table width="100%" cellspacing="0" cellpadding="3" class="stats" id="translator_auto_assign">
+      <thead>
+        <tr class="headerrow">
+          <th>From Language</th>
+          <th>Target Language</th>
+          <th>
+            Auto-assign jobs
+            <%= tooltip "Mark this checkbox if you want translation and review jobs that match your expertise to be auto-assigned to you." %>
+          </th>
+          <th>
+            Minimum translation rate per word (USD)
+            <%= tooltip "Set the minimum rate you are willing to accept jobs for auto-assigment." %>
+          </th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @auser.language_pairs.each do |from_language, target_languages| %>
+          <% target_languages.each do |to_language| %>
+            <%= fields_for("autoassignments[#{from_language.id}_#{to_language.id}]", @auser.language_pair_autoassign_settings(from_language, to_language)) do |ff| %>
+            <tr id="autoassign_<%= "#{from_language.id}_#{to_language.id}" %>">
+              <td><%= from_language.name %></td>
+              <td><%= to_language.name %></td>
+              <td>
+                <%= ff.hidden_field :from_language_id %>
+                <%= ff.hidden_field :to_language_id %>
+                <%= ff.check_box(:autoassign) %>
+              </td>
+              <td>
+                <% if LanguagePairFixedPrice.known_language_pair? from_language, to_language %>
+                    <%= LanguagePairFixedPrice.get_price from_language, to_language %>
+                <% else %>
+                    <%= ff.text_field(:min_price_per_word, {:size=>10, maxlength: COMMON_FIELD}) %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+
+  <div class="tabbottom">
+    <%= submit_tag 'Update', data: { disable_with: 'Updating...' } if @auser.language_pairs.size > 0 %>
+    <span>* When the auto-assignment is enabled, you will be automatically assigned jobs matching the minimum rate specified.
+      For some language pairs, you can define your own minimum rate.</span>
+  </div>
+
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+    jQuery('#translator_auto_assign input[type="checkbox"]').change(function(){
+        var $input = jQuery(this).parent().next().find('input')
+        $input.toggle( jQuery(this).is(':checked') );
+    }).change();
+</script>

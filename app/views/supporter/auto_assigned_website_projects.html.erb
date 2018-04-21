@@ -1,0 +1,73 @@
+<table id="languagePairFixPriceTable" class="stats" style="width: 100%">
+  <thead>
+  <tr class="headerrow">
+    <th class="text-center">ID</th>
+    <th class="text-center">Project</th>
+    <th class="text-center">Language Pair</th>
+    <th class="text-center">Jobs Unfunded</th>
+    <th class="text-center">Jobs Funded (not started)</th>
+    <th class="text-center">Jobs in progress and completed</th>
+    <th class="text-center">Jobs Total</th>
+  </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<script>
+  jQuery(document).ready(function() {
+    var fields = [
+      {
+          name: 'id', type: 'text', renderOverride: function(full) {
+            return jQuery('<a>').text(full.id).attr('target', '_blank').attr('href', '/websites/'+full.website_id+'/website_translation_offers/'+full.id).get(0).outerHTML
+          }
+      },
+      {
+        name: 'website_name', type: 'text', renderOverride: function(full) {
+          return jQuery('<a>').text(full.website_name).attr('target', '_blank').attr('href', '/wpml/websites/'+full.website_id).get(0).outerHTML
+        }
+      },
+      {
+        name: 'from_language', type: 'text' , renderOverride: function(full) {
+          return jQuery('<a>').html(full.from_language+' &raquo; '+full.to_language)
+                              .attr('data-remote', true)
+                              .attr('href', '/supporter/assignable_translators_to_website_translation_offers/'+full.id).get(0).outerHTML
+        }
+      },
+      { name: 'jobs_unfunded', type: 'text' },
+      { name: 'jobs_funded_not_started', type: 'text' },
+      { name: 'jobs_in_progress', type: 'text' },
+      { name: 'jobs_completed', type: 'text' }
+    ]
+
+    var columns = [];
+    jQuery.each(fields, function(_idx, field) {
+      columns.push(new DataTableColumn(field).init())
+    });
+
+    var form = $('#dateRangeForm');
+
+    var dataTable = new DataTable('#languagePairFixPriceTable', columns, {
+      url: '<%= url_for controller: :supporter, action: :auto_assigned_website_projects_data %>',
+      type: 'GET'
+    });
+    var dataTable = dataTable.init();
+    jQuery('#languagePairFixPriceTable_filter').prepend('<label>Date Range Filter:<input id="dateRange"></label>');
+    var url = '<%= url_for controller: :supporter, action: :auto_assigned_website_projects_data %>';
+    jQuery('#dateRange').daterangepicker({ orientation: 'left', ranges: {} }, function (startDate, endDate, period) {
+      var params = {
+        startDate: startDate.format('YYYY-MM-DD 00:00:00'),
+        endDate: endDate.format('YYYY-MM-DD 23:59:59')
+      }
+      dataTable.api().ajax.url(url+'?'+jQuery.param(params)).load();
+      var title = startDate.format('L') + ' – ' + endDate.format('L');
+      jQuery(this).val(title);
+    }).on('change', function() {
+      if (jQuery(this).val() == '') {
+        dataTable.api().ajax.url(url).load()
+      }
+    });
+  });
+</script>
+
+<%= render partial: 'website_project_auto_assign_modal', locals: { title: 'Assigned Translators' } %>

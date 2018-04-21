@@ -1,0 +1,48 @@
+<p>To provide a safe environment, we require that all users verify their identities.<br />
+You can become verified using one of the following ways.</p>
+<% if @user.verified? %>
+	<p class="warning">Your identify has been successfully validated.</p>
+<% else %>
+	<hr />
+	<h3>Option 1: Use a Verified PayPal account</h3>
+	<% if @accounts_to_verify && (@accounts_to_verify.length > 0) %>
+		<h4>PayPal accounts with different E-Mail address</h4>
+		<p>The following PayPal accounts, which are linked to your <b>ICanLocalize</b> account,
+			are verified, but with different name or E-Mail address.<br />
+			To complete your identification, click on the link next to the account.</p>
+		<ul>
+			<% for account in @accounts_to_verify %>
+				<li>PayPal account: <b><%= account.identifier %></b>&nbsp;&nbsp;&nbsp;
+				<div style="display: inline;" id="external_account<%= account.id %>">
+				<%= form_tag({ :action => :request_external_account_validation, :acc_id => account.id }, :remote => true) do %>
+					<%= submit_tag 'Validate my ownership of this E-Mail address', data: { disable_with: 'Validate my ownership of this E-Mail address' } %>
+				<% end %>
+				</div>
+				</li>
+			<% end %>
+		</ul>
+		<h4>Do another test deposit to link to another PayPal account</h4>
+	<% end %>
+	<p class="warning">Do you have a <acronym title="A personal, premier or business PayPal account, which has a status of Verified.  The PayPal account must be under your name.">Verified PayPal Account</acronym>?</p>
+	<p>If your PayPal account has a <b>Verified</b> status, we can use that to verify your identity.<br />
+		You can make a small deposit to your account.
+		Our system checks that the details of the PayPal account agree with the personal information that you entered and the account is verified.<br />
+		Once the deposit completes, your identity becomes instantly verified and you can start depositing and withdrawing funds from your ICanLocalize account.</p>
+	<%= form_tag({ :action => :do_verification_deposit, :id=>@user.id }, "data-confirm" => 'You will now be transfered to PayPal to complete this deposit', :remote => true) do %>
+		<%= submit_tag 'Do a deposit now', data: { disable_with: 'Do a deposit now' } %>
+	<% end %>
+	<br /><br />
+	<hr />
+	<h3>Option 2: Upload an identity document.</h3>
+	<div id="identity_verifications"><%= render(:partial=>'identity_verifications', :object=>@user.not_ok_identity_verifications) %></div >
+	<%= form_tag({:action => :add_verification_document, :id=>@user.id }, :multipart=>true, id: 'add_verification_document_form') do %>
+		<p class="warning">Scan and attach an identification document (ID, driving license or passport).</p>
+		<p class="comment">Documents that you upload are only viewable by site staff. Other visitors will never have access to these documents.</p>
+		<p>Document title: <%= text_field_tag(:description, nil, {:size=>50, maxlength: COMMON_FIELD} ) %></p>
+		<p>Document to upload: <%= file_field_tag :uploaded_data, onchange: "validate_file_size('uploaded_data', '#{ATTACHMENT_MAX_SIZE}')" %></p>
+		<p><%= submit_tag('Submit', data: { disable_with: 'Submit' }) %></p>
+	<% end %>
+    <script>initMutiPartForm('#add_verification_document_form')</script>
+	<hr /><br />
+<% end %>
+<p><%= link_to('Back to My Account', {:action=>:my_profile}) %></p>

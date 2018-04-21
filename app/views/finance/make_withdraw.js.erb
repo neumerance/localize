@@ -1,0 +1,9 @@
+<% if @warning %>
+	alert('<%= @warning %>')
+<% else %>
+  <% if @withdrawn %>
+    jQuery('<%= "#withdraw#{@account.id}" %>').html('<%= _('You have recently made a withdrawal from your account. Please wait until that withdrawal completes before doing another one.') %>')
+  <% else %>
+    jQuery('<%= "#withdraw#{@account.id}" %>').html('<%= escape_javascript(render partial: 'withdraw', object: @account ) %>')
+  <% end %>
+<% end %>

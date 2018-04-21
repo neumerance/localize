@@ -1,0 +1,9 @@
+<h4><%= @description %></h4>
+<form action="#">
+	<%= text_area_tag(:po, @po_contents, {:rows=>15, :cols=>80}) %>
+</form>
+<p>Download: <%= link_to(@tool_download.filename, {:action=>:download_po, :id=>@tool_download.id, :accesskey=>@tool_download.accesskey}) %></p>
+
+
+<br /><hr /><br />
+<p><%= link_to('&laquo; Other tools', {:action=>:index}) %> &nbsp; | &nbsp; <%= link_to('Scan another resource file', {:action=>:java_resource_extractor}) %></p>

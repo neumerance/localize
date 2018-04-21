@@ -1,0 +1,14 @@
+<tr>
+	<td><%= disp_time(invoice_summary.create_time) %></td>
+	<td><%= disp_time(invoice_summary.modify_time) %></td>
+	<td><%= link_to(invoice_summary.description(@user), {:action=>:invoice, :id=>invoice_summary.id}) %></td>
+	<td><%= Invoice::STATUS_TEXT[invoice_summary.status] %></td>
+	<td><%= invoice_summary.gross_amount + invoice_summary.tax_amount %> <%= invoice_summary.currency.disp_name %></td>
+	<td>
+    View:
+    <%= link_to('HTML', {:action=>:invoice, :id=>invoice_summary.id}) %>
+    <%= link_to('PDF', {:action=>:invoice, :id=>invoice_summary.id, format: :pdf}) %>
+    Download:
+    <%= link_to('PDF', {:action=>:invoice, :id=>invoice_summary.id, disp: 'attachment', format: :pdf}) %>
+  </td>
+</tr>

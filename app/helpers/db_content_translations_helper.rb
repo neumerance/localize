@@ -1,0 +1,2 @@
+module DbContentTranslationsHelper
+end

@@ -1,0 +1,17 @@
+<br />
+<div class="infobox"><h4>Project overview</h4>
+  <table cellspacing="5">
+    <tr><td valign="top">Project:</td><td><%= link_to(@website.name, @website.url, :target=>'_blank') %></td></tr>
+    <tr><td valign="top">Client:</td><td><%= user_link(@website.client) %></td></tr>
+    <tr><td valign="top">Description:</td><td><%= pre_format(@website.description) %></td></tr>
+    <tr><td>Languages:</td><td><b>From <%= @website_translation_offer.from_language.name %> to <%= @website_translation_offer.to_language.name %></b></td></tr>
+  </table>
+</div>
+
+<% if @translator.has_cms_jobs(@website) || @translator.has_cms_reviews(@website) %>
+    <div id="resign-form" class="m-t-20">
+      <%= render partial: '/websites/resignation_button', locals: { website: @website, translator_id: @translator.id } %>
+    </div>
+<% else %>
+    <p>You do not translate or review this website</p>
+<% end %>

@@ -1,0 +1,9 @@
+<tr>
+	<td><%= web_message_for_translator.id %></td>
+  <td><%= h(truncate(web_message_for_translator.client_body, :length => 300, :omission => '...')) %></td>
+	<td><%= web_message_for_translator.original_language.name %></td>
+	<td><%= web_message_for_translator.destination_language.name %></td>
+	<td><%= web_message_for_translator.word_count %></td>
+	<td><%= review ? web_message_for_translator.reviewer_payment : web_message_for_translator.translator_payment %> USD</td>
+  <td><%= link_to _('Take'), review ? hold_for_review_web_message_path(web_message_for_translator) : hold_for_translation_web_message_path(web_message_for_translator), :method => :post %> </td>
+</tr>

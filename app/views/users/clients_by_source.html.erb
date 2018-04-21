@@ -1,0 +1,13 @@
+<%= form_tag({:action=>:clients_by_source}, {:method=>'GET'}) do %>
+  <div style="float: right">
+    Signup date 
+    Start : <%= date_picker_field "created_date_start", nil, {:value => params[:created_date_start].to_s.to_date || Date.today - 1.month}, '<i class="mc-icon-calendar"></i>' %>
+    End : <%= date_picker_field "created_date_end", nil, {:value => params[:created_date_end].to_s.to_date || Date.today}, '<i class="mc-icon-calendar"></i>' %>
+    <%= submit_tag 'Search', data: { disable_with: 'Search' } %>
+    <div style="clear: both"></div>
+  </div>
+<% end %>
+
+<%= users_list_reduced(@users) %>
+
+<br /><p><%= link_to('CSV version', csv_url() ) %></p>

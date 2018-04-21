@@ -1,0 +1,23 @@
+<%= javascript_include_tag "chart_defaults.js" %>
+<%= javascript_include_tag "line_chart.js" %>
+<%= javascript_include_tag "iframeResizer/js/iframeResizer.contentWindow.min.js" %>
+
+<div class="mc-container">
+<% unless ['light', 'wpml'].include? @layout %>
+	<div class="mc-sidebar">
+		<ul id="mc-main-nav" class="mc-t">
+			<% translation_analytics_tabs(@selected_tab).each do |tab| %>
+				<li class="<%= "mc-t mc-current" if tab[:selected] %>"><a href="<%= tab[:link] %>" class="<%= tab[:link_class] %>"><span class=<%= tab[:class] %>></span><%= tab[:text] %></a></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+
+	<div id="translation_analytics_content" class="mc-main-content">
+		<%= yield :content %>
+	</div>
+
+	<div class="mc-clearfix"></div>
+</div>
+
+

@@ -1,0 +1,15 @@
+<div class="m-b-20 m-t-20">
+  <%= form_tag controller: :supporter, action: :open_issues do %>
+      <%= hidden_field_tag :page, params[:page] %>
+      Search <%= text_field_tag :keyword, params[:keyword], class: 'm-r-10' %><button type="submit" class="m-r-20">Search</button>
+      Show <%= select_tag :per, options_for_select([10, 20, 40, 60, 80, 100],  params[:per]), :onchange => 'this.form.submit()' %> items per page
+      <div class="pull-right">
+        <%= paginate @open_issues %>
+      </div>
+  <% end %>
+</div>
+<% if @open_issues.length > 0 %>
+    <%= infotab_header(['Title','Kind','By','For','Created','Last updated']) %>
+    <%= render(:partial=>'issue', :collection=>@open_issues) %>
+    </table>
+<% end %>

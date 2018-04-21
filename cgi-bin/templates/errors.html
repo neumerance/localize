@@ -1,0 +1,8 @@
+<%page args="errors"/>
+<p class="warning">The following errors were found:</p>
+<ul>
+% for error in errors:
+<li>${error}</li>
+% endfor
+</ul>
+<p>Please click <b>BACK</b> in your browser to correct and try again.</p>

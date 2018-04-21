@@ -1,0 +1,10 @@
+<p>Dear <%= @translator.full_real_name %>,</p>
+
+<p><%= @reviewer.full_name %> has completed review of your project "<%= @cms_request.title %>" to <%=@revision_language.language.name %>.</p>
+
+<p>
+  The translation has some issues for you. You have to resolve these issues and complete translation again for reviewer to review.
+  <br />
+  <br />
+  If you need to edit the translation, make sure that you update it where it was originally done. The communication in the issue tracking system does not replace editing the translation.
+</p>

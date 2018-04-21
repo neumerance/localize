@@ -1,0 +1,31 @@
+<h1>Website Projects</h1>
+
+<%= render 'reports/month_range_selector' %>
+
+<%= infotab_top(_('Website Projects'), _('Comparison of number of translated words per month and recurring vs new projects')) %>
+<%= infotab_header(['Month', 'New Projects', 'Recurrent Projects', 'Total Projects','Words on New Projects', 'Words on Recurrent Projects', 'Total Words']) %>
+
+  <% @result.each do |data| %>
+    <tr>
+      <td><%= data[:key] %></td>
+      <td><%= data[:new_projects] %></td>
+      <td><%= data[:recurring_projects] %></td>
+      <td><%= data[:total_projects] %></td>
+      <td><%= data[:new_projects_wcount] %></td>
+      <td><%= data[:recurring_projects_wcount] %></td>
+      <td><%= data[:total_projects_wcount] %></td>
+    </tr>
+  <% end %>
+
+<tfoot>
+  <tr class="headerrow">
+    <th style="text-align:right">Totals:</th>
+    <th><%= @result.inject(0){ |sum, x| sum + x[:new_projects] } %></th>
+    <th><%= @result.inject(0){ |sum, x| sum + x[:recurring_projects] } %></th>
+    <th><%= @result.inject(0){ |sum, x| sum + x[:total_projects] } %></th>
+    <th><%= @result.inject(0){ |sum, x| sum + x[:new_projects_wcount] } %></th>
+    <th><%= @result.inject(0){ |sum, x| sum + x[:recurring_projects_wcount] } %></th>
+    <th><%= @result.inject(0){ |sum, x| sum + x[:total_projects_wcount] } %></th>
+  </tr>
+</tfoot>
+</table>

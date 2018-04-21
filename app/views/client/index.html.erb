@@ -1,0 +1,43 @@
+<%# Message about pending website translation jobs %>
+<%= render partial: 'wpml/shared/pending_translation_jobs_warning', locals: { user: @user } %>
+
+<%# Message about unfunded instant translation jobs %>
+<% if @unfunded_web_messages.size > 0 %>
+	<div class="errorExplanation"><p><b><%= _('Your balance is not enough to translate pending jobs.') %></b></p>
+	<p><%= low_funding_message(@unfunded_web_messages) %></p>
+	<p><%= _('To complete all these jobs, you need to deposit %.2f USD.')%@missing_amount %></p>
+	<p><%= link_to(_('Add funding to allow translation'), {:controller=>:finance, :action=>:index}) %></p>
+	</div>
+<% end %>
+
+<% if @user.can_create_projects? %>
+	<br /><p><%= link_to((_('Start a new project')+' &raquo;').html_safe, {:action=>:getting_started}, {:class=>'rounded_but', :id => 'start_new_project_button'}) %></p><br />
+<% end %>
+
+<%= render partial: '/projects/search' %>
+<div id="cms_translation_projects">
+	<%= render partial: 'client/index_partials/cms_translation_projects',
+			   locals: { websites: @websites, websites_message: @websites_message } %>
+</div>
+<div id="bidding_projects">
+	<%= render partial: 'client/index_partials/bidding_projects',
+	   		   locals: { projects: @projects, project_message: @project_message,
+		  		 		 user: @user, revisions: @revisions } %>
+</div>
+<div id="instant_translation">
+	<%= render partial: 'client/index_partials/instant_translation',
+		   locals: { web_messages: @web_messages, web_messages_message: @web_messages_message } %>
+</div>
+<div id="text_resource">
+<%= render partial: 'client/index_partials/text_resource',
+		   locals: { text_resources: @text_resources,
+   				     text_resources_message: @text_resources_message,
+   				     user: @user } %>
+</div>
+<div id="arbitration">
+	<%= render partial: 'client/index_partials/arbitration',
+	   		   locals: { arbitrations: @arbitrations,
+											your_arbitrations_message: @your_arbitrations_message } %>
+</div>
+
+

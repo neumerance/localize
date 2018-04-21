@@ -1,0 +1,35 @@
+text_resource_iphone_spanish:
+  id: 1
+  owner_type: ResourceLanguage
+  owner_id: 1
+  active: <%= MANAGED_WORK_ACTIVE %>
+  translation_status: <%= MANAGED_WORK_CREATED %>
+  from_language_id: 1
+  to_language_id: 2
+
+started_1:
+  id: 2
+  owner_type: ResourceLanguage
+  owner_id: 5
+  active: <%= MANAGED_WORK_ACTIVE %>
+  translation_status: <%= MANAGED_WORK_CREATED %>
+  from_language_id: 1
+  to_language_id: 2
+
+started_2:
+  id: 3
+  owner_type: ResourceLanguage
+  owner_id: 6
+  active: <%= MANAGED_WORK_INACTIVE %>
+  translation_status: <%= MANAGED_WORK_COMPLETE %>
+  from_language_id: 1
+  to_language_id: 2
+
+web_message:
+  id: 4
+  owner_type: WebMessage
+  owner_id: 5
+  active: <%= MANAGED_WORK_ACTIVE %>
+  translation_status: <%= MANAGED_WORK_CREATED %>
+  from_language_id: 1
+  to_language_id: 3

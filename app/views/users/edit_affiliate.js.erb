@@ -1,0 +1,5 @@
+<% if @warning %>
+  alert('<%= @warning %>')
+<% else %>
+  jQuery("#affiliate").html('<%= escape_javascript(render :partial => "affiliate") %>')
+<% end %>

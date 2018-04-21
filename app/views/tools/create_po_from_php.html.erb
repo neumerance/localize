@@ -1,0 +1,22 @@
+<% for temp_download in @temp_downloads %>
+	<h4><%= temp_download.description %></h4>
+	<form action="#">
+		<%= text_area_tag("po#{temp_download.id}", h(@po_contents[temp_download]).force_encoding('utf-8'), {:rows=>15, :cols=>80}) %>
+	</form>
+	<p>Download: <%= link_to(temp_download.filename, {:action=>:download_po, :id=>temp_download.id, :accesskey=>temp_download.accesskey}) %></p>
+<% end %>
+
+<br />
+
+<h2>Do you need professional translation for these .po files?</h2>
+<p>Our translation system makes it easier and more affordable.</p>
+<ul><li>Top translation from <b>experienced professional translators</b>.</li>
+<li>Low cost - <b>just 0.09 USD / word</b>.</li>
+<li><b>Fast translation</b>. Your application can be multilingual in a couple of days.</li>
+<li>Manage translation to multiple languages easily.</li>
+</ul>
+<p>To get started, <%= link_to('create an account', {:controller=>:users, :action=>:new, :utype=>'Client'}) %>. Then, start a new <b>Software Localization</b> project and upload the .po files.</p>
+<br /><p class="comment">* You can also use a free program like <a href="http://www.poedit.net/">poedit</a> and translate .po files yourself.</p>
+
+<br /><hr /><br />
+<p><%= link_to('&laquo; Other tools', {:action=>:index}) %> &nbsp; | &nbsp; <%= link_to('Scan another PHP file', {:action=>:php_scanner}) %></p>

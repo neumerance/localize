@@ -1,0 +1,118 @@
+<% if @invoice.payment_processor == EXTERNAL_ACCOUNT_2CHECKOUT &&
+      @invoice.status == TXN_CREATED %>
+  <div class="red_panel" style="margin-bottom: 20px;">
+    Payments made with 2Checkout can take up to 48 hours to be processed.
+    If it takes more than that, please open a
+    <%= link_to('support ticket', { controller: '/support', action: :new }) %>.
+  </div>
+<% end %>
+
+
+<% if @invoice.user && (@user != @invoice.user) %>
+	<p>Invoice belongs to <%= user_link(@invoice.user) %></p>
+<% end %>
+<%= link_to 'View as PDF', controller: 'finance', action: 'invoice', id: @invoice.id, format: :pdf %> |
+<%= link_to 'Download as PDF', controller: 'finance', action: 'invoice', id: @invoice.id, format: :pdf, disp: :attachment %>
+
+<h3 style="margin-top: 20px;"><%= _('Summary') %></h3>
+<%= infotab_header([_('Field'), _('Value')],{},nil) %>
+	<tr><td><%= _('Created:') %></td><td><%= disp_time(@invoice.create_time) %></td></tr>
+	<tr><td><%= _('Updated:') %></td><td><%= disp_time(@invoice.modify_time) %></td></tr>
+	<tr><td><%= _('Description:') %></td><td><%= @invoice.description(@user) %></td></tr>
+	<tr>
+		<td><%= _('Status') %></td>
+		<td>
+			<b><%= Invoice::STATUS_TEXT[@invoice.status] %></b>
+			<% if (@invoice.status != TXN_COMPLETED) && @user.has_admin_privileges? %>
+				<div id="invoice_status">
+					<%= render(:partial=>'invoice_status') %>
+				</div>
+			<% end %>
+		</td>
+	</tr>
+	<tr><td><%= _('Transaction identifier') %></td><td><%= ExternalAccount::NAME[@invoice.payment_processor] %>: <%= @invoice.txn %></td></tr>
+</table>
+<br />
+
+<% if @user.has_admin_privileges? || (@user == @invoice.user) %>
+	<h3><%= _('Client') %></h3>
+	<table class="stats" >
+		<tr class="headerrow">
+			<th colspan="2"><%= _('Company or Individual') %></th>
+		</tr>
+
+		<tr>
+			<% unless @invoice.vat_number.blank? %>
+		    <td><b>VAT Number</b> </td><td><%=  @invoice.vat_number %></td>
+		  <% end %>
+		</tr>
+
+		<tr>
+			<td colspan="2">
+				<div id="invoice_company">
+					<%= render(:partial=>'invoice_company', :object=>@invoice) %>
+				</div>
+			</td>
+		</tr>
+		<!--tr><td>Paid by</td><td><%= @invoice&.user&.full_real_name %></td></tr>
+		<tr><td>E-Mail</td><td><%= @invoice&.user&.email %></td></tr -->
+	</table>
+	<br />
+
+	<h3><%= _('Paid to:') %></h3>
+	<p><b>OnTheGoSystems, INC.</b><br />
+	4730 S Fort Apache Rd<br />
+	Suite 300<br />
+	Las Vegas, NV 89147-7947<br />
+	USA</p>
+
+	<br />
+<% end %>
+
+
+
+
+<h3><%= _('Payment information') %></h3>
+<%= infotab_header([_('Description'),_('Amount')], {}, nil) %>
+  <% if @invoice.fee > 0 %>
+    <tr>
+      <td><%= _('Wire transfer fee') %>
+    <td><%= to_dollars(@invoice.fee) %></td>
+    </tr>
+  <% end %>
+	<%= render(:partial=>'money_transaction', :collection=>@invoice.filtered_money_transactions) %>
+	<% if @invoice.tax_amount && @invoice.tax_country_id %>
+		<% country = Country.find(@invoice.tax_country_id) %>
+		<tr>
+			<td>VAT Tax in <%="%s (%s%%)"%[country.name,@invoice.tax_rate] %> </td>
+			<td><%= @invoice.tax_amount %> <%= @invoice.currency.disp_name.html_safe %></td>
+		</tr>
+	<% end %>
+	<tr class="stats_summary">
+		<td>Total</td>
+		<td><%= @invoice.gross_amount + @invoice.fee + @invoice.tax_amount %> USD</td>
+	</tr>
+	<tr class="stats_summary">
+		<td><b><%= _('Amount due') %></b></td>
+		<td>
+      <% if @invoice.status == TXN_COMPLETED %>
+        0
+      <% else %>
+        <span><%= @invoice.gross_amount + @invoice.tax_amount %> <%= @invoice.currency.disp_name.html_safe %></span>
+      <% end %>
+    </td>
+	</tr>
+</table>
+<br />
+
+<% if @possible_actions.length > 0 %>
+	<h3><%= _('Actions') %></h3>
+	<% for possible_action in @possible_actions %>
+		<%= button_to possible_action[0], possible_action[1], "data-confirm"=>possible_action[2] %><br /><br />
+	<% end %>
+<% end %>
+
+<% if @invoice.status == TXN_CREATED %>
+	<h4><%= _('Other payment options') %></h4>
+	<p><%= (_("Have a look at %s")%link_to(_('other payment methods'),{:controller=>:finance, :action=>:payment_methods})).html_safe %>.</p>
+<% end %>

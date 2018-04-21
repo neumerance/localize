@@ -1,0 +1,13 @@
+<p>Dear <%= @web_dialog.full_name %>,</p>
+
+<p><%= @web_message.body_for_user(false) %></p>
+<% if @has_attachments %>
+<p>This message also contains attachments. To get the attached file(s), please click on the link below.</p>
+<% end %>
+
+<% url = url_for({:escape => false, :only_path => false, :controller=>:web_dialogs, :action=>:show, :id=>@web_dialog.id, :accesskey=>@web_dialog.accesskey, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+<p>
+Don't reply to this email.<br />
+If you want to send us another message, send an attachment or to see the complete log of your comments and our replies, click on the link below: <%= link_to url, url %>
+</p>
+<p>Best regards,</p>

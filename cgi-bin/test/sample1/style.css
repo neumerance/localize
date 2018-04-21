@@ -1,0 +1,176 @@
+/*CSS for Summer Holiday - by Luke Symes*/
+
+/*--------------GLOBAL Styles--------------*/
+body {
+background:rgb(175, 180, 255) url(img/body-bg.jpg);
+font:90% "Century Gothic", sans-serif;
+color:rgb(50, 50, 50);
+line-height:1.5em;
+}
+
+html>body {font-size:10pt;}	/*resets font-size for non-IE browsers*/
+
+body, ul, li, h1, h2, h3, blockquote, blockquote p, .quote1, .quote2, #footer p {
+margin:0; padding:0; list-style:none;
+}
+
+h2 {
+font-size:150%;
+font-variant:small-caps;
+background:rgb(250, 250, 250) url(img/h2.png) bottom left no-repeat;
+color:rgb(53, 179, 167);
+margin-left:15px;
+padding:2px;
+}
+
+h3 {
+color:rgb(180, 140, 53);
+margin:10px 0;
+text-align:center;
+font-size:1.2em;
+}
+
+blockquote {
+margin:1em 0.25em 0.5em;
+float:right;
+}
+
+blockquote p {
+padding:0.75em 1.5em 0;
+text-align:center;
+position:relative;
+width:16em;
+}
+
+/*-------WRAPPER Styles-------*/
+
+#wrap1 {
+background-color:rgb(255, 140, 75);
+color:rgb(180, 100, 53);
+width:740px;
+margin:0 auto;
+}
+
+#wrap2 {background:rgb(255, 201, 74); clear:both;}
+
+/*-------HEADER Styles-------*/
+
+#header {background:rgb(255, 140, 75) url(img/header.gif) top repeat-x;}
+#header h1 {padding:15px 10px 10px; font-size:200%;}
+
+/*-------NAVBAR Styles-------*/
+
+#navbar {
+margin:0 auto;
+width:30em;		/*This may need adjusting to fit with the amount of text*/	
+min-width:150px;  /*This may need adjusting to fit with the amount of text*/
+clear:both;
+}
+
+#navbar li, #navbar li a, #navbar li a span, #navbar li a span span {display:block;}
+#navbar li {margin-left:0.5em; float:left;}
+
+#navbar li a {
+background:rgb(95, 105, 255) url(img/tab-repeat.jpg) top repeat-x;	/*tab background*/
+color:rgb(175, 180, 255);
+text-decoration:none;
+}
+
+#navbar li a span {
+background:url(img/tab-TR.gif) top right;	/*tab top right corner*/
+text-decoration:none;
+}
+
+#navbar li a span span {
+background:url(img/tab-TL.gif) top left;	/*tab top left corner*/
+padding:5px 10px;
+}
+
+#navbar #current a {
+background:white url(img/tab-on-TR.gif) top right;	/*current tab top right corner*/
+color:rgb(75, 85, 235);
+}
+
+#navbar #current a span {background:url(img/tab-on-TL.gif) top left;}	/*current tab top left corner*/
+
+/*-------LEFT COLUMN Styles-------*/
+
+#column {
+width:9.2em;
+float:right;
+}
+
+/*LEFT NAVIGATION*/
+
+#pagenav li {
+background:rgb(255, 226, 165) url(img/orange-repeat.jpg) top repeat-x;	/*link background*/
+margin:0.25em 0 0.25em 0.25em;
+display:block;
+}
+
+#pagenav li a {
+background:url(img/orange-BL.gif) bottom left;	/*link bottom left corner*/
+color:rgb(180, 140, 53);
+display:block;
+text-decoration:none;
+}
+
+#pagenav li a span {
+background:url(img/orange-TL.gif) top left;	/*link top left corner*/
+padding:5px 10px;
+display:block;
+}
+
+#column li a{height:1em;}	/*Hack to control li link for IE*/
+#wrap2>#column li a {height:auto;}	/*resets link height for non-IE browsers*/
+
+/*-------MAIN CONTENT Styles-------*/
+
+#main
+{
+padding:10px 10px;
+background-color:white;
+color:rgb(50, 50, 50);
+height:100%;
+}
+
+#main p {margin:5px 10px; padding:5px;}
+
+/*-------FOOTER Styles-------*/
+
+#footer {
+background:url(img/footer.gif) bottom repeat-x;
+text-align:right;
+padding:10px 20px 40px;
+clear:both;
+}
+
+/*-------LINK styles-------*/
+
+#navbar li a:hover {color:rgb(75, 255, 238);}
+#column  a:hover {text-decoration:underline;}
+#main a {color:rgb(217, 119, 63);}
+#main a:hover {color:rgb(217, 171, 63);}
+.links {text-align:center;}
+.links a {color:rgb(179, 98, 53); clear:both;}
+.links a:hover{color:rgb(179, 138, 53);}
+
+/*-------CLASS Styles-------*/
+
+.quote1, .quote2 {position:absolute; font:150% serif; width:auto; }
+.quote1 {top:0; left:0;}
+.quote2 {right:0; top:65%;}
+.clear {clear:both;}
+.hide  {display:none;}
+
+.photosright {
+	float: right;
+}
+
+/*-------Misc. Styles-------*/
+
+#main p, #footer {font-family:Verdana, sans-serif;}
+#navbar li a span, #navbar li a span span, #navbar #current a, #navbar #current a span, #column li a
+, #column li a span {background-repeat:no-repeat;}
+blockquote p, #header h1, .left {float:left;}
+abbr:hover {cursor:help;}

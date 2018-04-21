@@ -1,0 +1,7 @@
+<p>Users count: <%= @users.length %></p>
+
+<%= users_list(@users) %>
+<br />
+
+<p><%= link_to('Back to newsletter', {:action=>:show}) %> |
+<%= link_to('Back to index', {:action=>:index}) %></p>

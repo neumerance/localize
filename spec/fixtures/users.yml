@@ -1,0 +1,235 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+supporter:
+  id: 1
+  type: Supporter
+  nickname: greatsupport
+  fname: eran
+  lname: helzer
+  email: eran@onthegosoft.com
+  userstatus: <%= USER_STATUS_REGISTERED %>
+
+amir:
+  id: 2
+  type: Client
+  nickname: theamir
+  fname: amir
+  lname: helzer
+  email: amir.helzer@onthegosoft.com
+  userstatus: <%= USER_STATUS_REGISTERED %>
+  top: false
+  country_id: 1
+  zip_code: zip_code
+  api_key: c69efb4a-ecc1-4be3-8da0-baf55ec40538
+
+orit:
+  id: 3
+  type: Translator
+  nickname: susi
+  fname: orit
+  lname: helzer
+  email: orit@onthegosoft.com
+  notifications: <%= DAILY_RELEVANT_PROJECTS_NOTIFICATION | DAILY_ALL_PROJECTS_NOTIFICATION %>
+  userstatus: <%= USER_STATUS_QUALIFIED %>
+
+guy:
+  id: 4
+  type: Translator
+  nickname: guy
+  fname: guy
+  lname: helzer
+  email: guy@onthegosoft.com
+  notifications: <%= DAILY_RELEVANT_PROJECTS_NOTIFICATION | DAILY_ALL_PROJECTS_NOTIFICATION %>
+  userstatus: <%= USER_STATUS_QUALIFIED %>
+  level: <%= EXPERT_TRANSLATOR %>
+
+doron:
+  id: 5
+  type: Client
+  nickname: shwimp
+  fname: doron
+  lname: benari
+  email: doron@onthegosoft.com
+  userstatus: <%= USER_STATUS_REGISTERED %>
+  api_key: 1b9c94af-e29b-432b-b513-946274ceb468
+
+practiceuser:
+  id: 6
+  type: Client
+  nickname: practice
+  fname: practice
+  lname: user
+  email: <%= PRACTICE_USER_EMAIL %>
+  userstatus: <%= USER_STATUS_REGISTERED %>
+  api_key: 3e966b94-06ed-4b21-b35e-8d66beb4c913
+
+democlient:
+  id: 7
+  type: Client
+  nickname: <%= DEMO_CLIENT_NICKNAME %>
+  fname: <%= DEMO_CLIENT_FNAME %>
+  lname: <%= DEMO_CLIENT_LNAME %>
+  email: <%= DEMO_CLIENT_EMAIL %>
+  userstatus: <%= USER_STATUS_REGISTERED %>
+  api_key: 560e5359-3e1c-4851-ac8c-2c4c4943bba5
+
+newbi:
+  id: 8
+  type: Translator
+  nickname: newbi
+  fname: ronald
+  lname: ragen
+  email: ronald@onthegosoft.com
+  notifications: <%= DAILY_RELEVANT_PROJECTS_NOTIFICATION | DAILY_ALL_PROJECTS_NOTIFICATION %>
+  userstatus: <%= USER_STATUS_REGISTERED %>
+
+admin:
+  id: 9
+  type: Admin
+  nickname: sysadmin
+  fname: amir
+  lname: helzer
+  email: amir.helzer@onthegosystems.com
+  userstatus: <%= USER_STATUS_REGISTERED %>
+
+deleted:
+  id: 10
+  type: Translator
+  nickname: deadbeef
+  fname: orit
+  lname: helzer
+  email: donewith@onthegosystems.com
+  userstatus: <%= USER_STATUS_CLOSED %>
+
+pt1:
+  id: 11
+  type: Translator
+  nickname: pt1
+  fname: hello1
+  lname: world
+  email: hello1@onthegosoft.com
+  notifications: 0
+  userstatus: <%= USER_STATUS_PRIVATE_TRANSLATOR %>
+
+pt2:
+  id: 12
+  type: Translator
+  nickname: pt2
+  fname: hello1
+  lname: world
+  email: hello2@onthegosoft.com
+  notifications: 0
+  userstatus: <%= USER_STATUS_PRIVATE_TRANSLATOR %>
+
+stranger:
+  id: 13
+  type: Translator
+  nickname: stranger
+  fname: stranger
+  lname: ragen
+  email: stranger@onthegosoft.com
+  notifications: <%= DAILY_RELEVANT_PROJECTS_NOTIFICATION | DAILY_ALL_PROJECTS_NOTIFICATION %>
+  userstatus: <%= USER_STATUS_REGISTERED %>
+
+other_admin:
+  id: 14
+  type: Admin
+  nickname: bruceadmin
+  fname: bruce
+  lname: pearson
+  email: bruce@onthegosystems.com
+  userstatus: <%= USER_STATUS_REGISTERED %>
+
+shark:
+  id: 15
+  type: Partner
+  nickname: shark
+  fname: big
+  lname: blue
+  email: shark@onthegosoft.com
+  notifications: <%= DAILY_ALL_PROJECTS_NOTIFICATION %>
+  userstatus: <%= USER_STATUS_REGISTERED %>
+
+wpml:
+  id: 16
+  type: Supporter
+  nickname: WPML
+  fname: Mihai
+  lname: WP
+  email: mihai@wpml.org
+  notifications: <%= DAILY_ALL_PROJECTS_NOTIFICATION %>
+  userstatus: <%= USER_STATUS_REGISTERED %>
+
+icanlocalize:
+  id: 17
+  type: Supporter
+  nickname: ICanLocalize
+  fname: icanlocalize
+  lname: support
+  email: <%= CMS_SUPPORTER_EMAIL %>
+  userstatus: <%= USER_STATUS_REGISTERED %>
+
+top_client:
+  id: 18
+  type: Client
+  nickname: top_client
+  fname: top
+  lname: client
+  email: topclient@mailinator.com
+  userstatus: <%= USER_STATUS_REGISTERED %>
+  top: 1
+  api_key: d9d71f37-ca52-4321-a3c7-7a212776ceb6
+
+alias_full:
+  id: 19
+  type: Alias
+  master_account_id: 2
+  nickname: alias_something1
+  fname: alias_name
+  lname: alias_last_nme
+  email: alias_create@email.com
+  userstatus: <%= USER_STATUS_REGISTERED %>
+  top: false
+
+alias_cant_edit:
+  id: 20
+  type: Alias
+  master_account_id: 2
+  nickname: alias_something2
+  fname: alias_cant_edit
+  lname: alias_cant_edit
+  email: alias_cant_edit@email.com
+  userstatus: <%= USER_STATUS_REGISTERED %>
+  top: false
+
+alias_cant_pay:
+  id: 21
+  type: Alias
+  master_account_id: 2
+  nickname: alias_cant_pay
+  fname: alias_cant_pay
+  lname: alias_cant_pay
+  email: alias_cant_pay@email.com
+  userstatus: <%= USER_STATUS_REGISTERED %>
+  top: false
+
+alias_cant_do:
+  id: 22
+  type: Alias
+  master_account_id: 2
+  nickname: alias_cant_do
+  fname: alias_cant_do
+  lname: alias_cant_do
+  email: alias_cant_do@email.com
+  userstatus: <%= USER_STATUS_REGISTERED %>
+  top: false
+
+alias_can_pay:
+  id: 23
+  type: Alias
+  master_account_id: 2
+  nickname: alias_can_pay
+  fname: alias_can_pay
+  lname: alias_can_pay
+  email: alias_can_pay@email.com
+  userstatus: <%= USER_STATUS_REGISTERED %>
+  top: false

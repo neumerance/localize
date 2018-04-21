@@ -1,0 +1,25 @@
+<% if @messages.length > 0 %>
+  <% if @embedded %>
+    <div class="errorExplanation">
+      To review a instant message you need to use the icanlocalize website.
+      <%= ta_out_of_date_warning(@user) %>
+    </div>
+  <% end %>
+	<br />
+	
+	<p>The following Instant Translation projects are available for you to review:</p>
+	<%= infotab_header([_('Job ID'), _('text'),_('Original<br />language'), _('Translation<br />language'), _('Word<br />count'), _('Payment'), _('Actions')]) %>
+	<% @messages.each do |web_message_for_translator| %>
+    <%= render(:partial=>'web_message_for_translator', locals: {review: true, web_message_for_translator: web_message_for_translator}) %>
+  <% end %>
+	</table>
+<% else %>
+	<div class="errorExplanation">
+	<p>There are no Instant Translation projects available for you to review at this time.</p>
+	</div>
+<% end %>
+<% if @user.expert? %>
+  <p>
+    <%= link_to "Translate instant translation projects instead", web_messages_path %>
+  </p>
+<% end %>

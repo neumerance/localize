@@ -1,0 +1,8 @@
+<% if @msg %>
+  page.alert(msg)
+<% else %>
+  jQuery('#new_branding').html('<%= escape_javascript(render :partial=>'new_branding_selector') %>').before('<%= escape_javascript(render :partial=>'branding_wrap', :object=>@branding) %>')
+  jQuery('html, body').animate({
+    scrollTop: jQuery("#<%= @branding.lang_div %>").offset().top
+  }, 2000)
+<% end %>

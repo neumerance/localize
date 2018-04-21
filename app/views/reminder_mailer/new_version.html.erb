@@ -1,0 +1,12 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>A new version was uploaded for <%= @version.revision.project.name %> by <%= @by_user.full_name %>.</p>
+<p>
+<% if @stats_txt -%>
+Here is the project's status summary:
+<%= @stats_txt -%>
+<% end -%>
+</p>
+<% url = url_for({:escape => false, :only_path => false, :controller=>:revisions, :action=>:show, :project_id=>@version.revision.project_id, :id=>@version.revision.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+<p>To see for full details of this project, click on the following link: <%= link_to url, url %></p>

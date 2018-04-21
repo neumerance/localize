@@ -1,0 +1,23 @@
+<% if @show_number_of_pages %>
+	<div class="pager_control">
+		Showing page <%= form_tag({:action=>:visits}, {:method=>'GET'}) %>
+			<%= select_tag( :page, options_for_select(@list_of_pages,@visits.number), {:onchange=>"submit()"}) %>
+		<%= link_to("Prev", {:action=>:visits, :page=>@visits.prev.number}) if @visits.prev? %>
+		<%= link_to("Next", {:action=>:visits, :page=>@visits.next.number}) if @visits.next? %>	
+		</form>
+	</div>
+<% end %>
+
+<%= infotab_header(['Source','Time']) %>
+
+<% for visit in @visits %>
+  <tr>
+    <td><%=link_to_if(!visit.source.blank?,h(visit.source),visit.source, :target=>'_blank') %></td>
+    <td><%=disp_time(visit.created_at) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Back', destinations_path %>

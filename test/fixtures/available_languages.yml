@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+english_to_spanish:
+  id: 1
+  from_language_id: 1
+  to_language_id: 2
+  qualified: 1
+  amount: 0.09
+
+english_to_german:
+  id: 2
+  from_language_id: 1
+  to_language_id: 3
+  qualified: 1
+  amount: 0.10
+
+english_to_french:
+  id: 3
+  from_language_id: 1
+  to_language_id: 4
+  qualified: 1
+  amount: 0.11
+

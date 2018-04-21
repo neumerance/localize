@@ -1,0 +1,11 @@
+<%= form_tag({:action=>:review_payment_for_private_translators}) do %>
+<%= infotab_header([_('Language'),_('Select translator')]) %>
+<% for rl in @revision.open_translation_languages %>
+<tr><td><%= rl.language.name %></td><td><%= select_tag("translator_for#{rl.id}", options_for_select(@my_translators)) %></td></tr>
+<% end %>
+</table>
+<br /><%= submit_tag((_('Select translators &raquo;')).html_safe, :style=>'padding: 0.5em;', data: { disable_with: (_('Select translators &raquo;')).html_safe }) %>
+<% end %>
+
+<br /><hr />
+<p><%= link_to(_('Back to project setup'), {:action=>:show}) %></p>

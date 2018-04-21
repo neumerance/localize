@@ -1,0 +1,46 @@
+<% if @format_error %>
+	<div class="errorExplanation" style="margin: 1em;">
+  <%= image_tag 'icons/alert.png', class: '', width: 32, height: 32, alt: 'alert', style: 'float: left; margin-right: 10px;', border: 0 %>
+	<h3><%= _("Resource format mismatch") %></h3>
+	<p><%= _("Our check indicates that the format of this file is UTF-16. You are uploading it as a UTF-8 file. This will cause serious problems and you may not be able to use the translation. Please go back and select UTF-16 format and upload this resource file again.") %> </p>
+	<%= button_to(_('Go back'), {:action=>:destroy, :id=>@resource_upload.id}, :method=>'delete', :style=>'padding: 0.5em 1em;') %>
+    <input id="continue" type="button" value="Continue anyway" disabled="true" onClick="jQuery('#check_strings').css('display', 'inherit')" />
+    <br/>
+    <label>
+		<input type="checkbox" onClick="$('continue').disabled = !$('continue').disabled"><%= _("I confirm that I know what I'm doing and I understand that I may have difficulties using this translation <- this will enable the 'continue anyway' button") %>
+    </label>
+
+	</div>
+<% end %>
+
+<div id="check_strings" <%= "style='display:none;'" if @format_error%>>
+    <% if @modified_strings.length > 0 %>
+        <div class="errorExplanation" style="margin: 1em;">
+		<h3><%= _("You are about to update strings in the project") %></h3>
+		<p><%= _("The file you uploaded includes strings with the same label but different contents. Strings with the same label can appear only once per project.") %></p>
+		<p><b><%= _("Please make sure that these are intended updates.") %></p>
+		<p><%= _("If you are uploading several resource files to the same Software Localization project, make sure they don't include strings with the same labels.") %></p>
+        <%= modified_strings_table(@modified_strings).html_safe %>
+        </div>
+    <% else %>
+        <div class="red_message" style="margin: 1em;">
+			<p><%= _("The following texts were extracted from the resource file that you uploaded. Please review it carefully and check that the texts appear correct.") %></p>
+			<p><%= _("If the extracted text appears faulty, cancel this upload and select a different file format when uploading.") %>
+        </div>
+    <% end %>
+
+    <br />
+
+    <%= form_tag({:action=>:scan_resource, :id=>@resource_upload.id}) do %>
+
+        <%= resource_strings_table(@resource_strings) %>
+		<div class="tabbottom"><%= _("Word count for translation: %s words") % @word_count %></div>
+        <br /><br />
+
+        <%= submit_tag((_('Add this resource file and selected strings to the project') + '&raquo;').html_safe, :style=>'padding: 0.5em;', data: { disable_with: (_('Add this resource file and selected strings to the project') + '&raquo;').html_safe }) %>
+    <% end %>
+
+		&nbsp; | &nbsp; <%= button_to(_('Cancel'), {:action=>:destroy, :id=>@resource_upload.id}, :method => :delete) %>
+</div>
+
+<a name="bottom_of_this_page"></a>

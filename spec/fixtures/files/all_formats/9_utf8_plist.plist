@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>title 1</key>
+		<string>Green & Clean 2015</string>
+		<key>product_identifier 1</key>
+		<string>se.amazing_apps.gks.healthy_new_start</string>
+		<key>thumbnail 1</key>
+		<string>green_and_clean_2015.png</string>
+		<key>recipes</key>
+		<array>
+			<integer>123</integer>
+			<integer>122</integer>
+			<integer>121</integer>
+			<integer>120</integer>
+			<integer>119</integer>
+			<integer>118</integer>
+			<integer>117</integer>
+			<integer>116</integer>
+			<integer>115</integer>
+			<integer>114</integer>
+			<integer>113</integer>
+			<integer>112</integer>
+			<integer>111</integer>
+			<integer>110</integer>
+		</array>
+	</dict>
+	<dict>
+		<key>title 2</key>
+		<string>Smoothies Reinvented</string>
+		<key>product_identifier 2</key>
+		<string>se.amazing_apps.gks.smoothies_reinvented</string>
+		<key>thumbnail 2</key>
+		<string>smoothies_reinvented.png</string>
+		<key>recipes</key>
+		<array>
+			<integer>145</integer>
+			<integer>144</integer>
+			<integer>143</integer>
+			<integer>142</integer>
+			<integer>141</integer>
+			<integer>140</integer>
+			<integer>139</integer>
+			<integer>138</integer>
+			<integer>137</integer>
+			<integer>136</integer>
+			<integer>135</integer>
+			<integer>134</integer>
+			<integer>133</integer>
+			<integer>132</integer>
+		</array>
+	</dict>
+</array>
+</plist>

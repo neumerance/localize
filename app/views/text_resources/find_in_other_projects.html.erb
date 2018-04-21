@@ -1,0 +1,9 @@
+<% if @case_sensitive %>
+	<div class="errorExplanation">Searching for exact matches only (case sensitive)</div>
+<% end %>
+
+<% if @candidates.length > 0 %>
+	<%= show_translation_candidates(@candidates, @languages) %>
+<% else %>
+	<p>We didn't find any translations to apply to this project from your other projects. <%= link_to('back to project',{:action=>:show}) %></p>
+<% end %>

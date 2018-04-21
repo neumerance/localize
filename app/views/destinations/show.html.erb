@@ -1,0 +1,21 @@
+<p>
+  <b>Name:</b>
+  <%=h @destination.name %>
+</p>
+
+<p>
+  <b>URL:</b>
+  <%=h @destination.url %>
+</p>
+
+<p>
+  <b>Language:</b>
+  <%=h @destination.lang_name %>
+</p>
+
+<p><b>Example:</b> <%= link_to(url_for(:only_path => false, :action=>'go', :name=>@destination.name, :src=>'http://sample.com', :iso=>'fr_FR'), {:action=>'go', :name=>@destination.name, :src=>'http://sample.com', :iso=>'fr_FR'}) %></p>
+
+<p><%= link_to('%d visits'%@destination.visits.count, {:action=>:visits}) %></p>
+
+<%= link_to 'Edit', edit_destination_path(@destination) %> |
+<%= link_to 'Back', destinations_path %>

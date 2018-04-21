@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="232-86ea12e1a3b554d89ce03d861a01796c" source-language="en" target-language="de" datatype="plaintext">		<header><reference><external-file href="http://wp-blog.otgs-yt.tk/test_update_ta_tool4/"/></reference></header>
+    <body>
+      <trans-unit resname="title" restype="string" datatype="html" id="title">
+        <source><![CDATA[Test_Update_TA_Tool4]]></source>
+        <target><![CDATA[Test_Update_TA_Tool4]]></target>
+      </trans-unit>
+      <trans-unit resname="body" restype="string" datatype="html" id="body">
+        <source><![CDATA[DRS_Ketagoda created this page today, to test if <strong><em>TA Tool</em> </strong>sends the completed translation, back to the WPML.<br class="xliff-newline" /><br class="xliff-newline" />Fragmented sentences are being translated using TA Tool.<br class="xliff-newline" /><br class="xliff-newline" />Current page is updated, and resent to TA Tool.<br class="xliff-newline" /><br class="xliff-newline" />Current page is updated for 2nd time, and resent to TA Tool.]]></source>
+        <target><![CDATA[DRS_Ketagoda created this page today, to test if <strong><em>TA Tool</em> </strong>sends the completed translation, back to the WPML.<br class="xliff-newline" /><br class="xliff-newline" />Fragmented sentences are being translated using TA Tool.<br class="xliff-newline" /><br class="xliff-newline" />Current page is updated, and resent to TA Tool.<br class="xliff-newline" /><br class="xliff-newline" />Current page is updated for 2nd time, and resent to TA Tool.]]></target>
+      </trans-unit>
+
+    </body>
+  </file>
+</xliff>

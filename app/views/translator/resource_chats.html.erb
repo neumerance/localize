@@ -1,0 +1,17 @@
+<% if @software_reviews.length > 0 %>
+    <a name="software_reviews"></a>
+    <%= infotab_top('Software projects you are reviewing', "You are currently revieweing this software projects"  + (@have_more_software_reviews ? ' (showing first %d) '%PER_PAGE + link_to('Show all &raquo;'.html_safe, {:action=>:resource_chats}) : '')) %>
+    <%= infotab_header(['Project', 'Language', 'Words to review', 'Actions']) %>
+    <%= render(:partial=>'software_review', :collection=>@software_reviews) %>
+    </table>
+    <div class="pager_control" style="position: relative; height: 15px;">
+      <%= paginate @software_reviews %>
+      <label style="position: absolute; top: 2px; right: 10px">
+        Results per page: <%= select_tag 'per_page', options_for_select(%w(10 20 40 60 80 100), params[:per_page]), onchange: 'submit()'  %>
+      </label>
+      <div style="clear: both"></div>
+    </div>
+    <div class="inter_tab_spacer"></div>
+<% else %>
+    <p>No software localization projects to show</p>
+<% end %>

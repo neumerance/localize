@@ -1,0 +1,9 @@
+<% if params[:from] == "subscribe" %>
+  location.href = '<%= url_for(action: params[:show], id: @issue.id, anchor: 'reply', t: Time.now.to_i) %>'
+<% else %>
+  <% if @warning %>
+    alert('<%= @warning %>')
+  <% else %>
+    location.reload()
+  <% end %>
+<% end %>

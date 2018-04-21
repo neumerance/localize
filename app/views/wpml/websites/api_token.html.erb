@@ -1,0 +1,6 @@
+To continue, please enter the following authentication token into WPML:<BR>
+<BR>
+<%= render partial: 'wpml/shared/api_key_instructions',
+           locals: { api_key: @user.api_key} %>
+
+<%= button_to 'Next', wpml_websites_path, method: :get %>

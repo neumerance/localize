@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>ICanLocalize &#8211; Expert Translation at Unbeatable Prices</title>
+    <%= stylesheet_link_tag 'custom/cstyle' %>
+    <%= stylesheet_link_tag 'custom/landing-page' %>
+    <!--[if lt IE 9]>
+      <script src="/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div id="body-container" class="landing-page">
+
+      <header id="header-container">
+
+        <div id="header">
+
+          <div class="site-title-container">
+            <h1 id="site-title"><a href="index.htm">ICanLocalize</a></h1>
+            <p id="site-description">The Ideal Translation Service for WordPress sites &amp; Mobile Apps</p>
+          </div>
+
+          <hgroup>
+            <h2>Do you have problems with translations?</h2>
+            <h3>Worried about quality and deadlines? </h3>
+          </hgroup>
+
+        </div><!-- #header -->
+
+      </header><!-- #header-container -->
+
+
+      <div id="container">
+
+        <div class="container-inner">
+          <section class="entry">
+            <h2>Professional translators from ICanLocalize, the same makers of WPML, are ready to help you!</h2>
+            <p>You will receive excellent translations, by native speakers, done on time and with a smile.</p>
+
+            <ul>
+              <li>A wide range of expertise in different fields</li>
+              <li>Certified translators with Masters level qualification</li>
+              <li><strong>Attractive prices, only $0.09 USD per word</strong></li>
+              <li>Ability to interview and select translators for your projects</li>
+            </ul>
+
+            <p class="add-button">
+            <%= link_to "Add #{@language.name} translators from ICanLocalize", 
+              {:controller => :website_translation_offers, :id => @offer.id, :website_id => @website.id, :action => :show, :c => 1} %>
+            </p>
+          </section>
+
+          <section class="translators">
+
+            <ul>
+              <% @translators.each do |t| %>
+                <li>
+                  <div class="img-wrapper">
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+
+            <aside>
+              <h2>Our Translators always deliver on time</h2>
+              <p><span>548</span> translators are standing by, ready for your next project</p>
+            </aside>
+
+          </section>
+        </div>
+
+        <section class="about">
+
+          <h2>About ICanLocalize</h2>
+
+          <div class="about-inner">
+            <p>ICanLocalize and WPML both belong to OnTheGoSystems. You will receive translation work and support from the same team who makes your WordPress site run multilingual. We specialize in translation for WordPress sites.</p>
+            <strong>WordPress website localization has never been easier!</strong>
+          </div>
+
+          <div class="about-logos">
+            <a class="logo onthego" href="http://www.onthegosystems.com/">onthegosystems.com</a>
+            <a class="logo wpml" href="http://wpml.org/">wpml.org</a>
+          </div>
+
+        </section>
+
+      </div><!-- #container -->
+
+      <footer>
+        <p class="copyright">Copyright © OnTheGoSystems Inc. | All Rights reserved</p>
+        <%
+        #<ul id="icl-theme-lang-switcher-footer">
+        #  <li><span>English</span></li>
+        #  <li><a href="#">Français (French)</a></li>
+        #  <li><a href="#">Deutsch (German)</a></li>
+        #  <li><a href="#">Español (Spanish)</a></li>
+        #</ul>
+        %>
+      </footer>
+
+    </div><!-- #body-container -->
+
+  </body>
+</html>

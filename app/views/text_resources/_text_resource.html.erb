@@ -1,0 +1,5 @@
+<tr>
+	<td><%= link_to(h(text_resource.name),{:controller=>:text_resources, :action=>:show, :id=>text_resource.id}) %></td>
+	<td><%= text_resource_languages_summary(text_resource) %></td>
+	<td><%= text_resource.unique_resource_strings.count %></td>
+</tr>

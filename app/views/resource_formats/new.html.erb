@@ -1,0 +1,72 @@
+
+<h1><%= _("New resource_format") %></h1>
+
+<%= my_error_messages_for :resource_format %>
+
+<%= form_for(@resource_format) do |f| %>
+  <p>
+  <b><%= _("Name") %></b><br />
+    <%= f.text_field :name, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+  </p>
+
+  <p>
+  <b><%= _("Kind") %></b><br />
+    <%= f.select(:kind, ResourceFormat::KIND_NAMES.collect { |k,v| [v,k] }) %>
+  </p>
+
+  <p>
+  <b><%= _("Description") %></b><br />
+    <%= f.text_area :description, maxlength: COMMON_FIELD, cols: 29 %>
+  </p>
+
+  <p>
+  <b><%= _("Label delimiter") %></b> <span class="comment">(XML path)</span><br />
+    <%= f.text_field :label_delimiter, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+  </p>
+
+  <p>
+  <b><%= _("Text delimiter") %></b> <span class="comment">(XML key tag path)</span><br />
+    <%= f.text_field :text_delimiter, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+  </p>
+
+  <p>
+  <b><%= _("Separator char") %></b> <span class="comment">(XML value tag path)</span><br />
+    <%= f.text_field :separator_char, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+  </p>
+
+  <p>
+  <b><%= _("Multiline char") %></b> <span class="comment">(XML array tag)</span><br />
+    <%= f.text_field :multiline_char, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE  %>
+  </p>
+
+  <p>
+  <b><%= _("End of line") %></b> <span class="comment">(XML dict tag)</span><br />
+    <%= f.text_field :end_of_line, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE  %>
+  </p>
+
+  <p>
+  <b><%= _("Comment char") %></b><br />
+    <%= f.text_field :comment_char, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE  %>
+  </p>
+
+  <p>
+  <b><%= _("Encoding") %></b><br />
+    <%= f.select(:encoding, ResourceFormat::ENCODING_NAMES.collect { |k,v| [v,k] }) %>
+  </p>
+
+  <p>
+  <b><%= _("Line break") %></b><br />
+    <%= f.select(:line_break, ResourceFormat::LINE_BREAK_NAMES.collect { |k,v| [v,k] }) %>
+  </p>
+
+  <p>
+  <b><%= _("User comments") %></b><br />
+    <%= f.select(:comment_kind, ResourceFormat::COMMENT_KIND_NAME.collect { |k,v| [v,k] }) %>
+  </p>
+
+  <p>
+    <%= f.submit _("Create") %>
+  </p>
+<% end %>
+
+<%= link_to _('Back'), resource_formats_path %>

@@ -1,0 +1,11 @@
+<p>Enter the details of your translators and we'll send the invitation.</p>
+<% if @errors && (@errors.length > 0) %><div class="errorExplanation"><%= @errors.join('<br />') %></div><% end %>
+<%= form_tag({:action=>:create}) do %>
+<table>
+<tr><td>First name:</td><td><%= text_field_tag(:fname, @fname, {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD}) %></td></tr>
+<tr><td>Last name:</td><td><%= text_field_tag(:lname, @lname, {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD}) %></td></tr>
+<tr><td>E-Mail:</td><td><%= text_field_tag(:email, @email, {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD}) %></td></tr>
+</table>
+<br /><p class="comment">Please note that all fields are required.</p>
+<%= submit_tag('Send invitation', data: { disable_with: 'Send invitation' }) %> &nbsp; | &nbsp; <%= link_to('Cancel', {:action=>:index}) %>
+<% end %>

@@ -1,0 +1,12 @@
+<% if software_review.owner and software_review.owner.text_resource %>
+	<tr>
+		<% has_words_to_review = software_review.owner.text_resource.next_string(nil, [software_review.owner.language_id] ,  ['(string_translations.status IN (?)) AND (string_translations.review_status = ?)'], [[STRING_TRANSLATION_COMPLETE], REVIEW_PENDING_ALREADY_FUNDED]) %>
+		<% bgcol = has_words_to_review ? StringTranslation::TRANSLATION_COLOR_CODE[STRING_TRANSLATION_NEEDS_UPDATE] : StringTranslation::TRANSLATION_COLOR_CODE[STRING_TRANSLATION_COMPLETE] %>
+		<td style="background-color:<%= bgcol %>;"><%= link_to(h(software_review.owner.text_resource.name),{:controller=>:text_resources, :action=>:show, :id=>software_review.owner.text_resource.id}) %></td>
+		<td style="background-color:<%= bgcol %>;">
+      <b><%= software_review.owner.text_resource.language.name %></b> &raquo; <b><%= software_review.owner.language.name %></b>
+    </td>
+		<td style="background-color:<%= bgcol %>;"><%= has_words_to_review ? software_review.owner.unfunded_words_pending_review_count : 0%></td>
+		<td style="background-color:<%= bgcol %>;"><%= link_to("Review strings", text_resource_resource_strings_url(software_review.owner.text_resource)) %></td>
+	</tr>
+<% end %>

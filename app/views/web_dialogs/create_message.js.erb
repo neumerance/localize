@@ -1,0 +1,5 @@
+<% if @warning %>
+  alert('<%= @warning %>')
+<% else %>
+  location.href = '<%= url_for(:action=>:show, :id=>@web_dialog.id, :t=>Time.now.to_i, :accesskey=>@web_dialog.optional_accesskey(@user), :anchor=>'reply') %>'
+<% end %>

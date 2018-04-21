@@ -1,0 +1,9 @@
+Dear <%= @user.full_real_name %>,
+
+There is pending translation work for project <%= @website.name %>, but insufficient funding in your account.
+Translation for this work is now stalled, pending your deposit of <%= @invoice.gross_amount %> <%= @invoice.currency.name %>.
+
+To add funds and enable the translation, click on the link below. It will take you to the pending invoice:
+<%= url_for({:escape => false, :only_path => false, :controller=>:finance, :action=>:invoice, :id=>@invoice.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+<%= EMAIL_SIGNATURE %>

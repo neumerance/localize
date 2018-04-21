@@ -1,0 +1,20 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>A new message was posted in a chat on <%= @chat.revision.project.name %> from <%= @other.full_name %>.</p>
+
+<p>--------</p>
+
+<p><%= h @message.body_with_emojis %></p>
+
+<p>--------</p>
+
+<p>
+  <% if @has_attachments %>
+      * This message includes attached documents.<br />
+      To reply and download attachments, use the following link to this chat:
+  <% else %>
+      To reply to this message, use the following link to this chat:
+  <% end %>
+  <% link = url_for({:escape => false, :only_path => false, :controller => :chats, :action => :show, :project_id => @chat.revision.project_id, :revision_id => @chat.revision_id, :id => @chat.id, :host => EMAIL_LINK_HOST, :protocol => EMAIL_LINK_PROTOCOL}) %>
+  <%= link_to link, link %>
+</p>

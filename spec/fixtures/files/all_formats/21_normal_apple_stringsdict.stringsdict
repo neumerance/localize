@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Upgrade to allow more than %d participant(s).</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+        <string>Upgrade to allow %#@participants@.</string>
+		<key>participants</key>
+		<dict>
+            <key>NSStringFormatSpecTypeKey</key>
+            <string>NSStringPluralRuleType</string>
+            <key>NSStringFormatValueTypeKey</key>
+            <string>d</string>
+            <key>zero</key>
+                <string>participants to join</string>
+            <key>one</key>
+                <string>more than 1 participant</string>
+            <key>other</key>
+                <string>more than %d participants</string>
+        </dict>
+    </dict>
+</dict>
+</plist>

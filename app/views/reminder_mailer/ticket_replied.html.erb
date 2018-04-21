@@ -1,0 +1,9 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>A support person replied to your ticket</p>
+
+<p class="text-quoted"><%= h(@reply) %></p>
+
+<%= action_button("Reply",  url_for({:escape => false, :only_path => false, :controller=>:support, :action=>:show, :id=>@support_ticket.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } )) %>
+
+<p><%= @support_ticket.reference %></p>

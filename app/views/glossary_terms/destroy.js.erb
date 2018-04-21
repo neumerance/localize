@@ -1,0 +1,6 @@
+<% if @warning %>
+alert('<%= @warning %>')
+<% else %>
+jQuery('#glossary_edit').html('<%= escape_javascript(render partial: '/glossary_terms/glossary_panel') %>')
+jQuery('#new_glossary').html('<%= escape_javascript(render partial: '/glossary_terms/glossary_term') %>')
+<% end %>

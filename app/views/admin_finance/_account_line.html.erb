@@ -1,0 +1,9 @@
+<% if account_line.money_transaction %>
+<tr>
+	<td><%= disp_time(account_line.chgtime) %></td>
+	<td><%= money_transaction_details(account_line, account_line.money_transaction) %></td>
+	<td class="moneycolumn"><%= account_line.money_transaction.amount %></td>
+	<td class="moneycolumn"><%= account_line.money_transaction.fee %></td>
+	<td class="moneycolumn"><%= account_line.balance %></td>
+</tr>
+<%end%>

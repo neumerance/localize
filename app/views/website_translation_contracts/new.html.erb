@@ -1,0 +1,61 @@
+<br /><div class="infobox"><h4>Project overview</h4>
+<% if @website.project_kind == TEST_CMS_WEBSITE %>
+	<div style="margin: 1em; width: 20em; text-align: center; padding: 1em; font-weight: bold;" class="errorExplanation">This is a test project.</div>
+<% end %>
+<table cellspacing="5">
+	<tr><td>Client:</td><td><b><%= user_link(@website.client) %></b></td></tr>
+	<tr><td>Project name:</td><td><b><%= @website.name %></b></td></tr>
+	<tr><td>Website URL:</td><td><b><%= link_to(@website.url, @website.url, :target=>'_blank') %></b></td></tr>
+	<tr><td>Languages:</td><td><b>From <%= @website_translation_offer.from_language.name %> to <%= @website_translation_offer.to_language.name %></b></td></tr>
+</table>
+</div>
+
+<br /><div class="infobox"><h4>Description</h4>
+<%= pre_format(@website.description) %>
+</div>
+
+<% if !@website_translation_offer.invitation.blank? %>
+	<br /><div class="infobox"><h4>Volume and deadline</h4>
+	<%= pre_format(@website_translation_offer.invitation) %>
+	</div>
+<% end %>
+
+<% if !@website_translation_offer.sample_text.blank? %>
+	<br /><div class="infobox"><h4>Sample text by the client</h4>
+	<%= pre_format(@website_translation_offer.sample_text) %>
+	</div>
+	<p class="comment">Although not required, translating this sample text will most likely help your chances to win this project.</p>
+<% end %>
+
+<!-- div class="inter_tab_spacer"></div -->
+<% if @can_apply %>
+  <% if @website.project_kind == TEST_CMS_WEBSITE %>
+    <p>You can't bid on this project because it is marked as a test project</p>
+  <% else %>
+    <h2>Apply to this work</h2>
+    
+    <%= my_error_messages_for :website_translation_contract %>
+
+    <%= form_for(:website_translation_contract, :url=>{:action=>:create}) do |f| %>
+    
+    <h3>Message to client</h3>
+    <p><%= text_area_tag(:message, @message, {:cols=>80, :rows=>10, :style=>'width:100%', maxlength: COMMON_NOTE}) %><br />
+    <span class="comment">Describe why you're the right translator for this job</span></p>
+    <p><label><%= radio_button_tag(:apply,1,@apply=='1', {:onchange=>'document.getElementById("translation-rate").style.display = "block";'}) %> Apply for this work</label></p>
+    <div id="translation-rate" style="display: <%= (@apply == '1') ? 'block' : 'none' %>;">
+      <% if @user.private_translator? %>
+        <p>You are a <b>Private translator</b>, thus your payment will be handled outside of the system</p>
+        <%= f.hidden_field(:amount, :value => 0) %>
+      <% else %>
+        <p><b>Your rate per word</b>: <%= money_field_tag_for(f, :amount) %><br />
+        <span class="comment">Enter the per-word rate that you're asking for this project. Remember that our 20% commission is deduced from this payment.</span></p>
+        </div>
+      <% end %>
+    <p><label><%= radio_button_tag(:apply,0,@apply=='0', {:onchange=>'document.getElementById("translation-rate").style.display = "none";'}) %> Don't apply yet</label></p>
+    
+    <%= submit_tag(_('Submit'), :style=>'padding: 0.5em 1em;', data: { disable_with: _('Submit') } ) %> &nbsp; | &nbsp; <%= link_to('Cancel', :controller=>:translator) %>
+    <% end %>
+  <% end %>
+<% else %>
+	<div class="red_message">You must <%= link_to('complete a practice project',{:controller=>:users, :action=>:request_practice_project}) %> before applying for this job.</div>
+<% end %>

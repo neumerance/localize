@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  code: <%= Faker::Code.asin %>
+  active: false
+  amount: 9.99
+  comments: <%= Faker::Lorem.words(10) %>
+
+two:
+  code: <%= Faker::Code.asin %>
+  active: false
+  amount: 9.99
+  comments: <%= Faker::Lorem.words(10) %>

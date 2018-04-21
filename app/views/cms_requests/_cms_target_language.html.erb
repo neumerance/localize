@@ -1,0 +1,31 @@
+<tr class="cms_target_language">
+	<td><%= cms_target_language.language.nname %></td>
+	<td><%= @cms_request.detailed_status.html_safe %></td>
+	<% if @user[:type] != 'Translator' %>
+	<td><% if cms_target_language.translator %>
+		<%= user_link(cms_target_language.translator) %> &nbsp; | &nbsp; <%= link_to_translator_chat(cms_target_language) %>
+		<% end %>
+	</td>
+	<% end %>
+	<td>
+		<% if cms_target_language.permlink %>
+      <%= link_to(_('View'), cms_target_language.permlink, {:target=>'_blank'} ) %>
+    <% end %>
+
+    <% if cms_target_language.cms_downloads.length > 0 %>
+      <%= link_to(_('Download'), {:action=>:get_html_output, :language=>cms_target_language.language.name}) %>
+    <% end %>
+    <% if @cms_request.translated_xliff %>
+
+      <div class="xliffs">
+        <b>Download: </b>
+        <%= link_to(_('HTML'), {:action=>:get_html_output, :language=>cms_target_language.language.name}) %>
+        (<%= link_to(_('Preview'), {:action=>:get_html_output, :language=>cms_target_language.language.name, :inline => true}, {:target => '_blank'}) %>)
+        |
+        <%= link_to(_('XLIFF'), {:controller => :cms_requests, :action => :xliff,  :id => @cms_request.id} ) %>
+        (<%= link_to(_('Preview'), {:controller => :cms_requests, :action => :xliff,  :id => @cms_request.id, :inline => true}, {:target=>:blank} ) %>)
+      </div>
+
+    <% end %>
+	</td>
+</tr>

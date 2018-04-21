@@ -1,0 +1,27 @@
+<p>&laquo; <%= link_to('Back to list of click', {:action=>:index}) %></p><br />
+
+<% if @user_click.error %>
+  <div class="red_error">
+    <h1>Error report</h1>
+    <h2><%= @user_click.error %></h2>
+  </div>
+<% end %>
+
+
+<div class="infobox"><h4>Summary</h4>
+	<table>
+		<tr><td>Controller:</td><td><%= @user_click.controller %></td></tr>
+		<tr><td>Action:</td><td><%= @user_click.action %></td></tr>
+		<tr><td>Resource ID:</td><td><%= @user_click.resource_id %></td></tr>
+		<tr><td>Time:</td><td><%= disp_time(@user_click.created_at) %></td></tr>
+		<tr><td>Link:</td><td><% if @user_click.method == 'get' %><%= link_to('View', @user_click.url) %><% else %><%= @user_click.method %><% end %></td></tr>
+	</table>
+</div>
+<h3>Parameters</h3>
+<pre><%= @user_click.params.gsub(', ',"\n") %></pre>
+
+
+<% if @user_click.error %>
+  <h3>Backtrace</h3>
+  <pre><%= @user_click.only_application_trace %></pre>
+<% end %>

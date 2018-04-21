@@ -1,0 +1,21 @@
+<div id="tax_information" style="<%= 'display: none;' unless personal_details.country_pay_taxes? %>">
+	<%= infotab_top(_('Tax Information'), _('You can edit your VAT number and your country of residence in the personal details form below.')) %>
+	<%= infotab_header([_('Country'), _('VAT Number'), _('VAT Status')]) %>
+		<tr>
+			<td class="country_name"><%=!personal_details.country.blank? ? personal_details.country.name : '<span class="warning">Unknown</span>' %></td>
+			<td class="vat_number"><%= "#{personal_details.country.try :code} #{personal_details.vat_number}" %></td>
+			<td class="business_vat"><%=h is_business_vat?(personal_details) %></td>
+		</tr>
+	</table>
+  <div class="tabbottom">
+    <%= form_tag({ :action => :edit_personal_details, :req => 'show', :highlight => 'vat_number' }, :remote => true) do %>
+      <%= submit_tag _('Edit VAT Number & Personal Details'), data: { disable_with: _('Edit VAT Number & Personal Details') } %>
+    <% end %>
+  </div>
+	<p class="comment">
+    We are required by EU regulations to collect VAT.
+    <% if @user.is_client? && @user.should_update_vat_information? %>
+      If you have a VAT number, please enter it editing your personal details in the table above.
+    <% end %>
+    For businesses registered in EU reverse VAT charge will be applied.</p>
+</div>

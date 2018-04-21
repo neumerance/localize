@@ -1,0 +1,11 @@
+Olá <%= @web_dialog.full_name %>,
+
+Recebemos a sua mensagem e iremos responder assim que possível.
+Entretanto, se quiser enviar-nos outra mensagem, ou se quiser ver o registo completo dos seus comentários e das nossas respostas, clique na ligação seguinte:
+
+<%= url_for({:escape => false, :only_path => false, :controller=>:web_dialogs, :action=>:show, :id=>@web_dialog.id, :accesskey=>@web_dialog.accesskey, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+* Este endereço não é monitorizado para ver as respostas.
+
+Cumprimentos,
+<%= @signature %>

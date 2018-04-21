@@ -1,0 +1,27 @@
+<h1>Editing destination</h1>
+
+<%= my_error_messages_for :destination %>
+
+<%= form_for(@destination) do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+  </p>
+
+  <p>
+    <b>URL</b><br />
+    <%= f.text_field :url, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+  </p>
+
+  <p>
+    <b>Language</b><br />
+	<p><%= f.select(:language_id, @languages) %></p>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @destination %> |
+<%= link_to 'Back', destinations_path %>

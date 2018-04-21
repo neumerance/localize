@@ -1,0 +1,4 @@
+<tr class="headerrow"><th>Project</th><th>Languages</th><th>Strings</th></tr>
+<% @text_resources.each do |text_resource| %>
+<%= render(:partial=>'text_resource', locals: { text_resource: text_resource }) %>
+<% end %>

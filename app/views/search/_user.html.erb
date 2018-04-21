@@ -1,0 +1,8 @@
+<tr>
+	<td><%= user_link(user) %></td>
+	<td>
+    <% if user.try(:bionote) %>
+		  <%= (user.bionote && !user.bionote.body.blank?) ? pre_format(truncate(user.bionote.body, length: 300)) : '' %>
+    <% end %>
+	</td>
+</tr>

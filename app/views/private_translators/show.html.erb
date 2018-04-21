@@ -1,0 +1,38 @@
+<% if @private_translator.status == PRIVATE_TRANSLATOR_PENDING %>
+
+<p><b><%= @private_translator.client.full_real_name %></b> wants you to translate project.
+If you accept this invitation, you will be notified of new projects, as they arrive and will be able to translate them.</p>
+<p>We don't require you to do any other qualification work. You are more than welcome to do a practice project and get to know our system better,
+before starting to do live work for <%= @private_translator.client.fname.capitalize %>, but that's up to you.</p>
+
+<br />
+<%= form_tag({:action=>:update}, {:method=>'PUT'} ) do %>
+<%= hidden_field_tag(:status, PRIVATE_TRANSLATOR_ACCEPTED) %>
+<%= submit_tag('Accept this invitation', :style=>'padding: 0.5em;', data: { disable_with: 'Accept this invitation' }) %>
+<% end %>
+
+<br /><br />
+<%= form_tag({:action=>:update}, {:method=>'PUT'}) do %>
+<%= hidden_field_tag(:status, PRIVATE_TRANSLATOR_DENIED) %>
+<%= submit_tag("No thanks, I'll pass", :style=>'padding: 0.5em;', data: { disable_with: "No thanks, I'll pass" }) %>
+<% end %>
+
+<% elsif @private_translator.status == PRIVATE_TRANSLATOR_ACCEPTED %>
+<p>You are ready to do translation work for <b><%= @private_translator.client.full_real_name %></b>. When new work is available, we'll send you an email.</p>
+<p>You can always check for existing available work by visiting <%= link_to('your home page', {:controller=>:translator, :action=>:index}) %>.</p>
+
+<br />
+<%= form_tag({:action=>:update}, {:method=>'PUT'}) do %>
+<%= hidden_field_tag(:status, PRIVATE_TRANSLATOR_DENIED) %>
+<%= submit_tag('Resign', :style=>'padding: 0.5em;', data: { disable_with: 'Resign' }) %>
+<% end %>
+
+<% else %>
+<p>You've declined to <b><%= _("%s's"%@private_translator.client.full_real_name) %></b> offer for doing translation work. If you change your mind, this offer is still valid and you can accept it.</p>
+<br />
+<%= form_tag({:action=>:update}, {:method=>'PUT'} ) do %>
+<%= hidden_field_tag(:status, PRIVATE_TRANSLATOR_ACCEPTED) %>
+<%= submit_tag('Accept this invitation', :style=>'padding: 0.5em;', data: { disable_with: 'Accept this invitation' }) %>
+<% end %>
+
+<% end %>

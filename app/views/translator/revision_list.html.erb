@@ -1,0 +1,18 @@
+<% if @revisions.length > 0 %>
+<div class="pager_control" style="position: relative; height: 15px;">
+	<%= paginate @revisions %>
+	<%= form_tag({ action: :completed_projects }) do %>
+	<%= hidden_field_tag :page, params[:page] %>
+	<%= hidden_field_tag :per_page, params[:per_page] %>
+	<label style="position: absolute; top: 2px; right: 10px">
+		Results per page: <%= select_tag 'per_page', options_for_select(%w(10 20 40 60 80 100), params[:per_page]), onchange: 'submit()'  %>
+	</label>
+	<% end %>
+	<div style="clear: both"></div>
+</div>
+<%= infotab_header(['Project','Status', 'Translate'] ) %>
+<%= render(:partial => "revision", :collection => @revisions) %>
+</table>
+<% else %>
+No projects to show.
+<% end %>

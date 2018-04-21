@@ -1,0 +1,18 @@
+<%= form_tag({:action=>:show_new_projects}) do %>
+	<h3>Filter by</h3>
+	<label><%= check_box_tag :languages, true, true %> My translation languages</label><br />
+	<label><%= check_box_tag :categories, true, false %> My categories of expertise</label><br />
+	<br />
+	<h3>Project size</h3>
+	Limit the search results according to the project's size. Leave blank to ignore.<br />
+	<table border="0">
+		<tr><td>Minimum number of words</td><td><%= number_field_tag :min_words,'', {:size=>7, maxlength: 3, min: 0, maxlength: 3, oninput: 'javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)'} %></td></tr>
+		<tr><td>Maximum number of words</td><td><%= number_field_tag :max_words,'', {:size=>7, maxlength: 3, min: 0, maxlength: 3, oninput: 'javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)'} %></td></tr>
+	</table>
+	<br />
+	<!-- h3>Keywords</h3>
+	Enter keywords to narrow down the project (example: <b>banking reports management</b>). Leave blank to search without keywords:<br />
+	< %= text_field_tag :keywords, '', {:size=>80} %><br />
+	<br / -->
+	<%= submit_tag 'Search', data: { disable_with: 'Search' } %>
+<% end %>

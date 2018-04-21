@@ -1,0 +1,8 @@
+<% if external_accounts.length > 0 %>
+	<div class="inter_tab_spacer"></div>
+	<h2>Deposits per source account</h2>
+	<p>Click on any account(s) below to get full payment history.</p>
+	<%= infotab_header(['Name','Type','Status']) %>
+	<%= render(:partial=>'/finance/external_account', :collection=>external_accounts) %>
+	</table>
+<% end %>

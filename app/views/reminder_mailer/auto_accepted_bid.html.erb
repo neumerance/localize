@@ -1,0 +1,14 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>
+<%= @translator.full_name %> has started translating on your project <%= @bid.chat.revision.project.name %> to <%= @bid.revision_language.language.name %>.
+</p>
+<p>The cost for this job will be <%= @bid.chat.revision.cost_for_bid(@bid) %> <%= @bid.currency.name %>.</p>
+
+<p>
+<% url = url_for({:escape => false, :only_path => false, :controller=>:chats, :action=>:show, :project_id=>@bid.chat.revision.project_id, :revision_id=>@bid.chat.revision_id, :id=>@bid.chat.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+To communicate with <%= @translator.full_name %>, click on the chat link below: <%= link_to url, url %>
+</p>
+
+
+<p>We'll let you know as soon as your project is complete.</p>

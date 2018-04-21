@@ -1,0 +1,6 @@
+<%= infotab_header(['Arbitration','Action','Status']) %>
+  <% @arbitrations.each do |arbitration| %>
+    <%= render(:partial=>'/arbitrations/arbitration', locals: {arbitration: arbitration}) %>
+  <% end %>
+</table>
+

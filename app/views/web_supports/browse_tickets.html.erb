@@ -1,0 +1,45 @@
+<br />
+<div class="infobox"><h4>Search filter</h4>
+<%= form_tag({ :action => :browse_tickets },
+						{:method => :get}) do %>
+	<table cellspacing="5">
+		<tr><td>Support department</td><td colspan="3"><%= all_client_departments('client_department_id', '&nbsp;&nbsp;&nbsp;', @ticket_conditions['client_department_id'], @client_departments, _('All departments')) %></td></tr>
+		<tr><td>Ticket status</td><td colspan="3"><label><%= check_box_tag(:only_pending, 1, @ticket_conditions['only_pending']) %> Show only tickets that require attention</label></td></tr>
+		<tr><td colspan="4">&nbsp;</td></tr>
+		<tr>
+			<td>First name</td><td><%= text_field_tag :fname, @ticket_conditions['fname'], {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD} %></td>
+			<td>Last name</td><td><%= text_field_tag :lname, @ticket_conditions['lname'], {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD} %></td>
+		</tr><tr>
+			<td>E-Mail</td><td colspan="3"><%= text_field_tag :email, @ticket_conditions['email'], {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD} %></td>
+		</tr><tr>
+			<td>Subject</td><td colspan="3"><%= text_field_tag :subject, @ticket_conditions['subject'], {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD} %></td>
+		</tr>
+	</table>
+	<br />
+	<%= hidden_field_tag :set_args, 1 %>
+	<%= submit_tag _('Apply filter'), data: { disable_with: _('Apply filter') } %>
+	&nbsp;&nbsp;&nbsp;<%= link_to(_('Start over'), {:action=>:browse_tickets, :set_args=>1}) %>
+<% end %>
+</div>
+
+<% if @show_number_of_pages %>
+	<div class="pager_control">
+		Showing page <%= form_tag({:action=>:browse_tickets}, {:method=>'GET'}) %>
+			<%= select_tag( :page, options_for_select(@list_of_pages,@web_dialogs.number), {:onchange=>"submit()"}) %>
+		<%= link_to(_("Prev"), {:action=>:browse_tickets, :page => @web_dialogs.prev.number}) if @web_dialogs.prev? %>
+		<%= link_to(_("Next"), {:action=>:browse_tickets, :page => @web_dialogs.next.number}) if @web_dialogs.next? %>	
+	</form>
+	</div>
+<% end %>
+
+<% if @web_dialogs.count > 0 %>
+	<%= form_tag({:action=>:confirm_delete_dialogs}) do %>
+	<%= infotab_header([_('Select'), _('Ticket'), _('Created by'), _('Date'), _('Department'), _('Status'), _('Actions')]) %>
+	<%= render(:partial=>'web_dialog', :collection=>@web_dialogs) %>
+	</table>
+	<%= hidden_field_tag(:return_to, request.url) %>
+	<br /><%= submit_tag('Delete selected tickets', data: { disable_with: 'Delete selected tickets' }) %>
+	<% end %>
+<% else %>
+	<p>No tickets to display.</p>
+<% end %>

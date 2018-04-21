@@ -1,0 +1,6 @@
+<tr>
+	<td><%= user_link(arbitration.initiator) %></td>
+	<td><%= user_link(arbitration.against) %></td>
+	<td><%= Arbitration::STATUS[arbitration.status] %></td>
+	<td><%= link_to('View details', {:controller=>'arbitrations', :action=>'show', :id=>arbitration.id}) %></td>
+</tr>

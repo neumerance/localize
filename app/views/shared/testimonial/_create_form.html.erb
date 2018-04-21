@@ -1,0 +1,84 @@
+<div id="testimonial-form" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">
+          Create Testimonial
+          <small style="float: right">
+            <a href="javascript:void(0)" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></a>
+          </small>
+        </h4>
+      </div>
+      <div class="modal-body">
+        <%= form_tag(url) do %>
+          <div class="m-b-10">
+            <label>Name or Company Name</label>
+            <%= text_field_tag(:testimonial_by, '', data: { validation: 'number', 'validation-length': 'min20' }) %>
+          </div>
+          <div class="m-b-10">
+            <label>Message</label>
+            <%= text_area_tag(:testimonial, '', cols: 12, rows: 5) %>
+          </div>
+          <div class="m-b-10">
+            <%= hidden_field_tag :rating %>
+            <label>Rate us</label>
+            <div id="rate-us"></div>
+          </div>
+          <div class="m-b-10">
+            <label>Link to app</label>
+            <%= text_field_tag(:link_to_app) %>
+          </div>
+          <div class="m-b-10 text-right">
+            <button class="btn btn-xs btn-default m-r-5" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-xs btn-info m-r-5 submit">Save</a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  // validations
+  jQuery(document).ready(function() {
+    var form = jQuery('#testimonial-form form');
+    $("#rate-us").rateYo({ fullStar: true, starWidth: "20px" })
+    .on("rateyo.change", function (e, data) {
+      form.find('input[name="rating"]').val(data.rating);
+    });
+    form.find('a.submit').on('click', function() {
+      form.find('ul.validation-errors').remove();
+      var errors = [];
+      var data = form.serializeArray();
+      jQuery.each(data, function(index, field) {
+        if (field['name'] == "testimonial_by") {
+          if (field['value'].length == 0) {
+            errors.push('Name or company name is required')
+          }
+        }
+        if (field['name'] == "testimonial") {
+          if (field['value'].length < 20) {
+            errors.push('Message should be atleast 20 characters in length')
+          }
+        }
+        
+        if (field['name'] == "link_to_app") {
+          if (field['value'].length) {
+            var urlRegex = /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+            if (!field['value'].match(urlRegex)) {
+              errors.push('Link to app should be a valid URL');
+            }
+          }
+        }
+      });
+      if (errors.length == 0) {
+        form.submit();
+      } else {
+        var ul = jQuery('<ul class="validation-errors">');
+        jQuery.each(errors, function(idx, error) {
+          ul.append('<li class="error">'+error+'</li>');
+        });
+        form.prepend(ul);
+      }
+    });
+  });
+</script>

@@ -1,0 +1,16 @@
+<%= infotab_header(['Translator'] + @translators.collect { |t| user_link(t) }) %>
+<tr>
+	<td>Country:</td>
+	<%= @translators.collect { |t| '<td>' + (!t.country.blank? ? t.country.name : '') + '</td>' } %>
+</tr><tr>
+	<td>Rating:</td>
+	<%= @translators.collect { |t| '<td>' + star_rating(t) + '</td>' } %>
+</tr><tr>
+	<td>Recommendations:</td>
+	<%= @translators.collect { |t| '<td>' +t.markings.count.to_s + '</td>' } %>
+</tr>
+</table>
+
+<%= form_tag({ :controller=>:translators, :action=>:hide_compare, :div=>@div }, :remote => true) do %>
+	<p><%= submit_tag('Hide', data: { disable_with: 'Hide' }) %></p>
+<% end %>

@@ -1,0 +1,2 @@
+module CmsTermTranslationsHelper
+end

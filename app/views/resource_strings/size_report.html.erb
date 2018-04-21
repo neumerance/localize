@@ -1,0 +1,29 @@
+<% if @formatting_mismatch.length > 0 %>
+	<h2><%= _("Formatting mismatches") %></h2>
+	<p class="warning"><%= _("Formatting strings in the following texts have different order than the original texts.") %></p>
+<ol>
+	<%= @formatting_mismatch.each do |st| %>
+      <li><%= link_to(h(st.txt),{:action=>:show, :id=>st.resource_string.id}) %></li>
+<% end %>
+</ol>
+<div class="inter_tab_spacer"></div>
+<% end %>
+
+<h2><%= _("Size reports") %></h2>
+<p><%= _("String sizes between %s%% and %s%% of the original string size usually fit well within the application.") % [SIZE_RATIO_LOW*100, SIZE_RATIO_HIGH*100]%></p>
+<p><%= _("This table shows how many strings exists for different ratios between the size of the translation and the size of the original strings.") %></p>
+<p><%= _("Click on any ratio (left hand column) to see a filtered list of strings of that size.") %></p>
+
+<table class="stats" cellpadding="3" cellspacing="0">
+	<tr>
+    <th><%= _("Ratio") %></th>
+    <% @languages.each do |l| %>
+      <th><%= l.name %></th>
+    <% end %>
+</tr>
+<%= sizes_table(@sizes, @above_user_limit, @languages, @ratios).html_safe %>
+</table>
+<br /><hr /><br />
+<p><%= link_to(_('Back to project'),{:controller=>:text_resources, :action=>:show, :id=>@text_resource.id}) %> &nbsp; | &nbsp;
+<%= link_to(_('All strings'),{:action=>:index, :set_args=>1}) %></p>
+

@@ -1,0 +1,18 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p><%= @by_who.full_name %> has initiated an arbitration involving you.</p>
+
+<p>An arbitration process begins when a project doesn't progress as it should. The purpose of the arbitration is to resolve the problem.</p>
+
+<p>
+As a result of the arbitration process, the project may be canceled and all funds returned to the client or declared as complete with funds released to the translator.</p>
+
+<p>
+If this is a mutual arbitration, the client and translator should agree on the project's completion. Either side may request intervention from a supporter.</p>
+
+<p>If a supporter is responsible for the arbitration, he/she has full authority to decide the outcome of the project.</p>
+
+<p>Complete information about the arbitration process is found here: <%= link_to 'http://docs.icanlocalize.com/?page_id=159', 'http://docs.icanlocalize.com/?page_id=159' %></p>
+
+<% url = url_for({:escape => false, :only_path => false, :controller=>:arbitrations, :action=>:show, :id=>@arbitration.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+<p>To reply, use the following link: <%= link_to url, url %></p>

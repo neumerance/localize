@@ -1,0 +1,10 @@
+<tr>
+	<td><%= link_to(h(client_department.name),{:action=>:browse_tickets, :client_department_id=>client_department.id, :set_args=>1}) %></td>
+	<td><%= client_department.language.name %></td>
+	<td><%= link_to(_('modify settings'), {:action=>:edit_department, :department_id=>client_department.id}) %> |
+	<%= link_to(_('delete'), {:action=>:delete_department, :department_id=>client_department.id}, 'data-confirm'=>_('Are you sure you want to delete this department and all the messages in it?')) %></td>
+	<td><%= link_to(_('web integration instructions'), {:action=>:integration_details, :client_department_id=>client_department.id}) %></td>
+	<% if @web_support.text_resource %>
+	<td><%= client_department_translations(client_department) %></td>
+	<% end %>
+</tr>

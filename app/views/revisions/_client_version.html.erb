@@ -1,0 +1,66 @@
+<%= infotab_top(_('File to translate'), infobar_contents(((@revision.versions.length > 0) ? _('This is the file that needs to be translated.') : _('If you have a file to translate, upload it here')),_('This is the file that needs to be translated.'), @revision.released != 1, @revision.versions.length != 0)) %>
+<% if @show_edit_client_upload %>
+	<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+		<%= form_for(
+                    :revision,
+                    :url=>{
+                            :controller=>:versions,
+                            :action=>:create,
+                            :project_id=>@project.id,
+                            :revision_id=>@revision.id
+                    },
+                    :html=>{:multipart=>true}
+            ) do |f| %>
+			<p><%= _("Select a file to upload:") %></p>
+			<%= file_field_tag 'version[uploaded_data]', :size=>70, onchange: "validate_file_size('version[uploaded_data]', '#{ATTACHMENT_MAX_SIZE}')" %>
+		<br /><br />
+		<%= hidden_field_tag(:do_zip, 1) %>
+		<%= submit_tag _('Upload'), :name=>'save', data: { disable_with: _('Please wait') } %>
+		<% end %>
+
+		<%= form_tag({ :action => :edit_file_upload, :req=>'hide' }, :remote => true) do %>
+			<%= submit_tag _('Cancel'), :name=>'hide', data: { disable_with: _('Cancel') } %>
+		<% end %>
+
+	</td></tr></table>
+<% else %>
+	<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+		<% if @revision.versions.length > 0 %>
+			<% if ([@user, @user.master_account].include?(@project.client)) || @user.has_supporter_privileges? || @revision.translator_can_access?(@user) %>
+				<p><%= _("Compressed file:") %> <%= link_to(@revision.versions[0].filename, {:controller=>:versions, :action=>:show, :project_id=>@project.id, :revision_id=>@revision.id, :id=>@revision.versions[0].id}) %>
+				&nbsp;|&nbsp;
+				<%= _("Uncompressed file:") %> <%= link_to(@revision.versions[0].orig_filename,{:controller=>:versions, :action=>:show, :project_id=>@project.id, :revision_id=>@revision.id, :id=>@revision.versions[0].id, :unzip=>1}) %>
+				</p>
+				<h4><%= _("Instructions for opening this file") %></h4>
+				<% if ([@user, @user.master_account].include?(@project.client)) %>
+					<p><%= _("Please include exact instructions for how the translator should open and translate this file. Describe exactly which program to use and how you want the translation to be saved.") %></p>
+				<p><%= _("This information should go to the 'Description' box below.") %></p>
+				<% else %>
+					<p><%= _("Make sure that you understand, from the project's description, how to open this file and how to edit it.") %></p>
+				<p><%= _("The client needs to state which program you need to edit the project with and how to enter your translation.") %></p>
+				<p><%= _("If you're not sure, you can ask the client to grant you access to the file. This way, you can download the file and verify that you'll be able to translate it, per the client's instructions before bidding on the project.") %></p>
+				<% end %>
+			<% else %>
+				<p><%= raw _("The client had uploaded a file to be translated, but you were not yet granted access to it. %s to grant your access.") % link_to(_('Ask the client'),'#do_chat') %></p>
+			<% end %>
+		<% else %>
+			<p class="warning"><%= _("No file uploaded yet.") %></p>
+			<div class="clear"></div>
+		<% end %>
+	</td></tr></table>
+	<% if @canedit_source %>
+		<div class="tabbottom">
+			<% if @revision.versions.length > 0 %>
+
+				<%= form_tag({ :action => :edit_file_upload, :req=>'del' }, :remote => true) do %>
+					<%= submit_tag _('Remove this file'), data: { disable_with: _('Remove this file') } %>
+				<% end %>
+			<% else %>
+				<%= form_tag({ :action => :edit_file_upload, :req=>'show' }, :remote => true) do %>
+					<%= submit_tag _('Upload a file for translation'), :id => 'upload_file_button', data: { disable_with: _('Upload a file for translation') } %>
+				<% end %>
+
+			<% end %>
+		</div>
+	<% end %>
+<% end %>

@@ -1,0 +1,64 @@
+{
+  "tests": [
+    {
+      "input": "",
+      "expected_result": ""
+    },
+    {
+      "input": "They may take our lives, but they&amp;apos;ll never take our freedom!",
+      "expected_result": "They may take our lives, but they'll never take our freedom!"
+    },
+    {
+      "input": "CHEWIE, WE&amp;amp;apos;RE home",
+      "expected_result": "CHEWIE, WE'RE home"
+    },
+    {
+      "input": "They call  it   a    Royale     with       cheese",
+      "expected_result": "They call  it   a    Royale     with       cheese"
+    },
+    {
+      "input": "&amp;amp;lt;b&amp;amp;gt;Sample page&amp;amp;lt;/b&amp;amp;gt;",
+      "expected_result": "<b>Sample page</b>"
+    },
+    {
+      "input": "&amp;lt;b&amp;gt;Sample page",
+      "expected_result": "<b>Sample page"
+    },
+    {
+      "input": "&amp;amp;amp;lt;b&amp;amp;amp;gt;Sample page&amp;amp;amp;lt;/a&amp;amp;amp;gt;",
+      "expected_result": "<b>Sample page</a>"
+    },
+    {
+      "input": "&amp;amp;amp;lt;strong&amp;amp;amp;gt;Sample page&amp;amp;amp;lt;/strong&amp;amp;amp;gt; and blog site",
+      "expected_result": "<strong>Sample page</strong> and blog site"
+    },
+    {
+      "input": "&amp;lt;strong&amp;gt;Sample page&amp;lt;/strong&amp;gt; and &amp;lt;a href=&amp;quot;http://google.com&amp;quot;&amp;gt;blog site&amp;lt;/a&amp;gt;",
+      "expected_result": "<strong>Sample page</strong> and <a href=\"http://google.com\">blog site</a>"
+    },
+    {
+      "input": "&amp;amp;lt;a target=&amp;amp;quot;_blank&amp;amp;quot; href=&amp;amp;quot;http://google.com&amp;amp;quot;&amp;amp;gt;Click here&amp;amp;lt;/a&amp;amp;gt;",
+      "expected_result": "<a target=\"_blank\" href=\"http://google.com\">Click here</a>"
+    },
+    {
+      "input": "Good morning, Vietnam! &amp;amp;lt;img alt=&amp;amp;quot;Vietnam picture&amp;amp;quot; title=&amp;amp;quot;Good morning&amp;amp;quot; href=&amp;amp;quot;http://image.url&amp;amp;quot;/&amp;amp;gt;",
+      "expected_result": "Good morning, Vietnam! <img alt=\"Vietnam picture\" title=\"Good morning\" href=\"http://image.url\"/>"
+    },
+    {
+      "input": "&amp;lt;div&amp;gt;This&amp;lt;div&amp;gt;is&amp;lt;div&amp;gt;nested&amp;lt;div&amp;gt;content&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;&amp;lt;/div&amp;gt;",
+      "expected_result": "<div>This<div>is<div>nested<div>content</div></div></div></div>"
+    },
+    {
+      "input": "&amp;lt;ul&amp;gt;&amp;lt;li&amp;gt;Address&amp;lt;/li&amp;gt;&amp;lt;li&amp;gt;Victoria Street&amp;lt;/li&amp;gt;&amp;lt;/ul&amp;gt;",
+      "expected_result": "<ul><li>Address</li><li>Victoria Street</li></ul>"
+    },
+    {
+      "input": "&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;Test&lt;/body&gt;&lt;/html&gt;",
+      "expected_result": "<html><head></head><body>Test</body></html>"
+    },
+    {
+      "input": "&amp;amp;amp;lt;div&amp;amp;amp;gt;Incomplete div&amp;amp;amp;lt;/div&amp;amp;amp;gt;&amp;amp;amp;lt;/div&amp;amp;amp;gt;",
+      "expected_result": "<div>Incomplete div</div></div>"
+    }
+  ]
+}

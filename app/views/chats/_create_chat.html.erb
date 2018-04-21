@@ -1,0 +1,43 @@
+    <div id="replyform">
+      <div class="clear"></div>
+      <%= form_for :new_chat, :url => { :action => :create } do |form| %>
+
+      <%= "<input type=\"hidden\" name=\"new_chat[status]\" value=\"#{@new_chat.status}\" />" %>
+	
+      <% if @do_bid %>
+      <div class="replyformL"><strong>Bid amount:</strong></div>
+      <div class="replyformR">
+	      <%= money_field_tag_for(form, :bid_amount) %>
+      </div>
+      <div class="clear"></div>
+      <div class="replyformL"><strong>Bid currency:</strong></div>
+      <div class="replyformR">
+	<%= form.select :bid_currency_id, @bid_currencies %>
+      </div>
+
+      <% else %>
+      <div class="replyformL"><strong>Message:</strong></div>
+      <div class="replyformR">
+	<%= form.text_area :body, {:cols => 57, :rows => 3, maxlength: COMMON_NOTE} %>
+      </div>
+      <div class="clear"></div>
+
+      <div class="clear"></div>
+      <div class="replyformL"><strong>
+	  Attachment:
+	</strong></div>
+      <div class="replyformR">
+	<input type="file" class="browse" />
+      </div>
+
+      <% end %>
+
+      <div class="clear"></div>
+      <div class="replyformL">
+	&nbsp;
+      </div>
+      <div class="replyformR"><p></p>
+	<%= submit_tag @submit_label, data: { disable_with: @submit_label } %>
+      </div>
+    <% end %>
+  </div>

@@ -1,0 +1,1 @@
+xml.counter(@counter)

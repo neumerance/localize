@@ -1,0 +1,9 @@
+<tr>
+	<td><%= disp_date(website_translation_offer.created_at) %></td>
+	<td><%= link_to(website_translation_offer.website.name, {:controller=>:website_translation_offers, :action=>:show, :website_id=>website_translation_offer.website.id, :id=>website_translation_offer.id}) %></td>
+	<td><%= website_translation_offer.from_language.name %> -> <%= website_translation_offer.to_language.name %></td>
+	<td><%= link_to_if(!website_translation_offer.website.url.blank?, website_translation_offer.website.url, website_translation_offer.website.url, :target=>'_blank') %></td>
+	<td><%= CMS_DESCRIPTION[website_translation_offer.website.cms_kind] %></td>
+	<td<%= background_for_paying_user(website_translation_offer.website.client) %>><%= user_link(website_translation_offer.website.client) %> - <%= User::USER_STATUS_TEXT[website_translation_offer.website.client.userstatus] %></td>
+	<td><%= website_translation_offer.status_summary(@user) %></td>
+</tr>

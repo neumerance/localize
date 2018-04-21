@@ -1,0 +1,8 @@
+<tr>
+	<% bgcol = revision_review.translation_status == MANAGED_WORK_REVIEWING ? StringTranslation::TRANSLATION_COLOR_CODE[STRING_TRANSLATION_NEEDS_UPDATE] : StringTranslation::TRANSLATION_COLOR_CODE[STRING_TRANSLATION_COMPLETE] %>
+	<td style="background-color:<%= bgcol %>;">
+    <%= link_to("#{h revision_review.owner.revision.project.name} - #{h revision_review.owner.revision.name} revision", {:controller=>:revisions, :action=>:show, :project_id=>revision_review.owner.revision.project_id, :id=>revision_review.owner.revision.id}) %>
+    <span style="float: right"><%= link_to_translate(revision_review.owner.revision, 'btn-xs') %></span>
+  </td>
+	<td style="background-color:<%= bgcol %>;"><b><%= revision_review.owner.revision.language.name %></b> &raquo; <b><%= revision_review.owner.language.name %></b></td>
+</tr>

@@ -1,0 +1,13 @@
+<% if @show_number_of_pages %>
+	Page <%= form_tag({:action=>:index}, {:method=>'GET'}) %>
+		<%= select_tag( :page, options_for_select(@list_of_pages,@error_reports_page.number), {:onchange=>"submit()"}) %>
+	</form>
+	<%= link_to("Prev", error_reports_url(:page => @error_reports_page.prev.number)) if @error_reports_page.prev? %>
+	<%= link_to("Next", error_reports_url(:page => @error_reports_page.next.number)) if @error_reports_page.next? %>	
+<% end %>
+<table class="stats">
+	<tr class="headerrow"><th>ID</th><th>Date</th><th>User</th><th>TA Version</th><th>Resolution</th></tr>
+  <% @error_reports_page.each do |error| %>
+    <%= render(:partial=>'error_report_summary', locals: {error_report_summary: error}) %>
+  <% end %>
+</table>

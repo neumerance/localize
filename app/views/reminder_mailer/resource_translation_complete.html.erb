@@ -1,0 +1,40 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>Translation of Your project '<%= @text_resource.name %>' to <%= (@languages.collect { |l| l.name }).join(', ') %> is complete.</p>
+
+<p>To create the translated resource files, follow these instructions:</p>
+
+<p>
+  1. Go to the project page:
+  <% link = url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:text_resources, :action=>:show, :id=>@text_resource.id } ) %>
+  <%= link_to link, link %>
+</p>
+
+<p>2. You will see a list of the resource file(s) that you uploaded. Click on the button 'Create translations'.</p>
+
+<p>3. Translations will be generated for each of the languages you've chosen to translate to. You may view or download each of the translated resource files.</p>
+
+<p>== Post-translation QA tests ==</p>
+
+<p>
+  We recommend that you use our post-translation QA tests to make sure that your translation is free from any technical issues.<br />
+  <% link = url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:resource_strings, :action=>:size_report, :text_resource_id=>@text_resource.id } ) %>
+  <%= link_to link, link %>
+</p>
+
+<%- if @all_complete %>
+
+<p>== Your project's translation is now complete ==</p>
+
+<p>If you need any help, let us know and we'll be happy to assist. You can create a support ticket from within the project page.</p>
+
+<%- end %>
+
+
+<p>== When your application updates ==</p>
+
+<p>When your original resource file in <%= @text_resource.language.name %> changes, just load it. Our system will detect all new or updated strings in the project and will only send them to translation.</p>
+
+<p><%- if @all_complete %><%= RECOMMEND_LINK %><% end %></p>
+
+<%= EMAIL_SIGNATURE %>

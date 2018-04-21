@@ -1,0 +1,32 @@
+<%= infotab_top('Translated website', 'We need to be able to access your website in order to post contents. <span class="warning">Enter the login information of a low privilaged user</span>, such as a contributor.') %>
+<% if @editing %>
+	<%= form_for(:website_translation_offer, :url => { :action => :edit_description }, :remote => true) do |f| %>
+		<%= infotab_header(['URL','User','Password', 'Blog ID']) %>
+		<tr>
+			<td><%= f.text_field(:url, :size=>55, maxlength: COMMON_FIELD) %></td>
+			<td><%= f.text_field(:login, :size=>20, maxlength: COMMON_FIELD) %></td>
+			<td><%= f.password_field(:password, :size=>20, maxlength: COMMON_FIELD) %></td>
+			<td><%= f.text_field(:blogid, :size=>10, maxlength: COMMON_FIELD) %></td>
+		</tr>
+		</table>
+		<%= submit_tag 'Save', data: { disable_with: 'Save' } %>
+	<% end %>
+	<%= form_tag({ :action => :edit_description, :req=>'hide' }, :remote => true) do %>
+		<%= submit_tag 'Cancel', data: { disable_with: 'Cancel' } %>
+	<% end %>
+<% else %>
+	<%= infotab_header(['URL','User','Password', 'Blog ID']) %>
+		<tr>
+			<td><%= link_to_if(!@website_translation_offer.url.blank?, h(@website_translation_offer.url), @website_translation_offer.url, {:target=>'_blank'}) %></td>
+			<td><%= h(@website_translation_offer.login) %></td>
+			<td><%= (@website_translation_offer.password.blank?) ? '' : '****' %></td>
+			<td><%= @website_translation_offer.blogid %></td>
+		</tr>
+	</table>
+	<div class="tabbottom">
+		<%= form_tag({ :action => :edit_description, :req=>'show' }, :remote => true) do %>
+			<%= submit_tag 'Edit', data: { disable_with: 'Edit' } %>
+		<% end %>
+	</div>
+<% end %>
+

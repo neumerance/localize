@@ -1,0 +1,14 @@
+<% if @problem %>
+  <h3>Error Processing file</h3>
+
+  <p><%= @problem %></p>
+<% else %>
+  
+  <p>It worked!</p> 
+
+<% end %>
+
+<p>Created <%= @created %> items, update <%= @updated %>.</p>
+
+<p><%= link_to('Back to list',{:action=>:index}) %></p>
+

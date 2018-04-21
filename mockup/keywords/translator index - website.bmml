@@ -1,0 +1,30 @@
+<mockup version="1.0" skin="sketch" measuredW="1141" measuredH="700" mockupW="1139" mockupH="700">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::Image" x="2" y="0" w="1139" h="409" measuredW="1497" measuredH="435" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <src>./assets/website%2520translator%2520index.png</src>
+        <text/>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::StickyNote" x="497" y="90" w="109" h="62" measuredW="109" measuredH="123" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Current</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::DataGrid" x="95" y="409" w="664" h="291" measuredW="450" measuredH="115" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Project%2C%20Payment%20per%20word%2C%20Status%2C%20Action%20required%0AProject1%2C%200.07%20USD%2C%20Application%20accepted%2C%20None%0AProject2%2C%200.07%20USD%2C%20Application%20accepted%2C%20Translation%20pending%0AProject3%2C%200.07%20USD%2C%20Application%20accepted%2C%20Jobs%20pending</text>
+      </controlProperties>
+    </control>
+    <control controlID="3" controlTypeID="com.balsamiq.mockups::StickyNote" x="854" y="465" w="287" h="213" measuredW="109" measuredH="123" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Don%27t%20like%20this%20screen%20either%2C%20Since%20there%20are%20mixed%20bidding%20and%20website%20projects%2C%20but%20this%20one%20would%20take%20a%20bit%20more%20of%20work%20to%20fix%20correctly%2C%20so%20I%27m%20just%20not%20proposing%20a%20change%20now%20here.</text>
+      </controlProperties>
+    </control>
+    <control controlID="4" controlTypeID="com.balsamiq.mockups::StickyNote" x="598" y="545" w="135" h="133" measuredW="109" measuredH="123" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Add%20column%3B%20translation%20pending%20means%20that%20are%20jobs%20on%20TA%20to%20translate</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

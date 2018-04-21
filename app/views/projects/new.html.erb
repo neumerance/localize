@@ -1,0 +1,10 @@
+<%= my_error_messages_for :project %>
+
+<%= form_for(:project, :url=>{:action=>:create}) do |f| %>
+<h3 style="display: inline;">Name this project</h3> &nbsp; (this name will be visible to translators)
+<p><%= f.text_field :name, :style=>'padding: 0.2em;', maxlength: COMMON_FIELD, size: 80 %></p>
+<br />
+<p>
+    &laquo; <%= link_to(_('Go back'), {:controller=>:client, :action=>:getting_started}) %> &nbsp; | &nbsp; <%= f.hidden_field(:kind) %><%= submit_tag('Continue', style: 'padding: 0.5em;', data: { disable_with: 'Continue' }) %>
+</p>
+<% end %>

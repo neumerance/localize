@@ -1,0 +1,7 @@
+<div class="content">
+	<% if @ok %>
+		Your error report has been successfully submitted.
+	<% else %>
+		<%= my_error_messages_for(:error_report) %>
+	<% end %>
+</div>

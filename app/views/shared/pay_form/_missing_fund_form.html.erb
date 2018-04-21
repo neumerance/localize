@@ -1,0 +1,116 @@
+<% if user.is_client? %>
+    <div>
+      <div style="margin: 10px 0">
+        <%= form_tag({controller: '/users', action: :validate_user_vat, id: user.id}, remote: true, id: 'validate-vat-form', class: "#{'hide' if @user.has_supporter_privileges?}") do %>
+            <table class="vertical-table" style="width: 100%; border: 0">
+              <tr>
+                <td>
+                  <b>Your Country:</b>
+                </td>
+                <td>
+                  <%= select_tag('auser[country_id]', options_for_select(Country.get_list(), user.country_id || user.last_ip_country_id), onchange: 'jQuery(this.form).submit()') %>
+                </td>
+              </tr>
+              <tr id="vat_field">
+                <td>
+                  <b>VAT Number:</b>
+                </td>
+                <td>
+                  <input class="margin-right: 10px" type="text" id="vat_code" disabled="disabled"/>
+                  <%= text_field_tag 'auser[vat_number]', user.vat_number, maxlength: 15, size: COMMON_FIELD_SIZE, onblur: 'jQuery(this.form).submit()' %>
+                  <p class="comment">We are required by EU regulations to collect VAT. If you have a VAT number, please
+                    enter it. For businesses registered in EU reverse VAT charge will be applied.</p>
+                </td>
+              </tr>
+            </table>
+        <% end %>
+      </div>
+
+      <div id="total_box">
+        <%= form_tag(payment_url, autocomplete: 'off') do %>
+            <table cellspacing="0" cellpadding="3" class="stats" width="100%">
+              <tbody>
+              <tr class="headerrow">
+                <th>Description</th>
+                <th>Cost</th>
+              </tr>
+              <%= render partial: '/shared/pay_form/payables', locals: {transactions: transactions} %>
+              <tr>
+                <td>Sub Total:</td>
+                <td><strong id="sub_total"><%= number_to_currency(transactions.sum {|x| x[:value]}) %></strong></td>
+              </tr>
+              <tr>
+                <td>Tax Amount (<span id="tax-rate"></span>)%:</td>
+                <td><strong id="tax-amount">$0</strong></td>
+              </tr>
+              <% balance = user.money_account&.balance || 0 %>
+              <tr class="current-balance" data-balance="<%= balance %>">
+                <td>Current balance in your account</td>
+                <td><%= number_to_currency balance %></td>
+              </tr>
+              <tr>
+                <td>TOTAL:</td>
+                <td id="total">
+                  <%= hidden_field_tag(:amount, 0) %>
+                  <strong>
+                    <%= number_to_currency((balance - transactions.sum {|x| x[:value]}).abs) %>
+                  </strong>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+            <%= extra_html.present? ? extra_html.html_safe : nil %>
+            <div id="submit-form" class="m-t-20 m-b-20">
+              <% unless @user.has_supporter_privileges? %>
+                  <% if processors.include? EXTERNAL_ACCOUNT_PAYPAL %>
+                      <div>
+                        <p>
+                          <label>
+                            <%= radio_button_tag(:payment_processor, EXTERNAL_ACCOUNT_PAYPAL, true, class: 'm-r-5') %><%= _('Pay with PayPal') %>
+                          </label><br/>
+                          <%= image_tag('paypal_payments.png', style: 'margin: 5px', width: 242, height: 31, alt: 'PayPal payment options') %>
+                          <br/>
+                        </p>
+                        <p class="comment">
+                          You don't need to have a PayPal account. PayPal allows you to pay with a credit card as
+                          well.<br/>
+                          Payments with a credit card or from your PayPal balance, complete immediately.<br/>
+                          E-Check payments take 3-4 days to complete.
+                        </p>
+                      </div>
+                  <% end %>
+                  <% if processors.include?(EXTERNAL_ACCOUNT_2CHECKOUT) && CO_ENABLED %>
+                      <div>
+                        <p>
+                          <label>
+                            <%= radio_button_tag(:payment_processor, EXTERNAL_ACCOUNT_2CHECKOUT, false, class: 'm-r-5') %>
+                            <%= _('Pay with 2Checkout') %>
+                          </label><br/>
+                          <%= image_tag 'https://www.2checkout.com/upload/images/paymentlogoshorizontal.png', alt: 'Google Checkout' %>
+                        </p>
+                        <p class="comment">
+                          Pay with most credit cards. Payments take up to several hours to complete processing.
+                        </p>
+                      </div>
+                  <% end %>
+                  <h4>Other payment options</h4>
+                  <p>
+                    Don't like PayPal? Have a look
+                    at <%= link_to('other payment methods', controller: :finance, action: :payment_methods) %>
+                  </p>
+                  <p>
+                    <%= submit_tag('Pay', style: 'padding: 0.5em 1em;', id: 'pay-button', class: 'button_X', data: {disable_with: 'Redirecting to payment processor...'}) %>
+                  </p>
+              <% end %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+<% end %>
+<script>
+  jQuery(document).ready(function () {
+    if (parseInt(jQuery('[name="auser[country_id]"]').val()) != 0) {
+      $.post('<%= url_for({ controller: '/users', action: :validate_user_vat, id: user.id }) %>', jQuery('#validate-vat-form').serialize())
+    }
+  });
+</script>

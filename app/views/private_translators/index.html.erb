@@ -1,0 +1,16 @@
+<p><strong>ICanLocalize employs over 2000 professional translators. To send jobs to our qualified translators, set up a project and choose translators.</strong></p>
+<div class="red_message">This section is intended for using your own translators with our translation tools.</div>
+<br />
+
+If you decide to use a reviewer from ICanLocalize, it will cost 0.045 USD/word.
+
+<p>If you wish to work with translators you are already familiar with, you can invite them through this page. They will only be qualified to work on your projects and you need to arrange payment directly with your translators.</p>
+<p>There is no need to pay a fee if you use your own private translators. However, if you decide to use a reviewer from ICanLocalize the cost will be <%= "%.3f" % (MINIMUM_BID_AMOUNT/2) %> USD/word.</p>
+<p>Any support or technical assistance you may need is 100% free.</p>
+<p>To invite your own translator, create a <%= link_to('new invitation', {:action=>:new}) %>.</p>
+<% if @user.private_translators.length > 0 %>
+<h2>Your private translators</h2>
+<%= infotab_header(['Translator','Name','Status','Actions']) %>
+<%= render(:partial=>'private_translator', :collection=>@user.private_translators) %>
+</table>
+<% end %>

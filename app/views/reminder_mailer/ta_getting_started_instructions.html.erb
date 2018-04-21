@@ -1,0 +1,77 @@
+Dear <%= @user.full_real_name %>,
+
+This email includes instructions from A to Z, on how to get your website translated using ICanLocalize. Please read this carefully before starting.
+
+
+1) Downloading and installing Translation Assistant
+
+If this is the first website translation project you're doing via ICanLocalize, you'll need to download our translation software. Click on the link below to go to the download page:
+<%= url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:downloads, :action=>:show_recent, :id=>TA_GENERIC_NAME}) %>
+
+Clicking on this link will take you to the download page of Translation Assistant.
+
+1.1) Download Translation Assistant
+On this page, click on 'Download Now' button. Your browser will ask you if you want to save this file or run it. We recommend that you save the file (so you can later install again).
+
+1.2) Install
+When the download completes, run the program. This will install Translation Assistant on your computer. There are several steps to the installer, including license agreement and install options.
+
+1.3) First time use
+When Translation Assistant runs for the first time, it needs to connect to our server, in order to send and receive projects. You need to enter the same email and password that you use to access the website. Please note that your registered email is <%= @user.email %>.
+
+
+2) Using Translation Assistant
+<% if @user[:type] == 'Translator' -%>
+2.1) Getting your projects
+Translation Assistant will automatically download all projects you have won to your PC.
+
+2.2.) Translating
+Click on 'Edit', on a project. The window will change to editor mode, where you can replace the original language text with the translated texts. Clicking on any sentence in the embedded browser will select it for translation.
+For more information, see the Help menu in Translation Assistant.
+
+2.3) Sending your work to the client
+Whenever you want to send updates to the client for review, or when the work is completed, click on the 'Upload project'. Translation Assistant will then send the client the translated project.
+
+2.4) Work status
+When the client accepts all or part of your work as complete, the status of your project changes.
+<% else -%>
+2.1) Creating a project
+Click on the button labeled 'Create a new project'. A wizard will guide you through the steps required for creating a new translation project.
+
+2.2) Upload and complete project setup
+In order for translators to be able to see your project and bid on it, you must first upload the project to the website. To do this, click on the button labeled 'Upload project'.
+Translation Assistant will then send your project to the website. Then, you'll have to complete the project setup by filling out important information.
+
+2.3) Releasing the project
+Once you complete your project setup, you need to release it, so that translators may be able to see it. Click on 'Release project'. If your project setup is complete your project will be released. Otherwise, you'll be pointed to missing information which needs to be filled in.
+
+2.4) Getting bids
+After your project has been released, translators are able to bid on it. You may communicate with translators, to iron out any details.
+
+2.5) Selecting a translator
+When you're happy with a bid, you may accept it. After you make your escrow deposit, for the project payment, the translator will start to work on your project.
+
+
+3) During the work
+Whenever the translator makes an update to your projects and uploads it, this update automatically appears in Translation Assistant. You can click on 'Edit' to view the current status of the project.
+
+3.1) Generating the translated website
+At any moment, you may generate the translated website. To do this, click on 'Write translated website' from Translation Assistant.
+Whenever you generate the website, the recent translation is used. You are encouraged to repeat this step when the translator sends you work for review, in order to see the complete website in a browser and make sure that you're happy with the results.
+
+3.2) Work complete
+Once the translator completes work on your project, you'll see the status update to '100% complete'. You should review the work, and when you're happy with it, accept the work as complete.
+This will release the project funds to the translator.
+
+3.3) Uploading your translated website to your server
+When you generate the translated website, Translation Assistant creates your complete website, including language controls. You need to upload the entire contents of the folder where you generated your website to your server.
+<% end -%>
+
+
+We hope that these instructions help you get started on the right foot. If you need any help, don't hesitate to contact.
+For fastest response, log in to your account, click on 'Support' and then open a new ticket.
+<%= url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:support}) %>
+
+* Please note: this email is not monitored for replies. Use the support ticket system to get back to us.
+
+<%= EMAIL_SIGNATURE %>

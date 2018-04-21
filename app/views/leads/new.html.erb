@@ -1,0 +1,7 @@
+<%= form_tag({ :action=>:create}, { :multipart => true }) do %>
+	<h3>Select advertisement to associate with</h3>
+	<p><%= select_tag(:ad, options_for_select([['--- Please select ---', 0]] + @advertisements.collect { |ad| [ad.title, ad.id] })) %></p>
+	<h3>Select CSV file to upload</h3>
+  <p><%= file_field_tag('file', size: 70 ) %></p>
+  <p><%= submit_tag('upload', data: { disable_with: 'Please wait' }) %></p>
+<% end %>

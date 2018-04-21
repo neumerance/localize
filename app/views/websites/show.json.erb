@@ -1,0 +1,14 @@
+<%= { language_pairs: @translator_per_language_pair.map do |language_pair, wto|
+    {
+      source: language_pair[:from],
+      target: language_pair[:to],
+      translators: wto.first.accepted_website_translation_contracts.map do |wtc|
+            {
+              id: wtc.translator.id,
+              nickname: wtc.translator.nickname,
+              rate: wtc.amount
+            }
+         end
+    }
+    end
+}.to_json.html_safe %>

@@ -1,0 +1,11 @@
+<div style="margin:1em;" class="red_message">
+	<h3>Non profit organizations</h3>
+	<% if @user.has_admin_privileges? %>
+		<%= form_for(:website, :url=>{:action=>:update}, :method => :put) do |f| %>
+			<p><label><%= f.check_box(:free_usage) %> Free system usage</label></p>
+			<%= submit_tag('Update usage fee', data: { disable_with: 'Update usage fee' }) %>
+		<% end %>
+	<% else %>
+		ICanLocalize usage fees have been waived for this website. Site admins can translate it with their own translators without paying for system usage.
+	<% end %>
+</div>

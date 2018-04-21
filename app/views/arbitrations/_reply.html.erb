@@ -1,0 +1,24 @@
+<%= form_tag(	{ :action => :create_message },
+						{:method => :post}) do %>
+<table width="100%" cellspacing="0" cellpadding="0" border="0" class="chatcomments" id="reply">
+	<tr class="headerrow">
+		<td class="tableleftwall"/>
+		<th class="blockTab tmarg7" colspan="2">Reply</th>
+		<td class="tablerightwall"/>
+	</tr>
+	<tr class="reply"><td colspan="4">&nbsp;</td></tr>
+	<tr class="reply">
+		<td></td>
+		<td>Message:</td>
+		<td><%= text_area_tag(:body, nil, {:cols => '100%', :rows => 10, :maxlength => COMMON_NOTE}) %></td>
+		<td></td>
+	</tr>
+	<tr class="reply"><td colspan="4">&nbsp;</td></tr>
+	<tr class="reply">
+		<td></td>
+		<td colspan="2"><%= submit_tag 'Make comment', data: { disable_with: 'Make comment' } %></td>
+		<td></td>
+	</tr>
+	<tr class="reply"><td colspan="4">&nbsp;</td></tr>
+</table>
+<% end %>

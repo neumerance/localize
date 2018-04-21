@@ -1,0 +1,12 @@
+Olá <%= @web_dialog.full_name %>,
+
+<%= @web_message.body_for_user(false) %>
+<% if @has_attachments %>
+Essa mensagem também contém anexos. Para obter o arquivo anexado(s), clique no link abaixo.<% end %>
+
+Não responda a esta mensagem.
+Se quiser enviar-nos outra mensagem, envie um anexo ou para ver o registo completo dos seus componentes e das nossas respostas, clique na ligação seguinte:
+<%= url_for({:escape => false, :only_path => false, :controller=>:web_dialogs, :action=>:show, :id=>@web_dialog.id, :accesskey=>@web_dialog.accesskey, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+Cumprimentos,
+<%= @signature %>

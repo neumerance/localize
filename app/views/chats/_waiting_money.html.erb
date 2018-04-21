@@ -1,0 +1,3 @@
+<h4><%=_('You have accepted this offer')%></h4>
+<p><%= (_("However, you have <b>not enough funds</b> for the work to get started. Please go to your %s and deposit the required amount. You can do it now, or accept a bid for each desired language and transfer all money simultaneously") %
+    link_to(_('project home page'), project_revision_path(@bid.revision.project, @bid.revision))).html_safe %></p>

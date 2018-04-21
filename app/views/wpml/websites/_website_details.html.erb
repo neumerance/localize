@@ -1,0 +1,87 @@
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+  <tr>
+    <td class="upperBlock" colspan="4">Information about this project</td>
+  </tr>
+  </tbody>
+</table>
+
+<%# ########### Table with in-line editing enabled ########### %>
+<% if @editing %>
+    <%= form_for(:website, controller: '/wpml/websites', action: :edit_website_inplace, remote: true) do |f| %>
+        <%= infotab_header([_('Name'), _('Description'), _('Category'), _('Type'), 'URL'] + ((@website.platform_kind == WEBSITE_WORDPRESS) ? ['Log-in'] : [_('Translation delivery')])) %>
+        <tr>
+          <td><%= f.text_field(:name, size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD) %></td>
+          <td><%= f.text_area(:description, {:rows => 6, :cols => 35, maxlength: COMMON_NOTE}) %></td>
+          <td><%= f.select(:category_id, Category.list()) %></td>
+          <td><p><%= CMS_DESCRIPTION[@website.cms_kind] || @website.cms_description %></p>
+          </td>
+          <td><%= f.text_field(:url, size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD) %>
+          <% if (@website.platform_kind == WEBSITE_WORDPRESS) %>
+              <td>
+                <table>
+                  <tr>
+                    <td>User:</td>
+                    <td><%= f.text_field(:login, :size => 10, maxlength: COMMON_FIELD) %></td>
+                  </tr>
+                  <tr>
+                    <td>Password:</td>
+                    <td><%= f.password_field(:password, :size => 10, maxlength: COMMON_FIELD) %></td>
+                  </tr>
+                  <tr>
+                    <td>Blog ID:</td>
+                    <td><%= f.text_field(:blogid, :size => 10, maxlength: COMMON_FIELD) %></td>
+                  </tr>
+                </table>
+              </td>
+          <% else %>
+              <td><%= Website::PICKUP_TEXT[@website.pickup_type] %></td>
+          <% end %>
+        </tr>
+        </table>
+        <%= submit_tag _('Save'), data: {disable_with: _('Save')} %>
+    <% end %>
+    <%= form_tag({controller: '/wpml/websites', action: :edit_website_inplace, req: 'hide'}, remote: true) do %>
+        <%= submit_tag _('Cancel'), data: {disable_with: _('Cancel')} %>
+    <% end %>
+<% else ################# Read-only table ##################    %>
+    <%= infotab_header([_('Name'), _('Description'), _('Subject'), _('Type'), 'URL'] + ((@website.platform_kind == WEBSITE_WORDPRESS) ? ['Log-in'] : [_('Translation delivery'), _('API Key')])) %>
+    <tr>
+      <td><%= h(@website.name) %></td>
+      <td><%= h(@website.description) %></td>
+      <td><%= @website.category ? @website.category.nname : _('Not specified') %></td>
+      <td><%= CMS_DESCRIPTION[@website.cms_kind] || @website.cms_description %></td>
+      <td><%= link_to_if(!@website.url.blank?, h(@website.url), @website.url, {:target => '_blank'}) %></td>
+      <% if (@website.platform_kind == WEBSITE_WORDPRESS) %>
+          <td>
+            <table>
+              <tr>
+                <td>User:</td>
+                <td><%= h(@website.login) %></td>
+              </tr>
+              <tr>
+                <td>Password:</td>
+                <td><%= (@website.password.blank?) ? '' : '****' %></td>
+              </tr>
+              <tr>
+                <td>Blog ID:</td>
+                <td><%= @website.blogid %></td>
+              </tr>
+            </table>
+          </td>
+      <% else %>
+          <td><%= Website::PICKUP_TEXT[@website.pickup_type] %></td>
+          <td><%= @website.client.api_key %></td>
+      <% end %>
+    </tr>
+    </table>
+
+    <div class="tabbottom">
+      <% if [@user, @user.master_account].include?(@website.client) and @user.can_modify?(@website) %>
+          <%= form_tag({controller: '/wpml/websites', action: :edit_website_inplace, req: 'show'}, remote: true) do %>
+              <%= submit_tag _('Edit'), :id => 'edit_website_details', data: {disable_with: _('Edit')} %>
+          <% end %>
+      <% end %>
+    </div>
+<% end %>
+

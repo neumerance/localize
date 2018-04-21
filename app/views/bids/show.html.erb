@@ -1,0 +1,41 @@
+<%= infotab_top('Summary', '') %>
+<%= infotab_header(@sections) %>
+	<tr>
+		<td><%= Bid::BID_STATUS[@bid.status] %></td>
+		<td><%= @bid.print_amount.html_safe %></td>
+		<% if @bid.has_accepted_details %>
+			<td>This bid was accepted on <strong><%= disp_time(@bid.accept_time) %></strong></td>
+		<% end %>		
+	</tr>
+</table>
+<div class="inter_tab_spacer"></div>
+
+<% if @bid.has_expiration_details %>
+	<%= infotab_top('Work completion', '') %>
+	<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+		<%= render(:partial=>'expiration_date') %>
+	</td></tr></table>
+	<div class="inter_tab_spacer"></div>
+<% end %>
+
+<% if @bid.arbitration || @bid.can_arbitrate %>
+	<h2>Need help?</h2>
+		<% if @bid.arbitration %>
+			<% if @bid.arbitration.status != ARBITRATION_CLOSED %>
+				This bid is in an arbitration process. <%= link_to('Check arbitration details', {:controller=>:arbitrations, :action=>:show, :id=>@bid.arbitration.id}) %>.
+			<% else %>
+				This bid was closed in an arbitration process. <%= link_to('Show arbitration details', {:controller=>:arbitrations, :action=>:show, :id=>@bid.arbitration.id}) %>.
+			<% end %>
+		<% elsif @bid.can_arbitrate %>
+			To resolve problems with this bid, you may <%= link_to('start an arbitration process', {:controller=>:arbitrations, :action=>:new, :kind=>'bid', :bid_id=>@bid.id}) %>.
+		<% end %>
+<% end %>
+<div class="inter_tab_spacer"></div>
+
+<hr />
+<p>
+	<% if @user[:type] == 'Client' -%>
+		To respond to this bid,
+	<% end -%>
+	<%= chat_link(@chat, 'go back to the chat') %>.<br />
+</p>

@@ -1,0 +1,24 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>
+  <% link = url_for({:escape=>false, :only_path=>false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL}.merge(@url_args)) %>
+  Translation is complete in '<%= @title %>', which you are reviewing. This is the link to the project: <%= link_to link, link %>
+</p>
+
+<p>What next?</p>
+<ul>
+  <li>1. Review the project. If there any edits are needed, open issues for the translator.</li>
+  <li>2. When the project is complete, notify the client that you're done reviewing it.</li>
+</ul>
+
+<p>== How to review projects ==</p>
+
+<p>Each project for review has three players - you (the reviewer), the translator and the client.</p>
+
+<p>You need to use our Issue Tracking system in order to document problems with the translation.</p>
+
+<p>For each problem that you find, open an issue. The translator needs to address these issues and resolve them.</p>
+
+<p>Only the translator can edit the translation. Your job, as a reviewer, is to work with the translator, resolve possible problems and help deliver the best translation to the client.</p>
+
+<%= EMAIL_SIGNATURE %>

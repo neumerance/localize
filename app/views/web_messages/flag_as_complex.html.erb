@@ -1,0 +1,6 @@
+<% if @error %>
+	<p>This operation was not successful. <%=@error%></p>
+<%else%>
+	<p> Thank you for flagging this project as complex. If more translators also flag it, it will be removed and the project owner will be notified.</p>
+<%end%>
+<p><%= link_to('&laquo; Back',@back) %></p>

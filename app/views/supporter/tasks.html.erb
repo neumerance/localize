@@ -1,0 +1,7 @@
+<div class="content">
+	<ol>
+		<% for task in @tasks %>
+			<li><%= link_to_if(task[2], task[0], task[1]) %></li>
+		<% end %>
+	</ol>
+</div>

@@ -1,0 +1,8 @@
+<tr>
+<td><%= money_transaction.id %></td>
+<td><%= disp_time(money_transaction.chgtime) %></td>
+<td><%= account_description(money_transaction.source_account) %></td>
+<td><%= account_description(money_transaction.target_account) %></td>
+<td><%= money_transaction.operation_code %></td>
+<td><%= amount_with_sign(money_transaction) %></td>
+</tr>

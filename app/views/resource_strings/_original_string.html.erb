@@ -1,0 +1,25 @@
+<% if @editing_original %>
+	<%= form_for(:resource_string, :url=>{:action=>:update, :req=>'save'}, :method => :put, :remote => true) do |f| %>
+		<p><%= f.text_area(:txt, :cols=>40, :rows=>@edit_height, :style=>'width: 100%;'+language_dir_css_attribute(@text_resource.language), maxlength: COMMON_NOTE) %></p>
+		<p><label><%= check_box_tag(:minor_change) %> <%= _("Minor change, don't update translation") %></label></p>
+
+    <br/>
+    <b class="red_error">IMPORTANT:</b> As an edit could change this text's word count you will receive a refund for this string in any language that is funded and not translated. After that, you will need to send this string to translation again.
+		<%= submit_tag(_('Save'), data: { disable_with: _('Save') }) %>
+	<% end %>
+	<%= form_for(:resource_string, :url=>{:action=>:update, :req=>'cancel'}, :method => :put, :remote => true) do |f| %>
+		<%= submit_tag(_('Cancel'), data: { disable_with: _('Cancel') }) %>
+	<% end %>
+<% else %>
+	<p style="<%= language_dir_css_attribute(@text_resource.language)+text_flow_css_attribute(@text_resource.language) %>">
+    <%= formatted_original(@resource_string) %>
+  </p>
+	<% if @resource_string.user_can_edit_original(@user) %>
+		<%= form_tag({:action=>:edit}, :method => :get, "data-confirm" => 'Please confirm: Changing one word or a few words will have an impact in the whole meaning of the string and translator needs to work it out in the context. For this reason, if you make any edits you will be charged as a new string.', :remote => true ) do %>
+			<%= submit_tag(_('Edit'), data: { disable_with: _('Edit') }) %>
+      <p>
+      <b>Note:</b> Changing one word or a few words will have an impact in the whole meaning of the string and translator needs to work it out in the context. if you make any edits and text is already translated you will be charged as a new string.
+      </p>
+		<% end %>
+	<% end %>
+<% end %>

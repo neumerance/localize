@@ -1,0 +1,72 @@
+<h1>Flagged Websites</h1>
+<% if @websites.empty? %>
+	No flagged websites!
+<% else %>
+	<%= infotab_header(['Project','client','note'])%>
+	<% @websites.each do |website| %>
+		<tr>
+			<td><%=link_to website.name, wpml_website_path(website)%></td>
+			<td><%=link_to website.client.nickname, user_path(website.client.id)%></td>
+			<td><%=simple_format(website.note)%></td>
+		</tr>
+	<% end %>
+	</table>
+<%end%>
+
+<br/>
+<br/>
+<br/>
+
+<h1>Flagged Software projects</h1>
+<% if @text_resources.empty? %>
+	No flagged software projects!
+<% else %>
+	<%= infotab_header(['Project','client','note'])%>
+	<% @text_resources.each do |text_resource| %>
+		<tr>
+			<td><%=link_to text_resource.name, text_resource_path(text_resource.id)%></td>
+			<td><%=link_to text_resource.client.nickname, user_path(text_resource.client.id)%></td>
+			<td><%=simple_format(text_resource.note)%></td>
+		</tr>
+	<% end %>
+	</table>
+<%end%>
+
+<br/>
+<br/>
+<br/>
+
+<h1>Flagged Bidding projects</h1>
+<% if @revisions.empty? %>
+	No flagged bidding projects!
+<% else %>
+	<%= infotab_header(['Project','client','note'])%>
+	<% @revisions.each do |revision| %>
+		<tr>
+			<td><%=link_to revision.project.name, project_revision_path(revision.project.id, revision.id)%></td>
+			<td><%=link_to revision.project.client.nickname, user_path(revision.project.client.id)%></td>
+			<td><%=simple_format(revision.note)%></td>
+		</tr>
+	<% end %>
+	</table>
+<%end%>
+
+<br/>
+<br/>
+<br/>
+
+<h1>Flagged Users</h1>
+<% if @users.empty? %>
+	No flagged users!
+<% else %>
+	<%= infotab_header(['User','type','note'])%>
+	<% @users.each do |user| %>
+		<tr>
+			<td><%=link_to user.nickname, user_path(user.id)%></td>
+			<td><%=user.type%></td>
+			<td><%=simple_format(user.note)%></td>
+		</tr>
+	<% end %>
+	</table>
+<%end%>
+

@@ -1,0 +1,7 @@
+<% if @new_translator_languages && (@new_translator_languages.length > 0) %>
+	<h2>New translator languages</h2>
+	<ul class="nobullet"><%= render(:partial=>'translator_language', :collection=>@new_translator_languages) %></ul>
+<% else %>
+	<p>There are no new language verification requests.</p>
+<% end %>
+

@@ -1,0 +1,18 @@
+<h2>About ICanLocalize .po file generator</h2>
+<p>This generator will scan PHP file(s) and create .po files, that are used for localization. It will extract all strings wrapped in <i>__(&quot;txt&quot;, &quot;domain&quot;)</i> and <i>_e(&quot;txt&quot;, &quot;domain&quot;)</i> calls.</p>
+<p>Strings can be enclosed in either double quotes (&quot;) or single quotes(') and with any character encoding.</p>
+<p>You are welcome to <a href="https://www.icanlocalize.com/site/tutorials/how-to-translate-with-gettext-po-and-pot-files/">translate the .po files with ICanLocalize</a> or with your own translators.</p>
+<h2>Instructions</h2>
+<p>You can upload a single PHP file or a ZIP file containing multiple files. The scanner will extract strings from all PHP files inside the archive, ignoring other files (like images and stylesheets).</p>
+<p>If you already have existing translation, upload the current .po file too. The generated .po file will include all exiting translation and comments.</p>
+<h2>File(s) to upload</h2>
+<%= form_tag({:action=>:create_po_from_php}, { :multipart => true }) do %>
+	<table cellspacing="10">
+		<tr><td>PHP file to process (required):</td><td><%= file_field_tag(:php_upload) %></td></tr>
+		<tr><td>Existing PO file (optional):</td><td><%= file_field_tag(:po_upload) %></td></tr>
+	</table>
+	<br />
+	<%= submit_tag('Create .po file &raquo;'.html_safe, style: 'padding: 0.5em;', data: { disable_with: 'Create .po file &raquo;'.html_safe } ) %>
+<% end %>
+<br />
+<p><%= link_to('&laquo; Other tools'.html_safe, {:action=>:index}) %></p>

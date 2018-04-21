@@ -1,0 +1,24 @@
+<%= form_tag({:action=>@next_action}, :method=>:get) do %>
+	<ul style="padding:0;">
+	<% for option in @options %>
+		<li style="list-style-type: none; margin: 1em 0 0 0;"><label><%= radio_button_tag :todo, option[0], false, { :onclick=>"document.getElementsByName('continue')[0].disabled = false;"} %><%= option[1] %></label>
+		<% if option[2] %>
+			<p class="comment" style="padding: 0 0 0 2em; margin: 0.5em 0;"><%= option[2] %></p>
+		<% end %>
+		<% if option[3] %>
+			<p class="comment" style="padding: 0 0 0 2em; margin: 0.5em 0;">Rate: <%= option[3] %></p>
+		<% end %>
+		</li>
+	<% end %>
+	</ul>
+	<br /><% if @back %>&laquo; <%= link_to('Go back', {:action=>@back}) %> &nbsp; | &nbsp; <% end %><%= submit_tag('Continue', :name=>'continue', :style=>'padding: 0.5em 1em 0.5em 1em;', data: { disable_with: 'Continue' }) %>
+<% end %>
+
+  <script type="text/javascript" language="JavaScript">
+<!--
+		document.getElementsByName("continue")[0].disabled = true;
+-->
+</script>
+
+<hr style="margin: 3em 0 1em 0;" />
+<p>Can't find what you're looking for? <%= link_to('Ask us a question', {:controller=>:support, :action=>:new, :help_setup=>1}) %>.</p>

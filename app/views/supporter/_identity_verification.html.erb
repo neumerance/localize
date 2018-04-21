@@ -1,0 +1,12 @@
+<li>
+<div class="infobox" id="identity_verification<%= identity_verification.id %>" >
+	<h4><%= link_to("#{identity_verification.normal_user.full_name(@user)}", {:controller=>:users, :action=>:show, :id=>identity_verification.normal_user.id}) %></h4>
+		<%= link_to("#{h(identity_verification.verified_item.description)}: #{identity_verification.verified_item.orig_filename}", {:action=>:zipped_file, :id=>identity_verification.verified_item.id}) %>
+	<hr />
+	<h5>Need clarifications from user?</h5>
+	<div id="open_support_ticket_for_<%= put_object_id(identity_verification) %>"><%= render(:partial=>'/support/support_ticket_for_object', :object=>identity_verification) %></div>
+	<h5>Make a decision</h5>
+	<p><%= button_to("APPROVE this identity verification", { :action => :approve_identity_verification, :id=>identity_verification.id }, 'data-confirm'=>'Are you sure you want to APPROVE this identity verification?') %></p>
+	<p><%= button_to("DECLINE this identity verification", { :action => :decline_identity_verification, :id=>identity_verification.id }, 'data-confirm'=>'Are you sure you want to DECLINE this identity verification?') %></p>
+	</div>
+</li>

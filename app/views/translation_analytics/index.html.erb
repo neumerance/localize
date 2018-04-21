@@ -1,0 +1,13 @@
+<% if @websites.nil? %>
+    <div class="errorExplanation"> <%= _("Currently no data is available for your websites. Please install the WPML translation analytics to gather data.") %> </div>
+<% else %>
+
+	<h1><% _("Projects with translation analytics enabled.") %></h1>
+    <% if @websites.length > 0 %>
+        <%= infotab_top(_('CMS translation projects'),_('Showing all your CMS translation projects') ) %>
+        <%= infotab_header(['Name', 'Kind', 'URL']) %>
+        <%= render(:partial=>'/websites/website', :collection=>@websites, :locals => {:translation_analytics => true}) %>
+        </table>
+        <div class="inter_tab_spacer"></div>
+    <% end %>
+<% end %>

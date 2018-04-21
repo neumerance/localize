@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file original="138-7735e9201c9b98b7b3bb11eb8d5558ec" source-language="de" target-language="fr" datatype="plaintext">		<header><reference><external-file href="https://www.multitalent.ag/blog/ts_timeline/15-05-2015-immobilienprojekt-golfapartments-golfhotel/"/></reference></header>
+		<body>
+			         <trans-unit resname="field-ts_vcsc_custompost_migrated-0-ts_vcsc_timeline_migrated" restype="string" datatype="html" id="field-ts_vcsc_custompost_migrated-0-ts_vcsc_timeline_migrated">
+            <source><![CDATA[true]]></source>
+            <target><![CDATA[true]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_type_type" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_type_type">
+            <source><![CDATA[event]]></source>
+            <target><![CDATA[event]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventdatetext" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventdatetext">
+            <source><![CDATA[15.05.2015]]></source>
+            <target><![CDATA[15.05.2015]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventdateicon" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventdateicon">
+            <source><![CDATA[calendar]]></source>
+            <target><![CDATA[calendar]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventtitletext" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventtitletext">
+            <source><![CDATA[Investition in das Immobilienprojekt Golfapartments]]></source>
+            <target><![CDATA[Investition in das Immobilienprojekt Golfapartments]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventtitlealign" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventtitlealign">
+            <source><![CDATA[center]]></source>
+            <target><![CDATA[center]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventcontent" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventcontent">
+            <source><![CDATA[<p>Bei diesem Bauvorhaben handelt es sich um den Neubau von 6 Golfapartmentvillen mit insgesamt 24 exklusiven Wohneinheiten auf der Ferieninsel Rügen vor der deutschen Ostseeküste. Die freistehenden Apartmentvillen...</p><br class="xliff-newline" /><p>[button title="mehr erfahren" link="/blog/portfolio-item/golfapartments/" target="" align="left" icon="icon-link" icon_position="left" color="theme" font_color="#ffffff" size="2" full_width="" class="" download="" rel="" onclick=""]</p>]]></source>
+            <target><![CDATA[<p>Bei diesem Bauvorhaben handelt es sich um den Neubau von 6 Golfapartmentvillen mit insgesamt 24 exklusiven Wohneinheiten auf der Ferieninsel Rügen vor der deutschen Ostseeküste. Die freistehenden Apartmentvillen...</p><br class="xliff-newline" /><p>[button title="mehr erfahren" link="/blog/portfolio-item/golfapartments/" target="" align="left" icon="icon-link" icon_position="left" color="theme" font_color="#ffffff" size="2" full_width="" class="" download="" rel="" onclick=""]</p>]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_break_breaktitlealign" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_break_breaktitlealign">
+            <source><![CDATA[center]]></source>
+            <target><![CDATA[center]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_media_featuredmedia" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_media_featuredmedia">
+            <source><![CDATA[image]]></source>
+            <target><![CDATA[image]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_media_featuredimage" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_media_featuredimage">
+            <source><![CDATA[7865]]></source>
+            <target><![CDATA[7865]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_media_slidermaxheight" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_media_slidermaxheight">
+            <source><![CDATA[400]]></source>
+            <target><![CDATA[400]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_media_featuredmediaheight" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_media_featuredmediaheight">
+            <source><![CDATA[height: auto;]]></source>
+            <target><![CDATA[height: auto;]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_media_featuredmediawidth" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_media_featuredmediawidth">
+            <source><![CDATA[100]]></source>
+            <target><![CDATA[100]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_media_featuredmediaalign" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_media_featuredmediaalign">
+            <source><![CDATA[center]]></source>
+            <target><![CDATA[center]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_lightbox_lightboxgroup" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_lightbox_lightboxgroup">
+            <source><![CDATA[1]]></source>
+            <target><![CDATA[1]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_lightbox_lightboxeffect" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_lightbox_lightboxeffect">
+            <source><![CDATA[random]]></source>
+            <target><![CDATA[random]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_lightbox_lightboxbacklight" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_lightbox_lightboxbacklight">
+            <source><![CDATA[auto]]></source>
+            <target><![CDATA[auto]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_lightbox_lightboxbacklightcolor" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_lightbox_lightboxbacklightcolor">
+            <source><![CDATA[#ffffff]]></source>
+            <target><![CDATA[#ffffff]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_link_dedicatedpage" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_link_dedicatedpage">
+            <source><![CDATA[-1]]></source>
+            <target><![CDATA[-1]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_link_dedicatedtarget" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_link_dedicatedtarget">
+            <source><![CDATA[1]]></source>
+            <target><![CDATA[1]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_link_dedicatedicon" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_link_dedicatedicon">
+            <source><![CDATA[none]]></source>
+            <target><![CDATA[none]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_link_dedicatedcolor" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_link_dedicatedcolor">
+            <source><![CDATA[#ffffff]]></source>
+            <target><![CDATA[#ffffff]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_link_dedicatedlabel" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_link_dedicatedlabel">
+            <source><![CDATA[Read More]]></source>
+            <target><![CDATA[Read More]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_link_dedicatedwidth" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_link_dedicatedwidth">
+            <source><![CDATA[100]]></source>
+            <target><![CDATA[100]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_link_dedicatedalign" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_link_dedicatedalign">
+            <source><![CDATA[center]]></source>
+            <target><![CDATA[center]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_link_dedicateddefault" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_link_dedicateddefault">
+            <source><![CDATA[ts-dual-buttons-color-default]]></source>
+            <target><![CDATA[ts-dual-buttons-color-default]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_link_dedicatedhover" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_link_dedicatedhover">
+            <source><![CDATA[ts-dual-buttons-preview-default ts-dual-buttons-hover-default]]></source>
+            <target><![CDATA[ts-dual-buttons-preview-default ts-dual-buttons-hover-default]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_tooltip_tooltipposition" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_tooltip_tooltipposition">
+            <source><![CDATA[top]]></source>
+            <target><![CDATA[top]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_tooltip_tooltipstyle" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_tooltip_tooltipstyle">
+            <source><![CDATA[black]]></source>
+            <target><![CDATA[black]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventbackcolor" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventbackcolor">
+            <source><![CDATA[#ffffff]]></source>
+            <target><![CDATA[#ffffff]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventtitlecolor" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventtitlecolor">
+            <source><![CDATA[#676767]]></source>
+            <target><![CDATA[#676767]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventcontentcolor" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventcontentcolor">
+            <source><![CDATA[#676767]]></source>
+            <target><![CDATA[#676767]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventdatecoloricon" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventdatecoloricon">
+            <source><![CDATA[#777678]]></source>
+            <target><![CDATA[#777678]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventdatecolordate" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventdatecolordate">
+            <source><![CDATA[#777678]]></source>
+            <target><![CDATA[#777678]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventdatecolorback" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_event_eventdatecolorback">
+            <source><![CDATA[#f5f5f5]]></source>
+            <target><![CDATA[#f5f5f5]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_break_breakbackground" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_break_breakbackground">
+            <source><![CDATA[#dadada]]></source>
+            <target><![CDATA[#dadada]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_break_breaktitlecolor" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_break_breaktitlecolor">
+            <source><![CDATA[#676767]]></source>
+            <target><![CDATA[#676767]]></target>
+         </trans-unit>
+         <trans-unit resname="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_break_breakcontentcolor" restype="string" datatype="html" id="field-ts_vcsc_timeline_information-0-ts_vcsc_timeline_break_breakcontentcolor">
+            <source><![CDATA[#676767]]></source>
+            <target><![CDATA[#676767]]></target>
+         </trans-unit>
+         <trans-unit resname="title" restype="string" datatype="html" id="title">
+            <source><![CDATA[15.05.2015 Immobilienprojekt Golfapartments]]></source>
+            <target><![CDATA[15.05.2015 Immobilienprojekt Golfapartments]]></target>
+         </trans-unit>
+
+		</body>
+	</file>
+</xliff>

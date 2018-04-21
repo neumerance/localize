@@ -1,0 +1,10 @@
+<% if @resource_strings.length > 0 %>
+	<%= form_tag({:action=>'convert_selected'}, :id=>'resource_strings_list') do %>
+		<%= infotab_header([_('Select'),_('File'),_('Label'),@text_resource.language.name + ' <span class="comment" style="font-weight:normal;">(original)</span>'] + (@languages.collect { |l| l.name }) ) %>
+		<%= display_resource_strings(@resource_strings, @languages, @text_resource.language) %>
+		</table>
+		<br /><p><a href="#" onclick="toggleCheckBoxes('resource_strings_list'); return false;">Select all</a> &nbsp; <%= link_to('Cancel', {:controller=>:text_resources, :action=>:show, :id=>@text_resource.id}) %> &nbsp; <%= submit_tag('Convert selected string from UTF-16', :onclick=>"return confirm('Are you sure?');", data: { disable_with: 'Convert selected string from UTF-16' } ) %></p>
+	<% end %>
+<% else %>
+	<p class="warning"><%= _("No results to show.") %></p>
+<% end %>

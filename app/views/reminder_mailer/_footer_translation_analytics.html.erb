@@ -1,0 +1,26 @@
+<table class="row mail-footer">
+  <tbody>
+    <tr class="wrapper last">
+      <table class="twelve columns">
+        <tbody>
+          <tr>
+            <td class="text-pad panel panel-warning">
+               <p class="text-comment">
+                  <%= _("We have sent you this alert because you, or someone from your organization, has enabled translation-status alerts from Translation Analytics.") %> 
+                  <%= _("To manage your alerts preferences, or unsuscribe please go to %s.") % link_to("your translation analytics management page", "#{EMAIL_LINK_PROTOCOL}#{EMAIL_LINK_HOST}/translation_analytics_profiles/#{@website.translation_analytics_profile.id}/edit?project_type=#{@project.class}&project_id=#{@project.id}&from_cms=0&accesskey=#{@website.accesskey}") %></p>
+
+               <p class="text-comment"><%= _("For any help, please %s.") % link_to("contact us", "#{EMAIL_LINK_PROTOCOL}#{EMAIL_LINK_HOST}/site/about-us/contact-us/") %></p>
+            </td>
+          </tr>
+          <tr>
+            <td class="text-pad">
+              <hr>
+              <p><%= ANALYTICS_EMAIL_SIGNATURE %></p>
+            </td>
+            <td class="expander"></td>
+          </tr>
+        </tbody>
+      </table>
+    </tr>
+  </tbody>
+</table>

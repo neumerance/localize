@@ -1,0 +1,56 @@
+<span>Hi <%= @client.full_name %>,</span>
+<br />
+<br />
+<p>We want to let you know that we’ve assigned translators to your project. In ICanLocalize, we believe that there’s no replacing direct human contact. This is why we want to introduce you to the translators who will work on your project.</p>
+<br />
+<table style="width: 100%">
+  <tbody>
+    <tr>
+      <td colspan="2">
+        <h4><%= @website_translation_offer.from_language.name %> &raquo; <%= @website_translation_offer.to_language.name %></h4>
+      </td>
+    </tr>
+    <tr>
+      <th>Tranlator</th>
+      <th>Reviewer</th>
+    </tr>
+    <tr>
+      <td>
+        <ul style="list-style-type: none; margin: 0; padding: 0">
+          <% @translate_jobs.each do |job| %>
+            <li>
+              <% chat_link = url_for(controller: :website_translation_contracts, action: :show, id: job.id, website_id: job.website_translation_offer.website.id, website_translation_offer_id: job.website_translation_offer.id) %>
+              <%= link_to job.try(:translator).try(:nickname), url_for(controller: :users, action: :show, id: job.try(:translator).try(:id)) %> <%= link_to '(Chat)', chat_link %>
+            </li>
+          <% end %>
+        </ul>
+      </td>
+      <td>
+        <ul style="list-style-type: none; margin: 0; padding: 0">
+          <% @review_jobs.each do |job| %>
+              <li>
+                <%= link_to job.try(:translator).try(:nickname), url_for(controller: :users, action: :show, id: job.try(:translator).try(:id)) %>
+              </li>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>The translators and reviewers are all professional translators, native speakers of their target languages and experienced in your site’s field. They are waiting for you to send content for translation.</p>
+<p>
+  Once you send content for translation, our translators and reviewers know exactly what to do. You don’t need to provide technical advice. However, if you want to tell them more about your business, your audience and the writing style they should use for your site, you can broadcast a message to all translators here:
+</p>
+<br />
+<%= link_to 'Broadcast message to your translators', { controller: '/wpml/websites', action: :show, id: @website.id } %>
+<br />
+<p>Want to know more about how we work?</p>
+<ul>
+  <li><a href="">The translators that we recruit</a></li>
+  <li><a href="">ICanLocalize’s translation process</a></li>
+  <li><a href="">The tools we use to translate your site</a></li>
+  <li><a href="">Our quality guarantee</a></li>
+</ul>
+<p>
+  We all look forward to working with you. If you have any questions ask us in <%= link_to 'ICanLocalize support', '/support' %>.
+</p>

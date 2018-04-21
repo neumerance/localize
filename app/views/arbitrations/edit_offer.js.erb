@@ -1,0 +1,5 @@
+<% if @warning %>
+	alert('<%= @warning %>')
+<% else %>
+  jQuery('#your_offer').html('<%= escape_javascript(render partial: 'your_offer') %>')
+<% end %>

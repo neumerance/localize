@@ -1,0 +1,5 @@
+<% if @response %>
+  jQuery("#db_translation_<%= @idx %>").html("<%= escape_javascript(render partial: '/db_content_translations/edit_obj') %>")
+<% else %>
+  alert('Cannot complete')
+<% end %>

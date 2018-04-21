@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>ICanLocalize &#8211; Expert Translation at Unbeatable Prices</title>
+    <%= stylesheet_link_tag 'cstyle' %>
+    <%= stylesheet_link_tag 'landing-page' %>
+    <!--[if lt IE 9]>
+      <script src="/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div id="body-container" class="landing-page">
+
+      <header id="header-container">
+
+        <div id="header">
+
+          <div class="site-title-container">
+            <h1 id="site-title"><a href="index.htm">ICanLocalize</a></h1>
+            <p id="site-description">The Ideal Translation Service for WordPress sites &amp; Mobile Apps</p>
+            <p id="site-description"></p>
+          </div>
+
+          <hgroup>
+            <h2>We will send an invitation to your proyect to <%=@translators.count%> translators.</h2>
+            <h3>All of them speak <%@website_translation_offer.to_language.name%> natively and are able to translate your content from <%=@website_translation_offer.from_language.name%></h3>
+          </hgroup>
+
+        </div><!-- #header -->
+
+      </header><!-- #header-container -->
+
+
+      <div id="container">
+
+        <div class="container-inner">
+          <section class="entry">
+            <%= render :partial => 'auto_setup' %>
+
+            <p class="add-button" style="text-align: right;">
+            <%= link_to "Browse translators that will be invited",
+              {:controller => :website_translation_offers, :id => @website_translation_offer.id, :website_id => @website.id, :action => :show, :c => 1} %>
+            </p>
+          </section>
+
+          <section class="translators">
+
+
+            <aside>
+              <h2>You will start receiving applications soon.</h2>
+              <p class="add-button">
+                <%=
+                  link_to "Cancel sending the invitations", 
+                    cancel_invitations_website_website_translation_offer_path(@website, @website_translation_offer), 
+                    { :method => :post }
+                %>
+              </p>
+            </aside>
+
+          </section>
+        </div>
+
+        <section class="about">
+
+          <h2>About ICanLocalize</h2>
+
+          <div class="about-inner">
+            <p>ICanLocalize and WPML both belong to OnTheGoSystems. You will receive translation work and support from the same team who makes your WordPress site run multilingual. We specialize in translation for WordPress sites.</p>
+            <strong>WordPress website localization has never been easier!</strong>
+          </div>
+
+          <div class="about-logos">
+            <a class="logo onthego" href="http://www.onthegosystems.com/">onthegosystems.com</a>
+            <a class="logo wpml" href="http://wpml.org/">wpml.org</a>
+          </div>
+
+        </section>
+
+      </div><!-- #container -->
+
+      <footer>
+        <p class="copyright">Copyright © OnTheGoSystems Inc. | All Rights reserved</p>
+      </footer>
+
+    </div><!-- #body-container -->
+
+  </body>
+</html>

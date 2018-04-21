@@ -1,0 +1,31 @@
+<h1>EU VAT Transactions</h1>
+
+<%
+  #TODO: move to helper
+  country_options = Country.where('tax_name = ?','VAT').order('name ASC').map { |c| [c.name, c.id] }
+  country_options.unshift(['-----', 0])
+%>
+
+<%= form_tag("/reports/eu_vat_transactions", :method => :get) do %>
+    From <%= date_picker_field "from", nil, {:value =>  params[:from].to_s.to_date || Date.today - 1.month}, '<i class="mc-icon-calendar"></i>' %>
+    To <%= date_picker_field "to", nil, {:value => params[:to].to_s.to_date || Date.today}, '<i class="mc-icon-calendar"></i>' %>
+
+    Country <%= select_tag(:tax_country_id, options_for_select(country_options, params[:tax_country_id].to_i)) %>
+
+    <%= submit_tag 'Generate', data: { disable_with: 'Please wait' } %>
+    <%= submit_tag 'Export to CSV', data: { disable_with: 'Please wait' } %>
+  <% end %>
+
+<%= infotab_top(_('EU VAT Transactions'), _('List of all transactions affected by EU VAT regulation')) %>
+<%= infotab_header(['Invoice Id', 'Date', 'Payment method', 'Customer Name','Country','Code','Tax Rate', 'VAT ID', 'Items amount', 'Tax Amount', 'Total Amount']) %>
+  <%=render :partial => 'tax_transaction', :collection => @invoices, :as => :invoice %>
+
+  <tfoot>
+    <tr class="headerrow">
+      <th colspan="8" style="text-align:right">Totals:</th>
+      <% for item in @totals %>
+        <td class="money"><b><%= item %> USD</b></td>
+      <% end %>
+    </tr>
+  </tfoot>
+</table>

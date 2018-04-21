@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+  <head>
+    <title><%= h(@header) -%> [ICanLocalize]</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  	<meta http-equiv="Content-Style-Type" content="text/css" />
+  	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <% unless INDEX_TRANSLATOR %>
+      <% if params[:controller] == 'translators' && (%w(show).include? params[:action]) %>
+        <META NAME="robots" CONTENT="noindex,follow">
+      <% end %>
+    <% end %>
+  	<% if @meta_description %>
+  		<meta name="description" content="<%= @meta_description %>" />
+  	<% end %>
+    <% if params[:controller] == 'my' %>
+      <META NAME="ROBOTS" CONTENT="NOINDEX,FOLLOW">
+    <% end %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= stylesheet_link_tag    'application' %>
+    <%= stylesheet_link_tag 'visitor' %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <%= javascript_include_tag 'application' %>
+
+    <link rel="shortcut icon" href="/assets/favicon.png" type="image/png" />
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+  <div id="topbar">
+    <a href="http://www.icanlocalize.com/site/">Home</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="/login/">Login</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="http://www.icanlocalize.com/site/about-us/contact-us/">Contact</a> &nbsp;-&nbsp;
+    <a href="http://www.icanlocalize.com/tools"><span class="fa fa-wrench"></span> Free Tools</a> &nbsp;-&nbsp;
+    <a href="http://www.icanlocalize.com/site/blog/feed/"><span class="fa fa-rss"></span></a>
+    <a href="http://www.icanlocalize.com/site/blog/">Blog</a>
+  </div>
+	<a href="http://www.icanlocalize.com/site/">
+    <%= image_tag 'web_logo_small.png', class: 'imageBorder', width: 150, height: 34, alt: 'ICanLocalize', style: 'float: left;', border: 0 %>
+  </a>
+	<div style="clear:both;"></div>
+	<div id="maincontents">
+	<% if flash[:notice] %>
+	<div id="alertDiv">
+	  <%= pre_format(flash[:notice], true) %>
+	</div>
+	<% end %>
+	<%= show_trail %>
+		<% if !@header.blank? %><h1><%= h(@header) %></h1><% end %>
+		<%= yield :layout %>
+	</div>
+    <div id="bottom">
+	  <br />
+	  <p style="text-align: center;"><%= (_('&copy; %s. OnTheGoSystems INC. All Rights Reserved.')%Time.now.strftime('%Y')).html_safe %></p>
+	<p style="text-align: center;"><%= locale_footer %></p>
+    </div>
+<% if Rails.env=='production' %>
+	<!-- analytics --><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(decodeURIComponent("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-564905-4");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script><% end %></body>
+</html>

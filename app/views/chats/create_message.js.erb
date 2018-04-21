@@ -1,0 +1,9 @@
+<% if @warning %>
+  alert('<%= @warning %>')
+<% else %>
+  <% if @redirect_url %>
+    location.href = '<%= @redirect_url %>'
+  <% else %>
+    location.reload()
+  <% end %>
+<% end %>

@@ -1,0 +1,35 @@
+<% if @missing_funding > 0 %>
+	<div class="errorExplanation"><p><b>Your money is not enough to translate (and review) your instant translation project(s).</b></p>
+	<p><%= link_to(_('Add funding to allow translation'), {:controller=>:web_supports, :action=>:untranslated_messages}) %></p>
+	</div>
+<% end %>
+
+<br />
+<% if @user.can_create_projects? %>
+<%= link_to(_('Create a new Instant Translation project'), {:controller=>:web_messages, :action=>:new}, {:class=>'rounded_but'}) %>
+<br /><br /><br />
+<% end%>
+
+<%= form_tag({ :action => :index },
+						{:method => :get}) do %>
+	<div class="infobox"><h4>Search filter</h4>
+		<p><%= possible_message_status('translation_status', '&nbsp;&nbsp;&nbsp;', @message_conditions['translation_status']) %></p>
+		<%= hidden_field_tag :set_args, 1 %>
+		<%= submit_tag _('Apply filter'), data: { disable_with: _('Apply filter') } %>
+	</div>
+
+	<% if @messages.count > 0 -%>
+			<% unless @user[:type] == 'Translator' %>
+			<div class="pager_control" style="position: relative; height: 15px;">
+				<%= paginate @messages %>
+				<label style="position: absolute; top: 2px; right: 10px">
+					Results per page: <%= select_tag 'per_page', options_for_select(%w(10 20 40 60 80 100), params[:per_page]), onchange: 'submit()'  %>
+				</label>
+				<div style="clear: both"></div>
+			</div>
+			<% end %>
+		<%= render(:partial=>'web_messages_list', locals: {web_messages_list: @messages}) %>
+	<% else %>
+		<p>No project found.</p>
+	<% end %>
+<% end %>

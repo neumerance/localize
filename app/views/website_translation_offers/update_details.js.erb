@@ -1,0 +1,20 @@
+<% if @ok %>
+  <% if @redirect_to_url %>
+    location.href = '<%= @redirect_to_url %>'
+  <% else %>
+    <% flash[:notice] = _('Thank you for the info. You should receive applications from translators shortly.') %>
+    location.reload()
+    jQuery('html, body').animate({
+      scrollTop: jQuery("#top-of-page").offset().top
+    }, 2000)
+  <% end %>
+<% else %>
+  <% if @invitation_only %>
+    jQuery('#welcome-cms').html('<%= escape_javascript(render :partial => 'invitation') %>')
+  <% else %>
+  jQuery('#welcome-cms').html('<%= escape_javascript(render :partial => 'website_status') %>')
+  <% end %>
+  jQuery('html, body').animate({
+    scrollTop: jQuery("#welcome-cms").offset().top
+  }, 2000)
+<% end %>

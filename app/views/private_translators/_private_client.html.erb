@@ -1,0 +1,5 @@
+<tr>
+	<td><%= link_to(private_client.client.nickname, {:controller=>:users, :action=>:show, :id=>private_client.client.id}) %></td>
+	<td><%= PrivateTranslator::STATUS_TEXT[private_client.status] %></td>
+	<td><%= link_to('Respond to invitation', {:action=>:show, :id=>private_client.id}) %></td>
+</tr>

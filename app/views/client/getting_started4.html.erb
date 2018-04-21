@@ -1,0 +1,130 @@
+<!-- div style="float: right; width: 14em; margin: 0 0 1em 1em; padding: 1em;" class="green_message">
+	<img src="/assets/icons/question-green.png" width="32" height="32" style="float: left; margin: 0 0.5em 0.5em 0;" /><span style="font-size: 110%;">Need technical help? <%= link_to('Contact us', {:controller=>:support, :action=>:new, :help_setup=>1}) %></span>
+</div -->
+
+<% if @cms_kind == WEBSITE_DRUPAL %>
+
+<p>To translate your Drupal site, you will need to install the <a href="http://drupal-translation.com/content/drupal-translation-management" target="_blank">Translation Management</a> Drupal module.</p>
+<p>Translation Management will automate the entire translation process. It sends new and updated content for translation. Then, it receives back the translation and saves in Drupal.</p>
+<p>Translation Management is compatible with Drupal version 6, for upper versions we have an alternative solution - please contact the support.</p>
+
+<h3>Step 1) Installing Translation Management in Drupal</h3>
+
+<p>To start translating through Translation Management, it needs to be installed on your site. You can do it yourself (recommended for web developer) or we can do it for you.</p>
+
+<table class="centered-cells">
+<tr class="headerrow"><th style="width:20%;"></th>
+	<th style="width:40%; color: #FFFFFF; background-color: #646f54">Install yourself</th>
+	<th style="width:40%; color: #FFFFFF; background-color: #3F81E4">We install for you</th></tr>
+<tr>
+	<td style="background-color: #EFEFEF; text-align: right;">Setup cost:</td>
+	<td style="background-color: #CBE1AB;">Free</td>
+	<td style="background-color: #c1cbf1;"><%= link_to('Get quote', {:controller=>:support, :action=>:new, :help_setup=>1}) %></td>
+</tr><tr>
+	<td style="text-align: right;">Translation cost:</td>
+  <td style="background-color: #E4F0D5;"><%=MINIMUM_BID_AMOUNT%>-0.14 USD per word<span class="superscript">*</span></td>
+	<td style="background-color: #dee2f1;"><%=MINIMUM_BID_AMOUNT%>-0.14 USD per word<span class="superscript">*</span></td>
+</tr>
+<tr>
+	<td style="background-color: #EFEFEF; text-align: right;">Recommended for:</td>
+	<td style="background-color: #CBE1AB;">Web developers</td>
+	<td style="background-color: #c1cbf1;">End users, Drupal admins</td>
+</tr>
+<tr><td></td>
+	<td style="background-color: #E4F0D5;"><a class="rounded_but_bold" target="_blank" href="http://drupal.org/project/translation_management#downloads">Download Translation Management</a></td>
+	<td style="background-color: #dee2f1;"><%= link_to('contact us', {:controller=>:support, :action=>:new, :help_setup=>1}, {:class=>'rounded_but_bold'}) %></td></tr>
+</table>
+<br/>
+
+<p><span class="superscript">*</span> Translators will apply for your project and give you their per-word quotes.</p>
+
+<% elsif @cms_kind == WEBSITE_WORDPRESS %>
+
+<p>If you are using WPML 3.1 or higher, watch the video tutorial below to see how to send content for translation from WPML.</p>
+<p>If you are using an older version of WPML, it is recommended to upgrade. However, it is still possible to follow the instructions <%= link_to('in the previous tutorial', 'https://www.icanlocalize.com/site/tutorials/translate-website-with-wpml-and-icl/') %> to create your website translation project.</p>
+<br />
+<p>The new registration process requires an API token, which you can find <%= link_to('here', 'https://www.icanlocalize.com/wpml/websites') %>.</p>
+<br /> 
+<p>If you need any help, you are welcome to <%= link_to('contact us', {:controller=>:support, :action=>:new, :help_setup=>1}) %>.</p>
+<div style="background-color: #F0F0FF; padding: 10px 0 20px 0; border: 1pt solid #C0C0C0; margin: 3em 1em;">
+<h3 style="text-align: center; margin: 5px 0 10px 0;">Tutorial Video - How we translate WordPress sites (5:14)</h3>
+<div style="width:640px; height: 504px; margin: auto; border: 1pt solid #D0D0D0">
+	<iframe width="640" height="480" src="https://www.youtube.com/embed/_4p1CQHBqvQ?rel=0&amp;showinfo=0" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+</div>
+
+<div style="padding: 1em;">
+
+	<h3>Step 1 - Installing WPML in WordPress</h3>
+	<p>In order to use ICanLocalize, you need a <%= link_to('WPML Multilingual CMS', 'https://wpml.org/purchase/') %> subscription. The Translation Management plugin, available only with the WPML Multilingual CMS version, is required to connect your website to professional translation services.</p>
+	<p>Once you have purchased WPML Multilingual CMS, login to your <%= link_to('account on wpml.org', 'https://wpml.org/account/') %> to download the following plugins:</p>
+	<ul>
+		<li>WPML Multilingual CMS: core plugin;</li>
+		<li>WPML Translation Management: required to use translation services and the advanced functionalities of WPML;</li>
+		<li><%= link_to('WPML String Translation', 'https://wpml.org/documentation/getting-started-guide/string-translation/') %>: allows you to translate texts included in the theme, plugins, widgets and WordPress Admin.</li>
+	</ul>
+	<p>There is also an optional suggested plugin, <%= link_to('WPML Media', 'https://wpml.org/documentation/getting-started-guide/media-translation/') %> , to use the same uploaded media in different languages.</p>
+	<p>If you need help to download, install and configure the plugins, WPML offers a comprehensive documentation, including an <%= link_to('installation guide', 'https://wpml.org/faq/install-wpml/') %> and a <%= link_to('first configuration guide', 'https://wpml.org/documentation/getting-started-guide/language-setup/') %>.</p>
+
+	<% end %>
+
+	<br />
+
+	<h3>Step 2 - Activate ICanLocalize and create your website translation project</h3>
+	<ol>
+		<li>Go to the <strong>WPML -> Translation Management</strong> page and click the <strong>Translation services</strong> tab.</li>
+		<li>Activate <strong>ICanLocalize</strong> from the list of services.</li>
+		<li>Click on the Authenticate button and then on the ICanLocalize “Sign up” link.</li>
+		<li>Fill in the form with the name and email address associated with your ICanLocalize account.</li>
+		<li>The registration wizard will provide you with an API token. Copy the API token.</li>
+		<li>Go back to the <strong>Translation services</strong> tab on the <strong>WPML -> Translation Management</strong> page and return to the ICanLocalize authentication wizard.</li>
+		<li>Paste the API token and click <strong>Submit</strong>.</li>
+	</ol>
+	<p><strong>Note</strong>: The registration wizard and options depend on the WPML version installed. If you cannot follow the steps above, you can find your API token at <%= link_to('this page', 'https://www.icanlocalize.com/wpml/websites') %>.</p>
+	<br />
+
+	<h3>Step 3 - Send content for translation</h3>
+	<p>In order to select the contents you want to translate, you can return to <strong>WPML -> Translation Management-> Translation Dashboard</strong> to select pages, posts or products.</p>
+	<p>WPML provides you with a series of filters to help you find the specific content. Follow this procedure to select them and send them for translation:</p>
+	<ol>
+		<li>Select the checkboxes of the items you want to translate.</li>
+		<li>Scroll down to the <strong>Translation options</strong> section, then choose the <strong>Translate</strong> option for the desired language.</li>
+		<li>Click the <strong>Add selected content to Translation Basket</strong> button.</li>
+		<li>Now, click on the blinking <strong>Translation Basket</strong> tab.</li>
+		<li>In the <strong>Translation Basket</strong>, you can review the items to send for translation and the languages. Optionally, you can also change the <strong>Batch name</strong> if you prefer to give it a more recognizable name.</li>
+		<li>Make sure to select an ICanLocalize translator in the <strong>Translate by</strong> drop-down menu</li>
+		<li>Click on the <strong>Send all items for translation</strong> button.</li>
+	</ol>
+	<p>If you need to send strings for translation (theme, plugins and widgets elements), you will need to install and activate the <%= link_to('WPML String Translation', 'http://wpml.org/documentation/getting-started-guide/string-translation/') %> module. You can find and select the strings to send to the Translation Basket on the <strong>WPML -> String Translations</strong> page.</p>
+	<br />
+
+	<h3>Step 4 - Assign your translators and get a quote</h3>
+	<p>After sending the content for translation, you can click on the “Translation Jobs” link to view the WPML tab with the list of jobs. Just click on a batch name to be redirected to ICanLocalize, and click on the <strong>Set up pending translation jobs</strong> button to see a summary of the content sent.</p>
+	<p>For each language pair, you can decide if you want to choose your translators or use the newly added automatic translator assignment feature:</p>
+	<ol>
+		<li><strong>Automatic assignment with fixed rates</strong>: to enable this feature, select the <strong>Automatically invite best translators</strong> option. This is the default mode which will assign translators automatically and you will get a fixed rate per word.</li>
+		<li><strong>Manual assignment with bidding process</strong>: to enable this feature, select the <strong>Let me choose translators</strong> option. You can browse the translators’ profiles, invite them to the project and check their rates, and then assign the ones you prefer.</li>
+	</ol>
+	<br />
+
+	<h3>Step 5 - Deposit payment</h3>
+
+	<p>If you decide to have translators automatically assigned, you can proceed directly with the deposit and later receive a confirmation email with a list of the assigned translators. If you select the translators manually, you will be asked for a deposit only after assigning the translators.</p>
+
+	<p>Each time you send us content for translation, you will need to go to the Pending Translation Jobs page and confirm the payment of all pending translation jobs clicking the Pay and begin translation button.</p>
+
+	<p>If you have enough balance in your ICanLocalize account, the payment will be deducted from that balance after clicking the Pay and begin translation button. If the balance is not sufficient, you will be given several options to complete the payment.</p>
+
+	<p>Please note that the translations won’t start until the payment button has been clicked, regardless of the available balance. If you have recurrent translations, don’t hesitate to <%= link_to('contact our support staff', 'https://www.icanlocalize.com/support/new') %> to help you make this process smoother.</p>
+
+	<br />
+
+	<h3>Step 6 - Download the completed translations</h3>
+	<p>After the translators complete the work, you will receive the translated contents directly on your website. You need to select if you want to download the translations automatically or manually.</p>
+	<p>If you prefer to have the translations download automatically, please go to the <strong>WPML -> Translation Management</strong> page and click the <strong>Multilingual Content</strong> Setup tab. Then, scroll to the <strong>Translation Pickup Mode</strong> section and make sure you select the <strong>Translation Service will deliver translations automatically using XML-RPC</strong> option.</p>
+	<p>Regardless of the option selected, you can always click the <strong>Check status and get translations</strong> in <strong>WPML Translation Management Dashboard</strong> to download the translations manually.</p>
+	<br />
+
+	<hr /><br />
+	&laquo; <%= link_to(_('Go back'), {:action=>:getting_started}) %>
+
+</div>

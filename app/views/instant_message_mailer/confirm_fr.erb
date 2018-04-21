@@ -1,0 +1,11 @@
+Bonjour <%= @web_dialog.full_name %>,
+
+Nous avons reçu votre message et nous y répondrons aussi tôt que possible.
+En attendant, si vous voulez nous envoyer un autre message ou pour consulter l'historique complet de vos commentaires et de nos réponses, veuillez cliquer sur le lien ci-dessous :
+
+<%= url_for({:escape => false, :only_path => false, :controller=>:web_dialogs, :action=>:show, :id=>@web_dialog.id, :accesskey=>@web_dialog.accesskey, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+* Veuillez noter que les réponses envoyées à cette boîte aux lettres ne seront pas consultées.
+
+Meilleures salutations,
+<%= @signature %>

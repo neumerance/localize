@@ -1,0 +1,6 @@
+<% @clients_deposits.each do |client_deposit| %>
+  <tr>
+    <td><%= user_link(client_deposit) %></td>
+    <td><%= client_deposit["total"] %> USD</td>
+  </tr>
+<% end %>

@@ -1,0 +1,1 @@
+jQuery('#bidding_projects').html("<%= escape_javascript(render partial: 'client/index_partials/bidding_projects', locals: { projects: @projects, project_message: @project_message, user: @user, revisions: @revisions }) %>")

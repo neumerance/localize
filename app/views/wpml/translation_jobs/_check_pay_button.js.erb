@@ -1,0 +1,12 @@
+jQuery.ajax({
+  url: "/wpml/websites/<%= website_id %>/client_can_pay_any_language_pairs",
+  type: "GET",
+  success: function (data) {
+    var form = jQuery('form.pay-begin-form');
+    if (data.enable_pay_button) {
+      form.find('button').show();
+    } else {
+      form.find('button').hide();
+    }
+  }
+});

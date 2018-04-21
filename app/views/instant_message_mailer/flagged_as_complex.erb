@@ -1,0 +1,15 @@
+<p>Dear <%= @client.full_name %>,</p>
+
+<p>
+Your instant translation project <%=@web_message.name%> (link: <%= web_message_url(@web_message) %>) was flagged as complex by our translators. This means that it can't be completed without further communication with the translator either because its context is not clear or it has terms that need clarification. If you would like to translate it, please create a new Bidding project (link: <%= new_project_url %>).
+</p>
+
+<p>----</p>
+
+<p>
+Project content: <%= truncate(@web_message.body_for_user(true), length: 60, omission: '...') %>
+</p>
+
+<p>
+Best regards,
+</p>

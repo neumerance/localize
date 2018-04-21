@@ -1,0 +1,36 @@
+<% if @languages && (@languages.length > 0) %>
+	<h3>Translators available to these languages</h3>
+	<ul><% for lang in @languages %><li><%= lang.name %></li><% end %></ul>
+	<hr />
+	<h3>Translators list</h3>
+	<% for translator in @translators %>
+		<h4 style="display: inline;"><%= user_link(translator) %></h4> &nbsp; | &nbsp; <span class="comment">x <%= User::USER_LEVEL_TEXT[translator.level] %></span>
+    <% last_login = translator.last_login.strftime("%m/%d/%Y, at %H:%M") if translator.last_login %><br>
+    <%= "From #{translator.country.name}" if translator.country %>
+
+		<div>
+      <%=translator.last_login ? "Last login: #{last_login}" : "Never logged in"%>
+      <% if translator.logged_in? %>
+        <span style='font-weight:bold; color:green;'>(logged in)</span>
+      <% end %>
+    </div>
+    <h4>Target languages</h4>
+		<%= translator_languages_list(translator) %>
+
+    <% if translator.cats.any? || translator.phones.any? %>
+      <h4>Can use the following tools:</h4>
+    <% end %>
+    <ul>
+    <% if translator.cats.any? %>
+      <li> CAT tools: <%= translator.cats.map{|c| c.name}.join(",") %> </li>
+    <% end %>
+    <% if translator.phones.any? %>
+      <li> Phones: <%= translator.phones.map{|p| p.name}.join(",") %> </li>
+    <% end %>
+    </ul>
+    <br>
+    <br>
+	<% end %>
+<% else %>
+	<p>No language found</p>
+<% end %>

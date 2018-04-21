@@ -1,0 +1,10 @@
+<h2>Add a free sample to keyword projects</h2>
+<%= form_tag free_sample_keyword_projects_url do %>
+  <%= hidden_field_tag :project_type, project.class.to_s %>
+  <%= hidden_field_tag :project_id, project.id %>
+
+  <%= render :partial => 'keyword_projects/languages_select', :locals => { :project => project } %>
+  Number of keywords per language: <%= number_field_tag :keywords_count, nil, min: 0, maxlength: 3, oninput: 'javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)' %>
+
+  <%= submit_tag 'Give sample keywords', data: { disable_with: 'Give sample keywords' } %>
+<% end %>

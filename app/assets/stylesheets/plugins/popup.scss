@@ -1,0 +1,23 @@
+.popup {
+	position: absolute;
+	display: block;
+	overflow: hidden;
+	left: -300px;
+	font-family: arial,verdana,helvetica,lucida,sans-serif;
+	font-size: 90%;
+	text-align: left;
+	border: 1px solid black;
+	padding: 2px;
+	background-color: lightyellow;
+	visibility: hidden;
+	z-index: 100;
+	filter: progid:DXImageTransform.Microsoft.Shadow(color=gray,direction=135,strength=2);
+}
+.arrow {
+	position: absolute;
+	height: 15px;
+	width: 8px;
+	left: -300px;
+	visibility: hidden;
+	z-index: 101;
+}

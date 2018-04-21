@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+  <head>
+      <title><%= h(@header) -%> [ICanLocalize]</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta http-equiv="Content-Style-Type" content="text/css" />
+      <meta http-equiv="Content-Script-Type" content="text/javascript" />
+      <% if @meta_description %>
+        <meta name="description" content="<%= @meta_description %>" />
+      <% end %>
+
+      <%= stylesheet_link_tag    'application' %>
+      <%= stylesheet_link_tag    'base' %>
+
+      <%= stylesheet_link_tag 'custom/home' %>
+      <%= stylesheet_link_tag 'plugins/popup' %>
+
+      <link rel="shortcut icon" href="/assets/favicon.png" type="image/png" />
+      <link rel="icon" href="/assets/favicon.png" type="image/png" />
+
+      <%= csrf_meta_tags %>
+  </head>
+  <body>
+	<div id="topbar">
+          <span><%= _('Logged in as') %> <strong><%= @user.full_name %></strong> &nbsp;</span>
+				<%= form_tag({:controller => :login, :action => :logout}, {:style=>'display: inline;'}) do %>
+					<%= submit_tag( "Log out", :disable_with=>'Logging out...') %>
+				<% end %>
+	</div>
+	<a href="/client/getting_started">
+    <%= image_tag 'web_logo_small.png', class: 'imageBorder', width: 150, height: 34, alt: 'ICanLocalize', style: 'float: left;', border: 0 %>
+  </a>
+	<div style="clear:both;"></div>
+	<div id="maincontents">
+	<% if flash[:notice] %>
+  	<div id="alertDiv">
+  	  <%= pre_format(flash[:notice]) %>
+  	</div>
+	<% end %>
+	<%= show_trail %>
+		<% if !@header.blank? %><h1><%= h(@header) %></h1><% end %>
+		<%= yield :layout %>		
+	</div>
+    <div id="bottom">
+	<br />
+		<p style="text-align: center;"><%= (_('&copy; %s. OnTheGoSystems INC. All Rights Reserved.')%Time.now.strftime('%Y')).html_safe %><br />
+		<%= locale_footer %></p>
+    </div>
+</body>
+</html>

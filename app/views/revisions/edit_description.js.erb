@@ -1,0 +1,5 @@
+<% if @warning %>
+  alert('<%= @warning.html_safe.squish %>')
+<% else %>
+  jQuery('#description').html('<%= escape_javascript(render :partial => 'description') %>')
+<% end %>

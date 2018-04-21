@@ -1,0 +1,29 @@
+<%= my_error_messages_for :help_placement %>
+
+<%= form_for(@help_placement) do |f| %>
+  <p>
+    <b>Page in ICanLocalize (URL)</b><br />
+    <%= f.text_field :url, maxlength: COMMON_NOTE, size: 30 %>
+  </p>
+
+  <p>
+    <b>Help group</b><br />
+    <%= f.select(:help_group_id, @help_groups) %>
+  </p>
+
+  <p>
+    <b>Help topic</b><br />
+    <%= f.select(:help_topic_id, @help_topics) %>
+  </p>
+
+  <p>
+    <b>User</b><br />
+    <%= f.select(:user_match, @user_options) %>
+  </p>
+
+  <p>
+    <%= f.submit("Create", :style=>'padding: 0.5em 1em;') %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', help_placements_path %>

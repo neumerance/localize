@@ -1,0 +1,5 @@
+<hr />
+<p class="issue">Issue <%= @newsletter.id %>, <%= disp_date(@newsletter.chgtime) %></p>
+<%= @newsletter.body_markup(false) %>
+<br /><hr /><br />
+<div id="newsletter_navigation"><%= link_to('Back to the list of articles', {:action=>:index}) %></div>

@@ -1,0 +1,3 @@
+jQuery("#language<%= @string_translation.language_id %>").html('<%= escape_javascript(render :partial=>'string_translation') %>')
+
+RsPreload.initEditForm(<%= @string_translation.language_id %>)

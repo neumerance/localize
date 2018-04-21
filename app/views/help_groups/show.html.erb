@@ -1,0 +1,13 @@
+<p>
+  <b>Name:</b>
+  <%=h @help_group.name %>
+</p>
+
+<p>
+  <b>Order:</b>
+  <%=h @help_group.order %>
+</p>
+
+
+<%= link_to 'Edit', edit_help_group_path(@help_group) %> |
+<%= link_to 'Back', help_groups_path %>

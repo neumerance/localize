@@ -1,0 +1,9 @@
+<tr>
+	<td><%= disp_date(cms_target_language.updated_at) %></td>
+	<td><%= cms_target_language.payment %></td>
+	<td>
+    <%= link_to({:controller=>:cms_requests, :action=>:show, :website_id=>cms_target_language.cms_request.website_id, :id=>cms_target_language.cms_request.id}) {
+      ''.html_safe + cms_target_language.cms_request.website.name + '&raquo;'.html_safe + cms_target_language.cms_request.title + ': ' + cms_target_language.cms_request.language.nname + ' to ' + cms_target_language.language.nname
+    }%>
+  </td>
+</tr>

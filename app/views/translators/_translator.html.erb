@@ -1,0 +1,16 @@
+<div class="translator_profile">
+	<% if !@is_single %>
+		<h3><%= link_to(translator.full_name + (!translator.country.blank? ? ', %s'%translator.country.nname : '' ), {:action=>:show, :id=>translator.id}) %></h3>
+	<% end %>
+	<table><tr>
+		<td class="translator_image"><%= image_for_user(translator) %><br />
+		<%= star_rating(translator) %></td>
+		<td class="translator_languages" style="width: 140px;"><%= translation_languages(translator) %></td>
+		<td class="translator_bio">
+      <% if translator.bionote && !translator.bionote.body.blank? %>
+          <p style="padding-top:0; margin-top:0;" class="quote">&ldquo;<%= pre_format(translator.bionote.i18n_txt(@locale_language)) %>&ldquo;</p>
+      <% end %>
+    </td>
+	</tr></table>
+	<p>Recommendations by clients: <%= translator.markings.length %>.</p>
+</div>

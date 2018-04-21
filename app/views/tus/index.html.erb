@@ -1,0 +1,29 @@
+<div class="subframe">
+	<%= form_tag({:action=>:index}, {:method=>'GET'}) do %>
+		<p>
+			<%= _('Original contains:') %> <%= text_field_tag(:original, @original, :size=>30, maxlength: COMMON_FIELD) %> &nbsp;
+			<%= _('Translation contains:') %> <%= text_field_tag(:translation, @translation, :size=>30, maxlength: COMMON_FIELD) %>
+		</p>
+		<p>
+			<%= _('From language:') %> <%= select_tag(:from_language_id, options_for_select(@languages, @from_language_id)) %> &nbsp; 
+			<%= _('To language:') %> <%= select_tag(:to_language_id, options_for_select(@languages, @to_language_id)) %> &nbsp; 
+			<%= _('Status:') %> <%= select_tag(:status, options_for_select( [[_('Any'),-1]] + TusController::STATUS_TEXT.collect { |k,v| [v,k] }, @status)) %> &nbsp; 
+		</p>
+		<p><%= hidden_field_tag(:set_args,1) %><%= submit_tag(_('Search'), data: { disable_with: _('Search') }) %> &nbsp; | &nbsp; <%= link_to(_('start over'), {:action=>:index, :set_args=>1}) %></p>
+	<% end %>
+</div>
+<br />
+
+<div class="pager_control">
+		Showing page <%= form_tag({:action=>:index}, {:method=>'GET'}) %>
+			<%= select_tag( :page, options_for_select(@list_of_pages,@tus.number), {:onchange=>"submit()"}) %>
+		<%= link_to(_("Prev"), params.merge({:action=>:index, :page => @tus.prev.number})) if @tus.prev? %>
+		<%= link_to(_("Next"), params.merge({:action=>:index, :page => @tus.next.number})) if @tus.next? %>
+	</form>
+</div>
+	
+<%= infotab_header(['ID', _('Original'),_('Translation'),_('From language'), _('To language'), _('Status')]) %>
+<% @tus.each do |tu| %>
+  <%= render(:partial=>'tu', locals: {tu: tu}) %>
+<% end %>
+</table>

@@ -1,0 +1,31 @@
+<% if @ruling %>
+	<% if @edit_ruling %>
+		<%= form_for(:ruling, :url => {:action=>:edit_ruling, :id=>@arbitration.id}, 'data-confirm' => 'Are you sure you want to make this ruling?', :html => { :method => :post }, :remote => true) do |f| %>
+			Make your ruling in this arbitration:
+			<%= money_field_tag_for(f, :amount) %> <%= @arbitration.object.currency.disp_name %>
+			<%= submit_tag 'Save', data: { disable_with: 'Saving' } %>
+		<% end %>
+		<%= form_tag({ :action =>:edit_ruling, :id=>@arbitration.id, :req=>'hide'}, :remote => true) do %>
+			<%= submit_tag 'Cancel', data: { disable_with: 'Cancel' } %>
+		<% end %>
+	<% else %>			
+		Arbitration ruling is that this work is terminated. Payment for the work is: <%= @ruling.amount %> <%= @arbitration.object.currency.disp_name.html_safe %>.
+    <% if @user.has_supporter_privileges? %>
+      <%= form_tag :action => :reopen, :id => @arbitration.id do %>
+        <%= submit_tag 'Reopen', data: { disable_with: 'Reopen' } %>
+      <% end %>
+    <% end %>
+	<% end %>
+<% elsif @arbitration.status == ARBITRATION_CLOSED %>
+	This arbitration has been closed without making any ruling.
+<% else %>
+	<% if @can_make_ruling %>
+		<%= form_tag({ :action => 'edit_ruling', :id=>@arbitration.id, :req=>'show'}, :remote => true) do %>
+			<p>You have not made a ruling yet. <%= submit_tag 'Make your ruling on this arbitration', data: { disable_with: 'Make your ruling on this arbitration' } %></p>
+		<% end %>
+		<%= button_to('Quick close', {:action=>:close}, 'data-confirm'=>'Are you sure you want to close this arbitration without making any ruling?') %>
+		<p class="comment">Quick close means you will not make any ruling and the project can continue normally.</p>
+	<% else %>
+		Ruling was not yet given for this arbitration.
+	<% end %>
+<% end %>

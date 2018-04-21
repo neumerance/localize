@@ -1,0 +1,19 @@
+<p class="lead">Dear <%= @user.full_real_name %>,</p>
+
+<p class="lead"><%= @by_user.full_name %> completed translating your project <strong><%= @bid.revision_language.revision.project.name %></strong> to <%= @bid.revision_language.language.name %>.</p>
+
+<p>To get the translation, please visit the chat page. You will see the translation as an attached document.</p>
+
+<%= action_button("Go to chat page", url_for({:escape => false, :only_path => false, :controller=>:chats, :action=>:show, :project_id=>@bid.revision_language.revision.project_id, :revision_id=>@bid.revision_language.revision.id, :id=>@bid.chat.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } )) %>
+
+<% if @reviewer %>
+  <p>Next, the translation will be reviewed by <%= @reviewer.full_name %>. We'll send you another email when that's done.</p>
+  <p>After the review is complete, you'll need to go back to the project chat and release the payment to the translator, by clicking on:</p>
+  <p>[ ACCEPT THE WORK AND RELEASE PAYMENT TO TRANSLATOR ]</p>
+<% else %>
+  <p>You should review the translation. If you need any modifications, reply to the translator.</p>
+  <p>When you are happy with the work, please click on:</p>
+  <p>[ ACCEPT THE WORK AND RELEASE PAYMENT TO TRANSLATOR ]</p>
+<% end %>
+
+<p>Then, we can release the payment to <%= @by_user.full_name %>.</p>

@@ -1,0 +1,7 @@
+<% if @offers.length > 0 %>
+	<%= infotab_header(['Created', 'Offer', 'Language', 'URL', 'Kind', 'Client', 'Translators']) %>
+  <% @offers.each do |website_translation_offer| %>
+    <%= render(:partial=>'website_translation_offer', :locals=>{website_translation_offer: website_translation_offer} ) %>
+  <% end %>
+	</table>
+<% end %>

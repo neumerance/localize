@@ -1,0 +1,59 @@
+<% if (@issue.status == ISSUE_OPEN) && (@user[:type] == 'Translator') && (@user == @issue.target) %>
+	<div class="red_message">
+		<p>Please remember that this page is intended to discuss the issue. When both sides agree, you must edit the translation.</p>
+		<p>The client will receive only the final translation and not corrections that are discussed here.</p>
+		<p>To edit the translation go to <b><%= owner_link(@issue.owner) %></b>.</p>
+	</div><br /><br />
+<% end %>
+
+<div class="infobox"><h4>Issue status</h4>
+<table>
+	<tr><td>Kind of issue:</td><td><b><%= Issue::KIND_TEXT[@issue.kind] %></b></td></tr>
+	<tr><td>Issue target:</td><td><b><%= owner_link(@issue.owner) %></b></td></tr>
+	<tr><td>Started by:</td><td><%= user_link(@issue.initiator) %></td></tr>
+	<tr><td>For:</td><td><%= user_link(@issue.target) %></td></tr>
+	<tr><td>Status:</td><td><b><%= @status_text %></b>
+		<% if @can_modify %>
+			<% @status_actions.each do |action| %><%= button_to(action[0], {:action=>:update_status, :status=>action[1]}, 'data-confirm'=>_('Are you sure you want to %s?')%action[0]) %><br /><% end %>
+		<% end %>
+	</td></tr>
+</table>
+</div>
+
+<% if @user.has_supporter_privileges?  %>
+	<div class="inter_tab_spacer"></div>
+	<div style="margin: 0 1em 2em 1em; padding: 1em; background-color: #F0F0FF; border: 1pt solid #C0C0FF;">
+		<h2>Supporter Actions</h2>
+	<%= form_for(@issue) do |f| %>
+		<table>
+		<tr><td>Kind of issue:</td><td><%= f.select(:kind, @kinds) %></td></tr>
+		<tr><td>Subject:</td><td><%= f.text_field(:title, :size=>70, maxlength: COMMON_FIELD) %></td></tr>
+		</table>
+		<%= submit_tag('Update', data: { disable_with: 'Update' }) %>
+	<% end %>
+	</div>
+<% end %>
+
+<%= show_messages(@issue.messages) %>
+<% if flash[:ack] %>
+	<div class="errorExplanation">
+	  <%= pre_format(flash[:ack]) %>
+	</div>
+<% end %>
+
+<% if @subscribe %>
+	<h2> Subscription </h2>
+	<div>
+		<% if @issue.users.include? @user %>
+			You are already subscribed to this issue!
+		<% else %>
+			Another translator has opened an issue. If interested, please <%= link_to("subscribe to it", {:action => :subscribe, :id => @issue.id}) %>.
+		<% end %>
+	</div>
+	<br/>
+<%end%>
+
+<% if @can_modify %>
+	<a name="reply"></a>
+	<%= show_reply(@issue.messages.length > 0, @for_who) %>
+<% end %>

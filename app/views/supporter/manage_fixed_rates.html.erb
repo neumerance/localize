@@ -1,0 +1,74 @@
+<p>
+  <i>Note: Actual price can only be greater or equal to <%= number_to_currency(MINIMUM_FIXED_PRICE) %></i>
+</p>
+<table id="languagePairFixPriceTable" style="width: 100%" class="stats">
+  <thead>
+  <tr class="headerrow">
+    <th>Id</th>
+    <th>From</th>
+    <th>To</th>
+    <th>Actual Price</th>
+    <th>Calculated Price</th>
+    <th>Calculated Price<br />Last Year</th>
+    <th>Number of Transactions</th>
+    <th>Number of Transactions<br />Last Year</th>
+    <th>Number of Translators</th>
+    <th>Publish</th>
+  </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<script>
+  jQuery(document).ready(function() {
+    var fields = [
+      { name: 'id'},
+      { name: 'from'},
+      { name: 'to'},
+      {
+        name: 'actual_price', type: 'currency', renderOverride: function(full) {
+          var div = jQuery('<div>').attr('id', 'actual_price_'+full.id);
+          var anchor = jQuery('<a>').text(formatter.format(full.actual_price));
+          anchor.attr('href', '/language_pair_fixed_prices/' + full.id + '/update_field?field=actual_price').attr('data-remote', true);
+          div.append(anchor)
+          return div.get(0).outerHTML
+        }
+      },
+      { name: 'calculated_price', type: 'currency' },
+      { name: 'calculated_price_last_year', type: 'currency' },
+      { name: 'number_of_transactions'},
+      { name: 'number_of_transactions_last_year'},
+      {
+        name: 'number_of_translators', renderOverride: function(full) {
+          return jQuery('<a>').text(full.number_of_translators).attr('href', '/supporter/manage_fixed_rates/'+full.id+'/details').attr('target', '_blank').get(0).outerHTML
+        }
+      },
+      {
+        name: 'published', renderOverride: function(full) {
+        return '<form class="edit_language_pair_fixed_price" id="edit_language_pair_fixed_price_'+full.id+'" action="/language_pair_fixed_prices/'+full.id+'" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="patch">\n' +
+          '    <input type="hidden" name="field" id="field" value="published">\n' +
+          '        <label class="switch">\n' +
+          '          <input name="language_pair_fixed_price[published]" type="hidden" value="0"><input onchange="jQuery(this.form).submit()" type="checkbox" value="1" '+(full.published ? "checked=\"checked\"" : "")+' name="language_pair_fixed_price[published]" id="language_pair_fixed_price_published">\n' +
+          '          <span class="slider"></span>\n' +
+          '          <span class="switch-on">Yes</span>\n' +
+          '          <span class="switch-off">No</span>\n' +
+          '        </label>\n' +
+          '</form>'
+      }
+      }
+    ]
+
+    var columns = [];
+    jQuery.each(fields, function(_idx, field) {
+      columns.push(new DataTableColumn(field).init())
+    });
+
+    var dataTable = new DataTable('#languagePairFixPriceTable', columns, {
+      url: '<%= language_pair_fixed_prices_path(format: :json) %>',
+      type: 'GET'
+    });
+    dataTable.init();
+
+  });
+</script>

@@ -1,0 +1,6 @@
+<%= "'#{resource_language.text_resource.name}' from #{resource_language.text_resource.language.name} to #{resource_language.language.name}"%>:
+<% word_count = resource_language.text_resource.count_words(resource_language.text_resource.unique_resource_strings,resource_language.text_resource.language,resource_language,false,'all') -%><% if word_count > 0 -%>This project contains <%= resource_language.text_resource.count_words(resource_language.text_resource.unique_resource_strings,resource_language.text_resource.language,resource_language,false,'all') %> words in <%= resource_language.text_resource.unique_resource_strings.count %> string(s).<% end -%> Payment is set to <%= AvailableLanguage.find_by_from_language_id_and_to_language_id(resource_language.text_resource.language.id, resource_language.language.id).amount.to_f %> USD / word.
+
+To apply to do this project, use this link:
+<%= url_for({:escape=>false, :only_path=>false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:text_resources, :action=>:show, :id=>resource_language.text_resource.id } ) %>
+

@@ -1,0 +1,27 @@
+<div style="padding: 1em; margin: 2em 1em; background-color: #d7f1bb; border: 1pt solid #9edc5c; font-size: 120%;">
+  <%= image_tag 'envelope-open-48.png', class: '', width: 48, height: 48, alt: 'envelope', style: 'float: left; margin-right: 1em', border: 0 %>
+	<p><%= _('We just sent you a registration email to') %> <b> <%= @auser.email %></b></p>
+	<p><%= _('Please open that email and click on the confirmation link.') %></p>
+	<div style="clear:both;"></div>
+</div>
+
+<div class="infobox">
+  <h4><%= _("Didn't receive your registration email?") %></h4>
+  <p><%= _('All our emails are sent from') %> <b> <%= RAW_EMAIL_SENDER %></b><br />
+  <%= _('Make sure that your SPAM filter is not blocking this email.') %></p>
+  <br />
+  <%= form_tag({:action=>:resend_activation_email, :id=>@auser.id}, :remote => true) do %>
+    <%= hidden_field_tag(:signature, @auser.signature) %>
+
+    <%= hidden_field_tag(:translation_analytics, @translation_analytics) %>
+    <%= hidden_field_tag(:wid, @wid) %>
+    <%= hidden_field_tag(:accesskey, @accesskey) %>
+
+    <%= submit_tag(_('Resend registration email'), data: { disable_with: _('Resend registration email') }) %>
+  <% end %>
+</div>
+
+<br/>
+<% if @translation_analytics %>
+	<p><%= (_('Please %s this page in case you already finished your registration to access your translation dashboard.') % link_to("refresh", {:controller => :translation_analytics, :action => :overview ,:wid => @wid, :accesskey => @accesskey, :from_cms => 1, :project_type => "Website", :project_id => @wid})).html_safe %></p>
+<% end %>

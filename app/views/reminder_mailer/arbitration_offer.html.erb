@@ -1,0 +1,8 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p><%= @by_who.full_name %> has made an offer to end the arbitration process between the two of you.</p>
+
+<p>According to this offer, the payment for this work will be <%= @amount %> USD. You can accept or decline it.</p>
+
+<% url = url_for({:escape => false, :only_path => false, :controller=>:arbitrations, :action=>:show, :id=>@arbitration.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+<p>To reply or respond to this offer, use the following link: <%= link_to url, url %></p>

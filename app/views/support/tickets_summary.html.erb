@@ -1,0 +1,5 @@
+<% if @support_tickets.length > 0 -%>
+	<%= render(:partial => "support_tickets", :object => @support_tickets) %>
+<% else %>
+  <p>No support ticket yet.</p>
+<% end -%>

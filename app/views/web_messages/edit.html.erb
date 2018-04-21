@@ -1,0 +1,86 @@
+<% if [MESSAGE_ALREADY_ASSIGNED, HOLD_FOR_TRANSLATION_FAILED].include? @err_code %>
+<div class="errorExplanation">
+  <p>Sorry, this web message now belongs to other translator</p>
+  </div>
+<% else %>
+
+  <% if @warnings && (@warnings.length > 0) %>
+    <div class="errorExplanation"><p>Our system detected the following potential problems with the translation. Please review the translation again.</p>
+    <% if @err_code != TRANSLATION_MISSING_TOKENS %>
+      <p>If you need, edit the translation and correct it. If the translation is OK, click on the review checkbox when submitting again.</p>
+    <% end %>
+    <% unless @warning.blank? %>
+      <ul>
+        <% @warning.each do |w| %>
+        <li><b><%= w %></b></li>
+        <% end %>
+      </ul>
+    <% end %>
+    </div>
+  <% end %>
+
+  <br />
+  <div class="red_message">
+    <h3>Important - check your browser's character encoding</h3>
+    <p>Make sure that your browser's character encoding is set to UTF-8. To do this, click on <i>View</i> &raquo; <i>Character encoding</i> and set it to <b>Unicode UTF-8</b>.
+    <br />Any translations that are entered using a different character encoding cannot be used and will have to be redone.</p>
+
+    
+    <% unless @web_message.translation_complete? %>
+      <h3>Time limit for this job</h3>
+      <p>Instant Text translation work is limitted by time. This text should be translated within <span id="timer" style="font: 16px bold; color: red;">...</span></p>
+      <script>
+        countdownTimer('<%= @web_message.translate_time %>', '<%= @web_message.timeout %>', '#timer', function(){
+            window.location.href = "/web_messages/<%=@web_message.id%>/release_from_hold"
+        })
+      </script>
+    <% end %>
+  </div>	
+
+  <h2>Text to translate</h2>
+  <% if @web_message.need_title_translation() %>
+  <h4>Title</h4>
+  <div class="code_snip" style="<%= language_dir_css_attribute(@web_message.original_language) + text_flow_css_attribute(@web_message.original_language) %>">
+    <%= pre_format(@web_message.title_to_translate(false)) %>
+  </div>
+  <h4>Body</h4>
+  <% end %>
+
+  <div class="code_snip" style="<%= language_dir_css_attribute(@web_message.original_language) + text_flow_css_attribute(@web_message.original_language) %>"><%= highlight_glossary_terms(pre_format(@web_message.text_to_translate(false)), @glossary, @glossary_client).html_safe %></div>
+
+    
+  <% if !@web_message.comment.blank? %>
+    <br /><h2>Comment to translator</h2>
+    <p>The client had entered this comment for you. Don't translate it.</p>
+    <div class="red_message"><%= pre_format(@web_message.comment) %></div>
+  <% end %>
+
+  <br/>
+  <div>
+    <%= form_tag(:action => "flag_as_complex", :id => @web_message.id) do %>
+    <%= submit_tag('Flag as complex', :style=>'padding: 0.5em 1em; font-size: 115%;', :onclick => 'return confirm("Are you sure you want to flag this translation as complex?");', data: { disable_with: 'Processing...' }) %>
+  <% end %>
+  <p>You should flag any instant translation project as complex if its context is ambiguous, and can't be translated properly without further explanation.</p>
+  </div>
+
+  <h2>Translation to <%= @web_message.destination_language.name %></h2>
+  <%= form_tag(:action=>:final_review) do %>
+    <% if @web_message.need_title_translation() %>
+      <h4>Title</h4>
+      <%= text_field_tag(:title, @title, :size=>120, :style=>language_dir_css_attribute(@web_message.destination_language), maxlength: COMMON_FIELD) %>
+      <h4>Body</h4>
+    <% end %>
+    <%= text_area_tag(:body, @body, :rows=>12, :cols=>100, :style=>language_dir_css_attribute(@web_message.destination_language), maxlength: COMMON_NOTE) %>
+    <%= hidden_field_tag(:plaintext,1) %>
+    <% if (@need_additional_confirmation || (@warnings && (@warnings.length > 0))) && (@err_code != TRANSLATION_MISSING_TOKENS) %>
+      <%= hidden_field_tag(:need_additional_confirmation,1) %>
+      <p><%= check_box_tag(:ignore_warnings) %> I reviewed the translation and confirm that it is correct</p>
+    <% end %>
+    <br /><br />
+    <p>
+    <%= submit_tag('Submit translation &raquo;'.html_safe, :style=>'padding: 0.5em 1em; font-size: 115%;', data: { disable_with: 'Submit translation &raquo;'.html_safe }) %>
+    </p>
+  <% end %>
+  <br /><hr /><br />
+  <%= button_to('&laquo; Cancel translation'.html_safe, {:action=>:release_from_hold}, 'data-confirm'=>'Are you sure you want to abort this translation?') %>
+<% end %>

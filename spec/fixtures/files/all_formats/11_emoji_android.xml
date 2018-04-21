@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+-<resources>
+
+<string name="fillname">You must enter a name 😉  🎉  🏋 🙌 😃 😆 </string>
+
+<string name="fillpassword">Please provide new password 😉  🎉  🏋 🙌 😃 😆</string>
+
+<string name="personaldetails">Personal information</string>
+
+<string name="daysbefore">Number of days in advance</string>
+
+<string name="swapbox">Choose compartment to exchange</string>
+
+</resources>

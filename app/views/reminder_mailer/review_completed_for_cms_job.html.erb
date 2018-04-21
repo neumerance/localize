@@ -1,0 +1,12 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p><%= @reviewer.full_name %> has completed review of your project "<%= @cms_request.title %>" to <%= (@revision_languages.collect { |rl| rl.language.name }).join(', ') %>.</p>
+
+<p>
+  <% if @cms_request.website.pickup_type == PICKUP_BY_RPC_POST %>
+      This translation was sent to your CMS. No further action is required.
+  <% else %>
+      Your CMS should fetch this translation from our server. Login and click on the button to retrieve completed translations.
+  <% end %>
+</p>
+

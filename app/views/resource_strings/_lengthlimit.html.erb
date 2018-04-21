@@ -1,0 +1,30 @@
+<% if @editing_length_limit %>
+	<div style="border: 1pt solid #606060; background-color: #F0F0F0; padding: 1em; margin: 1em;">
+	<%= form_for(:resource_string, :url=>{:action=>:edit_length_limit, :req=>'save'}, :remote => true) do |f| %>
+		<p><%= _("Enter the maximum length for the translation, as percentage of the original string's length (minumum value is 50%).") %></p>
+		<p><%= (_("%s%% of the original length") % f.text_field(:max_width, :cols=>40, :rows=>2, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE)).html_safe %></p>
+		<%= submit_tag(_('Save'), data: { disable_with: _('Save') }) %>
+	<% end %>
+	<%= form_for(:resource_string, :url=>{:action=>:edit_length_limit, :req=>'cancel'}, :remote => true) do |f| %>
+		<%= submit_tag(_('Cancel'), data: { disable_with: _('Cancel') }) %>
+	<% end %>
+	</div>
+<% else %>
+	<% if @resource_string.max_width %>
+		<div class="red_message">
+			<%= _("Maximum length for this string:") %><br /><b><%= _('%d%s of the original string')%[@resource_string.max_width,'%'] %></b>
+			<% if [@user, @user.master_account].include?(@text_resource.client) %>
+				<br />
+				<%= form_tag({:action=>:edit_length_limit, :req=>'show'}, :remote => true) do %>
+					<%= submit_tag(_('Edit maximum string length'), data: { disable_with: _('Edit maximum string length') }) %>
+				<% end %>
+			<% end %>
+		</div>
+		<br />
+	<% elsif [@user, @user.master_account].include?(@text_resource.client) %>
+			<%= form_tag({:action=>:edit_length_limit, :req=>'show'}, :remote => true) do %>
+				<%= submit_tag(_('Set maximum string length'), data: { disable_with: _('Set maximum string length') }) %>
+			<% end %>
+			<p class="comment"><%= _("If your application's GUI has limited space, you can enter the maximum length for this string's translation.") %></p>
+	<% end %>
+<% end %>

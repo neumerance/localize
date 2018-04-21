@@ -1,0 +1,23 @@
+<p>
+  <b>Code:</b>
+  <%=h @voucher.code %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%=h @voucher.active %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%=h @voucher.amount %>
+</p>
+
+<p>
+  <b>Comment:</b>
+  <%=h @voucher.comments %>
+</p>
+
+
+<%= link_to 'Edit', edit_voucher_path(@voucher) %> |
+<%= link_to 'Back', vouchers_path %>

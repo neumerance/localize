@@ -1,0 +1,25 @@
+<div class="messageTop">
+		<div class="nameDiv messageDivtl">&nbsp;</div>
+		<div class="txtblue dateDiv messageDivtr"><%= disp_time(Time.now()) %></div>&nbsp;
+</div>
+<div class="messageLeft">
+		<div class="clear"></div>	
+		<div class="messageDiv">
+		<div style="margin: 1em;">
+			<%= form_tag( {:action=>:create_message}) do %>
+				<p><%= text_area_tag(:body, nil, {:rows => 10, :cols=>100, :style=>"width: 100%;", maxlength: COMMON_NOTE}) %></p>
+
+				<% if @web_message.translation_status != TRANSLATION_COMPLETE %>
+					<p><label><%= check_box_tag(:close_issue) %> Close this issue</label></p>
+				<% end %>
+				
+				<%= submit_tag( _('Send message'), :style=>'padding: 0.5em 1em; font-size: 115%;', data: { disable_with: _('Send message') }) %>
+			<% end %>
+		</div>
+		</div>
+</div>
+<div class="messageBottom">
+		<div class="messageDivbl">&nbsp;</div>
+        <div class="messageDivbr">&nbsp;</div>&nbsp;
+</div>
+<div class="spacerDiv"></div>

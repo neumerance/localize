@@ -1,0 +1,21 @@
+<tr>
+	<td><%= disp_time(comm_error.created_at) %></td>
+	<td style="text-align: center;">
+    <div id="comm_error<%= comm_error.id %>">
+		<%= CommError::STATUS_TEXT[comm_error.status] %><br />
+		<% if comm_error.status==COMM_ERROR_ACTIVE %>
+			<%= form_tag({:controller=>:comm_errors, :action=>:update, :website_id=>@website.id, :cms_request_id=>@cms_request.id, :id=>comm_error.id}, :method => :put, :remote => true) do %>
+				<%= hidden_field_tag('comm_error[status]', COMM_ERROR_CLOSED, {:id=>"comm_errorstatus#{comm_error.id}"}) %>
+				<%= submit_tag('Close', data: { disable_with: 'Close' }) %>
+			<% end %>
+		<% end %>
+		</div>
+	</td>
+	<td><%= comm_error.error_code %></td>
+	<td><%= h comm_error.error_description %></td>
+</tr>
+<tr>
+  <td colspan="4">
+    <%= text_area_tag("errorreport#{comm_error.id}", h(comm_error.error_report), {:cols =>70, :rows => 10, :style=>'width:100%', maxlength: COMMON_NOTE}) %>
+  </td>
+</tr>

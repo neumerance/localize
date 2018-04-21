@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="8581-f737f96feb00564f6fe6562e30cc3eeb" source-language="en" target-language="ar" datatype="plaintext">		<header><reference><external-file href="https://wpml.org/translation-service/onehourtranslation/"/></reference></header>
+        <body>
+            <trans-unit resname="field-_yoast_wpseo_title-0" restype="string" datatype="html" id="field-_yoast_wpseo_title-0">
+                <source><![CDATA[Translating WPML sites with OneHourTranslation]]></source>
+                <target><![CDATA[Translating WPML sites with OneHourTranslation]]></target>
+            </trans-unit>
+            <trans-unit resname="field-_yoast_wpseo_metadesc-0" restype="string" datatype="html" id="field-_yoast_wpseo_metadesc-0">
+                <source><![CDATA[Learn how to translate WPML sites with OneHourTranslation]]></source>
+                <target><![CDATA[Learn how to translate WPML sites with OneHourTranslation]]></target>
+            </trans-unit>
+            <trans-unit resname="field-wpcf-ts-brief-description-0" restype="string" datatype="html" id="field-wpcf-ts-brief-description-0">
+                <source><![CDATA[One Hour Translation, considered by many the fastest professional translation service in the world, specializes in providing business translations in various fields including legal, technical, websites, applications and software, and marketing.]]></source>
+                <target><![CDATA[One Hour Translation, considered by many the fastest professional translation service in the world, specializes in providing business translations in various fields including legal, technical, websites, applications and software, and marketing.]]></target>
+            </trans-unit>
+            <trans-unit resname="field-wpcf-ts-instructions-0" restype="string" datatype="html" id="field-wpcf-ts-instructions-0">
+                <source><![CDATA[To be able to send files for translation to OneHourTranslation, you first have to login to your wpml.org account, and download and install the following plugins on your website:
+<br class="xliff-newline" /><ul>
+<br class="xliff-newline" /> 	<li>WPML Multilingual CMS - the core plugin.</li>
+<br class="xliff-newline" /> 	<li>WPML Translation Management - this plugin will allow you to connect to OneHourTranslation.</li>
+<br class="xliff-newline" /> 	<li>WPML String Translation - this plugin will allow you to translate interface strings.</li>
+<br class="xliff-newline" /></ul>
+<br class="xliff-newline" />If you do not have a wpml.org account yet, you can create a new one by simply <a href="https://wpml.org/purchase/">choosing between our WPML Multilingual CMS and Multilingual CMS Lifetime plans</a>.
+<br class="xliff-newline" />
+<br class="xliff-newline" />As soon as you get access to your wpml.org account, check our detailed step-by-step <a href="https://wpml.org/faq/install-wpml/">guide on how to download and install WPML</a>. Please remember to <a href="https://wpml.org/faq/install-wpml/#register-wpml">register</a> your site to receive automatic updates and gain access to OneHourTranslation’s services.
+<br class="xliff-newline" />
+<br class="xliff-newline" />If you need any help with the WPML plugin configuration, you can go through our <a href="https://wpml.org/documentation/getting-started-guide/">getting started guide</a> or just ask a question on the <a class="c3" href="https://wpml.org/forums/forum/english-support/">support forum</a>.
+<br class="xliff-newline" /><h2>Table of Contents</h2>
+<br class="xliff-newline" /><a href="#connect-site">Connecting your site to OneHourTranslation</a>
+<br class="xliff-newline" />
+<br class="xliff-newline" /><a href="#create-account">Creating a OneHourTranslation account</a>
+<br class="xliff-newline" />
+<br class="xliff-newline" /><a href="#api-secret-public-keys">Finding your API secret and public keys</a>
+<br class="xliff-newline" />
+<br class="xliff-newline" /><a href="#activate-authenticate">Activating and authenticating OneHourTranslation</a>
+<br class="xliff-newline" />
+<br class="xliff-newline" /><a href="#send-content">Sending content for translation</a>
+<br class="xliff-newline" />
+<br class="xliff-newline" /><a href="#receive-translations">Receiving completed translations</a>
+<br class="xliff-newline" />
+<br class="xliff-newline" /><a href="#cancel-jobs">Canceling translation jobs you've already sent</a>
+<br class="xliff-newline" />
+<br class="xliff-newline" /><a href="#faq">FAQ</a>
+<br class="xliff-newline" /><h2 id="connect-site">Connecting your site to OneHourTranslation</h2>
+<br class="xliff-newline" />Once all the required plugins have been installed and activated, all you need to make sure you have on hand for connecting WPML to the translation service is your <a href="https://www.onehourtranslation.com/">OneHourTranslation</a> account API secret and public keys. The steps below describe how to obtain the API keys from <a href="https://www.onehourtranslation.com/">OneHourTranslation</a>
+<br class="xliff-newline" /><h3 id="create-account">Creating a OneHourTranslation account</h3>
+<br class="xliff-newline" />If you do not have a registered OneHourTranslation account yet, you can very easily <a href="https://www.onehourtranslation.com/auth/register/">create one</a>. Click on the “Register” button located at the top right area of the site.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_747860" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image121.png"><img class="size-medium wp-image-747860" src="https://wpml.org/wp-content/uploads/2015/11/image121-300x43.png" alt="Opening an account" width="300" height="43" /></a> Opening an account[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />Then, you simply fill in and submit the form you see on the register page.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748016" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image091.png"><img class="size-medium wp-image-748016" src="https://wpml.org/wp-content/uploads/2015/11/image091-300x226.png" alt="Registering with OneHourTranslation" width="300" height="226" /></a> Registering with OneHourTranslation[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />Once the account is ready, let's get those API keys.
+<br class="xliff-newline" /><h3 id="api-secret-public-keys">Finding your API secret and public keys</h3>
+<br class="xliff-newline" />First, make sure you have logged into your OneHourTranslation account.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748021" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image051.png"><img class="size-medium wp-image-748021" src="https://wpml.org/wp-content/uploads/2015/11/image051-300x35.png" alt="OneHourTranslation login" width="300" height="35" /></a> OneHourTranslation login[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />Once logged in you will see the "<a href="https://www.onehourtranslation.com/cpanel">Control Panel</a>" menu item in the navigation. Click on it.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748024" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image012.png"><img class="size-medium wp-image-748024" src="https://wpml.org/wp-content/uploads/2015/11/image012-300x34.png" alt="OneHourTranslation logged in navigation menu" width="300" height="34" /></a> OneHourTranslation logged in navigation menu[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />You will then be redirected to your account's <em>Control Panel</em>. Once there, click on your username to go to <a href="https://www.onehourtranslation.com/profile/">your <em>Profile</em> page</a>.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748029" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image161.png"><img class="size-medium wp-image-748029" src="https://wpml.org/wp-content/uploads/2015/11/image161-300x167.png" alt="OneHourTranslation client Control Panel" width="300" height="167" /></a> OneHourTranslation client Control Panel[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />You will be redirected to your OneHourTranslation <em>Profile</em> page with a vertical navigation menu. Locate the <em>API Keys</em> menu item and click on it.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748031" align="aligncenter" width="225"]<a href="https://wpml.org/wp-content/uploads/2015/11/image151.png"><img class="size-medium wp-image-748031" src="https://wpml.org/wp-content/uploads/2015/11/image151-225x300.png" alt="OneHourTranslation Account Profile page" width="225" height="300" /></a> OneHourTranslation Account Profile page[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />Once there, copy your OneHourTranslation <strong>Secret Key</strong> and <strong>Public Key</strong>.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748033" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image171.png"><img class="size-medium wp-image-748033" src="https://wpml.org/wp-content/uploads/2015/11/image171-300x119.png" alt="Account API Keys" width="300" height="119" /></a> Account API Keys[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />Now that you have copied both your <em>Secret and Public API keys</em>, we are ready to activate and authenticate OneHourTranslation from your WordPress admin.
+<br class="xliff-newline" /><h3 id="activate-authenticate">Activating and authenticating OneHourTranslation</h3>
+<br class="xliff-newline" />Login to your WordPress website, visit the <em>WPML</em>-&gt;<em>Translation Management</em> administration page, and switch to the <em>Translators</em> tab.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748037" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image111.png"><img class="size-medium wp-image-748037" src="https://wpml.org/wp-content/uploads/2015/11/image111-300x40.png" alt="WPML's Translators tab" width="300" height="40" /></a> WPML's Translators tab[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />Scroll down to <em>Available Translation Services</em> and click to activate OneHourTranslation.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748041" align="aligncenter" width="233"]<a href="https://wpml.org/wp-content/uploads/2015/11/image032.png"><img class="size-medium wp-image-748041" src="https://wpml.org/wp-content/uploads/2015/11/image032-233x300.png" alt="Activating OneHourTranslation" width="233" height="300" /></a> Activating OneHourTranslation[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />Once the service is active, click the <em>authenticate</em> link to authenticate the service. This is where you will need your <strong>Secret and Public API keys</strong> obtained in the previous steps.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748044" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image023.png"><img class="size-medium wp-image-748044" src="https://wpml.org/wp-content/uploads/2015/11/image023-300x136.png" alt="Authenticating OneHourTranslation" width="300" height="136" /></a> Authenticating OneHourTranslation[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />A pop-up window will appear in which you can enter your OneHourTranslation <strong>Secret Key</strong> and <strong>Public Key</strong>. Enter the values and click the Submit button.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748045" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image20.png"><img class="size-medium wp-image-748045" src="https://wpml.org/wp-content/uploads/2015/11/image20-300x140.png" alt="OneHourTranslation authentication dialog" width="300" height="140" /></a> OneHourTranslation authentication dialog[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />Congratulations! Your OneHourTranslation account is now connected to your WordPress instance.
+<br class="xliff-newline" />Now, you are ready to send content for translation.
+<br class="xliff-newline" /><h3>Payment with credits</h3>
+<br class="xliff-newline" />Once WPML plugin is installed on your website do the next simple steps to pay with credits for the translations:
+<br class="xliff-newline" /><ol>
+<br class="xliff-newline" /> 	<li>Please, check your wordcount for the submitting content using the WPML plugin.</li>
+<br class="xliff-newline" /> 	<li>Use the wordcount in our wizard <a href="https://www.onehourtranslation.com/wizard">https://www.onehourtranslation.com/wizard</a> to get a price quote for your content.</li>
+<br class="xliff-newline" /> 	<li>Finally, you can load your OHT account with a proper amount of credits.</li>
+<br class="xliff-newline" /></ol>
+<br class="xliff-newline" /><h2 id="send-content">Sending content for translation</h2>
+<br class="xliff-newline" />You can select the documents you want to send for translation from your <em>Translation Management Dashboard</em>.
+<br class="xliff-newline" />
+<br class="xliff-newline" />Select what you would like to have translated, the languages to translate to, and click on "<em>Add to translation basket</em>" at the bottom of the <em>Dashboard</em> page.
+<br class="xliff-newline" />For additional information please see <a href="https://wpml.org/documentation/content-translation/send-documents-to-translation/">Sending Documents to Professional Translation</a>.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748051" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image131.png"><img class="size-medium wp-image-748051" src="https://wpml.org/wp-content/uploads/2015/11/image131-300x273.png" alt="Selecting documents to send for translation" width="300" height="273" /></a> Selecting documents to send for translation[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />After this, the selected content can be sent to OneHourTranslation from the <em>Translation Basket</em> tab.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748053" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image181.png"><img class="size-medium wp-image-748053" src="https://wpml.org/wp-content/uploads/2015/11/image181-300x194.png" alt="Sending items for translation" width="300" height="194" /></a> Sending items for translation[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />If you are using the <strong>WPML String Translation</strong> add-on plugin you can also <a href="https://wpml.org/documentation/content-translation/translating-the-theme/">send theme and plugin texts to be translated</a>.
+<br class="xliff-newline" />
+<br class="xliff-newline" />When the translation basket's contents have been successfully sent to OneHourTranslation you will see a confirmation message such as that shown below.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748055" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image041.png"><img class="size-medium wp-image-748055" src="https://wpml.org/wp-content/uploads/2015/11/image041-300x93.png" alt="Basket contents successfully submitted to OneHourTranslation" width="300" height="93" /></a> Basket contents successfully submitted to OneHourTranslation[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />At this point, <strong>no further action is required</strong> from you.
+<br class="xliff-newline" />
+<br class="xliff-newline" />Qualified OneHourTranslation translators with the matching language pair skills will be notified of the new translation projects. Subsequently translators will start translating as soon as they accept a translation project.
+<br class="xliff-newline" />
+<br class="xliff-newline" />You can follow the translation progress of the documents you sent to OneHourTranslation from your <em>Translation jobs</em> tab.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748060" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image081.png"><img class="size-medium wp-image-748060" src="https://wpml.org/wp-content/uploads/2015/11/image081-300x141.png" alt="Translation Jobs in progress after having been sent for translation" width="300" height="141" /></a> Translation Jobs in progress after having been sent for translation[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />If you prefer, you may also follow the translation progress of the documents you sent from inside your OneHourTranslation <em>Project</em> dashboard.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748062" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image102.png"><img class="size-medium wp-image-748062" src="https://wpml.org/wp-content/uploads/2015/11/image102-300x175.png" alt="OneHourTranslation Project dashboard" width="300" height="175" /></a> OneHourTranslation Project dashboard[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" /><strong>Please note that OneHourTranslation groups the documents you sent in a Translation Batch by language.</strong>
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748066" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image141.png"><img class="size-medium wp-image-748066" src="https://wpml.org/wp-content/uploads/2015/11/image141-300x120.png" alt="OneHourTranslation groups Translation Batch documents by language" width="300" height="120" /></a> OneHourTranslation groups Translation Batch documents by language[/caption]
+<br class="xliff-newline" /><h2 id="receive-translations">Receiving completed translations</h2>
+<br class="xliff-newline" />As soon as a translation job is ready in OneHourTranslation it is also ready to be delivered to your website.
+<br class="xliff-newline" />
+<br class="xliff-newline" />Depending on your configuration, translations will be delivered automatically or can be manually fetched from your WordPress admin panel.
+<br class="xliff-newline" />
+<br class="xliff-newline" />To check your configuration settings, open <em>WPML</em>-&gt;<em>Translation Management</em> and switch to the <em>Multilingual Content Setu</em>p tab. Find the <strong>Translation Pickup mode</strong> section and check the selected option.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748069" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image002.png"><img class="size-medium wp-image-748069" src="https://wpml.org/wp-content/uploads/2015/11/image002-300x47.png" alt="Select translation delivery method" width="300" height="47" /></a> Select translation delivery method[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />The "<strong>Translation Service will deliver translations automatically using XML-RPC</strong>" option means that as soon as a translation is ready, it will be delivered to your website automatically.
+<br class="xliff-newline" />
+<br class="xliff-newline" />The "<strong>The site will fetch translations manually</strong>" means that completed translations can be downloaded from the "<em>Translations Dashboard</em>" (<em>WPML-&gt;Translation Management</em>), using the "<em>Get completed translations</em>" button at the bottom of the page.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748072" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image19.png"><img class="size-medium wp-image-748072" src="https://wpml.org/wp-content/uploads/2015/11/image19-300x67.png" alt="Fetching completed translations manually" width="300" height="67" /></a> Fetching completed translations manually[/caption]
+<br class="xliff-newline" /><h2 id="cancel-jobs">Canceling translation jobs you've already sent</h2>
+<br class="xliff-newline" />You can cancel a translation project from your OneHourTranslation <em>Project</em> page.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748073" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image21.png"><img class="size-medium wp-image-748073" src="https://wpml.org/wp-content/uploads/2015/11/image21-300x47.png" alt="Canceling a translation project" width="300" height="47" /></a> Canceling a translation project[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" /><strong>Please remember that you can only cancel projects that are not in progress.</strong>
+<br class="xliff-newline" />
+<br class="xliff-newline" />When a project is canceled, WPML will also cancel and remove it from the <em>Translation Jobs</em> tab.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748077" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image071.png"><img class="size-medium wp-image-748077" src="https://wpml.org/wp-content/uploads/2015/11/image071-300x62.png" alt="Canceled jobs are removed from the Translation Jobs tab" width="300" height="62" /></a> Canceled jobs are removed from the Translation Jobs tab[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />Depending on your <em>Translation pickup mode</em> configuration, this will happen after OneHourTranslation notifies your website via a callback or after you have manually checked for completed translations.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748079" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image062.png"><img class="size-medium wp-image-748079" src="https://wpml.org/wp-content/uploads/2015/11/image062-300x93.png" alt="Checking for canceled jobs in manual translation pick up mode" width="300" height="93" /></a> Checking for canceled jobs in manual translation pick up mode[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />&nbsp;
+<br class="xliff-newline" /><h2 id="faq">FAQ</h2>
+<br class="xliff-newline" /><h3 class="p1"><span class="s1"><b>What should I do when a translation is ready on OneHourTranslation but is still In Progress in WPML?</b></span></h3>
+<br class="xliff-newline" /><p class="p1"><span class="s1">Sometimes the callback from OneHourTranslation might not reach the Translation Proxy. In that case, the status of the jobs is not changed. To fetch the status manually, please go to <em>WPML</em>-&gt;<em>Translation Management</em>-&gt;<em>Translation Jobs</em> tab. You will see the list of all batches that were sent for translation.</span></p>
+<br class="xliff-newline" /><p class="p1"><span class="s1">Locate the batch that contains your translated job and click the <em>Synchronize status</em> button. This button is located below the batch name.</span></p>
+<br class="xliff-newline" />
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_985572" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/oht_screenshot.png"><img class="wp-image-985572 size-medium" src="https://wpml.org/wp-content/uploads/2015/11/oht_screenshot-300x90.png" alt="Location of “Synchronize status” button" width="300" height="90" /></a> Location of “Synchronize status” button[/caption]
+<br class="xliff-newline" /><p class="p1"><span class="s1">After that, please wait a few minutes before going to <em>WPML</em>-&gt;<em>Translation Management</em> and clicking the <em>Get completed translations<strong> </strong></em>button.</span></p>]]></source>
+                <target><![CDATA[To be able to send files for translation to OneHourTranslation, you first have to login to your wpml.org account, and download and install the following plugins on your website:
+<br class="xliff-newline" /><ul>
+<br class="xliff-newline" /> 	<li>WPML Multilingual CMS - the core plugin.</li>
+<br class="xliff-newline" /> 	<li>WPML Translation Management - this plugin will allow you to connect to OneHourTranslation.</li>
+<br class="xliff-newline" /> 	<li>WPML String Translation - this plugin will allow you to translate interface strings.</li>
+<br class="xliff-newline" /></ul>
+<br class="xliff-newline" />If you do not have a wpml.org account yet, you can create a new one by simply <a href="https://wpml.org/purchase/">choosing between our WPML Multilingual CMS and Multilingual CMS Lifetime plans</a>.
+<br class="xliff-newline" />
+<br class="xliff-newline" />As soon as you get access to your wpml.org account, check our detailed step-by-step <a href="https://wpml.org/faq/install-wpml/">guide on how to download and install WPML</a>. Please remember to <a href="https://wpml.org/faq/install-wpml/#register-wpml">register</a> your site to receive automatic updates and gain access to OneHourTranslation’s services.
+<br class="xliff-newline" />
+<br class="xliff-newline" />If you need any help with the WPML plugin configuration, you can go through our <a href="https://wpml.org/documentation/getting-started-guide/">getting started guide</a> or just ask a question on the <a class="c3" href="https://wpml.org/forums/forum/english-support/">support forum</a>.
+<br class="xliff-newline" /><h2>Table of Contents</h2>
+<br class="xliff-newline" /><a href="#connect-site">Connecting your site to OneHourTranslation</a>
+<br class="xliff-newline" />
+<br class="xliff-newline" /><a href="#create-account">Creating a OneHourTranslation account</a>
+<br class="xliff-newline" />
+<br class="xliff-newline" /><a href="#api-secret-public-keys">Finding your API secret and public keys</a>
+<br class="xliff-newline" />
+<br class="xliff-newline" /><a href="#activate-authenticate">Activating and authenticating OneHourTranslation</a>
+<br class="xliff-newline" />
+<br class="xliff-newline" /><a href="#send-content">Sending content for translation</a>
+<br class="xliff-newline" />
+<br class="xliff-newline" /><a href="#receive-translations">Receiving completed translations</a>
+<br class="xliff-newline" />
+<br class="xliff-newline" /><a href="#cancel-jobs">Canceling translation jobs you've already sent</a>
+<br class="xliff-newline" />
+<br class="xliff-newline" /><a href="#faq">FAQ</a>
+<br class="xliff-newline" /><h2 id="connect-site">Connecting your site to OneHourTranslation</h2>
+<br class="xliff-newline" />Once all the required plugins have been installed and activated, all you need to make sure you have on hand for connecting WPML to the translation service is your <a href="https://www.onehourtranslation.com/">OneHourTranslation</a> account API secret and public keys. The steps below describe how to obtain the API keys from <a href="https://www.onehourtranslation.com/">OneHourTranslation</a>
+<br class="xliff-newline" /><h3 id="create-account">Creating a OneHourTranslation account</h3>
+<br class="xliff-newline" />If you do not have a registered OneHourTranslation account yet, you can very easily <a href="https://www.onehourtranslation.com/auth/register/">create one</a>. Click on the “Register” button located at the top right area of the site.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_747860" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image121.png"><img class="size-medium wp-image-747860" src="https://wpml.org/wp-content/uploads/2015/11/image121-300x43.png" alt="Opening an account" width="300" height="43" /></a> Opening an account[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />Then, you simply fill in and submit the form you see on the register page.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748016" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image091.png"><img class="size-medium wp-image-748016" src="https://wpml.org/wp-content/uploads/2015/11/image091-300x226.png" alt="Registering with OneHourTranslation" width="300" height="226" /></a> Registering with OneHourTranslation[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />Once the account is ready, let's get those API keys.
+<br class="xliff-newline" /><h3 id="api-secret-public-keys">Finding your API secret and public keys</h3>
+<br class="xliff-newline" />First, make sure you have logged into your OneHourTranslation account.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748021" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image051.png"><img class="size-medium wp-image-748021" src="https://wpml.org/wp-content/uploads/2015/11/image051-300x35.png" alt="OneHourTranslation login" width="300" height="35" /></a> OneHourTranslation login[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />Once logged in you will see the "<a href="https://www.onehourtranslation.com/cpanel">Control Panel</a>" menu item in the navigation. Click on it.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748024" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image012.png"><img class="size-medium wp-image-748024" src="https://wpml.org/wp-content/uploads/2015/11/image012-300x34.png" alt="OneHourTranslation logged in navigation menu" width="300" height="34" /></a> OneHourTranslation logged in navigation menu[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />You will then be redirected to your account's <em>Control Panel</em>. Once there, click on your username to go to <a href="https://www.onehourtranslation.com/profile/">your <em>Profile</em> page</a>.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748029" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image161.png"><img class="size-medium wp-image-748029" src="https://wpml.org/wp-content/uploads/2015/11/image161-300x167.png" alt="OneHourTranslation client Control Panel" width="300" height="167" /></a> OneHourTranslation client Control Panel[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />You will be redirected to your OneHourTranslation <em>Profile</em> page with a vertical navigation menu. Locate the <em>API Keys</em> menu item and click on it.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748031" align="aligncenter" width="225"]<a href="https://wpml.org/wp-content/uploads/2015/11/image151.png"><img class="size-medium wp-image-748031" src="https://wpml.org/wp-content/uploads/2015/11/image151-225x300.png" alt="OneHourTranslation Account Profile page" width="225" height="300" /></a> OneHourTranslation Account Profile page[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />Once there, copy your OneHourTranslation <strong>Secret Key</strong> and <strong>Public Key</strong>.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748033" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image171.png"><img class="size-medium wp-image-748033" src="https://wpml.org/wp-content/uploads/2015/11/image171-300x119.png" alt="Account API Keys" width="300" height="119" /></a> Account API Keys[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />Now that you have copied both your <em>Secret and Public API keys</em>, we are ready to activate and authenticate OneHourTranslation from your WordPress admin.
+<br class="xliff-newline" /><h3 id="activate-authenticate">Activating and authenticating OneHourTranslation</h3>
+<br class="xliff-newline" />Login to your WordPress website, visit the <em>WPML</em>-&gt;<em>Translation Management</em> administration page, and switch to the <em>Translators</em> tab.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748037" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image111.png"><img class="size-medium wp-image-748037" src="https://wpml.org/wp-content/uploads/2015/11/image111-300x40.png" alt="WPML's Translators tab" width="300" height="40" /></a> WPML's Translators tab[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />Scroll down to <em>Available Translation Services</em> and click to activate OneHourTranslation.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748041" align="aligncenter" width="233"]<a href="https://wpml.org/wp-content/uploads/2015/11/image032.png"><img class="size-medium wp-image-748041" src="https://wpml.org/wp-content/uploads/2015/11/image032-233x300.png" alt="Activating OneHourTranslation" width="233" height="300" /></a> Activating OneHourTranslation[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />Once the service is active, click the <em>authenticate</em> link to authenticate the service. This is where you will need your <strong>Secret and Public API keys</strong> obtained in the previous steps.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748044" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image023.png"><img class="size-medium wp-image-748044" src="https://wpml.org/wp-content/uploads/2015/11/image023-300x136.png" alt="Authenticating OneHourTranslation" width="300" height="136" /></a> Authenticating OneHourTranslation[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />A pop-up window will appear in which you can enter your OneHourTranslation <strong>Secret Key</strong> and <strong>Public Key</strong>. Enter the values and click the Submit button.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748045" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image20.png"><img class="size-medium wp-image-748045" src="https://wpml.org/wp-content/uploads/2015/11/image20-300x140.png" alt="OneHourTranslation authentication dialog" width="300" height="140" /></a> OneHourTranslation authentication dialog[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />Congratulations! Your OneHourTranslation account is now connected to your WordPress instance.
+<br class="xliff-newline" />Now, you are ready to send content for translation.
+<br class="xliff-newline" /><h3>Payment with credits</h3>
+<br class="xliff-newline" />Once WPML plugin is installed on your website do the next simple steps to pay with credits for the translations:
+<br class="xliff-newline" /><ol>
+<br class="xliff-newline" /> 	<li>Please, check your wordcount for the submitting content using the WPML plugin.</li>
+<br class="xliff-newline" /> 	<li>Use the wordcount in our wizard <a href="https://www.onehourtranslation.com/wizard">https://www.onehourtranslation.com/wizard</a> to get a price quote for your content.</li>
+<br class="xliff-newline" /> 	<li>Finally, you can load your OHT account with a proper amount of credits.</li>
+<br class="xliff-newline" /></ol>
+<br class="xliff-newline" /><h2 id="send-content">Sending content for translation</h2>
+<br class="xliff-newline" />You can select the documents you want to send for translation from your <em>Translation Management Dashboard</em>.
+<br class="xliff-newline" />
+<br class="xliff-newline" />Select what you would like to have translated, the languages to translate to, and click on "<em>Add to translation basket</em>" at the bottom of the <em>Dashboard</em> page.
+<br class="xliff-newline" />For additional information please see <a href="https://wpml.org/documentation/content-translation/send-documents-to-translation/">Sending Documents to Professional Translation</a>.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748051" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image131.png"><img class="size-medium wp-image-748051" src="https://wpml.org/wp-content/uploads/2015/11/image131-300x273.png" alt="Selecting documents to send for translation" width="300" height="273" /></a> Selecting documents to send for translation[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />After this, the selected content can be sent to OneHourTranslation from the <em>Translation Basket</em> tab.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748053" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image181.png"><img class="size-medium wp-image-748053" src="https://wpml.org/wp-content/uploads/2015/11/image181-300x194.png" alt="Sending items for translation" width="300" height="194" /></a> Sending items for translation[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />If you are using the <strong>WPML String Translation</strong> add-on plugin you can also <a href="https://wpml.org/documentation/content-translation/translating-the-theme/">send theme and plugin texts to be translated</a>.
+<br class="xliff-newline" />
+<br class="xliff-newline" />When the translation basket's contents have been successfully sent to OneHourTranslation you will see a confirmation message such as that shown below.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748055" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image041.png"><img class="size-medium wp-image-748055" src="https://wpml.org/wp-content/uploads/2015/11/image041-300x93.png" alt="Basket contents successfully submitted to OneHourTranslation" width="300" height="93" /></a> Basket contents successfully submitted to OneHourTranslation[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />At this point, <strong>no further action is required</strong> from you.
+<br class="xliff-newline" />
+<br class="xliff-newline" />Qualified OneHourTranslation translators with the matching language pair skills will be notified of the new translation projects. Subsequently translators will start translating as soon as they accept a translation project.
+<br class="xliff-newline" />
+<br class="xliff-newline" />You can follow the translation progress of the documents you sent to OneHourTranslation from your <em>Translation jobs</em> tab.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748060" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image081.png"><img class="size-medium wp-image-748060" src="https://wpml.org/wp-content/uploads/2015/11/image081-300x141.png" alt="Translation Jobs in progress after having been sent for translation" width="300" height="141" /></a> Translation Jobs in progress after having been sent for translation[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />If you prefer, you may also follow the translation progress of the documents you sent from inside your OneHourTranslation <em>Project</em> dashboard.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748062" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image102.png"><img class="size-medium wp-image-748062" src="https://wpml.org/wp-content/uploads/2015/11/image102-300x175.png" alt="OneHourTranslation Project dashboard" width="300" height="175" /></a> OneHourTranslation Project dashboard[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" /><strong>Please note that OneHourTranslation groups the documents you sent in a Translation Batch by language.</strong>
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748066" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image141.png"><img class="size-medium wp-image-748066" src="https://wpml.org/wp-content/uploads/2015/11/image141-300x120.png" alt="OneHourTranslation groups Translation Batch documents by language" width="300" height="120" /></a> OneHourTranslation groups Translation Batch documents by language[/caption]
+<br class="xliff-newline" /><h2 id="receive-translations">Receiving completed translations</h2>
+<br class="xliff-newline" />As soon as a translation job is ready in OneHourTranslation it is also ready to be delivered to your website.
+<br class="xliff-newline" />
+<br class="xliff-newline" />Depending on your configuration, translations will be delivered automatically or can be manually fetched from your WordPress admin panel.
+<br class="xliff-newline" />
+<br class="xliff-newline" />To check your configuration settings, open <em>WPML</em>-&gt;<em>Translation Management</em> and switch to the <em>Multilingual Content Setu</em>p tab. Find the <strong>Translation Pickup mode</strong> section and check the selected option.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748069" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image002.png"><img class="size-medium wp-image-748069" src="https://wpml.org/wp-content/uploads/2015/11/image002-300x47.png" alt="Select translation delivery method" width="300" height="47" /></a> Select translation delivery method[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />The "<strong>Translation Service will deliver translations automatically using XML-RPC</strong>" option means that as soon as a translation is ready, it will be delivered to your website automatically.
+<br class="xliff-newline" />
+<br class="xliff-newline" />The "<strong>The site will fetch translations manually</strong>" means that completed translations can be downloaded from the "<em>Translations Dashboard</em>" (<em>WPML-&gt;Translation Management</em>), using the "<em>Get completed translations</em>" button at the bottom of the page.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748072" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image19.png"><img class="size-medium wp-image-748072" src="https://wpml.org/wp-content/uploads/2015/11/image19-300x67.png" alt="Fetching completed translations manually" width="300" height="67" /></a> Fetching completed translations manually[/caption]
+<br class="xliff-newline" /><h2 id="cancel-jobs">Canceling translation jobs you've already sent</h2>
+<br class="xliff-newline" />You can cancel a translation project from your OneHourTranslation <em>Project</em> page.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748073" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image21.png"><img class="size-medium wp-image-748073" src="https://wpml.org/wp-content/uploads/2015/11/image21-300x47.png" alt="Canceling a translation project" width="300" height="47" /></a> Canceling a translation project[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" /><strong>Please remember that you can only cancel projects that are not in progress.</strong>
+<br class="xliff-newline" />
+<br class="xliff-newline" />When a project is canceled, WPML will also cancel and remove it from the <em>Translation Jobs</em> tab.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748077" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image071.png"><img class="size-medium wp-image-748077" src="https://wpml.org/wp-content/uploads/2015/11/image071-300x62.png" alt="Canceled jobs are removed from the Translation Jobs tab" width="300" height="62" /></a> Canceled jobs are removed from the Translation Jobs tab[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />Depending on your <em>Translation pickup mode</em> configuration, this will happen after OneHourTranslation notifies your website via a callback or after you have manually checked for completed translations.
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_748079" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/image062.png"><img class="size-medium wp-image-748079" src="https://wpml.org/wp-content/uploads/2015/11/image062-300x93.png" alt="Checking for canceled jobs in manual translation pick up mode" width="300" height="93" /></a> Checking for canceled jobs in manual translation pick up mode[/caption]
+<br class="xliff-newline" />
+<br class="xliff-newline" />&nbsp;
+<br class="xliff-newline" /><h2 id="faq">FAQ</h2>
+<br class="xliff-newline" /><h3 class="p1"><span class="s1"><b>What should I do when a translation is ready on OneHourTranslation but is still In Progress in WPML?</b></span></h3>
+<br class="xliff-newline" /><p class="p1"><span class="s1">Sometimes the callback from OneHourTranslation might not reach the Translation Proxy. In that case, the status of the jobs is not changed. To fetch the status manually, please go to <em>WPML</em>-&gt;<em>Translation Management</em>-&gt;<em>Translation Jobs</em> tab. You will see the list of all batches that were sent for translation.</span></p>
+<br class="xliff-newline" /><p class="p1"><span class="s1">Locate the batch that contains your translated job and click the <em>Synchronize status</em> button. This button is located below the batch name.</span></p>
+<br class="xliff-newline" />
+<br class="xliff-newline" />
+<br class="xliff-newline" />[caption id="attachment_985572" align="aligncenter" width="300"]<a href="https://wpml.org/wp-content/uploads/2015/11/oht_screenshot.png"><img class="wp-image-985572 size-medium" src="https://wpml.org/wp-content/uploads/2015/11/oht_screenshot-300x90.png" alt="Location of “Synchronize status” button" width="300" height="90" /></a> Location of “Synchronize status” button[/caption]
+<br class="xliff-newline" /><p class="p1"><span class="s1">After that, please wait a few minutes before going to <em>WPML</em>-&gt;<em>Translation Management</em> and clicking the <em>Get completed translations<strong> </strong></em>button.</span></p>]]></target>
+            </trans-unit>
+            <trans-unit resname="field-wpcf-ts-title-wpml-documentation-0" restype="string" datatype="html" id="field-wpcf-ts-title-wpml-documentation-0">
+                <source><![CDATA[Setup  Instructions]]></source>
+                <target><![CDATA[Setup  Instructions]]></target>
+            </trans-unit>
+            <trans-unit resname="field-wpcf-support-instructions-0" restype="string" datatype="html" id="field-wpcf-support-instructions-0">
+                <source><![CDATA[<h2><span style="font-weight: 400">Translation Service’s clients</span></h2>
+<br class="xliff-newline" /><span style="font-weight: 400">If client will buy WPML starting from one of our</span><a href="https://wpml.org/translation-service/" target="_blank"> <span style="font-weight: 400">Translation Service dedicated pages</span></a><span style="font-weight: 400"> we will treat him as a referral (Translation Service’s client). During the checkout process, information about Translation Service will be stored on his account in wpml.org (not visible for the client, only for admins). As soon as client will register WPML on his site (which is required to get access to Translators tab) WPML will check referral setting and limit the  list of visible services only to this one.</span>
+<br class="xliff-newline" /><h2><span style="font-weight: 400">Support workflow for Translation Service’s clients</span></h2>
+<br class="xliff-newline" /><ol style="font-size: 13px;line-height: 1.5">
+<br class="xliff-newline" /> 	<li><span style="font-weight: 400">For issues with WPML itself please process the ticket using a standard support workflow but with higher priority.</span></li>
+<br class="xliff-newline" /> 	<li><span style="font-weight: 400">In case of problems related to Translation Proxy like: </span>
+<br class="xliff-newline" /><ol style="font-size: 13px;line-height: 1.5">
+<br class="xliff-newline" /> 	<li><span style="font-weight: 400">user can not see Translation Service(s) on Translators tab,</span></li>
+<br class="xliff-newline" /> 	<li><span style="font-weight: 400">user can not activate/authenticate Translation Service,</span></li>
+<br class="xliff-newline" /> 	<li><span style="font-weight: 400">user can not send posts for translation (some error messages in the basket),</span></li>
+<br class="xliff-newline" /> 	<li><span style="font-weight: 400">content has been translated in Translation Service but has not been delivered to WPML,</span></li>
+<br class="xliff-newline" /> 	<li><span style="font-weight: 400">user do not know how to delete the job</span></li>
+<br class="xliff-newline" /></ol>
+<br class="xliff-newline" /></li>
+<br class="xliff-newline" /></ol>
+<br class="xliff-newline" /><span style="font-weight: 400">please make sure that the user follows up the steps described in Translation Service documentation (</span><a href="https://wpml.org/translation-service/" target="_blank"><span style="font-weight: 400">https://wpml.org/translation-service/</span></a><span style="font-weight: 400">). At which step they have a problem?</span>
+<br class="xliff-newline" /><ol style="font-size: 13px;line-height: 1.5">
+<br class="xliff-newline" /> 	<li><span style="font-weight: 400">Please use our </span><a href="https://docs.google.com/document/d/1dLoHO_9SE9NkyXeCEYxl9hrscPemM_zTGev5pzmn0S4/edit#" target="_blank"><span style="font-weight: 400">Translation Proxy Support - troubleshooting</span></a><span style="font-weight: 400"> guide to find the solutions to the most common issues.</span></li>
+<br class="xliff-newline" /> 	<li><span style="font-weight: 400">In case of more complex problems, please create a ticket in YT and assign it to one of our Translation Proxy supporters: </span><b>Ahmed Ibrahim</b><span style="font-weight: 400"> or <strong>Otto Wald</strong></span><span style="font-weight: 400">. Please remember to gather all necessary information that will help us to quickly start working on given issue. It includes WP and FTP credentials, credentials user want to use to authenticate the service, problematic post or batch name (if known) etc.</span></li>
+<br class="xliff-newline" /></ol>]]></source>
+                <target><![CDATA[<h2><span style="font-weight: 400">Translation Service’s clients</span></h2>
+<br class="xliff-newline" /><span style="font-weight: 400">If client will buy WPML starting from one of our</span><a href="https://wpml.org/translation-service/" target="_blank"> <span style="font-weight: 400">Translation Service dedicated pages</span></a><span style="font-weight: 400"> we will treat him as a referral (Translation Service’s client). During the checkout process, information about Translation Service will be stored on his account in wpml.org (not visible for the client, only for admins). As soon as client will register WPML on his site (which is required to get access to Translators tab) WPML will check referral setting and limit the  list of visible services only to this one.</span>
+<br class="xliff-newline" /><h2><span style="font-weight: 400">Support workflow for Translation Service’s clients</span></h2>
+<br class="xliff-newline" /><ol style="font-size: 13px;line-height: 1.5">
+<br class="xliff-newline" /> 	<li><span style="font-weight: 400">For issues with WPML itself please process the ticket using a standard support workflow but with higher priority.</span></li>
+<br class="xliff-newline" /> 	<li><span style="font-weight: 400">In case of problems related to Translation Proxy like: </span>
+<br class="xliff-newline" /><ol style="font-size: 13px;line-height: 1.5">
+<br class="xliff-newline" /> 	<li><span style="font-weight: 400">user can not see Translation Service(s) on Translators tab,</span></li>
+<br class="xliff-newline" /> 	<li><span style="font-weight: 400">user can not activate/authenticate Translation Service,</span></li>
+<br class="xliff-newline" /> 	<li><span style="font-weight: 400">user can not send posts for translation (some error messages in the basket),</span></li>
+<br class="xliff-newline" /> 	<li><span style="font-weight: 400">content has been translated in Translation Service but has not been delivered to WPML,</span></li>
+<br class="xliff-newline" /> 	<li><span style="font-weight: 400">user do not know how to delete the job</span></li>
+<br class="xliff-newline" /></ol>
+<br class="xliff-newline" /></li>
+<br class="xliff-newline" /></ol>
+<br class="xliff-newline" /><span style="font-weight: 400">please make sure that the user follows up the steps described in Translation Service documentation (</span><a href="https://wpml.org/translation-service/" target="_blank"><span style="font-weight: 400">https://wpml.org/translation-service/</span></a><span style="font-weight: 400">). At which step they have a problem?</span>
+<br class="xliff-newline" /><ol style="font-size: 13px;line-height: 1.5">
+<br class="xliff-newline" /> 	<li><span style="font-weight: 400">Please use our </span><a href="https://docs.google.com/document/d/1dLoHO_9SE9NkyXeCEYxl9hrscPemM_zTGev5pzmn0S4/edit#" target="_blank"><span style="font-weight: 400">Translation Proxy Support - troubleshooting</span></a><span style="font-weight: 400"> guide to find the solutions to the most common issues.</span></li>
+<br class="xliff-newline" /> 	<li><span style="font-weight: 400">In case of more complex problems, please create a ticket in YT and assign it to one of our Translation Proxy supporters: </span><b>Ahmed Ibrahim</b><span style="font-weight: 400"> or <strong>Otto Wald</strong></span><span style="font-weight: 400">. Please remember to gather all necessary information that will help us to quickly start working on given issue. It includes WP and FTP credentials, credentials user want to use to authenticate the service, problematic post or batch name (if known) etc.</span></li>
+<br class="xliff-newline" /></ol>]]></target>
+            </trans-unit>
+            <trans-unit resname="title" restype="string" datatype="html" id="title">
+                <source><![CDATA[OneHourTranslation]]></source>
+                <target><![CDATA[OneHourTranslation]]></target>
+            </trans-unit>
+            <trans-unit resname="body" restype="string" datatype="html" id="body">
+                <source><![CDATA[<strong>One Hour Translation provides high-quality professional human translation of over 75 languages and over 2500 language pairs. A community of over 15,000 professional translators from over 100 different countries makes high-quality translations possible around the clock.</strong>
+<br class="xliff-newline" /><strong>One Hour Translation, considered by many the fastest professional translation service in the world, specializes in providing business translations in various fields including legal, technical, websites, applications and software, and marketing.</strong>]]></source>
+                <target><![CDATA[<strong>One Hour Translation provides high-quality professional human translation of over 75 languages and over 2500 language pairs. A community of over 15,000 professional translators from over 100 different countries makes high-quality translations possible around the clock.</strong>
+<br class="xliff-newline" /><strong>One Hour Translation, considered by many the fastest professional translation service in the world, specializes in providing business translations in various fields including legal, technical, websites, applications and software, and marketing.</strong>]]></target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

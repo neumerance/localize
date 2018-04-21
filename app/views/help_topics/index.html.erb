@@ -1,0 +1,16 @@
+<%= infotab_header(['Title','Summary','URL','Display','Actions']) %>
+
+<% for help_topic in @help_topics %>
+  <tr>
+    <td><%=h help_topic.title %></td>
+    <td><%=h help_topic.summary %></td>
+    <td><%=h help_topic.url %></td>
+    <td><%=h help_topic.display %></td>
+    <td><%= link_to 'Show', help_topic %> | <%= link_to 'Edit', edit_help_topic_path(help_topic) %> | <%= link_to 'Destroy', help_topic, 'data-confirm' => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New help_topic', new_help_topic_path %>

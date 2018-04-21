@@ -1,0 +1,30 @@
+<% if !@locate && @glossary_term %>
+	<h3><%= @header %></h3>
+    <%= form_for(:glossary_term, :url=>{:action=>@action}, :method=>@method, :remote => true) do |f| %>
+		<p>Text: <%= f.text_field(:txt, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE) %><br />
+		<span class="comment">Enter the text that needs special attention</span></p>
+		<p>Description: <%= f.text_field(:description, :size=>80, maxlength: COMMON_FIELD) %><br />
+		<span class="comment">Describe the context of the text and what it is used for</span></p>
+		<p>Language: <%= f.select(:language_id, @languages) %><br />
+		<span class="comment">The language of the text</span></p>
+		<%= submit_tag('Save', data: { disable_with: 'Save' }) %>
+	<% end %>
+    <%= form_tag({ :action=>:new, :req=>'hide'}, :method => :get, :remote => true) do %>
+		<%= submit_tag 'Cancel', data: { disable_with: 'Cancel' } %>
+	<% end %>
+	
+	<% if !@glossary_term.id.blank? && (@user == @glossary_client) %>
+		<br /><br />
+        <%= form_tag({ :action => :destroy }, :method => :delete, :remote => true) do %>
+			<%= submit_tag('Delete this term', style: 'background-color: #FF8080;', data: { disable_with: 'Delete this term' }) %><br />
+			<%= check_box_tag(:confirm_delete) %> I'm sure I want to delete this glossary term.
+		<% end %>
+	<% end %>
+<% else %>
+  <p>
+      <%= link_to new_user_glossary_term_path(@glossary_client.id), :remote => true do %>
+         <%= image_tag "icons/add.png",  :align => "bottom",  :border => "0",  :width => "16",  :height => "16", :alt => "add" %>
+          New glossary entry <%= '&raquo;'.html_safe %>
+      <% end %>
+  </p>
+<% end %>

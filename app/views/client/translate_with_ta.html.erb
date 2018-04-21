@@ -1,0 +1,12 @@
+<p>To translate a <%= @what %>, you will need to <%= link_to(_('download Translation Assistant'), {:controller=>:downloads, :action=>:show_recent, :id=>TA_GENERIC_NAME}, {:target=>'_blank'}) %>.</p>
+<p>Steps to follow:</p>
+<ol><li>Download and install <b>Translation Assistant</b> (requires Windows XP, Vista or Win7).</li>
+<li>Run <b>Translation Assistant</b> and create a new translation project.</li>
+<li>Upload the project and make it available for translators to bid.</li>
+<li>When translation is complete, use <b>Translation Assistant</b> to rebuild your multi-lingual project.</li>
+</ol>
+<br />
+&laquo; <%= link_to(_('Go back'), {:action=>:getting_started}) %> &nbsp; | &nbsp;
+<form action="#" style="display:inline;" >
+	<input type="button" value="Download Translation Assistant" style="padding: 0.5em 1em 0.5em 1em;" onclick="window.open('/downloads/show_recent/Translation%20Assistant','mywindow','width=800,height=500')" />
+</form>

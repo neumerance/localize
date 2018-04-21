@@ -1,0 +1,181 @@
+<option value="">- Select -<option value="1">Accounting
+
+<option value="2">Advertising / Public Relations
+<option value="10">Aerospace / Aviation / Space
+<option value="3">Agriculture
+<option value="81">Animal Husbandry = Livestock *
+<option value="5">Anthropology
+<option value="151">Archaeology
+<option value="6">Architecture
+<option value="7">Art, Arts & Crafts, Painting
+<option value="8">Astronomy & Space
+<option value="48">Audit = Finance *
+<option value="159">Automation & Robotics
+<option value="9">Automotive / Cars & Trucks
+<option value="48">Banking = Finance *
+
+<option value="12">Biology (-tech,-chem,micro-)
+<option value="13">Botany
+<option value="26">Building = Construction *
+<option value="15">Business/Commerce (general)
+<option value="9">Cars = Auto *
+<option value="88">Ceramics = Materials *
+<option value="158">Certificates, Diplomas, Licenses, CVs
+<option value="19">Chemistry; Chem Sci/Eng
+<option value="82">Children's Literature = Poetry & Literature *
+<option value="20">Cinema, Film, TV, Drama
+<option value="138">Clothing = Textiles *
+<option value="137">Communications = Telecommunications *
+<option value="147">Computers (general)
+<option value="23">Computers: Hardware
+<option value="24">Computers: Software
+<option value="25">Computers: Systems, Networks
+
+<option value="26">Construction / Civil Engineering
+<option value="75">Contracts = Law: Contract *
+<option value="28">Cooking / Culinary
+<option value="29">Cosmetics, Beauty
+<option value="91">DVDs = Media *
+<option value="30">Dentistry = Medical: Dentistry *
+<option value="32">Economics
+<option value="33">Education / Pedagogy
+<option value="34">Electronics / Elect Eng
+<option value="35">Energy / Power Generation
+<option value="40">Engineering (general)
+<option value="10">Engineering: Aero = Aerospace *
+<option value="19">Engineering: Chem = Chemistry *
+<option value="26">Engineering: Civil = Construction *
+<option value="34">Engineering: Electrical = Electronics *
+<option value="41">Engineering: Industrial
+<option value="90">Engineering: Mechanical = Mechanics *
+
+<option value="103">Engineering: Nuclear = Nuclear *
+<option value="44">Environment & Ecology
+<option value="45">Esoteric practices
+<option value="138">Fashion = Textiles *
+<option value="82">Fiction = Poetry & Literature *
+<option value="20">Film & TV = Cinema *
+<option value="48">Finance (general)
+<option value="48">Financial Markets = Finance *
+<option value="49">Fisheries
+<option value="50">Folklore
+<option value="51">Food & Dairy
+<option value="52">Forestry / Wood / Timber
+<option value="53">Furniture / Household Appliances
+
+<option value="54">Games / Video Games / Gaming / Casino
+<option value="28">Gastronomy = Cooking / Culinary *
+<option value="99">Gems, Precious Stones, Metals = Mining *
+<option value="58">Genealogy
+<option value="57">General / Conversation / Greetings / Letters
+<option value="160">Genetics
+<option value="60">Geography
+<option value="59">Geology
+<option value="88">Glass = Materials *
+<option value="62">Government / Politics
+<option value="113">Graphic Arts = Photo/Imaging *
+<option value="94">Health Care = Med: HC *
+<option value="65">History
+<option value="139">Hotels = Tourism *
+<option value="67">Human Resources
+<option value="68">IT (Information Technology)
+<option value="152">Idioms / Maxims / Sayings
+
+<option value="69">Insurance
+<option value="70">International Org/Dev/Coop
+<option value="71">Internet, e-Commerce
+<option value="72">Investment / Securities
+<option value="96">Iron & Steel = Metallurgy *
+<option value="154">Journalism
+<option value="67">Labor = Human Resources *
+<option value="122">Land = Real Estate *
+<option value="77">Law (general)
+<option value="75">Law: Contract(s)
+<option value="76">Law: Patents, Trademarks, Copyright
+<option value="136">Law: Taxation & Customs
+<option value="139">Leisure = Tourism *
+<option value="80">Linguistics
+<option value="82">Literature = Poetry & Lit *
+
+<option value="81">Livestock / Animal Husbandry
+<option value="140">Logistics = Transport *
+<option value="90">Machinery & Tools = Mechanical *
+<option value="85">Management
+<option value="157">Manufacturing
+<option value="129">Maritime = Ships *
+<option value="87">Marketing / Market Research
+<option value="88">Materials (Plastics, Ceramics, etc.)
+<option value="89">Mathematics & Statistics
+<option value="90">Mechanics / Mech Engineering
+<option value="91">Media / Multimedia
+<option value="95">Medical (general)
+<option value="16">Medical: Cardiology
+<option value="30">Medical: Dentistry
+<option value="94">Medical: Health Care
+
+<option value="93">Medical: Instruments
+<option value="92">Medical: Pharmaceuticals
+<option value="96">Metallurgy / Casting
+<option value="97">Metrology
+<option value="98">Military / Defense
+<option value="99">Mining & Minerals / Gems
+<option value="91">Multimedia = Media *
+<option value="101">Music
+<option value="150">Names (personal, company)
+<option value="25">Networking = Computers: Networking *
+<option value="103">Nuclear Eng/Sci
+<option value="104">Nutrition
+<option value="110">Oil & Gas = Petroleum *
+<option value="105">Other
+<option value="107">Paper / Paper Manufacturing
+
+<option value="170">Patents
+<option value="76">Patents = Law: Patents *
+<option value="33">Pedagogy = Education *
+<option value="110">Petroleum Eng/Sci
+<option value="92">Pharmaceuticals = Med: Pharma *
+<option value="112">Philosophy
+<option value="113">Photography/Imaging (& Graphic Arts)
+<option value="114">Physics
+<option value="13">Plants = Botany *
+<option value="88">Plastic = Materials *
+<option value="82">Poetry & Literature
+<option value="62">Politics = Government *
+<option value="35">Power = Energy *
+<option value="119">Printing & Publishing
+
+<option value="120">Psychology
+<option value="2">Public relations = Advertising *
+<option value="122">Real Estate
+<option value="123">Religion
+<option value="124">Retail
+<option value="159">Robotics = Automation & Robotics *
+<option value="88">Rubber = Materials *
+<option value="127">SAP
+<option value="129">Sailing = Ships *
+<option value="128">Science (general)
+<option value="140">Shipping = Transport *
+<option value="129">Ships, Sailing, Maritime
+<option value="149">Slang
+<option value="130">Social Science, Sociology, Ethics, etc.
+<option value="24">Software = Computers: Software *
+<option value="133">Sports / Fitness / Recreation
+
+<option value="89">Statistics = Mathematics *
+<option value="135">Surveying
+<option value="57">Symbols / Abbreviations / Acronyms = General *
+<option value="136">Tax = Law: Tax *
+<option value="137">Telecom(munications)
+<option value="138">Textiles / Clothing / Fashion
+<option value="139">Tourism & Travel
+<option value="140">Trains = Transportation *
+<option value="140">Transport / Transportation / Shipping
+<option value="139">Travel = Tourism *
+<option value="81">Veterinary = Livestock *
+<option value="54">Video Games = Games *
+<option value="91">Video editing/DVDs = Media *
+<option value="143">Wine / Oenology / Viticulture
+<option value="88">Wood = Materials *
+<option value="52">Wood Industry = Forestry *
+
+<option value="146">Zoology

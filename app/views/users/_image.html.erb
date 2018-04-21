@@ -1,0 +1,24 @@
+<% if @editing_photo %>
+    <%= form_tag({:action => :edit_image}, {:multipart => true, remote: true}) do %>
+        <p>Photo to upload:<br/><%= file_field_tag :uploaded_data, onchange: "validate_file_size('uploaded_data', '#{IMAGE_MAX_SIZE}')" %><br/><span class="comment">Recommended size - 100x100 pixels</span>
+        </p>
+        <%= submit_tag('Upload', data: { disable_with: 'Upload' }) %>
+    <% end %>
+    <%= form_tag({:action => :edit_image, :req => 'hide'}, remote: true) do %>
+        <%= submit_tag 'Cancel', data: { disable_with: 'Cancel' } %>
+    <% end %>
+<% else %>
+    <% if @auser.image %>
+        <%= image_tag(@auser.image.public_filename, :size => @auser.image.image_size, :alt => 'image') %>
+    <% else %>
+        <%= image_tag 'icons/login.png', class: '', width: 32, height: 32, alt: 'user', style: '', border: 0 %>
+        <p class="comment">No photo uploaded.</p>
+    <% end %>
+    <% if (@user == @auser) %>
+        <br/>
+        <%= form_tag({:action => :edit_image, :req => 'show'}, remote: true) do %>
+            <% label = (@auser.image ? 'Change photo' : 'Upload photo') %>
+            <%= submit_tag(label, data: { disable_with: label }) %>
+        <% end %>
+    <% end %>
+<% end %>

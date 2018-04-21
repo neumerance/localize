@@ -1,0 +1,35 @@
+<% if @web_support.client_departments.length > 0 %>
+<h2>Summary</h2>
+<ul>
+	<li>This support center has <%= link_to("#{@web_support.client_departments.length} department(s)", {:action=>:departments}) %>. You can <%= link_to(_('create a new department'), {:action=>:new_department}) %>.</li>
+	<li>To integrate this support center to your website and let your visitors create new tickets, see the <%= link_to(_('web integration instructions'), {:action=>:integration_details}) %>.</li>
+	<li>You can <%= link_to(_('customize the appearance of this support center'), {:action=>:customize, :id=>@web_support.id}) %> to match your website.</li>
+</ul>
+<br />
+
+<h2>Support department names translation</h2>
+<% if @web_support.text_resource %>
+	<p>This support center already has translation set up for department names. <%= link_to('manage translations &raquo;'.html_safe,{:controller=>:text_resources, :action=>:show, :id=>@web_support.text_resource.id}) %>.</p>
+<% else %>
+	<p>To translate the names of the support departments, you need to <%= link_to('setup translation &raquo;'.html_safe,{:controller=>:text_resources, :action=>:new, :owner_type=>@web_support.class.to_s, :owner_id=>@web_support.id})%>.</p>
+<% end %>
+<br />
+
+<% if @web_support.pending_web_dialogs.length > 0 %>
+	<h2>Pending customers contacts</h2>
+	<p><%= @web_dialogs_message + '. ' + link_to(_('Browse all tickets'), {:action=>:browse_tickets, :set_args=>1}) %></p>
+	<%= form_tag({:action=>:confirm_delete_dialogs}) do %>
+	<%= infotab_header(['Select', 'Ticket', 'Created by', 'Date', 'Department', 'Status', 'Actions']) %>
+	<%= render(:partial=>'web_dialog', :collection=>@web_dialogs) %>
+	</table>
+	<%= hidden_field_tag(:return_to, request.url) %>
+	<br /><%= submit_tag('Delete selected tickets', data: { disable_with: 'Delete selected tickets' }) %>
+	<% end %>
+<% else %>
+	<p>There are no pending tickets. <%= link_to(_('Browse all tickets'), {:action=>:browse_tickets, :set_args=>1}) %>
+<% end %>
+<br />
+
+<% else %>
+<div class="errorExplanation">This support center doesn't yet have any departments. You need to create at least one department to get started. <%= link_to(_('Create a new department now'), {:action=>:new_department}) %>.</div>
+<% end %>

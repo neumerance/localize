@@ -1,0 +1,7 @@
+<%= form_tag("/alias_profiles/#{alias_profile.id}/update_financial", :remote => true) do |f|%>
+	<%= check_box :alias_profile, :financial_view%> View History 
+	<%= check_box :alias_profile, :financial_deposit%> Make Deposits
+	<%= check_box :alias_profile, :financial_pay%> Make Payments
+	<br/>
+	<%= submit_tag 'Save', data: { disable_with: 'Save' } %>
+<% end %>

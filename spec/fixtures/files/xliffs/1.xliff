@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file original="178-079230e29195cac1ce62e737740797a0" source-language="en" target-language="fr" datatype="plaintext">		<header><reference><external-file href="http://iclmig-wp.ml/test_g_tags_1/"/></reference></header>
+		<body>
+			         <trans-unit resname="title" restype="string" datatype="html" id="title">
+            <source><![CDATA[Test_g_tags_1]]></source>
+            <target><![CDATA[Test_g_tags_1]]></target>
+         </trans-unit>
+         <trans-unit resname="body" restype="string" datatype="html" id="body">
+            <source><![CDATA[<span class="test">Sometimes the callback from OneHourTranslation might not reach the Translation Proxy.In that case, the status of the jobs is not changed.To fetch the status manually, please go to <em> WPML </em> <em> Translation Management </em> <em> Translation Jobs </em> tab.You will see the list of all batches that were sent for translation.</span><br class="xliff-newline" /><p class="111"><a>aaaa</a> <a>cccc</a> <a>eeee</a></p>]]></source>
+            <target><![CDATA[<span class="test">Sometimes the callback from OneHourTranslation might not reach the Translation Proxy.In that case, the status of the jobs is not changed.To fetch the status manually, please go to <em> WPML </em> <em> Translation Management </em> <em> Translation Jobs </em> tab.You will see the list of all batches that were sent for translation.</span><br class="xliff-newline" /><p class="111"><a>aaaa</a> <a>cccc</a> <a>eeee</a></p>]]></target>
+         </trans-unit>
+
+		</body>
+	</file>
+</xliff>

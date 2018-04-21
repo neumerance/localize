@@ -1,0 +1,5 @@
+<% if @warning %>
+  alert('<%= @warning %>');
+<% else %>
+  jQuery('#<%= params[:div_name] %>').html('<%= escape_javascript(render :partial=>'support_ticket_for_object', :object=>@obj) %>');
+<% end %>

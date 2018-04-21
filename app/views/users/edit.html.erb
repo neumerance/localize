@@ -1,0 +1,37 @@
+<%= my_error_messages_for :auser %>
+
+<%= form_for(:auser, :url => user_path(@auser), :html => { :method => :put }) do |f| %>
+  <p>
+    <b>First name</b><br />
+    <%= f.text_field :fname, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+  </p>
+
+  <p>
+    <b>Last name</b><br />
+    <%= f.text_field :lname, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+  </p>
+
+  <p>
+    <b>E-mail</b><br />
+    <%= f.text_field :email, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+  </p>
+
+  <% if @user.has_admin_privileges? %>
+	  <p>
+		<b>Password</b><br />
+		<%= f.password_field :password, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+	  </p>
+
+	  <p>
+		<b>Userstatus</b><br />
+    <%= f.select(:userstatus, @auser.get_userstatus_options, selected: @auser.userstatus ) %>
+	  </p>
+	<% end %>
+
+  <p>
+    <%= submit_tag 'Update', data: { disable_with: 'Update' } %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', user_path(@auser) %> |
+<%= link_to 'Back', users_path %>

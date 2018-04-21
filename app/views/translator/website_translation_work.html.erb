@@ -1,0 +1,9 @@
+<% if @open_website_translation_work.length > 0 %>
+	<a name="open_website_translation_work"></a>
+	<%= infotab_top('Available recurring translations', "Recuring translation work that you can begin doing") %>
+	<%= infotab_header(['Job ID', 'Created', 'Project']) %>
+	<%= render(:partial=>'cms_request', :collection=>@open_website_translation_work) %>
+	</table>
+	<div class="inter_tab_spacer"></div>
+<% end %>
+<p><%= link_to('&laquo; Back to your projects'.html_safe,{:action=>:index}) %></p>

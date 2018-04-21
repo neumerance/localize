@@ -1,0 +1,27 @@
+<%= infotab_header(table_headers) %>
+<% shortcodes.each do |shortcode| %>
+  <% shortcode_enabled = @website ? shortcode.enabled?(@website.id) : shortcode.enabled? %>
+
+  <tr class="<%= shortcode_enabled ? "enabled" : "disabled" %>">
+    <td>
+      <b class="comment">[</b>
+        <%=h shortcode.shortcode %>
+      <b class="comment">]</b>
+    </td>
+    <td><%=h nice_content_type(shortcode.content_type) %></td>
+    <% if @user.has_admin_privileges? %>
+      <td><%=h shortcode.creator.try :full_real_name %></td>
+    <% end %>
+    <td><%=h shortcode.comment %></td>
+    <td>
+
+      <%= link_to (shortcode_enabled ? 'Disable' : 'Enable'), toggle_enabled_shortcode_link(shortcode), :method => :put %>
+      <% if shortcode.website || @user.has_admin_privileges? %>
+        
+        <%= link_to 'Edit', edit_shortcode_link(shortcode) %>
+        <%= link_to 'Delete', destroy_shortcode_link(shortcode), 'data-confirm' => 'Are you sure?', :method => :delete %>
+      <% end %>
+    </td>  
+  </tr>
+<% end %>
+</table> 

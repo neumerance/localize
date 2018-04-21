@@ -1,0 +1,148 @@
+<% totals_colspan = @revision.pay_per_word? ? 3 : 2 %>
+<% review_price_percentage = @revision.from_cms? ? REVIEW_PRICE_PERCENTAGE : 0.5 %>
+
+<div class="actionrequired" id="payment_table">
+	<h2>Missing funds</h2>
+
+  <% if @has_money %>
+
+    <table class="minitable" cellspacing="0" cellpadding="3">
+      <tr class="headerrow">
+        <th align="left">Work Type</th>
+        <th align="left">Language</th>
+        <% if @revision.pay_per_word? %>
+          <th align="center">Cost / word</th>
+        <% end %>
+        <th align="center">Total cost</th>
+      </tr>
+
+      <% @pending_bids.each do |bid| %>
+        <tr>
+          <td>Translation</td>
+          <td><%= bid.revision_language.language.name %></td>
+          <% if @revision.pay_per_word? %>
+            <td align="right"><%= "#{bid.amount.to_f} USD" %></td>
+          <% end %>
+          <td align="right"><%= "#{bid.translator_payment} USD" %></td>
+        </tr>
+      <%- end %>
+
+      <% @pending_managed_works.each do |managed_work| %>
+        <tr>
+          <td>Review</td>
+          <td><%= managed_work.owner.language.name %></td>
+          <% if @revision.pay_per_word? %>
+            <td align="right"><%= "#{managed_work.owner.selected_bid.amount.to_f * review_price_percentage} USD" %></td>
+          <% end %>
+          <td align="right"><%= "#{managed_work.reviewer_payment} USD" %></td>
+        </tr>
+      <%- end %>
+
+      <tr>
+        <td colspan="<%=totals_colspan %>"><b>Total</b></td>
+        <td align="right"><%= @revision.pending_cost%> USD</td>
+      </tr>
+    </table>
+
+    <%= form_tag({:action => :pay_bids_with_transfer, :project_id => @project.id, :id => @revision.id}, :remote => true) do %>
+      <h4>You have enough money in your account.</h4>
+      <p>
+      <% ChatsController::BID_ACCEPT_CONDITIONS.each do |condition| %>
+        <%= check_box_tag "accept[]" %> <%= condition[0] %><% if condition[1] -%>&nbsp;(<%= link_to condition[2], condition[1], :target => "_blank" %>)<% end -%>.<br />
+      <% end %>
+      </p>
+      <%= submit_tag 'Pay for the project', :style=>'padding: 0.5em 1em;', data: { disable_with: 'Pay for the project' } %>
+    <% end %>
+  <% else %>
+    <%= form_tag({ :action => :pay_bids_with_paypal}, "data-confirm" => 'You will be taken to paypal', :remote => true)  do %>
+
+      <%= render(:partial=>'shared/vat_request') %>
+
+      <div id="total_box">
+        <table class="stats">
+          <tr class="headerrow">
+            <th align="left">Work Type</th>
+            <th align="left">Language</th>
+            <% if @revision.pay_per_word? %>
+              <th align="center">Cost / word</th>
+            <% end %>
+            <th align="center">Total cost</th>
+          </tr>
+
+          <% @pending_bids.each do |bid| %>
+            <tr class='item'>
+              <td>Translation</td>
+              <td><%= bid.revision_language.language.name %></td>
+              <% if @revision.pay_per_word? %>
+                <td align="right"><%= bid.amount.to_f %> USD</td>
+              <% end %>
+              <td align="right"><span class='amount'><%= bid.translator_payment %></span> USD</td>
+            </tr>
+          <%- end %>
+
+          <% @pending_managed_works.each do |managed_work| %>
+            <tr class='item'>
+              <td>Review</td>
+              <td><%= managed_work.owner.language.name %></td>
+              <% if @revision.pay_per_word? %>
+                <td align="right"><%= managed_work.owner.selected_bid.amount.to_f * review_price_percentage %> USD</td>
+              <% end %>
+              <td align="right"><span class='amount'><%= managed_work.reviewer_payment %></span> USD</td>
+            </tr>
+          <%- end %>
+
+          <%
+          #<tr class="current_in_account">
+          #  <td colspan="<%=totals_colspan >">Currently in your account</td>'
+          #  <td>- <span class='amount'><%=@revision.client.money_account.balance ></span> USD</td></tr>"
+          # </tr>
+          %>
+
+          <tr class='subtotal'>
+            <th colspan="<%=totals_colspan %>"><b>Subtotal</b></th>
+            <th align="right"><span class="amount"><%= @revision.pending_cost%></span> USD</th>
+          </tr>
+
+
+          <tr class='tax_details' style='<%="display:none" unless @user.has_to_pay_taxes? %>'>
+            <td colspan="<%=totals_colspan %>">VAT Tax in <span class="country_name"><%=@user.country.try(:name) %></span> <span id='tax_rate'><%=@tax_rate %></span>%</td>
+            <th><span class='amount'><%=@tax_amount %></span> USD</th>
+          </tr>
+
+          <tr>
+            <th colspan="<%=totals_colspan %>">Total:</th>
+            <th><span id="total_cost"><%=@total %></span> USD</th>
+          </tr>
+        </table>
+
+        <div class="tax-notice comment" style="display: none">
+          * We will forward the VAT amount to your country, so in case you need to withdraw some of this amount, only the deposit amount can be withdrawn and not the tax amount.
+        </div>
+
+        <div>
+          <h4>Notice</h4>
+          <% if @revision.client.money_account.balance > 0 %>
+            Currently you have a positive balance of <b>$ <%=@revision.client.money_account.balance %> USD</b> in your account, if you want to use that money to pay for this project please go to your <%= link_to 'finance page', {:controller=> 'finance', :anchor =>"deposit#{@revision.client.money_account.id}_#{@revision.pending_cost - @revision.client.money_account.balance}"}, {:target=>'blank'} %> and make a deposit for <b>$ <%=(@revision.pending_cost - @revision.client.money_account.balance).round_money %> USD</b>, then come back to this screen and you will be able to use your funds to pay.
+
+          <% end %>
+        </div>
+      </div>
+
+
+      <p>
+      <% ChatsController::BID_ACCEPT_CONDITIONS.each do |condition| %>
+        <%= check_box_tag "accept[]" %> <%= condition[0] %><% if condition[1] -%>&nbsp;(<%= link_to condition[2], condition[1], :target => "_blank" %>)<% end -%>.<br />
+      <% end %>
+      </p>
+      <h4>Pay with PayPal</h4>
+      <%= image_tag 'paypal_payments.png', class: '', width: 242, height: 31, alt: 'ICanLocalize', style: 'margin: 5px;', align: 'PayPal payment options', border: 0 %><br />
+      <p class="comment">You don't need to have a PayPal account. PayPal allows you to pay with a credit card as well.</p>
+      <%= submit_tag 'Pay', :style=>'padding: 0.5em 1em;', data: { disable_with: 'Pay' } %>
+      <hr style="margin: 1em;" />
+      <h4>Other payment options</h4>
+      <p>Don't like PayPal? Have a look at <%= link_to('other payment methods',{:controller=>:finance, :action=>:payment_methods}) %>.</p>
+    <%- end %>
+  <% end %>
+</div>
+<br>
+<br>

@@ -1,0 +1,32 @@
+
+<div id="newsletter_preview">
+	<h1><%= @newsletter.subject %></h1>
+	<%= @newsletter.body_markup(false).present? ? @newsletter.body_markup(false).html_safe : nil %>
+</div>
+
+<br /><br />
+<div class="infobox"><h4>Status</h4>
+<%= show_flags(@newsletter.flags) %>
+</div>
+
+<% if !@newsletter.sql_filter.blank? %>
+	<br />
+	SQL filter:<br /><pre><%= h(@newsletter.sql_filter) %></pre>
+	<br />
+<% end %>
+
+<%= link_to('Back to list', {:action=>:index}) %> | <%= link_to('Edit', {:action=>:edit}) %> | <%= link_to('Show as plain text', {:action=>:plain}) %> | <%= link_to('Delete', {:action=>:delete, :id=>@newsletter.id}, {'data-confirm'=>'Are you sure you want to delete this newsletter?'}) %> |
+<%= link_to('Show users to notify', {:action=>:count_users}, {:class=>'rounded_but'} ) %>
+
+<h2>Test email</h2>
+The following accounts will receive the test, if you want to add any other add to the input below, otherwise leave it empty. All emails must be valid ICL accounts.
+<ul>
+  <% Newsletter::DEFAULT_TEST_EMAILS.each do |email| %>
+    <li><%= email %></li>
+  <% end %>  
+</ul>
+
+<%= form_for([:test, @newsletter], :method => :put) do |f| %>
+  <%= text_field :receipt, :email, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+  <%= f.submit 'Send' %>
+<% end %>

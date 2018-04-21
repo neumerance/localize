@@ -1,0 +1,28 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+PB_initial:
+  id: 1
+  project_id: 1
+  description: Something interesting about Photo Backup.
+  language_id: 1
+  name: initial
+  released: 1
+  creation_time: <%= (Time.now()-19*(24*60*60)).to_formatted_s(:db) %>
+  max_bid: 0.07
+  max_bid_currency: 1
+  bidding_duration: 14
+  project_completion_duration: 10
+  release_date: <%= (Time.now()-4*(24*60*60)).to_formatted_s(:db) %>
+
+PB_second:
+  id: 2
+  project_id: 1
+  description: Something interesting about Photo Backup after changes.
+  language_id: 1
+  name: second
+  released: 0
+  creation_time: <%= (Time.now()-3*(24*60*60)).to_formatted_s(:db) %>
+  max_bid: 0.07
+  max_bid_currency: 1
+  bidding_duration: 14
+  project_completion_duration: 10
+  release_date: <%= (Time.now()-2*(24*60*60)).to_formatted_s(:db) %>

@@ -1,0 +1,40 @@
+secret_token: secret_token_here
+secret_key_base: secret_key_base_here
+aws_access_key_id: please_set_aws_key_here
+aws_secret_access_key: please_set_aws_secret_here
+aws_region: please_set_aws_region_here
+
+development:
+  PAYPAL_URLS: paypal_url_here
+  PAYPAL_SIG: paypal_sig
+  PAYPAL_BUSINESS_EMAIL: paypal_business_email
+  API_USERNAME: paypal_api_username
+  API_PASSWORD: paypal_api_password
+  API_SIGNATURE: paypal_api_signature
+  # DATABASE
+  DB_HOST: host_here
+  DB_DATABASE: db_name_here
+  DB_USERNAME: db_username_here
+  DB_PASSWORD: db_password_here
+  #Email server
+  email_address: email_address_here
+  email_port: email_port_here
+  email_user_name: email_user_name_here
+  email_password: email_password_here
+  email_domain: email_domain_here
+  email_authentication: plain
+  aws_access_key_id: not_used
+  aws_secret_access_key: not_used
+  aws_region: not_used
+  #Translation proxy
+  TP_URL: tp_url_here
+  TP_SUID: TP_SUID_HERE
+  TP_ACCESSKEY: TP_ACCESSKEY_HERE
+  TP_API_VERSION: '1.0'
+  PERFORMANCE_PROFILER: 'false'
+  DJ_WEB_user: dj_user
+  DJ_WEB_PASS: dj_pass
+  TP_URL_V2: tp_staging_2
+  TP_SUID_V2: tp_suid_2
+  TP_ACCESSKEY_V2: tp_access_key_here
+  TP_API_VERSION_V2: "1.0"

@@ -1,0 +1,13 @@
+<div style="width: 16em; float: right; margin: 0 0 1em 3em; padding: 1em; background-color: #F0F0FF; border: 1px solid #E8E8E8;">
+	<h2 style="padding-top:0; margin-top:0;">About ICanLocalize</h2>
+	<p>ICanLocalize offers you <a href="http://www.icanlocalize.com/site/">professional translation</a>, done by experienced translators, at an amazingly low cost.</p>
+	<p>Our self-service translation system reduces costs up to 60%, making it affordable to individuals and small businesses.</p>
+</div>
+<p class="quote">&ldquo;<%= pre_format(@message) %>&rdquo;</p>
+<div style="text-align:right;"><i><b><%= @name %></b></i><br /><%= disp_date(@date) %></div>
+<br />
+<h3>Do you need translation work?</h3>
+<p>ICanLocalize can help with website translation, software localization, general texts and office documents.</p>
+<br /><div class="large_button" style="width:12em;"><%= link_to('Get Started &raquo;'.html_safe, {:controller=>:users, :action=>:new, :utype=>'Client'}) %></div>
+<p class="button_comment">You pay only for the services you need and when you need them.</p>
+<br style="clear:both;" />

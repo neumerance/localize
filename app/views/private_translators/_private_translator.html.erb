@@ -1,0 +1,10 @@
+<tr>
+	<td><%= user_link(private_translator.translator) %></td>
+	<td><%= private_translator.translator.full_real_name %></td>
+	<td><%= PrivateTranslator::STATUS_TEXT[private_translator.status] %></td>
+	<td><% if private_translator.status == PRIVATE_TRANSLATOR_PENDING %>
+			<%= button_to('Resend invitation', {:action=>:resend, :id=>private_translator.id}, 'data-confirm'=>'We will resend the invitation to the translator. Please allow the translator a few days to respond.') %> &nbsp;
+		<% end %>
+		<%= button_to('Remove', {:action=>:delete, :id=>private_translator.id}, 'data-confirm'=>'This translator will not be able to work on your projects. Are you sure?') %>
+	</td>
+</tr>

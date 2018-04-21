@@ -1,0 +1,24 @@
+<% if @show_number_of_pages %>
+	<div class="pager_control">
+		Showing page <%= form_tag({:controller=>:projects, :action=>:index}, {:method=>'GET'}) %>
+			<%= select_tag( :page, options_for_select(@list_of_pages,projects.number), {:onchange=>"submit()"}) %>
+		<%= link_to("Prev", projects_url(:page => projects.prev.number, :status=>@current_project_status, :prev_status=>@current_project_status)) if projects.prev? %>
+		<%= link_to("Next", projects_url(:page => projects.next.number, :status=>@current_project_status, :prev_status=>@current_project_status)) if projects.next? %>
+		&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to('Summary of all projects', {:controller=>:projects, :action=>'summary'}) %>
+		<div class="subframe"><p><b>Project filter</b></p>
+			Project status: <%= select_tag(:status, options_for_select(@possible_project_status, @current_project_status)) %>
+      <% if @user.has_supporter_privileges? %>
+        <br/>
+        Project name: <%= text_field_tag :name, @current_name, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+      <% end %>
+			<%= submit_tag('Apply', data: { disable_with: 'Apply' }) %>
+		</div>
+		<%= hidden_field_tag(:prev_status, @current_project_status) %>
+		</form>
+	</div>
+<% end %>
+<%= infotab_header(['Project','Statistics','Release status','Translations'],{},100,'id="resource_projects"' ) %>
+  <% projects.each do |project| %>
+    <%= render( :partial => "/projects/project", locals: { project: project } ) %>
+  <% end %>
+</table>

@@ -1,0 +1,11 @@
+<% if @comm_errors.length > 0 %>
+	<%= infotab_header(['Kind of error','Description','Status','Created at','Actions']) %>
+	<%= render(:partial=>'comm_error', :collection=>@comm_errors) %>
+	</table>
+<% else %>
+	<p>This project has no more open errors.</p>
+<% end %>
+
+<div class="inter_tab_spacer"></div>
+
+<%= link_to('Back to project', { controller: '/wpml/websites', :action=>:show }) %>

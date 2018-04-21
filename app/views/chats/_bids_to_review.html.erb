@@ -1,0 +1,23 @@
+<div class="actionrequired">
+	<h5>Confirm review complete</h5>
+
+	<table class="minitable" cellspacing="0" cellpadding="3">
+		<tr class="headerrow"><th>Language</th><th align="center">Payment for your review</th></tr>
+      <tr>
+        <td><%=@bid.revision_language.language.name%></td>
+        <td><%= @revision.reviewer_payment(@bid)%> USD</td>
+      </tr>
+	</table>
+
+	<%= form_tag({ :action => :finalize_review  }, :remote => true) do %>
+    <%= hidden_field_tag :bid_id, @bid.id %>
+		<p>
+		<% ChatsController::BID_REVIEW_CONDITIONS.each_with_index do |condition, idx| %>
+			<%= check_box_tag "accept[#{idx}]" %> <%= condition[0] %><% if condition[1] -%>&nbsp;(<%= link_to condition[2], condition[1], :target => "_blank" %>)<% end -%>.<br />
+		<% end %>
+		</p>
+		<%= submit_tag 'Approve completion of this review', data: { disable_with: 'Approve completion of this review' } %>
+	<% end %>
+
+	<br /><br /><%= link_to "I don't want to finalize the review now", :action => :show  %>
+</div>

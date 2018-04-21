@@ -1,0 +1,4 @@
+<% if @new_arbitrations && (@new_arbitrations.length > 0) %>
+	<h2>New arbitrations</h2>
+	<%= render(:partial=>'arbitrations', :object=>@new_arbitrations) %>
+<% end %>

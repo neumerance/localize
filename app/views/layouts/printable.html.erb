@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <title><%= truncate(@header, length: 50, ommision: '...') -%> [ICanLocalize]</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta http-equiv="Content-Style-Type" content="text/css" />
+      <meta http-equiv="Content-Script-Type" content="text/javascript" />
+      <style type="text/css">
+      .noprint {display: none;}
+      </style>
+      <link rel="shortcut icon" href="/assets/favicon.png" type="image/png" />
+      <link rel="icon" href="/assets/favicon.png" type="image/png" />
+      <%= stylesheet_link_tag    'application' %>
+      <%= stylesheet_link_tag    'base' %>
+      <%= javascript_include_tag 'application' %>
+      <%= javascript_include_tag 'base' %>
+      <%= csrf_meta_tags %>
+  </head>
+	<body> <!-- style="margin: 1em; padding: 1em; border: 1px solid #808080;" -->
+	  
+	  
+	<h1><%= truncate(@header, length: 60, ommision: '...') %></h1>
+	<%= yield :layout %>
+	
+	<br />
+	<div id="printcontrol"><table cellspacing="0" cellpadding="0" align="right">
+		<tbody>
+		<tr>
+		<td align="right">
+		<form action="#">
+		<input type="submit" onclick="javascript:printpage();return false;" value="<%= _('Print') %>" name="printme" />
+		<input type="button" onclick="window.close();return(false);" value="<%= _('Close Window') %>" name="closeme" />
+		</form>
+		</td>
+		</tr>
+		</tbody>
+		</table>
+	</div>
+	<br clear="all" />
+
+    </body>
+</html>

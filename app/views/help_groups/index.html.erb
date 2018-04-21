@@ -1,0 +1,16 @@
+<%= infotab_header(['Name','Order','Actions']) %>
+
+<% for help_group in @help_groups %>
+  <tr>
+    <td><%=h help_group.name %></td>
+    <td><%=h help_group.order %></td>
+    <td><%= link_to 'Show', help_group %> | 
+    <%= link_to 'Edit', edit_help_group_path(help_group) %> |
+    <%= link_to 'Destroy', help_group, 'data-confirm' => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New help_group', new_help_group_path %>

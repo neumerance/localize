@@ -1,0 +1,16 @@
+<% if @list_of_pages %>
+  <div class="pager_control">
+    Showing page
+    <%= form_tag({:action=>:external_transactions}, {:method=>'GET'}) %>
+      <span><%= select_tag( :page, options_for_select(@list_of_pages,@transactions.number), {:onchange=>"submit()"}) %> <%= link_to("Prev", url_for(:action=>:external_transactions, :page=>@transactions.prev.number)) if @transactions.prev? %> <%= link_to("Next", url_for(:action=>:external_transactions, :page=>@transactions.next.number)) if @transactions.next? %></span>
+    </form>
+  </div>
+<% end %>
+
+<%= infotab_header(['ID', 'Time', 'From', 'To', 'Description', 'Amount']) %>
+
+<% @transactions.each do |money_transaction| %>
+  <%= render(:partial=>'money_transaction', locals: {money_transaction: money_transaction} ) %>
+<% end %>
+
+</table>

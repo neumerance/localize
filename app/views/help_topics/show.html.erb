@@ -1,0 +1,23 @@
+<p>
+  <b>Title:</b>
+  <%=h @help_topic.title %>
+</p>
+
+<p>
+  <b>Summary:</b>
+  <%=h @help_topic.summary %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%=h @help_topic.url %>
+</p>
+
+<p>
+  <b>Display:</b>
+  <%=h @help_topic.display %>
+</p>
+
+
+<%= link_to 'Edit', edit_help_topic_path(@help_topic) %> |
+<%= link_to 'Back', help_topics_path %>

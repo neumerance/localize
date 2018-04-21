@@ -1,0 +1,20 @@
+<p><%= _('Dear %s')%@user.full_real_name %>,</p>
+
+<p><%= _("Thank you for your payment. We've processed your deposit of %.2f USD and credited your ICanLocalize account.")%@invoice.gross_amount %></p>
+
+<h4 style="color: #144081 !important; font-size: 18px !important;font-weight: bold !important;"> <%= _('Summary') %> </h4>
+
+<ul>
+  <li><%= _('Paid for: %s')%@invoice.description(@user) %></li>
+  <li><%= _('Amount paid: %.2f USD')%@invoice.gross_amount %></li>
+  <li><%= _('Paid on: %s')%disp_time(@invoice.modify_time) %></li>
+  <li><%= _('Transaction ID: %s')%@invoice.txn %></li>
+</ul>
+
+
+<h4 style="color: #144081 !important; font-size: 18px !important;font-weight: bold !important;"> Printable tax invoice </h4>
+
+1. <%= link_to('Enter your company details for the tax invoice', url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:finance, :action=>:invoice, :id=>@invoice.id } )) %><br/>
+2. <%= link_to('Download the PDF tax invoice', url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:finance, :action=>:invoice, :id=>@invoice.id, format: :pdf } )) %>
+
+<br /><br />

@@ -1,0 +1,7 @@
+<% if @warning %>
+  alert('<%= @warning %>');
+<% elsif @reload %>
+  location.reload();
+<% else %>
+  jQuery('#<%= @partial %>').html('<%= escape_javascript(render :partial => @partial) %>');
+<% end %>

@@ -1,0 +1,41 @@
+.bundle
+log/*.log
+tags
+public/captcha_images/
+doc/coverage/
+index/
+private/
+*swp
+config/initializers/disable_ar_logging.rb
+*pyc
+.idea
+.rvmrc
+.powenv
+tmp/
+.DS_Store
+nohup.out
+vendor/plugins/rails_upgrade
+db/.data
+log/email_notifier
+
+# tests related
+test/output/*.*
+test/reports
+coverage/
+
+# Ignore application configuration
+/config/application.yml
+public/images/development/*
+
+# Ignore profiling files
+/public/profile/*# React on Rails
+npm-debug.log*
+node_modules
+
+# Generated js bundles
+/app/assets/webpack/*
+
+public/profile/*
+minitest_reports
+.local
+.byebug_history

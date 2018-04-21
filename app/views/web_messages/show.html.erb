@@ -1,0 +1,114 @@
+<div class="contactstatus">
+	<p><%= items_list(@message_info).html_safe %></p>
+	<% if (@can_modify_review_status) %>
+		<div style='margin-bottom: 5px;'>
+		<% if @review_enabled %>
+			<%= link_to(
+							_('Disable Review'),
+							{:controller=>:managed_works, :action=>:disable, :id=>@web_message.managed_work.id, :active=>MANAGED_WORK_INACTIVE},
+							"data-with" => 'review_change_needs_refresh=1',
+							:id => 'disable_review',
+              :class => 'rounded_but_orange',
+              :style => 'background-color: green; border: 1pt solid darkgreen',
+              :remote => true,
+              :method => :post
+						) %>
+		<% else %>
+			<%= link_to(
+							_('Enable Review'),
+							{:controller=>:web_messages, :action=>:enable_review, :id=>@web_message.id},
+							"data-with" => 'review_change_needs_refresh=1',
+							:id => 'enable_review',
+              :class => 'rounded_but_orange',
+              :remote => true
+						) %>
+		<% end %>
+		</div>
+	<% end %>
+</div>
+
+<% if @user.has_client_privileges? %>
+	<% if @web_message.translation_status == TRANSLATION_NEEDED && !@web_message.has_enough_money_for_translation? %>
+	<div class="important-message " style="width: 60%;">
+		<p class="warning">
+			There are no funds in your account! Translators won't be able to see your instant job until payment is made.
+			<%= link_to('Make deposit &raquo;'.html_safe, {:escape=>false, :controller=>:finance, :action=>:make_deposit, :amount=> @web_message.price}) %>
+			</p>
+	</div>
+	<% end %>
+<% end %>
+<div class="clear"></div>
+
+<% if (@user && @user.has_supporter_privileges?) %>
+<%= render(:partial=>'message_digest', :object=>@web_message) %>
+<% end %>
+
+<% if @web_message.managed_work && (@web_message.managed_work.active == MANAGED_WORK_ACTIVE) && (@web_message.managed_work.translation_status == MANAGED_WORK_REVIEWING) && (@user == @web_message.managed_work.translator) %>
+<div class="errorExplanation">
+	<br /><%= link_to('Review this translation',{:action=>:review}, :class=>'rounded_but_bold') %><br /><br />
+	<p>You need to review this translation. When reviewing, you can either create issues for the translator or the client, or accept the translation.</p>
+</div>
+<% end %>
+
+<% if @can_edit %>
+<div class="errorExplanation">
+	This job has open issue(s). If you need to, <%= link_to('edit the translation', {:action=>:edit}) %>. Then, <a href="#message_issues">close all open issues</a>.
+</div>
+<% end %>
+
+<% if @user.has_client_privileges? and @web_message.complex? %>
+	<div class="errorExplanation">
+	This instant translation project was flagged as complex by our translators. This means that it can't be completed without further communication with the translator either because its context is not clear or it has terms that need clarification. If you would like to translate it, please create a new <%= link_to "Bidding project", new_project_url %>
+	</div>
+<% end %>
+
+<h2>Text to translate</h2>
+<div class="code_snip" style="<%= language_dir_css_attribute(@web_message.original_language) + text_flow_css_attribute(@web_message.original_language) %>">
+	<%= highlight_glossary_terms(untokanize(@web_message.original_text), @glossary, @glossary_client).html_safe %>
+</div>
+
+<% if !@web_message.comment.blank? %>
+	<br /><h2>Comment to translator</h2>
+	<div class="code_snip"><%= pre_format(@web_message.comment) %></div>
+<% end %>
+
+<% if [TRANSLATION_COMPLETE,TRANSLATION_NOT_DELIVERED].include?(@web_message.translation_status) %>
+<br />
+<h2>Translated text</h2>
+<p>This text was translated by <%= user_link(@web_message.translator) %>.</p>
+<% if @web_message.managed_work && (@web_message.managed_work.active == MANAGED_WORK_ACTIVE) %>
+<p>Reviewer: <%= @web_message.managed_work.translator ? user_link(@web_message.managed_work.translator) : 'not assigned' %>.</p>
+<% end %>
+
+<% if @user[:type] != 'Translator' %>
+<p>You can select and copy the translation from this window or <%= link_to(_('Download as a text file'), {:action=>:translation, :id=>@web_message.id}) %>.</p>
+<%= form_tag('#', :style=>language_dir_css_attribute(@web_message.destination_language) ) do %>
+	<%= text_area_tag(:visitor_body, @web_message.decoded_translation(@user), {:rows=>12, :cols=>100, :style=>'width: 100%;', maxlength: COMMON_NOTE}) %>
+<% end %>
+
+<% else %>
+<div class="code_snip"><%= pre_format(@web_message.decoded_translation(@user)) %></div>
+<% end %>
+
+<% end %>
+<div id="reply">
+
+	<% if flash[:ack] %>
+	<div class="errorExplanation">
+	  <%= pre_format(flash[:ack]) %>
+	</div>
+	<% end %>
+
+	<div class="inter_tab_spacer"></div>
+	<div id="ask_for_help">
+		<%= issues_for_object(@web_message,@potential_users) %>
+	</div>
+</div>
+
+<div class="inter_tab_spacer"></div>
+
+<hr /><br />
+<% if @can_delete %>
+<div class="errorExplanation"><%= button_to(_('Delete this project'), {:action=>:delete, :id=>@web_message.id}, 'data-confirm'=>_('Are you sure you want to delete this project?')) %><br />If you need to make changes in the project, delete it and create a new one.</div>
+<% end %>
+<%= link_to(_('Back to the list of Instant Translation projects'), (@user.has_admin_privileges? ? {:controller => :supporter, :action => :web_messages} : {:action=>:index}) ) %>

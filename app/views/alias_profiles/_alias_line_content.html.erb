@@ -1,0 +1,13 @@
+<td style="width: 10%"><%= alias_line.email %></td>
+<td style="width: 10%" id="password_<%=alias_line.alias_profile.id%>">
+	<%= render partial: 'alias_profiles/show_password', :locals => {:alias_profile => alias_line.alias_profile, :error => nil} %>
+</td>
+<td style="width: 35%" id="projects_<%=alias_line.alias_profile.id%>">
+	<%= render partial: 'alias_profiles/show_projects', :locals => {:alias_profile => alias_line.alias_profile, :error => nil}%>
+</td>
+<td style="width: 35%" id="financial_<%=alias_line.alias_profile.id%>">
+	<%= render partial: 'alias_profiles/show_financial', :locals => {:alias_profile => alias_line.alias_profile, :error => nil} %>
+</td>
+<td style="width: 10%">
+    <%= link_to 'Delete', "/alias_profiles/destroy_alias/#{alias_line.alias_profile.id}", :method => :delete, 'data-confirm' => 'Are you sure?', :remote => true %>
+</td>

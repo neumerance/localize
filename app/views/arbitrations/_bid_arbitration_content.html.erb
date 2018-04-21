@@ -1,0 +1,35 @@
+
+<% if @arbitration.status != ARBITRATION_CLOSED %>
+	<p>This arbitration is being run between you and the other party. When you reach an agreement, the arbitration will be concluded and the work will be closed.</p>
+	<%= form_tag({ :action => 'ask_for_supporter', :id=>@arbitration.id},
+            "data-confirm" => 'Are you sure you want to change this arbitration to be run by a support person? Once you make this change, mutual agreement arbitration will not be possible.',
+            :remote => true
+        ) do %>
+		<%= submit_tag 'Ask for a support person to manage this arbitration', data: { disable_with: 'Ask for a support person to manage this arbitration' } %>
+	<% end %>
+<% else %>
+	<p>This arbitration was performed between the client and the translator.</p>
+<% end %>
+<div class="inter_tab_spacer"></div>
+
+<%= infotab_top('Request details', '') %>
+<%= infotab_header(['Request made by','Other party','Regarding bid','Work amount']) %>
+	<tr>
+		<td><%= user_link(@arbitration.initiator) %></td>
+		<td><%= user_link(@arbitration.against) %></td>
+		<td><%= bid_link(@arbitration.object, 'translation of '.html_safe + content_tag(:b, @arbitration.object.chat.revision.project.name) + ' to '.html_safe + content_tag(:b, @arbitration.object.revision_language.language.name) ) %></td>
+		<td><strong><%= @work_amount %> <%= @work_currency.disp_name.html_safe %></strong></td>
+	</tr>
+</table>
+<div class="inter_tab_spacer"></div>
+
+<%= infotab_top('Offers to complete this arbitration', '') %>
+<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+	<% if @accepted_offer %>
+		<%= render(:partial=>'accepted_offer') %>
+	<% else %>
+		<div id="your_offer" class="box_margin"><%= render(:partial=>'your_offer') %></div>
+		<div id="other_offer"  class="box_margin"><%= render(:partial=>'other_offer') %></div>
+	<% end %>
+</td></tr></table>
+<div class="inter_tab_spacer"></div>

@@ -1,0 +1,17 @@
+<% if @editing_output_filename %>
+	<%= form_tag({:action=>:edit_output_name, :resource_language_id=>output_filename.id}, :remote => true) do %>
+		<%= text_field_tag(:output_name, output_filename.get_output_name(), maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE) %>
+		<p class="comment"><b>*</b> stands for the name of the original file.</p>
+		<%= submit_tag 'Save', data: { disable_with: 'Save' } %>
+	<% end %>
+	<%= form_tag({:action=>:edit_output_name, :req=>:hide, :resource_language_id=>output_filename.id }, :remote => true) do %>
+		<%= submit_tag 'Cancel', data: { disable_with: 'Cancel' } %>
+	<% end %>
+<% else %>
+	<p><%= h(output_filename.get_output_name()) %></p>
+	<%= form_tag({:action=>:edit_output_name, :req=>:show, :resource_language_id=>output_filename.id }, :remote => true) do %>
+		<% if @user.can_modify?(@text_resource) %>
+			<%= submit_tag 'Edit', data: { disable_with: 'Edit' } %>
+		<% end %>
+	<% end %>
+<% end %>

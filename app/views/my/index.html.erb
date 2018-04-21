@@ -1,0 +1,30 @@
+<h2>About ICanLocalize affiliate program</h2>
+<p><b>When you refer clients to use our services, you're helping us and we'd like to repay you.</b></p>
+<p>We'll credit your account with <b><%= "%.0f"%(AFFILIATE_COMMISSION_RATE*100) %>% of what we make</b> (our 20% earning from the total of every translation job). You can withdraw this money to your PayPal account.</p>
+<h2>People who you invited</h2>
+<p><%= link_to_if(@user.invitees.count > 0, '%d people' % @user.invitees.count,{:action=>:report}) %> are associated with your ICanLocalize account.</p>
+<h2>Earning affiliate commission</h2>
+<div style="width:90%; vertical-align: top; border: 2pt solid #D0D0FF; padding: 1em; margin: 2em;">
+	<h3>Invite others using an affiliate link</h3>
+
+	<p>Any new client that comes through your invitation page is associated with your account and you earn an affiliate commission from any translation we do for them.</p>
+	<ul><li style="margin-bottom:1em;">Link:<br />
+	<form action="#"><input type="text" name="url" size="40" value="http://www.icanlocalize.com/my/invite/<%= @user.id %>" /></form></li>
+	<li>HTML to place in your website:<br />
+	<form action="#"><input type="text" name="url" size="80" value="<%= @invitation_html.html_safe %>" /></form>
+	</li></ul>
+
+	<div class="errorExplanation">
+	<% if @user.invitation && (@user.invitation.active == 1) %>
+		<p>Your <%= link_to(_('invitation page'), {:protocol=>'http', :action=>:invite, :id=>@user.id}, {:target=>'_blank'}) %> - <%= link_to('edit', {:action=>:edit}) %></p>
+	<% else %>
+		<% if @user.invitation %>
+			<p>Your invitation is not live. We will still record visitors that you send us and redirect them to our home page. <%= link_to('Edit or enable your invitation &raquo;'.html_safe, {:action=>:edit}) %></p>
+		<% else %>
+			<p>You can create a personalized invitation page, telling visitors why you recommend ICanLocalize.<br />
+			<span class="comment">Note that this is optional. Without an invitation page, we'll still record visitors that you refer to us. We'll send them directly to our home page.</span></p>
+			<p><%= link_to('Create invitation page now', {:action=>:edit}, {:class=>'rounded_but_bold'}) %></p>
+		<% end %>
+	<% end %>
+	</div>
+</div>

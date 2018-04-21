@@ -1,0 +1,4 @@
+<div class="pager_control"><%= link_to('Show details', {:action=>'index'}) %></div>
+<%= infotab_header(['Project','Status for this project', 'Translation work'] ) %>
+	<%= render(:partial => "/projects/project_summary", :collection => @projects) %>
+</table>

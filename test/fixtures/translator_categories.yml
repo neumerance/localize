@@ -1,0 +1,10 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+orit_medical:
+  id: 1
+  translator_id: 3
+  category_id: 1
+
+orit_financial:
+  id: 2
+  translator_id: 3
+  category_id: 2

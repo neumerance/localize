@@ -1,0 +1,5 @@
+<tr>
+	<td><%= web_message.original_language.name %> to <%= web_message.destination_language.name %></td>
+	<td><%= pluralize(web_message.word_count, 'word') %></td>
+	<td><%= web_message.translator_payment %> USD</td>
+</tr>

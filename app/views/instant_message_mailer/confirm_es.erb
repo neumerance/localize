@@ -1,0 +1,11 @@
+Hola <%= @web_dialog.full_name %>,
+
+Su mensaje fue recibido y será respondido tan pronto como sea posible. 
+Mientras tanto, si desea enviarnos otro mensaje, o ver el registro completo de sus comentarios y de nuestras respuestas, por favor pulse el botón del ratón sobre el siguiente enlace:
+
+<%= url_for({:escape => false, :only_path => false, :controller=>:web_dialogs, :action=>:show, :id=>@web_dialog.id, :accesskey=>@web_dialog.accesskey, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+* Por favor, tenga en cuenta que en esta casilla de correo no se controlan las respuestas.
+
+Atentamente,
+<%= @signature %>

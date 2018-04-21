@@ -1,0 +1,13 @@
+<h3>Project infomation</h3>
+<table class="stats">
+  <tr>
+    <th style="text-align: left; width: 200px;">Deadline:</th>
+    <td><%=@deadline%></td>
+  </tr>
+  <tr>
+    <th style="text-align: left;">Words for translation:</th>
+    <td><%=@words%></td>
+  </tr>
+</table>
+<br>
+<p>All applications will be send to this e-mail: <%= @website.client.email %>. (<%=link_to "change", user_path(@website.client)%>)</p>

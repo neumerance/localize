@@ -1,0 +1,113 @@
+<p><%= _('These are the string in project ') %><%= link_to(@text_resource.name, {:controller=>:text_resources, :action=>:show, :id=>@text_resource.id}) %></p>
+<% if ([@user, @user.master_account].include?(@text_resource.client)) || @user.has_supporter_privileges? %>
+<p><%= link_to(_('String size report'),{:action=>:size_report}) %></p>
+<% end %>
+<br />
+<div class="infobox"><h4><%= _("Translation status") %></h4>
+	<div style="margin: 1em;">
+	<% [STRING_TRANSLATION_COMPLETE, STRING_TRANSLATION_NEEDS_UPDATE, STRING_TRANSLATION_BEING_TRANSLATED,STRING_TRANSLATION_NEEDS_REVIEW].each do |status| %>
+		<div style="display: inline; padding: 0.5em; margin: 0.5em; border: 1pt solid #808080; background-color: <%= StringTranslation::TRANSLATION_COLOR_CODE[status] %>;">
+			<%= (@user[:type] == 'Translator') ? StringTranslation::TRANSLATOR_STATUS_TEXT[status] : StringTranslation::STATUS_TEXT[status] %>
+		</div>
+	<% end %>
+	</div>
+</div>
+
+<div class="inter_tab_space"></div>
+
+<% if @next_in_progress_str and @text_resource.resource_strings.any? %>
+	<%= link_to("Next string to ".html_safe + @next_label + " &raquo;".html_safe, {:action=>:show, :id=>@next_in_progress_str.id}, :class=>'rounded_but_bold') %>
+	<br style="clear: both;" /><br /><br />
+<% elsif @completed_chats && (@completed_chats.length > 0) %>
+	<div style="margin: 2em;" class="red_message">
+		<p><%= _("You have completed translation to %s.") % (@completed_chats.collect { |rc| rc.resource_language.language.name }).join(', ') %></p>
+		<p><%= (_("When you are happy with the translation, go back to the <b>chat with the client</b> and indicate that it is complete.")).html_safe %></p><br />
+		<% @completed_chats.each do |rc| %>
+      <%= link_to(_("Indicate that %s translation is complete") % rc.resource_language.language.name , {:controller=>:resource_chats, :action=>:show, :id=>rc.id, :text_resource_id=>@text_resource.id}) %>
+      <br /><br /><br />
+    <% end %>
+	</div>
+<% elsif (@user[:type] == 'Translator') && !@filter %>
+	<% if @is_reviewer %>
+		<p style="margin: 2em;" class="red_message"><%= _("There is nothing to review yet in this project. When the translator completes the work, we will notify you.") %></p>
+	<% else %>
+		<p style="margin: 2em;" class="red_message"><%= _("There is no pending work on this project.") %></p>
+	<% end %>
+<% end %>
+
+<div class="infobox"><h4><%= _("Search filter") %></h4>
+<%= form_tag({ :action=>:index },
+						{:method => :get}) do %>
+	<table cellspacing="5">
+		<% unless @user.is_a? Translator %>
+		<tr><td><%= _("File:") %></td>
+      <td>
+      <%= select_tag :file, options_for_select(@text_resource.resource_uploads.map(&:orig_filename).uniq, @file), prompt: '-- All --' %>
+      </td>
+		</tr>
+		<% end %>
+		<tr><td><%= _("Label:") %></td><td><%= text_field_tag :token, @token, {:size=>COMMON_FIELD_SIZE, maxlength: COMMON_FIELD} %></td></tr>
+		<tr><td><%= _("Original text:") %></td><td><%= text_field_tag :txt, @txt, {:size=>COMMON_FIELD_SIZE, maxlength: COMMON_FIELD} %></td></tr>
+		<tr><td><%= _("Translation:") %></td><td><%= text_field_tag :translation, @translation, {:size=>COMMON_FIELD_SIZE, maxlength: COMMON_FIELD} %></td></tr>
+		<tr><td><%= _("Strings per page:") %></td><td><%= number_field_tag :per_page, @per_page, {:size=>COMMON_FIELD_SIZE, maxlength: 4, min: 1} %></td></tr>
+	</table>
+
+	<p><%= _("Translation status:") %> <%= select_tag(:status, options_for_select(@possible_status,@status)) %></p>
+
+	<p><label><%= check_box_tag(:exact_match,1,@exact_match) %> <%= _("Exact match") %></label></p>
+	<% unless @user.is_a? Translator %>
+	<p><label><%= check_box_tag(:exclude_duplicates,1,@exclude_duplicates) %> <%= _("Exclude Duplicates") %></label></p>
+	<% end %>
+	<%= hidden_field_tag :set_args, 1 %>
+
+	<%= submit_tag(_('Apply filter'), :style=>'padding: 1em;', data: { disable_with: _('Apply filter') }) %>
+	&nbsp;&nbsp;&nbsp;<%= link_to(_('Start over'), {:action=>:index, :set_args=>1}) %>
+<% end %>
+</div>
+
+<a name="strings_table"></a>
+<% if @filter %>
+	<p><%= _("Filtered list of strings.") %></p>
+<% elsif @size_ratio %>
+	<p><%= _("Showing all strings with sizes between %s and %s of the size of the original strings.") % [(@low_ratio*100).to_i,(@high_ratio*100).to_i]%> <%= link_to('Show all',{:action=>:index, :set_args=>1}) %></p>
+<% else %>
+	<p><%= _("This list shows the strings in this project. You can click on each string to edit its translation.") %></p>
+<% end %>
+
+<% if @show_number_of_pages %>
+	<div class="pager_control">
+		<%= _("Showing page") %> <%= form_tag({:action=>:index, :anchor=>'strings_table'}, {:method=>'GET'}) %>
+			<%= select_tag( :page, options_for_select(@list_of_pages,@resource_strings.number), {:onchange=>"submit()"}) %>
+		<%= link_to(_("Prev"), {:action=>:index, :anchor=>'strings_table', :page => @resource_strings.prev.number}) if @resource_strings.prev? %>
+		<%= link_to(_("Next"), {:action=>:index, :anchor=>'strings_table', :page => @resource_strings.next.number}) if @resource_strings.next? %>
+	</form>
+	</div>
+<% end %>
+
+<% if @resource_strings.count > 0 %>
+	<%= form_tag({:action=>'delete_selected'}, :id=>'resource_strings_list') do %>
+		<%= infotab_header((([@user, @user.master_account].include?(@text_resource.client)) ? ['Select'] : []) + ['File','Label',@text_resource.language.name + ' <span class="comment" style="font-weight:normal;">(original)</span>'] + (@languages.collect { |l| l.name }) ) %>
+		<%= display_resource_strings(@resource_strings, @languages, @text_resource.language) %>
+		</table>
+		<br />
+		<% if [@user, @user.master_account].include?(@text_resource.client) %>
+		<p><a href="#" onclick="toggleCheckBoxes('resource_strings_list'); return false;">Select all</a> &nbsp; <%= submit_tag('Delete selected', :onclick=>"return confirm('Are you sure?');", data: { disable_with: 'Processing...' } ) %></p>
+		<% end %>
+	<% end %>
+<% else %>
+	<p class="warning"><%= _("No results to show.") %></p>
+<% end %>
+<% if @show_number_of_pages %>
+	<div class="pager_control">
+		<%= _("Showing page") %> <%= form_tag({:action=>:index, :anchor=>'strings_table'}, {:method=>'GET'}) %>
+			<%= select_tag( :page, options_for_select(@list_of_pages,@resource_strings.number), {:onchange=>"submit()"}) %>
+		<%= link_to(_("Prev"), {:action=>:index, :anchor=>'strings_table', :page => @resource_strings.prev.number}) if @resource_strings.prev? %>
+		<%= link_to(_("Next"), {:action=>:index, :anchor=>'strings_table', :page => @resource_strings.next.number}) if @resource_strings.next? %>
+	</form>
+	</div>
+<% end %>
+
+<% if [@user, @user.master_account].include?(@text_resource.client) and @user.can_modify?(@text_resource) %>
+	<br /><hr /><br />
+	<p><%= link_to(_('Manually add a new string'), {:action=>:new}) %></p>
+<% end %>

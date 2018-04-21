@@ -1,0 +1,11 @@
+<div style="text-align: center;">
+  <%= image_tag "icl_big_logo.png" %>
+</div>
+
+<h1>Keyword report</h1>
+
+<%= render :partial => 'report_table' %>
+
+<div> 
+  <%= link_to "Download the report", download_keyword_project_url(@keyword_project) %>
+</div>

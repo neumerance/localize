@@ -1,0 +1,20 @@
+<h1>Listing site_notices</h1>
+
+<%= infotab_header(['Active','Start time','End time','Txt', '', '', '']) %>
+
+<% for site_notice in @site_notices %>
+  <tr>
+    <td><%=h site_notice.active %></td>
+    <td><%=h site_notice.start_time %></td>
+    <td><%=h site_notice.end_time %></td>
+    <td <% if site_notice.is_active? %>style="background-color:#FFc0c0;"<% end %>><%= site_notice.txt.html_safe %></td>
+    <td><%= link_to 'Show', site_notice %></td>
+    <td><%= link_to 'Edit', edit_site_notice_path(site_notice) %></td>
+    <td><%= link_to 'Destroy', site_notice, 'data-confirm' => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New site_notice', new_site_notice_path %>

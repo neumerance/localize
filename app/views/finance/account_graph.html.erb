@@ -1,0 +1,31 @@
+<div id="container" style="width: 100%; height: 400px; margin: 0 auto; overlfow: auto;"></div>
+
+
+<script>
+  jQuery(function () {
+    Highcharts.chart('container', {
+      chart: {
+        type: 'spline'
+      },
+      title: {
+        text: 'Balance Graph From Account'
+      },
+      xAxis: {
+        categories: <%= @data[:date].to_json.html_safe %>,
+        type: 'datetime',
+        dateTimeLabelFormats: {
+          day: '%d %b %Y'
+        }
+      },
+      series: [{
+        name: 'Calculated Balance',
+        data: <%= @data[:calc_balance].to_json %>
+      }],
+      navigation: {
+        menuItemStyle: {
+          fontSize: '10px'
+        }
+      }
+    });
+  });
+</script>

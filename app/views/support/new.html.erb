@@ -1,0 +1,64 @@
+<%= my_error_messages_for :support_ticket %>
+<% if !@compact_display %>
+<div class="red_message">
+<% if @hide_support_department %>
+	<h3><%= _('Tell us about your project') %></h3>
+	<p><%= _("If it's already online, tell us the URL. Otherwise, please explain about your project and what you need help with.") %></p>
+<% else %>
+	<h3><%= _('Help us help you') %></h3>
+	<p><%= _("If you need help with a particular project, select the name from the list. If you can't find the project in the list, paste the link in the ticket.") %></p>
+	<p><%= _('To get the link to the project, go to the project page using a browser (not Translation Assistant) and copy the full address.') %></p>
+<% end %>
+</div><br />
+<% end %>
+
+<%= form_for(:support_ticket, :url=>{:action=>:create, :retry=>'new'}, :html=>{:multipart=>true}) do |f| %>
+	<table border="0" cellpadding="5">
+		<% if @hide_support_department && !@support_ticket.support_department_id.blank? %>
+			<%= f.hidden_field(:support_department_id) %>
+		<% else %>
+			<tr><td id="supportDepartments" valign="top"><%= _('Support department') %></td><td><%= support_departments(f, @support_ticket, :support_department_id).html_safe %></td></tr>
+		<% end %>
+    <% if @user and !@user.has_supporter_privileges? and !@user.is_a? Partner%>
+      <tr>
+        <td valign="top"><%= _('Project') %></td>
+        <td><%= select_tag :project, user_projects_options(selected: params[:project]), style: 'width: 400px' %></td>
+      </tr>
+    <% end %>
+		<tr><td valign="top"><%= _('Subject') %></td><td><%= f.text_field :subject, :size=>60, maxlength: COMMON_FIELD %></td></tr>
+		<tr><td valign="top"><%= _('Detailed question') %></td><td><%= f.text_area :message, :rows=>8, :cols=>60, :size=>60, maxlength: COMMON_NOTE %></td></tr>
+    <tr class="wp-credentials <%= 'hide' unless @show_wp_credentials %>"><td></td><td><span style="display:block;width: 430px;font-style: italic;border:1px solid #ccc;padding: 5px;">We will do our best to solve the problem with the description and screenshots attached, but sometimes the help of our dedicated WPML supporter is required to debug more complex issues.<br>In such cases, we request a WordPress administrator account. You can securely provide the login information in the form, they are visible only to supporters and will be used exclusively to investigate the reported issue. </span></td></tr>
+    <tr class="wp-credentials <%= 'hide' unless @show_wp_credentials %>"><td valign="top"><%= _('WP Login URL') %></td><td><%= f.text_field :wp_login_url, size: 60, maxlength: COMMON_FIELD %></td></tr>
+    <tr class="wp-credentials <%= 'hide' unless @show_wp_credentials %>"><td valign="top"><%= _('WP Username') %></td><td><%= f.text_field :wp_username, size: 60, maxlength: COMMON_FIELD %></td></tr>
+    <tr class="wp-credentials <%= 'hide' unless @show_wp_credentials %>"><td valign="top"><%= _('WP Password') %></td><td><%= f.password_field :wp_password, size: 60, maxlength: COMMON_FIELD %></td></tr>
+		<tr><td valign="top"><%= _('Attachments') %></td>
+			<td>
+				<div id="documents_to_upload"><p><%= file_field_tag 'file1[uploaded_data]', :id=>'file1_uploaded_data', onchange: "validate_file_size('file1[uploaded_data]', '#{ATTACHMENT_MAX_SIZE}')" %></p></div>
+				<p><a href="#form_top" onclick="add_another_file(<%= ATTACHMENT_MAX_SIZE %>);"><%= _('Add another attachment') %></a></p>
+			</td>
+		</tr>
+		<tr><td valign="top"></td><td><%= submit_tag _('Submit ticket'), data: { disable_with: _('Submit ticket') } %>
+				&nbsp;&nbsp;<%= link_to(_('Cancel'), @back) %></td>
+		</tr>
+	</table>
+  <script>
+    jQuery('#project').chosen();
+    jQuery(function(){
+      jQuery(document).on("change", "input[name='support_ticket[support_department_id]'], #project", function(e){
+         revealWPFields();
+      });
+
+      function revealWPFields(){
+        var selectedDepartment =  jQuery("input[name='support_ticket[support_department_id]']:checked");
+        var selectedProject = $('#project option:selected').val();
+        var isCMSProject = selectedProject.indexOf('Website-') == 0
+        if ((selectedDepartment.length > 0 && selectedDepartment.val() == '1') && isCMSProject){
+            $('tr.wp-credentials').removeClass('hide');
+        }else{
+            $('tr.wp-credentials').addClass('hide');
+            $("tr.wp-credentials input").val(null);
+        }
+      }
+    });
+  </script>
+<% end %>

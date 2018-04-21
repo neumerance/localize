@@ -1,0 +1,151 @@
+<h2><%= _('Do you need translators now, or maybe later?') %></h2>
+
+<div class="website_kind <%= ((@website.project_kind == PRODUCTION_CMS_WEBSITE) ? 'selected_website_kind' : 'unselected_website_kind') %>">
+	<div class="website_kind_head">
+    <%= conditional_remote_link(@website.project_kind != PRODUCTION_CMS_WEBSITE, '&raquo; '.html_safe + _('I need translators.'), {:action=>:update_site_status, :status=>PRODUCTION_CMS_WEBSITE}, :post) %>
+  </div>
+	<% if @website.project_kind == PRODUCTION_CMS_WEBSITE %>
+		<div class="details_for_website_kind">
+
+
+<%= my_error_messages_for(:website_translation_offer) %>
+
+<%= form_for(:website_translation_offer, :url=>{:action=>:update_details}, :remote => true) do |f| %>
+
+	<p><%= _('Please tell us a bit about your site.') %></p>
+
+	<p>
+		<b><%= _('Website name') %></b><br />
+		<%= text_field_tag(:title, @title, {:size=>30, :style=>'width: 100%;', maxlength: COMMON_FIELD} ) %>
+	</p>
+	<p>
+		<b><%= _('Website description') %></b><br />
+		<%= text_area_tag(:description, @description, {:rows=>2, :cols=>80, :style=>'width: 100%;', maxlength: COMMON_NOTE}) %>
+		<br />
+		<span class="comment"><%= _('Good: Online shop of computer accessories, intended for tech geeks.') %><br />
+		<%= _('Bad: Website translation project - we need translation.') %></span>
+	</p>
+
+	<p>
+		<b><%= _('Primary subject of this website:') %></b> <%= select_tag(:category_id, options_for_select(@categories, @website.category_id)) %><br />
+		<span class="comment"><%= _("Translators with the right experience will apply, based on your site's subject.") %></span>
+	</p>
+
+	<p><b><%= _('Volume and deadline') %></b><br />
+		<%= text_area_tag('website_translation_offer[invitation]', @website_translation_offer.invitation || @website.wc_description, {:rows=>2, :cols=>80, :style=>'width: 100%;', maxlength: COMMON_NOTE}) %>
+		<span class="comment"><%= _('An estimate of how much text you need to translate and the deadline.') %></span>
+	</p>
+
+	<p><b><%= _('Sample text (optional)') %></b><br />
+		<%= f.text_area(:sample_text, {:rows=>4, :cols=>80, :style=>'width: 100%;', maxlength: COMMON_NOTE}) %>
+		<span class="comment"><%= _("Sample text that you'd like the translators to do when they apply (up to 300 characters).") %></span>
+	</p>
+
+	<% if @user.anon == 1 %>
+		<p><b><%= _('ICanLocalize Account') %></b></p>
+    <p class="comment">
+      <label>
+        <%= radio_button_tag(:create_account, 1, @create_account, { :onchange=>'setUpSignUpForm()' }) %>
+        <%= _('I am new here') %>
+      </label>
+      </p>
+		<div id="new-account" style="display:<%= @create_account ? 'block' : 'none' %>;">
+		<table style="margin-left: 29px">
+			<tr><td><%= _('First name:') %></td><td><%= text_field_tag(:fname, @fname, {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD}) %></td></tr>
+			<tr><td><%= _('Last name:') %></td><td><%= text_field_tag(:lname, @lname, {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD}) %></td></tr>
+			<tr><td><%= _('Email:') %></td><td><%= text_field_tag(:email, @email, {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD}) %></td></tr>
+      <tr><td>
+        <input type="checkbox" id='promocode'>
+        <%= _("I have a promo code.")  %>
+      </td>
+      <td><%= text_field_tag(:voucher, '', {:size=>10, maxlength: COMMON_FIELD}) %></td></tr>
+		</table>
+		</div>
+    <p class="comment">
+    <label>
+      <%= radio_button_tag(:create_account, 0, !@create_account, { :onchange=>'setUpLoginForm()' }) %>
+    <%= _('I already have an account in ICanLocalize') %>
+    </label>
+    </p>
+		<div id="existing-account" style="display:<%= @create_account ? 'none' : 'block' %>;">
+		<table>
+			<tr><td><%= _('Email:') %></td><td><%= text_field_tag(:email1, @email1, {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD}) %></td></tr>
+			<tr><td><%= _('Password:') %></td><td><%= password_field_tag(:password, @email, {:size=>30}) %></td></tr>
+		</table>
+		</div>
+	<% end %>
+  <input type="hidden" name="c" value="<%=@campaing_id%>"/>
+
+  <div>
+    <script>
+      function add_reuse_translator_tag() {
+        jQuery('input[name=c]:first').after("<input type='hidden' name='reuse_translators' value='1'/>");
+      }
+    </script>
+    <%= submit_tag(_('Invite all translators'), :style=>'padding: 0.5em 1em;', data: { disable_with: _('Invite all translators') }) %>
+    <%= submit_tag(_('Invite translators from your other projects'),
+                   :style=>'padding: 0.5em 1em;',
+                   :onclick => 'add_reuse_translator_tag();',
+                   :id => "reuse_translators_button",
+                   :disabled => true, data: { disable_with: _('Invite translators from your other projects') }) %> <br />
+    <div class="comment">
+      <%= _('Once you complete this form, we will send invitations to the translators.') %><br />
+      <%= (_('To invite only specific translators, use the <strong>Invite</strong> buttons next to their names.')).html_safe %>
+    </div>
+	</div>
+<% end %>
+
+
+			<div style="clear:both; height: 1px;"></div>
+		</div>
+	<% end %>
+</div>
+<div class="website_kind <%= ((@website.project_kind == DEVELOPMENT_CMS_WEBSITE) ? 'selected_website_kind' : 'unselected_website_kind') %>">
+	<div class="website_kind_head"><%= conditional_remote_link(@website.project_kind != DEVELOPMENT_CMS_WEBSITE, "&raquo;  ".html_safe+_('I am still building this site. My client may need translators later.'), {:action=>:update_site_status, :status=>DEVELOPMENT_CMS_WEBSITE}, :post) %></div>
+	<% if @website.project_kind == DEVELOPMENT_CMS_WEBSITE %>
+		<div class="details_for_website_kind">
+			<p><%= _('The best time to start thinking about translators is right now.') %></p>
+			<p><%= _('We can help your client with excellent translation, at a very affordable rate.') %></p>
+			<p><%= _("If you introduce WPML's professional translation to your client, you will help them save a lot of money and precious time. We also pay a 30% affiliate commission for every referral.") %></p>
+			<br />
+			<p><%= link_to(_('Tell us about this site'), {:action=>:enter_details}, {:class=>'rounded_but_orange'}) %> &nbsp; | &nbsp; <a target="_blank" href="http://docs.icanlocalize.com/?page_id=1092"><%= _('Learn more about our affiliate program') %></a></p>
+			<div style="clear:both; height: 1px;"></div>
+		</div>
+	<% end %>
+</div>
+<div class="website_kind <%= ((@website.project_kind == TEST_CMS_WEBSITE) ? 'selected_website_kind' : 'unselected_website_kind') %>">
+	<div class="website_kind_head"><%= conditional_remote_link(@website.project_kind != TEST_CMS_WEBSITE, "&raquo;  ".html_safe+_('I am testing things. No need for translators.'), {:action=>:update_site_status, :status=>TEST_CMS_WEBSITE}, :post) %></div>
+	<% if @website.project_kind == TEST_CMS_WEBSITE %>
+		<div class="details_for_website_kind">
+			<p><%= _('To help you create multilingual sites, we put together some resources:') %></p>
+			<br />
+			<ul>
+				<li><%= (_('Meet WPML: %sAdding languages and translating</a>')%'<a target="_blank" href="http://wpml.org/home/press-kit/welcome-web-developers/">').html_safe %></li>
+				<li><%= (_('The basics: %sGetting-started guide</a>')%'<a target="_blank" href="http://wpml.org/documentation/getting-started-guide/">').html_safe %></li>
+				<li><%= (_('The bible: %sGoing from a single-language site to multilingual')%'<a target="_blank" href="http://wpml.org/documentation/support/">').html_safe %></a></li>
+			</ul>
+			<br />
+		</div>
+	<% end %>
+</div>
+
+<br />
+<hr />
+<p class="comment"><%= (_("For assistance, don't hesitate to %scontact ICanLocalize</a>")%'<a href="http://www.icanlocalize.com/site/about-us/contact-us/" target="_blank">').html_safe %>.</p>
+
+<% if @compact_display %>
+	<h1><%= _('%s to %s Translators')%[@website_translation_offer.from_language.nname, @website_translation_offer.to_language.nname] %></h1><br />
+<% end %>
+
+
+<script>
+
+  jQuery('#promocode').change(function(){
+    console.log('changed!');
+    if (jQuery('#promocode').is(':checked')) {
+      jQuery('#voucher').show();
+    }else{
+      jQuery('#voucher').hide();
+    }
+  }).change();
+</script>

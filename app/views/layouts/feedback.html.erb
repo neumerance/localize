@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+  <head>
+      <title><%= h(@header) -%> [ICanLocalize]</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta http-equiv="Content-Style-Type" content="text/css" />
+      <meta http-equiv="Content-Script-Type" content="text/javascript" />
+      <% if @meta_description %>
+        <meta name="description" content="<%= @meta_description %>" />
+      <% end %>
+
+      <%= stylesheet_link_tag    'application' %>
+      <%= stylesheet_link_tag 'custom/home' %>
+      <%= stylesheet_link_tag 'plugins/popup' %>
+
+      <link rel="shortcut icon" href="/assets/favicon.png" type="image/png" />
+      <link rel="icon" href="/assets/favicon.png" type="image/png" />
+
+      <%= csrf_meta_tags %>
+  </head>
+  <body>
+  <div id="topbar">
+    <a href="http://www.icanlocalize.com/site/">Home</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="http://www.icanlocalize.com/login/">Login</a>&nbsp;&nbsp;-&nbsp;&nbsp;<a href="http://www.icanlocalize.com/site/about-us/contact-us/">Contact</a> &nbsp;-&nbsp;
+    <%= image_tag 'tools.png', width: 16, height: 16, alt: 'Tools', align: 'top', border: 0 %>
+    <a href="http://www.icanlocalize.com/tools">Free Tools</a> &nbsp;-&nbsp;
+    <a href="http://www.icanlocalize.com/site/blog/feed/">
+      <%= image_tag 'rss.png', width: 16, height: 16, alt: 'RSS feed', align: 'top', border: 0 %>
+    </a>
+    <a href="http://www.icanlocalize.com/site/blog/">Blog</a>
+  </div>
+	<a href="http://www.icanlocalize.com/site/">
+    <%= image_tag 'web_logo_small.png', class: 'imageBorder', width: 16, height: 16, alt: 'ICanLocalize', border: 0, style: 'float: left;' %>
+  </a>
+	<div style="clear:both;"></div>
+	<div id="maincontents">
+	<% if flash[:notice] %>
+	<div id="alertDiv">
+	  <%= pre_format(flash[:notice]) %>
+	</div>
+	<% end %>
+	<%= show_trail %>
+		<h1><%= h(@header) %></h1>
+		<%= yield :layout %>
+	</div>
+    <div id="bottom">
+      <div style="text-align: center">
+        <br />
+        &copy; 2010. OnTheGoSystems INC. All Rights Reserved.
+      </div>
+    </div>
+<% if Rails.env=='production' %>
+	<!-- analytics --><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(decodeURIComponent("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-564905-4");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script><% end %></body>
+</html>

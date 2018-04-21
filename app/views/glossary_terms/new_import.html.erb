@@ -1,0 +1,29 @@
+<p>To populate the glossary table, create a CSV (comma separated file) with the terms, their description and translations.</p>
+<h3>Glossary CSV file example</h3>
+<p>This example shows a CSV file translating to German and Spanish. The two first columns (<i>term</i>, <i>description</i>) are required. Then, add a column for each language.</p>
+<p>Entries that are blank will be ignored.</p>
+<table class="glossary_sample">
+	<tr><th>Term</th><th>Description</th><th>Spanish</th><th>German</th></tr>
+	<tr><td>home</td><td>Place to live</td><td>hogar</td><td>haus</td></tr>
+	<tr><td>home</td><td>Link to root of site</td><td>inicio</td><td>start</td></tr>
+	<tr><td>link</td><td>Connect to something physical</td><td>conexión</td><td></td></tr>
+	<tr><td>link</td><td>Hyperlink in website</td><td>enlace</td><td></td></tr>
+</table>
+<p>The file that you produce should be saved as Unicode-UTF8, using double quotes around cells and deliminated with commas. This is the above file, viewed with a plain text editor:</p>
+<pre>
+"Term","Description","Spanish","German"
+"home","Place to live","hogar","haus"
+"home","Link to root of site","inicio","start"
+"link","Connect to something physical","conexión",""
+"link","Hyperlink in website","enlace",""
+</pre>
+
+<br />
+<h3>Upload</h3>
+<%= form_tag({:action=>:import}, {:multipart=>true}) do %>
+	<p><b>Select the language of the terms you're uploading</b><br />
+	<%= select_tag(:language_id, options_for_select(@languages)) %></p>
+	<p><b>Select CSV file to upload</b><br />
+	<%= file_field_tag('file', :size=>70, data: { disable_with: 'Processing...' }) %></p>
+	<p><%= submit_tag('upload', :style=>'padding: 0.5em 1em;', data: { disable_with: 'Please wait' }) %> &nbsp; | &nbsp; <%= link_to('Cancel', {:action=>:index}) %></p>
+<% end %>

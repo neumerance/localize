@@ -1,0 +1,9 @@
+<tr>
+	<td><%= link_to(h(resource_download.orig_filename), {:controller=>:resource_downloads, :action=>:show, :text_resource_id=>resource_download.text_resource.id, :id=>resource_download.id}) %></td>
+	<td><%= resource_download.upload_translation.language.name %></td>
+	<td><%= disp_time(resource_download.chgtime) %></td>
+	<td>
+    <%= link_to('View', {:controller=>:resource_downloads, :action=>:show, :text_resource_id=>resource_download.text_resource.id, :id=>resource_download.id}) %> &nbsp; | &nbsp;
+		<%= link_to('Download (gzip)', {:controller=>:resource_downloads, :action=>:download, :text_resource_id=>resource_download.text_resource.id, :id=>resource_download.id}) %>
+	</td>
+</tr>

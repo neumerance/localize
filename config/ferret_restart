@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+# This script starts and stops the ferret DRb server
+# chkconfig: 2345 89 36
+# description: Ferret search engine for ruby apps.
+#
+# save the current directory
+CURDIR=`pwd`
+PATH=/usr/bin:$PATH
+
+RORPATH="/home/amirhe3/rails/icanlocalize/current"
+
+case "$1" in
+  start)
+     cd $RORPATH
+     echo "Starting ferret DRb server."
+     FERRET_USE_LOCAL_INDEX=1 \
+                script/runner -e production \
+                vendor/plugins/acts_as_ferret/script/ferret_start
+     ;;
+  stop)
+     cd $RORPATH
+     echo "Stopping ferret DRb server."
+     FERRET_USE_LOCAL_INDEX=1 \
+                script/runner -e production \
+                vendor/plugins/acts_as_ferret/script/ferret_stop
+     ;;
+  *)
+     echo $"Usage: $0 {start, stop}"
+     exit 1
+     ;;
+esac
+
+cd $CURDIR

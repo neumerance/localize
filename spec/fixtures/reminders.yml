@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+one:
+  id: 1
+  normal_user_id: 2
+  owner_type: Invoice
+  owner_id: 1
+  event: <%= EVENT_INVOICE_DUE %>
+two:
+  id: 2
+  normal_user_id: 2
+  owner_type: Invoice
+  owner_id: 2
+  event: <%= EVENT_INVOICE_DUE %>

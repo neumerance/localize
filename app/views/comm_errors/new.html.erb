@@ -1,0 +1,9 @@
+<%= form_for(:comm_error, :url=>{:action=>:create}) do |f| %>
+<table>
+	<tr><td>Status (int):</td><td><%= f.text_field :status, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td></tr>
+	<tr><td>Error code (int):</td><td><%= f.text_field :error_code, maxlength: COMMON_FIELD, size: 10 %></td></tr>
+	<tr><td>Error description (string):</td><td><%= f.text_field :error_description, maxlength: COMMON_NOTE %></td></tr>
+</table>
+<%= hidden_field_tag('format', 'xml') %>
+<%= submit_tag('Create', data: { disable_with: 'Create' }) %>
+<% end %>

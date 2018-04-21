@@ -1,0 +1,23 @@
+<p style="<%= language_dir_css_attribute(edit_message.original_language)+text_flow_css_attribute(edit_message.original_language) %>">
+	<%= pre_format(edit_message.decoded_visitor_body(@user)) %>
+</p>
+<br /><hr />
+<h4>Translation</h4>
+<%= form_for( :web_message, :url=>{:action=>:set_translation, :id=>edit_message.id}, :remote => true ) do |f| %>
+	<p><%= f.text_area :client_body, :rows=>12, :cols=>80, :style=>language_dir_css_attribute(edit_message.destination_language) %></p>
+	<%= submit_tag 'Save', :name=>'save', data: { disable_with: 'Save' } %>
+<% end %>
+<%= form_tag({ :action => :decide_about_translation, :id=>edit_message.id }, :remote => true) do %>
+	<%= submit_tag 'Cancel', :name=>'hide', data: { disable_with: 'Cancel' } %>
+<% end %>
+
+<% if true || @set_google_translation %>
+<script type="text/javascript">
+google.language.translate("<%= @text_to_translate %>", "<%= @orig_language %>", "<%= @dest_language %>", function(result) {
+  if (!result.error) {
+    var container = document.getElementById("web_message_client_body");
+    container.innerHTML = result.translation;
+  }
+});
+</script>
+<% end %>

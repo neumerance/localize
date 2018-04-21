@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+USD:
+  id: 1
+  name: USD
+  description: United Stated Dollar
+Euro:
+  id: 2
+  name: Euro
+  description: European Union Currency

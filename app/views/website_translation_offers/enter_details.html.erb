@@ -1,0 +1,52 @@
+<%= my_error_messages_for(:website_translation_offer) %>
+
+<%= form_for(:website_translation_offer, :url=>{:action=>:update_details}) do |f| %>
+	
+	<p><%= _('Please tell us a bit about your site.') %></p>
+
+	<p>
+		<b><%= _('Website name') %></b><br />
+		<%= text_field_tag(:title, @title, {:size=>30, :style=>'width: 100%;'} ) %>
+	</p>
+	<p>
+		<b><%= ('Website description') %></b><br />
+		<%= text_area_tag(:description, @description, {:rows=>4, :cols=>80, :style=>'width: 100%;', maxlength: COMMON_NOTE}) %>
+		<br />
+		<span class="comment"><%= _('Good: Online shop of computer accessories, intended for tech geeks.') %><br />
+		<%= _('Bad: Website translation project - please translate to %s')%@website_translation_offer.to_language.nname %>.</span>
+	</p>
+	
+	<p>
+		<b><%= _('Primary subject of this website:') %></b> <%= select_tag(:category_id, options_for_select(@categories, @website.category_id)) %><br />
+		<span class="comment"><%= _("We will assign translators with the right experience, based on your site's subject.") %></span>
+	</p>
+	
+	<p><b><%= _('Volume and deadline') %></b><br />
+		<%= f.text_area(:invitation, {:rows=>4, :cols=>80, :style=>'width: 100%;', maxlength: COMMON_NOTE}) %>
+		<span class="comment"><%= _('An estimate of how much text you need to translate and the deadline.') %></span>
+	</p>
+	
+	<% if @user.anon == 1 %>
+		<p><%= _('We also need your contact information, so that we can return responses to you.') %></p>
+		<p class="comment"><label><%= radio_button_tag(:create_account,1,@create_account, {:onchange=>'document.getElementById("new-account").style.display = "block"; document.getElementById("existing-account").style.display = "none";'}) %> <%= _("I'm new here") %></label></p>
+		<div id="new-account" style="display:<%= @create_account ? 'block' : 'none' %>;">
+		<p><b><%= _('Contact information') %></b></p>
+		<table>
+			<tr><td><%= _('First name:') %></td><td><%= text_field_tag(:fname, @fname, {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD}) %></td></tr>
+			<tr><td><%= _('Last name:') %></td><td><%= text_field_tag(:lname, @lname, {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD}) %></td></tr>
+			<tr><td><%= _('Email:') %></td><td><%= text_field_tag(:email, @email, {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD}) %></td></tr>
+		</table>
+		</div>
+		<p class="comment"><label><%= radio_button_tag(:create_account,0,!@create_account, {:onchange=>'document.getElementById("new-account").style.display = "none"; document.getElementById("existing-account").style.display = "block";'}) %> <%= _('Returning clients') %></label></p>
+		<div id="existing-account" style="display:<%= @create_account ? 'none' : 'block' %>;">
+		<p><b><%= _('ICanLocalize Login') %></b></p>
+		<table>
+			<tr><td><%= _('Email:') %></td><td><%= text_field_tag(:email1, @email1, {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD}) %></td></tr>
+			<tr><td><%= _('Password:') %></td><td><%= password_field_tag(:password, @email, {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD}) %></td></tr>
+		</table>
+		</div>
+	<% end %>
+	
+	<br /><br />
+	<%= link_to(_('Cancel'), {:action=>:show}) %> &nbsp; <%= submit_tag(_('Submit'), :style=>'padding: 0.5em 1em;', data: { disable_with: _('Submit') }) %>
+<% end %>

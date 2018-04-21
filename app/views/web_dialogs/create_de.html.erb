@@ -1,0 +1,3 @@
+<p>Wir haben Ihre Mitteilung erhalten und werden baldmöglichst auf Ihre E-Mail (<b><%= h(@web_dialog.email) %></b>) antworten.</p>
+<p>Eine Bestätigungs-E-Mail wurde Ihnen eben von <b><%= RAW_EMAIL_SENDER %></b> zugesandt. Bitte sorgen Sie dafür, dass Ihr SPAM Filter diese Adresse nicht blockt. Die Bestätigungs-E-Mail beinhaltet auch einen Link, der Ihnen ermöglicht, den Fortschritt Ihrer Mitteilung zu prüfen.</p>
+<p>Um weiterzuverfolgen, können Sie andere Mitteilung schicken oder unsere Antwort sehen, und auch zum vollen <%= link_to('Ticket mit Details', {:action=>:show, :id=>@web_dialog.id, :accesskey=>@web_dialog.accesskey}) %> gehen.</p>

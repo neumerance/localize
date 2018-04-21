@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+English:
+  id: 1
+  name: English
+Spanish:
+  id: 2
+  name: Spanish
+German:
+  id: 3
+  name: German
+French:
+  id: 4
+  name: French
+Arab:
+  id: 5
+  name: Arab
+Portuguese:
+  id: 6
+  name: Portuguese
+Chinese (Simplified):
+  id: 7
+  name: Chinese (Simplified)
+Italian:
+  id: 8
+  name: Italian

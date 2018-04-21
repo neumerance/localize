@@ -1,0 +1,12 @@
+<% if @warning %>
+  alert('<%= @warning %>')
+<% elsif @reload %>
+  location.reload()
+<% else %>
+  jQuery("#from_languages").html('<%= escape_javascript(render :partial => "from_languages") %>')
+  <% if @dest_id %>
+    jQuery('html, body').animate({
+      scrollTop: jQuery("#<%= @dest_id %>").offset().top
+    }, 2000);
+  <% end %>
+<% end %>

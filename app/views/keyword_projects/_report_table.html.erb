@@ -1,0 +1,66 @@
+
+<div class="infobox" style="margin: 25px 0px;">
+  <h4>Project details</h4>
+  <ul>
+    <li><b>Project: </b><%= @keyword_project.owner.project.name %></li>
+    <li><b>Client: </b><%= @keyword_project.owner.project.client.nickname %></li>
+    <li><b>Translator: </b><%= @keyword_project.owner.translator.nickname %></li>
+  </ul>
+</div>
+
+<table border=1 id="keyword-report" class="stats">
+  <tbody>
+    <tr class="headerrow" style="border-left: 0px; border-top: 0px; border-right: 1px solid #C2DAFF; border-bottom: 1px solid #C2DAFF;">
+      <th width="170px">Keywords</th>
+      <th>Possible translations</th>
+      <th>Related terms</th>
+      <th>Monthly hits</th>
+      <th>Chosen keywords</th>
+    </tr>
+    <% @keyword_project.keywords.each do |kw| %>
+      <% keyword_and_result_cells = false %>
+      <% kw.translations.each do |trans| %>
+        <tr>
+          <% unless keyword_and_result_cells %>
+            <th rowspan=<%=kw.keyword_translations.size%>><%=kw.text%></th>
+          <% end %>
+          <td><%=trans.text%></td>
+          <td></td>
+          <td><%=trans.hits%></td>
+          <% unless keyword_and_result_cells %>
+            <td rowspan=<%=kw.keyword_translations.size%>><%=kw.result.gsub(/\n/, "<br>")%></td>
+            <% keyword_and_result_cells = true %>
+          <% end %>
+        </tr>
+      <% end %>
+      <% kw.alternatives.each do |trans| %>
+        <tr>
+          <% unless keyword_and_result_cells %>
+            <th rowspan=<%=kw.keyword_translations.size%>><%=kw.text%></th>
+          <% end %>
+          <td></td>
+          <td><%=trans.text%></td>
+          <td><%=trans.hits%></td>
+          <% unless keyword_and_result_cells %>
+            <td rowspan=<%=kw.keyword_translations.size%>><%=kw.result.gsub(/\n/, "<br>")%></td>
+            <% keyword_and_result_cells = true %>
+          <% end %>
+        </tr>
+      <% end %>
+    <% end %>
+    <tr>
+      <th>General comments</th>
+      <td colspan='4'>
+        <%= @keyword_project.comments.try(:gsub, /\n/, "<br>") %></td>
+  </tbody>
+</table>
+
+<p style="margin-top: 30px;">
+We have conducted this research based on our best knowledge and experience.<br>
+If you have any question or comment, do not hesitate to contact us.<br>
+<br>
+Have a great day!<br>
+<br>
+ICanLocalize Team<br>
+By OnTheGoSystems<br>
+</p>

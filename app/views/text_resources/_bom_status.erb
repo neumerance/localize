@@ -1,0 +1,6 @@
+<%= image_tag 'icons/webmasters.png', width: 24, height: 24, align: 'middle', alt: '' %>
+<% if @text_resource.bom_enabled? %>
+  <%= button_to('Disable BOM', {:action=>'change_bom', :id => @text_resource.id}, :method => :post, remote: true, data: { disable_with: 'Please wait...' }) %>
+<% else %>
+  <%= button_to('Enable BOM', {:action=>'change_bom', :id => @text_resource.id}, :method => :post, remote: true, data: { disable_with: 'Please wait...' }) %>
+<% end %>

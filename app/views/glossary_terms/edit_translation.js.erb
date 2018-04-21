@@ -1,0 +1,5 @@
+<% if @warning %>
+alert('<%= @warning %>')
+<% else %>
+jQuery('#glossary_translation_<%= @glossary_term.id %>_<%= @language.name %>').html('<%= escape_javascript(render partial: 'glossary_translation') %>')
+<% end %>

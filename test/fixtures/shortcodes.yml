@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+atomic:
+  shortcode: atomic-shortcode
+  website:
+  enabled: false
+  created_by: 1
+  comment: MyString
+  content_type: atomic
+
+two:
+  shortcode: short-code
+  website:
+  enabled: false
+  created_by: 1
+  comment: shortcode
+  content_type: openclose

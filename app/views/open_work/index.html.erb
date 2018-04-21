@@ -1,0 +1,44 @@
+<% if @revisions.length > 0 %>
+	<h2>Open bidding projects</h2>
+	<p>These projects don't have a fixed payment. Translators can bid on them.</p>
+	<%= infotab_header(['Project','Description','Kind','Size','Languages'] ) %>
+    <% @revisions.each do |revision| %>
+        <%= render(partial: 'revision', locals: {brief: true, revision: revision}) %>
+    <% end %>
+	</table>
+	<div class="inter_tab_spacer"></div>
+<% end %>
+
+<% if @offers.length > 0 %>
+	<h2>Open recurring translation projects</h2>
+	<p>These are CMS translation projects. We translate websites built with content management systems. Each of these projects need to have a translator, which is assigned to it and will translate all the texts in the site.</p>
+	<p>To do any of these jobs, translators must first do a practice project and use our translation software.</p>
+	<%= infotab_header(['Description', 'Language' ]) %>
+	<%= render(:partial=>'website_translation_offer', :collection=>@offers) %>
+	</table>
+
+	<h3>How to apply</h3>
+	<p>If you already have an account, <%= link_to('log in', {:controller=>:login}) %>. Otherwise, you're welcome to <%= link_to('sign up', {:controller=>:users, :action=>:new, :utype=>'Translator'}) %> and create an account.</p>
+	<div class="errorExplanation">
+	<h3>Our standard requirements from translators</h3>
+	<ul><li>You must have a university degree in translation or have passed the American Translators Association exam. We will ask you to upload a scan your degree.</li>
+	<li>We must be able to verify your identity. We can accept a scan of your ID document, a verified PayPal account or if you come from proz.com, we can verify your identity using your proz profile.</li>
+	<li>You will need to do small practice project. This project is not meant to test your language skills but to familiarize you with our translation system.</li>
+	</ul>
+	</div>
+	<p>If you have any questions, please <%= link_to('contact us','http://www.icanlocalize.com/web_dialogs/new?language_id=1&amp;store=4') %>.</p>
+	<br />
+
+	<div class="inter_tab_spacer"></div>
+<% end %>
+
+<% if @web_messages.length > 0 %>
+	<h2>Open short text translation projects</h2>
+	<p>These are short texts that need to be translated. These jobs can be done in a browser, without downloading any software.</p>
+	<%= infotab_header(['Language', 'Word count', 'Payment' ]) %>
+  <% @web_messages.each do |web_message| %>
+      <%= render(:partial=>'web_message', locals: { web_message: web_message }) %>
+  <% end %>
+	</table>
+	<div class="inter_tab_spacer"></div>
+<% end %>

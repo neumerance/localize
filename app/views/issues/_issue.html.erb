@@ -1,0 +1,11 @@
+<tr>
+	<td><%= issue_title(issue) %></td>
+	<td><%= Issue::KIND_TEXT[issue.kind] %></td>
+	<% if initiator == nil %>
+	  <td><%= user_link(issue.initiator) %></td>
+    <td><%= user_link(issue.target) %></td>
+	<% else %>
+	  <td><%= initiator ? user_link(issue.target) : user_link(issue.initiator) %></td>
+	<% end %>
+	<td><%= issue_last_reply(issue) %></td>
+</tr>

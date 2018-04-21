@@ -1,0 +1,15 @@
+<% if @website %>
+  <h1><%= @website.name %>'s Shortcodes</h1>
+  <%= render 'table', :shortcodes => @website.shortcodes %>
+<% end %>
+
+<% new_shortcode_link = @website ? new_website_shortcode_path(@website.id) : new_shortcode_path %>
+<%= link_to 'New shortcode', new_shortcode_link %>
+
+<br/><br/>
+
+<h1>Global Shortcodes</h1>
+<%= render 'table', :shortcodes => @shortcodes %>
+
+
+

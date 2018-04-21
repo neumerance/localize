@@ -1,0 +1,31 @@
+<h1>New help_topic</h1>
+
+<%= my_error_messages_for :help_topic %>
+
+<%= form_for(@help_topic) do |f| %>
+  <p>
+    <b>Title</b><br />
+    <%= f.text_field :title, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+  </p>
+
+  <p>
+    <b>Summary</b><br />
+    <%= f.text_field :summary, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+  </p>
+
+  <p>
+    <b>Url</b><br />
+    <%= f.text_field :url, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+  </p>
+
+  <p>
+    <b>Display</b><br />
+    <%= f.number_field :display, min: 0, max: 1 %>
+  </p>
+
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', help_topics_path %>

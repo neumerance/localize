@@ -1,0 +1,21 @@
+<% if @ok %>
+	<h2>Transfer complete - OK</h2>
+<% else %>
+	<h2>Transfer failed - money leaked</h2>
+<% end %>
+<h3>Before</h3>
+<p>
+	From account balance: <%= @before_from_balance %><br />
+	To account balance: <%= @before_to_balance %><br />
+	Root balance: <%= @before_root_balance %><br />
+	<strong>Total: <%= @before_from_balance + @before_to_balance + @before_root_balance %></strong><br />
+</p>
+
+<h3>After</h3>
+<p>
+	From account balance: <%= @from_account.balance %><br />
+	To account balance: <%= @to_account.balance %><br />
+	Root balance: <%= @root_account.balance %><br />
+	<strong>Total: <%= @from_account.balance + @to_account.balance + @root_account.balance %></strong><br />
+</p>
+

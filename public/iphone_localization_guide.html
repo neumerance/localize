@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+  <head>
+    <title>Localization Guide for iPhone Applications, built with Apple Xcode</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+        <meta name="description" content="A guide for localizing Apple iPhone applications built using Xcode. The guide teaches how to create multilingual resource files, translate them and import back to the iPhone application." />
+     <script type="text/javascript" src="/assets/scripts/index.js"></script>
+	<link rel="STYLESHEET" type="text/css" href="/assets/custom/home.css"/>
+
+<script type="text/javascript" src="/assets/plugins/popup.js"></script>
+<link rel="stylesheet" type="text/css" href="/assets/plugins/popup.css" />
+
+    <link rel="shortcut icon" href="/assets/favicon.png" type="image/png" />
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+  </head>
+  <body onload="{ getElementsWithTitles(); }">
+  <!-- top bar --><div id="topbar"><a href="login/">Login</a> &nbsp;-&nbsp; <a href="about.html">About us</a> &nbsp;-&nbsp; <a href="http://www.icanlocalize.com/web_dialogs/new?language_id=1&amp;store=4">Contact</a> &nbsp;-&nbsp; <a href="/newsletters"><img border="0" align="top" src="/assets/book.png" width="16" height="16" alt="Newsletter" /></a> <a href="/newsletters">Newsletter</a> &nbsp;-&nbsp; <a href="/tools"><img border="0" align="top" src="/assets/tools.png" width="16" height="16" alt="Tools" /></a> <a href="/tools">Free Tools</a> &nbsp;-&nbsp; <a href="http://blog-en.icanlocalize.com/?feed=rss2"><img border="0" align="top" src="/assets/rss.png" width="16" height="16" alt="RSS feed" /></a> <a href="http://blog-en.icanlocalize.com">Blog</a></div>
+<img src="/assets/web_logo_large.png" width="317" height="91" alt="ICanLocalize" class="imageBorder" /><!-- /top bar -->
+  <!-- top navigation --><ul id="topnavigation"><li class="nonselectedtab"><a href="index.html">Home</a></li><li class="nonselectedtab"><a href="website-translation.html">Website Translation</a></li><li class="nonselectedtab"><a href="general-translation.html">General Translation</a></li><li class="selectedtab_active"><a href="instant-text-translation.html">Text Translation</a></li><li class="nonselectedtab lasttab"><a href="customer-support-interpretation.html">Online Interpretation</a></li></ul><!-- /top navigation -->
+	<div id="maincontents">
+<!-- trail_navigation --><div id="trail_nav"><a href="index.html">Home</a>&nbsp;&gt;&nbsp;<a href="instant-text-translation.html">Text Translation</a>&nbsp;&gt;&nbsp;<a href="software_localization.html">Software Localization</a>&nbsp;&gt;&nbsp;<a href="iphone_localization.html">iPhone Application Localization</a>&nbsp;&gt;&nbsp;iPhone Application Localization Guide</div><!-- /trail_navigation -->
+    <div style="height: 186px; border-bottom: 5px solid #CAD6FC; border-top: 5px solid #CAD6FC; margin: 1em 0 1em 0; padding-left: 1em;">
+      <img style="float: right; margin:0 0 0 1em;" align="right" src="/assets/stock/iphone_localization.jpg" width="253" height="186" alt="iPhone localization guide" />
+      <h1>iPhone Applications Localization Guide</h1>
+      <p class="ups">This guide will show you how to convert a single-language iPhone application, built with Xcode, into a multilingual application.</p>
+    </div>
+    <div style="float: right; width: 254px; margin: 1em 0 1em 2em;">
+      <div style="background-color: #F0F0F0; margin-bottom: 1em; border: 1pt solid #E0E0E0; padding: 0 15px 15px 15px;">
+	<h3>Contents</h3>
+	<h4>iPhone localization tutorial</h4>
+	<ol>
+	<li><a href="#1">Making Resources Localizable in Xcode</a></li>
+	<li><a href="#2">Localizing Interface Builder files</a></li>
+	<li><a href="#3">Collecting embedded texts into resource files</a></li>
+	<li><a href="#4">Translating the resource files</a></li>
+	<li><a href="#5">Importing the translation to the iPhone application</a></li>
+	</ol>
+	<h4>Other stuff</h4>
+	<ul>
+	<li><a href="#6">Troubleshooting</a></li>
+	<li><a href="#7">Updating the translation</a></li>
+	</ul>
+      </div>
+      
+      <div style="background-color: #F0F0F0; margin-bottom: 1em; border: 1pt solid #E0E0E0; padding: 0 15px 15px 15px;">
+	<h3>Are you going multilingual?</h3>
+	<p><b>ICanLocalize</b> provides a complete solution for iPhone application developers.</p>
+	<p>Localization for the application is the first step. We'll also help you create a multilingual website and communicate with foreign clients and partners in their languages.</p>
+	<p>We invite you to <a href="http://www.icanlocalize.com/web_dialogs/new?language_id=1&amp;store=4">contact us</a> and see how we can help you go global.</p>
+      </div>
+    </div>
+    <h2>Introduction</h2>
+    <p>The process of localizing an iPhone application involves these steps:</p>
+    <ol><li>Getting your resource files ready for localization.</li>
+      <li>Collecting all the texts used in the application in resource files.</li>
+      <li>Translating the resource files.</li>
+      <li>Integrating the resource files back in the application.</li>
+    </ol>
+    <p>Since iPhones are multilingual by design, once your application is made available in multiple languages, the phone already known what to do.</p>
+    <p>All iPhone applications are built using Unicode texts, encoded as UTF-16. The iPhone simulator supports this format and will allow you to preview your translated application.</p>
+    <a name="1"></a><h2>1. Making Resources Localizable in Xcode</h2>
+    <p><a href="http://developer.apple.com/TOOLS/xcode/">Xcode</a> needs to know that you want to input multilingual resource files.</p>
+    <p>The easiest way to make a file localizable with Xcode is to simply remove the file from the project and, in Finder, move it into localized directory.
+    Make sure you click on "Delete References" and not "Also Move to Trash" when removing the file from your project, so that the file itself isn't deleted but only the reference to it in the project is removed.</p>
+    <p>If your source resource files is in English, then create a new folder called <b>en.lproj</b> in your project's folder.
+    If your source resource files are in a different language, replace the <b>en</b> with the <a href="http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">two-letter country code</a> for the resource file's source localization.</p>
+    <p>Move the resource file into the new localization directory, and then drag the resource into the Xcode project. Xcode will now recognize the resource as localized in that language. Repeat for all your other resource files that you need to localize.</p>
+    
+    <a name="2"></a><h2>2. Localizing your Interface Builder files</h2>
+    <h3>Extracting the strings</h3>
+    <p>To extract the strings from your interface builder resource files, you need to run a tool like <b>ibtool</b>, included with the standard developer kit install.</p>
+    <p>To extract the files, in Terminal from your project directory run the command:</p>
+    <pre>ibtool --generate-strings-file Example.strings en.lpoj/Example.xib</pre>
+    <p>This will create the file Example.strings. Open it you'll see a bunch of object-string value pairings.</p>
+    <p>Go through this document carefully and check its contents. You can remove unnecessary strings, which don't need to be translated.</p>
+    <h3>Handling duplicate strings</h3>
+    <p>The resource file may contain duplicate strings, such as some the titles for buttons in different states.</p>
+    <p>Some duplicate strings need to be translated just once but other duplicate strings have different translations. The same button title, in different states, should clearly have the same translation. However, other texts, can once be a noun and in other places be a verb.</p>
+    <p>You can remove redundant duplicate strings (which should be translated the same) from the resource file or leave them there and instruct the translator to handle as duplicate strings.</p>
+
+    <a name="3"></a><h2>3. Collecting the embedded texts into resource files</h2>
+    <p>Normally, iPhone applications contain two kinds of texts. There are the application's interface (managed by the Interface Builder) and embedded strings that are used inline in the code itself.</p>
+    <p>The strings in the interface are already arranged in a resource file and we need to make sure that the code itself only uses strings that are read in a resource file too.</p>
+    <p>An inline string would look like this:</p>
+    <pre>@"Hello World!"</pre>
+    <p>We need to edit the source files and change all inline strings to look like this:</p>
+    <pre>NSLocalizedString(@"Hello World", @"hello message")</pre>
+    <p>Now, <b>"Hello World"</b> is actually a token. The actual string that will be output is produced by the <b>NSLocalizedString</b> function. It will return the localized string according to the application's language. <b>NSLocalizedString</b> will read the <b>Localizable.strings</b> file located the localization directory</p>
+    <p>Go through all your code and determine which strings are user-facing and should be localized. Don't localize strings the user will never see, such as keys in an NSDictionary (unless, of course, you ever display those keys).</p>
+    <h3>Adding comments</h3>
+    <p>Did you notice that <b>"hello message"</b> (the second argument)?</p>
+    <p>This is a comment, which will go into the resource file and be also visible to the translator. It's very important to add comments in places where the text is not self explanatory.
+    This way, the translator who's translating your application will know what the text is used for and how to translate it correctly.</p>
+    <h3>Creating a Localizable.strings file</h3>
+    <p><b>genstrings</b> will collect all the strings that need to be translated from the source files and create the <b>Localizable.strings</b> file. To run it, open a terminal, go to the project directory and run:</p>
+    <pre>genstrings -o en.lproj *.m</pre>
+    <p>This will pull all the keys from the NSLocalizedString calls, and compile them into one Localizable.strings file in the en.lproj localization directory.
+    If your class files are in a different directory, make sure you include them at the end of this command (e.g. Classes/*.m).</p>
+    
+    <a name="4"></a><h2>4. Translating the resource files</h2>
+    <p>Now, you should have two resource files. The <b>Interface Builder</b> resource file (created by <b>ibtool</b>) and the <b>embedded strings</b> resource file (created by <b>genstrings</b>).</p>
+    <p>You can send both files for translation by <b><a href="/">ICanLocalize</a></b>.</p>
+    <p>We have a special tool for localizing iPhone resource files, which will your resource files, in their native format, extract only the texts that need to be translated (and not count the string labels).</p>
+    <p>The translation will be done by professional (human) translators, who have ample experience in localizing iPhone applications.</p>
+    <p>You will need to <a href="/users/new?utype=Client">create an account</a> (free). Then, create an <b>iPhone translation project</b>, upload your resource files, indicate which languages to translate to and pay for the translation. Once completed, you'll be able to download the localized resource files and import back to your application.</p>
+    <p>During the translation, you have an open communication chat with the translator(s) working on your project. You can provide detailed explanations about your application so that translation comes out perfect.</p>
+    <p>And, even long after the translation has been completed, should you ever need to update or fix it, our translators will be happy to assist.</p>
+    <p>Moving on...</p>
+    
+    <a name="5"></a><h2>5. Importing the translation to the iPhone application</h2>
+    <h3>Building the localized xib</h3>
+    <p>Once you've gotten your translated strings file back, fire up <b>Terminal</b> again and use it to build a localized copy of that xib.</p>
+    <p>First, make sure you have created a directory for that localization that you just received, for example "fr.lproj".
+    Move the translated strings file into that localization directory.</p>
+    <p>Assuming your source language was English, in Terminal from your project directory run:</p>
+    <pre>ibtool --strings-file fr.lproj/Example.strings -write fr.lproj/Example.xib en.lproj/Example.xib</pre>
+    <p>This will copy the English-localized Interface Builder file into the other localization directory,
+    and replace the values of all objects with those in the translated strings file.</p>
+    <p>You now have a localized .xib, but the file isn't ready to go yet.</p>
+    
+    <h3>Adding the Localized File to Xcode</h3>
+    <p>Drag the freshly localized .xib file into your project in <b>Xcode</b>. Make sure you don't drag the file into the existing localization.
+    The localized .xib file should go into the grouping that's holding the other localizations of this file.</p>
+    <table border="0" width="100%">
+      <tr>
+	<td width="50%"><a href="/assets/iphone_localization_guide/correct_location_for_xib.jpg"><img border="0" src="/assets/iphone_localization_guide/correct_location_for_xib_th.jpg" width="300" height="139" alt="Correct location for xib file" /></a>
+	<p><a href="/assets/iphone_localization_guide/correct_location_for_xib.jpg">Correct place to drop the .xib file (click to zoom)</a></p></td>
+	<td width="50%"><a href="/assets/iphone_localization_guide/wrong_location_for_xib.jpg"><img border="0" src="/assets/iphone_localization_guide/wrong_location_for_xib_th.jpg" width="300" height="139" alt="Wrong location for xib file" /></a>
+	<p><a href="/assets/iphone_localization_guide/wrong_location_for_xib.jpg">Wrong place to drop the .xib file (click to zoom)</a></p></td>
+      </tr>
+    </table>
+    
+    <h3>Review the Translated Interface Builder File</h3>
+    <p>Open up the translated file in Interface Builder, and go through everything. Often the lengths of different strings will have changed significantly. Translation from English to German and French is often 50% longer than the original text.
+    You may need to adjust the layout slightly to make sure that everything is visible.</p>
+    <p>If you manually removed any duplicates, now is the time to put them back by duplicating the translated strings. For example, if two buttons shared the same title, and you removed one of the buttons from the .strings file you generated earlier, you will now need to copy the title from the button that did get translated.</p>
+    <p>You only need to do this if you edited the .strings file before submitting to translation. If this was handled by <b>ICanLocalize</b>, the duplicate strings will already appear in translation and in the .xib.</p>
+    
+    <p><b>You're done, your iPhone application should now run multilingual!</b></p>
+    
+    <hr />
+    
+    <a name="6"></a><h2>Troubleshooting</h2>
+    <p>If strings in your Localizable.strings file are present in the translated file, but aren't being localized on the iPhone, check the character encoding of the file.</p>
+    <p>Unlike the iPhone simulator, the iPhone only recognizes strings files that are formatted UTF-16. Always test your localizations on the device, as the simulator and the device do not always behave the same way.</p>
+    <p>The translated resource files you download from <b>ICanLocalize</b> are UTF-16 encoded. They're contained inside <b>gzip</b> archives to make sure that your browser doesn't alter them when you download.</p>
+    
+    <a name="7"></a><h2>Updating the translation when the iPhone application evolves</h2>
+    <p><b>ICanLocalize</b> makes it easy to maintain your translations up to date. When the iPhone application evolves, new strings are created and existing strings may change.</p>
+    <p>Update your iPhone project in your development language. To update the translations, run <b>genstrings</b> again to create a new <b>Localizable.strings</b> file.
+    Then run <b>ibtool</b> again on your development language <b>Interface Builder</b> files to generate new strings files.</p>
+    <p>Finally, upload the new resource files to your existing project in <b>ICanLocalize</b>. The system will detect new or modified strings and will only have them translated.
+    You will need to pay only for updating the translation and not for doing it from scratch.</p>
+
+    <div style="background-color: #F0F0F0; border: 1pt solid #E0E0E0; margin-top:2em; padding: 1em;">
+      <h3>Do you need translation for your iPhone application?</h3>
+      <p><b>ICanLocalize</b> offers professional translation optimized for iPhone applications. We can help you turn your iPhone app multilingual quickly, easily and at a low cost.</p>
+      <p>All our translations are done by expert translators, writing in their native languages.</p>
+      <p><a href="users/new?utype=Client">Create an account and get started</a> &nbsp; | &nbsp; <a href="iphone_localization.html#instant_quote">Free instant quote</a> &nbsp; | &nbsp; <a href="http://www.icanlocalize.com/web_dialogs/new?language_id=1&amp;store=4">Contact us for more information</a></p>
+    </div>
+    
+    <br style="clear:both;" />
+    </div>
+    <!-- footer --><div id="bottom"><center><br />&copy; 2009. OnTheGoSystems Inc. | All Rights Reserved</center></div><!-- /footer -->
+  
+
+
+<!-- analytics --><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(decodeURIComponent("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-564905-4");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script></body>
+</html>
+

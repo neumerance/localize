@@ -1,0 +1,15 @@
+<% if @websites.length > 0 %>
+	<%= infotab_top(_('CMS translation projects'), @websites_message) %>
+	<div>
+		<%= infotab_header(['Name', 'Kind', 'URL'],{}, 100, 'id="resource_websites"') %>
+		<%= render(:partial=>'/websites/website', :collection=>@websites) %>
+		</table>
+	</div>
+	<div class="pager_control" style="position: relative; height: 15px;">
+	    <div class="pull-right">
+	    	<%= paginate @websites, params: { controller: :websites, action: :searcher }, remote: true %>
+	    </div>
+	    <div style="clear: both"></div>
+	</div>
+	<div class="inter_tab_spacer"></div>
+<% end %>

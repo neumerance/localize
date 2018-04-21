@@ -1,0 +1,82 @@
+<h2><%= _('Summary') %></h2>
+<% if @support_ticket.object %>
+  <p><b>Related project:</b> <%=linked_object(@support_ticket) %></p>
+<% end %>
+<% if @user.has_supporter_privileges? %>
+  <p><b>User: </b> <%= user_link(@support_ticket.normal_user) %></p>
+  <% if @support_ticket.object.is_a?(Website) &&  @support_ticket.object.has_wp_credentials? %>
+    <%= render 'websites/wp_credentials', website: @support_ticket.object %>
+  <% end %>
+  <% if @user_click %>
+  <div class="red_error">
+  	<h1>Ticket originated from an error report</h1>
+    <p><b> - Technical Information - </b></p>
+  	<p>
+  		<strong>Action:</strong>
+  		<%= @user_click.controller %>#<%= @user_click.action %>
+  	<br>
+  		<strong>Error:</strong> <%= @user_click.error %>
+  		<%= link_to "Go Error Report", user_user_click_path(@user_click.user, @user_click.id) %>
+  	<br>
+  		<strong>Params:</strong>
+  		<%= @user_click.params %>
+  	</p>
+  </div>
+  <% end %>
+
+	<h3>Internal Note</h3>
+	<div style="margin:1em;" class="red_message">
+
+	<%= form_for(:support_ticket, :url=>{:action=>:update_supporter_data}) do |f| %>
+		Supporter note:<br />
+		<%= f.text_area(:note, {:rows=>10, :cols=>100, :style=>'width: 100%;', maxlength: COMMON_NOTE}) %>
+		<%= f.hidden_field :id , :value => @support_ticket.id %>
+
+		<% if @internal_note_urls %>
+			<h3>Links on note</h3>
+			<ul>
+			<% @internal_note_urls.each  do |url| %>
+				<li> <%= link_to url, url,{:target => '_blank'} %> </li>
+			<% end %>
+			</ul>
+		<% end %>
+
+		<%= submit_tag('Update', data: { disable_with: 'Update' }) %>
+		<br /><br />
+	<% end %>
+	</div>
+<% end %>
+
+<%= infotab_header([_('Created'),_('Support person'),_('Status')] ) %>
+	<tr>
+		<td><%= disp_time(@support_ticket.create_time) %></td>
+		<td><%= @support_ticket.show_supporter %>
+			<% if @can_assume_responsibility %>
+				<br /><br />
+				<%= button_to('Assume responsibility for this ticket', {:action=>:assume_responsibility, :id=>@support_ticket.id}) %>
+				<p class="comment">The ticket will appear under 'your tickets' and only you will receive update notifications.</p>
+			<% elsif @can_drop_responsibility %>
+				<br /><br />
+				<%= button_to('Stop being responsible for this ticket', {:action=>:drop_responsibility, :id=>@support_ticket.id}) %>
+				<p class="comment">The ticket will appear under 'New support tickets' and all supporters will receive update notifications.</p>
+			<% end %>
+			</td>
+		<td><%= @support_ticket.show_status %></td>
+	</tr>
+</table>
+<div class="inter_tab_spacer"></div>
+
+<%= show_messages(@support_ticket.messages) %>
+<div class="inter_tab_spacer"></div>
+
+<a name="reply"></a>
+<%= render(:partial => "reply") %>
+
+<% if @can_close %>
+	<br />
+    <%= form_tag({:action=>:close_ticket, :id=>@support_ticket.id}, {:method => :post}) do %>
+	  <label><%= radio_button_tag :close_status, SUPPORT_TICKET_SOLVED, true %> Problem solved</label>
+      <label><%= radio_button_tag :close_status, SUPPORT_TICKET_CLOSED %> User never answered</label><br/>
+      <%= submit_tag 'Close this ticket without replying', :style => 'padding: 0.5em 1em; font-size: 115%;', data: { disable_with: 'Close this ticket without replying' } %>
+    <% end %>
+<% end %>

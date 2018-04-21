@@ -1,0 +1,31 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>Thank you for creating an account in ICanLocalize. I'm writing to see if you need any help getting started.</p>
+
+<p>In order to translate Help and Manual projects, you need to download and install Translation Assistant.</p>
+
+<p>
+  You can get it after you log in to your ICanLocalize.com account. Click on 'Download Translation Assistant' at the top of any page.
+  Then, install, run the program and log in to your ICanLocalize account.
+</p>
+
+<p>
+  From Translation Assistant, click on 'New Help and Manual project' and select your project file (.hmxp).
+</p>
+
+<p>
+  Translation Assistant will run through your Help and Manual project and create a translation project from it, which you can upload and have translated.
+</p>
+
+<p>
+  You can find a full description of this process here: <%= link_to 'http://www.icanlocalize.com/site/?page_id=1314', 'http://www.icanlocalize.com/site/?page_id=1314' %>
+</p>
+
+<p>
+  <% link = url_for({:escape=>false, :only_path=>false, :controller=>:support, :action=>:new, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+  If you have any questions or need assistance, don't hesitate to contact me. You can reply to this email or create a support ticket: <%= link_to link, link %>
+</p>
+
+
+
+<%= EMAIL_SIGNATURE %>

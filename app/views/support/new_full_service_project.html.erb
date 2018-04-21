@@ -1,0 +1,37 @@
+<%= my_error_messages_for :support_ticket %>
+<%= form_for(:support_ticket, :url=>{:action=>:create, :retry=>:new_full_service_project}, :html=>{:multipart=>true}) do |f| %>
+	<table border="0" cellpadding="5">
+		<tr><td colspan="2">Enter a name for this project. This name should be short and descriptive.</td></tr>
+		<tr><td valign="top">Project name:</td><td><%= f.text_field :subject, :size=>60, maxlength: COMMON_FIELD %></td></tr>
+		<tr><td colspan="2"></td></tr>
+		<tr><td colspan="2">Provide a description for this project. This is the information that we'll need:
+		<ul>
+			<li><b>Source of the project:</b>
+			<% if !@cms %>
+			If you want us to fetch the project's files from the web, please provide a link. Otherwise, upload the files using the &quot;HTML files&quot; field below.
+			<% else %>
+			Tell us the URL (address) of your website.
+			<% end %>
+			</li>
+			<li><b>Original and translation languages:</b> Tell us what's the current language of your website, and which languages you want it translated to.</li>
+			<li><b>Schedule:</b> When you need the translation ready for.</li>
+		</ul>
+		</td></tr>
+		<tr><td valign="top">Description:</td><td><%= f.text_area :message, :rows=>8, :cols=>60, maxlength: COMMON_NOTE %></td></tr>
+		<% if !@cms %>
+		<tr><td valign="top">HTML files (optional):</td>
+			<td>
+				<div id="documents_to_upload"><p><%= file_field_tag 'file1[uploaded_data]', :id=>'file1_uploaded_data', onchange: "validate_file_size('file1[uploaded_data]', '#{ATTACHMENT_MAX_SIZE}')" %></p></div>
+				<p><a href="#form_top" onclick="add_another_file(<%= ATTACHMENT_MAX_SIZE %>);">Add another HTML file</a></p>
+			</td>
+		</tr>
+		<% end %>
+		<tr><td valign="top"></td><td>
+			<%= f.hidden_field(:support_department_id) %>
+			<% if @cms %><%= hidden_field_tag(:kind, 'cms') %><% end %>
+			<%= submit_tag 'Submit request', data: { disable_with: 'Submit request' } %>
+				&nbsp;&nbsp;<%= link_to('Cancel', {:action=>:index}) %></td>
+		</tr>
+	</table>
+	
+<% end %>

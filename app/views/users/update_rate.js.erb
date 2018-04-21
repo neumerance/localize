@@ -1,0 +1,6 @@
+<% if @warning %>
+alert('<%= @warning %>')
+<% else %>
+alert('Your rate and capacity have been updated')
+jQuery('#rate_and_capacity').html('<%= escape_javascript(render :partial => 'rate_and_capacity') %>')
+<% end %>

@@ -1,0 +1,89 @@
+<%
+  # @ToDo Check!!! string_translation is:
+  #  Language when called from resource_string#show
+  #  StringTranlation when called from resource_string#edit_translation
+  #  nil when... rendered as a partial from resource_string#show
+  Rails.logger.info " ====> string_translation is a #{@string_translation.class}"
+
+  unless local_assigns.has_key? :language
+    language = @string_translation.kind_of?(StringTranslation) ? @string_translation.language : @string_translation
+  end
+
+  unless @string_translation
+    @string_translation = @resource_string.get_translation language
+    @string_translation.txt = @resource_string.txt if @string_translation.txt.blank?
+  end
+%>
+
+<div id="<%= dom_id language %>_edit" <% unless @editing %>style="display:none;"<% end %>>
+  <%= form_for(
+               :string_translation,
+               :url => {
+                 action: :update_translation,
+                 lang_id: @string_translation.language_id,
+                 req: 'save'
+               },
+               remote: true,
+               :html => { 
+                  method: :post, 
+                  remote: true, 
+                  data: {resource_string_id: @resource_string.id} 
+                },
+               "data-loading" => "Element.hide('savebutton'); Element.hide('cancelbutton'); Element.show('spinner');"
+       ) do |f| %>
+    <p>
+      <%= f.text_area(:txt, { cols: 40, 
+                              rows: @edit_height, 
+                              style: 'width: 100%;'+language_dir_css_attribute(@string_translation.language), 
+                              tabindex: 1, 
+                              dir: (@string_translation.language.rtl == '1' ? 'rtl' : 'ltr'), 
+                              maxlength: COMMON_NOTE,
+                              data: {maxwidth: @resource_string.max_width_in_chars} }) %>
+    </p>
+    
+    <p>
+      <label><%= check_box_tag(:complete_translation, 1, @string_translation.status==STRING_TRANSLATION_COMPLETE, :tabindex=>2) %> Translation is complete</label>
+    
+      <% if @can_edit_next %>
+        &nbsp; | &nbsp;
+        <label><%= check_box_tag(:auto_edit_next, 1, 1) %> Auto-edit next string.</label>
+        <%= hidden_field_tag(:next_resource_string_id, @next_in_progress_str.id) %>
+      <% end %>
+    </p>
+
+    <div style="display:inline; visibility:visible;" id="savebutton">
+      <%= submit_tag('Save (Alt-N)', data: { disable_with: 'Save (Alt-N)' }, :tabindex=>3, :accesskey=>'n') %>
+    </div>
+    <%= set_focus_to_id('string_translation_txt') %>
+    <% if @select_translation %><%= select_id('string_translation_txt') %><% end %>
+  <% end %>
+  <div style="display:inline; visibility:visible;" id="cancelbutton">
+    <%= form_for(:string_translation, :url => {:action=>:update_translation, :lang_id=>@string_translation.language_id, :req=>'cancel'}, :remote => true) do |f| %>
+      <%= submit_tag('Cancel', data: { disable_with: 'Cancel' }) %>
+    <% end %>
+  </div>
+    <div id="spinner" style="display: none;">
+      <%= image_tag 'ajax-loader.gif', class: '', width: 16, height: 3164, alt: 'saving', style: 'vertical-align: middle;', border: 0 %> Saving...
+    </div>
+</div>
+
+<div id="<%= dom_id language %>_show" <% if @editing %>style="display:none;"<% end %>>
+  <p style="<%= language_dir_css_attribute(language)+text_flow_css_attribute(language) %>">
+    <%= formatted_translation(@resource_string, language) %>
+  </p>
+  <% if @resource_string.user_can_edit_translation(@user, language) %>
+    <%= form_tag({:action=>:edit_translation, lang_id: language.id, next_str: @next_in_progress_str&.id}, :remote => true) do %>
+      <%= submit_tag('Edit (Alt-E)', :id=>"edit#{language.id}", :accesskey=>'e', :tabindex=>1, data: { disable_with: 'Edit (Alt-E)' }) %>
+    <% end %>
+  <% end %>
+  
+  <%= status_div(@resource_string, language) %>
+  <%= set_focus_to_id("edit#{language.id}") %>
+</div>
+
+
+<% if @translation_complete  %>
+  <div class="red_message">
+    <%= (_("All strings in this project are translated. When you are happy with the translation, go back to the %s and indicate that it's complete. Then, we will begin the review process.") % link_to(_('chat with the client'), {:controller=>:resource_chats, :action=>:show, :id=>@resource_chat.id, :text_resource_id=>@text_resource.id})).html_safe %>
+  </div>
+<% end %>

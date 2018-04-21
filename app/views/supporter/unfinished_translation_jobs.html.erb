@@ -1,0 +1,59 @@
+<h1 id="mainheading">Unfinished Translation Jobs</h1>
+
+<div class="pager_control">
+  Showing page <%= form_tag({action: :unfinished_translation_jobs}, {method: 'GET'}) %>
+  <%= select_tag( :page, options_for_select(@list_of_pages, @cms_requests.number), {onchange: "submit()"}) %>
+  <%= link_to("Prev", url_for(action: :unfinished_translation_jobs, page: @cms_requests.prev.number)) if @cms_requests.prev? %>
+  <%= link_to("Next", url_for(action: :unfinished_translation_jobs, page: @cms_requests.next.number)) if @cms_requests.next? %>
+  </form>
+</div>
+<table width="100%" cellspacing="0" cellpadding="3" class="stats">
+  <tbody>
+    <tr class="headerrow">
+      <th>Job ID</th>
+      <th>Translator</th>
+      <th>Translation Status</th>
+      <th>% of deadline elapsed</th>
+      <th>Time remaining<br>before deadline</th>
+    </tr>
+    <% @cms_requests.each do |cms_request| %>
+      <tr>
+        <td>
+          <%= link_to(cms_request.id, {controller: 'cms_requests', action: 'show', website_id: cms_request.website_id, id: cms_request.id}, target: '_blank') %>
+        </td>
+        <td>
+          <% if cms_request.cms_target_language.translator %>
+            <%= link_to(cms_request.cms_target_language.translator.nickname, user_path(cms_request.cms_target_language.translator), target: '_blank') %> | <%= link_to_translator_chat(cms_request.cms_target_language) %>
+          <% elsif cms_request.website_translation_offer.accepted_website_translation_contracts.any? %>
+            <%= accepted_translator_names_and_chat_links(cms_request.website_translation_offer) %>
+          <% else %>
+            No translator assigned
+          <% end %>
+        </td>
+        <td><%= CmsTargetLanguage::STATUS_TEXT[cms_request.cms_target_language.status] %></td>
+        <td>
+          <% if cms_request.deadline_elapsed_percentage > 100 %>
+            Already overdue
+          <% else %>
+              <%= number_to_percentage(cms_request.deadline_elapsed_percentage, strip_insignificant_zeros: true, precision: 2 ) %>
+          <% end %>
+        </td>
+        <td>
+          <% if cms_request.deadline >= Time.now %>
+              <%= seconds_to_pretty_time(cms_request.deadline - Time.now) %>
+          <% else %>
+              <span class="status-red"><%= seconds_to_pretty_time(Time.now - cms_request.deadline) %></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+
+  </tbody>
+</table>
+<div class="pager_control">
+  Showing page <%= form_tag({action: :unfinished_translation_jobs}, {method: 'GET'}) %>
+  <%= select_tag( :page, options_for_select(@list_of_pages, @cms_requests.number), {onchange: "submit()"}) %>
+  <%= link_to("Prev", url_for(action: :unfinished_translation_jobs, page: @cms_requests.prev.number)) if @cms_requests.prev? %>
+  <%= link_to("Next", url_for(action: :unfinished_translation_jobs, page: @cms_requests.next.number)) if @cms_requests.next? %>
+  </form>
+</div>

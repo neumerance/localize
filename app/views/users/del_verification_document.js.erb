@@ -1,0 +1,5 @@
+<% if @ok %>
+  jQuery('#identity_verifications').html('<%= escape_javascript(render :partial => 'identity_verifications', :object=>@user.not_ok_identity_verifications) %>').effect("highlight", {}, 3000)
+<% else %>
+  location.reload()
+<% end %>

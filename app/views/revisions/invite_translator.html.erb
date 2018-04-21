@@ -1,0 +1,28 @@
+<% if @release_problems.length == 0 %>
+
+    <p><%= _("You can send invitations to translators to do this project. This allows you to assign translators without releasing the project for public bidding.") %></p>
+  
+    <% if @private_translators.any? %>
+      <h3>Your private translators</h3>
+      <%= list_translators_to_invite(@private_translators) %>
+    <% end %>
+
+    <h3><%= _("Translation between %s and %s") % [@revision.language.name, @revision_language.language.name] %></h3>
+
+    <%= list_translators_to_invite(@translators) %>
+
+<% else %>
+
+    <div class="fieldWithErrors">
+      <p><%= _("You cannot invite translators to this project yet, because the project is not fully set up:") %></p>
+      <ul>
+        <% @release_problems.each do |p| %>
+        <li><%= p %></li>
+        <% end %>
+      </ul>
+    </div>
+
+<% end %>
+
+<br/>
+<p><%= link_to(_('Back to the project'), {:action => :show}) %></p>

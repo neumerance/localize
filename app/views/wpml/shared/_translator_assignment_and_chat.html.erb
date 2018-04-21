@@ -1,0 +1,53 @@
+<%# This partial should be passed a variable called language_pair, which is
+    a WebsiteTranslationOffer record %>
+
+<%# Memoize some values to prevent excessive SQL queries %>
+<% pending_translator_applications_count = language_pair.pending_translator_applications_count %>
+<% pending_translator_invitations_count = language_pair.pending_translator_invitations_count %>
+
+<% if language_pair.automatic_translator_assignment %>
+  <% if language_pair.any_translators_accepted? %>
+    Translators were automatically assigned.
+    <%# For now, on autoassign language pairs, only supporters can see the translators. See icldev-2614 %>
+    <% if user.has_supporter_privileges? %>
+      <b><BR>Translators assigned:</b> <%= accepted_translator_names_and_chat_links(language_pair) %>.<BR>
+    <% end %>
+  <% else %>
+    Translators will be assigned automatically.
+  <% end %>
+  <% if user.has_supporter_privileges? %>
+      <% link = url_for controller: '/supporter', action: :assignable_translators_to_website_translation_offers, id: language_pair.id %>
+      <%= link_to 'Auto Assign Translator / Reviewer', link, class: 'button-light', remote: true %>
+  <% end %>
+<% else # Manual translator assignment %>
+  <% if language_pair.any_translators_accepted? %>
+    <%# One or more translators have applied and been accepted by the client.  %>
+    <b>Translators assigned:</b> <%= accepted_translator_names_and_chat_links(language_pair) %>.<BR>
+    <% if pending_translator_applications_count > 0 %>
+      <%= link_to "#{pending_translator_applications_count} more translators", invite_translator_wpml_website_translation_jobs_path(website_id: language_pair.website.id, url: language_pair.invite_translators_path), class: 'button-light', remote: true %>
+        sent you quotes and are waiting for your reply.<BR>
+    <% end %>
+    <% if pending_translator_invitations_count > 0 %>
+      <%= pluralize(pending_translator_invitations_count, 'translators') %> did not yet reply to your invitation.
+    <% end %>
+    You can also <%= link_to 'invite other translators', invite_translator_wpml_website_translation_jobs_path(website_id: language_pair.website.id, url: language_pair.invite_translators_path), target: '_blank', class: 'button-light', remote: true %> to get more quotes.
+  <% elsif language_pair.any_translators_applied? %>
+    <%# One or more translators have applied but the client have not accepted any applications %>
+    You invited <b><%= language_pair.translator_invitations_count %></b> translator(s),
+    <b><%= language_pair.translators_applied_count %></b> of them accepted your invitation and
+    sent you quotes. Please
+    <%= link_to 'review the quotes and select one or more translators', invite_translator_wpml_website_translation_jobs_path(website_id: language_pair.website.id, url: language_pair.accept_translators_path), class: 'button-light', remote: true %>.
+    If your are not satisfied with the quotes, you can
+    <% if language_pair.translators_applied_count < language_pair.translator_invitations_count %>
+      <%# Not all invited translators applied yet (some may still apply) %>
+      wait for other invited translators to reply or
+    <% end %>
+    <%= link_to 'invite more translators', invite_translator_wpml_website_translation_jobs_path(website_id: language_pair.website.id, url: language_pair.invite_translators_path), class: 'button-light', remote: true %>
+  <% elsif language_pair.any_translators_invited? %>
+    You invited <b><%= language_pair.translator_invitations_count %></b> translator(s) but none have responded to your invitation
+    yet. You can wait for them to respond or
+    <%= link_to 'invite more translators', invite_translator_wpml_website_translation_jobs_path(website_id: language_pair.website.id, url: language_pair.invite_translators_path), class: 'button-light', remote: true %>.<BR>
+  <% else # The client did not yet invite any translators %>
+    Please <%= link_to 'invite translators', invite_translator_wpml_website_translation_jobs_path(website_id: language_pair.website.id, url: language_pair.invite_translators_path), class: 'button-light', remote: true %> to get quotes.
+  <% end %>
+<% end %>

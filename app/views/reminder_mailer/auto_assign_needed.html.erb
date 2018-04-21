@@ -1,0 +1,28 @@
+<%= HTML_EMAIL_HEADER.html_safe %>
+
+<p>Dear Supporters,</p>
+<BR>
+<p>The following language pairs require "automatic" translator assignment:</p>
+<BR>
+
+<%= infotab_header(['ID','Website', 'Language pair']) %>
+  <% @language_pairs.each do |language_pair| %>
+    <tr>
+      <td><%= language_pair.id %></td>
+      <td>
+        <%= link_to language_pair.website_name,
+                    wpml_website_url(language_pair.website_id),
+                    target: '_blank' %>
+      </td>
+      <td>
+        <%= language_pair.source_language_name %> to <%= language_pair.target_language_name %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<BR>
+
+<% link = url_for controller: :supporter,
+                  action: :manage_website_project_auto_assign %>
+<p>Please go to the <%= link_to('Website Translation Projects to Auto-assign', link) %>
+  page and assign translators.</p>

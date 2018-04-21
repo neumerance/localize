@@ -1,0 +1,5 @@
+<tr>
+<td><%= link_to(h(lead.name), {:action=>:show, :id=>lead.id}) %></td>
+<td><%= link_to(h(lead.url), lead.url, {:target=>'_blank'}) %></td>
+<td><%= truncate(h(lead.description),length: 80, omission: '...') %></td>
+</tr>

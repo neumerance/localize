@@ -1,0 +1,5 @@
+<% if @warning %>
+	alert('<%= @warning %>')
+<% else %>
+  jQuery('#ruling').html('<%= escape_javascript(render partial: 'ruling') %>')
+<% end %>

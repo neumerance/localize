@@ -1,0 +1,5 @@
+<%= HTML_EMAIL_HEADER %>
+	<h1><%= h(truncate(@header, length: 60, ommision: '...')) %></h1>
+	<%= yield :layout %>
+<br style="clear: both;" />
+</body></html>

@@ -1,0 +1,11 @@
+<tr>
+	<% bgcol = (resource_language.text_resource.resource_strings.count > 0) ? StringTranslation::TRANSLATION_COLOR_CODE[STRING_TRANSLATION_NEEDS_UPDATE] : StringTranslation::TRANSLATION_COLOR_CODE[STRING_TRANSLATION_COMPLETE] %>
+	<td style="background-color:<%= bgcol %>; width: 100px;"><%= resource_language.try(:created_at).try(:strftime, "%Y/%m/%d") %></td>
+	<td style="background-color:<%= bgcol %>;"><%= link_to(h(resource_language.text_resource.name),{:controller=>:text_resources, :action=>:show, :id=>resource_language.text_resource.id}) %></td>
+	<td style="background-color:<%= bgcol %>;"><%= (resource_language.text_resource.category ? ('<strong>' + resource_language.text_resource.category.name + '</strong>') : 'Not specified').html_safe %></td>
+	<td style="background-color:<%= bgcol %>;">
+    <span><b><%= resource_language.text_resource.language.name %></b> <%= _('to') %> <b><%= resource_language.language.name %></b></span>
+  </td>
+	<td style="background-color:<%= bgcol %>;"><%= resource_language.text_resource.resource_strings.count %></td>
+	<td style="background-color:<%= bgcol %>;"><%= link_to('Apply for this work', {:controller=>:resource_chats, :action=>:new, :text_resource_id=>resource_language.text_resource.id, :resource_lang_id=>resource_language.id}) %></td>
+</tr>

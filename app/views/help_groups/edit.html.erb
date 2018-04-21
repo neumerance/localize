@@ -1,0 +1,22 @@
+<h1>Editing help_group</h1>
+
+<%= my_error_messages_for :help_group %>
+
+<%= form_for(@help_group) do |f| %>
+  <p>
+    <b>Name</b><br />
+    <%= f.text_field :name, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+  </p>
+
+  <p>
+    <b>Order</b><br />
+    <%= f.number_field :order, min: 0, max: 99 %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @help_group %> |
+<%= link_to 'Back', help_groups_path %>

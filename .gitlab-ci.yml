@@ -1,0 +1,62 @@
+# This file is a template, and might need editing before it works on your project.
+# Official language image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/ruby/tags/
+#
+# Eduard: I saw an error on https://git.onthegosystems.com/icl-upgrade/icanlocalize/builds/25137
+# so I changed the tag to 2.3.1 instead of 2.3 (you can probably edit that)
+image: "ruby:2.3.1"
+
+# Pick zero or more services to be used on all builds.
+# Only needed when using a docker container to run your tests in.
+# Check out: http://docs.gitlab.com/ce/ci/docker/using_docker_images.html#what-is-service
+services:
+  - mysql:latest
+
+variables:
+  # Configure mysql service (https://hub.docker.com/_/mysql/)
+  WORDPRESS_DB_NAME: icanlocalize_test
+  WORDPRESS_DB_USER: root
+  MYSQL_ROOT_PASSWORD: QqgjDZvbPMQypL8n79QS8EHYexFFr7fnZEvem
+  
+cache:
+  paths:
+    - vendor/bundle
+
+before_script:
+  - which ruby
+  - apt-get update -qy
+  - apt-get install -y nodejs
+  - apt-get install -y mysql-client
+  - bundle config --global github.https true
+  - eval $(ssh-agent -s)
+  - bash -c 'ssh-add <(echo "$SSH_PRIVATE_KEY")'
+  - 'mkdir -p ~/.ssh && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+  - gem install bundler --no-ri --no-rdoc 
+  - bundle install --jobs $(nproc) --path=/cache/bundler "${FLAGS[@]}"
+  
+rubocop:
+  tags:
+    - docker
+  script:
+    - bundle exec rubocop --require rubocop/formatter/checkstyle_formatter --format RuboCop::Formatter::CheckstyleFormatter -o reports/xml/checkstyle-result.xml --format html -o reports/html/index.html || true
+
+brakeman:
+  tags:
+    - docker
+  script:
+    - bundle exec brakeman -i config/brakeman.ignore -o brakeman-output.tabs
+    
+rails:
+  tags:
+    - docker
+  script:
+    - ruby -v
+    - git archive --remote=ssh://git@git.onthegosystems.com:10022/icl-upgrade/icl-secrets.git HEAD test/application.yml | tar -xO > config/application.yml
+    - mysql --user=root --password="$MYSQL_ROOT_PASSWORD" --host=mysql < "db/icl_test.sql"
+    - bundle exec rake db:schema:load
+    - rake db:test:prepare
+    - RAILS_ENV=test bundle exec rake test TESTOPTS="--ci-dir=minitest_reports --seed 10261" --verbose
+    - RAILS_ENV=test bundle exec rspec --format RspecJunitFormatter  --out spec_reports/rspec.xml
+    
+
+    

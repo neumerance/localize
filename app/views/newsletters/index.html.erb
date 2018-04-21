@@ -1,0 +1,6 @@
+<p><%= link_to('Create a new newsletter', {:action=>:new}) %></p><br />
+<% if @newsletters.length > 0 %>
+<%= infotab_header(['Time', 'Subject', 'Body', 'Status', 'Actions']) %>
+<%= render(:partial=>'newsletter', :collection=>@newsletters) %>
+</table>
+<% end %>

@@ -1,0 +1,10 @@
+<% if @warning %>
+	alert('<%= @warning %>');
+<% else %>
+  <% if @has_money_on_account %>
+    jQuery('<%= "#lang#{@lang_id}" %>').html('<%= escape_javascript(render :partial => 'reviews_to_enable') %>');
+  <% else %>
+    jQuery('<%= "#lang#{@lang_id}" %>').html('<%= escape_javascript(render :partial => 'waiting_money') %>');
+  <% end %>
+    jQuery('<%= "#lang#{@lang_id}" %>').effect("highlight", {color: '#e0e0e0'}, 3000);
+<% end %>

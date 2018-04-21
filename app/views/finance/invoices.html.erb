@@ -1,0 +1,28 @@
+<% if @invoices_exist %>
+	<% if @show_number_of_pages %>
+		Page <%= form_tag({:action=>:invoices}, {:method=>'GET'}) %>
+			<%= select_tag( :page, options_for_select(@list_of_pages,@invoices_page.number), {:onchange=>"submit()"}) %>
+		</form>
+		<%= link_to("Prev", {:action=>:invoices, :page => @invoices_page.prev.number}) if @invoices_page.prev? %>
+		<%= link_to("Next", {:action=>:invoices, :page => @invoices_page.next.number}) if @invoices_page.next? %>	
+	<% end %>
+	<%= infotab_header(['Created','Last modified','Description','Status','Amount', 'Actions']) %>
+    <% @invoices_page.each do |invoice_summary| %>
+      <%= render(:partial=>'invoice_summary', locals: {invoice_summary: invoice_summary}) %>
+    <% end %>
+	</table>
+<% else %>
+	<p>No invoices to display.</p>
+<% end %>
+
+<% if @mode == 'completed' && @user.pending_invoices.count>0 %>
+	<div class="inter_tab_spacer"></div>
+	<h2>Pending invoices</h2>
+	<p>You have <%= @user.pending_invoices.count %> invoice(s) pending payment. <%= link_to('Check status or complete payment', {:action=>:invoices, :status => :pending }) %></p>	
+<% end %>
+
+<% if @mode == 'pending' && @user.pending_invoices.count>0 %>
+	<div class="inter_tab_spacer"></div>
+	<h2>Paid Invoices</h2>
+	<p><%= link_to('View your paid invoices', {:action=>:invoices }) %></p>	
+<% end %>

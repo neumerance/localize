@@ -1,0 +1,16 @@
+  <div class="forumheadlineR">
+    Project revisions (<%= @revisions.length %>)</div>
+  
+  <div class="forumheadlineGL">
+    <%= image_tag 'spacer.gif', class: '', width: 10, height: 1, border: 0 %>Revision
+  </div>
+  <div class="forumheadlineGR">
+    <%= image_tag 'spacer.gif', class: '', width: 10, height: 1, border: 0 %>Info
+  </div>
+  <div class="clear"><%= image_tag 'spacer.gif', class: '', width: 10, height: 1, border: 0 %></div>
+  
+  <%= render(:partial => "revision", :collection => @revisions) %>
+  <div class="clear">
+    <%= image_tag 'spacer.gif', class: '', width: 759, height: 1, border: 0 %>
+  </div>
+  

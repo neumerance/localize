@@ -1,0 +1,4 @@
+<%= form_tag({:controller=>:finance, :action=>:invoice}, :method=>'GET' ) do %>
+	<p>Invoice ID: <%= id_field_tag(:id, '') %></p>
+	<p><%= submit_tag('Search', data: { disable_with: 'Search' }) %></p>
+<% end %>

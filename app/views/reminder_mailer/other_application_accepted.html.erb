@@ -1,0 +1,7 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p><%= @resource_chat.resource_language.text_resource.client.full_name %> has selected another translator for project '<%= @resource_chat.resource_language.text_resource.name %>' from <%= @resource_chat.resource_language.text_resource.language.name %> to <%= @resource_chat.resource_language.language.name %>.</p>
+
+<p>Thanks for applying to this job!</p>
+
+<%= EMAIL_SIGNATURE %>

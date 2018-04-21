@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+	  <title><%= h(truncate(@header, :length => 50, :omission => '...')) -%> [ICanLocalize]</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta http-equiv="Content-Style-Type" content="text/css" />
+      <meta http-equiv="Content-Script-Type" content="text/javascript" />
+      <% if @google_translation_api %>
+      <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+      <script type="text/javascript">google.load("language", "1");</script>
+      <% end %>
+      <link rel="shortcut icon" href="/assets/favicon.png" type="image/png" />
+      <link rel="icon" href="/assets/favicon.png" type="image/png" />
+	    <meta http-equiv="refresh" content="<%= (request.method == :get) ? (@session_timeout ? @session_timeout : SESSION_TIMEOUT) : "#{SESSION_TIMEOUT};#{url_for(:controller=> '/login')}" %>" />
+
+      <%= stylesheet_link_tag 'application' %>
+      <%= stylesheet_link_tag 'base' %>
+      <%= stylesheet_link_tag 'custom/translation_analytics' %>
+      <%= stylesheet_link_tag 'custom/keywords' %>
+      <%= stylesheet_link_tag 'plugins/chosen.min' %>
+      <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/css/iziModal.min.css' %>
+
+      <%= javascript_include_tag 'application' %>
+
+      <%= javascript_include_tag 'base' %>
+      <%= javascript_include_tag 'scripts/countdown' %>
+      <%= javascript_include_tag 'scripts/keywords' %>
+      <%= javascript_include_tag 'plugins/chosen.jquery.min' %>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+      <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/izimodal/1.5.1/js/iziModal.min.js' %>
+
+      <%= csrf_meta_tags %>
+  </head>
+  <%# Classes with the controller and action names allow page-specific JS execution %>
+  <body class='standard <%= "#{controller_name}-controller #{action_name}-action" %>'>
+	<div id="top-of-page"></div>
+	   <!--header-->
+	<% if @return_url && @return_title %>
+		<div id="return_to">
+			<%= link_to(_('Back to %s')%@return_title, @return_url) %>
+		</div>
+	<% elsif !@embedded -%>
+	<div id="top" class="topbanner">
+		<div id="logo">
+      <%= image_tag "web_logo_small#{Rails.env == 'sandbox' ? '_sandbox' : '' }.png", class: 'imageBorder', width: 150, height: 34, alt: 'ICanLocalize', style: '', border: 0 %>
+    </div>
+		<div id="userinformation" class="divfloatrt txt inline_buttons">
+			<% if @user -%>
+				<% if !@embedded && ((@user[:type] == 'Translator' or @user[:type] == 'Client') and @user.need_ta?) %>
+					<form action="#" >
+						<input type="button" value="Download Translation Assistant" onclick="window.open('/downloads/show_recent/Translation%20Assistant','mywindow','width=800,height=500')" />
+					</form>
+					&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;
+				<% end %>
+				<% if @user && @user.kind_of?(Client) && @user.can_create_projects? %>
+          <%= link_to(_('New translation project'),{:controller=>'/client', :action=>:getting_started}, :class=>(@user.has_projects? ? 'rounded_but_bold' : 'rounded_but_orange')) %>
+          &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;
+				<% end %>
+        <% if((@user && @user.is_a?(Client)) && (Rails.env.sandbox? || Rails.env.development?)) %>
+          <span><a href="<%= sandbox_jobs_client_index_path %>">View cms requests</a></span>
+        <% end %>
+        <span><%= _('Logged in as') %> <strong><%= @user.full_name %></strong> &nbsp;</span>
+				<%= user_switch() %>
+				<%= form_tag({:controller => '/login', :action => :logout}) do %>
+					<%= submit_tag( "Log out", :disable_with=>'Logging out...') %>
+				<% end %>
+			<% end -%>
+		</div>
+	</div>
+	<% end -%>
+
+	<!--end header-->
+  <% unless @is_modern %>
+      <div class="errorExplanation fadeandgone">
+        Some of the features of ICanLocalize don't work well on <%= @browser.name %>. To enjoy everything that our system offers, we recommend using a newer browser.
+        <script>
+          setTimeout(function(){
+            jQuery('.fadeandgone').slideUp(300)
+          }, 8000)
+        </script>
+      </div>
+  <% end %>
+	<% if @active_site_notices && (@active_site_notices.length > 0) %>
+		<div class="errorExplanation"><h4>Site wide notice</h4>
+      <% @active_site_notices.each do |n| %>
+        <p><%= pre_format(n.txt) %></p>
+      <% end %>
+		</div>
+	<% end %>
+
+	<% if @user && !@user.can_receive_emails?  %>
+		<div class="errorExplanation"><h4>Warning</h4>
+      Your email don't seems valid any longer, and no emails will be sent to you any longer. To start receiving emails, you need to <%= link_to "change your email address", @user.becomes(User) %>
+		</div>
+	<% end %>
+
+	<!-- display_chrome_warning -->
+
+	<% if flash[:notice] %><div id="alertDiv"><%= flash[:notice].html_safe %></div><% end %>
+
+	<% if false and flash[:notice] %>
+		<div id="floating_alert" class="floating_alert"><%= pre_format(flash[:notice]) %></div>
+		<script>
+			jQuery("#floating_alert").click(function (){
+				jQuery("#floating_alert").hide();
+			});
+		</script>
+	<% end %>
+
+	<% if flash[:add_refresh_div] %><div id="TA_refresh_projects"></div><% end %>
+
+	<div id="reminders_preview"><%= render(:partial=>'/reminders/reminders_summary') %></div>
+	<div id="reminders">
+		<%= render(:partial=>'/reminders/reminders_box') %>
+	</div>
+
+	<%= top_menu(@user) if top_menu(@user) %>
+	<%= second_menu if second_menu %>
+	<%= show_project_path %>
+
+		<div id="loading_box" style="display:none; position: fixed; top: 2em; left: 2em;"></div>
+
+	<% if @mini_index && (@mini_index.length > 0) %><% index_contents=page_index(@mini_index) %><% if index_contents %><div id="mini_index"><%= index_contents %></div><% end %><% end %>
+	<h1 id="mainheading"><%= h(truncate(@header, :length => 60, :omission => '...')) %></h1>
+	<% if @mini_index && (@mini_index.length > 0) %><div class="clear">&nbsp;</div><% end %>
+	<% if @help_placements && (@help_placements.length > 0) %>
+		<%= help_frame %>
+		<div id="maincontent" class="lmarg33 rmarg33 space_for_help">
+	<% else %>
+		<div id="maincontent" class="lmarg33 rmarg33">
+	<% end %>
+		<%= yield :layout %>
+	</div>
+
+	<div id="bottom">
+		<div class="inter_tab_spacer"></div>
+		<div id="glossary_edit"><%= render(:partial=>'/glossary_terms/glossary_panel') %></div>
+		<table width="100%" cellspacing="0" cellpadding="0" border="0">
+			<tbody>
+				<tr>
+					<td class="bottombar"></td>
+				</tr>
+				<tr>
+					<td class="bottomtxt tmarg3" height="25" align="center">
+						<% if @user && (@user.kind_of? Client) %>
+	            <p>
+                  <strong><%= _('Need help?') %></strong>
+                  <%= (_('Create a %s or call <b>+1-(702) 997-3025</b>')%link_to(_('support ticket'), {:controller=> '/support', :action=>:new})).html_safe %>
+
+              </p>
+            <% end %>
+						<p class="comment">
+                <%= link_to(_('Printable version'), printable_url(), :target=>'_blank' ) %> &nbsp; | &nbsp;
+                <%= _('Current time is %s GMT+0')%disp_time(Time.now()) %> &nbsp; | &nbsp; <%= (_('&copy; %s. OnTheGoSystems INC. All Rights Reserved.')%Time.now.strftime('%Y')).html_safe %></p>
+						<p><%= locale_footer %></p>
+            <p style="<%= Rails.env.production? ? 'display:none' : ''%>">
+                Page load time = <%= Time.now - @timer %>
+            </p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+  </div>
+  <%= render partial: 'layouts/app_modal' %>
+    <script type="text/javascript">
+      jQuery(document).ready(function(){
+        <%= @onload %>;
+      })
+    </script>
+    </body>
+</html>

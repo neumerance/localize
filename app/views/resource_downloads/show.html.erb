@@ -1,0 +1,23 @@
+<p><%= (_("Back to %s project.") % link_to(h(@text_resource.name), {:controller=>:text_resources, :action=>:show, :id=>@text_resource.id})).html_safe %></p>
+<br />
+
+<div class="infobox"><h4><%= _("Translated resource file details") %></h4>
+	<table>
+		<tr><td><%= _("File name:") %></td><td><b><%= h(@resource_download.orig_filename) %></b></td></tr>
+		<tr><td><%= _("Uploaded:") %></td><td><b><%= disp_time(@resource_download.chgtime) %></b></td></tr>
+	</table>
+</div>
+
+<p><%= (_("This file uses <b>%s </b> character encoding.") % ResourceFormat::ENCODING_NAMES[@text_resource.resource_format.encoding]).html_safe %>
+<% if @can_decode %>
+	<% if @decoded %>
+		<%= (_("You're now viewing the decoded version. You can switch to the original %s.") % link_to(_('encoded version of this file'), {:action=>:show})).html_safe %>
+	<% else %>
+		<%= (_("You're now viewing the encoded version. You can switch to the %s.") % link_to(_('unencoded version of this file'), {:action=>:show, :decode=>1})).html_safe %>
+	<% end %>
+<% end %>
+</p>
+
+<%= text_area_tag(:txt, h(@file_contents), {:rows=>20, :cols=>100, :style=>'width: 100%;', maxlength: COMMON_NOTE}) %>
+<br />
+<p><%= _("Download as a GZIP file:") %> <%= link_to(h(@resource_download.filename), {:action=>:download}) %></p>

@@ -1,0 +1,18 @@
+<%= form_for(@money_transaction.owner, :url => "/money_transactions/#{@money_transaction.id}", :html => {:method => :put}) do |f| %>
+  <table cellspacing="10">
+    <tr>
+      <td><b>Processor</b>:</td><td><%= f.select :payment_processor, options_for_select(@external_account_types, @money_transaction.owner.payment_processor) %></td>
+    </tr>
+    <tr>
+      <td><b>Transaction ID</b>:</td><td><%= f.text_field :txn, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+    </tr>
+    <tr>
+      <td><b>Amount</b>:</td><td><%= money_field_tag "money_transaction[amount]", @money_transaction.amount %></td>
+    </tr>
+    <tr>
+      <td><b>Fee</b>:</td><td><%= money_field_tag "money_transaction[fee]", @money_transaction.fee %></td>
+    </tr>
+  </table>
+    <input type="hidden" name="refer" value="<%=@refer%>"/>
+    <%= f.submit %>
+<% end %>

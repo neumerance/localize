@@ -1,0 +1,2 @@
+class ChatTrack < SessionTrack
+end

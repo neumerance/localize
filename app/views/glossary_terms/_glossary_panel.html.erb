@@ -1,0 +1,40 @@
+<% if @glossary_client && @glossary_languages && (@glossary_languages.length > 0) %>
+    <div <% unless session[:ta_glossary_edit] %>style="padding: 1em; background-color: #D0D0F0;"<% end %> >
+
+        <% unless session[:ta_glossary_edit] %>
+            <% if @user == @glossary_client %>
+                Your glossary from <strong><%= @glossary_orig_language.name %></strong> to <strong><%= (@glossary_languages.collect { |l| l.name }).join(', ') %></strong>.
+            <% else %>
+                Glossary for <strong><%= @glossary_client.full_name %></strong> from <strong><%= @glossary_orig_language.name %></strong> to <strong><%= (@glossary_languages.collect { |l| l.name }).join(', ') %></strong>.
+            <% end %>
+            <%= form_tag({:controller=>:glossary_terms, :action=>:show_glossary, :user_id=>@glossary_client.id}, :remote => true) do %>
+              <% label = (session[:show_glossary] ? 'Close glossary' : 'Edit glossary') %>
+              <%= submit_tag(label, data: { disable_with: label }) %>
+            <% end %>
+        <% end %>
+
+        <% if session[:ta_glossary_edit] || session[:show_glossary] %>
+            <% if !session[:ta_glossary_edit] %>
+                <div style="margin: 0.5em; padding: 0.5em; max-height: 15em; overflow:auto;">
+            <% end %>
+
+            <%= glossary_edit_list %>
+
+            <% if !session[:ta_glossary_edit] %>
+                </div>
+            <% end %>
+
+            <br />
+            <div id="new_glossary">
+                <%= render(:partial=>'/glossary_terms/glossary_term') %>
+            </div>
+
+            <% if !session[:ta_glossary_edit] %>
+                <a href="#mainheading">Back to top</a>
+            <% end %>
+
+        <% end %>
+
+	</div>
+	<br />
+<% end %>

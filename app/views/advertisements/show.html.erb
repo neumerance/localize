@@ -1,0 +1,10 @@
+<table border="0" cellpadding="5" cellspacing="10">
+	<tr><td valign="top"><b>ID:</b></td><td><%= @advertisement.id %></td></tr>
+	<tr><td valign="top"><b>Title:</b></td><td bgcolor="#F0F0F0"><%= h(@advertisement.title) %></td></tr>
+	<tr><td valign="top"><b>Body:</b></td><td bgcolor="#F0F0F0"><%= pre_format(@advertisement.body) %></td></tr>
+</table>
+<br />
+<%= link_to("Edit", {:action=>:edit}) %>
+<br />
+<br />
+<%= button_to("Delete", {:action=>:delete, :id=>@advertisement.id}, 'data-confirm'=>'Are you sure you want to delete this ad?') %>

@@ -1,0 +1,157 @@
+<h1> Managing <%="#{@translator.fname} #{@translator.lname}"%> Projects </h1>
+
+
+<h2>Reviewing</h2>
+<ul>
+    <% @translator.managed_works.group_by{|mw| [mw.from_language, mw.to_language]}.each do |language_pair, managed_works| %>
+        <%= language_pair_header(language_pair) %>
+        <%= form_tag(bulk_assign_reviewer_managed_works_url, :method => :post, 'data-confirm' => "Are you sure?")  do %>
+            <% managed_works.each do |mw| %>
+                <%= hidden_field_tag :"managed_work_ids[]", mw.id %>
+            <% end %>
+            <b>
+                Reassign all projects from this language pair to the translator with nickname <%= text_field(:translator, :nickname, :size => 8, :value => "", maxlength: COMMON_FIELD)%>.
+                <%= submit_tag 'Assign', data: { disable_with: 'Assign' } %>
+            </b>
+        <% end %>
+
+        <% managed_works.each do |managed_work| %>
+            <% unless managed_work.owner.nil? %>
+                <li>
+                    <% if managed_work.owner_type == "WebMessage" %>
+                        Instant Translation: <%=link_to managed_work.owner.id, web_message_path(managed_work.owner.id) %>
+                    <% elsif managed_work.owner_type == "ResourceLanguage"%>
+                        Software project: <%=link_to managed_work.owner.text_resource.name,text_resource_path(managed_work.owner.text_resource.id) %>
+                    <% elsif managed_work.owner_type == "RevisionLanguage" %>
+                        Bidding project: <%=link_to managed_work.owner.id, web_message_path(managed_work.owner.id) %>
+                    <% elsif managed_work.owner_type == "WebsiteTranslationOffer" %>
+                        Website: <%=link_to managed_work.owner.id, web_message_path(managed_work.owner.id) %>
+                    <% else %>
+                        <% raise "Unknown owner type" %>
+                    <% end %>
+                    <span id="managed_work_<%=managed_work.id%>">
+                        | <%= link_to("Remove from position",
+                              "/managed_works/#{managed_work.id}/unassign_reviewer",
+                              'data-confirm' => "Are you sure?",
+                              :method => :post,
+                              "data-update" => "managed_work_#{managed_work.id}",
+                              :remote => true
+                        ) %>
+                        <%= form_tag "/managed_works/#{managed_work.id}/assign_reviewer", :method => :post, "data-update" => "managed_work_#{managed_work.id}", :remote => true, 'data-confirm' => "Are you sure?"  %>
+                            Assign the translator with nickname <%= text_field(:translator, :nickname, :size => 8, :value => "", maxlength: COMMON_FIELD) %> instead.
+                            <%= submit_tag 'Assign', data: { disable_with: 'Assign' } %>
+                        </form>
+                    </span>
+                </li>
+            <%end%>
+        <%end%>
+    <% end %>
+</ul>
+
+
+<h2>Website projects</h2>
+<ul>
+    <% @translator.website_translation_contracts.where(status: TRANSLATION_CONTRACT_ACCEPTED).group_by{|mw| [mw.website_translation_offer.from_language, mw.website_translation_offer.to_language]}.each do |language_pair, wtcs| %>
+        <%= language_pair_header(language_pair) %>
+        <% wtcs.each do |wtc| %>
+            <li>
+                <%=link_to wtc.website.name, wpml_website_path(wtc.website.id) %> |
+                <span id="website_translation_contract_<%= wtc.id %>">
+                    <%= form_tag "/websites/#{wtc.website.id}/swap_translators", "data-update" => "website_translation_contract_#{wtc.id}", :method => :post, :remote => true, 'data-confirm' => "Are you sure?" %>
+                        <%= hidden_field_tag "source_translator_id", wtc.translator_id %>
+                        Assign the translator with nickname <%= text_field_tag(:target_nickname, "", :size => 8, maxlength: COMMON_FIELD) %> for all jobs that this translator holds on this website.
+                        <%= submit_tag 'Assign', data: { disable_with: 'Assign' } %>
+                    </form>
+                </span>
+            </li>
+        <% end %>
+    <% end %>
+</ul>
+
+
+<h2>Bidding Projects</h2>
+<ul>
+    <%=link_to "Remove from all bidding projects", {:controller => :bids, :action =>"unset_all_bids", :translator_id => @translator.id}, {'data-confirm' => "Are you sure?", :method => :post}  %>
+    <% @translator.all_chats_from_bids_that_won.group_by{|mw| [mw.revision.language, mw.revision_languages.first.try(:language)]}.each do |language_pair, chats| %>
+        <%= language_pair_header(language_pair) %>
+        <% chats.each do |chat| %>
+            <li>
+                <%= link_to chat.revision.project.name, "/projects/#{chat.revision.project.id}/revisions/#{chat.revision.id}/chats/#{chat.id}" %> | <%=bid_status_text(chat.bids.first)%> |
+                <span id="chat_<%=chat.id%>">
+                    <%= link_to "Remove from position",
+                                "/projects/#{chat.revision.project.id}/revisions/#{chat.revision.id}/chats/#{chat.id}/bids/#{chat.bids.first.id}/unset_bid" ,
+                                "data-update" => "chat_#{chat.id}",
+                                "data-confirm" => "Are you sure?",
+                                :method => :post,
+                                :remote => true
+                    %>
+                </span>
+            </li>
+        <% end %>
+    <% end %>
+</ul>
+
+
+<h2>Software Projects</h2>
+<span id="resource_languages">
+  <% language_pairs_and_resource_languages = ResourceChat.where(translator_id: @translator.id, status: RESOURCE_CHAT_ACCEPTED).map{|x| x.resource_language}.group_by{|rl| [rl.text_resource.language, rl.language] } %>
+    <% #if resource_languages.first.try(:any?)  %>
+    <% # link_to("Remove from all software projects", {:controller => "resource_languages", :action => "mass_unassign", :ids => resource_languages.map{|x| x.id}}, "data-update" => "resource_languages",  'data-confirm' => "Are you sure?", :method => :post, :remote => true) %>
+    <% #end %>
+
+    <ul>
+        <% language_pairs_and_resource_languages.each do |language_pair, resource_languages| %>
+            <%= language_pair_header(language_pair) %>
+            <% resource_languages.each do |resource_language| %>
+                <li>
+                    <%= link_to resource_language.text_resource.name, text_resource_path(resource_language.text_resource.id) %> |
+                    <span id="resource_language_<%=resource_language.id%>">
+                        <%= link_to("Remove from position",
+                                    "/text_resources/#{resource_language.text_resource.id}/resource_languages/#{resource_language.id}/unassign_translator",
+                                    :method => :post,
+                                    data: {:confirm => "Are you sure?",
+                                           :update => "resource_language_#{resource_language.id}",
+                                           :remote => true}
+                            ) %>
+                    </span>
+                </li>
+            <% end %>
+        <% end %>
+    </ul>
+</span>
+
+
+<h2>Instant Translation</h2>
+<ul>
+    <% WebMessage.where(translator_id: @translator.id, translation_status: [TRANSLATION_NEEDED, TRANSLATION_IN_PROGRESS] ).group_by{|mw| [mw.from_language, mw.to_language]}.each do |language_pair, web_messages| %>
+        <%= language_pair_header(language_pair) %>
+            <% web_messages.each do |web_message| %>
+                <li>
+                    <%= link_to web_message.name, web_message_path(web_message.id) %> |
+                    <span id="web_message_<%=web_message.id%>">
+                        <%= link_to "Remove from position",
+                                    "/web_messages/#{web_message.id}/unassign_translator",
+                                    "data-update" => "web_message_#{web_message.id}",
+                                    'data-confirm' => "Are you sure?",
+                                    :method => :post,
+                                    :remote => true
+                        %>
+                    </span>
+                </li>
+        <% end %>
+    <% end %>
+</ul>
+
+<h2>Unfinished Bids on Projects</h2>
+<ul>
+    <% Chat.joins(:bids).where(translator_id: @translator.id, bids: { status: BID_GIVEN }).group_by{|mw| [mw.try(:revision).try(:language), mw.try(:revision_languages).try(:first).try(:language)]}.each do |language_pair, chats| %>
+        <%= language_pair_header(language_pair) %>
+            <% chats.each do |chat| %>
+                <% if chat&.revision&.project %>
+                  <li>
+                      <%= link_to chat.revision.project.name, "/projects/#{chat.revision.project.id}/revisions/#{chat.revision.id}/chats/#{chat.id}" %>
+                  </li>
+                <% end %>
+            <% end %>
+    <% end %>
+</ul>

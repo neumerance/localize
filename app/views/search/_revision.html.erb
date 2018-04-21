@@ -1,0 +1,15 @@
+<% unless revision.nil? || revision.project.nil? || revision.language.nil? %>
+<tr>
+	<td><%= link_to("#{revision.project.name} - #{h revision.name} revision", {:controller => :revisions, :action => :show, :id => revision.id, :project_id => revision.project_id}) %></td>
+	<td><%= revision.description %></td>
+	<td><p>Original language: <strong><%= revision.language.name %></strong></p>
+		<p>
+			<%= translation_language_stats(revision) %>
+		</p><p>
+			<%= open_revision_translation_languages(revision) %>
+		</p><p>
+			<%= revision_categories(revision) %>
+		</p>
+	</td>
+</tr>
+<% end %>

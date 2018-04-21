@@ -1,0 +1,8 @@
+<% if languages.length != 0 %>
+	<ul>
+		<%= render(:partial => 'language', :collection => languages) %>
+	</ul>
+<% else %>
+	<p class="warning">No language listed yet.</p>
+	<div class="clear"></div>
+<% end %>

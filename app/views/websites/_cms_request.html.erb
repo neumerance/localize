@@ -1,0 +1,11 @@
+<tr>
+	<td><%= cms_request.id %></td>
+	<td><%= disp_date(cms_request.created_at) %></td>
+	<td><%= link_to(cms_request.website.name, {controller: '/wpml/websites', :action=>:show, :id=>cms_request.website.id}) %></td>
+	<td><%= link_to(cms_request.title, {:controller=>:cms_requests, :action=>:show, :website_id=>cms_request.website.id, :id=>cms_request.id}) %></td>
+	<td><%= revision_word_count(cms_request.revision) %></td>
+	<td><%= CmsRequest::STATUS_TEXT[cms_request.status] %></td>
+	<td>&raquo; <%= link_to_if(cms_request.permlink, cms_request.language.name, {:target=>'_blank'}) %></td>
+  <td><%= cms_request.translator ? link_to(cms_request.translator.nickname, "/users/#{cms_request.translator.id}") : "None" %></td>
+	<td><%= cms_request_translations(cms_request) %></td>
+</tr>

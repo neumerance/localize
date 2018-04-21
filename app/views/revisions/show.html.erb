@@ -1,0 +1,258 @@
+<% if @user.has_supporter_privileges? %>
+	<h3><%= _("Supporter information") %></h3>
+  <div style="margin:1em;" class="red_message">
+    <h2>This is a <%= revision_type(@revision) %> project</h2>
+    <p><%= _('This project belongs to')%> <%= user_link(@project.client) %></p>
+	<%= form_for(:revision, :url=>{:action=>:update_supporter_data}) do |f| %>
+		<%= _("Supporter note:") %><br />
+		<%= f.text_area(:note, {:rows=>10, :cols=>100, :style=>'width: 100%;', maxlength: COMMON_NOTE}) %>
+		<p><%= _("flag:") %> <%= f.select(:flag, {'Normal'=>false,'Flagged'=>true}) %></p>
+		<%= submit_tag(_('Update'), data: { disable_with: _('Update') }) %>
+		<br /><br />
+	<% end %>
+	</div>
+<% end %>
+
+<% if @revision.cms_request %>
+  <p><%= link_to_translate(@revision, 'btn-xs') %><br /></p>
+	<p><%= _("This is part of a recuring translation project. ") %><%= link_to('Project details &raquo;'.html_safe,{:controller=>:cms_requests, :action=>:show, :website_id=>@revision.cms_request.website.id, :id=>@revision.cms_request.id}) %></p>
+<% end %>
+
+<% if @user.has_client_privileges? and (@pending_bids.try(:any?) or @pending_managed_works.try(:any?)) %>
+    <% if @has_money %>
+        <% totals_colspan = @revision.pay_per_word? ? 3 : 2 %>
+        <% review_price_percentage = @revision.from_cms? ? REVIEW_PRICE_PERCENTAGE : 0.5 %>
+        <table class="minitable" cellspacing="0" cellpadding="3">
+          <tr class="headerrow">
+            <th align="left">Work Type</th>
+            <th align="left">Language</th>
+            <% if @revision.pay_per_word? %>
+                <th align="center">Cost / word</th>
+            <% end %>
+            <th align="center">Total cost</th>
+          </tr>
+
+          <% @pending_bids.each do |bid| %>
+              <tr>
+                <td>Translation</td>
+                <td><%= bid.revision_language.language.name %></td>
+                <% if @revision.pay_per_word? %>
+                    <td align="right"><%= "#{bid.amount.to_f} USD" %></td>
+                <% end %>
+                <td align="right"><%= "#{bid.translator_payment} USD" %></td>
+              </tr>
+          <%- end %>
+
+          <% @pending_managed_works.each do |managed_work| %>
+              <tr>
+                <td>Review</td>
+                <td><%= managed_work.owner.language.name %></td>
+                <% if @revision.pay_per_word? %>
+                    <td align="right"><%= "#{managed_work.owner.selected_bid.amount.to_f * review_price_percentage} USD" %></td>
+                <% end %>
+                <td align="right"><%= "#{managed_work.reviewer_payment} USD" %></td>
+              </tr>
+          <%- end %>
+
+          <tr>
+            <td colspan="<%=totals_colspan %>"><b>Total</b></td>
+            <td align="right"><%= @revision.pending_cost%> USD</td>
+          </tr>
+        </table>
+
+        <%= form_tag({:action => :pay_bids_with_transfer, :project_id => @project.id, :id => @revision.id}, :remote => true) do %>
+            <h4>You have enough money in your account.</h4>
+            <p>
+              <% ChatsController::BID_ACCEPT_CONDITIONS.each do |condition| %>
+                  <%= check_box_tag "accept[]" %> <%= condition[0] %><% if condition[1] -%>&nbsp;(<%= link_to condition[2], condition[1], :target => "_blank" %>)<% end -%>.<br />
+              <% end %>
+            </p>
+            <%= submit_tag 'Pay for the project', :style=>'padding: 0.5em 1em;', data: { disable_with: 'Pay for the project' } %>
+        <% end %>
+    <% else %>
+        <h2><%= 'Deposit ' if @user.is_client? %>Missing Fund</h2>
+        <%= render partial: '/shared/pay_form/missing_fund_form', locals: { user: @revision.client, payment_url: { :controller => :finance, :action => :deposit_fund }, transactions: @transactions, processors: [EXTERNAL_ACCOUNT_PAYPAL], extra_html: '' } %>
+    <% end %>
+<% end %>
+
+<% if @user != @project.client %>
+	<h3><%= raw _("Project created by %s") % user_link(@project.client) %>. <%= _("Creation time: %s") % disp_date(@revision.creation_time) %></h3>
+<% end %>
+
+<% if @can_assign_to_private_translators %>
+	<div class="errorExplanation">
+		<p>You can <%= link_to('assign this project to one of your private translators', {:action=>:select_private_translators}) %>.</p>
+		<p><%= _("Doing so will bypass the bidding process and let the translator get to work right away.") %></p>
+	</div>
+<% elsif @available_for_private_translators %>
+	<div class="errorExplanation">
+		<p><%= _("In order to be able to assign this project to your private translators, you need to:") %></p>
+		<ul><li><%= _("Enter the project's description.") %></li>
+			<li><%= _("Choose translation languages.") %></li>
+			<li><%= _("Enter the work completion time.") %></li>
+		</ul>
+		<p><%= link_to(_('Refresh to check'), {:action=>:show, :t=>Time.now.to_i}) %></p>
+	</div>
+<% end %>
+
+<% if @revision.kind == TA_PROJECT %>
+	<div id="statistics">
+		<%= render(:partial => "statistics") %>
+	</div>
+	<div class="inter_tab_spacer"></div>
+
+<% elsif @revision.kind == SIS_PROJECT %>
+
+	<% if @user[:type] == 'Translator' %>
+		<div class="errorExplanation">
+			<p><%= _("This project is done using <b>Sisulizer</b>.</p><p>Translation instructions:") %></p>
+			<ol><li><%= _("Download and install <a target=\"_blank\" href=\"http://www.sisulizer.com/download2.shtml?filename=exe\">Sisulizer</a>.") %></li>
+				<li><%= _("When installing, select the <b>free edition</b>. This will allow you to translate the project.") %></li>
+				<li><%= _("Complete the translation in Sisulizer, then upload it to the project chat here.") %></li>
+		</ol>
+		</div>
+	<% end %>
+	<div class="inter_tab_spacer"></div>
+	<% if (@revision.versions.length > 0) || ([@user, @user.master_account].include?(@project.client)) %>
+		<div id="client_version">
+			<%= render(:partial => "client_version") %>
+		</div>
+		<div class="inter_tab_spacer"></div>
+	<% end %>
+
+<% else %>
+
+
+
+	<div class="errorExplanation">
+		<% if @user.has_client_privileges? %>
+			<h3><%= _("Project Setup Help") %></h3>
+			<ol><li><%= _("If you have a file to translate, upload it. For several files, ZIP and upload together") %></li>
+				<li><%= _("Describe the work that you need") %></li>
+				<li><%= _("Choose languages to translate from and to") %></li>
+				<li><%= _("Enter bidding duration and budget (FYI, translation normally costs at least 0.09 USD / word)") %></li>
+				<li><%= _("Choose fields of expertise (optional)") %></li>
+				<li><%= _("Release the project for all translators to apply, or invite specific translators") %></li>
+      </ol>
+
+
+		<% else %>
+			<p><b><%= _("This project is done without the use of Translation Assistant.") %></b></p><p><%= raw _("Clients should provide a complete description of the work that needs to be done in the <b>project&nbsp;description</b> box below.") %></p>
+			<p><%= _("Once translators place bids or start a chats, clients and translators can communicate using the project chat.") %> <%= _("It is highly recommended to keep all communications and file delivery on this chat (using the file attachment option).") %>
+			<%= _("Doing this will ensure that the project's progress is documented, and can later be verified.") %></p>
+		<% end %>
+	</div>
+  <div id="auto_accept_payment"><%= payment_for_auto_accept(@user, @revision) %></div>
+	<% if (@revision.versions.length > 0) || ([@user, @user.master_account].include?(@project.client)) %>
+		<div id="client_version">
+			<%= render(:partial => "client_version") %>
+		</div>
+		<div class="inter_tab_spacer"></div>
+	<% end %>
+
+<% end %>
+
+<div id="description">
+	<%= render(:partial => "description") %>
+</div>
+
+<div class="inter_tab_spacer"></div>
+<% if (@revision.kind == MANUAL_PROJECT) && (@user.has_client_privileges?) %>
+    <div class="errorExplanation">
+      <p><%= (_("Please notice that bids on this project are <b>not per word</b>.")).html_safe %> <%= (_("When you bid, the amount you enter is for completing the entire work, as specified in the <b>description</b> below.")).html_safe %></p>
+    </div>
+    <br />
+<% end %>
+<div id="conditions">
+	<%= render(:partial => "conditions") %>
+</div>
+
+<div class="inter_tab_spacer"></div>
+
+<% if @canedit_source_language %>
+<div id="source_language">
+	<%= render(:partial => "source_language") %>
+</div>
+<div class="inter_tab_spacer"></div>
+<% end %>
+
+
+<%# "Translation Languages" table %>
+<div id="languages">
+	<%= render(:partial => "languages") %>
+</div>
+
+
+<% if @user.has_client_privileges? %>
+  <%= render :partial => 'projects/reuse_translators', :locals => { :id => @revision.id, :projects => @projects_to_reuse } %>
+<% end %>
+
+<% if ((@user == @revision.project.client) || @user.has_supporter_privileges?) && [MANUAL_PROJECT, TA_PROJECT].include?(@revision.kind) %>
+	<h3><%= _("Broadcast a message to your translators and reviewers") %></h3>
+	<div>
+		<%=form_tag("/projects/#{@project.id}/revisions/#{@revision.id}/chats/send_broadcast", {:method => :post, :multipart => true}) %>
+		<%= text_area_tag "body", "", :size => "40x5", maxlength: COMMON_NOTE %>
+		<br/>
+		<p><%= _("Attachments") %></p>
+		<div id="documents_to_upload">
+			<p><%=file_field_tag('file1[uploaded_data]', :size=>40, :id=>'file1_uploaded_data', onchange: "validate_file_size('file1[uploaded_data]', '#{ATTACHMENT_MAX_SIZE}')")%></p>
+		</div>
+		<p><a href="#form_top" onclick="add_another_file(<%= ATTACHMENT_MAX_SIZE %>);">Add another attachment</a></p>
+
+		<br/>
+		<%= submit_tag 'Send message', data: { disable_with: 'Send message' } %>
+	  </form>
+	</div>
+<br/>
+<% end %>
+<% if (@user.has_client_privileges?) && @other_chats %>
+  <h2> Chats with your translators </h2>
+	<%= render(:partial=>'other_chats') %>
+	<div class="inter_tab_spacer"></div>
+<% end %>
+
+<div id="categories">
+	<%= render(:partial => "categories") %>
+</div>
+<div class="inter_tab_spacer"></div>
+
+<% if (@user[:type] == 'Translator') && !@is_reviewer %>
+	<div id="do_chat">
+		<%= render(:partial => "do_chat") %>
+	</div>
+<% end %>
+
+<% if @user.has_client_privileges? and @user.can_modify?(@project) %>
+	<div id="release_status">
+		<%= render(:partial => "release_status") %>
+	</div>
+
+	<div class="inter_tab_spacer"></div>
+	<div class="errorExplanation">
+		<h3><%= _("Need assistance with this project?") %></h3>
+		<p><%= _("Our support staff is always glad to help.") %></p>
+		<div id="open_support_ticket_for_<%= put_object_id(@revision) %>"><%= render(:partial=>'/support/support_ticket_for_object', :object=>@revision) %></div>
+	</div>
+
+	<% if @revision.can_delete? %>
+		<br />
+		<div class="errorExplanation">
+			<h3><%= _("Don't need this project anymore?") %></h3>
+			<p><%= _("Since this project has no communication with translators and is hidden, you can delete it. There is no un-delete.") %></p>
+			<%= button_to(_('Delete this project'), {:action=>:destroy}, 'data-confirm'=>'Are you sure you want to delete this project?', :method => :delete) %>
+		</div>
+	<% end %>
+
+<% end %>
+
+<script>
+  jQuery('.mt-switch.mt-disabled').webuiPopover({
+    content: '<p>You are about to enable Machine Translation for this job.</br>This action cannot be undone.</p><p>Clients require human-made professional translations.</br>By enabling machine translation,</br>you are fully liable for the quality of your work.</br>Should any quality issues arise,</br>we will confirm the translation quality with a reviewer</br>and you may have to refund the client if deemed necessary.</p>',
+    trigger: 'hover'
+  });
+  jQuery('.mt-switch.mt-enabled').webuiPopover({
+    content: "Machine translation is now active",
+    trigger: 'hover'
+  });
+</script>
+

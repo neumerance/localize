@@ -1,0 +1,8 @@
+View:
+  <%= link_to 'EU', {:group => 'EU'} %>
+  <%= link_to 'All' %>
+
+<br/>
+<%= infotab_header(['Country', 'Tax Group', 'Tax Name', 'Tax Rate']) %>
+  <%= render(:partial=>'country', :collection=>@countries) %>
+</table>

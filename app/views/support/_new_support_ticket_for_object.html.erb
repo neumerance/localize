@@ -1,0 +1,12 @@
+<div class="boxed">
+<%= form_tag({ :controller=>:support, :action=>:create_support_ticket_for_object, :obj_type => @obj.class.to_s, :id=>@obj.id, :div_name=>@div_name }, :remote => true) do %>
+	<table border="0">
+		<tr><td>Subject:</td><td><%= text_field_tag :subject, nil, {:size=>60, maxlength: COMMON_FIELD} %></td></tr>
+		<tr><td>Message:</td><td><%= text_area_tag :message, nil, {:cols=>60, :rows=>7, maxlength: COMMON_NOTE} %></td></tr>
+	</table>
+	<%= submit_tag 'Create support ticket', data: { disable_with: 'Create support ticket' } %>
+<% end %>
+<%= form_tag({ :controller=>:support, :action => :cancel_support_ticket_for_object, :obj_type => @obj.class.to_s, :id=>@obj.id, :div_name=>@div_name }, :remote => true) do %>
+	<%= submit_tag 'Cancel', data: { disable_with: 'Cancel' } %>
+<% end %>
+</div>

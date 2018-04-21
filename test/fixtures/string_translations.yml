@@ -1,0 +1,44 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+# one:
+#   column: value
+#
+# two:
+#   column: value
+
+    
+<% 1.upto(100) do |n| %>
+string<%=n%>:
+  id: <%=n%>
+  resource_string_id: <%=n%>
+  language_id: 2
+  txt: word1 word2 word3
+  status: <%=STRING_TRANSLATION_NEEDS_UPDATE %>
+<%end%>
+
+<% 101.upto(200) do |n| %>
+string<%=n%>:
+  id: <%=n%>
+  resource_string_id: <%=n - 100%>
+  language_id: 3
+  txt: word1 word2 word3
+  status: <%=STRING_TRANSLATION_NEEDS_UPDATE %>
+<%end%>
+
+<% 201.upto(300) do |n| %>
+string<%=n%>:
+  id: <%=n%>
+  resource_string_id: <%=n - 200%>
+  language_id: 4
+  txt: word1 word2 word3
+  status: <%=STRING_TRANSLATION_NEEDS_UPDATE %>
+<%end%>
+
+<% 301.upto(400) do |n| %>
+string<%=n%>:
+  id: <%=n%>
+  resource_string_id: <%=n - 200%>
+  language_id: 2
+  txt: word1 word2 word3
+  status: <%=STRING_TRANSLATION_NEEDS_UPDATE %>
+<%end%>

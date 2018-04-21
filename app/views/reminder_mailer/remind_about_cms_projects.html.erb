@@ -1,0 +1,15 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>
+  We just wanted to remind you that there are currently <%= @cms_requests_count %> projects waiting for you.<br />
+  New documents are being added on a regular basis and keeping translation going is our top priority.
+</p>
+
+<p>To translate, open Translation Assistant and check for 'Recurring Translation'. Click on any document to begin.</p>
+
+<p>
+  <% link = url_for({:escape => false, :only_path => false, :controller=>:support, :action=>:new, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+  If you need any help, have a problem or suggestion, don't hesistate to tell us. Use this link to open a new support ticket: <%= link_to link, link %>
+</p>
+
+

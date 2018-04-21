@@ -1,0 +1,20 @@
+<%# Must receive the current user as the "user" local variable. Can be a
+    "Client" or an "Alias" %>
+
+<% if user.type == 'Client' || (user.type == 'Alias' && user.can_pay?) %>
+  <%# Memoize, this is an somewhat expensive method %>
+  <% websites_requiring_action = user.websites_requiring_client_action %>
+  <% websites_count = websites_requiring_action.size %>
+
+  <% if websites_count > 0 %>
+    <div class="red_panel" style="margin-bottom: 20px;">
+      <p style="font-weight: bold; color: red;">The following websites have pending
+        translation jobs which require action from you:</p>
+      <ul>
+      <% user.websites_requiring_client_action.each do |website| %>
+          <li style="margin-bottom: 10px;"><b><%= website.name %></b> (<%= link_to 'set up translations', wpml_website_translation_jobs_path(website.id) %>)</li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>

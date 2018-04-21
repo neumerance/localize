@@ -1,0 +1,20 @@
+var table = jQuery('#translatorListTable');
+<% if params[:assignment_type] == 'reviewer' %>
+table.find('tr td > a.btn.reviewer').removeClass('disabled btn-success').addClass('btn-default');
+table.find('tr td').find('input[value="reviewer"]').val('');
+<% end %>
+var tr = table.find('tr.translator_<%= params[:id] %>');
+tr.find('a.btn').removeClass('disabled btn-success').addClass('btn-default');
+tr.find('a.btn.<%= params[:assignment_type] %>').removeClass('btn-default').addClass('btn-success disabled');
+var tranlatorCount = table.find('a.btn-success.translator').length;
+var reviewerCount = table.find('a.btn-success.reviewer').length;
+table.find('tr.headerrow th:last-child').css({fontWeight: 'normal'}).html('Assigned Translator: <strong class="m-r-10">' + tranlatorCount + '</strong> Assigned Reviewer: <strong>' + reviewerCount + '</strong>');
+tr.find('input[name="translators[][id]"]').val(<%= params[:id] %>);
+tr.find('input[name="translators[][type]"]').val('<%= params[:assignment_type] %>');
+jQuery('#tableActions').show();
+jQuery('.review-type').addClass('hide');
+<% if params[:assignment_type] == 'reviewer' %>
+  tr.find('.review-type').removeClass('hide');
+<% else %>
+  tr.find('.review-type').addClass('hide');
+<% end %>

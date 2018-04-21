@@ -1,0 +1,34 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p><%= @website.client.full_real_name %> has invited you to apply to translate <%= @website.name %> from <%= @website_translation_offer.from_language.name %> to <%= @website_translation_offer.to_language.name %>.</p>
+
+<p>
+  Job description:<br />
+  ----<br />
+  <%= @website.description %><br />
+  ----
+</p>
+
+<p>
+  Volume and deadline:<br />
+  ----<br />
+  <%= @invitation %><br />
+  ---
+</p>
+
+<% if !@sample_text.blank? %>
+<p>== Sample text by the client ==</p>
+
+<p>The client sent this sample text. You can make a great first impression by translating it.</p>
+
+<p>
+  ----<br />
+  <%= @sample_text %><br />
+  ---
+</p>
+<% end %>
+
+<p>
+  <% link = url_for({:escape => false, :only_path => false, :controller=>:website_translation_contracts, :action=>:show, :id=>@website_translation_contract.id, :website_id=>@website.id, :website_translation_offer_id=>@website_translation_offer.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+  To apply for this work, go to the following link: <%= link_to link, link %>
+</p>

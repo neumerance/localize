@@ -1,0 +1,26 @@
+<h1><%= _("Listing resource_formats") %></h1>
+
+<%= infotab_header([_('Name'),_('Kind'),_('Description'),_('Label delimiter'),_('Text delimiter'),_('Separator char'),_('Multiline char'),_('End of line'),_('Comment char'),_('Encoding'),_('Line break'),_('User comments'),_('Actions')]) %>
+
+<% for resource_format in @resource_formats %>
+  <tr>
+    <td><%=link_to(h(resource_format.name), {:action=>:edit, :id=>resource_format.id}) %></td>
+	<td><%=ResourceFormat::KIND_NAMES[resource_format.kind] %></td>
+    <td><%=h resource_format.description %></td>
+    <td><%=resource_format.label_delimiter || ResourceFormat::NIL_STR %></td>
+    <td><%=resource_format.text_delimiter  || ResourceFormat::NIL_STR %></td>
+    <td><%=resource_format.separator_char %></td>
+    <td><%=resource_format.multiline_char || ResourceFormat::NIL_STR %></td>
+    <td><%=resource_format.end_of_line || ResourceFormat::NIL_STR %></td>
+    <td><%=resource_format.comment_char || ResourceFormat::NIL_STR %></td>
+    <td><%=ResourceFormat::ENCODING_NAMES[resource_format.encoding] %></td>
+    <td><%=ResourceFormat::LINE_BREAK_NAMES[resource_format.line_break] %></td>
+    <td><%=ResourceFormat::COMMENT_KIND_NAME[resource_format.comment_kind] %></td>
+    <td><% if resource_format.text_resources.count==0 %><%= link_to('Destroy', resource_format, 'data-confirm' => 'Are you sure?', :method => :delete) %><% end %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to _('New resource_format'), new_resource_format_path %>

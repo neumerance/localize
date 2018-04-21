@@ -1,0 +1,31 @@
+<h1>EU VAT By State</h1>
+
+<%= form_tag("/reports/eu_vat_by_state", :method => :get) do %>
+    From <%= date_picker_field "from", nil, {:value =>  params[:from].to_s.to_date || Date.today - 1.month}, '<i class="mc-icon-calendar"></i>' %>
+    To <%= date_picker_field "to", nil, {:value => params[:to].to_s.to_date || Date.today}, '<i class="mc-icon-calendar"></i>' %>
+    <%= submit_tag 'Generate', data: { disable_with: 'Please wait' } %>
+    <%= submit_tag 'Export to CSV', data: { disable_with: 'Please wait' } %>
+  <% end %>
+
+<%= infotab_top(_('EU VAT Transactions'), _('List of all transactions affected by EU VAT regulation')) %>
+<%= infotab_header(['Country','Code', 'Tax Rate','Amount','Tax Amount', 'Total Amount']) %>
+
+<% for country in @result %>
+  <tr>
+    <td><%= country[:name] %></td>  
+    <td><%= country[:code] %></td>  
+    <td><%= country[:tax_rate] %></td>  
+    <td class="money"><%= country[:amount] %> USD</td>  
+    <td class="money"><%= country[:tax_amount] %> USD</td>  
+    <td class="money"><%= country[:total_amount] %> USD</td>  
+  </tr>
+<% end %>
+<tfoot>
+  <tr class="headerrow">
+    <th colspan="3" style="text-align:right">Totals:</th>
+    <% for item in @totals %>
+      <td class="money"><%= item %> USD</td>  
+    <% end %>
+  </tr>
+</tfoot>
+</table>

@@ -1,0 +1,33 @@
+<div class="grey_panel">
+  <h3>Translation Memory</h3>
+
+  <% if @editing # Editing inplace %>
+    <%= form_tag({ controller: '/wpml/websites', action: :edit_tm_inplace }, remote: true) do %>
+      <p><strong><%= _('When we find exact matches in the translation memory:') %></strong></p>
+      <p>
+        <% WebsitesController::TM_COMPLETE_TEXT.each do |k,v| %>
+          <label><%= radio_button_tag(:tm_use_mode, k, @website.tm_use_mode == k) %> <%= _(v) %></label><br />
+        <% end %>
+      </p>
+      <p><strong><%= _('Minimal length of sentence to mark as complete:') %></strong> <%= text_field_tag(:tm_use_threshold, @website.tm_use_threshold, :size=>5, maxlength: COMMON_FIELD) %><br />
+        <span class="comment"><%= _("Very short sentences might be out-of-context, so it's not safe to mark them as complete automatically.") %></p>
+      <%= submit_tag _('Save'), data: { disable_with: _('Save') } %>
+    <% end #form %>
+
+    <%= form_tag({ controller: '/wpml/websites', action: :edit_tm_inplace, req: 'hide' }, remote: true) do %>
+      <%= submit_tag _('Cancel'), data: { disable_with: _('Cancel') } %>
+    <% end %>
+
+  <% else # Viewing %>
+    <p><%= _('When we find exact matches in the translation memory:') %> <strong><%= _(WebsitesController::TM_COMPLETE_TEXT[@website.tm_use_mode]) %></strong></p>
+    <% if @website.tm_use_mode == TM_COMPLETE_MATCHES %>
+      <p><%= "#{_('Mark as complete sentences that have <strong>%d word(s) or more</strong> (shorter sentences will remain as incomplete).')%@website.tm_use_threshold}".html_safe %></p>
+    <% end %>
+
+    <% if [@user, @user.master_account].include?(@website.client) and @user.can_modify?(@website)%>
+      <%= form_tag({ controller: '/wpml/websites', action: :edit_tm_inplace, req: 'show' }, remote: true) do %>
+        <%= submit_tag _('Edit'), data: { disable_with: _('Edit') } %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

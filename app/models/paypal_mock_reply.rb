@@ -1,0 +1,2 @@
+class PaypalMockReply < ApplicationRecord
+end

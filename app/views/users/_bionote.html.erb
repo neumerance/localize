@@ -1,0 +1,13 @@
+<h3>Bio-note</h3>
+<% if !(@auser.bionote && !@auser.bionote.body.blank?) %>
+	<p class="red_message">Clients will not be able to see your profile while searching for translators, because your bio-note is blank!</p>
+<% end %>
+<p>Add a short note (up to 500 characters) that tells clients about you.<br />
+This note will show when clients search for translator and in case you choose to make your profile public.</p>
+<%= form_tag({ :action => :update_bio }, :remote => true, maxlength: COMMON_NOTE) do %>
+	<%= text_area_tag(:bio, (@auser.bionote ? @auser.bionote.body : ''), {:rows=>5, :cols=>100, :style=>'margin: 1em 0 0 0; width:90%;', maxlength: COMMON_NOTE}) %>
+	<p class="comment txtlinkbold">Please do not include your contact information. Accounts with a disclosed personal information will be banned.</p>
+	<br />
+	<%= submit_tag 'Update', data: { disable_with: 'Update' } %>
+<% end %>
+<%= item_translation_controls(@auser.bionote, @languages, 1) %>

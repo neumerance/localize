@@ -1,0 +1,66 @@
+<%= infotab_top(_('Website details'), _('Information about this project')) %>
+<% if @editing %>
+	<%= form_for(:website, :url => { :action => :edit_description }, :remote => true) do |f| %>
+		<%= infotab_header([_('Name'),_('Description'), _('Category'), _('Type'),'URL'] + ((@website.platform_kind == WEBSITE_WORDPRESS) ? ['Log-in'] : [_('Translation delivery')])) %>
+		<tr>
+			<td><%= f.text_field(:name, size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD) %></td>
+			<td><%= f.text_area(:description, {:rows=>6, :cols=>35, maxlength: COMMON_NOTE}) %></td>
+			<td><%= f.select(:category_id, Category.list()) %></td>
+			<% Rails.logger.debug CMS_DESCRIPTION[@website.cms_kind].inspect %>
+			<td><p><%= CMS_DESCRIPTION[@website.cms_kind] || @website.cms_description%></p>
+			<p class="comment">The CMS platform kind cannot be changed.<br />You will need to create a new project for other CMS platform types.</p>
+			</td>
+			<td><%= f.text_field(:url, size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD) %>
+			<% if (@website.platform_kind == WEBSITE_DRUPAL) %><p class="comment">* Only required for XML-RPC notifications</p><% end %></td>
+			<% if (@website.platform_kind == WEBSITE_WORDPRESS) %>
+			<td>
+				<table>
+					<tr><td>User:</td><td><%= f.text_field(:login, :size=>10, maxlength: COMMON_FIELD) %></td></tr>
+					<tr><td>Password:</td><td><%= f.password_field(:password, :size=>10, maxlength: COMMON_FIELD) %></td></tr>
+					<tr><td>Blog ID:</td><td><%= f.text_field(:blogid, :size=>10, maxlength: COMMON_FIELD) %></td></tr>
+				</table>
+			</td>
+			<% else %>
+				<td><%= Website::PICKUP_TEXT[@website.pickup_type] %></td>
+			<% end %>
+		</tr>
+		</table>
+		<%= submit_tag _('Save'), data: { disable_with: _('Save') } %>
+	<% end %>
+	<%= form_tag({ :action => :edit_description, :req=>'hide' }, :remote => true) do %>
+		<%= submit_tag _('Cancel'), data: { disable_with: _('Cancel') } %>
+	<% end %>
+<% else %>
+	<%= infotab_header([_('Name'),_('Description'), _('Subject'), _('Type'),'URL'] + ((@website.platform_kind == WEBSITE_WORDPRESS) ? ['Log-in'] : [_('Translation delivery'), _('Accesskey')])) %>
+	<tr>
+		<td><%= h(@website.name) %></td>
+		<td><%= h(@website.description) %></td>
+		<td><%= @website.category ? @website.category.nname : _('Not specified') %></td>
+		<td><%= CMS_DESCRIPTION[@website.cms_kind] || @website.cms_description%></td>
+		<td><%= link_to_if(!@website.url.blank?, h(@website.url), @website.url, {:target=>'_blank'}) %></td>
+		<% if (@website.platform_kind == WEBSITE_WORDPRESS) %>
+		<td>
+			<table>
+				<tr><td>User:</td><td><%= h(@website.login) %></td></tr>
+				<tr><td>Password:</td><td><%= (@website.password.blank?) ? '' : '****' %></td></tr>
+				<tr><td>Blog ID:</td><td><%= @website.blogid %></td></tr>
+			</table>
+		</td>
+		<% else %>
+		<td><%= Website::PICKUP_TEXT[@website.pickup_type] %></td>
+		<td><%= @website.accesskey %></td>
+		<% end %>
+	</tr>
+	</table>
+	<div class="tabbottom">
+		<% if [@user, @user.master_account].include?(@website.client) and @user.can_modify?(@website) %>
+			<%= form_tag({ :action => :edit_description, :req=>'show' }, :remote => true) do %>
+				<%= submit_tag _('Edit'), :id => 'edit_website_details', data: { disable_with: _('Edit') } %>
+			<% end %>
+		<% end %>
+		<% if @user.has_supporter_privileges? or [@user, @user.master_account].include?(@website.client) %>
+			<p><%= (@website.interview_translators == 1) ? _('The client interviews translators for this project.') : _('ICanlocalize will assign translators to this project.') %></p>
+		<% end %>
+	</div>
+<% end %>
+

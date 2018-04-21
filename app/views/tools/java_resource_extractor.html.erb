@@ -1,0 +1,13 @@
+<%= form_tag({:action=>:create_po_from_resource}, { :multipart => true }) do %>
+	<table cellspacing="5">
+		<tr><td colspan="2"><h3>Software resource file</h3></td></tr>
+		<tr><td>Resource to process (required):</td><td><%= file_field_tag(:resource_upload) %></td></tr>
+		<tr><td>Text delimiter:</td><td><%= select_tag(:delimiter, options_for_select(@delimiters, @delimiters[0][1])) %></td></tr>
+		<tr><td colspan="2"><hr /><h3>For incremental translation</h3><p>If you've already done this translation before, enter the .po file that you received.<br />The translations will be merged with the new texts that need translation.</p></td></tr>
+		<tr><td>Existing PO file (optional):</td><td><%= file_field_tag(:po_upload) %></td></tr>
+	</table>
+	<br />
+	<%= submit_tag('Create .po file &raquo;'.html_safe, style: 'padding: 0.5em;', data: { disable_with: 'Create .po file &raquo;'.html_safe } ) %>
+<% end %>
+<br />
+<p><%= link_to('&laquo; Other tools'.html_safe, {:action=>:index}) %></p>

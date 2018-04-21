@@ -1,0 +1,53 @@
+<h1>Review Usage for Website Projects</h1>
+
+<%= form_tag("/reports/review_usage", method: :get) do %>
+    From <%= date_picker_field "from", nil, {value:  params[:from].to_s.to_date}, '<i class="mc-icon-calendar"></i>' %>
+    To <%= date_picker_field "to", nil, {value: params[:to].to_s.to_date}, '<i class="mc-icon-calendar"></i>' %>
+    <%= submit_tag 'Filter', data: { disable_with: 'Please wait' } %>
+<% end %>
+
+<table class="stats" style="margin-top: 20px;">
+  <thead>
+    <tr class="headerrow">
+      <th>Language Pair</th>
+      <th>Total Jobs</th>
+      <th># Enabled</th>
+      <th>% Enabled</th>
+      <th># Disabled</th>
+      <th>% Disabled</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @results.any? %>
+      <% overall_enabled = 0 %>
+      <% overall_disabled = 0 %>
+      <% @results.each do |result| %>
+      <tr>
+        <td><strong><%= "#{result.base_language} to #{result.target_language}" %></strong></td>
+        <td><%= result.jobs_total %></td>
+        <td><%= result.review_enabled_total %></td>
+        <td><%= number_to_percentage((result.review_enabled_total / result.jobs_total.to_f) * 100, precision: 2, strip_insignificant_zeros: true) %></td>
+        <td><%= result.review_disabled_total %></td>
+        <td><%= number_to_percentage((result.review_disabled_total / result.jobs_total.to_f) * 100, precision: 2, strip_insignificant_zeros: true) %></td>
+      </tr>
+        <% overall_enabled += result.review_enabled_total %>
+        <% overall_disabled += result.review_disabled_total %>
+      <% end %>
+    <% else %>
+      <tr><td colspan="6" style="text-align: center; font-weight: bold;">Nothing to show here</td></tr>
+    <% end %>
+  </tbody>
+  <% if @results.any? %>
+  <tfoot>
+    <tr class="headerrow">
+      <% total_jobs = @results.sum(&:jobs_total) %>
+      <th>Total Language Pair: <span style="float: right;"><%= @results.size %></span></th>
+      <th><%= total_jobs %></th>
+      <th><%= overall_enabled %></th>
+      <th><%= number_to_percentage((overall_enabled / total_jobs.to_f) * 100, precision: 2, strip_insignificant_zeros: true) %></th>
+      <th><%= overall_disabled %></th>
+      <th><%= number_to_percentage((overall_disabled / total_jobs.to_f) * 100, precision: 2, strip_insignificant_zeros: true) %></th>
+    </tr>
+  </tfoot>
+  <% end %>
+</table>

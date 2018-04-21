@@ -1,0 +1,18 @@
+<p>Dear <%= @translator.full_real_name %>,</p>
+
+<p><%= @client.full_real_name %> wants you to be their translator on ICanLocalize.</p>
+
+<p>
+<% url = url_for({:escape => false, :only_path => false, :controller=>:private_translators, :action=>:show, :id=>@private_translator.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+To accept or deny this invitation, go to: <%= link_to url, url %>
+</p>
+
+
+<% if @newuser %>
+<p>
+You will need to log in with the account we created for you. Use your email (<%= @translator.email %>) and this password: <%= @translator.password %>
+</p>
+<% end %>
+<p>
+Once you accept this invitation, you're welcome to start translating projects for <%= @client.fname.capitalize %>.
+</p>

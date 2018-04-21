@@ -1,0 +1,6 @@
+<% if @new_identity_verifications && (@new_identity_verifications.length > 0) %>
+	<h2>New identity verifications</h2>
+	<ul class="nobullet"><%= render(:partial=>'identity_verification', :collection=>@new_identity_verifications) %></ul>
+<% else %>
+	<p>No identity verifications pending.</p>
+<% end %>

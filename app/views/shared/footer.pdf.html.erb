@@ -1,0 +1,18 @@
+<%= wicked_pdf_stylesheet_link_tag "style.css" %>
+<div id="bottom">
+  <table width="100%" cellspacing="0" cellpadding="0" border="0">
+  <tbody>
+    <tr>
+      <td class="bottombar"></td>
+    </tr>
+    <tr>
+      <td class="bottomtxt tmarg3" height="25" align="center">
+        <p class="comment"><%= _('Current time is %s')%disp_time(Time.now()) %> &nbsp; | &nbsp; <%= _('&copy; %s. OnTheGoSystems INC. All Rights Reserved.')%Time.now.strftime('%Y') %></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<div>
+  &nbsp;
+</div>

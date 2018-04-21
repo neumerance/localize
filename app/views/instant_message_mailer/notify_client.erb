@@ -1,0 +1,28 @@
+<p>Dear <%= @client.full_name %>,</p>
+
+<p><%= "#{@web_dialog.full_name} (#{@web_dialog.email})" %> sent you the following message for your support center: <%= @web_dialog.client_department.web_support.name %> - <%= @web_dialog.client_department.name %></p>
+<% if @parameters.length > 0 -%>
+<p>----</p>
+<% @parameters.each do |param| %>
+	<%= "#{param[0]}: #{param[1]}" %>
+<% end %>
+<p>----</p>
+
+<p><%= @web_message.body_for_user(true) %></p>
+
+----
+<% if @insufficient_funds %>
+<p>= IMPORTANT =</p>
+<% url = url_for({:escape => false, :only_path => false, :controller=>:web_supports, :action=>:untranslated_messages, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+<p>
+You requested that all messages received be translated to <%= @web_dialog.client_department.language.name %>.
+There are currently, insufficient funds in your account to perform this translation. To add more funds and allow translation of this and other messages, please use the following link: <%= link_to url, url %>
+</p>
+----
+<% end %>
+<% url = url_for({:escape => false, :only_path => false, :controller=>:web_dialogs, :action=>:show, :id=>@web_dialog.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+<p>
+Please don't reply to this email. Instead, click on the link below to reply (you will be asked to log in to your ICanLocalize account): <%= link_to url, url %>
+</p>
+
+<p>Best regards,</p>

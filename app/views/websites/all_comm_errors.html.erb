@@ -1,0 +1,11 @@
+<% if @cms_requests.length > 0 %>
+	<%= infotab_header(['Kind of error','Problem description','Update time','website','document','Status','Actions']) %>
+	<%= render(:partial=>'comm_error_details', :collection=>@cms_requests) %>
+	</table>
+<% else %>
+	<p>No more open errors.</p>
+<% end %>
+
+<div class="inter_tab_spacer"></div>
+
+<%= link_to('Back to projects', { controller: '/wpml/websites', :action=>:index}) %>

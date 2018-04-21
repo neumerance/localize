@@ -1,0 +1,14 @@
+<h2>PHP Localization</h2>
+<p>The best way to localize PHP files is by wrapping all texts in gettext calls and providing the localization dictionary.</p>
+<p>Once you wrapped the texts, you'll need to compile a .po file, which contains the texts to translate.
+You can use this free <%= link_to('PHP to .po converter', {:action=>:php_scanner}) %>. This tool will go through a single PHP file, or multiple PHP files contained in a ZIP. It will extract all gettext texts into a .po file.</p>
+<p><%= link_to('PHP to .po converter &raquo;'.html_safe, {:action=>:php_scanner}) %></p>
+
+<h2>Software Resource Localization</h2>
+<p>Most software development platforms keep texts in resource files. To localize these applications, you'll need to have a different version of this file per language.</p>
+<ol>
+<li>Create a .po file from the resource file. Use this <%= link_to('Software Resource to .po Converter', {:action=>:java_resource_extractor}) %></li>
+<li>Send the .po file to translation.</li>
+<li>Use the translated .po file (that you get back from the translator) and the original software resource file and create the translated resource file.
+Use this <%= link_to('Software Resource Reconstructor from .po', {:action=>:java_resource_reconstructor}) %></li>
+</ol>

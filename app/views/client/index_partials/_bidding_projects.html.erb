@@ -1,0 +1,18 @@
+<% if projects.length > 0 %>
+	<%= infotab_top(_('Bidding projects'), project_message) %>
+	<%= render(:partial => "/projects/projects", :object => projects) %>
+	<div class="pager_control" style="position: relative; height: 15px;">
+	    <%=  user.can_create_projects? ? link_to('Set up a new bidding project &raquo;'.html_safe,{:controller=>:projects, :action=>:index}) : link_to('Browse your bidding projects &raquo;'.html_safe,{:controller=>:projects, :action=>:index}) %>
+	    <div class="pull-right">
+	    	<%= paginate revisions, params: { controller: :projects, action: :searcher }, remote: true %>
+	    </div>
+	    <div style="clear: both"></div>
+	</div>
+	<div class="inter_tab_spacer"></div>
+<% else %>
+	<div class="errorExplanation">
+		<h2>Create your first project</h2>
+		<p>Click on <b>New Project</b> in <b>Translation Assistant</b> to create your first project.</p>
+	</div>
+	<div class="inter_tab_spacer"></div>
+<% end %>

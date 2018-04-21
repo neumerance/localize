@@ -1,0 +1,9 @@
+<tr>
+    <% if defined? translation_analytics %>
+        <td><%= link_to(website.name,{:controller=>:translation_analytics, :action=>:overview, :project_type => "Website", :project_id => website.id}) %></td>
+	<% else %>
+		<td><%= link_to(website.name,{controller: '/wpml/websites', :action=>:show, :id=>website.id}) %></td>
+	<% end %>
+	<td><%= h(CMS_DESCRIPTION[website.cms_kind]) %></td>
+	<td><%= h(website.url) %></td>
+</tr>

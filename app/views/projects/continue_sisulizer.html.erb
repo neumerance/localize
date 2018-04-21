@@ -1,0 +1,15 @@
+<h2>Project summary</h2>
+<p>Translating from <b><%= @orig_language.name %></b> to the following languages:</p>
+<%= display_stats_with_destination_languags(@stats, false) %>
+<br />
+<h2>Get bids from translators</h2>
+<p>To get bids from translators you need to complete the project setup.</p>
+<%= form_tag(:action=>:create_sisulizer) do %>
+	<h3 style="display: inline;">Name this project</h3> &nbsp; (this name will be visible to translators)
+	<p><%= text_field_tag :name, '', :style=>'padding: 0.2em;', maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></p>
+	<p><%= hidden_field_tag(:version_id, @version.id) %><%= submit_tag('Continue', style: 'padding: 0.5em;', data: { disable_with: 'Continue' }) %> or <%= link_to('cancel', {:controller=>:client, :action=>:getting_started, :ignore_next=>1}, 'data-confirm'=>"Are you sure you want to cancel this project's setup?") %></p>
+<% end %>
+<p class="comment">Next steps</p>
+<ol class="comment"><li>Enter bidding limits.</li>
+<li>Choose required fields of expertise.</li>
+</ol>

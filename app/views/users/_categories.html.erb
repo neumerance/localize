@@ -1,0 +1,33 @@
+<%= infotab_top('Categories of expertise', infobar_contents_user('This table shows categories in which you have special skills (this information is <b>optional</b>)', 'This table shows categories in which the translator has special skills', true, @auser.categories.length > 0,'question.png')) %>
+<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+	<% if @show_categories_selection %>
+		<%= form_tag({ :action => :edit_categories, :req=>:save }, :remote => true) do %>
+			<p>
+				<% @categories.each do |cat| %>
+					<label><%= check_box_tag("category[#{cat[0]}]", "1", cat[2] ) %>&nbsp;<%= cat[1] %></label><br />
+				<% end %>
+			</p>
+			<p class="warning">Your <a href="#resume">resume</a> must detail your experience in the fields that you are indicating here. Your <a href="#bionote">bio-note</a> should also briefly mention them.</p>
+			<%= submit_tag 'Save', data: { disable_with: 'Save' } %>
+		<% end %>
+		<%= form_tag({ :action => :edit_categories, :req=>:hide }, :remote => true) do %>
+			<%= submit_tag 'Cancel', data: { disable_with: 'Cancel' } %>
+		<% end %>
+	<% else %>
+		<% if @auser.categories.length != 0 %>
+			<ul>
+				<% for category in @auser.categories.all.order('id ASC') %>
+					<li><%= category.nname.capitalize %></li>
+				<% end %>
+			</ul>
+		<% else %>
+			<p><b>No categories listed yet.</b></p>
+			<div class="clear"></div>
+		<% end %>
+		<% if @canedit %>
+			<%= form_tag({ :action => :edit_categories, :req=>:show }, :remote => true) do %>
+				<%= submit_tag 'Add other categories or modify this list', data: { disable_with: 'Add other categories or modify this list' } %>
+			<% end %>
+		<% end %>
+	<% end %>
+</td></tr></table>

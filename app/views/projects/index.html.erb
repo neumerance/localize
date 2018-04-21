@@ -1,0 +1,15 @@
+<% if @user.can_create_projects? %>
+  <div class="green_message">
+  <h3><%= _('Start a new translation project') %></h3>
+  <ul><li style="margin-top: 1em;"><%= link_to(_('Document translation / proof-reading'), {:controller=>:projects, :action=>:new}) %><br />
+  <span class="comment">Office document or other files you want to upload for translation</span></li>
+  <li style="margin-top: 1em;"><%= link_to(_('Static HTML website'),{:controller=>:client, :action=>:translate_with_ta}) %><br />
+  <span class="comment">Use Translation Assistant to scan your website and get the texts that need to be translated.</span></li>
+  <li style="margin-top: 1em;"><%= link_to(_('Sisulizer software localization'), {:controller=>:projects, :action=>:new_sisulizer}) %><br />
+  <span class="comment">Translate a project created with Sisulizer.</span></li>
+
+  </ul>
+  </div>
+  <br />
+<% end %>
+<%= render(:partial => "projects", :object => @projects) %>

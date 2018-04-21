@@ -1,0 +1,6 @@
+<% if @refresh %>
+	location.reload()
+<% else %>
+	jQuery('#release_status').html('<%= escape_javascript(render :partial => 'release_status') %>')
+<% end %>
+

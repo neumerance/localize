@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+  <head>
+	<title><%= h(truncate(@header,:length => 60, :omission => '...')) %></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+    <link rel="shortcut icon" href="/assets/favicon.png" type="image/png" />
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+    <meta name="description" content="Rapid text translation from any language to any language, done by professional human translators. Upload, submit and get your translation." />
+    <%= stylesheet_link_tag    'application' %>
+    <%= stylesheet_link_tag    'visitor' %>
+    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag 'visitor' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+  <div id="topbar"><a href="/login/">Login</a> &nbsp; - &nbsp; <a href="/about.html">About us</a> &nbsp; - &nbsp;
+    <a href="http://www.icanlocalize.com/web_dialogs/new?language_id=1&amp;store=4">Contact</a> &nbsp;-&nbsp;
+    <%= image_tag 'translation.png', class: '', width: 16, height: 16, alt: 'Translator', style: '', align: 'top', border: 0 %>
+    <a href="/keywords">Keyword Translator</a> &nbsp;-&nbsp;
+    <a href="http://blog-en.icanlocalize.com/?feed=rss2"><img border="0" align="top" src="/assets/rss.png" width="16" height="16" alt="RSS feed"/></a>
+    <a href="http://blog-en.icanlocalize.com">Blog</a>
+  </div>
+  <a href="/">
+    <%= image_tag 'web_logo_large.png', class: 'imageBorder', width: 317, height: 91, alt: 'ICanLocalize', style: '', border: 0 %>
+  </a>
+  <!-- top navigation -->
+  <ul id="topnavigation">
+    <li class="nonselectedtab"><a href="/index.html">Home</a></li>
+    <li class="nonselectedtab"><a href="/website-translation.html">Website Translation</a></li>
+    <li class="nonselectedtab"><a href="/general-translation.html">General Translation</a></li>
+    <li class="selectedtab_active"><a href="/instant-text-translation.html">Instant Translation</a></li>
+    <li class="nonselectedtab lasttab"><a href="/customer-support-interpretation.html">Online Interpretation</a></li>
+  </ul><!-- /top navigation -->
+	<div id="maincontents">
+		<h1><%= h(truncate(@header,:length => 60, :omission => '...')) %></h1>
+<div class="clear"></div>
+		<%= yield :layout %>
+
+	</div>
+    <div id="bottom"><center><br /> © <%= Time.now.year %>. OnTheGoSystems Inc. | All Rights Reserved</center></div>
+  
+</body>
+</html>
+
+

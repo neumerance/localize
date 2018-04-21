@@ -1,0 +1,10 @@
+<% if @other_offer %>
+	The other party had offered that this work be completed for <%= @other_offer.amount %> <%= @arbitration.object.currency.disp_name.html_safe %>.
+	<% if @can_accept %>
+		<%= form_tag({ :action => 'accept_offer', :id=>@arbitration.id}, "data-confirm" => 'Are you sure you want to accept this offer?', :remote => true) do %>
+			<%= submit_tag 'Accept this offer', data: { disable_with: 'Accepting' } %>
+		<% end %>
+	<% end %>
+<% else %>
+	The other party has not made an offer yet.
+<% end %>

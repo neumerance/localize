@@ -1,0 +1,34 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>We're happy to tell you that your account setup is complete. You're welcome to bid on live projects and take on translation project.</p>
+<% if @revisions %>
+<p>Current projects matching your profile:</p>
+<% @revisions.each do |revision| %>
+  <div><%= render(:partial=>'revision', locals: { revision: revision }) %></div>
+<% end %>
+<% end %>
+<% if @send_notification %>
+<p>According to your preferences, we will send you email notification about new projects that match your profile.</p>
+<% else %>
+<p>You have selected not to receive new-project notification via E-Mail. If you want to change this preference follow these instructions:</p>
+<ul>
+  <li>1. Log in to your account at http://www.icanlocalize.com.</li>
+  <li>2. Go to My Account.</li>
+  <li>3. Select 'Notification preferences'.</li>
+  <li>4. Enable 'Daily digest for your profile' and click on Save.</li>
+</ul>
+<% end %>
+<p>You're always welcome to log in to your account and use the Search function for other projects.</p>
+
+<p>
+  Reminder:<br/>
+  We recommend you make sure that you have a PayPal account, which will enable you to withdraw money.<br/>
+  If you haven't done so already, you should go through PayPal's EXPANDED USE program. This procedure is easy and free, but takes a few weeks to complete. It will lift any possible restriction from your PayPal account and will help avoid any delays in the future.
+</p>
+
+<p>
+  You can find information about withdrawing funds from your PayPal account here:
+  http://docs.icanlocalize.com/?page_id=50
+</p>
+
+<%= EMAIL_SIGNATURE %>

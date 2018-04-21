@@ -1,0 +1,7 @@
+<% if @receipts && (@receipts.length > 0) %>
+	<%= infotab_header(['Date','Withdrawal', 'Payment ID','TXN','Fee', 'Status']) %>
+	<%= render(:partial=>'receipt', :collection=>@receipts) %>
+	</table>
+<% else %>
+	<p>No mass payments to show.</p>
+<% end %>

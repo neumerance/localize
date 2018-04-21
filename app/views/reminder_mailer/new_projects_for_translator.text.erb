@@ -1,0 +1,61 @@
+Dear <%= @user.full_real_name %>,
+
+<% if @open_cms_requests.length > 0 %>New recurring translation work is available for you. You can begin translating immediately.
+
+* You have already been approved to do this work. To begin translation, go to each job and indicate that you want to start this translation now.
+
+<%= render(:partial=>'cms_request', :collection=>@open_cms_requests, :formats => [:html]) %>
+
+<% end -%><% if @revisions.length > 0 -%>New projects, matching your profile, have been released and are available to bid on. Here is a quick summary:
+
+<%= render(:partial=>'revision', :collection=>@revisions) -%>
+
+<% end -%><% if (@web_messages_wc > 0) -%>There are new Instant Translation projects with a total of <%= @web_messages_wc %> words to be translated.
+
+You can see a current list of all Instant Translation projects, available to you, here:
+<%= url_for({:escape => false, :only_path => false, :controller=>:web_messages, :action=>:index, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+* Please note that there is no bidding process for Instant Translation projects. The first translator to begin editing a project wins it. Payment for Instant Translation projects is <%= INSTANT_TRANSLATION_COST_PER_WORD %> per word - Minus our 20% commission.
+
+<% end -%><% if @open_website_translation_offers.length > 0 %>There are new recurring translation projects you can apply to.
+
+Payment for this work is not fixed. You will enter your bid when applying.
+
+<%= render(:partial=>'website_translation_offer', :collection=>@open_website_translation_offers) %>
+
+* You can learn more about recurring translation project here:
+http://docs.icanlocalize.com/?page_id=68
+
+<% end -%><% if @open_text_resource_projects.length > 0 %>There are new Software Localization projects you can apply to.
+
+<%= render(:partial=>'resource_language', :collection=>@open_text_resource_projects) %>
+
+* You can learn more about Software Localization projects here:
+http://docs.icanlocalize.com/information-for-translators/about-projects/about-localization-projects/
+
+<% end -%><% if @open_managed_works.length > 0 %>New jobs for you to review
+
+There are new projects that you can review. You have been pre-screened and can review these jobs immediately.
+Log in to your ICanLocalize account and click on Projects to view them.
+
+<% end -%>
+<% if @missing_categories.length > 0 %>=== Categories of Expertise ===
+	Clients look for translator based on their fields of expertise. The project(s) above require fields that you don't have, or didn't indicate in your profile:
+	<%= (@missing_categories.collect { |c| "* #{c.name}" }).join("\n") %>
+
+	If you have experience translating in these fields, add them to your profile page:
+	<%= url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:users, :action=>:show, :id=>@user.id, :anchor=>'categories'}) %>
+<% end %>
+
+<% if @download_needed %>=== TRANSLATION ASSISTANT NEEDS UPGRADE ===
+
+Our records show that your version of Translation Assistant is not current. You will not be able to edit new projects unless you upgrade first. To do this:
+
+ 1. Make sure that Translation Assistant is not running. Verify that there is also no Translation Assistant icon in the taskbar. If there is, click on it and select 'Shutdown'.
+ 2. Log in to your accout at http://www.icanlocalize.com and download Translation Assistant.
+ 3. Install and run the program.
+
+ <% end %>
+<%= user_todos_email_summary(@user, _('You cannot do live projects before your account setup is complete.')) %>
+
+<%= EMAIL_SIGNATURE %>

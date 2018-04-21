@@ -1,0 +1,9 @@
+<% if @user.has_translator_privileges? && project.keyword_projects.any? && !(project.project_languages.map{|pl| pl.translator}.include?(@user)) %>
+  <div class="red_message">
+    <b>This project involves translation and keyword localization.</b> You're welcome to apply :)<br>
+    It's a great opportunity for more revenue.<br>
+    Please make sure to understand our <%= link_to_keyword_instructions(project, "keyword localization process") %>. We have tested this process a lot of times with many translators, it's simple and easy to implement.<br>
+    Let's do research on the best keywords before or during the translation work so you can include the best keywords in the translated contents and contribute to client's successful SEO campaign.<br>
+    Any questions, please don't hesitate to open a support ticket (link to open ticket).  We're here to help you, and always with a smile :)
+  </div>
+<% end %>

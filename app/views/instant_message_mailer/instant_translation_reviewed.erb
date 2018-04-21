@@ -1,0 +1,10 @@
+<p>Dear <%= @client.full_real_name %>,</p>
+
+<p>
+<% url = url_for({:escape => false, :only_path => false, :controller=>:web_messages, :action=>:show, :id=>@web_message.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+Your instant translation project is reviewed. You can pick up the <%= @web_message.visitor_language.name %> translation at this page: <%= link_to url, url %>
+</p>
+
+<p><%= RECOMMEND_LINK %></p>
+
+<p>Best regards,</p>

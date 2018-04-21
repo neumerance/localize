@@ -1,0 +1,118 @@
+<%= my_error_messages_for :auser %>
+
+<br />
+<%= form_for(:auser, :url => users_path) do |f| %>
+
+	<div style="color: #000000; background-color: #F0F0F0; border: 1pt solid #E0E0E0; margin: 0 1em 3em 1em; padding: 1em 1em 0.5em 1em;">
+	<% if @utype == 'Client' %>
+		<p>An account at ICanLocalize allow you to have different kinds of materials translated. We can translate website contents, software interfaces, help files, plain texts, emails and office documents.</p>
+		<p>Creating an account is 100% free. You will only be asked to pay for translation work that you order.</p>
+	<% elsif @utype == 'Partner' %>
+		<p>A partner accound in ICanLocalize will allow you to:</p>
+		<ul><li><b>Develope multilingual sites</b> faster and better.</li>
+		<li>Get paid a <b>30% affiliate commission</b> for translation projects.</li>
+		<li><b>Gain access to clients</b> who need professional design services.</li>
+		</ul>
+		<p>It's free and only takes a minute to create an account.</p>
+	<% else %>
+		<p>An account at ICanLocalize allows you get translation jobs from us. Some kinds of jobs can be done using a browser and some require the use of our translation software (runs on Windows only).</p>
+		<p>Before signing up, have a look at our requirements from translators:</p>
+		<ul>
+			<li>We only work with <b>professional translators</b>. In <i>source language section</i>, you will need to provide a scan of your original degree in translation as well as its translation in English. Should the diploma not mention the language(s) you graduated into, you will also need to upload your scoresheet.</li>
+			<li>We only work with professional translators into their native language, thus you will be required in <i>target language section</i> to upload a copy of an ID document.</li>
+			<li>You will need to be able to <b>verify your identity</b>. This can be done using a verified PayPal account or by providing scans of an ID documents.</li>
+			<li>Before doing website translation work, you will need to do a <b>practice project</b> - which will train you in our translation software.</li>
+      <li>The pairs English to Spanish, French, Italian, German, Russian and Arabic are currently closed to registration. You're welcome to try again later.</li>
+			<li>Payments through <b>PayPal</b> only.</li>
+		</ul>
+	<% end %>
+	</div>
+	<%= hidden_field_tag(:utype, @utype) %>
+	<%= f.hidden_field(:next_operation) %>
+	<%= f.hidden_field(:source) %>
+
+	<div class="infobox"><h4>Your nickname</h4>
+	<p>Select your own nickname. It will be used to identify you in the system.</p>
+	<table class="signup">
+		<tr>
+			<td class="signupdescription" rowspan="2">Nick name:</td>
+			<td><%= f.text_field :nickname, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+		</tr>
+		<tr><td><span class="comment">Only letters and digits allowed</span></td></tr>
+	</table>
+	</div>
+
+	<div class="infobox"><h4>Private information</h4>
+	<p>This information is kept private. It will only be used for communication between you and ICanLocalize.</p>
+	<table class="signup"><tr>
+		<td class="signupdescription">First name:</td>
+		<td><%= f.text_field :fname, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+	</tr><tr>
+		<td class="signupdescription" rowspan="2">Last name:</td>
+		<td><%= f.text_field :lname, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+	</tr><tr>
+		<td><p class="comment">Only letters and digits allowed in first and last name</p></td>
+	</tr><tr>
+		<td class="signupdescription">E-mail:</td>
+		<td><%= f.text_field :email, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+	</tr></table>
+	</div>
+
+	<div class="infobox"><h4>Password</h4>
+	<p>A good password will include a combination of letter and digits.</p>
+	<table class="signup"><tr>
+		<td class="signupdescription">Select password:</td>
+		<td class="signupdescription"><%= f.password_field :password, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+	</table>
+	</div>
+
+	<div class="infobox"><h4>Verification code</h4>
+	<p>To avoid spam and automatic registration we ask you to repeat the code you see in the picture.</p>
+	<% if @captcha_error -%><div class="fieldWithErrors"><% end -%>
+	<table class="signup"><tr>
+		<td class="signupdescription">Verification code:<br /></td>
+		<td><%= image_tag @captcha_image.public_filename, :size=>@captcha_image.image_size %></td>
+	</tr><tr>
+		<td class="signupdescription" rowspan="2">Enter code:</td>
+		<td><%= text_field_tag :code, '', maxlength: 6 %></td>
+	</tr><tr>
+		<td><span class="comment">case sensitive</span></td>
+	</tr></table>
+<% if @captcha_error %></div><% end %>
+	</div>
+
+<% if @utype != 'Partner' %>
+	<div class="infobox"><h4>User agreement</h4>
+	You must accept the user agreement (in the link below) in order to create an account.<br />Please take your time to fully read the agreement before accepting.<br />
+	<br />
+	<% if @user_agreement_not_accepted %><div class="fieldWithErrors"><% end -%>
+	<%= check_box_tag(:accept_agreement, 1, false, { :onclick=>"document.getElementsByName('submit')[0].disabled = !document.getElementsByName('accept_agreement')[0].checked;" }) %>I have read and accept the
+	<div id="agreement" style="display: inline;"><%= @default_user_agreement.html_safe %></div>
+	<br />
+	<br />
+	<% if @user_agreement_not_accepted %></div><% end -%>
+	</div>
+<% end %>
+
+  <%= hidden_field_tag :captcha_id, @captcha_image.id %>
+
+  <p>
+    <%= submit_tag 'Create Account', :name=>'submit', :style=>'padding: 0.5em 1.5em;', data: { disable_with: 'Create Account' } %>
+  </p>
+
+  <% if @utype != 'Partner' %><br /><hr /><br /><% end %>
+
+  <% if @utype=='Client' %>
+	<p class="comment">Are you a professional translator, interested in joining our service? Use the <%= link_to('translator sign-up form', {:action=>:new, :utype=>'Translator'}) %>.</p>
+  <% elsif @utype=='Translator' %>
+	<p class="comment">Do you need translation work? Use the <%= link_to('client sign-up form', {:action=>:new, :utype=>'Client'}) %>.</p>
+  <% end %>
+
+  <script type="text/javascript" language="JavaScript">
+<!--
+		document.getElementsByName("accept_agreement")[0].disabled = <%= @disable_user_agreement %>;
+		document.getElementsByName("submit")[0].disabled = true;
+-->
+</script>
+
+<% end %>

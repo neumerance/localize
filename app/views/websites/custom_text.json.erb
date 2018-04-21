@@ -1,0 +1,11 @@
+<% if @location == 'dashboard' %>
+  <%= balance_custom_text.html_safe %>
+<% elsif @location == 'translators' %>
+  <%= languages_custom_text.html_safe %>
+<% elsif @location == 'reminders' %>
+  <%= reminders_custom_text.html_safe %>
+<% elsif @location == 'string_translation' %>
+  <%= string_translation_custom_text.html_safe %>
+<% else %>
+  <% raise "No render for this location"%>
+<% end %>

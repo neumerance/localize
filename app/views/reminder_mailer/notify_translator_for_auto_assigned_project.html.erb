@@ -1,0 +1,41 @@
+<span>Dear <%= @translator.full_name || @translator.email %>,</span>
+<br/>
+<br/>
+<br/>
+<p>ICanLocalize chose you to translate the website
+  project <%= link_to @website.name, {controller: '/wpml/websites', action: :show, id: @website.id} %>
+  from <%= @website_translation_offer.from_language.name %> to <%= @website_translation_offer.to_language.name %>.</p>
+
+<p>
+  If you are not available to do this work,
+  <%= link_to 'please resign from this project',
+              {controller: :website_translation_offers,
+               action: :resign_from_website,
+               id: @website_translation_offer.id,
+               website_id: @website.id,
+               translator_id: @translator.id}, target: '_blank' %>, so that another translator can take it. We guarantee clients accurate and timely translation and we don’t want to disappoint them in their first experience with us.
+</p>
+
+<p>
+  You can see the currently pending jobs for translation at the top of your Open work page under 'Available recurring
+  translations':<br/>
+  <a href="https://www.icanlocalize.com/translator/open_work">https://www.icanlocalize.com/translator/open_work</a>
+</p>
+
+<p>
+  To translate a document in this project:
+</p>
+<ol>
+  <li>Click on the title of the document.</li>
+  <li>You will see the job summary. Click on the 'Start translating' button.</li>
+  <li>Click the button to open the job in WebTA or start Translation Assistant. The document will appear there.</li>
+  <li>Translate and upload.</li>
+  <li>Once completed, click on 'Declare the work as complete'.</li>
+</ol>
+<br/>
+<br/>
+<p>We'll also notify you whenever there are new documents to translate in this project.</p>
+<br/>
+<br/>
+<p>To communicate with the client,
+  click <%= link_to 'here', url_for(controller: :website_translation_contracts, action: :show, id: @website_translation_contract.id, website_id: @website.id, website_translation_offer_id: @website_translation_offer.id) %></p>

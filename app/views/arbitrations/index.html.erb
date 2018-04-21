@@ -1,0 +1,15 @@
+<% if @arbitrations.count > 0 -%>
+	<% if @show_number_of_pages %>
+		<div class="pager_control">
+			Showing page <%= form_tag({:action=>:index}, {:method=>'GET'}) %>
+				<%= select_tag( :page, options_for_select(@list_of_pages,@arbitrations.number), {:onchange=>"submit()"}) %>
+			</form>
+			<%= link_to("Prev", arbitrations_url(:page => @arbitrations.prev.number)) if @arbitrations.prev? %>
+			<%= link_to("Next", arbitrations_url(:page => @arbitrations.next.number)) if @arbitrations.next? %>
+			&nbsp;&nbsp;&nbsp;&nbsp;<%= link_to('Summary of all your arbitrations', {:action=>'summary'}) %>
+		</div>
+	<% end %>
+	<%= render(:partial => "list_arbitrations") %>
+<% else -%>
+	<p>No arbitrations to show.</p>
+<% end -%>

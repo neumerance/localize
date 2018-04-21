@@ -1,0 +1,10 @@
+<% if @user.invitees.length == 0 %>
+<p>No one has yet accepted your invitation.</p>
+<% else %>
+<p>Your invitation has brought <%= @user.invitees.length %> user(s).</p>
+<%= infotab_header(['User','Type','Name','Email','Sign-up date','Total projects']) %>
+<%= render(:partial=>'invitee', :collection=>@user.invitees) %>
+</table>
+<br /><p><%= link_to('CSV version of this report', csv_url() ) %></p>
+<p>You can see a detailed report of your income in your <%= link_to('account history', {:controller=>:finance}) %> page.</p>
+<% end %>

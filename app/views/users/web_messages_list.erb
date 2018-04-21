@@ -1,0 +1,18 @@
+Instant translations
+
+<div class="pager_control">
+		Showing page <%= form_tag("/users/#{@auser.id}/web_messages_list", {:method=>'GET'}) %>
+			<%= select_tag( :page, options_for_select(@list_of_pages,@web_messages.number), {:onchange=>"submit()"}) %>
+		<%= link_to("Prev", "/users/#{@auser.id}/web_messages_list?page=#{@web_messages.prev.number}") if @web_messages.prev? %>
+		<%= link_to("Next", "/users/#{@auser.id}/web_messages_list?page=#{@web_messages.next.number}") if @web_messages.next? %>
+	</form>
+</div>
+<%= web_messages_paginated_list%>
+</table>
+<div class="pager_control">
+		Showing page <%= form_tag("/users/#{@auser.id}/web_messages_list", {:method=>'GET'}) %>
+			<%= select_tag( :page, options_for_select(@list_of_pages,@web_messages.number), {:onchange=>"submit()"}) %>
+		<%= link_to("Prev", "/users/#{@auser.id}/web_messages_list?page=#{@web_messages.prev.number}") if @web_messages.prev? %>
+		<%= link_to("Next", "/users/#{@auser.id}/web_messages_list?page=#{@web_messages.next.number}") if @web_messages.next? %>
+	</form>
+</div>

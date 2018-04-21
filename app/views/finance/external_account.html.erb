@@ -1,0 +1,42 @@
+<% if @user.has_supporter_privileges? %>
+<p>This account belongs to <%= user_link(@external_account.normal_user) %></p>
+<% end %>
+
+<br />
+<div class="infobox"><h4>Account information</h4>
+	<table>
+		<tr><td>Name:</td><td><b><%= @external_account.identifier %></td></tr>
+		<tr><td>Type:</td><td><%= ExternalAccount::NAME[@external_account.external_account_type] %></td></tr>
+		<tr><td>Status:</td><td><%= @external_account.status %></td></tr>
+	</table>
+</div>
+
+<% if @external_account.credits.length > 0 %>
+	<div class="inter_tab_spacer"></div>
+	<h2>Credits to this account</h2>
+
+	<form action="/finance/external_account/<%= @external_account.id %>" method="get">
+	<%= render(:partial=>'date_range') %>
+	<p><%= submit_tag('Apply', data: { disable_with: 'Apply' }) %></p>
+	</form>
+	
+	<p>This table lists all the payments made by ICanLocalize to this account between <%= disp_date(@start_time) %> and <%= disp_date(@end_time) %>.</p>
+	<%= infotab_header(['Amount','Date']) %>
+	<%= render(:partial=>'credit', :collection=>@credits) %>
+	</table>
+	<div class="tabbottom">Total credits: <%= @total_credits %></div>
+<% end %>
+
+<% if @external_account.payments.length > 0 %>
+	<div class="inter_tab_spacer"></div>
+	<h2>Deposits to this account</h2>
+	<p>This table lists all deposits you did using this account to your ICanLocalize account between <%= disp_date(@start_time) %> and <%= disp_date(@end_time) %>.</p>
+	<%= infotab_header(['Amount','Date']) %>
+	<%= render(:partial=>'credit', :collection=>@payments) %>
+	</table>
+	<div class="tabbottom">Total credits: <%= @total_payments %></div>
+<% end %>
+
+<div class="inter_tab_spacer"></div>
+
+<%= render(:partial=>'about_icanlocalize') %>

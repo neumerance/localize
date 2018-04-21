@@ -1,0 +1,14 @@
+<%= infotab_top('Privacy', infobar_contents_user('If you enable your profile to be public, visitors can see it and get to know you.', "", true, @auser.is_public != nil,'question.png')) %>
+<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+<% if @auser.is_public == 1 %>
+	<p>Your account is public. This is your <%= link_to('public profile page',{:controller=>:translators, :action=>:show, :id=>@user.id}) %>.</p>
+	<%= form_tag({ :action => :update_public, :is_public=>0 }, :remote => true) do %>
+		<%= submit_tag 'Make my account private', data: { disable_with: 'Make my account private' } %>
+	<% end %>
+<% else %>
+	<p class="warning">Your account is private and cannot be seen by visitors.</p>
+	<%= form_tag({ :action => :update_public, :is_public=>1 }, :remote => true) do %>
+		<%= submit_tag 'Make my account public', data: { disable_with: 'Make my account public' } %>
+	<% end %>
+<% end %>
+</td></tr></table>

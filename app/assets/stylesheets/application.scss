@@ -1,0 +1,40 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require plugins/bootstrap-modal
+ *= require plugins/bootstrap-modal-bs3patch.min
+ *= require jquery-ui
+ *= require plugins/messenger
+ *= require plugins/messenger-theme-air
+ *= require custom/bootstrap_btn
+ *= require dataTables/jquery.dataTables
+ *= require plugins/jquery.webui-popover.min
+ *= require plugins/jquery.rateyo.min
+ *= require_self
+ */
+
+ div.error_validation{
+  margin: 7px;
+  padding: 8px 15px;
+  border-radius: 6px;
+  background-color: #ffeaea;
+  color: #AF0505;
+  /*font-weight: bold;*/
+}
+
+div.warning_validation{
+  margin: 7px;
+  padding: 8px 15px;
+  border-radius: 6px;
+  background: #eaf2ff;
+  color: #4f515a;
+}

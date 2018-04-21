@@ -1,0 +1,54 @@
+<h1>Client's Projects</h1>
+
+<%= form_tag("/reports/clients_projects", :method => :get) do %>
+    From <%= date_picker_field "from", nil, {:value =>  params[:from].to_s.to_date || Date.today - 1.month}, '<i class="mc-icon-calendar"></i>' %>
+    To <%= date_picker_field "to", nil, {:value => params[:to].to_s.to_date || Date.today}, '<i class="mc-icon-calendar"></i>' %>
+    <%= submit_tag 'Generate', data: { disable_with: 'Please wait' } %>
+    <%= submit_tag 'Export to CSV', data: { disable_with: 'Please wait' } %>
+  <% end %>
+
+<%= infotab_top(_('Client Projects '), _('Comparison of number of created vs paid projects, for all kind of projects')) %>
+
+<table class="stats">
+  <tr class="headerrow">
+    <th rowspan="2">Client</th>
+    <th colspan="2">Website Projects</th>
+    <th colspan="2">Website Jobs </th>
+    <th colspan="2">IT Projects </th>
+    <th colspan="2">Bidding Projects </th>
+    <th colspan="2">Software Projects </th>
+  </tr>
+  <tr class="headerrow">
+    <% 5.times do %>
+      <th>Created</th>
+      <th>Paid</th>
+    <% end %>
+  </tr>
+
+  <% @result.each do |client_id, data| %>
+    <tr>
+      <td>
+        <%= "##{client_id}" %>
+        <%=link_to @clients[client_id].nickname, user_path(client_id) rescue "Not longer client: #{client_id}" %>
+        <% if @clients[client_id] %>
+        (<%= @clients[client_id].fname%> <%= @clients[client_id].lname%>)
+        <% end %>
+      </td>
+      <% %i(websites cms_requests it bidding software).each do |project_kind| %>
+        <td><%= data.dig(project_kind, :created) || 0 %></td>
+        <td><%= data.dig(project_kind, :paid) || 0 %></td>
+      <% end %>
+    </tr>
+  <% end %>
+
+<tfoot>
+  <tr class="headerrow">
+    <th style="text-align:right">Totals:</th>
+    <% %i(websites cms_requests it bidding software).each do |project_kind| %>
+      <%# #to_i is required to convert nil values into 0  %>
+      <th><%= @result.inject(0){ |sum, x| sum + x[1].dig(project_kind, :created).to_i } %></th>
+      <th><%= @result.inject(0){ |sum, x| sum + x[1].dig(project_kind, :paid).to_i } %></th>
+    <% end %>
+  </tr>
+</tfoot>
+</table>

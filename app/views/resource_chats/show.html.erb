@@ -1,0 +1,126 @@
+<p><%= _('This chat belongs to project') %> <%= link_to(@text_resource.name, {:controller=>:text_resources, :action=>:show, :id=>@text_resource.id}) %>.</p>
+
+<% if @manager && (@manager != @user) %>
+	<div class="red_message" style="margin-bottom: 1em;">
+		<%= _("This project is being reviewed by") %>&nbsp;<%= user_link(@manager) %>.
+	</div>
+<% end %>
+
+<% if @can_review %>
+	<div class="red_message">
+		<p><%= (_("This job needs a review. You can become the reviewer immediately. Go to the %s and click on <strong>&quot;become the reviewer for this job&quot;</strong>.") %  link_to('project page',{:controller=>:text_resources, :action=>:show, :id=>@text_resource.id})).html_safe %> </p>
+		<p class="comment"><%= _("Please note that once you become the reviewer, you cannot be the translator for this job.") %></p></div>
+<% end %>
+
+<% if @user == @resource_chat.translator %>
+<br />
+<div class="infobox"><h4><%= _("Project overview") %></h4>
+<table cellspacing="5">
+	<tr><td><%= _("Name:") %></td><td><%= link_to(h(@text_resource.name), {:controller=>:text_resources, :action=>:show, :id=>@text_resource.id}) %></td></tr>
+	<tr><td><%= _("Client:") %></td><td><%= user_link(@text_resource.client) %></td></tr>
+	<tr><td><%= _("Current size:")%> </td><td> <% _("<b>%s</b> strings") % @text_resource.unique_resource_strings.count %></td></tr>
+	<tr><td><%= _("Description:") %></td><td><%= pre_format(@text_resource.description) %></td></tr>
+</table>
+</div>
+<br />
+
+<% elsif @user.has_supporter_privileges? or @user.has_client_privileges? %>
+<br />
+<div class="infobox"><h4><%= _('Translator overview') %></h4>
+<table cellspacing="5">
+	<tr><td valign="top"><%= _("Translator:") %></td><td><%= user_link(@resource_chat.translator) %> &nbsp; <span class="comment">(click on the translator's name to view resume)</span></td></tr>
+	<tr><td valign="top"><%= _("Nationality:") %></td><td><%= !@resource_chat.translator.country.blank? ? @resource_chat.translator.country.name : _('Unknown') %></td></tr>
+</table>
+</div>
+<% end %>
+
+<div class="infobox"><h4><%= _("Translation status") %></h4>
+<table cellspacing="5">
+	<tr><td><%= _("Translation languages:") %></td><td>From <b><%= @text_resource.language.name %></b> to <b><%= @resource_chat.resource_language.language.name %></b></td></tr>
+	<% if (@resource_chat.status == RESOURCE_CHAT_ACCEPTED) && (@resource_chat.translation_status != nil) %>
+		<tr><td><%= _("Translation status:") %></td><td><%= ResourceChatsController::TRANSLATION_STATUS_TEXT[@resource_chat.translation_status] %></td></tr>
+	<% end %>
+	<tr><td><%= _("Words pending translation:") %></td><td><%= @resource_chat.word_count %></td></tr>
+	<% if @resource_chat.deadline %>
+		<tr>
+			<td><%= _("Deadline:") %></td>
+			<td><span <% if @resource_chat.is_late? %>style="font-weight: bold; color: #FF0000;"<% end %>><%= disp_time(@resource_chat.deadline) %></span>
+			<p class="comment"><%= ( _("This deadline was auto-calculated by the system and is considered an absolute maximum last date for the delivery to complete.
+				<br />In case clients and translators work out earlier deadlines, translators are expected to meet them.") ).html_safe %></p>
+			</td>
+		</tr>
+	<% end %>
+</table>
+	<% if @can_edit %><br />
+		<p>
+			<% if @manager && (@manager == @user) %>
+				<%= link_to((_('Review Translation') + '&raquo;').html_safe, {:controller=>:resource_strings, :action=>:index, :text_resource_id=>@text_resource.id}, {:class=>'rounded_but_bold'}) %>
+			<% else %>
+				<%= link_to((_('View or Edit Translations') + '&raquo;').html_safe, {:controller=>:resource_strings, :action=>:index, :text_resource_id=>@text_resource.id}, {:class=>'rounded_but_bold'}) %>
+			<% end %>
+		</p>
+	<% end %>
+	<% if (@user == @resource_chat.translator) && @resource_chat.need_to_declare_as_complete %>
+		<br /><%= button_to(_('Translation is complete'), {:action=>:translation_complete}, {'data-confirm'=>_('Are you sure that the translation is complete?'), :style=>'padding: 0.5em 1em;'}) %><br /><br />
+	<% elsif @can_complete_review %>
+		<br /><%= button_to(_('I have completed reviewing the translation'), {:action=>:review_complete}, {'data-confirm'=>_('Are you sure that the translation is all correct?'), :style=>'padding: 0.5em 1em;'}) %><br /><br />
+	<% end %>
+</div>
+
+<% if !(@manager && (@manager == @user)) %>
+<br />
+<a name="application_status"></a>
+<div class="infobox"><h4><%= _("Application status") %></h4>
+<p><%= pre_format(@status_text, true) %></p>
+<% if @user.has_translator_privileges? or (@user.has_client_privileges? and @user.can_modify?(@text_resource)) %>
+	<% @status_actions.each do |action| %><%= button_to(action[0], {:action=>:update_application_status, :status=>action[1]}, 'data-confirm'=>_('Are you sure you want to %s?')%action[0]) %><br /><% end %>
+<% end %>
+
+<% if flash[:how_to_proceed] %>
+	<div class="errorExplanation">
+		<h3><%= _("Begin Translation") %></h3>
+		<p><%= _("You have just accepted the translator's application.") %></p>
+	<% if @text_resource.resource_strings.count > 0 %>
+		<p><%= (_("In order to send the project's texts to translation by <b>%s</b>, go back to the %s.") % [@resource_chat.translator.full_name, link_to('project',{:controller=>:text_resources, :action=>:show, :id=>@text_resource.id, :anchor=>"resource_language#{@resource_chat.resource_language.id}"})]).html_safe %></p>
+		<p><%= _("Each translation language has a button for sending the texts to translation in that language.") %></p>
+		<p><b><%= _("If for some reason, the translator you chose does not answer you, please open a support ticket and we will assist you right away.") %></p>
+          <br /><p><%= link_to(_('Send Strings to Translation'), {:controller=>:text_resources, :action=>:show, :id=>@text_resource.id, :anchor=>"resource_language#{@resource_chat.resource_language.id}"}, {:class=>'rounded_but_bold'}) %></b></p>
+	<% else %>
+		<p><%= _("The project doesn't yet include any strings. To add them, go back to the %s.").html_safe % link_to(_('project'),{:controller=>:text_resources, :action=>:show, :id=>@text_resource.id, :anchor=>"resource_language#{@resource_chat.resource_language.id}"}) %></p>
+		<p><%= _("Once you have added strings, you will be able to send them to translation.") %></p>
+	<% end %>
+	</div>
+<% end %>
+</div>
+<% end %>
+
+<%= show_messages(@resource_chat.messages) %>
+<% if flash[:ack] %>
+	<div class="errorExplanation">
+	  <%= pre_format(flash[:ack]) %>
+	</div>
+<% end %>
+
+<a name="reply"></a>
+<% if (@manager && (@manager == @user)) %>
+	<div style="font-size: 120%; margin: 2em;" class="red_message">
+		<p><%= (_("To review the translation, go to the %s and open issues from within strings that need fixing.") % link_to('strings in the project', {:controller=>:resource_strings, :action=>:index, :text_resource_id=>@text_resource.id})).html_safe %> </p>
+		<p><%= _("You can use this chat to post general messages, that are not specific to strings, to the client or the translator.") %></p>
+	</div>
+<% end %>
+
+<% if (@user.is_client? and @user.can_modify?(@text_resource)) or @user.has_translator_privileges? %>
+	<%= show_reply(@resource_chat.messages.length > 0, @for_who) %>
+<% end %>
+
+<% if (@user == @resource_chat.translator) %>
+
+	<br />
+
+	<div class="errorExplanation">
+		<h3><%= _("Need technical help?") %></h3>
+		<p><%= _("If you need help with the system, ask us.") %></p>
+		<div id="open_support_ticket_for_<%= put_object_id(@resource_chat) %>"><%= render(:partial=>'/support/support_ticket_for_object', :object=>@resource_chat) %></div>
+	</div>
+
+<% end %>

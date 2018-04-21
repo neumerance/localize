@@ -1,0 +1,32 @@
+<%= infotab_top('Resume', infobar_contents_user((@auser[:type] == 'Translator') ? '<p>Background information about yourself or your company. Things to include:</p><ol><li>Education and training</li><li>Work history</li><li>Fields of expertise (give examples of previous work)</li><li>Where you are from</li></ol> <b>Disclosure of any personal contact information is forbidden on translators profiles, project chats and issue threads (address, email, phone number, Skype ID, personal websites, links to other websites/web portal, outside profiles, etc). Accounts that do not comply with this clause will be banned.</b>' : 'Background information about yourself or your company', 'Work experience and fields of interest', true, @auser.resume && !@auser.resume.body.blank?, 'question.png')) %>
+<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+	<% if @show_resume_edit %>
+		<br /><%= link_to("Formatting instructions", MARKUP_DESCRIPTION_URL, {:target=>'_blank'}) %><br /><br />
+		<%= form_for(:resume, :url => edit_resume_user_path, :html => { :method => :post , :req => 'save', :remote => true }) do |f| %>
+			<p>
+				<%= f.text_area :body, :rows => 25, :cols => 80 %>
+			</p>
+			<%= submit_tag 'Save', data: { disable_with: 'Save' } %>
+		<% end %>
+		<%= form_tag({ :action => :edit_resume, :req=>:hide }, :remote => true) do %>
+			<%= submit_tag 'Cancel', data: { disable_with: 'Cancel' } %>
+		<% end %>
+	<% else %>
+		<% if @auser.resume %>
+			<div class="markup"><%= markdown(@auser.resume.body).html_safe %></div>
+		<% else %>
+			<p class="warning">A resume doesn't exist.</p>
+			<div class="clear"></div>
+		<% end %>
+		<% if @canedit %>
+			<%= form_tag({ :action => :edit_resume, :req=>:show }, :remote => true) do %>
+				<% if @auser.resume %>
+					<%= submit_tag 'Edit your resume', data: { disable_with: 'Edit your resume' } %>
+				<% else %>
+					<%= submit_tag 'Create your resume', data: { disable_with: 'Create your resume' } %>
+				<% end %>
+			<% end %>
+		<% end %>
+	<% end %>
+	<%= item_translation_controls(@auser.resume, @languages, 2) %>
+</td></tr></table>

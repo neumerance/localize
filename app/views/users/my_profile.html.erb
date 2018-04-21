@@ -1,0 +1,95 @@
+<% if @todos %>
+	<div class="errorExplanation">
+		<h2>Complete your account setup</h2>
+		  <%= infotab_header(['Status','Item to do', 'Description'] ) %>
+			<%= render(:partial => 'todo', :collection => @todos) %>
+		</table>
+	</div>
+<% end %>
+
+<h4><%= link_to(_('Profile'),{:action=>:show, :id=>@user.id}) %></h4>
+<% if @user[:type] == 'Translator' %>
+	<p>Your profile is viewable by other ICanLocalize users. You can make parts of it publically viewable to visitors as well by editing the <em>privacy settings</em>.</p>
+	<p>It includes:</p><ul>
+	<li>Your photo</li>
+	<li>Your nick-name</li>
+	<li>Languages you are qualified to translate in</li>
+	<li>Categories in which you have special skills</li>
+	<li>Your resume</li>
+	<li>Privacy settings (to make your account public)</li>
+	</ul>
+	<p>Your full name and email are kept private in the system. It's not allowed to provide clients with your personal contact info in the project chats nor ask them to contact you outside the system.<br />
+	You can also close your ICanLocalize account via your profile page.</p>
+<% else %>
+	<p><%= _('Edit your contact information.') %></p>
+<% end %>
+
+<% if @user[:type] == 'Translator' %>
+	<h4><%= link_to('Notifications preferences', {:controller=>:notifications}) %></h4>
+	<p>Select which notifications are sent to your email.</p>
+<% end %>
+
+<h4><%= link_to(@financials_title,{:controller=>:finance}) %></h4>
+<p><%= @financials_description %></p>
+
+<% if @user[:type] == 'Client' %>
+<h4><%= _('Display settings') %></h4>
+<p><%= _('These are optional settings. You can leave them unchecked for normal translation work.') %></p>
+<%= form_tag(:action=>:update_display_settings) do %>
+	<p>
+		<label><%= check_box_tag(:display_glossary, 1, (@user.display_options & DISPLAY_GLOSSARY) != 0) %> <%= _('Show glossary controls') %></label><br />
+		<!-- <label><%= check_box_tag(:display_web_supports, 1, (@user.display_options & DISPLAY_WEB_SUPPORTS) != 0) %> <%= _('Show controls for support centers') %></label><br /> -->
+		<label><%= check_box_tag(:display_affiliate, 1, (@user.display_options & DISPLAY_AFFILIATE) != 0) %> <%= _('Show controls for affiliate program') %></label><br />
+		<label><%= check_box_tag(:display_search, 1, (@user.display_options & DISPLAY_SEARCH) != 0) %> <%= _('Show translators search controls') %></label><br />
+	</p>
+	<p><%= submit_tag(_('Update display options'), data: { disable_with: _('Update display options') }) %>
+<% end %>
+<% end %>
+
+<% if (@user[:type] == 'Client') %>
+  <div class="inter_tab_spacer"></div>
+  <h2>WPML integration</h2>
+
+  <p>Your API token for WPML integration is: <b><%= @user.api_key %></b></p>
+<% end %>
+
+<% if (@user[:type] == 'Client') && false %>
+<div class="inter_tab_spacer"></div>
+<h2>Reviewers</h2>
+
+<p>You can choose translators to <b>review</b> your translations.</p>
+<p>Reviewers are specially qualified translators who will make sure that everything you get is top-notch. You choose reviewers for language pairs and then can decide if they review specific projects that you set up in ICanLocalize.</p>
+<% end %>
+
+<% if @user[:type] == 'Translator' %>
+<div class="inter_tab_spacer"></div>
+<h2>Planned leaves</h2>
+<% if @user.vacations.length > 0 %>
+	<%= infotab_header([_('Status'), _('Beginning'), _('Ending'), _('Actions')]) %>
+		<%= render(:partial=>'/vacations/vacation', :collection=>@user.vacations_by_date) %>
+	</table>
+<% end %>
+<br />
+<p>You can enter a planned leave here. This will let other users see when you're not around and when you'll be back.</p>
+<p><%= link_to('Add a new planned leave', {:controller=>:vacations, :action=>:new, :user_id=>@user.id}) %></p>
+<% end %>
+
+<br />
+<div class="red_message"><h4><%= _('Change password') %></h4>
+<%= form_tag({ :action => :update_password }, "data-confirm" => _('Are you sure you want to change your password?'), :remote => true) do %>
+	<table>
+		<tr><td><%= _('New password:') %></td><td><%= password_field_tag :new_password %></td></tr>
+		<tr><td><%= _('Re-enter password:') %></td><td><%= password_field_tag :verify_password %></td></tr>
+	</table>
+	<br /><%= submit_tag _('Update password'), data: { disable_with: _('Update password') } %>
+<% end %>
+</div>
+<br />
+
+<div class="red_message"><h4><%= _('Close account') %></h4><p><%= _('If you no longer want to maintain this account, you may close it.') %></p>
+<p><%= (_('Please note that once closed, you will no longer have any access to this account. If you have %s, please withdraw them before closing your account.')%link_to(_('available funds'), {:controller=>:finance, :action=>:index})).html_safe %></p>
+<%= form_tag({ :action => :close_account, :id=>@user.id }, "data-confirm" => 'Are you sure you want to terminate your ICanLocalize account?', :remote => true) do %>
+	<%= _('Verify your password:') %> <%= password_field_tag :verify_password %>
+	<%= submit_tag _('Close my account'), data: { disable_with: 'Processing...' } %>
+<% end %>
+</div>

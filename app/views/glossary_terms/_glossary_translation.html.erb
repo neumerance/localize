@@ -1,0 +1,21 @@
+<% if @editing %>
+	<%= form_for(:glossary_translation, :url=>{:action=>:edit_translation}, :remote => true) do |f| %>
+		<%= f.text_field(:txt, size: COMMON_FIELD_SIZE, :style=>language_dir_css_attribute(@glossary_translation.language), maxlength: COMMON_NOTE) %><br />
+		<% if @glossary_translation %><%= hidden_field_tag(:glossary_translation_id, @glossary_translation.id) %><% end %>
+		<%= hidden_field_tag(:language_id,@language.id) %>
+		<%= f.hidden_field(:language_id) %>
+		<%= submit_tag('Save', data: { disable_with: 'Save' }) %>
+	<% end %>
+	<%= form_tag({ :action=>:edit_translation, :language_id=>@language.id, :glossary_translation_id=>@glossary_translation.id, :req=>'hide' }, :remote => true) do %>
+		<%= submit_tag 'Cancel', data: { disable_with: 'Cancel' } %>
+	<% end %>
+<% elsif @glossary_translation %>
+	<%= link_to({:action=>:edit_translation, :user_id=>@glossary_client.id, :id=>@glossary_term.id, :glossary_translation_id=>@glossary_translation.id, :req=>'show'}, :title=>'Edit', :remote => true, method: :post) do %>
+    <%= image_tag 'icons/edit.png', width: 16, height: 16, alt: 'edit', align: 'bottom' %>
+  <% end %>
+  <%= h(@glossary_translation.txt)  %>
+<% else %>
+	 <%= link_to({:action=>:edit_translation, :user_id=>@glossary_client.id, :id=>@glossary_term.id, :language_id=>@language.id, :req=>'new' }, :remote => true, method: :post) do %>
+    <%= image_tag 'icons/add.png', width: 16, height: 16, border: 0, alt: 'add', align: 'bottom' %>
+   <% end %>
+<% end %>

@@ -1,0 +1,13 @@
+<% if @problems && (@problems.length > 0) %>
+	<div class="errorExplanation"><ul><%= (@problems.collect { |p| "<li>#{p}</li>" }).join() %></div>
+<% end %>
+
+<%= form_tag(:action=>:create_ticket) do %>
+	<p>Subject:</p>
+	<%= text_field_tag(:subject, @subject, {size: COMMON_FIELD_SIZE, :style=>'width:100%', maxlength: COMMON_FIELD}) %>
+	<br /><p>Message:</p>
+	<%= text_area_tag(:body, @body, {:rows=>10, :cols=>100, :style=>'width:100%', maxlength: COMMON_NOTE}) %>
+	<p class="comment">If you need technical help, please describe the problem in details. To do work on your server, we would need an admin account. You can enter account details in the ticket body.</p>
+	<br />
+	<%= submit_tag('Create ticket', :style=>'padding: 0.5em 1em;', data: { disable_with: 'Create ticket' }) %>
+<% end %>

@@ -1,0 +1,20 @@
+<%= HTML_EMAIL_HEADER.html_safe %>
+<p>Dear <%= @client.full_name %>,</p>
+<br />
+<p>We are happy to deliver this summary with the latest translation jobs completed on your website project <b><%= @website.name %></b>:</p>
+<br />
+<%= infotab_header(['Job ID','Document', 'Language Pair']) %>
+  <% @cms_requests.each do |cms_request| %>
+    <tr>
+      <td><%= cms_request.id %></td>
+      <td><%= link_to( h(cms_request.title), url_for(only_path: false, host: EMAIL_LINK_HOST, protocol: EMAIL_LINK_PROTOCOL, controller: 'cms_requests', action: 'show', website_id: cms_request.website_id, id: cms_request.id), target: '_blank') %></td>
+      <td>From <%= cms_request.language.nname %> to <%= cms_request.cms_target_language.language.nname %></td>
+    </tr>
+  <% end %>
+</table>
+<p style="margin-top: 20px;">
+  The translations are already on your website. If WPML is configured to download them automatically, no further action is required. To download the translations manually, just click the '<b>Check status and get completed translations</b>' button in the WPML Translation Dashboard.
+</p>
+
+<p>Best Regards,<br/>
+<%= EMAIL_SIGNATURE_HTML.html_safe %></p>

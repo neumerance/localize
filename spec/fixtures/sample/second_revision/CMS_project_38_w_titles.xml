@@ -1,0 +1,414 @@
+<TA_project created="1224782439.4" name="CMS_project_38" revision_name="cms_request_39" source_type="blog">
+  <project_setup default_encoding="iso-8859-1" index_file_name="/" original_language="English" scan_file_types="html" use_source_encoding="True">
+    <common_root>blog-en.icanlocalize.local</common_root>
+  </project_setup><ta_source_files>
+    <included_files>
+      <file md5="1ac8989aeffe61cd74d05ae39faae2ed" sentences="32" title="page update test 2" type="html" words="507">/</file>
+    </included_files><excluded_files />
+    <support_files />
+    <index_pages />
+  </ta_source_files><ta_buffer encoding="UTF-8" format="1" manual="False" original_language="English" source_file="/" type="html">
+    <extractor>
+      <marked_file MD5="3f4206436369c352b678eb16a693d119" encoding="zlib-hex">789cbd59db76dbb8157d6ebe02a51f32b39644cab7b64964af657b9cc48de378454add3e794124442202011600256b1ee6c7fad62feb3e2075b1a3789c449d3cc41205e0dcf639671fb05ff8521df70bc1b3e37e293c6785f75557fcbb96d3a3e8cc682fb4ef0ee7958858da7c3b8abcb8f3096d7cc5d2825b27fcd1cef0e4963edfe2cb6dc9ed44d89de8b89fd091c7cffa5e7a258e7fdba17f5839bc185e9eef543c17acae32ee05f3c279b6473fffd64f9ad5cffa4950eb597f64b239fe542c55dcb9a308278c94c96f95d4226a4eed3b6f8dce8fcf6b6b2ac13553d82aac63dc0a967285a5391b1bcb6a5d59918a0c86880caba6423966c62c5766c4156c3436939a7b6934f386799e4e14d42b041be3b14e252db2d2498787dc07a7485d0b47ab0be9992b486465652a48baa97516b6cf8c55591c2c0c3e189ceeecb07ed2eaddff73b7eb3cb73e55329d6037d4bb4b559d896e176eacbe6e7e3f935326b3a34896f0e759c1752eec6e144e64d79f3ebe397fc992bd5eef6fc9e9a7c1c5d5f96090ecf692bdfda4b1380ec1f22e81ec78c4ad35cec4bc8a3f573923d174cabbf3f36bf6243dda5f52ad07ded8f97561bc393577d1134dc0be8b323f2b746ea3b5b396cfbefd982be04a640b90c8325f6ce54ae65a89b18f98f373258e22382297fa25eb5577aff0d0a64711e5c2cb24917b719ae9d8d7560b1ba7a64c20e1fb7c1a31ae90414b987ed204b46b2b9c2448b2bf1b27d87b0e402976daec6433aebd5b0094a71ba0d900328e58e12a9ec2965ec4a6ab8f3399f9e228da7bb1871542e60534d8db7d111db7f906b77c676ccf7845ea3c31c4ab13f6abbbe1e98beaeef2e335cf7e6feb633f86b8fe7fbcd93a078aff9e7e5b59f248fa5cf1a9cc4349fa8e0cb8b653773952f8912f909ed6d619fb926562cc6be58176a343dd41c5bfbaba3db15ea66a514a627aa4f9940e3b85937efaf915b38272818db97222ec2e4ded84990adb9c9086add0e0a7e70f3439f5fa7967f7e7d59eda3f650b3614568c9719293249ee88b134e4e3137251ea4cdcc5d4b576d6cbc1066f4160c4420f826ae416c2c7548a19aaba984aa8cd42ad7d50246215d4d1c287f2100b254a8090b22bd98b7b49db3ea1c82d5076abc5cc2554806e73cbe7b723afe35c8e23364203223ff6da52f1b8068bd4fecb2ab3bf486cfe64fc3d7046804d70d52eb5c8bd2767c4a6427ce717287c22d85edb59f6fd6083bc6fc45abbe30f835a23ef2b48d3a0589b51b6a1137d01b5469fa492696bab4de8c0a7006c5df0f6c0f5cdf5ef465a81caf7da182fecba13bfdd19a5715ca6c9883b71eb2652bbf0b152a09dc849da7b3b83b4dbd3cbc63fc1294be30f56b61f3c30fd8fea0c44c1921f67724f90e4d0fa2acf3ce87ecbf23ff3296f9e368a3cbaff4f536ed99749cd8e80aa59f8619da3de4bbee79de74fcaac667952ed767bb1d4d2c72d4b0ed9866c47bebffa7e36912450325e57325686670f35bda7c53d057e4778923491683cfa03b487422174b6695808a932048d116838a69429438294462a205a29366a871993d661eea12f7e66ba199f77d8c17eb71d7d4e9ce4dd8657b1f74260c4c93b6c56c8b46078a41d7b6d25b630a9d9a9909fc3cf3c4dc3f0945331f9164eb6a05a3f440257fcce3107c9135204031a1978fee9b95be809a3c798cd48f36101224456d0166fd289a3a7add563a394996146245768d622906566a667dc66616998ebf844902339cb2c2fe1bd94d191b0f90663271b780bf735b3a2e3b3b0e51733831bb4a033d029a8b585f9b43496a2036987bd1eab0ce2eab6e29bcb76182ec8305f60769d0931814f5c5d96985961ca5981f1b681482154c54636f82f87f6544dc91e8e56ec2aa3113f22cc4ba6cc38cde98d0faed097cb11727ef790950d6e20956630369ab34ff1205e83c21b616c2ed84dcc4e6b57901637dc418fdca3df6ec3eee846a0f440365f0df6f8d692ff756bd0f18d2d8351edafab71dfcda17ff960740fe7339c4fd3be9253321406dcbf5ef0b2a44b009dc1df8d22df70fdd08918a5f18973066ad072f29c83aa95b1f4758178422f9f43818d2a46171e81065b9a3327cb4a89af19e266120e30b980132c33967476524f96cfe2689b790a36464f33a60de56b2a9195a0b7a642bb864f4635e58ba4d039a3ea5094c883e45543558c9a7846b0f4966bccba56e81425ac0daa1c49253dbea710e6ba0de701dc2b61a7c02ca1592f81901399a4686ff6cd5b045941e3a0cef22a074e7d0891858251c93fc37f0da6b6e3354202c6364b69b312bbaceca1e651850a69463a86542b407b436109c50be8528a57003cd98e94b0c46dd91829feab589433946bc2d6c003710d74d7eeb0c85fa2a965487b5798199dee64ae0388f9782cd290f2cbde935b33f3c55692995c3016dc06519444ae89235df03597706deb49794d495ddb51adc85f8eb40cf53a14f94529df18eb0bcdaec055fe65ec84ecb35ea13b8c3d2504da5e10f0b080d7ce5b0a060788e8469382014c8646e81451479c51e02f0e09c5fd4664d88a260108a50aed703b35dee8cc681cf97a383867bb68204d7381b3e82e34684357932e28486d6caddf1c3024464ace027c767bbb3df6e6fd3044ff8db025d7a4ea2f27ff64fbbdd56eacdc5f6cdbe8cbd796520a3bcf4eced8410f689ca1ded97b27ac54d8bb7fd60f7a03711c9ac9dc7442bcaee4642224cb44da949cbdf870dd601a059a286b034481e628c1062850057b07fd384c78f761707dd1442b6b943f7cd4f650b9d14b3f84726ee5b2d70385278418ae245f2974102f23d0096e7f6b10af77f80fb2df8289b281080d868e58fa6f3f3edcaad39a76436c270882ce4b059b1c58601f6ef0ec70f7a0e5281dea1687f15f57269835947f71e78d4aa5d746bd73f0850c65f3bd71977af2d5596fe31decd7863dcf472e99826598cd33ef3fe8a7e58cb7bb3ee0de9ff29a683ebcb46886eaf741d6908fc27c108e3c2b2bed312104d1ae1d4abcad05c61b0c075bbd5aa05bc2e15963c9f10df7a0e6c8b0077495a825fbef7f9a399d1c7fbc0da09c948b4e2855b6565f470629d3326942318c2a0d190928518f0d7b702a9a0e8a2c715060271aa3bd708a22f57d3068425ae02be8e01e99682932a009b368d9a4a8b93526769ab67c058c7e44da52c72fa41863e554381fa82b659b17b9845834aeb08a58151a22c61054ec725bf903a2d07204c8292947507c676db72c78d576107c1909fa90593915a10c52bf20823e9370206fd91ab59f2e9c51525e1145f258beb1da009f8f026b89a9058cd601430e5dc005fc2b27924978d986473e34f1aa2b62fc1d34221d1a910de462f1ea8c7a3698a90542104da42ea8dbafebefdb16da8517640d019cd09d95d41bbd710aea8896058ea008097c844a1ed468850450b4486a39504b900a4ea1414808ace89659180047f335ba1118c87686930bc6b3c0676920033b80f503538a762a77a289062f9b9798c1f896e180804e3a81224b22f7b9699f7b9a4579dbc0e86d27ea9e6d485a987138421eac0643ae4b613b54f70266b7d43f604878312ac28d8fa3290714a049880bf6b9a614249bd7c525edebddf046f9f8d9ff00da924635</marked_file>
+      <paragraph_indexes count="34">109 142 195 368 744 1022 1216 1307 1783 2007 2082 2093 2402 2612 2727 2863 3538 3718 3781 4002 4065 4250 4313 4395 4409 4558 4572 4596 4610 4654 4717 4880 4894 4964 5027 5223 5286 5372 5386 5510 5573 5704 5718 5780 5843 5956 5970 6089 6152 6244 6291 6421 6432 6642 6705 6921 6984 7090 7104 7195 7258 7360 7374 7479 7542 7689 7752 7800 </paragraph_indexes>
+      <support_files />
+    </extractor><translation>
+      <languages>
+        <language reviewed="True">Spanish</language>
+      </languages><sentences count="34">
+        <ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="1" original_language="English" type="title">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : e test 2</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">page update test 2</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="2" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text from_TM="False" rev_id="40" status="Complete" time="1224782750">Spanish : eaders are calling for unprecedented levels of global coordination to tackle the financial crisis that continues to hit share prices around the world.</text>
+            <marker end="-1" id="0" start="0" />
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224782439">European leaders are calling for unprecedented levels of global coordination to tackle the financial crisis that continues to hit share prices around the world.</text>
+            <marker end="-1" id="0" start="0" />
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="strong" />
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="3" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text from_TM="False" rev_id="40" status="Complete" time="1224782756">Spanish : nion President Jose Manuel Barroso wants global action to tackle the crisis.</text>
+            <marker end="86" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224782439">European Union President Jose Manuel Barroso wants global action to tackle the crisis.</text>
+            <marker end="86" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="class" val="alignleft" />
+              <attr name="style" val="margin: 0px;" />
+              <attr name="src" val="http://i2.cdn.turner.com/cnn/2008/BUSINESS/10/23/global.markets/art.barroso.ap.jpg" />
+              <attr name="alt" val="European Union President Jose Manuel Barroso wants global action to tackle the crisis." />
+              <attr name="hspace" val="0" />
+              <attr name="vspace" val="0" />
+              <attr name="width" val="292" />
+              <attr name="height" val="219" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="4" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : nion President Jose Manuel Barroso wants global action to tackle the crisis.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">European Union President Jose Manuel Barroso wants global action to tackle the crisis.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="5" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : iew previous image</text>
+            <marker end="28" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">Click to view previous image</text>
+            <marker end="28" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="id" val="cnnImgChngrPrvsBtn" />
+              <attr name="title" val="Click to view previous image" />
+              <attr name="src" val="http://i.l.cnn.net/cnn/.element/img/2.0/content/in_the_news/left_gray_btn.gif" />
+              <attr name="border" val="0" />
+              <attr name="alt" val="Click to view previous image" />
+              <attr name="width" val="26" />
+              <attr name="height" val="19" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="6" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : </text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">1 of 2</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="7" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : iew next image</text>
+            <marker end="24" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">Click to view next image</text>
+            <marker end="24" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="id" val="cnnImgChngrNxtBtn" />
+              <attr name="title" val="Click to view next image" />
+              <attr name="src" val="http://i.cdn.turner.com/cnn/.element/img/2.0/global/pic_changer/next.gif" />
+              <attr name="border" val="0" />
+              <attr name="alt" val="Click to view next image" />
+              <attr name="width" val="26" />
+              <attr name="height" val="19" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="no" encoding="UTF-8" format="1" id="8" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="40" status="New" time="1224782439" />
+            <marker end="0" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224782439" />
+            <marker end="0" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="http://i.cdn.turner.com/cnn/.element/img/2.0/mosaic/base_skins/baseplate/corner_wire_BL.gif" />
+              <attr name="alt" val="" />
+              <attr name="width" val="4" />
+              <attr name="height" val="4" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="9" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : ic turmoil will be the focus of the two-day, 43-nation Asia-Europe Meeting, which opens Friday in Beijing, according to European Union President Jose Manuel Barroso.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">The economic turmoil will be the focus of the two-day, 43-nation Asia-Europe Meeting, which opens Friday in Beijing, according to European Union President Jose Manuel Barroso.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="10" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : s speaking at the EU's Beijing office in Thursday as stocks in Europe followed Asian markets downwards in the wake of a dramatic day on Wall Street that saw the Dow Jones index falling more than 500 points.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">Barroso was speaking at the EU's Beijing office in Thursday as stocks in Europe followed Asian markets downwards in the wake of a dramatic day on Wall Street that saw the Dow Jones index falling more than 500 points.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="11" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : pe this week's summit in China will help bring agreement on a response to the crisis ahead of a November 15 meeting hosted by U.S. President George W. Bush in Washington.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">Leaders hope this week's summit in China will help bring agreement on a response to the crisis ahead of a November 15 meeting hosted by U.S. President George W. Bush in Washington.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="12" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish :  coordinated global response to reform the global financial system.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">"We need a coordinated global response to reform the global financial system.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="13" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : ing in unprecedented times and we need unprecedented levels of global coordination," The Associated Press reported Barroso as saying. "It's very simple.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">We are living in unprecedented times and we need unprecedented levels of global coordination," The Associated Press reported Barroso as saying. "It's very simple.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="no" encoding="UTF-8" format="1" id="14" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="40" status="New" time="1224782439" />
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224782439" />
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="15" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : gether or we sink together."</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">We swim together or we sink together."</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="16" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : tlined no specific proposals but said a solution needed to be based on transparency, responsibility, cross-border supervision and global governance.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">Barroso outlined no specific proposals but said a solution needed to be based on transparency, responsibility, cross-border supervision and global governance.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="17" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : id the world's financial system needed "major reform."</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">He also said the world's financial system needed "major reform."</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="18" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : t financial turmoil was sparked by the U.S. housing market collapse and a credit freeze in the United States and around the globe that is showing signs of affecting economic growth.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">The current financial turmoil was sparked by the U.S. housing market collapse and a credit freeze in the United States and around the globe that is showing signs of affecting economic growth.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="19" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : of recession are continuing to cause turbulent swings in stock markets.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">The fears of recession are continuing to cause turbulent swings in stock markets.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="20" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : k shortly after opening the Dow Jones industrial average was trading slightly higher than Wednesday's close.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">In New York shortly after opening the Dow Jones industrial average was trading slightly higher than Wednesday's close.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="21" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : TSE 100 index of leading shares was down more than 4 percent by 1010 GMT and Germany's DAX 30 was down by 3 percent.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">London's FTSE 100 index of leading shares was down more than 4 percent by 1010 GMT and Germany's DAX 30 was down by 3 percent.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="22" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : AC 40 however was down by more than 2 percent.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">France's CAC 40 however was down by more than 2 percent.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="23" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : the Nikkei declined 2.5 percent by late afternoon while South Korea's KOSPI closed down 5 percent.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">In Tokyo, the Nikkei declined 2.5 percent by late afternoon while South Korea's KOSPI closed down 5 percent.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="24" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : dinaries index in Australia declined 4.4 percent, and Hong Kong's Hang Seng index was down 3.5 percent.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">The All Ordinaries index in Australia declined 4.4 percent, and Hong Kong's Hang Seng index was down 3.5 percent.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="25" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : indexes declined after the Dow lost 514 points, or 5.7 percent, on Wednesday.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">The Asian indexes declined after the Dow lost 514 points, or 5.7 percent, on Wednesday.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="26" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : </text>
+            <marker end="5" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">Video</text>
+            <marker end="5" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="http://i2.cdn.turner.com/cnn/.element/img/2.0/mosaic/tabs/video.gif" />
+              <attr name="border" val="0" />
+              <attr name="alt" val="Video" />
+              <attr name="width" val="16" />
+              <attr name="height" val="14" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="27" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Spanish">
+            <text from_TM="False" rev_id="40" status="Complete" time="1224782771">Spanish : Asian markets fall &#187;</text>
+            <marker end="30" id="0" start="0" />
+            <marker end="30" id="-1" start="-1" />
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224782439">Watch how Asian markets fall &#187;</text>
+            <marker end="30" id="0" start="0" />
+            <marker end="30" id="-1" start="-1" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="onclick" val="CNN_changeMosaicTab(&apos;cnnVideoCmpnt&apos;,&apos;videos.html&apos;,true,&apos;/&apos;);" />
+              <attr name="href" val="http://edition.cnn.com/2008/BUSINESS/10/23/global.markets/index.html#cnnSTCVideo" />
+            </html_marker>
+          </marker_def><marker_def id="-1" type="html">
+            <html_marker tag="span" />
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="28" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : ild swings in both stocks and commodities over the last few weeks, "fundamentals matter very little right now" in the U.S. market, said Ned Riley, chief investment strategist at Riley Asset Management.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">Amid the wild swings in both stocks and commodities over the last few weeks, "fundamentals matter very little right now" in the U.S. market, said Ned Riley, chief investment strategist at Riley Asset Management.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="29" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : at most of what is happening is being driven by traders with a very short-term perspective.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">He said that most of what is happening is being driven by traders with a very short-term perspective.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="30" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : the markets progress</text>
+            <marker end="30" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">Watch how the markets progress</text>
+            <marker end="30" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="http://edition.cnn.com/BUSINESS/markets/" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="31" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text from_TM="False" rev_id="40" status="Complete" time="1224782763">Spanish : ide, lending rates continue to improve, as the efforts of world governments to stabilize financial markets started to kick in.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224782439">On the upside, lending rates continue to improve, stabilize financial markets started to kick in.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="32" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Spanish">
+            <text rev_id="39" status="Complete" time="1224777411">Spanish : lief about the improvement in the credit market has been overshadowed by recession fears.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224776990">But any relief about the improvement in the credit market has been overshadowed by recession fears.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="33" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text from_TM="False" rev_id="40" status="Complete" time="1224782777">Spanish : hese programs are starting to work, but it's going to take a while for borrowing to reach the consumer," he said.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224782439">"I added this here, Some of these programs are starting to work, but it's going to take a while for borrowing to reach the consumer," he said.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="34" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Spanish">
+            <text from_TM="False" rev_id="40" status="Complete" time="1224782768">This is the new sentence that I just added.</text>
+          </text_data><text_data language="English">
+            <text from_TM="False" rev_id="40" status="New" time="1224782439">This is the new sentence that I just added.</text>
+          </text_data>
+        
+          <marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="http://www.onthegosoft.com/"/>
+        
+              <attr name="title" val="This is the title for the link!">
+                <ta_sentence do_translation="yes" encoding="UTF-8" format="1" id="28" original_language="English">
+                  <space_before/>
+                  <space_after/>
+                  <text_data language="Spanish">
+                    <text from_TM="False" rev_id="40" status="New" time="1228362326">This is the title for the link!</text>
+                  </text_data>
+                  <text_data language="English">
+                    <text from_TM="False" rev_id="40" status="New" time="1228362326">This is the title for the link!</text>
+                  </text_data>
+                </ta_sentence>
+              </attr>
+         
+            </html_marker>
+          </marker_def>
+        
+        
+        </ta_sentence>
+      </sentences><html_output_change_data_3 />
+    </translation>
+  </ta_buffer><HTML_output mode="folder">
+    <folders />
+    <domains />
+    <sites />
+    <extensions />
+    <language_selector include="True" position="1" type="2" />
+    <output_languages />
+    <support_files Duplicate="NONE">
+      <files_to_duplicate />
+    </support_files><custom_path />
+    <custom_support_path />
+    <output_path />
+    <ta_support_path />
+    <lang_select_search_text use_re="False" />
+  </HTML_output><external_link_replacement scan_required="True" />
+  <blog_output />
+  <spell_ignore_words>
+    <language name="Spanish">Spanish,eaders,calling,for,unprecedented,levels,of,coordination,tackle,the,financial,that,continues,hit,share,prices,around,world,nion,President,Jose,Manuel,wants,action,ide,lending,rates,continue,improve,efforts,governments,stabilize,markets,started,kick,This,new,sentence,I,just,added,Asian,fall,hese,programs,starting,work,but,it's,going,take,while,borrowing,reach,consumer,said</language>
+  </spell_ignore_words>
+</TA_project>

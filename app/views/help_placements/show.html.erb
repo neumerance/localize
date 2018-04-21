@@ -1,0 +1,33 @@
+<p>
+  <b>Controller:</b>
+  <%=h @help_placement.controller %>
+</p>
+
+<p>
+  <b>Action:</b>
+  <%=h @help_placement.action %>
+</p>
+
+<p>
+  <b>Help group:</b>
+  <%=h @help_placement.help_group_id %>
+</p>
+
+<p>
+  <b>Help topic:</b>
+  <%=h @help_placement.help_topic_id %>
+</p>
+
+<p>
+  <b>User match:</b>
+  <%=h @help_placement.user_match %>
+</p>
+
+<p>
+  <b>User match mask:</b>
+  <%=h @help_placement.user_match_mask %>
+</p>
+
+
+<%= link_to 'Edit', edit_help_placement_path(@help_placement) %> |
+<%= link_to 'Back', help_placements_path %>

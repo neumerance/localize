@@ -1,0 +1,36 @@
+#keyword-fields input {
+  margin-right: 30px;
+  margin-bottom: 10px;
+}
+
+/*
+table#keyword-report {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+table#keyword-report td {
+  height: 30px;
+}
+
+table#keyword-report + div {
+  margin-top: 30px;
+}
+*/
+
+#keyword-report tbody tr th {
+  border-left: 0px;
+  border-top: 0px;
+  border-right: 1px solid #C2DAFF;
+  border-bottom: 1px solid #C2DAFF;
+}
+
+
+.infobox .keyword-buttons {
+  margin-top: 10px;
+}
+
+.help{
+	color: blue;
+}

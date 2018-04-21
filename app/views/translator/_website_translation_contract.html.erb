@@ -1,0 +1,12 @@
+<tr>
+	<td>
+		<% if website_translation_contract.invited == 1 %>
+			<abbr class="warning" title="The client has invited you to this project.">*</abbr> 
+		<% end %>
+		<%= link_to({:controller=>:website_translation_contracts, :action=>:show, :website_id=>website_translation_contract.website_translation_offer.website_id, :website_translation_offer_id=>website_translation_contract.website_translation_offer.id, :id=>website_translation_contract.id}) do %>
+        <span><%= website_translation_contract.website_translation_offer.website.name %> &raquo; <%= website_translation_contract.website_translation_offer.language_pair %></span>
+    <% end %>
+    </td>
+	<td><%= (website_translation_contract.amount && (website_translation_contract.amount > 0)) ? "#{website_translation_contract.amount} #{website_translation_contract.currency.disp_name}".html_safe  : 'Bid not given yet' %></td>
+	<td><%= WebsiteTranslationContract::TRANSLATION_CONTRACT_DESCRIPTION[website_translation_contract.status] %></td>
+</tr>

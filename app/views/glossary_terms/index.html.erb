@@ -1,0 +1,17 @@
+<p>The glossary is where you keep a list of translations for important phrases.</p>
+<p>All the translators working on your projects have access to the glossary. When they translate texts that include words from the glossary, they will see the existing translations.</p>
+<p>Glossary terms are made of pairs of <b>text</b> and <b>description</b>, allowing you to include the same phrases, used in different contexts.</p>
+
+<% if @user == @glossary_client %>
+
+	<p><%= link_to('Import glossary from spreadsheet', {:action=>'new_import'}) %></p>
+
+	<br /><br />
+	<div class="infobox"><h4>Export glossary</h4>
+		<%= form_tag(:action=>:csv_export) do %>
+			<p>Select source language: <%= select_tag(:language_id, options_for_select(Language.list_major_first)) %></p>
+			<%= submit_tag('Export', data: { disable_with: 'Export' }) %>
+		<% end %>
+	</div>
+
+<% end %>

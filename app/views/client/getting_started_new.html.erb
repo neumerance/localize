@@ -1,0 +1,39 @@
+<br />
+<% for option in @options %>
+	<div class="work-group">
+	<h3><%= option[0] %></h3>
+	<ul>
+		<% for proj_type in option[1] %>
+			<li><%= link_to(_('Start &raquo;').html_safe, proj_type[1], {:class=>'rounded_but_orange'}) %> <strong><%= link_to(proj_type[0],proj_type[1], {:class=>'work-type'}) %></strong> - <span class="work-description"><%= proj_type[2] %></span></li>
+		<% end %>
+	</ul>
+	</div>
+<% end %>
+
+<br />
+<h2><%= _('About ICanLocalize') %></h2>
+
+<table class="work-overview" style="width: 100%;">
+<tr><td style="width: 33%; background-image:url('/images/services.png'); background-repeat:no-repeat; background-position:50% 95%;">
+	<h3><%= _('How We Work') %></h3>
+	<p><%= _("At ICanLocalize, you'll find world-class translators, using our advanced translation system that helps get the job done better, faster and for less.") %></p>
+	<p><%= _("Choose what kind of translation work you need, set up your projects and choose your translators.") %></p>
+	<p><%= _("For every job you can choose a single translator, or two - one translating, the other proofreading.") %></p>
+</td><td style="width: 33%; background-image:url('/images/icanlocalize-translators-230-l.jpg'); background-repeat:no-repeat; background-position:50% 95%;">
+	<h3><%= _('Our Translators') %></h3>
+	<p><%= _("Every translator in ICanLocalize is professional and certified.") %></p>
+	<p><%= _("We verify the identity and credentials of every translator who signs-up.") %></p>
+	<p><%= _("You can view their profiles, work history, feedback from other clients and rating in our system.") %></p>
+	<p><%= link_to(_('Translators search'), {:controller=>:search, :action=>:translators}) %></p>
+</td><td style="width: 33%; background-image:url('/images/paypal_payments-l.png'); background-repeat:no-repeat; background-position:50% 92%; ">
+	<h3><%= _('Safe Payment') %></h3>
+	<p><%= _("Once you choose translators for your project, you need to deposit payment for the work.") %></p>
+	<p><%= _("We hold your payment and release it to the translators only after the work completes and you are 100% satisfied.") %></p>
+	<p><%= _("You can pay with a credit card, PayPal account or bank transfer. All invoices and billing is done directly with ICanLocalize.") %></p>
+	<br />
+</td></tr></table>
+
+<br /><br />
+<h2><%= _('Need help?') %></h2>
+<p><%= (_("%s and we'll help you get started.")%link_to(_('Contact us'), {:controller=>:support, :action=>:new})).html_safe %></p>
+<p><%= link_to(('&laquo; '+_('Control Panel')).html_safe,{:controller=>:users, :action=>:my_profile}) %></p>

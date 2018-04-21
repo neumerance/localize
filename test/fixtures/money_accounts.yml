@@ -1,0 +1,22 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+amir:
+  id: 1
+  type: UserAccount
+  balance: 1000.0
+  currency_id: 1
+  owner_id: 2
+
+doron:
+  id: 2
+  type: UserAccount
+  balance: 1000.0
+  currency_id: 1
+  owner_id: 5
+
+rich:
+  id: 3
+  balance: 99999.99
+
+poor:
+  id: 4
+  balance: 0.08

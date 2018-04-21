@@ -1,0 +1,11 @@
+<tr>
+	<td>
+		<%= check_box_tag(put_object_id(web_dialog), 1, @pre_select) %>
+	</td>
+	<td><%= link_to(truncate(h(web_dialog.subject_for_user(@user)), :length => 60, :omission => '...'), {:controller=>:web_dialogs, :action=>:show, :id=>web_dialog.id}) %></td>
+	<td><%= h("#{web_dialog.full_name} - #{web_dialog.email}") %></td>
+	<td><%= disp_time(web_dialog.create_time) %></td>
+	<td><%= h(web_dialog.client_department.name) %></td>
+	<td><%= SupportTicket::STATUS_TEXT[web_dialog.status] %></td>
+	<td><%= link_to(_('Reply'), {:controller=>:web_dialogs, :action=>:show, :id=>web_dialog.id, :anchor=>'reply'}) %></td>
+</tr>

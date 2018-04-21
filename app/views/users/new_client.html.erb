@@ -1,0 +1,103 @@
+<%= my_error_messages_for :auser %>
+
+<%= show_next_steps(@next_steps) %>
+
+<h1><%= _('Sign Up') %></h1>
+<br/>
+<div style="font-size: 120%;">
+  <p><%= _('An account in ICanLocalize is free.') %></p>
+  <p>Once you have an account, you can set up website and software localization projects or send any other text file for
+    translation.</p>
+</div>
+<br>
+
+<%= form_for(:auser, :url => users_path) do |f| %>
+
+    <%= hidden_field_tag(:utype, @utype) %>
+    <%= f.hidden_field(:next_operation) %>
+    <%= f.hidden_field(:source) %>
+
+    <div class="infobox"><h4><%= _('Account information') %></h4>
+      <table class="new-account">
+        <tr>
+          <td class="field-kind priv-field"><%= _('First name:') %></td>
+          <td class="input-field priv-field"><%= f.text_field :fname, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+          <td rowspan="3" class="field-description priv-field"><%= _('Your name and email are kept private. We only use them to send you messages.') %></td>
+        </tr>
+        <tr>
+          <td class="field-kind priv-field"><%= _('Last name:') %></td>
+          <td class="input-field priv-field"><%= f.text_field :lname, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+        </tr>
+        <tr>
+          <td class="field-kind priv-field"><%= _('Email:') %></td>
+          <td class="input-field priv-field"><%= f.text_field :email, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+        </tr>
+        <tr>
+          <td class="field-kind"><%= _('Nickname:') %></td>
+          <td class="input-field"><%= f.text_field :nickname, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+          <td class="field-description"><%= _('Your nickname identifies you in the system. Only letters and digits allowed.') %></td>
+        </tr>
+        <tr>
+          <td class="field-kind"><%= _('Password:') %></td>
+          <td class="input-field"><%= f.password_field :password %></td>
+          <td class="field-description"><%= _('A safe password will include a combination of letters and digits.') %></td>
+        </tr>
+        <%#= # removed as requested in icldev 2212 %>
+        <!--<tr>-->
+        <!--<td class="field-kind"><%#= _('Phone number:') %> <span style="font-size:small; color:gray">(optional)</span></td>-->
+        <!--<td class="input-field">-->
+        <!--<%#= f.select(:phone_country, Country.all.map{|x| x.code}, {:prompt => ""}) %>-->
+        <!--<%#= f.text_field :phone_number, {:size => 22} %>-->
+        <!--</td>-->
+        <!--<td class="field-description"><%#= _('Based on our experience, adding your telephone number really helps us providing you with the best level of support') %></td>-->
+        <!--</tr>-->
+      </table>
+    </div>
+
+    <div class="infobox"><h4><%= _('Verification code') %></h4>
+      <p><%= _('To avoid spam and automatic registration we ask you to repeat the code you see in the picture.') %></p>
+      <% if @captcha_error -%>
+          <div class="fieldWithErrors">
+      <% end -%>
+      <table class="signup">
+        <tr>
+          <td class="signupdescription"><%= _('Verification code:') %><br/></td>
+          <td><%= image_tag @captcha_image.public_filename, :size => @captcha_image.image_size %></td>
+        </tr>
+        <tr>
+          <td class="signupdescription"><%= _('Enter code:') %></td>
+          <td><%= text_field_tag :code, '', maxlength: 6 %></td>
+        </tr>
+      </table>
+      <% if @captcha_error %></div>
+      <% end %>
+    </div>
+
+    <%= hidden_field_tag :captcha_id, @captcha_image.id %>
+
+    <div class="infobox"><h4><%= _('User agreement') %></h4>
+      You must accept the user agreement (in the link below) in order to create an account.<br/>Please take your time to
+      fully read the agreement before accepting.<br/>
+      <br/>
+      <% if @user_agreement_not_accepted %>
+          <div class="fieldWithErrors">
+      <% end -%>
+      <%= check_box_tag(:accept_agreement, 1, false, {:onclick => "document.getElementsByName('submit')[0].disabled = !document.getElementsByName('accept_agreement')[0].checked;"}) %><%= (_('I have read and accept the %s')%('<div id="agreement" style="display: inline;">'+@default_user_agreement+'</div>')).html_safe %>
+      <br/>
+      <br/>
+      <% if @user_agreement_not_accepted %></div>
+      <% end -%>
+    </div>
+
+    <p>
+      <%= submit_tag _('Sign Up'), :name => 'submit', :style => 'padding: 0.5em 1.5em;', data: {disable_with: _('Sign Up')} %>
+    </p>
+
+    <script type="text/javascript" language="JavaScript">
+      <!--
+      document.getElementsByName("accept_agreement")[0].disabled = <%= @disable_user_agreement %>;
+      document.getElementsByName("submit")[0].disabled = true;
+      -->
+    </script>
+
+<% end %>

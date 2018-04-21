@@ -1,0 +1,13 @@
+<% if support_ticket_for_object.support_ticket %>
+	A support ticket exists. See <%= link_to('full ticket details', {:controller=>:support, :action=>:show, :id=>support_ticket_for_object.support_ticket.id}) %>.
+<% else %>
+	<%= link_to("Open a support ticket",
+                {
+                    :controller=>:support,
+				    :action => :new_support_ticket_for_object,
+				    :obj_type=>support_ticket_for_object.class.to_s,
+				    :id=>support_ticket_for_object.id,
+                    :div_name=>"open_support_ticket_for_#{put_object_id(support_ticket_for_object)}"
+                }, :remote => true
+        ) %>
+<% end %>

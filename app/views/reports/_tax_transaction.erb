@@ -1,0 +1,16 @@
+<%
+  country = Country.find invoice.tax_country_id
+%>
+<tr>
+  <td><%= link_to invoice.id, {:controller => :finance, :action=> :invoice, :id => invoice.id} %></td>
+  <td><%= invoice.create_time.to_date %></td>
+  <td><%= Invoice::PAYMENT_PROCESSOR_TEXT[invoice.payment_processor] %></td>
+  <td><%= link_to "#{invoice.user.fname} #{invoice.user.lname}", {:controller => 'users', :action => 'show', :id => invoice.user}  %></td>
+  <td><%= country.name %></td>
+  <td><%= country.tax_code %></td>
+  <td><%= invoice.tax_rate %>%</td>
+  <td><%= invoice.vat_number %></td>
+  <td class="money"><%= invoice.gross_amount %> USD</td>
+  <td class="money"><%= invoice.tax_amount %> USD</td>
+  <td class="money"><%= invoice.gross_amount + invoice.tax_amount %> USD</td>
+</tr>

@@ -1,0 +1,32 @@
+
+<% if @translation_analytics %>
+  <% if flash[:notice] && !flash[:notice].empty? %>
+    <div class="errorExplanation ngError">
+        <%= flash[:notice] %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<p>In order to complete your registration, you must confirm your email address.<br />
+When you signed up, a confirmation message was sent to your registered email: <b><%= h @user.email %></b></p>
+<br />
+<div class="infobox"><h4>Resend confirmation email</h4>
+	<p>To have another confirmation email sent to you, please enter your password and click on the button below.</p>
+	<%= form_tag({:action=>:resend_confirmation_email, :id=>@user.id}) do %>
+    <?php if (@translation_analytics): ?>
+      <%= hidden_field_tag(:from_page, 'translation_analytics') %>
+      <%= hidden_field_tag(:wid, @wid) %>
+      <%= hidden_field_tag(:accesskey, @accesskey) %>
+    <?php endif ?>
+
+		<p>Password <%= password_field_tag :password %></p>
+		<%= submit_tag 'Resend confirmation email', data: { disable_with: 'Please wait' } %>
+	<% end %>
+</div>
+
+<% if @translation_analytics %>
+  <p><%= (_('Please %s this page in case you already finished your registration to access your translation dashboard.') % link_to("refresh", {:controller => :translation_analytics, :action => :overview ,:wid => @wid, :accesskey => @accesskey, :from_cms => 1, :project_type => "Website", :project_id => @wid})).html_safe %></p>
+<% else %>
+  <%= link_to('Back to home page', '/') %>
+<% end %>

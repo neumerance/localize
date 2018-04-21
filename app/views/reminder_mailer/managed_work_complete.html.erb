@@ -1,0 +1,10 @@
+Dear <%= @user.full_real_name %>,
+
+Review of '<%= @title %>' to <%= @to_language.name %> is complete.
+
+You can now safely use the translation in your project. This is the project page:
+<%= url_for({:escape=>false, :only_path=>false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL}.merge(@url_args)) %>
+
+<%= RECOMMEND_LINK %>
+
+<%= EMAIL_SIGNATURE %>

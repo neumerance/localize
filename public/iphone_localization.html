@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+  <head>
+    <title>iPhone Application Localization</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+        <meta name="description" content="Localization service, built especially for translating iPhone applications." />
+     <script type="text/javascript" src="/assets/scripts/index.js"></script>
+	<link rel="STYLESHEET" type="text/css" href="/assets/custom/home.css"/>
+
+<script type="text/javascript" src="/assets/plugins/popup.js"></script>
+<link rel="stylesheet" type="text/css" href="/assets/plugins/popup.css" />
+
+    <link rel="shortcut icon" href="/assets/favicon.png" type="image/png" />
+    <link rel="icon" href="/assets/favicon.png" type="image/png" />
+  </head>
+  <body onload="{ getElementsWithTitles(); }">
+  <!-- top bar --><div id="topbar"><a href="login/">Login</a> &nbsp;-&nbsp; <a href="about.html">About us</a> &nbsp;-&nbsp; <a href="http://www.icanlocalize.com/web_dialogs/new?language_id=1&amp;store=4">Contact</a> &nbsp;-&nbsp; <a href="/newsletters"><img border="0" align="top" src="/assets/book.png" width="16" height="16" alt="Newsletter" /></a> <a href="/newsletters">Newsletter</a> &nbsp;-&nbsp; <a href="/tools"><img border="0" align="top" src="/assets/tools.png" width="16" height="16" alt="Tools" /></a> <a href="/tools">Free Tools</a> &nbsp;-&nbsp; <a href="http://blog-en.icanlocalize.com/?feed=rss2"><img border="0" align="top" src="/assets/rss.png" width="16" height="16" alt="RSS feed" /></a> <a href="http://blog-en.icanlocalize.com">Blog</a></div>
+<img src="/assets/web_logo_large.png" width="317" height="91" alt="ICanLocalize" class="imageBorder" /><!-- /top bar -->
+  <!-- top navigation --><ul id="topnavigation"><li class="nonselectedtab"><a href="index.html">Home</a></li><li class="nonselectedtab"><a href="website-translation.html">Website Translation</a></li><li class="nonselectedtab"><a href="general-translation.html">General Translation</a></li><li class="selectedtab_active"><a href="instant-text-translation.html">Text Translation</a></li><li class="nonselectedtab lasttab"><a href="customer-support-interpretation.html">Online Interpretation</a></li></ul><!-- /top navigation -->
+	<div id="maincontents">
+<!-- trail_navigation --><div id="trail_nav"><a href="index.html">Home</a>&nbsp;&gt;&nbsp;<a href="instant-text-translation.html">Text Translation</a>&nbsp;&gt;&nbsp;<a href="software_localization.html">Software Localization</a>&nbsp;&gt;&nbsp;iPhone Application Localization</div><!-- /trail_navigation -->
+    <div style="height: 186px; border-bottom: 5px solid #CAD6FC; border-top: 5px solid #CAD6FC; margin: 1em 0 1em 0; padding-left: 1em;">
+      <img style="float: right; margin:0 0 0 1em;" align="right" src="/assets/stock/iphone_phone_small.jpg" width="279" height="186" alt="software" />
+      <h1>iPhone Application Localization</h1>
+      <p class="ups">You can sell your iPhone app all over the world.<br />We'll help you do it better, faster and for less.</p>
+      <p style="margin: 0.7em 0 0.3em 0; font-size: 105%; font-weight: bold;"><a href="#app_localization">iPhone application GUI</a> &nbsp; | &nbsp; <a href="#itunes">iTunes description</a> &nbsp; | &nbsp; <a href="#website">Your website</a></p>
+      <p class="comment">Translation between any language pair for just 0.07 USD / word.</p>
+    </div>
+    <div style="float: right; width: 279px; margin: 1em 0 1em 2em;">
+      <div style="color: #000; background-color: #F0F0F0; margin-bottom: 1em; border: 1pt solid #E0E0E0; padding: 0 15px 15px 15px;">
+	<a name="instant_quote"></a><h3>Instant quote</h3>
+	<p>Upload your resource file and get a final quote, right now.</p>
+	<form action="/text_resources/quote_for_resource_translation" enctype="multipart/form-data" method="post">
+	  <p><input type="file" size="15" name="resource_upload" /></p>
+	  <input type="hidden" name="fmt" value="iPhone" />
+	  <input type="hidden" name="back" value="/iphone_localization.html" />
+	  <p>From language: <select name="lang_type">
+	    <option value="western">Western language</option>
+	    <option value="asian">Asian language</option>
+	  </select></p>
+	  <p><input type="submit" name="Upload" value="Upload" /></p>
+	  <p class="comment">Expecting an iPhone UTF-16 Unicode resource file.</p>
+	  <p>Need help? <a href="http://www.icanlocalize.com/web_dialogs/new?language_id=1&amp;store=4">Contact us</a></p>
+	</form>
+      </div>
+      <div style="color: #000; background-color: #F0F0F0; border: 1pt solid #E0E0E0; padding: 0 15px 15px 15px;">
+	  <h3>iPhone localization tutorial</h3>
+	  <p><b>Xcode</b> makes it possible to localize your application to any language.</p>
+	  <p>This <b><a href="iphone_localization_guide.html">iPhone localization guide</a></b> will help you localize your iPhone application without skipping any step.</p>
+      </div>
+    </div>
+    <a name="app_localization"></a><h2>Localization for your iPhone application</h2>
+    <p>First thing first. Your iPhone application itself needs to be professionally localized, and we help you do it easily.</p>
+    <h4>How ICanLocalize translates iPhone resource files</h4>
+    <p>We've built a system which manages localization for application resource files and adapted it for iPhone resource files.</p>
+    <ol>
+      <li>Upload your resource file to our system.</li>
+      <li>Select which languages you need it translated to.</li>
+      <li>Deposit payment for the work.</li>
+      <li>Download the translated resource files.</li>
+    </ol>
+    <p>Although this process is fully automated, the translation itself is still done by people - professional translators, all writing in their native languages.</p>
+    <p>During the translation, you can chat with your translator in order to clarify what different strings mean and get the best translation possible.</p>
+    <p>Your translators stay with your project. When you update the application and the translations need to update, the same translators, who know your project inside and out will handle it.</p>
+    
+    <a name="itunes"></a><h2>iTunes description</h2>
+    <p>Prospective clients will go to iTunes and need to see your application's description in their languages.</p>
+    <p>Although it's pretty short text, translation needs to be top notch.
+    After all, we don't want to lose clients just before the checkout.</p>
+    <p>You'll be able to get your iTunes description translated to multiple language quickly and easily. Just send the text to translation, get some coffee and come back to pick it up.</p>
+    <p></p>
+    
+    <a name="website"></a><h2>Your own website</h2>
+    <p>So, you have a localized application and multilingual product description in iTunes, but where's your international marketing?</p>
+    <p>Your website, running in multiple languages, can be your global marketing machine.
+    You'll get search traffic in different languages and new customers from all over the world.</p>
+    <p>ICanLocalize can help you create a multilingual website that works for you. Instead of slaving over translation, we'll do it all for you.</p>
+    <p>You handle the texts in your language and we'll build the all the translations.</p>
+    <p>For a list of different ways we can maintain multilingual websites, have a look at our <a href="website-translation.html">website translation</a> options.</p>
+    
+<hr />
+<h3>Want to get started?</h3>
+<p>To send material to translation, you need to create an account. It's free and takes a minute.</p>
+<p>Once your account is created, you'll be able to upload your iPhone resource file for translation, have the iTunes description translated and get started on building a multilingual website.</p>
+<br />
+<div class="large_button" style="width:12em;"><a href="users/new?utype=Client">Create Account &raquo;</a></div>
+<p class="button_comment">You pay only for the services you need and when you need them.</p>
+
+<div style="color: #000; background-color: #F0F0F0; border: 1pt solid #E0E0E0; padding: 1em; margin: 1em;">
+  <h3>Need help?</h3>
+<p>We know that running a multilingual business is a complicated task. We try our best to simplify things, but it's still hard work.</p>
+<p>If this is your first multilingual iPhone application, we recommend that you read our <a href="iphone_localization_guide.html">iPhone localization guide</a>. It explains what you need to do in your development environment to create a multilingual application.</p>
+<p>To speak with someone, <a href="http://www.icanlocalize.com/web_dialogs/new?language_id=1&amp;store=4">contact us</a>, we'll do our very best to help!</p>
+</div>
+    
+    </div>
+    <!-- footer --><div id="bottom"><center><br />&copy; 2009. OnTheGoSystems Inc. | All Rights Reserved</center></div><!-- /footer -->
+  
+
+
+<!-- analytics --><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(decodeURIComponent("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-564905-4");
+pageTracker._initData();
+pageTracker._trackPageview();
+</script></body>
+</html>
+

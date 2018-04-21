@@ -1,0 +1,64 @@
+{
+  "tests":  [
+    {
+      "input": "",
+      "expected_result": ""
+    },
+    {
+      "input": "They may take our lives, but they'll never take our freedom!",
+      "expected_result": "They may take our lives, but they'll never take our freedom!"
+    },
+    {
+      "input": "CHEWIE, WE'RE home",
+      "expected_result": "CHEWIE, WE'RE home"
+    },
+    {
+      "input": "They call  it   a    Royale     with       cheese",
+      "expected_result": "They call  it   a    Royale     with       cheese"
+    },
+    {
+      "input": "<b>Sample page</b>",
+      "expected_result": "Sample page"
+    },
+    {
+      "input": "<b>Sample page",
+      "expected_result": "Sample page"
+    },
+    {
+      "input": "<b>Sample page</a>",
+      "expected_result": "Sample page"
+    },
+    {
+      "input": "<strong>Sample page</strong> and blog site",
+      "expected_result": "Sample page and blog site"
+    },
+    {
+      "input": "<strong>Sample page</strong> and <a href=\"http://google.com\">blog site</a>",
+      "expected_result": "Sample page and blog site"
+    },
+    {
+      "input": "<a target=\"_blank\" href=\"http://google.com\">Click here</a>",
+      "expected_result": "Click here"
+    },
+    {
+      "input": "Good morning, Vietnam! <img alt=\"Vietnam picture\" title=\"Good morning\" href=\"http://image.url\"/>",
+      "expected_result": "Good morning, Vietnam!"
+    },
+    {
+      "input": "<div>This<div>is<div>nested<div>content</div></div></div></div>",
+      "expected_result": "This is nested content"
+    },
+    {
+      "input": "<ul><li>Address</li><li>Victoria Street</li></ul>",
+      "expected_result": "Address  Victoria Street"
+    },
+    {
+      "input": "<html><head></head><body>Test</body></html>",
+      "expected_result": "Test"
+    },
+    {
+      "input": "<div>Incomplete div</div></div>",
+      "expected_result": "Incomplete div"
+    }
+  ]
+}

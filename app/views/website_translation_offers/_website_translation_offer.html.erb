@@ -1,0 +1,4 @@
+<tr>
+	<td><%= link_to(_('%s to %s')%[website_translation_offer.from_language.name, website_translation_offer.to_language.name], {:action=>:show, :id=>website_translation_offer.id}) %></td>
+	<td><%= website_translation_offer.status_summary(@user) %></td>
+</tr>

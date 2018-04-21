@@ -1,0 +1,28 @@
+The following websites have unpaid translation jobs and enough balance in
+  the client's ICanLocalize account to pay for those jobs. All the client has to
+  do to allow translations to start is go to the payment page and click the
+  "Pay with my ICanLocalize account balance" button. The total amount
+  includes automatic translator assignment jobs and manual translator assignment
+  jobs with at least one accepted translator.
+
+<%# Link to same page in a different format while preserving query parameters %>
+<%= link_to request.query_parameters.merge(format: :csv),
+            { class: 'btn btn-primary pull-right',
+              style: 'margin: 10px 0 15px 0;',
+              data: { disable_with: 'Generating report...' }} do %>
+  Export to CSV
+<% end %>
+
+<%= infotab_header([_('Website ID'), _('Website name'), _('Client nickname'), _('Client e-mail'), _('Total amount'), _('Newest created at')]) %>
+  <% @websites.each do |website, total_amount| %>
+    <tr>
+      <td><%= website.id %></td>
+      <td><%= link_to website.name, wpml_website_path(website) %></td>
+      <% client = website.client %>
+      <td><%= link_to client.nickname, user_path(client) %></td>
+      <td><%= website.client.email %></td>
+      <td><%= rounded_dollars(total_amount) %></td>
+      <td><%= disp_date(website.cms_requests.maximum(:created_at)) %></td>
+    </tr>
+  <% end %>
+</table>

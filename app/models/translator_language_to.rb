@@ -1,0 +1,2 @@
+class TranslatorLanguageTo < TranslatorLanguage
+end

@@ -1,0 +1,5 @@
+<% if @warning %>
+  alert('<%= @warning %>')
+<% else %>
+  location.href = '<%= url_for(:action => :show, :id=>@website_translation_contract.id, :anchor=>'reply', :t=>Time.now.to_i) %>'
+<% end %>

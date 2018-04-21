@@ -1,0 +1,24 @@
+<div class="messageTop">
+		<div class="nameDiv messageDivtl"><strong><%= writer(message_div) %></strong></div>
+		<div class="txtblue dateDiv messageDivtr"><%= disp_time(message_div.create_time) %></div>&nbsp;
+
+</div>
+<div class="messageLeft">
+		<div class="clear"></div>	
+		<%= object_div(message_div, 'class="messageDiv"') %><%= render(:partial=>'message', :object=>message_div) %>
+
+		<div class="clear"></div>	
+		<% if message_div.web_attachments.length > 0 %>
+			<br /><br />
+			<div class="infobox"><h4><%= _('Attachments') %></h4>
+				<%= render(:partial=>'attachment', :collection=>message_div.web_attachments) %>
+			</div>
+		<% end %>
+		</div>
+		
+</div>
+<div class="messageBottom">
+		<div class="messageDivbl">&nbsp;</div>
+        <div class="messageDivbr">&nbsp;</div>&nbsp;
+</div>
+<div class="spacerDiv"></div>

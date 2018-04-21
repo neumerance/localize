@@ -1,0 +1,2 @@
+class WebsiteReportFormat < ApplicationRecord
+end

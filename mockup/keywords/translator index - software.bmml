@@ -1,0 +1,19 @@
+<mockup version="1.0" skin="sketch" measuredW="1212" measuredH="634" mockupW="1149" mockupH="622">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::DataGrid" x="63" y="27" w="1003" h="322" measuredW="851" measuredH="265" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Project%2C%20Languages%2C%20Role%2C%20Words%20pending%2C%20Possible%20actions%2C%20Actions%20required%0A%5BProject%20refused%5D%2C%20English%20to%20Spanish%2C%20Refused%2C%20-%2C%20%20%5BChat%20with%20client%5D%2C%20%20No%20action%20required%0A%5BProject%20not%20accepted%5D%2C%20English%20to%20Spanish%2C%20Candidate%2C%20-%2C%20%20%5BChat%20with%20client%5D%2C%20%20No%20action%20required%0A%5BProject%20finished%20translate%5D%2C%20English%20to%20Spanish%2C%20Translator%2C%200%2C%20%20%5BChat%20with%20client%5D%2C%20%20No%20action%20required%0A%5BProject%20pending%20translations%5D%2C%20English%20to%20Spanish%2C%20Translator%2C%20312%2C%20%20%5BChat%20with%20client%5D%2C%20%20%5BTranslate%20strings%5D%0A%5BProject%20finish%20review%5D%2C%20English%20to%20Spanish%2C%20Reviewer%2C%200%2C%20%20%5BChat%20with%20client%5D%2C%20%20No%20action%20required%0A%5BProject%20pending%20review%5D%2C%20English%20to%20Spanish%2C%20Reviewer%2C%2012%2C%20%20%5BChat%20with%20client%5D%2C%20%20%5BReview%20strings%5D%0A%5BProject%20pending%20translation%20and%20KWL%5D%2C%20English%20to%20Spanish%2C%20Translator%2C%20312%2C%20%20%5BChat%20with%20client%5D%2C%20%20%5BTranslate%20strings%5D%20%7C%20%5BLocalize%20keywords%5D%0A%5BProject%20pending%20KWL%5D%2C%20English%20to%20Spanish%2C%20Translator%2C%20312%2C%20%20%5BChat%20with%20client%5D%2C%20%20%5BLocalize%20keywords%5D</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::StickyNote" x="990" y="12" w="222" h="145" measuredW="109" measuredH="123" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Every%20line%20that%20have%20an%20action%20required%20is%20show%20highlighted%20in%20red</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::StickyNote" x="658" y="311" w="132" h="323" measuredW="109" measuredH="123" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>I%20don%27t%20think%20we%20need%20this%20column%2C%20added%20it%20only%20for%20compatibility%20with%20previous%20options.%20I%20say%20that%20if%20he%20wants%20to%20go%20to%20the%20chat%2C%20first%20to%20to%20the%20project%20page%20%28link%20on%20the%20first%20column%29%20and%20then%20to%20the%20chat.%20I%20suggest%20remove%20it.</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

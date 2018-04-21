@@ -1,0 +1,5 @@
+<% @translators.each do |translator| %>
+    <%= render(partial: 'translator', locals: { translator: translator } ) %>
+<% end %>
+<br /><hr /><br />
+<p><%= link_to('&laquo; Back'.html_safe, @back ? @back : {:action=>:index}) %>

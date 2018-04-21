@@ -1,0 +1,27 @@
+<h1>New voucher</h1>
+
+<%= form_for(@voucher) do |f| %>
+  <%= my_error_messages_for(:voucher) %>
+
+  <p>
+    Code<br />
+    <%= f.text_field :code, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+  </p>
+  <p>
+    Active<br />
+    <%= f.check_box :active %>
+  </p>
+  <p>
+    Amount<br />
+    <%= f.number_field :amount, step: 0.1, maxlength: 2, min: 0, max: 99, size: 30, oninput: 'javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);' %>
+  </p>
+  <p>
+    Comments<br />
+    <%= f.text_area :comments, maxlength: COMMON_NOTE, size: 30 %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', vouchers_path %>

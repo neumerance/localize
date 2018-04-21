@@ -1,0 +1,12 @@
+<% @languages.each do |l| %> 
+  <% unless @languages_to[l.id].empty? %>
+    <h3 id='lang<%= l.id %>'><%= l.name %></h3>
+    <p>We can translate <b>from <%= l.name%></b> to these languages:</p>
+
+    <ul>
+      <% @languages_to[l.id].each do |al| %>
+        <li><%=al %></li>
+      <% end %>
+    </ul>
+  <% end %>
+<% end %>

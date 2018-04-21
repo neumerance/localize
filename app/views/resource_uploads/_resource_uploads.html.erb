@@ -1,0 +1,11 @@
+<div id="resource_uploads">
+    <%= render(:partial=>'/resource_uploads/paginator', locals: {position: 'top'}) %>
+
+    <%= infotab_header(['Resource file','Create / update translations','Download translations']) %>
+    <% @resource_uploads.each do |resource_upload| %>
+        <%= render(:partial=>'/text_resources/resource_upload', locals: {resource_upload: resource_upload}) %>
+    <% end %>
+    </table>
+
+    <%= render(:partial=>'/resource_uploads/paginator', locals: {position: 'bottom'}) %>
+</div>

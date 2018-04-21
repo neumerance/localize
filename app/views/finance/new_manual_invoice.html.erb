@@ -1,0 +1,24 @@
+<p class="warning">You are about to deposit / withdraw from the account of:
+
+<%=link_to_money_account_owner(@account)%>.</p>
+
+<p>Current balance is <%= @account.balance %> <%= @account.currency.disp_name %>.</p>
+<%= form_tag(	{ :action => :create_manual_invoice, :id=>@account.id },
+						{:method => :post}) do %>
+	<table cellspacing="10">
+	<tr>
+		<td><b>Transfer type</b>:</td>
+		<td><% @transfer_types.each do |k,v| %><label><%= radio_button_tag :transfer_type, k, @default_transfer_type==k %><%= v %></label><br /><% end %></td>
+	</tr>
+	<tr>
+		<td><b>Transfer source / destination</b>:</td><td><%= select_tag :account_type, options_for_select(@external_account_types) %></td>
+	</tr>
+	<tr>
+		<td><b>Transaction ID</b>:</td><td><%= text_field_tag :txid, nil, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+	</tr>
+	<tr>
+		<td><b>Amount</b> (<%= @currency.disp_name %>):</td><td><%= money_field_tag :amount, nil %></td>
+	</tr>
+	</table>
+	<%= submit_tag 'Submit', data: { disable_with: 'Submit' } %>
+<% end %>

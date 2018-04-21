@@ -1,0 +1,50 @@
+<%= infotab_top(_('Release Status'), infobar_contents(_('When a project is released translators can see it, but you cannot edit its settings.'),'',true,@revision.released == 1)) %>
+<% if @current_revision %>
+	<% if @revision.released == 1 %>
+		<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+			<p><%= _("This project is released and available for translators. You can only make changes to project settings when a project is hidden.") %></p>
+			<p><%= (@revision.sent_notifications.count == 1) ? _('One translator was notified about this project.') : (_('%d translators were notified about the project.') % @revision.sent_notifications.count) %></p>
+			<p class="comment"><%= (@revision.is_test? ? _('This is a test project') : _('This is a live project')) %></p>
+		</td></tr></table>
+		<div class="tabbottom">
+			<% if @user.can_modify?(@project) %>
+				<%= form_tag({ :action => :edit_release_status, :req=>:hide }, :remote => true) do %>
+					<%= submit_tag _('Hide this project'), data: { disable_with: _('Hide this project') } %>
+					<%= tooltip "Use this button if you need to edit the settings of your project or make it available for translators to apply." %>
+				<% end %>
+			<% end %>
+		</div>
+	<% else %>
+		<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+			<% if @warnings %>
+				<% for warning in @warnings %>
+					<p class="warning"><%= warning %></p>
+				<% end %>
+			<% elsif @revision.chats.length > 0 %>
+				<p><%= _("You have invited translators to work on this project, so you don't have to release it.") %></p>
+				<p><%= _("If you release the project, you will open it for bids by other translators.") %></p>
+			<% else %>
+				<p class="warning"><%= _("This project has not been released. Translators cannot see it.") %></p>
+			<% end %>
+		</td></tr></table>
+		<div class="tabbottom">
+			<% if @user.can_modify?(@project) %>
+				<%= form_tag({ :action => :edit_release_status, :req=>:show }, :remote => true) do %>
+					<% if !@revision.cms_request %>
+						<p><label><%= check_box_tag(:is_test, 1, @revision.is_test?, onclick: 'toggleButton("#release_status_button, a:contains(\'Invite translators\')", this)') %> <%= _("This is a test project. Translators will not see test projects and you will not receive any bids.") %></label></p>
+					<% end %>
+					<% if @revision.sent_notifications.count > 0 %>
+						<p><%= (@revision.sent_notifications.count == 1) ? 'One translator was notified about this project.' : '%d translators were notified about the project.' % @revision.sent_notifications.count %></p>
+						<p><label><%= check_box_tag(:clear_notifications) %> <%= _("Resend n") %>otifications to translators</label></p>
+					<% end %>
+					<%= submit_tag _('Release this project'), {:style=>'padding: 0.5em; font-weight: bold;', :id => 'release_status_button', data: { disable_with: _('Release this project') }} %>
+					<%= tooltip "Press this button to release this project. Once your project is released, it will be visible and available for translators to apply" %>
+				<% end %>
+			<% end %>
+		</div>
+	<% end %>
+<% else %>
+	<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+				<%= _("There are newer revisions for this project. This revision is now locked and cannot be modified.") %>
+	</td></tr></table>
+<% end %>

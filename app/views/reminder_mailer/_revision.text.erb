@@ -1,0 +1,26 @@
+= <%= revision.project.name %>, <%= revision.name %> revision =
+
+<%= revision.project.print_type %>: from <%= revision.language.name %> to <%= (revision.languages.collect { |lang| lang.name }).join(', ') %>.
+
+Full description:
+<%= revision.description %>
+
+<% if revision.categories.length > 0 -%>
+= Required fields of expertise =
+<% for cat in revision.categories -%>
+ * <%= cat.name %>
+<% end -%>
+<% end -%>
+<% if ((revision.kind == TA_PROJECT) || (revision.kind == SIS_PROJECT)) %>= Project size =
+<%= translation_language_stats(revision,true) %><% end %>
+
+= Bidding =
+Maximum bid: <%= revision.max_bid %> <%= revision.currency_name_with_units %>.
+<% if revision.bidding_close_time %>Bidding closes at <%= disp_time(revision.bidding_close_time) %>.<% end %>
+Time to complete the work: <%= revision.project_completion_duration %> days.
+
+Project link:
+<%= url_for({:escape => false, :only_path => false, :controller=>:revisions, :action=>:show, :project_id=>revision.project_id, :id=>revision.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+- - - - - - - - - - - - - - - -
+

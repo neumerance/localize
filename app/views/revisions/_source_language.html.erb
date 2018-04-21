@@ -1,0 +1,29 @@
+<%= infotab_top(_('Original Language'), infobar_contents(_('Select the language to translate from'), _('This is the language to translate from'), @revision.released != 1, @revision.language_id)) %>
+<% if @show_edit_source_language %>
+	<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+	<%= form_for(:revision, :url => { :action => :edit_source_language, :req=>:save }, :remote => true) do |f| %>
+		<p>
+			<%= f.select(:language_id, @languages) %>
+		</p>
+		<%= submit_tag _('Save'), data: { disable_with: _('Save') } %>
+	<% end %>
+	<%= form_tag({ :action => :edit_source_language, :req=>:hide }, :remote => true) do %>
+		<%= submit_tag _('Cancel'), data: { disable_with: _('Cancel') } %>
+	<% end %>
+	</td></tr></table>
+<% else %>
+	<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+	<% if @revision.language %>
+		<p><%= _('The original text in this project is in') %> <strong><%= @revision.language.name %></strong></p>
+	<% else %>
+		<p class="warning"><%= _("The language of the original text for this project has not yet been selected.") %></p>
+	<% end %>
+	</td></tr></table>
+	<% if @canedit_source_language %>
+		<div class="tabbottom">
+		<%= form_tag({ :action => :edit_source_language, :req=>:show }, :remote => true) do %>
+			<%= submit_tag _('Select source language'), :id => 'source_language_button', data: { disable_with: _('Select source language') } %>
+		<% end %>
+		</div>
+	<% end %>
+<% end %>

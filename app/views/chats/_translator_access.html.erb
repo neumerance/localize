@@ -1,0 +1,21 @@
+<% if (@user[:type] == 'Client') %>
+	<%= form_tag({:action => :set_access }, :remote => true) do %>
+		<% if (@chat.translator_has_access == 1) %>
+			Translator has access to project files
+			<%= submit_tag 'Deny access to project files from this translator', data: { disable_with: 'Please wait' } %>
+		<% else %>
+			Translator does not have access to project files
+			<%= submit_tag 'Grant access to project files to this translator', data: { disable_with: 'Please wait' } %>
+		<% end %>
+	<% end %>
+<% else %>
+	<% if @chat.translator_has_access == 1 %>
+		<% if @revision.kind == TA_PROJECT %>
+			The client had granted you access to this project. You can get it by logging in to Translation Assistant.
+		<% else %>
+			You can download the file for translation from the <%= link_to('project page', {:controller=>:revisions, :action=>:show, :id=>@revision.id, :project_id=>@project.id}) %>.
+		<% end %>
+	<% else %>
+		The client did not grant you access to the project. You can request that here in the chat.
+	<% end %>
+<% end %>

@@ -1,0 +1,10 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+one:
+  id: 1
+  fname: Bg-LtBlue_bricks-large-light.gif
+two:
+  id: 2
+  fname: Bg-LtBlue_glass-wall.gif
+three:
+  id: 3
+  fname: Bg-LtBlue_bricks-large-medium.gif

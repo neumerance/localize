@@ -1,0 +1,6 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>
+<%= @website_translation_contract.website_translation_offer.website.client.full_name %> has declined your application to translate project <%= @website_translation_contract.website_translation_offer.website.name %> from <%= @website_translation_contract.website_translation_offer.from_language.name %> to <%= @website_translation_contract.website_translation_offer.to_language.name %>.
+</p>
+

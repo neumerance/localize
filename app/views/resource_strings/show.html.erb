@@ -1,0 +1,334 @@
+<%= infotab_header([_('Label'),@text_resource.language.name] + (@languages.collect { |l| l.name }) ) %>
+
+<tr class="resource_string" data-id="<%= @resource_string.id%>">
+  <td valign="top" class="label">
+    <%= @resource_string.token %>
+    <% if @user.has_supporter_privileges? %>
+      <%= form_tag change_label_text_resource_resource_string_path(@text_resource, @resource_string) %>
+        <%= text_field_tag :label %>
+        <%= submit_tag 'change label', data: { disable_with: 'change label' } %>
+      </form>
+    <% end %>
+  </td>
+	<td valign="top" width="<%= @col_width %>">
+    <div id="original_string">
+      <%= render(:partial=>"original_string") %>
+    </div>
+  </td>
+	<% @languages.each do |language| %>
+		<td valign="top" width="<%= @col_width %>">
+      <div id="language<%= language.id %>">
+      <%= render(:partial=>"string_translation", locals: { language: language }) %>
+      </div>
+    </td>
+	<% end %>
+</tr>
+<tr class="comment">
+	<td style="word-wrap:break-word; max-width:200px;"><%= @resource_string.context %></td>
+	<td><%= _("Updated %s") % disp_date(@resource_string.updated_at) %></td>
+  <% @languages.each do |l| %>
+  <td><%= translation_stats(@resource_string,l).html_safe %></td>
+  <% end %>
+</tr>
+</table>
+<br /><br />
+
+<div id="comment">
+	<%= render(:partial=>'comment') %>
+</div>
+
+<div id="lengthlimit">
+	<%= render(:partial=>'lengthlimit') %>
+</div>
+
+<% if @resource_string.user_can_delete_original(@user) %>
+	<br />
+	<%= button_to(_('Delete this string'), {:action=>'destroy'}, 'data-confirm'=>'Are you sure you want to delete this string and its translations?', :method => :delete) %><br /><br />
+<% end %>
+
+<% if @resource_string.master_string %>
+	<p>This is a duplicate string. The original string to translate is: '<%= link_to(h(@resource_string.master_string.txt), {:action=>:show, :id=>@resource_string.master_string.id}) %>'.</p>
+	<% if @resource_string.user_can_edit_original(@user) %>
+		<%= button_to(_('Translate separately'), "/text_resources/#{@text_resource.id}/resource_strings/#{@resource_string.id}/remove_master", 'data-confirm'=>'This string will need to be translated although there is an identical string in this project') %>
+	<br /><br />
+	<% end %>
+<% end %>
+
+<div id="bottom_message"></div>
+
+<% if @translator_chat %>
+	<p>Need clarifications from the client about this text? <%= link_to('Chat with the client', {:controller=>:resource_chats, :action=>:show, :text_resource_id=>@text_resource.id, :id=>@translator_chat.id}) %>.</p>
+<% end %>
+
+<hr /><br />
+
+<% if @filter %>
+	<p>The strings list is filtered.  <%= link_to('Show all strings',{:action=>:index, :set_args=>1}) %></p><br />
+<% end %>
+
+<span class="navigation">
+  <% if @prev_in_progress_str %>
+    <%= link_to('&laquo'.html_safe + _("Previous string to %s") % @next_label, {:action=>:show, :id=>@prev_in_progress_str.id}, :class=>'rounded_but') %>
+  <% end %>
+
+  <% if @prev_str %>
+    <%= link_to('&laquo;'.html_safe + _('Previous string'), {:action=>:show, :id=>@prev_str.id}, :class=>'rounded_but') %>
+  <% end %>
+
+  <% if @next_str %>
+    <%= link_to((_('Next string') + '&raquo;').html_safe, {:action=>:show, :id=>@next_str.id}, :class=>'rounded_but') %>
+  <% end %>
+
+  <% if @next_in_progress_str %>
+    <%= link_to((_('Next string to %s') % @next_label + '&raquo;').html_safe, {:action=>:show, :id=>@next_in_progress_str.id}, :class=>'rounded_but_bold') %>
+  <% end %>
+</span>
+
+<br /><br />
+
+<p><%= link_to(_('Back to list of strings'), {:action=>:index}) %></p>
+
+<hr />
+
+<br />
+<div class="red_message" id="instructions"><%= render(:partial=>'instructions') %></div>
+
+<script type="text/javascript">
+  <% 
+    # ToDo: This should be an external JS file
+    # This preload the content of the navigation links.
+    # when EDIT is presed it loads edit_translation.js.erb
+  %>
+  var RsPreload;
+  (function(){
+    var $ = jQuery;
+    RsPreload = {
+      _baseUrl: '<%= url_for(action: :index) %>/',
+      _tempLoading: {},
+      _urls: {},
+      library: {},
+      msg: null,
+
+      isLoading: function(id){
+        return this._tempLoading.hasOwnProperty(id)
+      },
+
+      has: function(id){
+        return this.library.hasOwnProperty(id) && typeof this.library[id] == 'string'
+      },
+
+      add: function(id){
+        
+      },
+
+      delete: function(id){
+        try{ delete RsPreload.library[id] } catch(e){}
+        try{ delete RsPreload._tempLoading[id] } catch(e){}
+        try{ delete RsPreload._urls[id] } catch(e){}
+      },
+
+      navigate: function(id, edit_language_id, pushState){
+        try{
+          if( !this.has(id) ) throw 'Rs ID not preloaded'
+
+          try{ 
+            pushState = typeof pushState !== 'undefined' ? pushState : true;
+            if (pushState)
+              history.pushState({id: id, edit_language_id: edit_language_id}, '', RsPreload._urls[id]);            
+          } catch(e){ console.log('pushState Error:', e) }
+          jQuery("#maincontent").get(0).innerHTML = this.library[id];
+          this.preloadResourceStringsFromLinks()
+
+          if (edit_language_id) {
+            $('#language_'+edit_language_id+'_show').hide()
+            $('#language_'+edit_language_id+'_edit').show()
+
+            RsPreload.initEditForm(edit_language_id);
+          }
+        }catch(e){
+          console.error(e)
+          location.href = this._baseUrl + id
+
+        }
+      },
+
+      preloadResourceStringsFromLinks: function(){
+          console.log('preloading resource_strings from navigation links')
+          
+          $('.navigation a').each(function(){
+            var href = $(this).attr('href');
+            var match = href.match(/resource_strings\/(\d+)/)
+
+            if ( match ) {
+              var resource_string_id = match[1]
+              $(this).data('resource_string_id', resource_string_id)
+
+              if( RsPreload.has(resource_string_id) || RsPreload.isLoading(resource_string_id) )
+                return;
+
+              RsPreload._tempLoading[resource_string_id] = true
+              $.ajax(href, {
+                success: function(html, textStatus, jqXHR) {
+                  RsPreload.library[resource_string_id] = html
+                  RsPreload._urls[resource_string_id] = href
+
+                  console.log('RS Library: ', Object.keys(RsPreload.library))
+                },
+                error: function(){
+                  RsPreload.delete(resource_string_id);
+                }
+              })
+            }
+          })
+
+          $('.navigation a').click(function(ev){
+            var resource_string_id = $(this).data('resource_string_id')
+
+            if (RsPreload.has(resource_string_id)) {
+              console.log('Preloading content for RS', resource_string_id)
+              RsPreload.navigate(resource_string_id)
+              ev.preventDefault();
+              return false;
+            }else{
+              console.log('No preloadeded content, Falback navigation for rs_id', resource_string_id)
+              return true;
+            }
+          });
+        },
+
+        initEditForm: function(language_id){
+          $("#language"+language_id+" form:first textarea").keyup(function(){
+            $(this).removeClass('error').parent().find('.max_width, .double_space, .ending_period, .missing_symbol').remove();
+
+            // Validate maximum length
+            max_width = $(this).data('maxwidth')
+            if (max_width && $(this).val().length > max_width ) {
+              $(this)
+                .addClass('error')
+                .after('<div class="error_validation max_width">String too long. The maximum length should be no more than '+max_width+' characters.</div>')
+              // $(this).parent().find('.error_validation').effect('shake');
+            }
+
+            // Validate double spaces
+            if ( / {2,}/.test( $(this).val() ) ) {
+              $(this)
+                .addClass('error')
+                .after('<div class="error_validation double_space">The translation contains double spaces. Please separate words using a single space.</div>')
+            }
+
+            // Validate spaces or new lines at beginning or end
+            if ( /^\s+|\s+$/.test( $(this).val() ) ) {
+              $(this)
+                .addClass('error')
+                .after('<div class="error_validation double_space">The translation starts or ends with spaces or new lines. Please remove if was not added on purpose.</div>')
+            }
+
+            // Validate ending period
+            var original_end_in_period = $('#original_string p:first-child').text().trim().substr(-1) == '.';
+            var translation_end_in_period = $(this).val().trim().substr(-1) == '.';
+            if ( original_end_in_period && !translation_end_in_period ) {
+              $(this)
+                .addClass('error')
+                .after('<div class="error_validation double_space">The original text ends in <u>period</u>, consider including it at the end of the translated string.</div>')
+            }
+
+            // warning symbols and exclamation marks
+            var symbols_to_check = [',', '!', '?', ';', '(', ')', '-']
+            for(k in symbols_to_check){
+                var symbol = symbols_to_check[k]
+                var orig_symbol_count = $('#original_string').val().split(symbol).length
+                var tran_symbol_count = $(this).text().split(symbol).length
+                if(orig_symbol_count != tran_symbol_count){
+                    var symbol_times = (orig_symbol_count == 1) ? 'once' : (orig_symbol_count - 1) + ' times'
+                    $(this)
+                      .addClass('error')
+                      .after('<div class="warning_validation missing_symbol">The original text includes the symbol <b>'+symbol+'</b>  <b>'+symbol_times+'</b>, please keep this in mind while providing the translation.</div>')
+                }
+            }
+
+
+          });
+
+          $("#language"+language_id+" form:first").submit(function(ev){
+            var go_next = jQuery('#auto_edit_next').is(':checked')
+            var next_rs_id = jQuery('#next_resource_string_id').val()
+
+            console.log('Submited edit form. Go Next:', go_next)
+            
+            if (go_next) {
+              if( RsPreload.has(next_rs_id) ){
+                try{
+                  // var data = $(this).serializeArray();
+                  // $.ajax({url: this.action, type: 'POST', data: data});
+                  ev.preventDefault();
+                  //return false;
+                }catch(e){
+                  console.error('ERROR SUBMITTING FORM:', e)
+                  return true
+                }
+              }
+            }
+          }).on('ajax:send',function(xhr){
+            console.log('ajax:send')
+            var go_next = jQuery('#auto_edit_next').is(':checked')
+            var next_rs_id = jQuery('#next_resource_string_id').val()
+            var rs_id = $('tr.resource_string').data('id')
+
+            RsPreload.delete(rs_id)
+            if ( go_next && RsPreload.has(next_rs_id) ) {
+              RsPreload.navigate(next_rs_id, <%= @string_translation.language_id %>)
+              if (go_next) {
+                $("#language"+language_id+" form:first textarea").focus();
+              }
+            }
+
+            RsPreload.msg = Messenger().run({
+              progressMessage: 'Saving string <b><%= @resource_string.token %></b>...',
+            });
+
+          }).on('ajax:success',function(){
+            // We could add a confirm notification
+            console.log('ajax:success string saved succesfully')
+          }).on('ajax:error',function(xhr, status, error){
+            console.log('ajax:error saving the string')
+            var form = this
+            RsPreload.msg = Messenger().post({
+              message: "Ops, there was an error saving your translation.",
+              type: 'error',
+              actions: {
+                go_to_string: {
+                  label: 'Go to string',
+                  action: function(){
+                    RsPreload.navigate($(form).data('resource-string-id'))
+                  }
+                },
+                dismiss: {
+                  action: function(){
+                    return RsPreload.msg.cancel();
+                  }
+                }
+              }
+            });
+          })
+        },
+    }
+
+    jQuery(RsPreload.preloadResourceStringsFromLinks);
+
+    window.onpopstate = function(event) {
+      try{
+        console.log('onpopstate', event.state)
+        if (event.state) {
+          RsPreload.navigate(event.state.id, event.state.edit_language_id, false)
+        }else{
+          throw "Not able to navigate, using standard redirect."
+        }
+      }catch(e){
+        console.log('onpopstate Error: ',e)
+        window.location = location.href;
+      }
+    };
+
+  })() // Call function inmediatelly
+  
+</script>

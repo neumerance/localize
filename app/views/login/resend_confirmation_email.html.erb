@@ -1,0 +1,14 @@
+<p>A new confirmation message was just sent to your registered email: <b><%= h @user.email %></b></p>
+<p>Please note, this message was sent from: <b><%= h EMAIL_SENDER %></b>.<br />
+Make sure that your SPAM filter is not blocking this email.</p>
+
+
+
+<% if @translation_analytics %>
+  <p><%= (_('Please %s this page in case you already finished your registration to access your translation dashboard.') % link_to("refresh", {:controller => :translation_analytics, :action => :overview ,:wid => @wid, :accesskey => @accesskey, :from_cms => 1, :project_type => "Website", :project_id => @wid})).html_safe %></p>
+<% else %>
+  <%= link_to('Home', '/') %>
+<% end %>
+
+
+

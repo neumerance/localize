@@ -1,0 +1,21 @@
+<h1>Keyword localization</h1>
+
+<%= form_tag collection_create_keyword_projects_url do %>
+  <%= hidden_field_tag :project_type, params[:project_type] %>
+  <%= hidden_field_tag :project_id, params[:project_id] %>
+  <%= hidden_field_tag :keyword_package_id, KeywordPackage.find_by_price(0).id %>
+  <h2>Choose a package</h2>
+  <%= render :partial => 'packages_table' %>
+
+  <h2>Keywords</h2>
+  <p>Fill the keywords to be localized. <%= link_to "Need help to select your keywords?", "/support/new?subject=Help selecting keywords&dep_id=1" %></p>
+
+  <div id="keyword-fields">
+    <p>You need to select a package to be able to enter the keywords</p>
+  </div>
+
+  <h2>Languages to translate</h2>
+  <%= render :partial => 'languages_select' %>
+
+  <%= submit_tag 'Localize my keywords', data: { disable_with: 'Localize my keywords' } %>
+<% end %>

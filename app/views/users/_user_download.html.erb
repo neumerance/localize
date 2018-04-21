@@ -1,0 +1,5 @@
+<tr>
+	<td><%= link_to(user_download.download.filename, {:controller=>:downloads, :action=>:show, :id=>user_download.download.id}) %></td>
+	<td><%= "#{user_download.download.major_version}.#{user_download.download.sub_version}" %></td>
+	<td><%= disp_time(user_download.download_time) %></td>
+</tr>

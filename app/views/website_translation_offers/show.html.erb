@@ -1,0 +1,65 @@
+<%= render 'websites/test_project_alert' %>
+
+<% if @website.platform_kind == WEBSITE_WORDPRESS %>
+    <div id="details"><%= render(:partial=>'details') %></div>
+    <div class="inter_tab_spacer"></div>
+<% end %>
+
+<% if !@website_translation_offer.invited_all_translators %>
+  <% if @translators.length > 0 %>
+      <br>
+      <p><a href="#the_translators"><%= _('Skip ahead to view translator profiles') %></a></p>
+  <% end %>
+
+  <% if @website.cms_requests.count == 0 && @translators.length > 0 %>
+      <div id="welcome-cms"><%= render(:partial=>'website_status') %></div>
+  <% end %>
+
+  <% if @user.can_modify?(@website) && @website_translation_offer.status != TRANSLATION_OFFER_SUSPENDED %>
+    <div id="welcome-cms" class="grey_panel">
+      <%= render(:partial=>'invitation') %>
+
+      <%= form_for([@website,@website_translation_offer]) do |f| %>
+        <label><%= f.radio_button(:status, TRANSLATION_OFFER_OPEN, {:onchange=>"submit()"}) %> <%= _('Allow translators to apply for this job') %></label><br />
+        <label><%= f.radio_button(:status, TRANSLATION_OFFER_CLOSED, {:onchange=>"submit()"}) %> <%= _('I will invite translators to this project') %></label>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1 style="margin: 20px 0 0 0;">Translators</h1>
+
+<div class="grey_panel" style="margin: 10px 0 20px 0; padding-bottom: 20px;">
+  <h3>Filters</h3>
+  <%= display_mode_line(@disp_mode) %>
+</div>
+
+<% if @translators.length > 0 %>
+    <a name="the_translators" ></a>
+    <%= render(:partial=>'translator', :collection=>@translators) %>
+<% elsif @disp_mode == DISPLAY_ALL_TRANSLATORS %>
+    <p><%= _('There are no %s to %s translators in the system.')%[@website_translation_offer.from_language.name,@website_translation_offer.to_language.name] %>
+      <br />
+      <%= _('To hire new translators we need more information about this project.') %>
+    </p>
+    <p><%= link_to(_('Provide information for hiring new translators'), {:controller=>:websites, :action=>:explain, :id=>@website.id}, {:class=>'rounded_but_orange'}) %></p>
+<% else %>
+    <p><b><%= _('No translators to display.') %></b></p>
+<% end %>
+
+<% if (([@user,@user.master_account].include?(@website.client) and @user.can_modify?(@website)) || @user.has_admin_privileges?) && (@website_translation_offer.status != TRANSLATION_OFFER_SUSPENDED) %>
+    <br />
+    <div class="infobox"><h4><%= _('Translator Invitations') %></h4>
+      <p><b><%= _('Notifications to translators:') %></b></p>
+      <% if @website_translation_offer.sent_notifications.length == 0 %>
+          <p><%= _('Translators were not notified yet.') %></p>
+      <% else %>
+          <p><%= _('%s translator(s) were notified about this project.')%@website_translation_offer.sent_notifications.length %></p>
+      <% end %>
+    </div>
+
+<% end %>
+
+<h3><%= _('Project status') %></h3>
+<p><%= link_to(_('View translation progress in this language pair'),{:action=>:report}) %></p>
+<div class="inter_tab_spacer"></div>

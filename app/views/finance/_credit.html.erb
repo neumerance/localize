@@ -1,0 +1,4 @@
+<tr>
+	<td><%= ( '%0.2f %s'%[credit.amount,credit.currency.disp_name] ).html_safe %></td>
+	<td><%= disp_date(credit.chgtime) %></td>
+</tr>

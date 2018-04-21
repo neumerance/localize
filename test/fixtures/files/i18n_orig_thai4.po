@@ -1,0 +1,1329 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Teerin <orange@uklahouse.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+
+#. State_Expired
+#: i18n_orig.txt:243
+msgid "(Expired)"
+msgstr "(หมดอายุ)"
+
+#. State_Not_Activated_In
+#: i18n_orig.txt:245
+msgid "(Requires Activation in {0} day(s))"
+msgstr "(จำเป็นต้องเปิดใช้งานภายใน {0} วัน)"
+
+#. State_Not_Activated
+#: i18n_orig.txt:244
+msgid "(Requires Activation)"
+msgstr "(จำเป็นต้องเปิดใช้งาน)"
+
+#. State_Not_Locked_In
+#: i18n_orig.txt:262
+msgid "(Requires Lock in {0} day(s))"
+msgstr "(จำเป็นต้องล็อคภายใน {0} วัน)"
+
+#. State_Not_Locked
+#: i18n_orig.txt:261
+msgid "(Requires Lock)"
+msgstr "(จำเป็นต้องล็อค)"
+
+#. btnBack_Text
+#: i18n_orig.txt:306
+msgid "< Back"
+msgstr "< ก่อนหน้า"
+
+#. UNKNOWN_ADDRESS
+#: i18n_orig.txt:276
+msgid "<UNKNOWN ADDRESS>"
+msgstr "<ไม่รู้จักที่อยู่>"
+
+#. Instruction_Get_License
+#: i18n_orig.txt:209
+msgid "<br><br><u>Once you have saved your license to your computer, check the \"I have received license\" box below and then click on the Next button to proceed.</u>"
+msgstr "<br><br><u>เมื่อคุณได้บันทึกใบอนุญาตของคุณลงในคอมพิวเตอร์ ให้กาเครื่องหมายที่กล่อง \"ฉันได้รับใบอนุญาตแล้ว\" ด้านล่าง จากนั้นคลิกที่ปุ่ม ถัดไป เพื่อดำเนินการต่อ</u>"
+
+#. lblAddress_M
+#: i18n_orig.txt:21
+#: i18n_orig.txt:80
+msgid "A"
+msgstr "A"
+
+#. Title
+#: i18n_orig.txt:62
+msgid "About"
+msgstr "เกี่ยวกับ"
+
+#. lblShowLicense_Accept
+#: i18n_orig.txt:63
+msgid "Accept License Agreement..."
+msgstr "ยอมรับข้อตกลงสิทธิการใช้งาน..."
+
+#. Key_4
+#: i18n_orig.txt:286
+msgid "Access denied by administrator rule."
+msgstr "ถูกปฏิเสธการเข้าใช้งานโดยกฎของผู้บริหารระบบ"
+
+#. Key_7
+#: i18n_orig.txt:283
+msgid "Access is not allowed as license session limit is reached."
+msgstr "ไม่อนุญาตให้เข้าใช้งานเนื่องจากหมดระยะเวลาที่อนุญาตใช้งาน"
+
+#. Key_6
+#: i18n_orig.txt:284
+msgid "Access is not allowed by server configuration."
+msgstr "ไม่อนุญาตให้เข้าใช้งานเนื่องจากการตั้งค่าเซิร์ฟเวอร์"
+
+#. LicenseLockProgressPane_Name
+#: i18n_orig.txt:159
+msgid "Acquiring License Lock"
+msgstr "กำลังรับล็อคสำหรับใบอนุญาต"
+
+#. AcqLock_OP_Name
+#: i18n_orig.txt:169
+msgid "Acquiring license lock"
+msgstr "กำลังรับล็อคสำหรับใบอนุญาต"
+
+#. OfflineActivationPane_Name
+#: i18n_orig.txt:91
+msgid "Activate License Offline"
+msgstr "เปิดใช้งานใบอนุญาตออฟไลน์"
+
+#. OnlineActivationPane_Name
+#: i18n_orig.txt:122
+msgid "Activate License Online"
+msgstr "เปิดใช้งานใบอนุญาตออนไลน์"
+
+#. rbtnActivateOffline_Text
+#: i18n_orig.txt:105
+msgid "Activate Offline"
+msgstr "เปิดใช้งานออฟไลน์"
+
+#. rbtnActivateOnline_Text
+#: i18n_orig.txt:90
+msgid "Activate Online"
+msgstr "เปิดใช้งานออนไลน์"
+
+#. ActivationProgressPane_Name
+#: i18n_orig.txt:115
+msgid "Activating License"
+msgstr "เปิดใช้งานใบอนุญาต"
+
+#. Activating_OP_Name
+#: i18n_orig.txt:113
+msgid "Activating license"
+msgstr "เปิดใช้งานใบอนุญาต"
+
+#. Activating_OP_Descr
+#: i18n_orig.txt:111
+msgid "Activating license through the vendors backend"
+msgstr "เปิดใช้งานใบอนุญาตผ่านแบ็กเอนด์ของผู้ค้า"
+
+#. Activation_Key
+#: i18n_orig.txt:124
+msgid "Activation Key\\:"
+msgstr "รหัสเปิดใช้งาน\\:"
+
+#. Address_Invalid
+#: i18n_orig.txt:14
+msgid "Address should be specified"
+msgstr "ต้องระบุที่อยู่"
+
+#. lblAddress_Text
+#: i18n_orig.txt:10
+msgid "Address\\:"
+msgstr "ที่อยู่\\:"
+
+#. lblRights_Text
+#: i18n_orig.txt:58
+msgid "All rights reserved."
+msgstr "สงวนลิขสิทธิ์"
+
+#. NotifyVendorPane_Descr
+#: i18n_orig.txt:87
+msgid "Allows notifing vendor that license has been deactivated"
+msgstr "อนุญาตให้แจ้งผู้ค้าว่าใบอนุญาตได้รับการปิดใช้งานแล้ว"
+
+#. Key_5
+#: i18n_orig.txt:285
+msgid "Any licensing activities are temporary disabled by administrator."
+msgstr "การดำเนินการใดๆ เกี่ยวกับใบอนุญาตถูกยกเลิกโดยผู้บริหารระบบ"
+
+#. Cancel_Prompt
+#: i18n_orig.txt:302
+msgid "Are you sure you want to cancel operation and close wizard?"
+msgstr "แน่ใจหรือว่าคุณต้องการยกเลิกการดำเนินการและปิดตัวช่วยอัตโนมัติ?"
+
+#. lblAuthenticate_Text
+#: i18n_orig.txt:65
+msgid "Authenticate\\:"
+msgstr "ยืนยันสิทธิ\\:"
+
+#. btnBack_M
+#: i18n_orig.txt:305
+msgid "B"
+msgstr "B"
+
+#. Both_name_and_domain
+#: i18n_orig.txt:23
+msgid "Both name and domain should be specified"
+msgstr "ต้องระบุชื่อและโดเมน"
+
+#. lblCompany_M
+#: i18n_orig.txt:22
+msgid "C"
+msgstr "C"
+
+#. \ btnCancel_Text1
+#: i18n_orig.txt:57
+#: i18n_orig.txt:317
+msgid "Cancel"
+msgstr "ยกเลิก"
+
+#. CanLock_OP_Name
+#: i18n_orig.txt:167
+msgid "Checking availability"
+msgstr "ตรวจสอบการให้บริการ"
+
+#. CanLock_OP_Descr
+#: i18n_orig.txt:168
+msgid "Checking license lock availability"
+msgstr "ตรวจสอบว่าล็อคใบอนุญาตใช้งานได้หรือไม่"
+
+#. City_Invalid
+#: i18n_orig.txt:29
+msgid "City should be specified"
+msgstr "ต้องระบุเมือง"
+
+#. lblCity_Text
+#: i18n_orig.txt:17
+msgid "City\\:"
+msgstr "เมือง\\:"
+
+#. \ btnCancel_Text
+#: i18n_orig.txt:43
+msgid "Close"
+msgstr "ปิด"
+
+#. Commercial
+#: i18n_orig.txt:221
+msgid "Commercial"
+msgstr "งานพาณิชย์"
+
+#. Company_Invalid
+#: i18n_orig.txt:24
+msgid "Company should be specified"
+msgstr "ต้องระบุบริษัท"
+
+#. lblCompany_Text
+#: i18n_orig.txt:36
+msgid "Company\\:"
+msgstr "บริษัท\\:"
+
+#. Conn_OP_Name
+#: i18n_orig.txt:165
+msgid "Connecting"
+msgstr "กำลังเชื่อมต่อ"
+
+#. Conn_OP_Descr
+#: i18n_orig.txt:166
+msgid "Connecting to the Licensing Server"
+msgstr "กำลังเชื่อมต่อไปยังเซิร์ฟเวอร์ที่ออกใบอนุญาต"
+
+#. chkContactMe_Text1
+#: i18n_orig.txt:84
+msgid "Contact me regarding {0} products, promotions, programs, news and events"
+msgstr "ติดต่อฉันเกี่ยวกับผลิตภัณฑ์ โปรโมชัน โครงการ ข่าวสาร และเหตุการณ์ต่างๆ จาก {0}"
+
+#. btnCopy_Text
+#: i18n_orig.txt:132
+msgid "Copy"
+msgstr "คัดลอก"
+
+#. btnCopy_ToolTipText
+#: i18n_orig.txt:131
+msgid "Copy to Clipboard"
+msgstr "คัดลอกไปยังคลิปบอร์ด"
+
+#. lblCopyright_Text
+#: i18n_orig.txt:55
+msgid "Copyright \\u00A9 2001-"
+msgstr "ลิขสิทธิ \\u00A9 2001-"
+
+#. Country_Invalid
+#: i18n_orig.txt:8
+msgid "Country should be specified"
+msgstr "ต้องระบุประเทศ"
+
+#. lblCountry_Text
+#: i18n_orig.txt:9
+msgid "Country\\:"
+msgstr "ประเทศ\\:"
+
+#. SerialNumberCustomerPane_Name
+#: i18n_orig.txt:95
+msgid "Customer Information"
+msgstr "ข้อมูลลูกค้า"
+
+#. DeactivationWizardPane_Descr
+#: i18n_orig.txt:139
+msgid "Deactivates the license on this computer"
+msgstr "ปิดใช้งานใบอนุญาตบนคอมพิวเตอร์เครื่องนี้"
+
+#. Deactivation_Key
+#: i18n_orig.txt:85
+msgid "Deactivation Key\\:"
+msgstr "รหัสปิดใช้งาน\\:"
+
+#. rbtnDirect_Text
+#: i18n_orig.txt:299
+msgid "Direct connection"
+msgstr "การเชื่อมต่อโดยตรง"
+
+#. Domain_is_invalid
+#: i18n_orig.txt:2
+msgid "Domain is invalid"
+msgstr "โดเมนไม่ถูกต้อง"
+
+#. Domain_should_be
+#: i18n_orig.txt:16
+msgid "Domain should be specified"
+msgstr "ต้องระบุโดเมน"
+
+#. lblEmail_M
+#: i18n_orig.txt:15
+#: i18n_orig.txt:75
+msgid "E"
+msgstr "E"
+
+#. Email_Invalid
+#: i18n_orig.txt:18
+msgid "E-mail address should be specified"
+msgstr "ต้องระบุที่อยู่อีเมล์"
+
+#. lblEmail_Text
+#: i18n_orig.txt:20
+msgid "E-mail\\:"
+msgstr "อีเมล์\\:"
+
+#. lblEnabled_Text
+#: i18n_orig.txt:45
+msgid "Enabled\\:"
+msgstr "เปิดใช้งาน\\:"
+
+#. SerialNumberPane_Name
+#: i18n_orig.txt:134
+msgid "Enter Serial Number"
+msgstr "ระบุหมายเลขซีเรียล"
+
+#. Error
+#: i18n_orig.txt:13
+#: i18n_orig.txt:207
+#: i18n_orig.txt:312
+msgid "Error"
+msgstr "ผิดพลาด"
+
+#. Evaluation
+#: i18n_orig.txt:214
+msgid "Evaluation"
+msgstr "ชั่วคราว"
+
+#. lblExpireDate_Text
+#: i18n_orig.txt:56
+msgid "Expires\\:"
+msgstr "หมดอายุ\\:"
+
+#. lblFirstName_M
+#: i18n_orig.txt:35
+#: i18n_orig.txt:42
+#: i18n_orig.txt:310
+msgid "F"
+msgstr "F"
+
+#. btnOk_Text
+#: i18n_orig.txt:304
+msgid "Finish"
+msgstr "เสร็จสิ้น"
+
+#. lblFirstName_Text
+#: i18n_orig.txt:19
+msgid "First Name\\:"
+msgstr "ชื่อจริง\\:"
+
+#. First_Name_Invalid
+#: i18n_orig.txt:28
+msgid "First name should be specified"
+msgstr "ต้องระบุชื่อจริง"
+
+#. lblFrom_Text
+#: i18n_orig.txt:46
+msgid "From\\:"
+msgstr "จาก\\:"
+
+#. RequestEvalPane_Name
+#: i18n_orig.txt:140
+msgid "Get Evaluation License Online"
+msgstr "รับใบอนุญาตชั่วคราวออนไลน์"
+
+#. OfflineLicensingPane_Name
+#: i18n_orig.txt:227
+msgid "Get License"
+msgstr "รับใบอนุญาต"
+
+#. LicensingProgressPane_Name
+#: i18n_orig.txt:121
+msgid "Getting License"
+msgstr "กำลังรับใบอนุญาต"
+
+#. Get_OP_Name
+#: i18n_orig.txt:118
+msgid "Getting license"
+msgstr "การรับใบอนุญาต"
+
+#. Get_OP_Descr
+#: i18n_orig.txt:110
+msgid "Getting license through the vendor's backend"
+msgstr "การรับใบอนุญาตผ่านแบ็คเอนด์ของผู้ค้า"
+
+#. Licensing_Assistant_Issue_Name
+#: i18n_orig.txt:251
+msgid "Getting or Upgrading License"
+msgstr "การรับหรืออัพเกรดใบอนญาต"
+
+#. lblHost_M
+#: i18n_orig.txt:71
+msgid "H"
+msgstr "H"
+
+#. lblHttpProxyPort_Text
+#: i18n_orig.txt:300
+msgid "HTTP Port\\:"
+msgstr "พอร์ต HTTP\\:"
+
+#. lblHttpProxyHost_Text
+#: i18n_orig.txt:311
+msgid "HTTP Proxy\\:"
+msgstr "พร็อกซี่ HTTP\\:"
+
+#. Proxy_Port_Invalid
+#: i18n_orig.txt:313
+msgid "HTTP port should be specified"
+msgstr "ต้องระบุพอร์ต HTTP"
+
+#. Proxy_Host_Invalid
+#: i18n_orig.txt:296
+msgid "HTTP proxy host should be specified"
+msgstr "ต้องระบุพร็อกซี่โฮสต์ HTTP"
+
+#. Help
+#: i18n_orig.txt:316
+msgid "Help"
+msgstr "วิธีใช้"
+
+#. lblHost_Text
+#: i18n_orig.txt:59
+msgid "Host\\:"
+msgstr "โฮสต์\\:"
+
+#. rbtnChooseLicense_Text
+#: i18n_orig.txt:187
+msgid "I Already Have Activated License"
+msgstr "ฉันได้เปิดใช้งานใบอนุญาตเรียบร้อยแล้ว"
+
+#. rbtnAccept_Text
+#: i18n_orig.txt:60
+msgid "I accept the terms of the license agreement"
+msgstr "ฉันยอมรับข้อกำหนดต่างๆ ที่ระบุไว้ในข้อตกลงเรื่องสิทธิการใช้งาน"
+
+#. rbtnReject_Text
+#: i18n_orig.txt:50
+msgid "I do not accept the terms of the license agreement"
+msgstr "ฉันไม่ยอมรับข้อกำหนดต่างๆ ที่ระบุไว้ในข้อตกลงเรื่องสิทธิการใช้งาน"
+
+#. rbtnEnterSerialNumber_Text
+#: i18n_orig.txt:204
+msgid "I have a Serial Number"
+msgstr "ฉันมีหมายเลขซีเรียล"
+
+#. rbtnSpecifyFile_Text
+#: i18n_orig.txt:231
+msgid "I have a valid license file"
+msgstr "ฉันมีไฟล์ใบอนุญาตใช้งานที่ถูกต้อง"
+
+#. aMessageWizardPane_Confirmation
+#: i18n_orig.txt:215
+msgid "I have received license"
+msgstr "ฉันได้รับใบอนุญาตแล้ว"
+
+#. chkConfirmation_Text
+#: i18n_orig.txt:142
+msgid "I want to deactivate license"
+msgstr "ฉันต้องการยกเลิกใช้งานใบอนุญาต"
+
+#. rbtnGetLS_Text
+#: i18n_orig.txt:264
+msgid "I would like to get a license from the Licensing Server"
+msgstr "ฉันต้องการรับใบอนุญาตจากเซิร์ฟเวอร์ออกใบอนุญาต"
+
+#. rbtnRequestOffline_Text
+#: i18n_orig.txt:199
+msgid "I would like to purchase a license"
+msgstr "ฉันต้องการซื้อใบอนุญาต"
+
+#. rbtnRequestEvaluation_Text_ExtEval
+#: i18n_orig.txt:200
+msgid "I would like to request an evaluation license"
+msgstr "ฉันต้องการขอรับอนุญาตการใช้งานชั่วคราว"
+
+#. rbtnRequestEvaluation_Text_Eval
+#: i18n_orig.txt:198
+msgid "I would like to request an extended evaluation license"
+msgstr "ฉันต้องการขอต่ออายุใบอนุญาตการใช้งานชั่วคราว"
+
+#. Note_Get_License_Support
+#: i18n_orig.txt:269
+msgid "If you do not receive your license, after 60 minutes, please contact <a href=\"{0}Unable%20to%20get%20evaluation%20license%20for%20{1}\">{2}</a>."
+msgstr "ถ้าคุณยังไม่ได้รับใบอนุญาตภายใน 60 นาทีให้หลัง โปรดติดต่อ <a href=\"{0}ไม่สามารถรับใบอนุญาตชั่วคราวสำหรับ%20{1}\">{2}</a>"
+
+#. lblContact_Text
+#: i18n_orig.txt:196
+msgid "If you don't have a valid license, please contact"
+msgstr "ถ้าคุณไม่มีใบอนุญาตที่ใช้งานได้ โปรดติดต่อ"
+
+#. lblNote_Text
+#: i18n_orig.txt:100
+msgid "If you would like to deactivate the license used on this computer, check the \"I want to deactivate license\" box and click on the Next button. After deactivating your license you will be able to move it to another computer where it may be reactivated for further use."
+msgstr "ถ้าคุณต้องการยกเลิกใช้งานใบอนุญาตที่ใช้บนคอมพิวเตอร์เครื่องนี้ กาเครื่องหมายที่ช่อง \"ฉันต้องการยกเลิกใช้งานใบอนุญาต\" และคลิกที่ปุ่ม ถัดไป หลังจากปิดใช้งานใบอนุญาตของคุณคุณจะสามารถเคลื่อนย้ายไปยังคอมพิวเตอร์เครื่องอื่นเพื่อเปิดใช้งานใหม่ในอนาคตได้"
+
+#. InitConn_OP_Name
+#: i18n_orig.txt:163
+msgid "Initializing"
+msgstr "กำลังตั้งค่าเริ่มต้น"
+
+#. InitConn_OP_Descr
+#: i18n_orig.txt:164
+msgid "Initializing connection to the Licensing Server"
+msgstr "กำลังเริ่มการเชื่อมต่อไปยังเซิร์ฟเวอร์ที่ออกใบอนุญาต"
+
+#. wizardPaneHeader_NameText
+#: i18n_orig.txt:307
+msgid "Internet Connection"
+msgstr "การเชื่อมต่ออินเทอร์เน็ต"
+
+#. lblIssueDate_Text
+#: i18n_orig.txt:69
+msgid "Issued\\:"
+msgstr "ออกเมื่อ\\:"
+
+#. lblLastName_M
+#: i18n_orig.txt:3
+#: i18n_orig.txt:237
+msgid "L"
+msgstr "L"
+
+#. lblLastName_Text
+#: i18n_orig.txt:38
+msgid "Last Name\\:"
+msgstr "นามสกุล\\:"
+
+#. Last_Name_Invalid
+#: i18n_orig.txt:34
+msgid "Last name should be specified"
+msgstr "ต้องระบุนามสกุล"
+
+#. License_Activation
+#: i18n_orig.txt:102
+msgid "License Activation Assistant"
+msgstr "ผู้ช่วยในการเปิดใช้งานใบอนุญาต"
+
+#. License_Agreement
+#: i18n_orig.txt:61
+msgid "License Agreement"
+msgstr "ข้อตกลงเรื่องใบอนุญาต"
+
+#. DeactivationWizardPane_Name
+#: i18n_orig.txt:117
+msgid "License Deactivation"
+msgstr "การปิดใช้งานใบอนุญาต"
+
+#. License_Deactivation
+#: i18n_orig.txt:107
+msgid "License Deactivation Assistant"
+msgstr "ผู้ช่วยด้านการปิดใช้งานใบอนุญาต"
+
+#. LocationWizardPane_NameText
+#: i18n_orig.txt:213
+msgid "License Location"
+msgstr "ตำแหน่งของใบอนุญาต"
+
+#. License_Lock
+#: i18n_orig.txt:154
+msgid "License Lock Assistant"
+msgstr "ผู้ช่วยการล็อกใบอนุญาต"
+
+#. lblNumber_Text
+#: i18n_orig.txt:68
+#: i18n_orig.txt:145
+msgid "License Number\\:"
+msgstr "หมายเลขใบอนุญาต\\:"
+
+#. LicensingWizardPane_NameText
+#: i18n_orig.txt:225
+msgid "License Reading Issue"
+msgstr "เกิดปัญหาในการอ่านใบอนุญาต"
+
+#. ActivationWizardPane_Name
+#: i18n_orig.txt:89
+msgid "License Requires Activation"
+msgstr "ใบอนุญาตต้องการการเปิดใช้งาน"
+
+#. wizard_IssueName_Corrupted
+#: i18n_orig.txt:228
+msgid "License is Corrupted"
+msgstr "ใบอนุญาตเสียหาย"
+
+#. wizard_IssueName_Missing
+#: i18n_orig.txt:216
+msgid "License is Missing"
+msgstr "ใบอนุญาตขาดหาย"
+
+#. fLicenseErrorDialog_UseLimit
+#: i18n_orig.txt:229
+msgid "License is about to expire after {0} usage(s)"
+msgstr "ใบอนุญาตกำลังจะหมดอายุหลังจากการใช้งาน {0} ครั้ง"
+
+#. fLicenseErrorDialog_AboutToExpire
+#: i18n_orig.txt:194
+msgid "License is about to expire in {0} days"
+msgstr "ใบอนุญาตกำลังจะหมดอายุภายใน {0} วัน"
+
+#. fLicenseErrorDialog_LockViolation
+#: i18n_orig.txt:208
+msgid "License is activated for use on different computer system"
+msgstr "ใบอนุญาตถูกเปิดใช้งานในระบบคอมพิวเตอร์เครื่องอื่นแล้ว"
+
+#. fLicenseErrorDialog_Corrupted
+#: i18n_orig.txt:220
+msgid "License is corrupted\\:"
+msgstr "ใบอนุญาตเสียหาย\\:"
+
+#. wizard_IssueName_Expired
+#: i18n_orig.txt:129
+msgid "License is expired"
+msgstr "ใบอนุญาตหมดอายุแล้ว"
+
+#. fLicenseErrorDialog_Expired
+#: i18n_orig.txt:203
+msgid "License is expired\\:"
+msgstr "ใบอนุญาตหมดอายุแล้ว\\:"
+
+#. wizard_IssueName_Invalid
+#: i18n_orig.txt:130
+msgid "License is invalid"
+msgstr "ใบอนุญาตไม่ถูกต้อง"
+
+#. fLicenseErrorDialog_Invalid
+#: i18n_orig.txt:219
+msgid "License is invalid\\:"
+msgstr "ใบอนุญาตไม่ถูกต้อง\\:"
+
+#. fLicenseErrorDialog_Missing
+#: i18n_orig.txt:235
+msgid "License is missing\\:"
+msgstr "ใบอนุญาตขาดหาย\\:"
+
+#. fLicenseErrorDialog_NotActivated
+#: i18n_orig.txt:191
+msgid "License is not activated"
+msgstr "ใบอนุญาตยังไม่ได้รับการเปิดใช้งาน"
+
+#. fLicenseErrorDialog_LockExpired
+#: i18n_orig.txt:259
+msgid "License lock expired."
+msgstr "ล็อคใบอนุญาตหมดอายุแล้ว"
+
+#. fLicenseErrorDialog_NotLocked
+#: i18n_orig.txt:257
+msgid ""
+"License lock is not acquired. \\n"
+"Reason: {0}"
+msgstr ""
+"ยังไม่ได้รับล็อคใบอนุญาต \\n"
+"สาเหตุ: {0}"
+
+#. fLicenseErrorDialog_NeedLock
+#: i18n_orig.txt:258
+msgid "License lock needs to be acquired in {0} day(s)."
+msgstr "ต้องรับล็อคใบอนุญาตภายใน {0} วัน"
+
+#. fLicenseErrorDialog_LockRevoked
+#: i18n_orig.txt:260
+msgid "License lock revoked by administrator."
+msgstr "ล็อคใบอนุญาตถูกเพิกถอนโดยผู้ดูแลระบบ"
+
+#. fLicenseErrorDialog_NeedActivation
+#: i18n_orig.txt:241
+msgid "License needs to be activated in {0} day(s)"
+msgstr "ต้องเปิดใช้งานใบอนุญาตภายใน {0} วัน"
+
+#. lblLicense_Text
+#: i18n_orig.txt:44
+msgid "License\\:"
+msgstr "ใบอนุญาต\\:"
+
+#. lblLicensedTo_Text
+#: i18n_orig.txt:78
+msgid "Licensed to\\:"
+msgstr "ให้สิทธิการใช้งานกับ\\:"
+
+#. Licensing_Assistant_Name
+#: i18n_orig.txt:193
+msgid "Licensing Assistant"
+msgstr "ผู้ช่วยด้านใบอนุญาต"
+
+#. LicensingServerPane_Name
+#: i18n_orig.txt:179
+msgid "Licensing Server"
+msgstr "เซิร์ฟเวอร์ที่ออกใบอนุญาตใช้งาน"
+
+#. Licensing_Server_Not_Specified
+#: i18n_orig.txt:181
+msgid "Licensing Server is not specified."
+msgstr "ยังไม่ได้ระบุเซิร์ฟเวอร์ที่ออกใบอนุญาตใช้งาน"
+
+#. lblLicensingServer_Text
+#: i18n_orig.txt:180
+msgid "Licensing Server\\:"
+msgstr "เซิร์ฟเวอร์ที่ออกใบอนุญาตใช้งาน\\:"
+
+#. Found_LS
+#: i18n_orig.txt:176
+msgid "Licensing Servers Found: {0}"
+msgstr "พบเซิร์ฟเวอร์ที่ออกใบอนุญาตใช้งาน: {0}"
+
+#. lblLocation_Text
+#: i18n_orig.txt:192
+msgid "Location\\:"
+msgstr "ตำแหน่ง\\:"
+
+#. lblCountry_M
+#: i18n_orig.txt:37
+#: i18n_orig.txt:114
+#: i18n_orig.txt:308
+msgid "N"
+msgstr "N"
+
+#. NA
+#: i18n_orig.txt:77
+#: i18n_orig.txt:141
+#: i18n_orig.txt:254
+msgid "N/A"
+msgstr "ไม่มี"
+
+#. Note_Get_License
+#: i18n_orig.txt:267
+msgid "NOTE, You will need to ensure that our domain and any email addresses coming from \"{0}\", are not blocked by your spam filter."
+msgstr "หมายเหตุ คุณจำเป็นต้องตรวจสอบให้แใจว่าโดเมนของเราและที่อยู่อีเมล์ทั้งหมดที่มาจาก \"{0}\" ไม่ถูกปิดกั้นโดยโปรแกรมคัดแยกสแปม"
+
+#. Name_should_be
+#: i18n_orig.txt:30
+msgid "Name should be specified"
+msgstr "ต้องระบุชื่อ"
+
+#. btnNext_Text
+#: i18n_orig.txt:301
+msgid "Next >"
+msgstr "ถัดไป >"
+
+#. lblNote_Text2
+#: i18n_orig.txt:133
+msgid "Note, this operation can not be undone."
+msgstr "โปรดทราบว่ากระบวนการนี้ไม่สามารถยกเลิกได้"
+
+#. NotifyVendorPane_Name
+#: i18n_orig.txt:138
+msgid "Notify Vendor"
+msgstr "แจ้งผู้ค้า"
+
+#. Notify_Vendor_Offline
+#: i18n_orig.txt:148
+msgid "Notify Vendor Offline"
+msgstr "แจ้งผู้ค้าออฟไลน์"
+
+#. DeactivationProgressPane_Name
+#: i18n_orig.txt:104
+msgid "Notifying Vendor"
+msgstr "การแจ้งผู้ค้า"
+
+#. Deactivate_OP_Name
+#: i18n_orig.txt:119
+msgid "Notifying vendor"
+msgstr "การแจ้งผู้ค้า"
+
+#. Deactivate_OP_Descr
+#: i18n_orig.txt:93
+msgid "Notifying vendor through the its backend"
+msgstr "การแจ้งผู้ค้าผ่านแบ็คเอนด์"
+
+#. Key_1
+#: i18n_orig.txt:282
+msgid "Number copies limit reached"
+msgstr "จำนวนสำเนาเกินจากที่กำหนด"
+
+#. fLicenseErrorDialog_NumberCopies
+#: i18n_orig.txt:240
+msgid "Number of the simultaneously running copies exceeds the limit allowed by current license\\: {0}"
+msgstr "จำนวนของสำเนาที่ทำงานพร้อมกันมีจำนวนเกินจากที่ใบอนุญาตปัจจุบันสามารถทำได้\\: {0}"
+
+#. lblHttpProxyPort_M
+#: i18n_orig.txt:309
+msgid "O"
+msgstr "O"
+
+#. btnOk_Text
+#: i18n_orig.txt:53
+#: i18n_orig.txt:226
+#: i18n_orig.txt:318
+msgid "OK"
+msgstr "ตกลง"
+
+#. rbtnOffline_Text
+#: i18n_orig.txt:120
+msgid "Offline"
+msgstr "ออฟไลน์"
+
+#. rbtnOnline_Text
+#: i18n_orig.txt:96
+msgid "Online"
+msgstr "ออนไลน์"
+
+#. lblPhone_M
+#: i18n_orig.txt:33
+#: i18n_orig.txt:64
+#: i18n_orig.txt:298
+msgid "P"
+msgstr "P"
+
+#. lblPwd_Text
+#: i18n_orig.txt:48
+msgid "Password\\:"
+msgstr "รหัสผ่าน\\:"
+
+#. Phone_Invalid
+#: i18n_orig.txt:25
+msgid "Phone should be specified"
+msgstr "ต้องระบุหมายเลขโทรศัพท์"
+
+#. lblPhone_Text
+#: i18n_orig.txt:5
+msgid "Phone\\:"
+msgstr "โทรศัพท์\\:"
+
+#. \ lblPrompt_Text1
+#: i18n_orig.txt:70
+msgid "Please carefully read and accept the terms in the license agreement below"
+msgstr "โปรดอ่านและยอมรับข้อกำหนดในข้อตกลงใบอนุญาตต่อไปนี้อย่างละเอียด"
+
+#. LicensingWizardPane_DescriptionText
+#: i18n_orig.txt:223
+#: i18n_orig.txt:250
+msgid "Please choose one of the options below"
+msgstr "โปรดเลือกตัวเลือกด้านล่างหนึ่งรายการ"
+
+#. Press_Next
+#: i18n_orig.txt:222
+msgid "Please click the Next button after getting a license.\\n"
+msgstr "โปรดคลิกปุ่ม ถัดไป หลังจากรับใบอนุญาต\\n"
+
+#. Please_press_the_Next
+#: i18n_orig.txt:125
+msgid "Please click the Next button after getting your activated license."
+msgstr "โปรดคลิกปุ่ม ถัดไป หลังจากรับใบอนุญาตที่เปิดใช้งานแล้ว"
+
+#. Contact_Admin
+#: i18n_orig.txt:256
+msgid "Please contact your administrator for assistance."
+msgstr "โปรดติดต่อผู้บริหารระบบเพื่อรับความช่วยเหลือ"
+
+#. SerialNumberPane_Descr
+#: i18n_orig.txt:106
+msgid "Please enter serial number exactly as stated in the box label"
+msgstr "โปรดระบุหมายเลขซีเรียลให้ตรงกับกล่องฉลาก"
+
+#. OlineActivationPane_Descr
+#: i18n_orig.txt:101
+msgid "Please fill in the fields below in order to activate your license"
+msgstr "โปรดเติมข้อมูลลงในช่องด้านล่างเพื่อเปิดใช้งานใบอนุญาตของคุณ"
+
+#. RequestEvalPane_Descr
+#: i18n_orig.txt:136
+msgid "Please fill in the fields below in order to get an evaluation license"
+msgstr "โปรดเติมข้อมูลลงในช่องด้านล่างเพื่อรับใบอนุญาตชั่วคราว"
+
+#. SerialNumberCustomerPane_Descr
+#: i18n_orig.txt:147
+msgid "Please fill the fields below in order to get a license"
+msgstr "โปรดเติมข้อมูลลงในช่องด้านล่างเพื่อรับใบอนุญาต"
+
+#. Check_Mailbox
+#: i18n_orig.txt:275
+msgid "Please open your email program's inbox and save your license to a location on your computer, such as your desktop."
+msgstr "โปรดเปิดกล่องจดหมายเข้าในอีเมล์ของคุณและบันทึกใบรับรองไปยังตำแหน่งที่ต้องการบนคอมพิวเตอร์ เช่นเดสก์ท็อปของคุณ"
+
+#. \ lblPrompt_Text
+#: i18n_orig.txt:54
+msgid "Please read the terms of the license agreement below"
+msgstr "โปรดอ่านข้อกำหนดของข้อตกลงใบอนุญาตด้านล่าง"
+
+#. lblComments_Text
+#: i18n_orig.txt:51
+msgid "Please send your comments to"
+msgstr "โปรดส่งความคิดเห็นของคุณไปที่"
+
+#. LicensingServerPane_Descr
+#: i18n_orig.txt:178
+msgid "Please specify a Licensing Server address"
+msgstr "โปรดระบุที่อยู่ของเซิร์ฟเวอร์ที่ออกใบอนุญาต"
+
+#. wizardPaneHeader_DescriptionText
+#: i18n_orig.txt:297
+msgid "Please specify the Internet connection properties"
+msgstr "โปรดระบุคุุณสมบัติการเชื่อมต่ออินเทอร์เน็ต"
+
+#. LocationWizardPane_DescriptionText
+#: i18n_orig.txt:217
+msgid "Please specify the place where a valid license is located"
+msgstr "โปรดระบุตำแหน่งของใบอนุญาตที่ใช้งานได้"
+
+#. Try_again
+#: i18n_orig.txt:94
+msgid "Please try again or contact your administrator if problem persists."
+msgstr "โปรดลองใหม่อีกครั้งหรือติดต่อผู้บริหารระบบถ้ายังแก้ไขปัญหาไม่ได้"
+
+#. Try_Again
+#: i18n_orig.txt:274
+msgid "Please try again or contact your system administrator if problem persists"
+msgstr "โปรดลองใหม่อีกครั้งหรือติดต่อผู้บริหารระบบถ้ายังแก้ไขปัญหาไม่ได้"
+
+#. LicenseLockWizardPane_Descr
+#: i18n_orig.txt:157
+msgid "Please use one of the ways below to acquire lock for your license"
+msgstr "โปรดใช้วิธีหนึ่งจากวิธีเหล่านี้เพื่อรับการล็อคใบอนุญาตของคุณ"
+
+#. ActivationWizardPane_Descr
+#: i18n_orig.txt:92
+#: i18n_orig.txt:103
+msgid "Please use one of the ways below to activate your license"
+msgstr "โปรดใช้วิธีหนึ่งจากวิธีเหล่านี้เพื่อเปิดใช้งานใบอนุญาตของคุณ"
+
+#. OfflineLicensingPane_Descr
+#: i18n_orig.txt:211
+msgid "Please use one of the ways below to get a license"
+msgstr "โปรดใช้วิธีหนึ่งจากวิธีเหล่านี้เพื่อรับใบอนุญาต"
+
+#. Please_use_one_of_the
+#: i18n_orig.txt:116
+msgid "Please use one of the ways below to notify vendor about license deactivation"
+msgstr "โปรดใช้วิธีหนึ่งจากวิธีเหล่านี้เพื่อแจ้งผู้ค้าเกี่ยวกับการปิดใช้งานใบอนุญาต"
+
+#. lblSiteURL_ToolTipText
+#: i18n_orig.txt:52
+msgid "Please visit our site to learn more about us"
+msgstr "โปรดเยี่ยมชมไซต์ของเราเพื่อรับข้อมูลเพิ่มเติมเกี่ยวกับเรา"
+
+#. LicensingProgressPane_Descr
+#: i18n_orig.txt:143
+msgid "Please wait for license"
+msgstr "โปรดรอรับใบอนุญาต"
+
+#. ActivationProgressPane_Descr
+#: i18n_orig.txt:123
+msgid "Please wait while activating license"
+msgstr "โปรดรอขณะเปิดใช้งานใบอนุญาต"
+
+#. DeactivationProgressPane_Descr
+#: i18n_orig.txt:149
+msgid "Please wait while notifying vendor"
+msgstr "โปรดรอระหว่างแจ้งผู้ค้า"
+
+#. LicenseLockProgressPane_Descr
+#: i18n_orig.txt:160
+msgid "Please wait while trying to acquire license lock"
+msgstr "โปรดรอ"
+
+#. lblPort_Text
+#: i18n_orig.txt:74
+msgid "Port\\:"
+msgstr "พอร์ต\\:"
+
+#. Save_OP_Name
+#: i18n_orig.txt:224
+msgid "Processing results"
+msgstr "ประมวลผลลัพธ์"
+
+#. Product
+#: i18n_orig.txt:126
+msgid "Product\\:"
+msgstr "ผลิตภัณฑ์\\:"
+
+#. Save_OP_Descr
+#: i18n_orig.txt:236
+msgid "Prosessing results e.g. saving license to the local disk"
+msgstr "ประมวลผลใบอนุญาต เช่นบันทึกใบอนุญาตไปยังดิสก์ในเครื่อง"
+
+#. Reason
+#: i18n_orig.txt:255
+msgid "Reason: {0}"
+msgstr "เหตุผล: {0}"
+
+#. lblState_M
+#: i18n_orig.txt:12
+msgid "S"
+msgstr "S"
+
+#. SMTPPreferences
+#: i18n_orig.txt:66
+msgid "SMTPPreferences object must be specified"
+msgstr "ต้องระบุวัตถุการตั้งค่า SMTP"
+
+#. Searching_LS
+#: i18n_orig.txt:175
+msgid "Searching for Licensing Servers... Found:  {0}"
+msgstr "กำลังค้นหาเซิร์ฟเวอร์ออกใบอนุญาต... พบแล้ว:"
+
+#. Invalid_S_N
+#: i18n_orig.txt:184
+msgid "Serial Number is invalid. Please correct it and try again."
+msgstr "หมายเลขซีเรียลไม่ถูกต้อง โปรดแก้ไขและลองใหม่อีกครั้ง"
+
+#. lblSerialNumber_Text
+#: i18n_orig.txt:137
+msgid "Serial Number\\:"
+msgstr "หมายเลขซีเรียล\\:"
+
+#. Serial_Number_Invalid
+#: i18n_orig.txt:128
+msgid "Serial number is not exactly entered"
+msgstr "ระบุหมายเลขซีเรียลไม่ถูกต้อง"
+
+#. Init_OP_Name
+#: i18n_orig.txt:206
+msgid "Setting up connection"
+msgstr "กำลังตั้งค่าการเชื่อมต่อ"
+
+#. Init_OP_Descr
+#: i18n_orig.txt:205
+msgid "Setting up connection to the vendor's backend"
+msgstr "การตั้งค่าการเชื่อมต่อไปยังแบ็คเอนด์ของผู้ค้า"
+
+#. State_Invalid
+#: i18n_orig.txt:11
+msgid "State should be specified"
+msgstr "ต้องระบุรัฐ"
+
+#. lblState_Text
+#: i18n_orig.txt:32
+msgid "State\\:"
+msgstr "รัฐ\\:"
+
+#. lblTitle_M
+#: i18n_orig.txt:6
+#: i18n_orig.txt:26
+#: i18n_orig.txt:67
+msgid "T"
+msgstr "T"
+
+#. lblThankYou_Text
+#: i18n_orig.txt:201
+#: i18n_orig.txt:202
+msgid "Thank you\\!"
+msgstr "ขอบคุณ\\!"
+
+#. No_license_allocated
+#: i18n_orig.txt:183
+msgid ""
+"There is no license allocated to you.\\n"
+" Please contact your administrator for assistance."
+msgstr ""
+"ไม่มีการจัดสรรใบอนุญาตให้คุณ\\n"
+"โปรดติดต่อรับความช่วยเหลือจากผู้บริหารระบบ"
+
+#. No_Need_Deactivate
+#: i18n_orig.txt:151
+msgid "This license does not require deactivation"
+msgstr "ใบอนุญาตไม่ต้องการการยกเลิกใช้งาน"
+
+#. lblTitle_Text
+#: i18n_orig.txt:31
+msgid "Title\\:"
+msgstr "ชื่อเรื่อง\\:"
+
+#. rbtnTryAgain_Text
+#: i18n_orig.txt:155
+msgid "Try again"
+msgstr "ลองใหม่อีกครั้ง"
+
+#. AcqLock_OP_Descr
+#: i18n_orig.txt:170
+msgid "Trying to acquire license lock"
+msgstr "พยายามรับการล็อคใบอนุญาต"
+
+#. lblUser_M
+#: i18n_orig.txt:76
+msgid "U"
+msgstr "U"
+
+#. LicenseLockWizardPane_Name
+#: i18n_orig.txt:158
+msgid "Unable to acquire license lock"
+msgstr "ไม่สามารถรับการล็อคใบอนุญาตได้"
+
+#. Unable_to_activate
+#: i18n_orig.txt:109
+msgid "Unable to activate license."
+msgstr "ไม่สามารถเปิดใช้งานใบอนุญาตได้"
+
+#. Unable_to_deactivate
+#: i18n_orig.txt:108
+msgid "Unable to deactivate license."
+msgstr "ไม่สามารถยกเลิกใช้งานใบอนุญาตได้"
+
+#. Unable_to_get
+#: i18n_orig.txt:88
+msgid "Unable to get evaluation license."
+msgstr "ไม่สามารถรับใบอนุญาตชั่วคราวได้"
+
+#. Unable_to_get_license
+#: i18n_orig.txt:127
+msgid "Unable to get license by Serial Number."
+msgstr "ไม่สามารถรับใบอนุญาตจากหมายเลขซีเรียลได้"
+
+#. Unable_to_notify
+#: i18n_orig.txt:86
+msgid "Unable to notify vendor about license deactivation."
+msgstr "ไม่สามารถแจ้งผู้ค้าเกี่ยวกับการยกเลิกใช้งานใบอนุญาตได้"
+
+#. Unable_to_obtain_ls
+#: i18n_orig.txt:182
+msgid "Unable to obtain license."
+msgstr "ไม่สามารถรับใบอนุญาตได้"
+
+#. LicenseLockWizard_SystemError
+#: i18n_orig.txt:161
+msgid "Unable to proceed."
+msgstr "ไม่สามารถดำเนินการต่อได้"
+
+#. Unable_to_Send
+#: i18n_orig.txt:277
+msgid "Unable to send license to"
+msgstr "ไม่สามารถส่งใบอนุญาตไปที่"
+
+#. Unable_Write_License
+#: i18n_orig.txt:233
+msgid ""
+"Unable to write a license\\: {0}\\n"
+"Are you want to try again?"
+msgstr ""
+"ไม่สามารถเขียนใบอนุญาตได้\\: {0}\\n"
+"แน่ใจหรือว่าต้องการลองใหม่อีกครั้ง?"
+
+#. Unable_to_write
+#: i18n_orig.txt:195
+msgid "Unable to write license\\:\\n"
+msgstr "ไม่สามารถเขียนใบอนุญาตได้\\:\\n"
+
+#. \ lblLicenseValue_Text
+#: i18n_orig.txt:47
+msgid "Unlicensed"
+msgstr "ยกเลิกใบอนุญาต"
+
+#. Free_Emails_Disabled
+#: i18n_orig.txt:278
+msgid "Usage of free email addresses (i.e. Hotmail, MSN, Yahoo email addresses, etc) is not allowed."
+msgstr "ไม่อนุญาตให้ใช้ที่อยู่อีเมล์ฟรี (ได้แก่ที่อยู่อีเมล์ของ Hotmail, MSN, Yahoo และอื่นๆ)"
+
+#. rbtnProxy_Text
+#: i18n_orig.txt:303
+msgid "Use proxy"
+msgstr "ใช้พร็อกซี่"
+
+#. lblUser_Text
+#: i18n_orig.txt:49
+msgid "User\\:"
+msgstr "ผู้ใช้\\:"
+
+#. lblShowLicense_View
+#: i18n_orig.txt:79
+msgid "View License Agreement..."
+msgstr "ดูข้อตกลงของใบอนุญาต..."
+
+#. rbtnWaitAvailability_Text
+#: i18n_orig.txt:156
+msgid "Wait for availability"
+msgstr "รอการให้บริการ"
+
+#. Wait_OP_Name
+#: i18n_orig.txt:171
+msgid "Waiting"
+msgstr "กำลังรอ"
+
+#. Wait_OP_Descr
+#: i18n_orig.txt:172
+msgid "Waiting for the next try"
+msgstr "กำลังรอดำเนินการครั้งต่อไป"
+
+#. txtNote_Text
+#: i18n_orig.txt:73
+msgid "Warning\\: this computer program is protected by copyright law and international treaties. Unauthorized reproduction or distribution of this program or any portion of it may result in severe civil and criminal penalties, and will be prosecuted to the maximum extent possible under the law."
+msgstr "คำเตือน\\: โปรแกรมคอมพิวเตอร์นี้ได้รับความคุ้มครองจากกฎหมายลิขสิทธิและสนธิสัญญานานาชาตื การทำซ้ำหรือแจกจ่ายโปรแกรมนี้หรือส่วนใดส่วนหนึ่งโดยไม่ได้รับอนุญาตอาจเป็นผลให้คุณได้รับโทษทางแพ่งและทางอาญา และอาจได้รับการดำเนินคดีถึงขั้นสูงสุดตามที่กฎหมายกำหนดไว้"
+
+#. lblFeedback_ToolTipText
+#: i18n_orig.txt:72
+msgid "We appreciate your comments\\!"
+msgstr "เรายินดีที่จะรับฟังความคิดเห็นของคุณ\\!"
+
+#. Key_2
+#: i18n_orig.txt:281
+msgid "You are not allowed to acquire license lock"
+msgstr "คุณไม่ได้รับอนุญาตให้ล็อคใบอนุญาต"
+
+#. Key_3
+#: i18n_orig.txt:287
+msgid "You are not allowed to run several application instances on the same host"
+msgstr "ไม่อนุญาตให้คุณรันแอพพลิเคชั่นหลายตัวพร้อมกันบนโฮสต์เดียวกัน"
+
+#. You_may_activate_this
+#: i18n_orig.txt:112
+msgid "You may activate this license by\\:\\n"
+msgstr "คุณสามารถเปิดใช้งานใบอนุญาตนี้ได้โดย\\:\\n"
+
+#. Notify_vendor_Prompt
+#: i18n_orig.txt:144
+msgid "You may notify vendor about deactivating this license by\\:"
+msgstr "คุณสามารถแจ้งผู้ค้าได้เกี่ยวกับการปิดใช้งานใบอนุญาตนี้โดย\\:"
+
+#. You_may_obtain_license
+#: i18n_orig.txt:212
+msgid "You may obtain a license by\\:\\n"
+msgstr "คุณสามารถรับใบอนุญาตได้โดย\\:\\n"
+
+#. aMessageWizardPane_HeaderDescription
+#: i18n_orig.txt:210
+msgid "Your request has been processed"
+msgstr "คำขอของคุณได้รับการประมวลผลแล้ว"
+
+#. License_Sent
+#: i18n_orig.txt:273
+msgid "Your request has been processed and your license has been sent to"
+msgstr "คำขอของคุณได้รับการประมวผลแล้วและใบอนุญาตของคุณถูกส่งไปยัง"
+
+#. aMessageWizardPane_BackConfirmation
+#: i18n_orig.txt:218
+msgid ""
+"Your request has been successfully processed.\\n"
+"Are you sure you want to go back?"
+msgstr ""
+"ประมวลผลคำร้องของคุณเรียบร้อยแล้ว\\n"
+"แน่ใจหรือว่าคุณต้องการย้อนกลับไป?"
+
+#. lblZip_M
+#: i18n_orig.txt:7
+msgid "Z"
+msgstr "Z"
+
+#. ZIP_Invalid
+#: i18n_orig.txt:27
+msgid "ZIP should be specified"
+msgstr "ต้องระบุรหัสไปรษณีย์"
+
+#. lblZip_Text
+#: i18n_orig.txt:4
+msgid "ZIP\\:"
+msgstr "รหัสไปรษณีย์\\:"
+
+#. Days
+#: i18n_orig.txt:230
+msgid "\\ day(s)"
+msgstr "\\ วัน"
+
+#. Or_Usages_Left
+#: i18n_orig.txt:246
+#: i18n_orig.txt:290
+msgid "\\ or after {0} usage(s)"
+msgstr "\\ หรือหลังจากการใช้งาน {0} ครั้ง"
+
+#. Or_Next_Run
+#: i18n_orig.txt:249
+#: i18n_orig.txt:293
+msgid "\\ or on the next run"
+msgstr "\\ หรือในครั้งต่อไปที่ใช้งาน"
+
+#. Usages
+#: i18n_orig.txt:197
+msgid "\\ usage(s)"
+msgstr "\\ ครั้ง"
+
+#. Retry_Prompt
+#: i18n_orig.txt:238
+msgid ""
+"\\n"
+"Are you want to try again?"
+msgstr ""
+"\\n"
+"คุณต้องการลองใหม่อีกครั้งหรือไม่?"
+
+#. Usages_Left
+#: i18n_orig.txt:247
+#: i18n_orig.txt:291
+msgid "after {0} usage(s)"
+msgstr "หลังจากการใช้งาน {0} ครั้ง"
+
+#. buying_it_online_at
+#: i18n_orig.txt:234
+msgid "buying it online at"
+msgstr "สั่งซื้อออนไลน์ได้ที่"
+
+#. contacting_sales_at
+#: i18n_orig.txt:146
+#: i18n_orig.txt:239
+msgid "contacting sales at"
+msgstr "ติดต่อฝ่ายขายได้ที่"
+
+#. licensing_assistant
+#: i18n_orig.txt:135
+msgid "licensing_assistant/customer"
+msgstr "ผู้ช่วยเรื่องใบอนุญาต/ลูกค้า"
+
+#. Next_Run
+#: i18n_orig.txt:248
+#: i18n_orig.txt:292
+msgid "on the next run"
+msgstr "ในการใช้งานครั้งต่อไป"
+
+#. lblSite_Text
+#: i18n_orig.txt:232
+msgid "or visit our site"
+msgstr "หรือเยี่ยมชมไซต์ของเรา"
+
+#. Our_Domain
+#: i18n_orig.txt:270
+msgid "our domain"
+msgstr "โดเมนของเรา"
+
+#. Sec
+#: i18n_orig.txt:173
+msgid "sec."
+msgstr "วินาที"
+
+#. visiting_our_site_at
+#: i18n_orig.txt:150
+#: i18n_orig.txt:242
+msgid "visiting our site at"
+msgstr "เยี่ยมชมไซต์ของเราได้ที่"
+

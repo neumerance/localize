@@ -1,0 +1,59 @@
+<% if @show_deposit %>
+	<div class="subframe">
+		<%= form_tag({ :action => :make_deposit, :req=>:save, :id=>deposit.id }, "data-confirm"=>'You will now be transfered to the payment processor to complete this deposit', :remote => true ) do %>
+
+			<%= render(:partial=>'shared/vat_request') %>
+
+			<p><label><%= radio_button_tag(:processor, EXTERNAL_ACCOUNT_PAYPAL, true) %> <strong><%= _('Pay with PayPal') %></strong></label></p>
+        <%= image_tag 'paypal_payments.png', width: 242, height: 31, alt: 'PayPal payment options' %><br />
+			<p class="comment"><%= _("You don't need to have a PayPal account. PayPal allows you to pay with a credit card as well.") %><br />
+			<%= _('Payments with a credit card or from your PayPal balance, complete immediately. E-Check payments take 3-4 days to complete.') %></p>
+
+      <% if CO_ENABLED %>
+        <p><label><%= radio_button_tag(:processor, EXTERNAL_ACCOUNT_2CHECKOUT, false) %> <strong><%= _('Pay with 2Checkout') %></strong></label></p>
+        <img style="margin: 5px;" src="https://www.2checkout.com/upload/images/paymentlogoshorizontal.png" alt="Google Checkout" /><br />
+        <p class="comment"><%= _("Pay with most credit cards. Payments take up to several hours to complete processing.") %></p>
+      <% end %>
+
+			<div id="total_box">
+				<table class="stats">
+					<tr class='item'>
+						<td>Deposit amount:</td>
+						<td><span class='amount'><%= money_field_tag(:amount, @amount, 'update_totals();')  %></span> USD</td>
+					</tr>
+					<tr class='tax_details' style='<%="display:none" unless @user.has_to_pay_taxes? %>'>
+						<th>VAT Tax in <span class="country_name"><%=@user.country.try(:name) %></span> <span class='tax_rate'><%=@tax_rate %></span>%</th>
+						<th><span class='amount'><%=@tax_amount %></span> USD</th>
+					</tr>
+					<tr>
+						<th>Total:</th>
+						<th><span id="total_cost"><%=@total %></span> USD</th>
+					</tr>
+				</table>
+				<div class="tax-notice comment" style="display: none">
+					* We will forward the VAT amount to your country, so in case you need to withdraw some of this amount, only the deposit amount can be withdrawn and not the tax amount.
+				</div>
+			</div>
+
+			<%= submit_tag _('Continue'), data: { disable_with: _('Continue'), class: 'button_X' } %>
+		<% end %>
+		
+		<%= form_tag({ :action => :make_deposit, :req=>:hide, :id=>deposit.id }, :remote => true) do %>
+			<%= submit_tag _('Cancel'), data: { disable_with: _('Cancel') } %>
+		<% end %>
+		
+		<hr style="margin: 1em;" />
+		<h4><%= _('Other payment options') %></h4>
+		<p><%= "#{_("Don't like PayPal? Have a look at %s.")%link_to(_('other payment methods'),{:controller=>:finance, :action=>:payment_methods})}".html_safe %>.</p>
+	</div>
+<% elsif @user.can_deposit? %>
+	<%= form_tag({ :action => :make_deposit, :req=>:show, :id=>deposit.id }, :remote => true) do %>
+		<%= submit_tag _('Deposit money to this account'), data: { disable_with: _('Deposit money to this account') } %>
+	<% end %>
+
+<script type='text/javascript'>
+	if(window.location.hash.indexOf('deposit<%=deposit.id %>') == 1){
+			jQuery('#deposit<%=deposit.id %> form').submit();
+	};
+</script>
+<% end %>

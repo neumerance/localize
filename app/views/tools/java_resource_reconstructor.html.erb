@@ -1,0 +1,13 @@
+<%= form_tag({:action=>:create_resource_from_po}, { :multipart => true }) do %>
+	<table cellspacing="10">
+		<tr><td>Original resource file:</td><td><%= file_field_tag(:resource_upload) %></td></tr>
+		<tr><td>Translated PO file:</td><td><%= file_field_tag(:po_upload) %></td></tr>
+		<tr><td>Output encoding:</td><td><%= select_tag(:outout_encoding, options_for_select(@encodings)) %></td></tr>
+		<tr><td>Text delimiter:</td><td><%= select_tag(:delimiter, options_for_select(@delimiters, @delimiters[0][1])) %></td></tr>
+		<tr><td>Line breaks:</td><td><%= select_tag(:line_end, options_for_select(@line_ends, @line_ends[0][1])) %></td></tr>
+	</table>
+	<br />
+	<%= submit_tag('Create the translated Java resource file &raquo;'.html_safe, style: 'padding: 0.5em;', data: { disable_with: 'Create the translated Java resource file &raquo;'.html_safe } ) %>
+<% end %>
+<br />
+<p><%= link_to('Other tools', {:action=>:index}) %></p>

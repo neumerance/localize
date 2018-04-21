@@ -1,0 +1,17 @@
+Dear <%= @user.full_real_name %>,
+
+<p>Your bid to translate <%= @bid.chat.revision.project.name %> to <%= @bid.revision_language.language.name %> has been accepted.
+<% if @bid.chat.revision.kind == TA_PROJECT %>If you haven't done so already, you need to download Translation Assistant. Once you log in (with the same email and password as you use for the website), this project will appear for you.<p>
+
+  <p>We encourage you to make frequent uploads (from within Translation Assistant). This will let the client see your progress and will also protect you from any data loss.
+<% elsif @bid.chat.revision.kind == SIS_PROJECT %>If you haven't done so already, you need to download Sisulizer. Then, use it to open the project.<% end %>
+
+<% if @bid.chat.revision.kind != TA_PROJECT %>To send your work to the client, please use the project chat (see the link below). You can upload documents to the chat. Anything you upload is documented and protects you from data loss.<% end %></p>
+
+<p>Please note that the completion date for this work is <%= @bid.expiration_time.strftime(TIME_FORMAT_STRING) %>.  All work must be completed and uploaded by that time.</p>
+
+<p>To get started on the right foot, feel free to chat with the client, to iron out any final requirements for this work.</p>
+
+<%= action_button("Chat with the client", url_for({:escape => false, :only_path => false, :controller=>:chats, :action=>:show, :project_id=>@bid.chat.revision.project_id, :revision_id=>@bid.chat.revision_id, :id=>@bid.chat.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } )) %>
+
+<p>To get help from a support person, log in to your account, go to Support and start a new support ticket.</p>

@@ -1,0 +1,2 @@
+module ResourceDownloadsHelper
+end

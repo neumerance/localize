@@ -1,0 +1,216 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr "Project-Id-Version: icanlocalize 0.1.0\nPOT-Creation-Date: 2013-12-10 08:55-0200\nPO-Revision-Date: 2008-05-08 15:32-0300\nLast-Translator: FULL NAME <EMAIL@ADDRESS>\nLanguage-Team: LANGUAGE <LL@li.org>\nLanguage: \nMIME-Version: 1.0\nContent-Type: text/plain; charset=UTF-8\nContent-Transfer-Encoding: 8bit\nPlural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: app/views/users/new_client.rhtml:5 app/views/users/new_client.rhtml:81
+msgid "Sign Up"
+msgstr "Регистрация"
+
+#: app/views/users/new_client.rhtml:8
+msgid "An account in ICanLocalize is free."
+msgstr "Регистрация в ICanLocalize бесплатная."
+
+#: app/views/users/new_client.rhtml:9
+msgid "Once you have an account you can set up website translation, software localization or send Office documents for translation."
+msgstr "После регистрации вы сможете отправить на перевод веб-сайт, программное обеспечение или документ Office."
+
+#: app/views/users/new_client.rhtml:19
+msgid "Account information"
+msgstr "Информация учетной записи"
+
+#: app/views/users/new_client.rhtml:22
+msgid "First name:"
+msgstr "Имя:"
+
+#: app/views/users/new_client.rhtml:24
+msgid "Your name and email are kept private. We only use them to send you messages."
+msgstr "Ваше имя и адрес электронной хранятся конфиденциально. Мы используем их только для отправки вам сообщений."
+
+#: app/views/users/new_client.rhtml:27
+msgid "Last name:"
+msgstr "Фамилия:"
+
+#: app/views/users/new_client.rhtml:31
+msgid "Email:"
+msgstr "Адрес эл. почты:"
+
+#: app/views/users/new_client.rhtml:35
+msgid "Nickname:"
+msgstr "Ник:"
+
+#: app/views/users/new_client.rhtml:37
+msgid "Your nickname identifies you in the system. Only letters and digits allowed."
+msgstr "Ваш ник идентифицирует вас в системе. Допустимы только буквы и цифры."
+
+#: app/views/users/new_client.rhtml:40
+msgid "Password:"
+msgstr "Пароль:"
+
+#: app/views/users/new_client.rhtml:42
+msgid "A safe password will include a combination of letters and digits."
+msgstr "Безопасный пароль включает в себя комбинацию букв и цифр."
+
+#: app/views/users/new_client.rhtml:45
+msgid "Phone number:"
+msgstr "Номер телефона:"
+
+#: app/views/users/new_client.rhtml:45
+msgid "optional"
+msgstr "необязательно"
+
+#: app/views/users/new_client.rhtml:50
+msgid "Based on our experience, adding your telephone number really helps us providing you with the best level of support"
+msgstr "Основываясь на нашем опыте, добавление вашего номера телефона действительно помогает нам предоставить вам наилучший уровень поддержки"
+
+#: app/views/users/new_client.rhtml:55
+msgid "Verification code"
+msgstr "Проверочный код"
+
+#: app/views/users/new_client.rhtml:56
+msgid "To avoid spam and automatic registration we ask you to repeat the code you see in the picture."
+msgstr "Во избежание спама и автоматической регистрации, пожалуйста, повторите код, который вы видите на картинке."
+
+#: app/views/users/new_client.rhtml:59
+msgid "Verification code:"
+msgstr "Проверочный код"
+
+#: app/views/users/new_client.rhtml:62
+msgid "Enter code:"
+msgstr "Введите код:"
+
+#: app/views/users/new_client.rhtml:70
+msgid "User agreement"
+msgstr "Пользовательское соглашение"
+
+#: app/views/users/new_client.rhtml:71
+msgid "You must accept the user agreement (in the link below) in order to create an account.<br />Please take your time to fully read the agreement before accepting."
+msgstr "Вы должны принять пользовательское соглашение (по ссылке ниже), чтобы создать учетную запись.<br />Пожалуйста, не торопитесь. Полностью прочитайте соглашение, прежде чем принять его."
+
+#: app/views/users/new_client.rhtml:74
+msgid "I have read and accept the %s"
+msgstr "Я прочитал и принимаю %s"
+
+#: outro.rb:6
+msgid "Android Localization"
+msgstr "Локализация приложений для Android"
+
+#: outro.rb:6
+msgid "Software Localization"
+msgstr "Локализация ПО"
+
+#: outro.rb:7
+msgid "Set up your project"
+msgstr "Создайте свой проект"
+
+#: outro.rb:7
+msgid "Upload your application's resource files.  Our system will parse it and get the texts for translation."
+msgstr "Добавьте ресурсные файлы вашего приложения. Наша система проанализирует его и получит тексты для перевода."
+
+#: outro.rb:8 outro.rb:22 outro.rb:26 outro.rb:31 outro.rb:40
+msgid "Deposit payment"
+msgstr "Оплатить"
+
+#: outro.rb:8 outro.rb:22 outro.rb:26 outro.rb:31 outro.rb:40
+msgid "The translators you choose will get to work on your project. Translators can handle about 1500 words per day."
+msgstr "Выбранные вами переводчики приступят к работе над проектом. Они могут переводить около 1500 слов в день."
+
+#: outro.rb:9
+msgid "Download the translations"
+msgstr "Загрузить переводы"
+
+#: outro.rb:9
+msgid "As soon as translation is complete, you can download it and use in the application."
+msgstr "Как только перевод будет завершен, вы можете загрузить его и использовать в приложении."
+
+#: outro.rb:14
+msgid "Translate Drupal Site"
+msgstr "Перевести сайт Drupal"
+
+#: outro.rb:18
+msgid "Translate WordPress Site"
+msgstr "Перевести сайт WordPress"
+
+#: outro.rb:20
+msgid "Install %s"
+msgstr "Установить %s"
+
+#: outro.rb:20
+msgid "Our translation %s takes care of sending us contents and receiving completed translations."
+msgstr "Наша переводческая %s поможет отправить нам содержимое и получить выполненные переводы."
+
+#: outro.rb:21
+msgid "Send us contents"
+msgstr "Отправить содержимое"
+
+#: outro.rb:21
+msgid "Use the Translation Dashboard in your CMS to choose what to translate and send to us. A single click is all it takes."
+msgstr "Используйте Панель мониторинга перевода в своем CMS для выбора того, что перевести и отправить нам. Достаточно одного щелчка мыши."
+
+#: outro.rb:23 outro.rb:27 outro.rb:32 outro.rb:41
+msgid "Receive the translations"
+msgstr "Получить переводы"
+
+#: outro.rb:23
+msgid "As soon as translations complete, they appear back in your CMS, ready for publishing."
+msgstr "Как только переводы выполнены, они появятся в вашем CMS, готовые к публикации."
+
+#: outro.rb:25 outro.rb:30 outro.rb:39
+msgid "Set up a project"
+msgstr "Создать проект"
+
+#: outro.rb:25
+msgid "Use our translation software to extract all texts from your website and upload to us for translation."
+msgstr "Воспользуйтесь нашим переводческим ПО, чтобы извлечь все тексты из вашего сайта и отправить нам на перевод."
+
+#: outro.rb:27
+msgid "As soon as translations complete, you can download them. Our translation software will create your completed website, ready for publishing."
+msgstr "Как только переводы выполнены, вы можете загрузить их. Наше переводческое ПО заполнит ваш сайт текстом, готовым к публикации."
+
+#: outro.rb:28
+msgid "Translate HTML Website"
+msgstr "Перевести HTML-cайт"
+
+#: outro.rb:30
+msgid "Use our translation software to extract all texts from your Help &amp; Manual project and upload to us for translation."
+msgstr "Наше переводческое ПО поможет вам извлечь все тексты из вашего проекта Помощь и Руководство и загрузить их нам на перевод."
+
+#: outro.rb:32
+msgid "As soon as translations complete, you can download them. Our translation software will create your completed Help &amp; Manual projects, ready for publishing."
+msgstr "Как только переводы готовы, вы сможете их загрузить. Наше переводческое ПО создаст готовые к публикации проекты Помощь и Руководство"
+
+#: outro.rb:33 outro.rb:37
+msgid "Translate Help &amp; Manual Projects"
+msgstr "Перевести проекты Помощь и Руководство"
+
+#: outro.rb:35
+msgid "Get affiliate link"
+msgstr "Получить партнерскую ссылку"
+
+#: outro.rb:35
+msgid "Get your unique affiliate link, by which we can identify new clients that you help bring."
+msgstr "Получите свою ​​уникальную партнерскую ссылку, с помощью которой мы сможем идентифицировать новых клиентов, приглашенных вами."
+
+#: outro.rb:36
+msgid "Get paid"
+msgstr "Зарабатывайте деньги"
+
+#: outro.rb:36
+msgid "We will credit you for every job that comes in through your affiliate link. We pay with PayPal"
+msgstr "Мы заплатим вам за каждую новую работу, созданную по вашей партнерской ссылке. Мы платим через PayPal."
+
+#: outro.rb:39
+msgid "You can create translation projects for websites, desktop software, mobile apps and office documents."
+msgstr "Создавайте проекты перевода веб-сайтов, программного обеспечения для мобильных телефонов и ПК и офисных документов."
+
+#: outro.rb:41
+msgid "As soon as translations complete, you can download them."
+msgstr "Как только переводы выполнены, вы можете загрузить их."
+
+#: outro.rb:42
+msgid "Translation Project"
+msgstr "Проект перевода"

@@ -1,0 +1,12 @@
+<div class="content">
+	<div class="errors">
+		The following problems were encountered while processing your payment:
+		<ul>
+			<% for error in @errors %><li><%= Invoice::VALIDATOR_ERROR_DESCRIPTION[error[0]] %>: <%= h(error[1]) %></li><% end %>
+		</ul>
+	</div>
+	<p>Your payment will be manually processed and you will be notified by email.
+		If we cannot process this payment, it will be refunded to you.
+	</p>
+</div>
+			

@@ -1,0 +1,18 @@
+
+<h1><%= @exception.class %></h1>
+<p><b><%= @exception.message %></b></p>
+
+<% if @request %>
+  <p>URL: <% @request.url %></p>
+  <p>IP: <%= @request.ip %>  </p>
+<% end %>
+<p>ENV: <%= Rails.env %></p>
+
+
+<pre>
+<%= @exception.backtrace.join("\n") %>
+</pre>
+
+
+
+<% # %x(logtool #{Rails.root}/log/#{Rails.env}.log query "ip == #{@request.ip}" head) %>

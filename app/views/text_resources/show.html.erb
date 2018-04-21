@@ -1,0 +1,412 @@
+ <% if @text_resource.can_create_testimonial? && @user.is_client? %>
+  <p class="alert alert-info">
+    <span class="fa fa-exclamation-circle"></span> Your project is fully translated now. Congratulations! Would you like us to feature your app/website on our site? We would love to know about your <a data-toggle="modal" data-target="#testimonial-form"><strong>experience</strong></a> with ICanLocalize.
+  </p>
+  <%= render partial: 'shared/testimonial/create_form', locals: { 
+    url: { 
+      controller: :text_resources, 
+      action: :create_testimonial,
+      id: @text_resource.id
+    } 
+  } %>
+<% end %>
+<% if @user.has_supporter_privileges? %>
+	<h3>Supporter information</h3>
+	<div style="margin:1em;" class="red_message"><p>This project belongs to <%= user_link(@text_resource.client) %></p>
+	<%= form_for(:text_resource, :url=>{:action=>:update_supporter_data}) do |f| %>
+		Supporter note:<br />
+		<%= f.text_area(:note, {:rows=>10, :cols=>100, :style=>'width: 100%;', maxlength: COMMON_NOTE}) %>
+		<%= submit_tag('Update', data: { disable_with: 'Update' }) %>
+		<br /><br />
+	<% end %>
+	</div>
+<% end %>
+
+<!-- Summary -->
+
+<table style="width:100%;"><tr><td>
+<div class="infobox"><h4>Summary</h4>
+	<table>
+	  <% if ![@user, @user.master_account].include?(@text_resource.client) %>
+	    <% if @user.has_supporter_privileges? %>
+	      <tr><td valign="top">Project from:</td><td valign="top"><b><%= @text_resource.created_at ? @text_resource.created_at.strftime("%Y/%m/%d") : nil %></b></td></tr>
+	    <% end %>
+		<tr><td valign="top">Client:</td><td valign="top"><b><%= user_link(@text_resource.client) %></b></td></tr>
+		<% end %>
+		<tr><td valign="top">Project name:</td><td valign="top"><b><%= h(@text_resource.name) %></b></td></tr>
+		<tr><td valign="top">Language:</td><td valign="top"><b><%= @text_resource.language.try(:name) %></b></td></tr>
+		<% if @text_resource.resource_format %><tr><td valign="top">Format:</td><td valign="top"><b><%= @text_resource.resource_format.name %></b></td></tr><% end %>
+		<tr><td valign="top">description:</td><td valign="top"><%= h(@text_resource.description) %></td></tr>
+		<tr><td valign="top">Required text:</td><td valign="top"><%= h(@text_resource.required_text) %></td></tr>
+		<tr><td valign="top">Subject:</td><td valign="top"><%= @text_resource.category ? @text_resource.category.name : 'Not specified' %></td></tr>
+	</table>
+
+	<% if @user.has_supporter_privileges? || ([@user, @user.master_account].include?(@text_resource.client) and @user.can_modify?(@text_resource)) %>
+		<br />
+		<p><%= link_to('Edit project settings', {:action=>:edit_description}) %></p>
+	<% end %>
+</div>
+</td>
+
+<!-- Project Progress -->
+<% if [@user, @user.master_account].include?(@text_resource.client) %>
+	<td style="vertical-align: top; width: 22em;">
+	<div class="floating-status">
+	<%= project_progress(@text_resource).html_safe %>
+	</div>
+	</td>
+<% end %>
+
+</tr></table>
+
+<% if @review_languages.length > 0 %>
+	<div class="red_message" style="margin-bottom: 2em;">
+		<p>You are reviewing this project's translation to <b><%= (@review_languages.collect { |rl| rl.language.name}).join(', ') %></b>.</p>
+		<% if @something_to_review %>
+			<h3>How to review</h3>
+			<p>The entire review process is done using our <b>Issue Tracking system</b>. You need to go through each string and open issues in case they need editing. There is a list of issues per string in this project.</p>
+			<p>First, <b>learn the project's history</b> by reading the communication between the client and the translator: <%= chats_for_resource_languages(@review_languages).html_safe %></p>
+			<p>Then, <b>review each string</b>. Open issues if you find problems and click on <i>Review completed</i> when translation is correct.</p>
+			<ol>
+				<li>Go to the <%= link_to('strings in this project', {:controller=>:resource_strings, :action=>:index, :text_resource_id=>@text_resource.id, :set_args=>1}) %>.</li>
+				<li>Click on <b>Next string to review</b>.</li>
+				<li>At the bottom of the screen, you will find the issues section. If the string needs editing, open a new issue.</li>
+				<li>Follow up with the translator on each issue. Close issues once the translation is correct.</li>
+				<li>When all issues are resolved, click on the <b>Review completed</b> button.</li>
+				<li>Once you have completed reviewing all strings, we will deliver the completed translation to the client.</li>
+			</ol>
+			<% @review_languages.each do |rl| %>
+				<% if @next_string_to_review[rl.language] %>
+					<br /><p><%= link_to('Next %s String to Review'%rl.language.name,{:controller=>:resource_strings, :action=>:show, :id=>@next_string_to_review[rl.language].id, :text_resource_id=>@text_resource.id}, {:class=>'rounded_but_bold'}) %></p>
+				<% end %>
+			<% end %>
+		<% else %>
+			<p>Right now, there is nothing to review. We will send you an email when translation completes and you need to review it.</p>
+		<% end %>
+	</div>
+<% end %>
+
+<!-- Public  -->
+<% if @text_resource.is_public == 1 %>
+	<p>This resource is publically available. <%= link_to('public page', {:action=>:browse}) %></p>
+<% end %>
+
+<% if (@user.has_supporter_privileges? or ([@user, @user.master_account].include?(@text_resource.client) and @user.can_modify?(@text_resource)) and !@text_resource.unclear_strings(params).empty?) %>
+	<div id="alertDiv" style="text-align:center;">Some strings on this project might not be clear, and translators might have doubts when translating. Please add <%=link_to "comments", comment_strings_text_resource_url(@text_resource)%> on them.</div>
+<% end %>
+
+<% if @user.has_client_privileges? %>
+  <%=
+      Rails.cache.fetch("#{@text_resource.cache_key}/#{@user.cache_key}/projects/reuse_translators", expires_in: CACHE_DURATION) do
+        render :partial => 'projects/reuse_translators', :locals => { :id => @text_resource.id, :projects => @projects_to_reuse }
+      end
+  %>
+<% end %>
+
+<!-- Translation Languages -->
+<h2 style="display: inline;" id="languages">Translation languages</h2> &nbsp; (the languages to which you want to translate)
+<div class="field_entry"><div id="translation_languages">
+	<%=
+      Rails.cache.fetch("#{@text_resource.cache_key}/#{@user.cache_key}/translation_languages", expires_in: CACHE_DURATION) do
+        render(:partial=>'translation_languages')
+      end
+  %>
+</div></div>
+
+<% if @user.has_supporter_privileges? or ([@user, @user.master_account].include?(@text_resource.client) and @user.can_modify?(@text_resource)) %>
+<h3>Broadcast a  message to your translators and reviewers</h3>
+<div>
+	<%= form_tag("/text_resources/#{@text_resource.id}/resource_chats/send_broadcast", {:method => :post, :multipart => true}) %>
+	<%= text_area_tag "body", "", :size => "40x5", maxlength: COMMON_NOTE %>
+	<br/>
+	<p>Attachments</p>
+	<div id="documents_to_upload">
+		<p><%=file_field_tag('file1[uploaded_data]', :size=>40, :id=>'file1_uploaded_data', onchange: "validate_file_size('file1[uploaded_data]', '#{ATTACHMENT_MAX_SIZE}')")%></p>
+	</div>
+	<p><a href="#form_top" onclick="add_another_file(<%= ATTACHMENT_MAX_SIZE %>);">Add another attachment</a></p>
+
+	<br/>
+	<%= submit_tag 'Send message', data: { disable_with: 'Send message' } %>
+  </form>
+</div>
+<br/>
+<% end %>
+
+<% if @user.has_supporter_privileges? || [@user, @user.master_account].include?(@text_resource.client) %>
+
+	<% if @text_resource.owner.blank? %>
+	<h2>Resource files</h2>
+
+	<% if @resource_uploads.number > 0 %>
+
+		<a name="uploads"></a><h3>Uploaded resource files</h3>
+
+		<% if flash[:translations] %>
+			<div id="alertDiv"><%= flash[:translations] %></div>
+		<% end %>
+
+		<div id="resourceUploadContainer">
+      <%= render(:partial=>'/resource_uploads/resource_uploads') %>
+    </div>
+
+		<div class="inter_tab_spacer"></div>
+	<% end %>
+
+	<% if @user.has_supporter_privileges? or ([@user, @user.master_account].include?(@text_resource.client) and @user.can_modify?(@text_resource)) %>
+
+		<a name="upload_new"></a>
+		<% if !flash[:problem].blank? %>
+			<div class="fieldWithErrors red_message" style="margin:2em;">
+				<p><b>We were not able to parse this resource file. Please, check the errors below:</b></p>
+
+				<p><%= simple_format flash[:problem] %></p>
+
+				<% if flash[:suggestions] %>
+					<p>Below you can find a list of the most common error presented for this file format. Please check that your file is valid and try again.</p>	
+
+					<ul>
+						<% flash[:suggestions].each do |sug| %>
+							<li><%= sug %></li>
+						<% end %>
+					</ul>
+				<% end %>
+				
+			</div>
+		<% end %>
+
+		<h3>Upload the resource file to translate</h3>
+		<% if @text_resource.resource_uploads.count == 0 %>
+			<p>Our system will scan the uploaded resource file and extract the texts for translation (comments and string labels will not be translated).</p>
+		<% else %>
+			<p>To add strings to the project, upload a new version of the resource file. Here is what will happen once you upload:</p>
+			<ul>
+				<li>Existing translations will be kept.</li>
+				<li>If the original text changes translation will be tagged as out-of-date.</li>
+				<li>New strings will be tagged for translation.</li>
+				<li>The system will maintain the translation of old strings that are not included any more.</li>
+			</ul>
+		<% end %>
+		<%= form_tag({:controller=>:resource_uploads, :action=>:create, :text_resource_id=>@text_resource.id}, {:multipart=>true}) do %>
+			<p>Resource file:<br />
+			<%= file_field_tag('resource_upload[uploaded_data]', :size=>50, :id=>'resource_upload_uploaded_data', onchange: "validate_file_size('resource_upload[uploaded_data]', '#{ATTACHMENT_MAX_SIZE}')") %></p>
+
+			<p>Format:<br />
+			<%= select_tag(:resource_format_id, options_for_select(@resource_formats.collect { |f| [f.description, f.id] }, @text_resource.resource_format_id) ) %>
+			</p>
+
+			<p id="show_resource_details"><a href="javascript:{ show_div('resource_format_details','block'); show_div('show_resource_details','none'); }">Show resource file format details &raquo;</a></p>
+
+			<div id="resource_format_details" style="display:none;">
+			<p><a href="javascript:{ show_div('resource_format_details','none'); show_div('show_resource_details','block'); }">&laquo; Hide resource file format details</a></p>
+			<%= format_selector(@resource_formats) %>
+			</div>
+
+			<div><label><%= check_box_tag(:ignore_duplicates, 1, (@text_resource.ignore_duplicates == 1)) %> Ignore duplicate strings. <%= tooltip "When this option is enabled, the system will automatically ignore all duplicate strings. All strings that have the same value will be translated just once. Make sure that all duplicate strings in your application have the same meaning, before choosing this option."%></label><br />
+			</div>
+
+			<p><%= submit_tag('Upload', :style=>'padding: 0.5em 1em;', data: { disable_with: 'Upload' }) %></p>
+		<% end %>
+	<% end %>
+	<br />
+
+	<% if @resource_translations && (@resource_translations.length > 0) %>
+		<h5>Previously added existing translations</h5>
+		<%= infotab_header(['Translated resource file','Description','Uploaded at']) %>
+		<%= render(:partial=>'resource_translation', :collection=>@resource_translations) %>
+		</table>
+		<div class="inter_tab_spacer"></div>
+	<% end %>
+
+	<% else %>
+		<% if @text_resource.owner.class == WebSupport %>
+			<h2>Translation synchronization with your support center</h2>
+			<p>This translation belongs to <%= link_to(@text_resource.owner.name, {:controller=>:web_supports, :action=>:show, :id=>@text_resource.owner.id}) %> support center.</p>
+			<br />
+			<h3>Add strings from your support departments</h3>
+			<p>When you add new support departments or rename existing ones, you need to add them to add them here.</p>
+			<%= button_to('Scan support center and add new or modified department names',{:action=>:add_from_owner}) %>
+			<br /><br />
+			<h3>Store the translations in your support center</h3>
+			<p>When translation is complete, you need to send the translated department names to the support center.</p>
+			<%= button_to('Apply translations to support center',{:action=>:return_to_owner}, 'data-confirm'=>'Are you want to sure you want to update the translations on your support center?') %>
+			<p class="comment">Only translations that are marked as 'Completed translation' will be set in your support center translation.</p>
+		<% end %>
+	<% end %>
+<% end %>
+
+<p></p>
+
+<h2>Strings in this project</h2>
+<% if @text_resource.unique_resource_strings.count > 0 %>
+	<p>This project includes <b><%= @text_resource.count_words(@text_resource.unique_resource_strings,@text_resource.language, nil, false,'all') %> words</b> in <b><%= @text_resource.unique_resource_strings.count %> string(s)</b>.
+
+	<% if [@user, @user.master_account].include?(@text_resource.client) || (@edit_languages && (@edit_languages.length > 0) || @user.has_supporter_privileges?) %>
+		<%= link_to('View or edit translation', {:controller=>:resource_strings, :action=>:index, :text_resource_id=>@text_resource.id, :set_args=>1}, {:style=>'margin-left: 2em;', :class=>'rounded_but_bold'}) %>
+	<% end %>
+	</p>
+<% else %>
+	<p>This project currently doesn't include any strings.</p>
+<% end %>
+
+<% if @user.has_supporter_privileges? || (@user == @text_resource.client) %>
+	<div class="inter_tab_spacer"></div>
+	<div id="tm_controls"><%= render(:partial=>'tm_controls') %></div>
+<% end %>
+
+<% if [@user, @user.master_account].include?(@text_resource.client) || @user.has_admin_privileges? %>
+<div style="margin: 3em 1em; padding: 1em; border: 1pt solid #3F81E4; background-color: #F0F8FF; -moz-border-radius: 10px; -webkit-border-radius: 10px;">
+	<h3>Project Administration</h3>
+	<%= infotab_header(['Action','Description']) %>
+		<% if @user.can_modify?(@text_resource) %>
+			<tr>
+				<td style="width:20em;">
+          <%= image_tag 'icons/RO-Mx1-24_circle-blue-plus.png', class: '', width: 24, height: 24, alt: 'ICanLocalize', style: '', align: 'middle', border: 0 %>
+					<%= link_to('Manually add a string to the project',{:controller=>:resource_strings, :action=>:new, :text_resource_id=>@text_resource.id}) %>
+				</td>
+				<td>Add strings to the project manually, without uploading a resource file.<br />
+				<span class="comment">Normally, you would upload a resource file, containing all strings. This is another option for adding strings directly to the project.</span></td>
+			</tr>
+		<% end %>
+		<tr>
+			<td>
+        <%= image_tag 'icons/RO-Mx1-24_db-list-table.png', class: '', width: 24, height: 24, alt: 'ICanLocalize', style: '', align: 'middle', border: 0 %>
+        <%= form_tag({:action=>:translation_summary}, {:method => :get}) do %>
+			<%= submit_tag('View translation summary', data: { disable_with: 'View translation summary' }) %><br />
+			<label><%= check_box_tag(:simple_cell,1,1,{:id=>'simple_cell1'}) %> Simple output</label>
+			<% end %>
+			</td>
+			<td>View a single HTML page with all your project's translations (might be a slow page to load).</td>
+		</tr>
+		<% if (@text_resource.resource_strings.count > 0) and (@text_resource.resource_format) and @user.can_modify?(@text_resource) %>
+			<tr>
+				<td>
+          <%= image_tag 'icons/RO-Mx1-24_arrows-color-mix.png', class: '', width: 24, height: 24, alt: 'ICanLocalize', style: '', align: 'middle', border: 0 %>
+				<%= link_to('Upload existing translations', {:action=>:new_existing_translation}) %></td>
+				<td>If you have existing translations for this project, from before you started using ICanLocalize, you can upload them. Our translation will continue from where it was left before.</td>
+			</tr>
+			<% if @text_resource.client.text_resources.length > 1 %>
+				<tr>
+					<td>
+            <%= image_tag 'icons/merge.png', class: '', width: 24, height: 24, alt: 'ICanLocalize', style: '', align: 'middle', border: 0 %>
+					<%= form_tag({:action=>:find_in_other_projects}) do %>
+						<%= submit_tag('Reuse translations', data: { disable_with: 'Reuse translations' }) %><br />
+						<label style="margin-left: 24px;"><%= check_box_tag(:case_sensitive,1,true) %> Case sensitive</label>
+					<% end %></td>
+					<td>Scan your other projects for matching strings and use translations from them.</td>
+				</tr>
+			<% end %>
+		<% end %>
+
+		<% if (@text_resource.resource_strings.count > 0) %>
+<!-- 		<tr>
+			<td>
+				<img src="/assets/icons/RO-Mx1-24_check-boxed-green-tail.png" width="24" height="24" align="middle" alt="" />
+				<%= link_to("Post-translation QA checks",{:controller=>:resource_strings, :action=>:size_report, :text_resource_id=>@text_resource.id}) %>
+			</td>
+			<td>Look for too long or too short strings which might not fit your app's GUI.</td>
+		</tr>
+ -->
+		<tr>
+			<td>
+        <%= image_tag 'icons/RO-Mx1-24_flag.png', width: 24, height: 24, align: 'middle', alt: '' %>
+				<%= link_to('View all issues related with this project',{:controller=>:issues, :action=>:project, :project_type=>'TextResource', :project_id=>@text_resource.id}) %>
+			</td>
+			<td>We keep track of issues that were raised during the translation process. You can view all them and see how things were resolved.</td>
+		</tr>
+		<% end %>
+
+		<tr>
+			<td>
+        <%= image_tag 'icons/question-green-small.png', width: 24, height: 24, align: 'middle', alt: '' %>
+				<div style="display: inline;" id="open_support_ticket_for_<%= put_object_id(@text_resource) %>">
+					<%= render(:partial=>'/support/support_ticket_for_object', :object=>@text_resource) %>
+				</div>
+			</td>
+			<td>Get help from ICanLocalize support staff.</td>
+		</tr>
+
+		<% if @text_resource.resource_strings.count > 0 and @user.can_modify?(@text_resource) %>
+			<tr>
+				<td>
+					<!-- img src="/assets/icons/question-green-small.png" width="24" height="24" align="middle" alt="" / -->
+					<%= link_to('Export to XML', {:action=>:export_xml}) %>
+				</td>
+				<td>Export the entire project as an XML file.</td>
+			</tr>
+
+			<tr>
+				<td>
+					<%= link_to('Export to CSV', {:action=>:export_csv}) %>
+				</td>
+				<td>Export the entire project as a CSV file.</td>
+			</tr>
+
+			<% if false && @text_resource.resource_format && (@text_resource.resource_format.encoding == ENCODING_UTF8) %>
+			<tr>
+				<td>
+					<!-- img src="/assets/icons/question-green-small.png" width="24" height="24" align="middle" alt="" / -->
+					<%= link_to('Find format mismatches', {:controller=>:resource_strings, :action=>:find_mismatching, :text_resource_id=>@text_resource.id}) %>
+				</td>
+				<td>Find strings that may have been uploaded with an incorrect format.</td>
+			</tr>
+			<% end %>
+
+			<tr>
+				<td>
+          <%= image_tag 'icons/RO-Mx1-24_broom.png', width: 24, height: 24, align: 'middle', alt: '' %>
+					<%= button_to('Delete untranslated strings', {:action=>'delete_untranslated'}, 'data-confirm'=>'Are you sure you want to delete all untranslated strings in this project?') %>
+				</td>
+				<td>Remove all untranslated strings from the project.<br />
+				<span class="comment">We strongly advise that you download the existing translation before you do this, to avoid data loss.</span>
+				</td>
+			</tr>
+
+
+			<tr>
+				<td>
+          <%= image_tag 'icons/RO-Mx1-24_broom.png', width: 24, height: 24, align: 'middle', alt: '' %>
+					<%= purge_action(@text_resource) %>
+				</td>
+				<td><%= purge_message(@text_resource) %></td>
+			</tr>
+
+		<% else %>
+			<tr>
+				<td>
+					<!-- img src="/assets/icons/question-green-small.png" width="24" height="24" align="middle" alt="" / -->
+					Import backup from XML
+				</td>
+				<td>
+					<%= form_tag({:action=>:import_xml}, { :multipart => true }) do %>
+					  <%= file_field_tag("file", :size=>30) %>
+					  <%= submit_tag('Upload', data: { disable_with: 'Upload' }) %>
+					<% end %><br />
+					<span class="comment">Use this to restore projects that you previously exported from ICanLocalize. To upload application resource files, go to the <a href="#upload_new">upload section</a>.</span>
+				</td>
+			</tr>
+
+		<% end %>
+    <tr>
+        <td id="bomPanel">
+          <%= render :partial => 'bom_status' %>
+        </td>
+        <td>
+          Decide if BOM should be added to generated files<br />
+          <span class="comment">Byte Order Mark it is used to signal the file encoding. You can find out more about this <%= link_to 'here', 'https://www.icanlocalize.com/site/2017/03/the-byte-order-mark-bom-and-its-function-in-software-localization/', target: '_blank' %> and <%= link_to 'here', 'https://www.icanlocalize.com/site/tutorials/enabledisable-bom-option-for-software-localization-projects/', target: '_blank' %>.</span>
+        </td>
+    </tr>
+		<% if @text_resource.can_delete? %>
+			<tr>
+				<td>
+          <%= image_tag 'icons/RO-Mx1-24_circle-red-cancel.png', width: 24, height: 24, align: 'middle', alt: '' %>
+					<%= button_to('Delete this project', {:action=>'destroy'}, :method => :delete, 'data-confirm'=>'Are you sure you want to delete this project?') %>
+				</td>
+				<td>Delete this project. Note that deleting a project cannot be reversed. All translations will be lost.</td>
+			</tr>
+		<% end %>
+
+	</table>
+</div>
+<% end %>
+
+

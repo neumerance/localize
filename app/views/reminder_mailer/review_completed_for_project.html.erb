@@ -1,0 +1,24 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>
+  <%= @reviewer.full_name %> has completed review of your project <%= @project.name %> to <%= (@revision_languages.collect { |rl| rl.language.name }).join(', ') %>.
+</p>
+
+<p>
+  <% if @project.kind == TA_PROJECT %>To get the final and reviewed translation, open Translation Assistant and download the project.
+  <% else %>This project is done without Translation Assistant. You can download the completed translation from the chat with the translator.
+
+      <% link = url_for({:escape=>false, :only_path=>false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:revisions, :action=>:show, :id=>@revision.id, :project_id=>@project.id } ) %>
+      This is the project page: <%= link_to link, link %> <br /><br />
+
+      <% link = url_for({:escape=>false, :only_path=>false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:chats, :action=>:show, :id=>@chat.id, :revision_id=>@revision.id, :project_id=>@project.id } ) %>
+      Chat between you and the translator: <%= link_to link, link %>
+  <% end %>
+</p>
+
+<p>
+  Once you are satisfied with the work, remember to release the payment to the translator and the reviewer. <br />
+  Go to the project chat and click on: [ Accept the work and release payment to translator ]
+</p>
+
+<%= EMAIL_SIGNATURE %>

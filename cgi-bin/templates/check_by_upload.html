@@ -1,0 +1,58 @@
+<%page args="file_stats, sentence_count, word_count, unique_stats, unique_sentences, unique_words, from_lang, to_langs, scanned_links, warnings "/>
+
+<h3>Word count</h3>
+<p>Our scanner found <b>${len(scanned_links)} pages</b>. The following table shows the word count result from your website.</p>
+<p>For each page, we counted the total number of sentences and words. Then, we eliminated all duplicates.
+	  The final word count for your project includes only words in <b>unique sentences</b>.</p>
+
+% if len(warnings) > 0:
+<div style="margin: 1em; padding: 0.5em; border: 2px solid red;">
+<ul>
+% for warning in warnings:
+<li>${warning}</li>
+% endfor
+</ul></div>
+% endif
+
+<table width="100%" cellspacing="0" cellpadding="3" class="stats">
+<tr class="headerrow"><th>Page</th><th>Sentences unique (all)</th><th>Words unique (all)</th></tr>
+
+% for k in scanned_links:
+% if file_stats.has_key(k):
+<% v = file_stats[k] %>
+% if unique_stats.has_key(k):
+<%	uniques = unique_stats[k] %>
+% else:
+<%	uniques = [0,0] %>
+% endif
+<tr><td>${k}</td><td>${uniques[0]} (${v[0]})</th><td>${uniques[1]} (${v[1]})</td></tr>
+% endif
+% endfor
+
+<tr class="bottomrow"><td><b>Total</b></td><td><b>${unique_sentences}</b> (${sentence_count})</td><td><b>${unique_words}</b> (${word_count})</td></tr>
+</table>
+<br />
+
+<h3>Cost estimate</h3>
+
+% if word_count != unique_words:
+<p>The website includes ${word_count} words in ${sentence_count} sentences.
+Out of those, only <b>${unique_words}</b> words are found in <b>${unique_sentences}</b> unique sentences.</p>
+% else:
+<p>The website includes <b>${word_count}</b> words in <b>${sentence_count}</b> sentences.
+% endif
+
+<table width="100%" cellspacing="0" cellpadding="3" class="stats">
+<tr class="headerrow"><th>Language</th><th>Cost per word (USD)</th><th>Total cost for ${unique_words} words</th></tr>
+<% total_cost = 0 %>
+% for lang_name, lang_cost in to_langs.items():
+<% total_cost += unique_words*lang_cost %>
+<tr><td>${lang_name}</td><td>${lang_cost}</td><td>${unique_words*lang_cost} USD</td></tr>
+% endfor
+<tr class="bottomrow"><td><b>Total for entire project</b></td><td>&nbsp;</td><td><b>${total_cost} USD</b></td></tr>
+</table>
+<br />
+<hr />
+<h3>Get started</h3>
+<p>To get started with your translation project you need to set up an account.
+It's free and only takes a minute. <a class="tournavigation" href="/users/new?utype=Client">Sign up now</a></p>

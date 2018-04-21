@@ -1,0 +1,24 @@
+<% @bid = Bid.find_by_id(bid_info[BID_INFO_BID_ID]) %>
+<tr>
+	<td><%= bid_info[BID_INFO_LANG_NAME] %></td>
+	<td><%= language_translation_status(bid_info) %></td>
+  <td>
+    <div id="lang<%=bid_info[BID_INFO_LANG_ID]%>">
+			<%= render(:partial => "show_bid", :object => bid_info) %>
+      <% revision_language = @bid.try(:revision_language) %>
+    </div>
+    <% if @user.has_supporter_privileges? %>
+      <% if @bid and @bid.arbitration %>
+      <%= link_to('There is already an arbitration. See the status', {:controller=>:arbitrations, :action=>:show, :id=>@bid.arbitration.id}) %>
+      <% else %>
+        <%= link_to('start an arbitration process', {:controller=>:arbitrations, :action=>:new, :kind=>'bid', :bid_id=>bid_info[BID_INFO_BID_ID]}) unless (@bid&.revision&.cms_request&.status == CMS_REQUEST_DONE && @bid&.revision&.cms_request&.cms_target_language&.status >= 2) %>
+      <% end %>
+      <% if @bid and @bid.won and @bid.account %>
+        <br>
+        There are <%= to_dollars(@bid.account.balance) %> hold in escrow for this bid.
+            <%=link_to 'Money Account', controller: :finance, action: :account_history, id: @bid.account %>
+      <% end %>
+    <% end %>
+	</td>
+	<td><%= raw issues_for_bid(bid_info[BID_INFO_BID_ID], @user) %></td>
+</tr>

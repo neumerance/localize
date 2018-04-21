@@ -1,0 +1,102 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>You have successfully validated your email address.</p>
+
+<p>We need a few more details for you in order to fully complete your account setup and get you started translating.</p>
+
+<p>
+  When you sign in to your account, you will be presented with a list of steps, required to complete your account setup.
+  To access your account, go to <a href="http://www.icanlocalize.com">http://www.icanlocalize.com</a>
+  Enter your name and email and sign in.
+</p>
+
+
+<p>
+  1) Verify your identity <br />
+  We require that all users verify their identities in order to pay for work or get paid.
+  Doing this allow us to maintain a safe environment for all users.
+</p>
+
+<p>
+  When you click on the link to verify your identity, you will be asked to upload a scanned identity document.<br/>
+  To verify your identity, you can upload scans of:
+</p>
+<ul>
+  <li>Your passport</li>
+  <li>Your ID</li>
+  <li>Your driving license</li>
+</ul>
+
+<p>
+  Only a single document is needed. Make sure that the document includes your full name, as it appears in your account. You can edit your registered name via your account profile.
+  ** See the note below on getting scanned documents.
+</p>
+
+
+<p>
+  2) Resume <br />
+  It's important that different users, web-masters and translators, can see each other's background. Please describe yourself in your resume. This will let others know you a little better and make it easier to work with you.
+</p>
+
+
+<p>
+  3) Translation languages <br />
+  You should select languages that you can work in (translate from and to).
+</p>
+
+<p>In order to provide a professional and reliable service, we need to validate your translation skills in languages that you add. For each language that you add, you will need to supply a translation exam document.</p>
+
+<p>
+  We recommend sending a ATA (American Translators Association) exam results. You can find more information about that in: http://www.atanet.org/<br />
+  If you took a different translation exam, please also include a brief description of this exam.
+</p>
+
+<p>Only a single document is required per language</p>
+
+<p>
+  You will need to have this document scanned in a file on your PC. When you add a language to your profile, you will be asked to supply this file. <br />
+  ** See the note below on getting scanned documents.
+</p>
+
+<p>We will manually review every translation language you submit before qualifying you to work in it. This procedure is usually very fast.</p>
+
+
+<p>
+  4) Fields of expertise <br />
+  To assist you in finding work in areas where you have special expertise, you may select different categories. This information is optional and designed to help us offer you work in which you can leverage you experience better.
+</p>
+
+
+<p>
+  5) Basic training <br />
+  Before you work on live projects, we ask that you do a quick practice project. This will help familiarize you with the system. <br />
+  During your practice project, you're encouraged to ask questions regarding the translation software. We want you to feel as comfortable as you can using it.
+</p>
+
+<p>
+  After you select translation languages (you don't need to wait for us to review it to do a practice project), you can request a practice project. <br />
+  The system will create a small practice website project for you. It includes a few pages with very little text.
+</p>
+
+<p>
+  You don't have to complete translating the entire project. When you feel comfortable with the software, add a comment in the project chat and a support person will finalize the project - letting you start working on live project by paying customers.
+</p>
+
+<p>
+  If you need any help, don't hesitate to contact us.<br />
+  For fastest response, log in to your account, click on 'Support' and then open a new ticket. <br />
+  <% link = url_for({:escape => false, :only_path => false, :host => EMAIL_LINK_HOST, :protocol => EMAIL_LINK_PROTOCOL, :controller => :support}) %>
+  <%= link_to link, link %>
+</p>
+
+<p>
+  * Please note: this email is not monitored for replies. Use the support ticket system to get back to us.
+</p>
+
+<p>
+  ** Scanning files: If you have a scanner, you can scan files yourself. Otherwise, scanning services are provided by most printing shops and Internet cafes. Please check that scanned files are readable. <br />
+  You can find tips on how to scan documents here: <a href="http://docs.icanlocalize.com/?page_id=151">http://docs.icanlocalize.com/?page_id=151</a>
+</p>
+
+
+<%= EMAIL_SIGNATURE %>

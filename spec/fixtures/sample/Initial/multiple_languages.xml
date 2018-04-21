@@ -1,0 +1,1011 @@
+<TA_project created="1179839102.09" name="Onthego - home" revision_name="Initial" source_type="local">
+  <project_setup scan_for_directories="False" scan_for_files="False">
+    <common_root>C:\python\translation_assistant\sample_website</common_root>
+    <root_file>index.htm</root_file>
+  </project_setup><ta_source_files>
+    <included_files>
+      <file md5="a3657b0d29dc28bff18f59b1465d094b" sentences="50" title="Passport Photo and Photo Backup software by OnTheGoSoft" words="290">index.htm</file>
+    </included_files><excluded_files />
+    <support_files>
+
+      <file id="$SUPPORT_FILE_ID" type="archive">
+        <name>styles.css.gz</name>
+        <size>7625</size>
+        <zipped_size>1500</zipped_size>
+        <date>1177080016</date>
+        <included_file md5="9785c995d4fc96b2b4027daacc3ad486">styles.css</included_file>
+        <translation handle_translation="False" requires_translation="True" >
+          <text_data language="French">
+              <text rev_id="208" status="Complete" time="1213264211">Franche Puy</text>
+           </text_data>
+          <text_data language="Spanish">
+              <text rev_id="208" status="Modified" time="1213264211">Hola</text>
+           </text_data>
+          </translation>
+      </file>
+
+      <file id="99" type="archive">
+        <name>styles1.css.gz</name>
+        <size>7625</size>
+        <zipped_size>1500</zipped_size>
+        <date>1177080016</date>
+        <included_file md5="9785c995d4fc96b2b4027daacc3ad486">styles.css</included_file>
+        <translation handle_translation="False" requires_translation="True" />
+      </file>
+
+      <file id="100" type="archive">
+        <name>styles1.css.gz</name>
+        <size>7625</size>
+        <zipped_size>1500</zipped_size>
+        <date>1177080016</date>
+        <included_file md5="9785c995d4fc96b2b4027daacc3ad486">styles.css</included_file>
+        <translation handle_translation="False" requires_translation="False" />
+      </file>
+
+      <file id="101" type="archive">
+        <name>styles1.css.gz</name>
+        <size>7625</size>
+        <zipped_size>1500</zipped_size>
+        <date>1177080016</date>
+        <included_file md5="9785c995d4fc96b2b4027daacc3ad486">styles.css</included_file>
+      </file>
+
+    </support_files>
+  </ta_source_files><ta_buffer encoding="utf-8" format="1" original_language="English" source_file="index.htm" type="html">
+    <extractor>
+      <marked_file MD5="eb2df78ccd09197f58f51e11dc251f8e">789ce55adb72dbb819be8e9f0266dab49d58a2e5635c4bcc3856d2cdcc26eba995eef44a0392108935497001508af6625f67677ad767c88bf5c78147513e2476db6973e11026f0e33f7edf0fc2e3dde90f97b3bf5fbd45dfcd3e7c8fae3ebdf9fefd257206aefbe3e1a5eb4e6753f3e268b88f661c67824aca329cb8eedb8f8eb7338e659a783b088d638243f5008f92ca8478bf3e877f5758889c7189ae622619c259689fdee0e0a6c891600bb9c29c207f8d7ec86631f90bbb865fa9a5bf8e5d23c8084d89c42896321f909f0bba9c38972c93249383d93a270e0acc68e248f259ba4aab7314c4980b2227cf671773f53c87c13cc5fc86f0e78e159bd0ec06c59c2c268e90eb8488612084833849ca5fc484480749d8c50a57139aabf55c9c48c2332c493915e7794203acbce572215e7e4e1378a50c9a380d4bd19b84458ed54099f767d75dad56433027261153fe19062c757d98a6e40cf3387fbd247c72a07518bba5dfd5c067e1da6ab63b1820c972e4e32c23fc10f924a2191a0cbc1d1b23ec2704ad6828e389737ab2ef209ff110e43af088131a6513270087120ebe254992e330a459a45fabb1c87160c7deceb3b1e41eda79a6e4862826348a2112c72a2a6a22883a04f9118c186cf0fc60747a7c31754c868c691a21c1838943531c1101961604341f4674a134912d77392d95eb9dbc326342a58d0bea68a57a36dd50f3e4a0a5a799005342baec38c243fd1a4368d8e80e7d0fcf4e9de69646612dcf6e682d806dbd0d3bee72ee2daef499942cfd666f6e2414815256e9f40c6694ef32bca4914e79936f877a86d2bfa9fa41273196d6cb4653c7ebf37c3b5f8f5e7d53be8eb541a05190003c4d9c946405c81724218124a1f5e61567611148d1f0c5e69ad2f3d85670c85659c27038040472bca91d89b18bbd07c9f18bb511f1a6583f78b1c2421c4823e0d20c1e2c4414b9026e23e4da0cba425466c00f151aaf91b99d8c696405248dc98976523733b91de9d1fefeef5ba1eec4b21b6b90ac45c37f56b43112f400ac860043d297e5d53b0392e0f60919fbef99c25541d5532c5e68f4aaa2b215494a0f3ba5d09c7e26c948ffba92d99a7a7afcaaae5650a189e9ef46ef4edf9d754bd11bc72393571fc90a4d6944254e6c07706da9df26144cecdbf376f51a763da959a557bf21374f3672d33c58a6b1ca2e002ea40dab7d0d13ca9acc6d3735cf95074d69c2ac67fde89f73aa82e0b657cd458a9364986791e50368d1ea0ead6284d1e8b06684d108221b2bd388669ea57d1cb560b84169b5ea8018d5c044bae5c3837d53b3da23dc3eb5a273ac9cdccdaaca21f9bc8db8fd9ea8e6d42c38e36b44255a7042762ba3cf8e6a9b0f5e6ddaa6ac29ed6b72b689e58334bfa5d50b223af069e62a0ec8d7af73cea249d947bfd4517a916048a9fdadb40f0b6b4b8141c0d2c7b3d1d65c5fc8bac62a502f337b06adf3e05ae59e55fb238376382528a1292d1b7eb5c0dbf0e783c4feee6c78768c3e5d4fb788eca8bf29bf66a30367eb2e3551abbefcb580c601f88d869323c703a813faa4039d122bb28000c3ca4e0b506a51568941eb121034959683f8c0bb1500fa7320038d1b4990323863d16cc186c3616515e69cad606137f22f325fe4e7b76eda3ed7356c036d2bc50f8db84b4ee05ca43da22109ad59c11194242a25a39c06b2e0a4ecb5606529246f854048908279d9a24d999285324240b45244a071e12d1847b8923d760b6f0f920ca22b088257efa7af1bbd3764211418383fdd433f5219a32a289da3abda285079d7b506962f8810fa548c7e2e2099e4bab6ac1227e82fa4b2730f62815846504aa1f9224363b7cfbd367a764fcf49c220b5f4b6c029084b14b3541b05e23012311c9bac0bf3fb79703b9296bd2bda0c35cad86a4f7b4010022aac10c142c3a972904f763774f03928413057e7e4c4a933847f05076a12f3f5e7833b1950cd3553dde6ba4d0e6c7c93780a0a7c02e6f3ff5f984f85e6a509cdff04ef8d8e5088d702418ae3e41179efe03f4b7cc74f4b7c1b55fff4b4b7b16513256ea7bcab3e4e08edf1470b4646b0628f88e3f481c407f22578de30291c5d0a8d2c463044313151811a67294a9810eaf36a8a6f14695c4edde9dfa676fb610f5e7d029a947191fa19a609a4290303687093ac01ed310f627809f4070f7409ff0701d491920bf3422046a0b6054ba0b284a2a5908a1b9d1295744e20efc992682996b34b0edf43ab986435a5c394742b3536bf22afb040211190cc6a154331ec08fe48308f08cac014adcec2eeb75719a47215a88b26eb7a9bee56db11b766c84e5eb4a851412d9502b2d034111cad18bf414072ab4dae7e449e1431b4093773e838ee62c97a2660c69c062c6b30e3b57e89ae685021e9490349f5f3bf9515cda97b1bb988af3e105eb2344f882490168f4c8d8f451c5d0dbf1ee71f8aed10cea704f76eaa3e39b47737ac93fc7658bf28244bb1a401f86c0d50667a7a0362ead44152804cd5db2bb89628050a205944b8f6db8af8a8c8f5e7e007a2fd859418703764bfc019a6c63185747a4701a92a635648d8675d1e67442fb6ebfd5189442ace0aa6413541a57227c016d47f286c7b1fabab3925dccc5f0074c3cbd2c064bdbb059d6b8722dcf25948146f891ae885ba47b0f60049590fbeb71efc507990f14ab872a40f7116d6b1d039e65c4d149a3174244074c37e348b09277f107070b1ccc2141d121416e6928e98d4b6111d545b017883dac02779ae5c5fd9bdd76b409fc7db107ff797daaffbf8d9f725bd5c6aae55d4e7e2ceca568dea81fa62bf60d05af08dfbc2be3b9932ec555d0d5d6892ecb589aa245376e6271aa0e6f0815f175a92768c6bb709bcb36fbb8f5ab743c47d24a8bb6131cff0d208f82b11504201b9b76334083b9eba1fbeb7d250c429b6565fc3e0036e34aaaab91101a7b934b8da3888458c450919606857d750aa429fc60ad5e365c39f44ebf6fb27bcc4468a4a27f354c9dd326f5e409f28d104399f2e06c7274767fbc78391736e369871080ce17ffcd379254e67d5db2c4aa8889b860e7aad0e09b8694a0a2982b8eba9fe150b0e2bde719c7df90dd38d80f4af010672bcb7505c5ffec992fb2df1d5365790c745547cf9876847a2c2cc1701cbd7e7cdbf7e40d0051d0ee0c789450f7db3d628cef2ee55d5afb9f31fbbe60f3176fe051074592d</marked_file>
+      <paragraph_indexes count="60">90 150 636 712 814 889 894 906 967 1046 1301 1314 1345 1386 1417 1447 1478 1516 1547 1585 2147 2178 2501 2636 2641 2668 2767 2856 2865 2878 3006 3084 3093 3106 3189 3207 3276 3290 3378 3437 3522 3590 3599 3657 3678 3726 3768 3829 3834 3974 3983 4049 4090 4181 4295 4431 4436 4454 4553 4642 4651 4664 4790 4868 4877 4890 4973 4991 5060 5075 5163 5222 5305 5373 5382 5436 5457 5511 5553 5631 5636 5793 5802 5896 5909 6013 6125 6245 6250 6268 6368 6461 6470 6483 6566 6587 6663 6723 6804 6872 6881 6931 6952 7029 7071 7131 7136 7231 7240 7387 7392 7501 7506 7520 7743 8165 8341 8559 8572 8606 </paragraph_indexes>
+      <support_files>
+        <file type="todo">images/bluebottom.gif</file>
+        <file type="todo">images/bluetop.gif</file>
+        <file type="todo">images/buy.gif</file>
+        <file type="todo">images/download.gif</file>
+        <file type="todo">images/logo1.gif</file>
+        <file type="todo">images/next.gif</file>
+        <file type="todo">images/photobackup/photo_backup_small.png</file>
+        <file type="todo">images/printer/passport_photo_small.png</file>
+        <file type="todo">images/shrink_pic/sp_icon.png</file>
+        <file type="todo">styles.css</file>
+      </support_files>
+    </extractor><translation>
+      <languages>
+        <language>Danish</language>
+        <language>Portuguese</language>
+      </languages><sentences count="60">
+        <ta_sentence do_translation="yes" encoding="utf-8" format="1" id="1" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish Danish Danish Danish Danish GoSoft</text>
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese Portuguese Portuguese Portuguese OnTheGoSoft</text>
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Passport Photo and Photo Backup software by OnTheGoSoft</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="2" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Soft</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">OnTheGoSoft</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">OnTheGoSoft</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/bluetop.gif" />
+              <attr name="alt" val="OnTheGoSoft" />
+              <attr name="width" val="760" />
+              <attr name="height" val="5" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="3" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Soft</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">OnTheGoSoft</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">OnTheGoSoft</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/logo1.gif" />
+              <attr name="alt" val="OnTheGoSoft" />
+              <attr name="width" val="397" />
+              <attr name="height" val="62" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="4" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text rev_id="9" status="New" time="1179841161" />
+          </text_data><text_data language="Portuguese">
+            <text rev_id="9" status="New" time="1179841161" />
+          </text_data><text_data language="English">
+            <text rev_id="9" status="New" time="1179841129" />
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="5" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Soft</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">OnTheGoSoft</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">OnTheGoSoft</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/bluebottom.gif" />
+              <attr name="alt" val="OnTheGoSoft" />
+              <attr name="width" val="760" />
+              <attr name="height" val="5" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="6" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish s</text>
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Products</text>
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Products</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="7" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish ds</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Downloads</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Downloads</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="download.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="8" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Buy</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Buy</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Buy</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="buy.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="9" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Contact</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Contact</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Contact</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="contact.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="10" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Support</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Support</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Support</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="support.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="11" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text rev_id="9" status="Modified" time="1179841161">Danish Danish Danish e</text>
+          </text_data><text_data language="Portuguese">
+            <text rev_id="9" status="Modified" time="1179841161">Portuguese to Software</text>
+          </text_data><text_data language="English">
+            <text rev_id="9" status="New" time="1179841129">New Digital Photo Software</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="12" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish  Photo</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese to</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Pasport Photo</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/printer/passport_photo_small.png" />
+              <attr name="alt" val="Pasport Photo" />
+              <attr name="width" val="113" />
+              <attr name="height" val="119" />
+              <attr name="hspace" val="5" />
+              <attr name="vspace" val="10" />
+              <attr name="border" val="0" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="13" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text rev_id="9" status="New" time="1179841161"> </text>
+            <marker end="0" id="-1" start="-1" />
+          </text_data><text_data language="Portuguese">
+            <text rev_id="9" status="New" time="1179841161"> </text>
+            <marker end="0" id="-1" start="-1" />
+          </text_data><text_data language="English">
+            <text rev_id="9" status="New" time="1179841129"> </text>
+            <marker end="0" id="-1" start="-1" />
+          </text_data><marker_def id="-1" type="html">
+            <html_marker tag="a" />
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="14" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish free!</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese !</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Try it free!</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/download.gif" />
+              <attr name="alt" val="Try it free!" />
+              <attr name="width" val="94" />
+              <attr name="height" val="28" />
+              <attr name="border" val="0" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="15" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text rev_id="9" status="New" time="1179841161" />
+          </text_data><text_data language="Portuguese">
+            <text rev_id="9" status="New" time="1179841161" />
+          </text_data><text_data language="English">
+            <text rev_id="9" status="New" time="1179841129" />
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="16" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Buy it</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Buy it</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Buy it</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/buy.gif" />
+              <attr name="alt" val="Buy it" />
+              <attr name="width" val="94" />
+              <attr name="height" val="28" />
+              <attr name="border" val="0" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="17" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text rev_id="9" status="New" time="1179841161" />
+          </text_data><text_data language="Portuguese">
+            <text rev_id="9" status="New" time="1179841161" />
+          </text_data><text_data language="English">
+            <text rev_id="9" status="New" time="1179841129" />
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="18" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish  limit</text>
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese it</text>
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">No time limit</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="19" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish SD</text>
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">$9.95 USD</text>
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">$9.95 USD</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="20" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish s</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese nouncements</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">News and announcements</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="blog/?sectionid=4" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="21" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish fo...</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese .</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">more info...</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/next.gif" />
+              <attr name="alt" val="more info..." />
+              <attr name="class" val="arrowimg" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="22" original_language="English">
+          <space_before>&#160;</space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish t Photo</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese oto</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Passport Photo</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="passport_photo.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="23" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish Danish Danish Danish s</text>
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese Portuguese Portuguese t pictures</text>
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Create and print your own passport pictures</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="24" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish Danish Danish Danish  or ID?</text>
+            <marker end="-1" id="0" start="19" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese Portuguese Portuguese Portuguese r ID?</text>
+            <marker end="-1" id="0" start="19" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Do you need photos for a passport, license or ID?</text>
+            <marker end="-1" id="0" start="19" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="u" />
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="25" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish ute.</text>
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese inute.</text>
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">No problem, With Passport Photo you can create and print professional quality passport size pictures, in one minute.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="26" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish Danish Danish Danish Danish op.</text>
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese Portuguese Portuguese Portuguese  a shop.</text>
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Passport Photo allows printing at home or in a shop.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="27" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish Danish Danish Danish Danish can be!</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese Portuguese Portuguese Portuguese Portuguese !</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Download Passport Photo now, and see how easy it can be!</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="pp_download.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="28" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish ackup</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese p</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Photo Backup</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/photobackup/photo_backup_small.png" />
+              <attr name="alt" val="Photo Backup" />
+              <attr name="width" val="113" />
+              <attr name="height" val="119" />
+              <attr name="hspace" val="5" />
+              <attr name="vspace" val="10" />
+              <attr name="border" val="0" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="29" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text rev_id="9" status="New" time="1179841161" />
+            <marker end="0" id="-1" start="-1" />
+          </text_data><text_data language="Portuguese">
+            <text rev_id="9" status="New" time="1179841161" />
+            <marker end="0" id="-1" start="-1" />
+          </text_data><text_data language="English">
+            <text rev_id="9" status="New" time="1179841129" />
+            <marker end="0" id="-1" start="-1" />
+          </text_data><marker_def id="-1" type="html">
+            <html_marker tag="a" />
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="30" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish free!</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese !</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Try it free!</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/download.gif" />
+              <attr name="alt" val="Try it free!" />
+              <attr name="width" val="94" />
+              <attr name="height" val="28" />
+              <attr name="border" val="0" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="31" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text rev_id="9" status="New" time="1179841161" />
+          </text_data><text_data language="Portuguese">
+            <text rev_id="9" status="New" time="1179841161" />
+          </text_data><text_data language="English">
+            <text rev_id="9" status="New" time="1179841129" />
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="32" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Buy it</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Buy it</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Buy it</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/buy.gif" />
+              <attr name="alt" val="Buy it" />
+              <attr name="width" val="94" />
+              <attr name="height" val="28" />
+              <attr name="border" val="0" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="33" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text rev_id="9" status="New" time="1179841161" />
+          </text_data><text_data language="Portuguese">
+            <text rev_id="9" status="New" time="1179841161" />
+          </text_data><text_data language="English">
+            <text rev_id="9" status="New" time="1179841129" />
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="34" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish  trial</text>
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese al</text>
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">14 days trial</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="35" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish USD</text>
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">$29.95 USD</text>
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">$29.95 USD</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="36" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish s</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese nouncements</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">News and announcements</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="blog/?sectionid=5" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="37" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish fo...</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese .</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">more info...</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/next.gif" />
+              <attr name="alt" val="more info..." />
+              <attr name="class" val="arrowimg" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="38" original_language="English">
+          <space_before>&#160;</space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish ackup</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese p</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Photo Backup</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="photo_backup.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="39" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish Danish Danish Danish program</text>
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese Portuguese Portuguese Portuguese ogram</text>
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Professional quality digital photo backup program</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="40" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish up.</text>
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese backup.</text>
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Protect your valuable photo collection from loss by making CD/DVD backup.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="41" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish m.</text>
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese em.</text>
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Use thumbnails to quickly search the archive according to dates, folders or disks and retrieve the photos you need, when you need them.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="42" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish ly.</text>
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese ly.</text>
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Photo Backup was designed to handle large numbers of photos, quickly and easily.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="43" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish Danish Danish Danish Danish Danish  flow.</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese Portuguese Portuguese Portuguese Portuguese k flow.</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Download Photo Backup and see how it fits into your work flow.</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="pb_download.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="44" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Pic</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Shrink Pic</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Shrink Pic</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/shrink_pic/sp_icon.png" />
+              <attr name="alt" val="Shrink Pic" />
+              <attr name="width" val="64" />
+              <attr name="height" val="64" />
+              <attr name="hspace" val="5" />
+              <attr name="vspace" val="10" />
+              <attr name="border" val="0" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="45" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text rev_id="9" status="New" time="1179841161" />
+            <marker end="0" id="-1" start="-1" />
+          </text_data><text_data language="Portuguese">
+            <text rev_id="9" status="New" time="1179841161" />
+            <marker end="0" id="-1" start="-1" />
+          </text_data><text_data language="English">
+            <text rev_id="9" status="New" time="1179841129" />
+            <marker end="0" id="-1" start="-1" />
+          </text_data><marker_def id="-1" type="html">
+            <html_marker tag="a" />
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="46" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish e!</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese free!</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Completely free!</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/download.gif" />
+              <attr name="alt" val="Completely free!" />
+              <attr name="width" val="94" />
+              <attr name="height" val="28" />
+              <attr name="border" val="0" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="47" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text rev_id="9" status="New" time="1179841161" />
+          </text_data><text_data language="Portuguese">
+            <text rev_id="9" status="New" time="1179841161" />
+          </text_data><text_data language="English">
+            <text rev_id="9" status="New" time="1179841129" />
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="48" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish e!</text>
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese free!</text>
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Completely free!</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="49" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish s</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese nouncements</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">News and announcements</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="blog/?sectionid=10" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="50" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish fo...</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese .</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">more info...</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="img">
+              <attr name="src" val="images/next.gif" />
+              <attr name="alt" val="more info..." />
+              <attr name="class" val="arrowimg" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="51" original_language="English">
+          <space_before>&#160;</space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Pic</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Shrink Pic</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Shrink Pic</text>
+            <marker end="-1" id="0" start="0" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="shrink_pic.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="52" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish ds</text>
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese ploads</text>
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Automatically resize photos for email, instant messenger and web uploads</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="53" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish Danish Danish Danish Danish blems.</text>
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese Portuguese Portuguese Portuguese y problems.</text>
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Attach dozens of photos to emails without any problems.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="54" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish tly!</text>
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese tly!</text>
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Upload to your blog or website in seconds, and share with your friends instantly!</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="55" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish r you.</text>
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese you.</text>
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Shrink Pic automatically detects when you send photos by email, Instant Messenger or web browser and compresses them for you.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="56" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish tos.</text>
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese photos.</text>
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">There's no need to make duplicates and resize - it all happens instantly, when you send photos.</text>
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="57" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text rev_id="9" status="New" time="1179841161" />
+          </text_data><text_data language="Portuguese">
+            <text rev_id="9" status="New" time="1179841161" />
+          </text_data><text_data language="English">
+            <text rev_id="9" status="New" time="1179841129" />
+          </text_data>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="58" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish Danish p</text>
+            <marker end="-1" id="0" start="0" />
+            <marker end="-1" id="1" start="15" />
+            <marker end="-1" id="2" start="36" />
+            <marker end="-1" id="3" start="55" />
+            <marker end="-1" id="4" start="72" />
+            <marker end="-1" id="5" start="88" />
+            <marker end="-1" id="6" start="99" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese Portuguese SiteMap</text>
+            <marker end="-1" id="0" start="0" />
+            <marker end="-1" id="1" start="15" />
+            <marker end="-1" id="2" start="36" />
+            <marker end="-1" id="3" start="55" />
+            <marker end="-1" id="4" start="72" />
+            <marker end="-1" id="5" start="88" />
+            <marker end="-1" id="6" start="99" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">Products&#160;&#160; - &#160;&#160;Passport Photo&#160;&#160; - &#160;&#160;Photo Backup&#160;&#160; - &#160;&#160;Shrink Pic&#160;&#160; - &#160;&#160;Resources&#160;&#160; - &#160;&#160;Blog&#160;&#160; - &#160;&#160;SiteMap</text>
+            <marker end="-1" id="0" start="0" />
+            <marker end="-1" id="1" start="15" />
+            <marker end="-1" id="2" start="36" />
+            <marker end="-1" id="3" start="55" />
+            <marker end="-1" id="4" start="72" />
+            <marker end="-1" id="5" start="88" />
+            <marker end="-1" id="6" start="99" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="./" />
+            </html_marker>
+          </marker_def><marker_def id="1" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="passport_photo.htm" />
+            </html_marker>
+          </marker_def><marker_def id="2" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="photo_backup.htm" />
+            </html_marker>
+          </marker_def><marker_def id="3" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="shrink_pic.htm" />
+            </html_marker>
+          </marker_def><marker_def id="4" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="links_nav.htm" />
+            </html_marker>
+          </marker_def><marker_def id="5" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="blog/" />
+            </html_marker>
+          </marker_def><marker_def id="6" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="sitemap.htm" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="59" original_language="English">
+          <space_before />
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish Danish Danish Danish Danish Danish &#234;s</text>
+            <marker end="-1" id="0" start="12" />
+            <marker end="-1" id="1" start="24" />
+            <marker end="-1" id="2" start="37" />
+            <marker end="-1" id="3" start="49" />
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese Portuguese Portuguese Portuguese Portuguese u&#234;s</text>
+            <marker end="-1" id="0" start="12" />
+            <marker end="-1" id="1" start="24" />
+            <marker end="-1" id="2" start="37" />
+            <marker end="-1" id="3" start="49" />
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">English&#160;&#160;-&#160;&#160;Deutsch&#160;&#160;-&#160;&#160;Fran&#231;ais&#160;&#160;-&#160;&#160;Espa&#241;ol&#160;&#160;-&#160;&#160;Portugu&#234;s</text>
+            <marker end="-1" id="0" start="12" />
+            <marker end="-1" id="1" start="24" />
+            <marker end="-1" id="2" start="37" />
+            <marker end="-1" id="3" start="49" />
+          </text_data><marker_def id="0" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="de/" />
+            </html_marker>
+          </marker_def><marker_def id="1" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="fr/" />
+            </html_marker>
+          </marker_def><marker_def id="2" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="es/" />
+            </html_marker>
+          </marker_def><marker_def id="3" type="html">
+            <html_marker tag="a">
+              <attr name="href" val="br/" />
+            </html_marker>
+          </marker_def>
+        </ta_sentence><ta_sentence do_translation="yes" encoding="utf-8" format="1" id="60" original_language="English">
+          <space_before> </space_before>
+          <space_after />
+          <text_data language="Danish">
+            <text status="Complete" time="1179839407">Danish Danish Danish 06</text>
+          </text_data><text_data language="Portuguese">
+            <text status="Complete" time="1179839407">Portuguese Portuguese 6</text>
+          </text_data><text_data language="English">
+            <text rev_id="$REV_ID" status="Complete" time="1179839407">&#169; OnTheGoSoft 2003-2006</text>
+          </text_data>
+        </ta_sentence>
+      </sentences>
+    </translation>
+  </ta_buffer>
+</TA_project>

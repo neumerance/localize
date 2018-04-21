@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="76-d43cdc61e9b38c375db7f93ebb547810" source-language="en" target-language="it" datatype="plaintext">		<header><reference><external-file href="http://valentinav.host/en/simple-test-markers/"/></reference></header>
+    <body>
+      <trans-unit resname="title" restype="string" datatype="html" id="title">
+        <source><![CDATA[Simple test few markers]]></source>
+        <target><![CDATA[Test semplice pochi marker]]></target>
+      </trans-unit>
+      <trans-unit resname="body" restype="string" datatype="html" id="body">
+        <source><![CDATA[The <b>white-breasted nuthatch</b> (<i>Sitta carolinensis</i>) is a small <strong>songbird</strong> of the <em>nuthatch</em> family which breeds in old-growth woodland across much of temperate North America. It is a stocky bird, with a large head, short tail, powerful bill, and strong feet. The upperparts are pale blue-gray, and the face and underparts are white.]]></source>
+        <target><![CDATA[Il <b>picchio muratore pettobianco</b> (<i>Sitta carolinensis</i>) è un <strong>uccello</strong> appartenente alla famiglia <em>Sittidae</em> che vive nelle foreste decidue e miste del Nord America.  L'uccello adulto è lungo 155 millimetri. Il mantello è blu-grigio opalescente.  La cima del capo dell'adulto è di colore nero, mentre le guance e la fronte sono bianche.<br class="xliff-newline" />]]></target>
+      </trans-unit>
+
+    </body>
+  </file>
+</xliff>

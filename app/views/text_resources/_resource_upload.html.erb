@@ -1,0 +1,15 @@
+
+  <tr id="<%= 'resource_upload_%d'%resource_upload.id %>">
+    <td><p><%= link_to(h(resource_upload.orig_filename),{:controller=>:resource_uploads, :action=>:show, :text_resource_id=>@text_resource.id, :id=>resource_upload.id}) %><br />
+      <span class="comment"><%= resource_upload.resource_upload_format.resource_format.description %><br />
+      <%= disp_date(resource_upload.chgtime) %></span></p>
+      <% if [TEXT_RESOURCE_PURGE_CHOOSE_FILES, TEXT_RESOURCE_PURGE_FILES_CHOSEN].include?(@text_resource.purge_step) %>
+        <%= button_to('Keep strings in this file', {:controller=>:resource_uploads, :action=>:apply_to_context, :text_resource_id=>@text_resource.id, :id=>resource_upload.id}) %>
+      <% end %>
+      <%= button_to('Remove file', {:controller=>:resource_uploads, :action=>:destroy, :text_resource_id=>@text_resource.id, :id=>resource_upload.id}, 'data-confirm'=>'Removing the uploaded file will NOT delete the strings. Are you sure you want to remove this file?', :method=>'delete')  %>
+    </td>
+
+    <td><%= upload_operations(resource_upload) %></td>
+
+    <td><%= list_downloads_for_upload(resource_upload) %></td>
+  </tr>

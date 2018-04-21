@@ -1,0 +1,169 @@
+<br/>
+
+<%= render 'websites/test_project_alert' %>
+
+<table style="width:100%;">
+  <tr>
+    <td style="vertical-align: top; width:50%; padding-right:5px;">
+      <% if @user == @website_translation_contract.translator %>
+          <div class="infobox"><h4>Project overview</h4>
+            <table cellspacing="5">
+              <tr>
+                <td valign="top">Project:</td>
+                <td><%= link_to(@website.name, @website.url, :target => '_blank') %></td>
+              </tr>
+              <tr>
+                <td valign="top">Client:</td>
+                <td><%= user_link(@website.client) %></td>
+              </tr>
+              <% if @website_translation_offer.managed_work && (@website_translation_offer.managed_work.active == MANAGED_WORK_ACTIVE) && @website_translation_offer.managed_work.translator %>
+                  <tr>
+                    <td>Reviewer:</td>
+                    <td><%= user_link(@website_translation_offer.managed_work.translator) %></td>
+                  </tr>
+              <% end %>
+              <tr>
+                <td valign="top">Description:</td>
+                <td><%= pre_format(@website.description) %></td>
+              </tr>
+              <tr>
+                <td>Languages:</td>
+                <td><b>From <%= @website_translation_offer.from_language.name %>
+                  to <%= @website_translation_offer.to_language.name %></b></td>
+              </tr>
+            </table>
+          </div>
+      <% elsif @user.has_supporter_privileges? || (@user.has_client_privileges?) %>
+          <div class="infobox"><h4><%= _('Translator overview') %></h4>
+            <table cellspacing="5">
+              <tr>
+                <td valign="top"><%= _('Translator:') %></td>
+                <td><%= user_link(@website_translation_contract.translator) %> &nbsp;
+                  <span class="comment"><%= _("(click on the translator's name to view resume)") %></span></td>
+              </tr>
+              <tr>
+                <td valign="top"><%= _('Nationality:') %></td>
+                <td><%= !@website_translation_contract.translator.country.blank? ? @website_translation_contract.translator.country.nname : 'Unknown' %></td>
+              </tr>
+            </table>
+          </div>
+      <% end %>
+
+      <% if !@website_translation_offer.sample_text.blank? %>
+          <br/>
+          <div class="infobox"><h4>Sample text by the client</h4>
+            <%= pre_format(@website_translation_offer.sample_text) %>
+          </div>
+          <p class="comment">Although not required, translating this sample text will most likely help your chances to
+            win this project.</p>
+      <% end %>
+    </td>
+
+    <td style="vertical-align: top; width:50%; padding-left:5px;">
+      <div class="infobox"><h4><%= _('Application status') %></h4>
+        <% if @website_translation_offer.automatic_translator_assignment %>
+            <%# --------- Automatic translator assignment ---------- %>
+            <%# For autoassign language pairs, a WebsiteTranslationContract can
+          only exist if its associated translator was assigned to its associated
+          language pair. %>
+            <% if @user == @website_translation_contract.translator %>
+                <%# User is the assigned translator %>
+                <p>You were automatically assigned to this language pair.<BR><BR>
+                  <span class="comment">The following rate was set in the "Minimum translation rate per word (USD)"
+              column of the "Auto-assignment" table in your <%= link_to 'profile page', user_path(@user) %>.</span></p>
+            <% else %>
+                <%# User is a client or supporter %>
+                <p><%= accepted_translator_names_and_chat_links(@website_translation_offer, false) %> was
+                  automatically assigned to this language pair.</p>
+            <% end %>
+            <p><b>Rate: <%= @website_translation_contract.display_payment(@user).html_safe %></b></p>
+
+        <% else %>
+            <%# ----------  Manual translator assignment ----------  %>
+            <p><%= @status_text.html_safe %></p>
+            <% if (@user == @website_translation_contract.translator) && [TRANSLATION_CONTRACT_NOT_REQUESTED, TRANSLATION_CONTRACT_REQUESTED, TRANSLATION_CONTRACT_DECLINED].include?(@website_translation_contract.status) %>
+                <% if @website.project_kind == TEST_CMS_WEBSITE %>
+                    <p>You can't bid on this project because it is marked as a test project</p>
+                <% else %>
+                    <% if @website_translation_contract.status == TRANSLATION_CONTRACT_NOT_REQUESTED %>
+                        <%= form_for(:website_translation_contract, :url => {:action => :update_application_status}) do |f| %>
+                            <% if @user.private_translator? %>
+                                <p>You are a <b>Private translator</b>, thus your payment will be handled outside of the
+                                  system</p>
+                                <%= f.hidden_field(:amount, :value => 0) %>
+                            <% else %>
+                                <p><b>Your rate per word</b>: <%= money_field_tag_for(f, :amount) %><br/>
+                                  <span class="comment">Enter the per-word rate that you are asking for this project. Remember that our 20% commission is deduced from this payment.</span>
+                                </p>
+                            <% end %>
+                            <%= hidden_field_tag(:status, TRANSLATION_CONTRACT_REQUESTED) %>
+                            <p><%= submit_tag('Apply for this work', data: {disable_with: 'Apply for this work'}) %></p>
+                        <% end %>
+                    <% else %>
+                        <%= form_for(:website_translation_contract, :url => {:action => :update_application_status}) do |f| %>
+                            <% if @user.private_translator? %>
+                                <p>You are a <b>Private translator</b>, thus your payment will be handled outside of the
+                                  system</p>
+                                <%= f.hidden_field(:amount, :value => 0) %>
+                            <% else %>
+                                <p><b>Your rate per word</b>: <%= money_field_tag_for(f, :amount) %><br/>
+                                  <span class="comment">Enter the per-word rate that you are asking for this project. Remember that our 20% commission is deduced from this payment.</span>
+                                </p>
+                            <% end %>
+                            <% unless @user.private_translator? %>
+                                <p><%= submit_tag('Update bid', data: {disable_with: 'Update bid'}) %></p>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                <% end %>
+            <% else %>
+                <% if @website_translation_contract.translator.private_translator? %>
+                    <p><%= @website_translation_contract.translator.nickname %> is your private translator, and the
+                      payment should be handled outside of the system</p>
+                <% else %>
+                    <p><%= _('Rate:') %> <b><%= @website_translation_contract.display_payment(@user).html_safe %></b>
+                    </p>
+                <% end %>
+            <% end %>
+            <br/>
+            <% if @user.has_supporter_privileges? or (@user.has_client_privileges? and @user.can_modify?(@website)) %>
+                <% @status_actions.each do |action| %>
+                    <%
+                      confirmation_message = _('Are you sure you want to %s?')%action[0]
+                      confirmation_message = bid_acceptance_confirmation_message(@website_translation_contract, @minimum_bid_amount, @maximum_bid_amount, confirmation_message) if action[1] == TRANSLATION_CONTRACT_ACCEPTED
+                    %>
+                    <%= button_to(action[0], {:action => :update_application_status, :status => action[1]}, 'data-confirm' => confirmation_message) %>
+                    <br/>
+                <% end %>
+            <% end %>
+            </div>
+        <% end # end if @website_translation_offer.automatic_translator_assignment %>
+        <% if @user.has_supporter_privileges? %>
+            <%= link_to resign_from_website_website_website_translation_offer_path(
+                            id: @website_translation_offer.id,
+                            website_id: @website.id,
+                            translator_id: @website_translation_contract.translator.id
+                        ), class: 'btn btn-xs btn-default grey-text' do %>
+                Resign <strong><%= @website_translation_contract.translator.nickname %></strong> from this project
+            <% end %>
+        <% end %>
+        </td>
+  </tr>
+</table>
+<!-- div class="inter_tab_spacer"></div -->
+
+
+<h3>Project status</h3>
+<p><%= link_to(_('View translation progress in this language pair'), {:controller => :website_translation_offers, :action => :report, :website_id => @website.id, :id => @website_translation_offer.id}) %></p>
+<br/>
+
+<%= show_messages(@website_translation_contract.messages) %>
+
+<% if flash[:ack] %>
+    <div class="errorExplanation">
+      <%= pre_format(flash[:ack]) %>
+    </div>
+<% end %>
+<% if @user.has_supporter_privileges? || (@user.type == 'Translator') || (@user.has_client_privileges? and @user.can_modify?(@website)) %>
+    <%= show_reply(@website_translation_contract.messages.length > 0, @for_who) %>
+<% end %>

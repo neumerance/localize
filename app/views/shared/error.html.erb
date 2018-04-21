@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <title>We're sorry, but something went wrong</title>
+  <style type="text/css">
+      body { background-color: #fff; color: #666; font-family: arial, sans-serif; }
+      div.dialog {
+          width: 35em;
+          padding: 0 4em;
+          margin: 4em auto 0 auto;
+          border: 1px solid #ccc;
+          border-right-color: #999;
+          border-bottom-color: #999;
+      }
+      h1 { text-align: center; font-size: 100%; color: #f00; line-height: 1.5em; }
+  </style>
+</head>
+
+<body>
+<!-- This file lives in public/500.html -->
+<div class="dialog">
+  <h1><%= @message['header']  %></h1>
+  <p><%=  @message['additional_desc'] %></p>
+
+  <p>Please help us fix the problem.</p>
+  <ol><li>Copy the URL of this page.</li>
+    <li>Create a new <a href="/support/new">support ticket</a> in our system.</li>
+     <li>
+        Create a new 
+        <%= link_to 'support ticket', {
+              :controller=>'support', 
+              :action=>:new, 
+              :dep_id => 4, 
+              :subject=>"(insert title here) CODE: #EE#{@user_click ? @user_click.id : '0012'}"} %>
+         in our system.</li>
+    <li>Tell us which page caused this problem and what you were doing before.</li>
+  </ol>
+  <p>We appreciate your help and will handle this as soon as possible.</p>
+
+  <p style="text-align: center;">
+    <strong><%= _('Need help?') %></strong> <%= (_('Create a %s, call <b>+1-(702) 997-3025</b> or use <b>Skype</b>')%link_to('<strong>'+_('support ticket')+'</strong>', {:controller => :support, :action => :new})).html_safe %>
+    <a title="icanlocalize" href="skype:icanlocalize?call">
+      <%= image_tag 'call_blue_transparent_34x34.png', class: '', width: 34, height: 34, alt: 'ICanLocalize', style: 'vertical-align: middle; border: medium none' %>
+    </a>
+  </p>
+</div>
+</body>
+</html>

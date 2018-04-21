@@ -1,0 +1,6 @@
+Dear <%= @translator.nickname%>,
+
+Client added a Keyword localization job to project "<%= @keyword_project.owner.project.kind_of?(Revision) ? @keyword_project.owner.project.project.name : @keyword_project.owner.project.name %>".
+Please follow <%= link_to "this link", translate_keyword_project_url(@keyword_project)%> to handle it.
+
+<%= EMAIL_SIGNATURE %>

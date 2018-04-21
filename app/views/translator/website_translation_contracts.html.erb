@@ -1,0 +1,12 @@
+<% if @website_translation_contracts.length > 0 %>
+	<a name="your_recurring_website_translation_offers"></a>
+	<%= infotab_top('Your recurring translations', "Recurring projects you already applied to") %>
+	<%= infotab_header(['Project', 'Payment per word', 'Status']) %>
+	<%= render(:partial=>'website_translation_contract', :collection=>@website_translation_contracts) %>
+	</table>
+<% else %>
+	<p>No recurring translation work assigned to you yet.</p>
+<% end -%>
+<div class="inter_tab_spacer"></div>
+<%= link_to('&laquo; Home'.html_safe, {:action=>:index}) %>
+

@@ -1,0 +1,117 @@
+<% if (Rails.env != 'production') && (@revision.versions.length == 1) && (@user[:type] == 'Translator') %>
+  <div class="red_message" style="margin: 2em;">
+    <b><%=Rails.env %> MODE:</b>
+    <%= button_to('Complete this project', {:controller=>:versions, :action=>:duplicate_complete, :project_id=>@project.id, :revision_id=>@revision.id, :id=>@revision.versions[-1].id}) %>
+  </div>
+<% end %>
+
+<% if @otherparty %><p>View <%= link_to("%s's profile"%@otherparty.full_name, {:controller=>:users, :action=>:show, :id=>@otherparty.id}) %></p><% end %>
+<% if @revision.cms_request %>
+<p>This chat is part of a recuring translation project. <%= link_to('Project details &raquo;'.html_safe,{:controller=>:cms_requests, :action=>:show, :website_id=>@revision.cms_request.website.id, :id=>@revision.cms_request.id}) %></p>
+<% end %>
+
+<% if @can_review %>
+  <div class="red_message">
+    <p>This job needs a review. You can become the reviewer immediately. Go to the <%= link_to('project page',{:controller=>:revisions, :action=>:show, :id=>@revision.id, :project_id=>@project.id, :anchor=>'languages'}) %> and click on <strong>&quot;become the reviewer for this job&quot;</strong>.</p>
+    <p class="comment">Please note that once you become the reviewer, you cannot be the translator for this job.</p></div>
+<% end %>
+
+<% if @user.has_client_privileges? || @is_reviewer %>
+  <%= infotab_top("Bids by #{@chat.translator.full_name}", "These are the bids given by #{@chat.translator.full_name} for this project.") %>
+<% else %>
+  <%= infotab_top("Your bids", 'Your bids for this project are summarized here.') %>
+<% end %>
+<%= infotab_header(['Language','Translation status','Bid','Issues']) %>
+  <% # @ToDO don't show all bids to translators and clients... %>
+  <% @bids_disp.each do |bid_info| %>
+    <%= render(:partial => "bid_info", locals: {bid_info: bid_info}) %>
+  <% end %>
+</table>
+
+<% if @user.has_supporter_privileges? && (@revision.versions.length > 0) %>
+  <p></p>
+  <%= infotab_top("Versions", 'All uploads appears here (Only Visible to supporters).') %>
+    <%= infotab_header(['Uploader','Date','File']) %>
+    <% @revision.versions.each do |v| %>
+      <tr>
+        <td><%= user_link v.user %></td>
+        <td><%= disp_time v.chgtime %></td>
+        <td>
+          <p>
+            <%= v.orig_filename %>
+            <%= link_to(_('Compressed'), {:controller=>:versions, :action=>:show, :project_id=>@project.id, :revision_id=>@revision.id, :id=>v.id}) %>
+            &nbsp;|&nbsp;
+            <%= link_to(_('Uncompressed'),{:controller=>:versions, :action=>:show, :project_id=>@project.id, :revision_id=>@revision.id, :id=>v.id, :unzip=>1}) %>
+          </p>
+        </td>
+      </tr>
+    <% end %>
+
+  </table>
+<% end %>
+
+<% if @user.has_client_privileges? %>
+  <% if !@user.verified? %>
+    <div class="errorExplanation">Since your identity is not yet verified you will not be able to accept bids for this project.<br />
+    To verify your identity, go to <%= link_to('your identity verification page', {:controller=>:users, :action=>:verification, :id=>@user.id}) %></div>
+  <% end %>
+  <div id="accept_bids"></div>
+  <div id="finalize_bids"></div>
+  <div id="enable_review"></div>
+<% elsif @is_reviewer %>
+  <div id="review_bids"></div>
+<% end %>
+
+<% if (@revision.versions.length > 0) && !@chat.has_accepted_bid %>
+  <div class="inter_tab_spacer"></div>
+  <%= infotab_top('Access to project files', (@user[:type] == 'Client') ? 'You can grant the translator access to project files. This will allow the translator to understand your project better. <br> Once you select a translator to work on this project, access to the project files is automatically granted.' : 'The client can grant you access to the project file') %>
+  <table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+    <div id="translator_access">
+      <%= render(:partial => "translator_access") %>
+    </div>
+  </td></tr></table>
+<% end %>
+
+<div class="inter_tab_spacer"></div>
+<% if @is_reviewer %>
+  <% unless @revision.versions.empty? %>
+    <h3>Original File</h3>
+    <p>Compressed file: <%= link_to(@revision.versions[0].filename, {:controller=>:versions, :action=>:show, :project_id=>@project.id, :revision_id=>@revision.id, :id=>@revision.versions[0].id}) %>
+          &nbsp;|&nbsp;
+          Uncompressed file: <%= link_to(@revision.versions[0].orig_filename,{:controller=>:versions, :action=>:show, :project_id=>@project.id, :revision_id=>@revision.id, :id=>@revision.versions[0].id, :unzip=>1}) %>
+  <% end %>
+  </p>
+  <br/>
+  <% if @chat.bids.any? %>
+    <% if @chat.bids.first.managed_work && !@chat.bids.first.managed_work.complete? %>
+      <div class="errorExplanation">
+        <h3>Review instructions</h3>
+        <p>On the top of this page there is a table with translation languages. The last column includes issues. If you find a problem with the translation, create an issue for the translator. If there's a problem with the original text for translation, you can create an issue for the client.</p>
+        <p>Once you are happy with the translation and all issues have been handled, click on the <b>Review is complete</b> button.</p>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= show_messages(@chat.messages) %>
+<a name="reply"></a>
+
+<% if flash[:ack] %>
+  <div class="errorExplanation">
+    <%= pre_format(flash[:ack]) %>
+  </div>
+<% elsif (@user == @chat.translator) %>
+  <div class="errorExplanation">
+  <h3>Need technical assistance to complete this work?</h3>
+  <p>Don't ask the client for technical help. Contact us and we'll help you.</p>
+  <div id="open_support_ticket_for_<%= put_object_id(@chat) %>">
+    <%= render(:partial=>'/support/support_ticket_for_object', :object=>@chat) %>
+  </div>
+  </div>
+<% else %>
+  <div class="inter_tab_spacer"></div>
+<% end %>
+
+<% if @user_can_post %>
+  <%= show_reply(@chat.messages.length > 0, @for_who) %>
+<% end %>

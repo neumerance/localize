@@ -1,0 +1,4 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+<% url = @user.link_to_webta(@cms, 'review') %>
+<p>Translation is ready for you to review, please click this link: <%= link_to url, url, target: :blank %></p>
+

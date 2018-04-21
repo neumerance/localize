@@ -1,0 +1,30 @@
+<% if @show_edit_languages %>
+  <% if @text_resource.id %>
+    <%= form_tag( {:action=>:edit_languages, :req=>:save}) do %>
+      <%= languages_table(@languages, @text_resource.language).html_safe %>
+      <%= submit_tag 'Save', :name=>'save', data: { disable_with: 'Save' } %>
+    <% end %>
+
+    <%= form_tag({:action=>:edit_languages, :req=>:hide }, :remote => true) do %>
+      <%= submit_tag 'Cancel', :name=>'hide', data: { disable_with: 'Cancel' } %>
+    <% end %>
+  <% else %>
+      <%= languages_table(@languages, @text_resource.language).html_safe %>
+  <% end %>
+
+
+<% else %>
+
+	<%= resource_languages_summary(@text_resource, @user) %>
+
+	<% if [@user, @user.master_account].include?(@text_resource.client) and @user.can_modify?(@text_resource)%>
+		<%= form_tag({ :action => :edit_languages, :req=>'show' }, :remote => true) do %>
+			<%= submit_tag 'Add or edit target languages', :name=>'show', data: { disable_with: 'Add or edit target languages' } %>
+		<% end %>
+	<% end %>
+
+<% end %>
+
+<div style="display: none; margin: 12px;" id="language_spinner">
+  <%= image_tag 'ajax-loader.gif', class: '', width: 16, height: 16, alt: 'loading', style: 'loading', border: 0 %>
+</div>

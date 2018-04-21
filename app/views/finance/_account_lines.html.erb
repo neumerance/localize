@@ -1,0 +1,28 @@
+<% if account_lines.any? %>
+	<% if @account.class == UserAccount && @account.normal_user.is_translator? %>
+		<%= infotab_header(
+					['Date','Transaction','Amount','Fee','Paid','Balance'],
+					{
+						'Amount' => {'class'=>'moneycolumn'},
+						'Fee' => {'class'=>'moneycolumn'},
+						'Paid' => {'class'=>'moneycolumn'},
+						'Balance' => {'class'=>'moneycolumn'
+					}
+				}) %>
+	<% else %>
+		<%= infotab_header(
+					[_('Date'),_('Transaction'),_('Amount'),_('Tax'),_('Balance')],
+					{
+							_('Amount') => {'class'=>'moneycolumn'},
+							_('Tax') => {'class'=>'moneycolumn'},
+							_('Balance') => {'class'=>'moneycolumn'}
+					}
+				) %>
+	<% end %>
+  <% account_lines.each do |account_line| %>
+    <%= render(:partial=>'account_line', locals: {account_line: account_line}) %>
+  <% end %>
+	</table>
+<% else %>
+	<p>No transactions yet.</p>
+<% end %>

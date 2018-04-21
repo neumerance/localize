@@ -1,0 +1,8 @@
+<% transactions.each do |transaction| %>
+    <tr class="payables" data-amount="<%= transaction[:value] || 0 %>">
+      <td><%= transaction[:description].html_safe %></td>
+      <td>
+        <%= number_to_currency transaction[:value] %>
+      </td>
+    </tr>
+<% end %>

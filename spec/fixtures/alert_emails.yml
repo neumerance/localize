@@ -1,0 +1,17 @@
+ae1:
+    translation_analytics_profile_id: 1
+    name: test
+    email: test@test.com
+ae2:
+    translation_analytics_profile_id: 1
+    name: test
+    email: test@test.com
+
+ae3:
+    translation_analytics_profile_id: 2
+    name: test
+    email: test@test.com
+ae4:
+    translation_analytics_profile_id: 2
+    name: test
+    email: test@test.com

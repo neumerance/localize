@@ -1,0 +1,11 @@
+<p><%= @arbitration_explaination %></p>
+<div id="arbitration_specific_content"><%= render(:partial=>@content) %></div>
+
+<% if @can_post || (@arbitration.messages.length > 0) %>
+	<h2>Messages</h2>
+	<%= render(:partial=>'message', :collection=>@arbitration.messages) %>
+<% end %>
+
+<% if @can_post %>
+	<%= render(:partial=>'reply') %>
+<% end %>

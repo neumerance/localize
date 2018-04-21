@@ -1,0 +1,32 @@
+<% if @user -%>
+    <span><%= _('Logged in as') %> <strong><%= @user.full_name %></strong> &nbsp;</span>
+	<%= link_to "Log out", :action => :logout %>
+	</p>
+<% else %>
+	<%= form_tag({:action=>'login'}.merge(LOGIN_ARGS) ) do %>
+		<% if defined? from_page %>
+			<%= hidden_field_tag(:from_page, from_page) %>
+		<% end %>
+		<% if defined? extra_params %>
+			<% extra_params.each do |param| %>
+				<%= hidden_field_tag(param[:name], param[:value]) %>
+			<% end %>
+		<% end %>
+
+    <%= hidden_field_tag :next, params[:next] %>
+
+		<table cellspacing="10">
+			<tr>
+				<td><%= _('E-Mail:') %></td>
+				<td><input type="text" maxlength="45" size="45" name="email" tabindex="1" id="email" /></td>
+			</tr><tr>
+				<td><%= _('Password:') %></td>
+				<td><input type="password" maxlength="45" size="45" name="password" tabindex="2" id="password" /></td>
+			</tr>
+      <tr>
+				<td></td>
+        <td><%= submit_tag(_('Login'), :style=>'padding: 0.5em 1.5em;', data: { disable_with: 'Logging In...' }, :tabindex=>3) %></td>
+			</tr>
+		</table>
+	<% end %>
+<% end -%>

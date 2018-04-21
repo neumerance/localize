@@ -1,0 +1,18 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+one:
+  id: 1
+  kind: 4
+  payment_processor: 1
+  currency_id: 1
+  gross_amount: 100.0
+  status: <%= TXN_PENDING %>
+  user_id: 2
+
+two:
+  id: 2
+  kind: 4
+  payment_processor: 1
+  currency_id: 1
+  gross_amount: 200.0
+  status: <%= TXN_PENDING %>
+  user_id: 2

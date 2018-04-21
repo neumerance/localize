@@ -1,0 +1,19 @@
+<%= form_tag("/admin_finance/revenue_report", :method => :get) do %>
+    From <%= date_picker_field "from", nil, {:value =>  params[:from].to_s.to_date || Date.today - 1.month}, '<i class="mc-icon-calendar"></i>' %>
+    To <%= date_picker_field "to", nil, {:value => params[:to].to_s.to_date || Date.today}, '<i class="mc-icon-calendar"></i>' %>
+    <%= submit_tag 'Generate', data: { disable_with: 'Please wait' } %>
+  <% end %>
+
+<%= infotab_top(_('Revenue Report'), _('Detailed revenue per project kind.')) %>
+<%= infotab_header(['','Software Projects', 'Bidding Projects', 'CMS Projects','Instant Translation Projects', 'Total Amount']) %>
+
+  <tr>
+    <th>Totals</th>  
+    <td><%= @results[:software] %></td>  
+    <td><%= @results[:bidding] %></td>  
+    <td><%= @results[:cms] %></td>  
+    <td><%= @results[:instant_translation] %></td>  
+    <td><%= @results.values.inject :+ %></td>  
+    
+  </tr>
+</table>

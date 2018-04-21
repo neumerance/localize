@@ -1,0 +1,79 @@
+<% if @registration.errors.any? %>
+  <div id='errorExplanation' class="errorExplanation">
+    <h3>
+      Please fix the following <%= pluralize(@registration.errors.count, 'error') %>
+      and try again:
+    </h3>
+
+    <ul>
+      <% @registration.errors.full_messages.each do |message| %>
+        <li style='color: red'><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<br/>
+<div style="font-size: 120%;">
+  <p>First, let’s set-up an account for you. Then, you can send us content for translation.</p>
+</div>
+<br>
+
+<%= form_for(@registration, url: wpml_registrations_path) do |f| %>
+  <div class="infobox"><h4><%= _('Account information') %></h4>
+    <table class="new-account">
+      <tr>
+        <td>First name:</td>
+        <td><%= f.text_field :fname, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+      </tr>
+      <tr>
+        <td>Last name:</td>
+        <td><%= f.text_field :lname, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+      </tr>
+      <tr>
+        <td>E-mail:</td>
+        <td><%= f.text_field :email, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="infobox"><h4><%= _('Verification code') %></h4>
+    <p><%= _('To avoid spam and automatic registration we ask you to repeat the code you see in the picture.') %></p>
+    <table class="signup">
+      <tr>
+        <td class="signupdescription"><%= _('Verification code:') %><br/></td>
+        <td><%= image_tag @captcha_image.public_filename, :size => @captcha_image.image_size %></td>
+      </tr>
+      <tr>
+        <td class="signupdescription"><%= _('Enter code:') %></td>
+        <td><%= text_field_tag :captcha_code, '', maxlength: 6 %></td>
+      </tr>
+    </table>
+  </div>
+
+  <%= hidden_field_tag :captcha_id, @captcha_image.id %>
+
+  <div class="infobox"><h4><%= _('User agreement') %></h4>
+    You must accept the user agreement (in the link below) in order to create an account.<br/>Please take your time to
+    fully read the agreement before accepting.<br/>
+    <br/>
+    <div class="<%= @user_agreement_not_accepted ? 'fieldWithErrors' : '' %> ">
+      <%= check_box_tag(:accept_agreement, 1, false, {:onclick => "document.getElementsByName('submit')[0].disabled = !document.getElementsByName('accept_agreement')[0].checked;"}) %>
+      I have read and accept the <%=link_to 'User Agreement', 'http://docs.icanlocalize.com/legal/client-agreement/', target: '_blank' %>
+      <br/>
+      <br/>
+    </div>
+  </div>
+
+  <p>
+    <%= submit_tag _('Sign Up'), :name => 'submit', :style => 'padding: 0.5em 1.5em;', data: {disable_with: _('Sign Up')} %>
+  </p>
+
+  <p style="margin-top: 20px;"><%= link_to(_('Already have an ICL account?'), '/login') %></p>
+
+  <script type="text/javascript" language="JavaScript">
+      document.getElementsByName("accept_agreement")[0].disabled = false;
+      document.getElementsByName("submit")[0].disabled = true;
+  </script>
+
+<% end %>

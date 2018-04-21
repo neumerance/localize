@@ -1,0 +1,12 @@
+<p>There are missing translators for the following projects:</p>
+
+<p>
+  <% for offer in @offers_with_no_translators -%>
+      <% link = url_for({:escape => false, :only_path => false, :controller=>:website_translation_offers, :action=>:show, :id=>offer.id, :website_id=>offer.website.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+      * <%= "'#{offer.website.name}' from #{offer.from_language.name} to #{offer.to_language.name}" %><br />
+      <%= link_to link, link %><br /><br />
+  <% end %>
+</p>
+
+
+<%= EMAIL_SIGNATURE %>

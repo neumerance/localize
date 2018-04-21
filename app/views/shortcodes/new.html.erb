@@ -1,0 +1,12 @@
+<h1>
+  New shortcode
+  <% if @website %>
+    for <%=@website.name %>
+  <% end %>
+</h1>
+
+<%= render 'form' %>
+
+
+<br/>
+<%= link_to 'Back', shortcodes_link %>

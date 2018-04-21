@@ -1,0 +1,24 @@
+{
+  "tests":  [
+    {
+      "input": "",
+      "expected_result": ""
+    },
+    {
+      "input": "¿Dónde hay un buen café?",
+      "expected_result": "Dónde hay un buen café"
+    },
+    {
+      "input": "¡¿Hablas inglés?!",
+      "expected_result": "Hablas inglés"
+    },
+    {
+      "input": "James, while John had had \"had\", had had \"had had\"; \"had had\" had had a better effect on the teacher.",
+      "expected_result": "James while John had had had had had had had had had had had a better effect on the teacher"
+    },
+    {
+      "input": "Can you remove them: .’'[](){}⟨⟩:,،、‒–—―…!.‹›«»‐-?‘’“”'\";/·&*@•†‡”¡¿※#%‰‱¶′″‴§_‖?",
+      "expected_result": "Can you remove them"
+    }
+  ]
+}

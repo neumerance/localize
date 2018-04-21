@@ -1,0 +1,59 @@
+<h1>Generate reports</h1>
+
+<h2> New projects count by type from x to y</h2>
+  <%= form_tag("/reports/new_projects_count", :method => :get, onsubmit: 'return downloadFile(this)') do %>
+    From <%= date_picker_field "count_from", nil, {:value => Date.today - 1.month}, '<i class="mc-icon-calendar"></i>' %>
+    To <%= date_picker_field "count_to", nil, {:value => Date.today}, '<i class="mc-icon-calendar"></i>' %>
+    <button class="preloader">
+      <%= image_tag 'preloader.gif', width: 10, class: 'spinner' %> <span>Generate</span>
+    </button>
+  <% end %>
+
+<h2> New projects by type from x to y</h2>
+  <%= form_tag("/reports/new_projects", :method => :get, onsubmit: 'return downloadFile(this)') do %>
+    From <%= date_picker_field "new_from", nil, {:value => Date.today - 1.month}, '<i class="mc-icon-calendar"></i>' %>
+    To <%= date_picker_field "new_to", nil, {:value => Date.today}, '<i class="mc-icon-calendar"></i>' %>
+    <button class="preloader">
+      <%= image_tag 'preloader.gif', width: 10, class: 'spinner' %> <span>Generate</span>
+    </button>
+  <% end %>
+
+<h2> Clients with money deposits</h2>
+  <%= form_tag("/reports/money_deposits", :method => :get, onsubmit: 'return downloadFile(this)') do %>
+    From <%= date_picker_field "deposits_from", nil, {:value => Date.today - 1.month}, '<i class="mc-icon-calendar"></i>' %>
+    To <%= date_picker_field "deposits_to", nil, {:value => Date.today}, '<i class="mc-icon-calendar"></i>' %>
+    <button class="preloader">
+      <%= image_tag 'preloader.gif', width: 10, class: 'spinner' %> <span>Generate</span>
+    </button>
+  <% end %>
+
+<h2> Clients that spent money</h2>
+  <%= form_tag("/reports/money_spent", :method => :get, onsubmit: 'return downloadFile(this)') do %>
+    From <%= date_picker_field "spent_from", nil, {:value => Date.today - 1.month}, '<i class="mc-icon-calendar"></i>' %>
+    To <%= date_picker_field "spent_to", nil, {:value => Date.today}, '<i class="mc-icon-calendar"></i>' %>
+    <button class="preloader">
+      <%= image_tag 'preloader.gif', width: 10, class: 'spinner' %> <span>Generate</span>
+    </button>
+  <% end %>
+
+<h2> Money per project spent for one client</h2>
+  <%= form_tag("/reports/money_per_project", :method => :get, onsubmit: 'return downloadFile(this)') do %>
+    User Nickname: <%= text_field_tag "user", nil, :size => 15, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+    <br/>
+    From <%= date_picker_field "money_from", nil, {:value => Date.today - 1.month}, '<i class="mc-icon-calendar"></i>' %>
+    To <%= date_picker_field "money_to", nil, {:value => Date.today}, '<i class="mc-icon-calendar"></i>' %>
+    <button class="preloader">
+      <%= image_tag 'preloader.gif', width: 10, class: 'spinner' %> <span>Generate</span>
+    </button>
+  <% end %>
+
+<h2> Profit/Loss centers report</h2>
+  <%= form_tag("/reports/profit_loss_centers", :method => :get, onsubmit: 'return downloadFile(this)') do %>
+    From <%= date_picker_field "centers_from", nil, {:value => Date.today - 1.month}, '<i class="mc-icon-calendar"></i>' %>
+    To <%= date_picker_field "centers_to", nil, {:value => Date.today}, '<i class="mc-icon-calendar"></i>' %>
+    <button class="preloader">
+      <%= image_tag 'preloader.gif', width: 10, class: 'spinner' %> <span>Generate</span>
+    </button>
+  <% end %>
+
+

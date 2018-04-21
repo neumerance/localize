@@ -1,0 +1,97 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+amir_wp_en_es_orit:
+  id: 1
+  website_translation_offer_id: 1
+  translator_id: 3
+  status: 2
+  amount: 0.03
+  currency_id: 1
+
+amir_wp_en_de_orit:
+  id: 2
+  website_translation_offer_id: 2
+  translator_id: 3
+  status: 2
+  amount: 0.03
+  currency_id: 1
+
+amir_wp_en_es_newbi:
+  id: 3
+  website_translation_offer_id: 1
+  translator_id: 8
+  status: 2
+  amount: 0.03
+  currency_id: 1
+
+amir_wp_en_de_newbi:
+  id: 4
+  website_translation_offer_id: 2
+  translator_id: 8
+  status: 2
+  amount: 0.03
+  currency_id: 1
+
+amir_drupal_rpc_en_es_orit:
+  id: 5
+  website_translation_offer_id: 4
+  translator_id: 3
+  status: 2
+  amount: 0.03
+  currency_id: 1
+
+amir_drupal_poll_en_es_orit:
+  id: 6
+  website_translation_offer_id: 5
+  translator_id: 3
+  status: 2
+  amount: 0.03
+  currency_id: 1
+
+amir_wp_en_es_stranger:
+  id: 7
+  website_translation_offer_id: 1
+  translator_id: 13
+  status: 2
+  amount: 0.03
+  currency_id: 1
+
+amir_wp_en_de_stranger:
+  id: 8
+  website_translation_offer_id: 2
+  translator_id: 13
+  status: 2
+  amount: 0.03
+  currency_id: 1
+
+amir_drupal_selftrans_en_es_orit:
+  id: 9
+  website_translation_offer_id: 6
+  translator_id: 3
+  status: 2
+  amount: 0
+  currency_id: 1
+
+amir_drupal_selftrans_en_de_orit:
+  id: 10
+  website_translation_offer_id: 7
+  translator_id: 3
+  status: 2
+  amount: 0
+  currency_id: 1
+
+amir_2_trans_en_es_orit:
+  id: 11
+  website_translation_offer_id: 8
+  translator_id: 3
+  status: 2
+  amount: 0.1
+  currency_id: 1
+
+amir_2_trans_en_es_newbi:
+  id: 12
+  website_translation_offer_id: 8
+  translator_id: 8
+  status: 2
+  amount: 0.12
+  currency_id: 1

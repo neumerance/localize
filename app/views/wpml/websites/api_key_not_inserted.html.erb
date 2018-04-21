@@ -1,0 +1,23 @@
+<div id="maincontent" class="lmarg33 rmarg33">
+  <% if @user.type == 'Alias' %>
+    <div class="alert-danger copy-token-message">
+      <p>You are signed-in with an "Alias" account. Your master account is not
+        linked to any Wordpress websites (WPML instances) or you don't have
+        permission to access any of its websites.<BR>
+        <BR>
+        Please ask the person responsible for the master account to grant you
+        access to one or more websites or insert his ICanLocalize API key into
+        WPML.</p>
+    </div>
+  <% else # it's a "Client" user %>
+    <div class="alert-danger copy-token-message">
+      <p>You haven't yet inserted your API key into WPML. Please insert the key
+        and click the "Next" button below.</p>
+      <%= render partial: 'wpml/shared/api_key_instructions', locals: {api_key: @user.api_key} %>
+    </div>
+    <%= render partial: 'wpml/shared/api_key_inserting_tuts' %>
+    <div class="text-center token-check-again m-t-50">
+      <%= link_to 'Next', wpml_websites_path, method: :get, class: 'rounded_but_orange' %>
+    </div>
+  <% end %>
+</div>

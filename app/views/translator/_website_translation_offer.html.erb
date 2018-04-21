@@ -1,0 +1,10 @@
+<tr>
+	<td>
+    <%= link_to({:controller=>:website_translation_contracts, :action=>:new, :website_id=>website_translation_offer.website_id, :website_translation_offer_id=>website_translation_offer.id}) do %>
+    <span><%= website_translation_offer.website.name %> &raquo; <%= website_translation_offer.language_pair %></span>
+    <% end %>
+  </td>
+	<td><%= pre_format(website_translation_offer.website.description) %></td>
+	<td><%= pre_format(!website_translation_offer.invitation.blank? ? website_translation_offer.invitation : 'Not specified yet') %></td>
+	<td><%= link_to('Apply for this work', {:controller=>:website_translation_contracts, :action=>:new, :website_id=>website_translation_offer.website_id, :website_translation_offer_id=>website_translation_offer.id}) %></td>
+</tr>

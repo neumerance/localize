@@ -1,0 +1,6 @@
+<tr>
+	<td><%= link_to(h(web_support.name), {:action=>:show, :id=>web_support.id}) %></td>
+	<td><%= web_support_stats(web_support) %></td>
+	<td><% if web_support.client_departments.count > 0 %><%= link_to(_('Web integration'), {:action=>:integration_details, :id=>web_support.id}) %> &nbsp; | &nbsp; <%= link_to(_('Browse all tickets'), {:action=>:browse_tickets, :id=>web_support.id, :set_args=>1}) %> &nbsp; | &nbsp; <% end %><%= link_to(_('Departments'), {:action=>:departments, :id=>web_support.id}) %></td>
+	<td><%= link_to(_('Customize to your website'), {:action=>:customize, :id=>web_support.id}) %> &nbsp; | &nbsp; <%= link_to(_('Rename'), {:action=>:edit, :id=>web_support.id}) %> &nbsp; | &nbsp; <%= link_to(_('Delete'), {:action=>:delete, :id=>web_support.id}, {'data-confirm'=>_('Are you sure you want to delete this support center? ')}) %></td>
+</tr>

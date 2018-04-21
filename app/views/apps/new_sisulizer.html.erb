@@ -1,0 +1,7 @@
+<%= form_tag({:action=>:create_sisulizer}, {:multipart=>true}) do %>
+	<p>Sisulizer .slp file: <%= file_field_tag('version[uploaded_data]', :size=>50, onchange: "validate_file_size('version[uploaded_data]', '#{ZIPPED_FILE_MAX_SIZE}')") %></p>
+	<p><%= submit_tag('Upload', data: { disable_with: 'Please wait' }) %></p>
+<% end %>
+<% if @back %>
+	<p><%= link_to('&laquo; Cancel and go back',@back) %></p>
+<% end %>

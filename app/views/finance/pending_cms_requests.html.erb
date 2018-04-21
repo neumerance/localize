@@ -1,0 +1,20 @@
+<% if @cms_target_languages.number > 0 %>
+	<% if @list_of_pages %>
+	<div class="pager_control">
+		Showing page <%= form_tag({:action=>:pending_cms_requests}, {:method=>'GET'}) %>
+			<%= select_tag( :page, options_for_select(@list_of_pages,@cms_target_languages.number), {:onchange=>"submit()"}) %>
+		<%= ('&nbsp; '.html_safe+link_to("Prev", url_for(:action=>:pending_cms_requests, :page => @cms_target_languages.prev.number))) if @cms_target_languages.prev? %>
+		<%= ('&nbsp; '.html_safe+link_to("Next", url_for(:action=>:pending_cms_requests, :page => @cms_target_languages.next.number))) if @cms_target_languages.next? %>
+	</form>
+	</div>
+	<% end %>
+	
+	<%= infotab_header(['Date','Amount','Item'], {'Amount' => {'class'=>'moneycolumn'}}) %>
+  <% @cms_target_languages.each do |cms_target_language| %>
+    <%= render(:partial=>'cms_target_language', locals: {:cms_target_language=>cms_target_language}) %>
+  <% end %>
+	</table>
+	<br /><p><%= "Total: %.2f USD."%@total %></p>
+<% else %>
+	<p>No unfunded CMS documents.</p>
+<% end %>

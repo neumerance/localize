@@ -1,0 +1,5 @@
+jQuery('#languages').html('<%= escape_javascript(render :partial => 'languages', :object=>@revision) %>');
+jQuery('#auto_accept_payment').html('<%= escape_javascript(payment_for_auto_accept(@user, @revision)) %>');
+<% if @warning %>
+	alert('<%= @warning %>');
+<% end %>

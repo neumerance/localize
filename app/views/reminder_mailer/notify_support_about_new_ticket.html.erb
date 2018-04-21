@@ -1,0 +1,15 @@
+<p>Dear ICanLocalize Admin,</p>
+<p><%= @user.full_name %> has created a new support ticket.</p>
+<p>
+  The subject of this ticket is:
+  <%= @support_ticket.subject %>
+</p>
+<p class="text-quoted">
+  <%= h @message.body%>
+</p>
+<p>
+  To reply, click on the following link to this ticket:
+  <% link = url_for({:escape => false, :only_path => false, :controller=>:support, :action=>:show, :id=>@support_ticket.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+  <%= link_to link, link %>
+</p>
+<%= EMAIL_SIGNATURE %>

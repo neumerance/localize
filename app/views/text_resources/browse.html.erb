@@ -1,0 +1,8 @@
+<% if @resource_upload %>
+	<br />
+	<%= public_list_downloads_for_upload(@resource_upload) %>
+	<br /><br />
+	<p>To use these translations in WordPress, download the .mo files and save in the theme directory.</p>
+<% else %>
+	<p>Cannot locate this project.</p>
+<% end %>

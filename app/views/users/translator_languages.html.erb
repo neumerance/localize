@@ -1,0 +1,23 @@
+<p>For each language that you add to your profile, you will need to enter a short description of your background in this particular language.</p>
+<p>You will also need to attach a document that proves your translation skills in this language. You can upload:</p>
+<ul>
+	<li><a href="http://www.atanet.org/" target="_blank">ATA</a> exam results (recommended) and/or</li>
+	<li>Copy of a university degree in translation, a MA or PhD in the source languages. You will need to supply scanned documents showing your translation skills and/or their translated version in ENGLISH for each language that you select to work in.</li>
+</ul>
+<p class="warning">* A single document is required per language</p>
+<a name="fromlanguages"></a>
+<h2>Languages you can translate from</h2>
+<div id="from_languages">
+	<%= render(:partial=>'from_languages') %>
+</div>
+<div class="inter_tab_spacer"></div>
+
+<a name="tolanguages"></a>
+<h2>Languages you can translate to</h2>
+<div id="to_languages">
+	<%= render(:partial=>'to_languages') %>
+</div>
+<div class="inter_tab_spacer"></div>
+
+<%= link_to('Back to your profile', {:id=>@user, :action=>:show}) %>
+<iframe id='frame' name="frame" style="width: 0pt; height: 0pt; padding: 0; margin: 0; visibility: hidden;" ></iframe>

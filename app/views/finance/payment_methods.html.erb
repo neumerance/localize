@@ -1,0 +1,20 @@
+<h2><%= _('Bank transfers') %></h2>
+<p><%= "#{_('For deposits over $500, you can also pay using a <b>bank transfer</b>. Our bank account is in the US.')}".html_safe %></p>
+<p><%= _('Transfers from other US banks take about 4 business days to complete. Transfers from banks in other countries take longer and we recommend you check with your bank about delays and fees.') %></p>
+<p><%= _('To do a bank transfer:') %></p>
+<ul><li><%= "#{_('%s and say that you want to pay with a bank transfer.')%link_to(_('Start a support ticket'), {:controller=>:support, :action=>:new})}".html_safe %></li>
+<li><%= _("We'll provide you with transfer details.") %></li>
+<li><%= _("Once you've initiated the transfer, let us know so that we can credit your ICanLocalize account.") %></li>
+</ul>
+
+<% if CO_ENABLED %>
+  <br ><h2><%= _('2Checkout') %></h2>
+  <p><%= "#{_("2Checkout provides an easy method for paying using a <b>credit card</b>. It's a good alternative in case PayPal is not an option for you.")}".html_safe %></p>
+  <p><%= "#{_('To deposit money to your account using 2Checkout, go to your %s.')%link_to(_('ICanLocalize account summary'), {:action=>:index})}".html_safe %></p>
+  <p class="comment"><%= _("Please note that we need to process completed 2Checkout payments manually. This processing takes several hours.") %></p>
+<% end %>
+
+<br /><h2><%= _('PayPal') %></h2>
+<p><%= "#{_('Our standard payment method is via <b>PayPal</b>. PayPal allows you to pay with a credit card without opening any account.')}".html_safe %></p>
+<p><%= _('For payments over $500, we recommend using a verified PayPal account, to avoid delays validating your payment.') %></p>
+<p><%= "#{_('To deposit money to your account using PayPal, go to your %s.')%link_to(_('ICanLocalize account summary'), {:action=>:index})}".html_safe %></p>

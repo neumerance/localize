@@ -1,0 +1,14 @@
+<tr>
+	<td valign="top"><%= link_to_if(brief, h(revision.project.name),{:action=>:show, :id=>revision.id}) %></td>
+	<td valign="top">
+		<% if brief %>
+			<%= h truncate(revision.description, lenght: 1000, omission: '...') %>
+			<br /><br /><p><%= link_to((_('Full project information &raquo;')).html_safe, {:action=>:show, :id=>revision.id}) %></p>
+		<% else %>
+			<%= h(revision.description) %>
+		<% end %>
+	</td>
+	<td valign="top"><%= revision.project.print_type %></td>
+	<td valign="top"><%= ((revision.kind == TA_PROJECT) || (revision.kind == SIS_PROJECT)) ? translation_language_stats(revision) : 'Not applicable' %></td>
+	<td valign="top"><%= language_list(revision) %></td>
+</tr>

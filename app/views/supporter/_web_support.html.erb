@@ -1,0 +1,9 @@
+<tr>
+	<td><%= link_to(web_support.name, {:controller=>:web_supports, :action=>:show, :id=>web_support.id}) %></td>
+	<td><%= user_link(web_support.client) %></td>
+	<td><ul>
+		<li>Departments: <%= web_support.client_departments.count %></li>
+		<li>Tickets: <%= web_support.web_dialogs.count %></li></ul>
+	</td>
+</tr>
+	

@@ -1,0 +1,14 @@
+<% website = cms_request.try(:website) %>
+<% client = website.try(:client) %>
+<tr>
+  <td><%= cms_request.id %></td>
+  <td><%= disp_date(cms_request.created_at) %></td>
+  <td><%= link_to(cms_request.title, {:controller=>:cms_requests, :action=>:show, :website_id=>cms_request.website_id, :id=>cms_request.id}) %></td>
+  <td><%= link_to(cms_request.website.try(:name), {controller: '/wpml/websites', :action=>:show, :id=>cms_request.website_id}) unless website.nil? %></td>
+  <td><%= CmsRequest::STATUS_TEXT[cms_request.status] %>
+    <%= (cms_request.pending_tas == 1) ? '<p class="warning">Pending TAS</p>'.html_safe : '' %></td>
+  <td><%= user_link(client, false, false) unless client.nil? %></td>
+  <td><%= cms_request_details(cms_request) %></td>
+  <td></td>
+  <!--cms_request.detailed_status() action_buttons(cms_request) -->
+</tr>

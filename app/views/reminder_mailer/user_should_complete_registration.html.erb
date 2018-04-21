@@ -1,0 +1,31 @@
+<p><%= _('Dear %s') % @user.full_real_name %>,</p>
+
+<% if @page_from == "translation_analytics" %>
+  <p><%= ('Your Translation Analytics account is almost ready.') %></p>
+  <p><%= _('To complete the account setup and get started with translation analytics, click on the following link:') %></p>
+  <% 
+    url_params = {
+          :escape => false, 
+          :only_path => false, 
+          :controller=>:users, 
+          :action=>:validate, 
+          :id=>@user.id, 
+          :signature=>@signature, 
+          :host=>EMAIL_LINK_HOST, 
+          :protocol=>EMAIL_LINK_PROTOCOL, 
+          :translation_analytics => 1 }
+  	 url_params.merge!(@extra_params) unless @extra_params.nil? 
+     url = url_for(url_params)
+  %>
+  <p><%= link_to url, url %></p>
+
+<%= simple_format ANALYTICS_EMAIL_SIGNATURE %>
+
+<% else %>
+  <%= _('Thank you for creating an account at ICanLocalize.') %>
+  <%= _('To complete the account setup and get started with your translation, click on the following link:') %>
+  <% link = url_for({:escape => false, :only_path => false, :controller=>:users, :action=>:validate, :id=>@user.id, :signature=>@signature, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+  <%= link_to link, link %>
+  <% if @additional_message %><%= @additional_message %><% end %>
+
+<% end %>

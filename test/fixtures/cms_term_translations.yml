@@ -1,0 +1,21 @@
+amir_wp_page1_es:
+  id: 1
+  cms_term_id: 1
+  language_id: 2
+  cms_identifier: 1
+  txt: hola
+
+amir_wp_page1_1_es:
+  id: 2
+  cms_term_id: 2
+  language_id: 2
+  cms_identifier: 2
+  txt: one
+
+amir_wp_page1_de:
+  id: 3
+  cms_term_id: 1
+  language_id: 3
+  cms_identifier: 1
+  txt: halo
+

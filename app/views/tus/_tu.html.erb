@@ -1,0 +1,9 @@
+<tr>
+	<td><%= tu.id %></td>
+	<td style="<%= language_dir_css_attribute(tu.from_language)+text_flow_css_attribute(tu.from_language) %>"><%= pre_format(tu.original) %></td>
+	<td style="<%= language_dir_css_attribute(tu.to_language)+text_flow_css_attribute(tu.to_language) %>"><%= pre_format(tu.translation) %></td>
+	<td><%= tu.from_language.name %></td>
+	<td><%= tu.to_language.name %></td>
+	<td><%= TusController::STATUS_TEXT[tu.status] %></td>
+</tr>
+	

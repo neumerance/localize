@@ -1,0 +1,10 @@
+jQuery(".mt-switch-form-<%= @cms_request.id %>").replaceWith('<%= mt_switch(@cms_request.revision) %>');
+jQuery('.mt-switch.mt-disabled').webuiPopover({
+  content: '<p>You are about to enable Machine Translation for this job.</br>This action cannot be undone.</p><p>Clients require human-made professional translations.</br>By enabling machine translation,</br>you are fully liable for the quality of your work.</br>Should any quality issues arise,</br>we will confirm the translation quality with a reviewer</br>and you may have to refund the client if deemed necessary.</p>',
+  trigger: 'hover'
+});
+
+jQuery('.mt-switch.mt-enabled').webuiPopover({
+  content: "Machine translation is now active",
+  trigger: 'hover'
+});

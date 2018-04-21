@@ -1,0 +1,39 @@
+<%= my_error_messages_for :issue %>
+
+<p>Issues are meant to help keep track of things.</p>
+<p>When you open an issue, the person for whom the issue is will get a reminder and will need to close the issue.</p>
+
+<%= form_for(:issue, url: {action: :create}, html: {multipart: true}) do |f| %>
+	<table>
+	<tr><td>Kind of issue:</td><td><%= f.select(:kind, @kinds) %></td></tr>
+	<tr><td>Subject:</td><td><%= f.text_field(:title, :size=>70, maxlength: COMMON_FIELD) %></td></tr>
+	<tr><td>More details:</td><td><%= f.text_area(:message, :cols=>50, :rows=>10, :style=>'width:100%;', maxlength: COMMON_NOTE) %></td></tr>
+  <tr>
+    <td style="vertical-align: top;">Attachments:</td>
+    <td>
+      <div id="documents_to_upload">
+        <p><%= file_field_tag('file1[uploaded_data]', size: 40, id: 'file1_uploaded_data', onchange: "validate_file_size('file1[uploaded_data]', '#{ATTACHMENT_MAX_SIZE}')") %></p>
+      </div>
+      <p><a href="#form_top" onclick="add_another_file(<%= ATTACHMENT_MAX_SIZE.to_s %>);">Add another attachment</a></p>
+    </td>
+  </tr>
+  <% if @users.present? %>
+    <% if @users.length > 2 %>
+      <tr><td>For user:</td><td><%= f.select(:target_id, @users) %></td></tr>
+    <% end %>
+  <% end %>
+	</table><br /><br />
+  <% if @users.present? %>
+    <% if @users.length <= 2 %>
+      <%= f.hidden_field(:target_id) %>
+    <% end %>
+  <% end %>
+	<%= f.hidden_field(:owner_type) %><%= f.hidden_field(:owner_id) %>
+	<% if @back %>
+		<%= link_to('Cancel', @back) %>
+		<%= hidden_field_tag(:back, @back) %>
+	<% else %>
+		<%= link_to('Cancel', {:action=>:index}) %>
+	<% end %>
+	&nbsp; | &nbsp; <%= submit_tag('Submit', :style=>'padding: 0.5em 1em;', data: { disable_with: 'Submit' }) %>
+<% end %>

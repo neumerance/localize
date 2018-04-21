@@ -1,0 +1,381 @@
+<% if @deleted %>
+	<div class="errorExplanation">
+		<center><b>This account has been closed!</b></center>
+	</div>
+<% end %>
+
+<% # Supporter information %>
+
+<% if @user.has_supporter_privileges? %>
+  <% unless @auser.can_receive_emails? %>
+    <div class="errorExplanation">
+      <center><b>The email from this user account is no longer valid! No email will be sent to it until an update.</b></center>
+    </div>
+  <% end %>
+
+	<h3>Supporter information</h3>
+	<div style="margin:1em;" class="red_message">
+		<%= form_for(:user, :url=>{:action=>:update_supporter_data}) do |f| %>
+			Supporter note:<br />
+			<textarea style="width: 100%;" rows="10" name="user[note]" id="user_note" cols="100", maxlength="<%= COMMON_NOTE %>"><%=@auser.note%></textarea>
+			<p>
+				flag:
+				<select name="user[flag]" id="user_flag">
+					<option value="true" <%= "selected" if @auser.flag%>>Flagged</option>
+					<option value="false" <%= "selected" if !@auser.flag%>>Normal</option>
+				</select>
+			</p>
+			<input type="submit" value="Update" name="commit">
+			<br /><br />
+		<% end %>
+	</div>
+  <% if @auser.kind_of? Translator %>
+    <div>
+      <h4>Supporter password:</h4>
+      <p id="supporterPassword">
+        If you want to login as this translator on TA, use the button bellow to generate a temporary password.
+        Generated password will be shown only once and will expire after 6 hours, but you can generate a new one at any time. Translator password will not be affected in any way.
+      </p>
+      <p>
+        <%= button_to('Generate supporter password', {:action=>'supporter_password', :id => @auser.id}, :method => :get, remote: true, data: { disable_with: 'Please wait...' }) %>
+      </p>
+    </div>
+    <% if WEBTA_BETA %>
+
+      <h4>WebTA Beta access:</h4>
+      <p>
+        While WebTA is in Beta status, only selected translators can access it.
+      </p>
+      <div id="webtaAccess" class="webtaAccess_<%= @auser.id %>">
+        <%= render partial: 'webta_access' %>
+      </div>
+    <% end %>
+    <div class="m-b-10">
+      <h4>TA blocking:</h4>
+      <%= form_tag({ action: :toggle_ta_blocking, :id => @auser.id }, id: 'ta-blocking-toggle-form', remote: true) do %>
+          <label class="switch" style="margin-bottom: -5px;">
+            <%= check_box_tag :ta_blocked, 'ta_blocking', @auser.ta_blocked?, onchange: "jQuery('#ta-blocking-toggle-form').submit();" %>
+            <span class="slider"></span>
+            <span class="switch-on">Yes</span>
+            <span class="switch-off">No</span>
+          </label> Block translator from translating new Jobs using TA tool
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+
+
+
+
+<% # User photo%>
+
+<% if (@user == @auser) %>
+	<% if (@user[:type] == 'Translator') %>
+		<table style="width:100%;">
+			<tr>
+				<td style="vertical-align: top; width:20em;">
+					<h3>Your photo</h3>
+					<div id="image"><%= render(:partial=>'image') %></div>
+				</td>
+				<td style="vertical-align: top;">
+					<div id="bionote"><%= render(:partial=>'bionote') %></div>
+				</td>
+			</tr>
+		</table>
+		<div class="inter_tab_spacer"></div>
+	<% elsif @user.has_client_privileges? %>
+		<h3>Your photo</h3>
+		<div id="image"><%= render(:partial=>'image') %></div>
+	<% end %>
+<% elsif @back %>
+	<p>&laquo; <%= link_to(_('Go back').html_safe,h(@back)) %></p>
+<% end %>
+
+
+
+
+<% #Personal details %>
+
+<% if (@user == @auser) || @user.has_supporter_privileges? %>
+	<div id="personal_details"><%= render(:partial => 'personal_details', :object => @auser) %></div>
+	<div class="inter_tab_spacer"></div>
+
+	<!-- Tax Information -->
+	<%= render(:partial => 'tax_information', :locals => {:personal_details => @auser} ) if @auser.is_client? %>
+	<div class="inter_tab_spacer"></div>
+<% else %>
+	<div class="red_message">
+		<div style="text-align: center; float: left; margin-right: 1em;">
+			<%= image_for_user(@auser) %>
+			<% if @auser[:type] == 'Translator' %>
+				<%= star_rating(@auser) %>
+			<% end %>
+		</div>
+		<p>
+			<%= _('Nationality:') %> <b><%= !@auser.country.blank? ? @auser.country.nname : _('Unknown') %></b>
+		</p>
+		<p>
+			<% if @auser.on_vacation? %>
+				<%= link_to(_("%s is currently on planned leave.")%@auser.full_name, {:controller=>:vacations, :action=>:index, :user_id=>@auser.id}).html_safe %>
+          <%=
+            ' Will not be working from %s to %s' % [
+              @auser.current_vacation.beginning.strftime("%dth %b %Y"),
+              @auser.current_vacation.ending.strftime("%dth %b %Y")]
+            %>
+          </p>
+			<% elsif @auser.logged_in? %>
+          <span><%= @auser.full_name %> <%= _('is currently') %> <b>logged in</b></span>
+			<% else %>
+				<%= "#{_('%s is currently <b>offline</b>.') % @auser.full_name}".html_safe %>
+			<% end %>
+		</p>
+		<% if @auser[:type] == 'Translator' %>
+			<% if @auser.markings.length > 0 %>
+				Recommendations by clients: <a href="#bookings"><%= @auser.markings.length %> recommendations</a>.
+			<% end %>
+			<p>
+				Level: <b><%= User::USER_LEVEL_TEXT[@auser.level] %></b>
+			</p>
+		<% end %>
+
+		<% if !@auser.logged_in? %>
+			<p>
+				Last log in: <%= disp_time(@auser.last_login) %>
+			</p>
+		<% end %>
+    <% if @auser.current_vacation %>
+
+    <% end %>
+		<br style="clear:both;" />
+	</div><br/><br/>
+<% end %>
+
+
+
+<% # Invite translator %>
+
+<% if (@auser[:type] == 'Translator') && (@client) %>
+	<%= invite_translator(@auser, @client) %>
+<% end %>
+
+
+
+
+
+<% if @websites_to_update && (@websites_to_update.length > 0) %>
+<div class="red_message">
+	<h3>The following website(s) need to be updated to continue translating!</h3>
+	<ul><% @websites_to_update.each do |website| %><li><%= link_to(h(website.name), {controller: '/wpml/websites', :action=>:show, :id=>website.id}) %></li><% end %></ul>
+	<h4>Instructions:</h4>
+	<ol><li>Visit the configuration page of each website (from the link above).</li>
+	<li>Copy the updated accesskey value.</li>
+	<li>Go to your CMS and navigate to the ICanLocalize administration page.</li>
+	<li>Enter the updated accesskey value and save.</li>
+	</ol>
+</div>
+<div class="inter_tab_spacer"></div>
+<% end %>
+
+
+<% if (@user.has_supporter_privileges? || @user == @auser) && @auser.kind_of?(Translator) %>
+	<%= infotab_top('Translation languages', infobar_contents_user('This table shows the languages you are qualified to translate in', 'This table shows languages the translator works in', true, (@auser.from_languages.length > 0) && (@auser.to_languages.length > 0))) %>
+	<%= infotab_header(['From these languages','To these languages'], { 'From these languages' => {'width'=>'50%'}, 'To these languages' => {'width'=>'50%'}}) %>
+		<tr>
+			<td><%= filtered_language_list(@auser.translator_language_froms, @auser==@user, @user.has_supporter_privileges?) %></td>
+			<td><%= filtered_language_list(@auser.translator_language_tos, @auser==@user, @user.has_supporter_privileges?) %></td>
+		</tr>
+	</table>
+	<% if (@user == @auser) %>
+		<div class="tabbottom">
+			<%= form_tag({:id=>@user.id, :action=>:translator_languages}, {:method=>'GET'}) do %>
+				<%= submit_tag('Edit languages', :name=>'edit', data: { disable_with: 'Edit languages' }) %>
+			<% end %>
+		</div>
+	<% end %>
+	<div class="inter_tab_spacer"></div>
+
+<% if ENABLE_TRANSLATOR_SELF_ASSIGN %>
+  <% if @auser.is_a?(Translator) && (@user.has_supporter_privileges? || @auser == @user) %>
+    <div id="autoassignment"><%= render(:partial=>'autoassignment') %></div>
+    <div class="inter_tab_spacer"></div>
+  <% end %>
+<% end %>
+
+	<div id="tools"><%= render(:partial=>'tools') %></div>
+	<div class="inter_tab_spacer"></div>
+
+	<div id="categories"><%= render(:partial=>'categories') %></div>
+	<div class="inter_tab_spacer"></div>
+
+	<div id="rate_and_capacity"><%= render(:partial=>'rate_and_capacity') %></div>
+	<div class="inter_tab_spacer"></div>
+
+<% end %>
+
+<% if @user.has_supporter_privileges? && !@auser.has_supporter_privileges? %>
+	<div style="margin: 0 1em 2em 1em; padding: 1em; background-color: #F0F0FF; border: 1pt solid #C0C0FF;">
+	<h2>Supporter Information</h2>
+	<p><%= link_to('Switch to %s'%@auser.full_name, {:controller=>:login, :action=>:switch_user, :id=>@auser.id}) %></p>
+    <% if @auser[:type] == 'Translator' %>
+      <p><%=link_to "Manage Projects", "/users/#{@auser[:id]}/manage_works" %></p>
+	<% elsif @auser.is_client? %>
+      <p><%=link_to "Manage Aliases", "/users/#{@auser[:id]}/manage_aliases" %></p>
+      <p><%=link_to "Access translation memory", "/users/#{@auser[:id]}/tus" %></p>
+    <% end %>
+	<%= image_for_user(@auser,"vertical-align: middle;") %>
+	<p>Signup date: <b><%= disp_time(@auser.signup_date) %></b></p>
+	<p>Last log in: <b><%= disp_time(@auser.last_login) %></b></p>
+	<% if !@auser.source.blank? %>
+		<p>Source:
+			<% if @auser.source.starts_with?('http') %>
+				<%= link_to(h(@auser.source),@auser.source) %>
+			<% else %>
+				<b><%= h(@auser.source) %></b>
+			<% end %>
+		</p>
+	<% end %>
+	<div id="affiliate">
+		<%= render(:partial=>'affiliate') %>
+	</div>
+	<br />
+	<div style="background: #FFFFFF; padding: 1em; border: 1pt solid #C0C0FF;">
+
+	<% if @auser.pending_invoices.length > 0 %>
+	<h3>Pending invoices</h3>
+	<ul>
+	<% @auser.pending_invoices.each do |invoice| %>
+		<li><%= link_to('Invoice.%d'%invoice.id, {:controller=>:finance, :action=>:invoice, :id=>invoice.id}) %>
+		<%= 'Created: %s, amount: %.2f USD'%[disp_date(invoice.modify_time),invoice.gross_amount] %></li>
+	<% end %>
+	</ul>
+	<div class="inter_tab_spacer"></div>
+	<% end %>
+
+	<h3>Support tickets</h3>
+	<% if @auser.support_tickets.length > 0 %>
+		<%= render(:partial=>'/support/support_tickets', :object=>@auser.support_tickets) %>
+		<br />
+	<% end %>
+	<%= link_to('Create a new support ticket', {:controller=>:support, :action=>:new_support_ticket_for_user, :id=>@auser.id}) %>
+	</div>
+	<div class="inter_tab_spacer"></div>
+
+	<h3>Notifications</h3>
+	<%= notifications_list(@auser.notifications).html_safe %>
+	<div class="inter_tab_spacer"></div>
+
+	<% if @auser.has_client_privileges? && !@auser.is_a?(Partner) %>
+		<% if @auser.websites.count > 0 %>
+			<h3>CMS translation projects</h3>
+			<%= compact_list(@auser.websites.collect { |w| [w.name, {controller: '/wpml/websites', :action=>:show, :id=>w.id}] }) %>
+			<div class="inter_tab_spacer"></div>
+		<% end %>
+		<% if @auser.revisions.where('revisions.cms_request_id IS NULL').length > 0 %>
+			<h3>Bidding projects</h3>
+			<%= compact_list(@auser.revisions.where('revisions.cms_request_id IS NULL').collect { |r| [r.project.name, {:controller=>:revisions, :action=>:show, :project_id=>r.project_id, :id=>r.id}] }) %>
+			<div class="inter_tab_spacer"></div>
+		<% end %>
+		<% if @auser.text_resources.length > 0 %>
+			<h3>Software localization projects</h3>
+			<%= compact_list(@auser.text_resources.collect { |t| [t.name, {:controller=>:text_resources, :action=>:show, :id=>t.id}] }) %>
+			<div class="inter_tab_spacer"></div>
+		<% end %>
+		<% if @auser.web_messages.length > 0 %>
+			<h3>Instant Translation projects</h3>
+			<% if @auser.web_messages.length >= 100 %>
+				<p>Total: <%= @auser.web_messages.length %> messages. Showing last 100. (<%= link_to("see all", "/users/#{@auser.id}/web_messages_list")%>)</p>
+				<%= compact_list(@auser.web_messages[-100..-1].collect { |w| [(w.name.blank? ? w.id.to_s : w.name), {:controller=>:web_messages, :action=>:show, :id=>w.id}] }) %>
+			<% else %>
+				<%= compact_list(@auser.web_messages.collect { |w| [(w.name.blank? ? w.id.to_s : w.name), {:controller=>:web_messages, :action=>:show, :id=>w.id}] }) %>
+			<% end %>
+			<div class="inter_tab_spacer"></div>
+		<% end %>
+		<% if @auser.web_supports.length > 0 %>
+			<h3>Support centers</h3>
+			<%= compact_list(@auser.web_supports.collect { |w| [w.name, {:controller=>:web_supports, :action=>:show, :id=>w.id}] }) %>
+			<div class="inter_tab_spacer"></div>
+		<% end %>
+    <h3>What this user is doing</h3>
+    <p><%= link_to('Follow clicks (%d click)'%@auser.user_clicks.count, {:controller=>:user_clicks, :user_id=>@auser.id}) %></p>
+    <div class="inter_tab_spacer"></div>
+	<% end %>
+
+	<h2>Issues</h2>
+	<% if (@created_issues.length == 0) && (@targeted_issues.length == 0) %>
+		<p>No issues.</p>
+	<% end %>
+
+	<% if (@created_issues.length > 0) %>
+		<h3>Issues that this user has opened</h3>
+		<%= render(:partial=>'/issues/issues', :object=>@created_issues, :locals=>{:initiator=>true}) %>
+		<div class="inter_tab_spacer"></div>
+	<% end %>
+
+	<% if (@targeted_issues.length > 0) %>
+		<h3>Issues that others have opened for this user</h3>
+		<%= render(:partial=>'/issues/issues', :object=>@targeted_issues, :locals=>{:initiator=>false}) %>
+	<% end %>
+
+	</div>
+<% end %>
+
+<% if @auser.kind_of?(Translator) %>
+  <div id="resume"><%= render(:partial => 'resume') %></div>
+  <div class="inter_tab_spacer"></div>
+<% end %>
+
+<% if (@user == @auser) && (@auser[:type] == 'Translator') %>
+	<div id="privacy"><%= render(:partial=>'privacy') %></div>
+	<div class="inter_tab_spacer"></div>
+<% end %>
+
+<% if @auser[:type] != 'Partner' %>
+	<% if @auser.markings.length != 0 %>
+		<a name="bookmarks"></a>
+		<%= infotab_top("Other's opinions", "These comments were entered for #{@auser.full_name} by other users") %>
+		<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+			<ul>
+				<% for bookmark in @auser.markings %>
+					<li><%= (_('%s: %s')%[user_link(bookmark.user), bookmark.note]).html_safe %></li>
+				<% end %>
+			</ul>
+		</td></tr></table>
+		<div class="inter_tab_spacer"></div>
+	<% end %>
+
+	<% unless @user.has_client_privileges? %>
+	<%#= infotab_top("Verification status", infobar_contents_user("Shows your identification level (your identity must be verified in order to get paid).", "Shows the level of identification of this user. Unverified users may not pay or get paid", true, @auser.verified? )) %>
+	<table class="stats" width="100%" cellspacing="0" cellpadding="3" ><tr><td>
+	<p><%= @auser.verification_status_text %></p>
+	<% if (@user == @auser) && !@auser.verified? %>
+		<%= link_to('Verify your identity', {:action=>:verification}) %>
+	<% elsif @user.has_supporter_privileges? && ((@auser.has_client_privileges?) || (@auser[:type] == 'Translator')) && (@auser.user_identity_documents.length > 0) %>
+		<ul><%= render(:partial=>'identity_verification_for_admin', :collection=>@auser.identity_verifications) %></ul>
+	<% end %>
+	</td></tr></table>
+	<div class="inter_tab_spacer"></div>
+	<% end %>
+<% end %>
+
+<% if (@auser[:type] == 'Translator') && (@user == @auser) %>
+	<div id="qualification"><%= render(:partial => 'qualification') %></div>
+	<div class="inter_tab_spacer"></div>
+<% end %>
+
+<% if @user_downloads && (@user_downloads.length > 0) %>
+	<%= infotab_top("Downloads", 'Download history for this user') %>
+	<%= infotab_header(['Program','Version', 'Date']) %>
+	<%= render(:partial=>'user_download', :collection=>@user_downloads) %>
+	</table>
+	<div class="inter_tab_spacer"></div>
+<% end %>
+
+<a name="bookings"></a>
+<% if !@user.has_supporter_privileges? %>
+	<%= bookmark_user_link(@auser) %>
+<% end %>
+
+<% if @user == @auser %>
+	<p><%= link_to(_('Back to your account page'), {:action=>:my_profile}) %></p>
+<% end %>

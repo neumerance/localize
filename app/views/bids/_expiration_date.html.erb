@@ -1,0 +1,21 @@
+<div id="expiration_date" class="box_margin">
+	Work must be completed until <strong><%= disp_time(@bid.expiration_time) %></strong>
+	<% if @bid.expiration_time.present? && @bid.expiration_time < Time.now() -%><span class="warning">(expired)</span><% end -%>
+	 -&gt;
+	<% if @show_expiration_edit %>
+		<%= form_for(
+                   :bid,
+                   :url => {:controller=>:bids, :action=>:show, :id=>@bid.id},
+                   "data-confirm" => 'Are you sure you want to extend the delivery date?',
+                   :html => { :method => :put , :req => 'save', :remote => true }
+           ) do |f| %>
+			<%= f.number_field :days_to_complete, :size => 2, min: 0, max: 99 %> day(s) after bid acceptance
+			<%= submit_tag 'Update deadline', data: { disable_with: 'Updating' } %>
+		<% end %>
+
+	<% else %>
+    <% if @bid.expiration_time.present? && @bid.accept_time.present? %>
+		  <%= Integer((@bid.expiration_time - @bid.accept_time) / DAY_IN_SECONDS) %> day(s) after bid acceptance.
+    <% end %>
+	<% end %>
+</div>

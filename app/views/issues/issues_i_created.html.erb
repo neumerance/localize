@@ -1,0 +1,10 @@
+<%= form_tag({ action: :issues_i_created }) do %>
+	<div class="pager_control" style="position: relative; height: 15px;">
+	    <%= paginate @created_issues %>
+	    <label style="position: absolute; top: 2px; right: 10px">
+	      Results per page: <%= select_tag 'per_page', options_for_select(%w(10 20 40 60 80 100), params[:per_page]), onchange: 'submit()'  %>
+	    </label>
+	    <div style="clear: both"></div>
+	</div>
+<% end %>
+<%= render(:partial=>'issues', :object=>@created_issues, :locals=>{:initiator=>false}) %>

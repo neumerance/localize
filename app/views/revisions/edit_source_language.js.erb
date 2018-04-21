@@ -1,0 +1,5 @@
+jQuery('#source_language').html('<%= escape_javascript(render :partial => 'source_language') %>')
+<% if @apply_changes %>
+  jQuery('#languages').html('<%= escape_javascript(render :partial => 'languages', :object=>@revision) %>').effect("highlight", {}, 3000)
+  jQuery('#statistics').html('<%= escape_javascript(render :partial => 'statistics') %>').effect("highlight", {}, 3000)
+<% end %>

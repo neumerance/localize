@@ -1,0 +1,11 @@
+<p><%= _("Back to %s project.") % link_to(h(@text_resource.name), {:controller=>:text_resources, :action=>:show, :id=>@text_resource.id}) %></p>
+<br />
+<div class="infobox"><h4><%= _("Upload details") %></h4>
+	<table>
+		<tr><td><%= _("File name:") %></td><td><b><%= h(@resource_translation.orig_filename) %></b></td></tr>
+		<tr><td><%= _("Description:") %></td><td><b><%= @resource_translation.description %></b></td></tr>
+		<tr><td><%= _("Uploaded:") %></td><td><b><%= disp_time(@resource_translation.chgtime) %></b></td></tr>
+	</table>
+</div>
+
+<%= text_area_tag(:txt, h(@resource_translation.get_contents), {:rows=>20, :cols=>100, :style=>'width: 100%;', maxlength: COMMON_NOTE}) %>

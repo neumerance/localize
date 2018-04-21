@@ -1,0 +1,26 @@
+Dear <%= @user.full_real_name %>,
+
+Thank you for creating an account in ICanLocalize.
+
+== Next steps for translating your site ==
+
+1. Send documents for translation.
+2. Choose translators.
+3. Deposit payment for the translation.
+
+You can do all the above from you website. Log in and go to '<%= @control_screen %>'.
+
+Note: you only need to choose translators once. When you send more documents to translation, they would be translated by the same translators that you choose now.
+
+You can access your ICanLocalize account here:
+<%= url_for({:escape => false, :only_path => false, :controller=>:login, :action=>:index, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+To log in, use your email (<%= @user.email %>) and this password:
+<%= @user.password %>
+
+== Need help? ==
+
+If you have any questions or need help, let us know. You can open a support ticket directly from your website, from '<%= @control_screen %>', or using this link:
+<%= url_for({:escape => false, :only_path => false, :controller=>:support, :action=>:new, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+<%= EMAIL_SIGNATURE %>

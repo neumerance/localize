@@ -1,0 +1,6 @@
+<p><%= _('Which CMS are you using?') %></p>
+<ul>
+	<li><%= link_to('WordPress',{:controller=>:client, :action=>:getting_started4, :cms_kind=>WEBSITE_WORDPRESS}) %></li>
+	<li><%= link_to('Drupal',{:controller=>:client, :action=>:getting_started4, :cms_kind=>WEBSITE_DRUPAL}) %></li>
+	<li><%= (_('Other - %s')%link_to(_('contact us'),{:controller=>:support, :action=>:new})).html_safe %></li>
+</ul>

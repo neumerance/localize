@@ -1,0 +1,7 @@
+<% if @funding_ok %>
+  <p>Your project has been successfully created and will be translated soon. You will receive a notification email when translation is complete.</p>
+  <p>You can also check the status by browsing <%= link_to('Your Instant Translation projects', {:action=>:index}) %>.</p>
+<% else %>
+  <p>Your project has been successfully created but is pending a deposit to your account, in order to fund translation.</p>
+  <p style="font-size: 110%; font-weight: bold;"><%= link_to(_('Deposit the required amount'), {:controller=>:web_supports, :action=>:untranslated_messages}) %> to get started.</p>
+<% end %>

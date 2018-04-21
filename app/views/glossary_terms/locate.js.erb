@@ -1,0 +1,4 @@
+jQuery('#glossary_edit').html('<%= escape_javascript(render partial: '/glossary_terms/glossary_panel') %>')
+jQuery('html, body').animate({
+  scrollTop: jQuery("#glossary_edit").offset().top
+}, 2000);

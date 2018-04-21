@@ -1,0 +1,14 @@
+<p style="<%= language_dir_css_attribute(message_translation.original_language)+text_flow_css_attribute(message_translation.original_language) %>">
+	<%= pre_format(message_translation.client_body) %>
+</p>
+<br /><hr />
+<h4>Translation</h4>
+
+<%= form_tag('#') do %>
+	<p><%= text_area_tag :visitor_body, message_translation.decoded_visitor_body(@user), {:rows=>12, :cols=>100, :style=>('width: 100%;'+language_dir_css_attribute(message_translation.destination_language))} %></p>
+<% end %>
+
+
+<%= form_tag({ :action => :decide_about_translation, :id=>message_translation.id }, :remote => true) do %>
+	<%= submit_tag 'Hide', :name=>'hide', data: { disable_with: 'Hide' } %>
+<% end %>

@@ -1,0 +1,4 @@
+<tr>
+	<td><%= link_to("#{message.owner.revision.project.name} - #{h message.owner.revision.name} revision", {:controller => :revisions, :action => :show, :id => message.owner.revision.id, :project_id => message.owner.revision.project_id}) %></td>
+	<td><%= pre_format(truncate(message.body, length: 300, omission: '...')) %></td>
+</tr>

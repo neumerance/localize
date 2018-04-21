@@ -1,0 +1,22 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>A new comment was posted on project <%= @resource_chat.resource_language.text_resource.name %> to <%= @resource_chat.resource_language.language.name %> by <%= @message.user.full_name %>.</p>
+
+<p>----</p>
+
+<p><%= pre_format(h @message.body_with_emojis) %></p>
+
+<p>----</p>
+
+<p>
+  <% if @message.attachments.length == 1 %>This message includes an attachment. To download it, go to the message by clicking on the reply link.
+  <% elsif @message.attachments.length > 1 %>This message includes <%= @message.attachments.length %> attachments. To download them, go to the message by clicking on the reply link.
+  <% end %>
+</p>
+
+<p>
+  <% link = url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:resource_chats, :action=>:show, :text_resource_id=>@resource_chat.resource_language.text_resource.id, :id=>@resource_chat.id } ) %>
+  To reply, click on the link below: <%= link_to link, link %>
+</p>
+
+<%= EMAIL_SIGNATURE %>

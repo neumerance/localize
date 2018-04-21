@@ -1,0 +1,32 @@
+<p>Dear <%= @user.full_real_name %>, </p>
+<p>
+<%= link_to(@translator.full_name,{:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:users, :action=>:show, :id=>@translator.id, :wid=>@website.id, :accesskey=>@website.accesskey}) %>  is interested in translating your project <strong><%= @website.name %> from <%= @website_translation_offer.from_language.nname %> to <%= @website_translation_offer.to_language.nname %> for <strong><%= @website_translation_contract.amount %></strong> USD / word.</strong>
+</p>
+
+
+<% if !@message.blank? %>
+<p style="background-color: #F0F0F0; margin: 1em; padding: 1em; border: 1pt solid #808080; font-family: 'Trebuchet MS',Verdana,Arial,Sans-serif;"><%= pre_format(@message) %></p>
+<% end -%>
+
+<p><%= link_to(_('Respond to this application'),{:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:website_translation_contracts, :action=>:show, :website_id=>@website.id, :website_translation_offer_id=>@website_translation_offer.id, :id=>@website_translation_contract.id, :accesskey=>@website.accesskey }, :class=>'rounded_but_bold') %></p>
+
+<h3>About <%= @translator.full_name %></h3>
+
+<% if !@translator.country.blank? %>
+	<p>Country <strong><%= @translator.country.name %></strong></p>
+<% end %>
+
+<p>
+	Rating in ICanLocalize <strong><%= @translator.rating.to_i.to_s %></strong> (out of 100)	
+</p>
+
+<% if @translator.markings.length > 0 %>
+	<%= _('Recent feedback from other clients:') %>
+	<ul>
+		<% @translator.markings.all.order('bookmarks.id DESC').limit(3).each do |bookmark| %>
+	  		<li><em>&quot;<%= bookmark.note %>&quot;</em></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<%= link_to(_('Profile page'), {:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:users, :action=>:show, :id=>@translator.id, :wid=>@website.id, :accesskey=>@website.accesskey}) %>

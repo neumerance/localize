@@ -1,0 +1,11 @@
+<td>
+	<% @error && @error.each do |title,message| %>
+		<span class="tokentext">Error: <%=message%></span>
+	<% end %>
+	<%= email_field_tag :alias_email, params[:alias_email], maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+</td>
+<td></td>
+<td colspan="2">
+	Fill a valid e-mail to be able to edit this permissions.
+</td>
+<td></td>

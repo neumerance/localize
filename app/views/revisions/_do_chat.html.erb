@@ -1,0 +1,23 @@
+<h3><%= _("Communication with client") %></h3>
+<% if @user_can_create_chat -%>
+  <%= image_tag 'icons/note.png', class: 'left_icon', alt: 'note', border: 0 %>
+	<%= button_to(_('Start a chat or make a bid'),{:controller=>:chats, :action=>:create, :project_id=>@project.id, :revision_id=>@revision.id}, {:id => 'bid_button'} ) %>
+<% elsif @your_chat %>
+  <%= image_tag 'icons/note.png', class: 'left_icon', alt: 'note', border: 0 %>
+	<% if @user[:type] == 'Client' -%>
+		<%= chat.translator.full_name %> - <%= chat_link(@your_chat,"reply","reply") %>
+	<% else %>
+		<%= chat_link(@your_chat,_('send a message'),'reply') %>
+		<% if @user_can_bid -%>or <%= chat_link(@your_chat,'bid on project') %><% end -%>
+	<% end %>
+<% elsif @practice_project_needed %>
+	<p>
+		You must first do a practice project before you can start working on live projects.
+		<%= link_to(_('Request a practice project now'), {:controller=>:users, :action=>:request_practice_project}) %>
+	</p>
+<% elsif @message %>
+	<p><%= @message %>
+		<% if @how_to_fix %><%= link_to(@how_to_fix[0],@how_to_fix[1]) %><% end %>
+	</p>
+<% end -%>
+<div class="inter_tab_spacer"></div>

@@ -1,0 +1,13 @@
+<% if @error %>
+	<div class="errorExplanation">
+		<%=@error%>
+	</div>
+<% end %>
+
+<h1>Search cms from <%=@website.name%></h1>
+<%= render :partial => "search/cms_search_box" %>
+
+<% if @search and @cms_requests && (@cms_requests.number > 0) %>
+	<h2>Results:</h2>
+	<%=render :partial => 'websites/cms_request_list', :locals => {:cms_requests => @cms_requests, :list_of_pages => @list_of_pages, :action => 'cms'}%>
+<% end %>

@@ -1,0 +1,9 @@
+<%= form_for resource, remote: true do |f| %>
+    <%= hidden_field_tag :field, field %>
+    <label class="switch">
+      <%= f.check_box field.to_sym, onchange: 'jQuery(this.form).submit()', checked: resource[field] %>
+      <span class="slider"></span>
+      <span class="switch-on">Yes</span>
+      <span class="switch-off">No</span>
+    </label>
+<% end %>

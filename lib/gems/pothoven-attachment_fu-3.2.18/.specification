@@ -1,0 +1,72 @@
+--- !ruby/object:Gem::Specification
+name: pothoven-attachment_fu
+version: !ruby/object:Gem::Version
+  version: 3.2.18
+platform: ruby
+authors:
+- Rick Olson
+- Steven Pothoven
+autorequire: 
+bindir: bin
+cert_chain: []
+date: 2016-05-27 00:00:00.000000000 Z
+dependencies: []
+description: This is a fork of Rick Olson's attachment_fu adding Ruby 1.9 and Rails
+  3.2 and Rails 4 support as well as some other enhancements.
+email: steven@pothoven.net
+executables: []
+extensions: []
+extra_rdoc_files:
+- README.rdoc
+files:
+- CHANGELOG
+- LICENSE
+- README.rdoc
+- amazon_s3.yml.tpl
+- lib/geometry.rb
+- lib/pothoven-attachment_fu.rb
+- lib/technoweenie/attachment_fu.rb
+- lib/technoweenie/attachment_fu/backends/cloud_file_backend.rb
+- lib/technoweenie/attachment_fu/backends/db_file_backend.rb
+- lib/technoweenie/attachment_fu/backends/file_system_backend.rb
+- lib/technoweenie/attachment_fu/backends/s3_backend.rb
+- lib/technoweenie/attachment_fu/processors/core_image_processor.rb
+- lib/technoweenie/attachment_fu/processors/gd2_processor.rb
+- lib/technoweenie/attachment_fu/processors/image_science_processor.rb
+- lib/technoweenie/attachment_fu/processors/mini_magick_processor.rb
+- lib/technoweenie/attachment_fu/processors/rmagick_processor.rb
+- rackspace_cloudfiles.yml.tpl
+- vendor/red_artisan/core_image/filters/color.rb
+- vendor/red_artisan/core_image/filters/effects.rb
+- vendor/red_artisan/core_image/filters/perspective.rb
+- vendor/red_artisan/core_image/filters/quality.rb
+- vendor/red_artisan/core_image/filters/scale.rb
+- vendor/red_artisan/core_image/filters/watermark.rb
+- vendor/red_artisan/core_image/processor.rb
+homepage: http://github.com/pothoven/attachment_fu
+licenses: []
+metadata: {}
+post_install_message: 
+rdoc_options:
+- "--inline-source"
+- "--charset=UTF-8"
+require_paths:
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement
+  requirements:
+  - - ">="
+    - !ruby/object:Gem::Version
+      version: '0'
+required_rubygems_version: !ruby/object:Gem::Requirement
+  requirements:
+  - - ">="
+    - !ruby/object:Gem::Version
+      version: '0'
+requirements: []
+rubyforge_project: nowarning
+rubygems_version: 2.5.1
+signing_key: 
+specification_version: 2
+summary: attachment_fu as a gem
+test_files: []
+

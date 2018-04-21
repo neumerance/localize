@@ -1,0 +1,19 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>
+  <% if @alternative_opening %>
+      <%= @alternative_opening %>
+      <%= @message.body %>
+  <% else %>An ICanLocalize support person needs your assistance.
+    <%= @message.body %>
+  <% end %>
+</p>
+
+<p>
+  To send a reply to this ticket, go to this link:
+  <%= url_for({:escape => false, :only_path => false, :controller=>:support, :action=>:show, :id=>@support_ticket.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+</p>
+
+<p>
+  Reference #: <%= @support_ticket.reference %>
+</p>

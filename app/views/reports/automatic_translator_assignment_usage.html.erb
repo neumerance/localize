@@ -1,0 +1,47 @@
+<div>
+  <div style="float: left;width: 50%;">
+    <h2>Automatic Translator Assignment Usage Report</h2>
+    <table class="stats" style="margin-top: 20px;margin-bottom:40px;width: 300px;">
+      <thead>
+      <tr class="headerrow text-center">
+        <th colspan="2">Automatic Translator Assignment</th>
+      </tr>
+      <tr class="headerrow">
+        <th>Websites / Count</th>
+        <th>Websites %</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td class="text-right"><%= @automatic_translator_assignment.accepted_count %> / <%= @automatic_translator_assignment.total_count %></td>
+        <td class="text-right"><%= number_to_percentage((@automatic_translator_assignment.accepted_count / @automatic_translator_assignment.total_count.to_f) * 100, precision: 2, strip_insignificant_zeros: true) %></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="float: left;width: 50%;">
+    <h2>Automatic Translator Assignment per Language Report</h2>
+    <table class="stats" style="margin-top: 20px;width: 500px;">
+      <thead>
+      <tr class="headerrow">
+        <th rowspan="2" >Language Pair</th>
+        <th colspan="2">Automatic Translator Assignment</th>
+      </tr>
+      <tr class="headerrow">
+        <th>Websites / Count</th>
+        <th>Websites %</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @automatic_translator_assignment_per_language.each do |language_pair| %>
+          <tr>
+            <td><%= language_pair.source_language_name %> to <%= language_pair.target_language_name %></td>
+            <td class="text-right"><%= language_pair.accepted_count %> / <%= language_pair.total_count %></td>
+            <td class="text-right"><%= number_to_percentage((language_pair.accepted_count / language_pair.total_count.to_f) * 100, precision: 2, strip_insignificant_zeros: true) %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="clearfix"/>
+</div>

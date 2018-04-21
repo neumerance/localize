@@ -1,0 +1,26 @@
+<span>Dear <%= @translator.full_name || @translator.email %>,</span>
+<br/>
+<br/>
+<br/>
+<p>ICanLocalize chose you to translate the website
+  project <%= link_to @website.name, {controller: '/wpml/websites', action: :show, id: @website.id} %>
+  from <%= @website_translation_offer.from_language.name %> to <%= @website_translation_offer.to_language.name %>.</p>
+
+<p>If you are not available to do this work, please resign from this project, so that another translator can take it. We
+  guarantee clients accurate and timely translation and don’t want to disappoint clients in their first experience with
+  us.</p>
+
+<p><%= link_to 'Resign from this project', { controller: :website_translation_offers,
+                                             action: :review,
+                                             id: @website_translation_offer.id,
+                                             website_id: @website.id }, target: '_blank' %></p>
+
+<p>
+  You can see the currently review jobs at the top of your home page under 'Reviews you need to complete':<br/>
+  <a href="https://www.icanlocalize.com/translator/open_work">https://www.icanlocalize.com/translator</a>
+</p>
+
+<p>
+  ICanLocalize Team<br/>
+  By OnTheGoSystems
+</p>

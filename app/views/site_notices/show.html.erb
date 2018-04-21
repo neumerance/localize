@@ -1,0 +1,23 @@
+<p>
+  <b>Active:</b>
+  <%=h @site_notice.active %>
+</p>
+
+<p>
+  <b>Start time:</b>
+  <%=h @site_notice.start_time %>
+</p>
+
+<p>
+  <b>End time:</b>
+  <%=h @site_notice.end_time %>
+</p>
+
+<p>
+  <b>Txt:</b>
+  <%=h @site_notice.txt %>
+</p>
+
+
+<%= link_to 'Edit', edit_site_notice_path(@site_notice) %> |
+<%= link_to 'Back', site_notices_path %>

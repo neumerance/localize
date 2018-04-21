@@ -1,0 +1,11 @@
+<%= form_tag({ controller: :websites, action: :confirmed_resignation, id: website.id }) do %>
+  <%= hidden_field_tag :id, website.id %>
+  <%= hidden_field_tag :translator_id, params[:translator_id] %>
+  <div>
+    <h4>Please explain why you want to resign</h4>
+    <%= text_area_tag :remarks, params[:remarks], cols: 60, rows: 7 %>
+  </div>
+  <div class="m-t-20">
+    <%= button_tag 'Resign' %> <%= link_to 'Cancel', { controller: :websites, action: :cancel_resignation, id: website.id }, remote: true %>
+  </div>
+<% end %>

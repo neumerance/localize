@@ -1,0 +1,17 @@
+<% if @list_of_pages %>
+<div class="pager_control">
+	Showing page <%= form_tag({:action=>:history}, {:method=>'GET'}) %>
+		<%= select_tag( :page, options_for_select(@list_of_pages,@account_lines.number), {:onchange=>"submit()"}) %>
+    &nbsp;<%= (link_to("Prev", url_for(:action=>:history, :page=>@account_lines.prev.number))) if @account_lines.prev? %>
+    &nbsp;<%= (link_to("Next", url_for(:action=>:history, :page=>@account_lines.next.number))) if @account_lines.next? %>
+</form>
+</div>
+<% end %>
+
+  <%= infotab_header(['Date','Transaction','Amount','Fee','Balance'], {'Amount' => {'class'=>'moneycolumn'}, 'Fee' => {'class'=>'moneycolumn'}, 'Balance' => {'class'=>'moneycolumn'}}) %>
+
+  <% @account_lines.each do |account_line| %>
+    <%= render partial: 'account_line', locals: { account_line: account_line } %>
+  <% end %>
+
+</table>

@@ -1,0 +1,5 @@
+<% return if money_transaction.target_account.class == TaxAccount %>
+<tr>
+	<td><%= money_transaction.description(money_transaction.owner.user) %></td>
+	<td><%= money_transaction.amount %> <%= money_transaction.currency.disp_name %></td>
+</tr>

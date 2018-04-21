@@ -1,0 +1,5 @@
+<%= render(:partial=>'issues', :object=>@issues, :locals=>{:initiator=>nil}) %>
+
+<% if @back %>
+<br /><br /><p><%= link_to('&laquo; Back to the project'.html_safe,@back) %></p>
+<% end %>

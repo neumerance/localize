@@ -1,0 +1,3 @@
+<%= infotab_header(['Issue', 'Kind'] + ((initiator == nil) ? ['By','For'] : (initiator ? ['For'] : ['By'])) + ['Last reply']) %>
+<%= render(:partial=>'/issues/issue', :collection=>issues, :locals=>{:initiator=>initiator}) %>
+</table>

@@ -1,0 +1,105 @@
+<h1>Details for language pair: from <%= @language.from_language.name %> to <%= @language.to_language.name %></h1>
+<p>
+  <i>Note: Actual price can only be greater or equal to <%= number_to_currency(MINIMUM_FIXED_PRICE) %></i>
+</p>
+<table id="detailedLanguageRateTable" class="stats">
+  <tbody>
+    <tr class="headerrow">
+      <th class="width-50">Field</th><th>Value</th>
+    </tr>
+    <tr>
+      <td>Actual price</td>
+      <td>
+        <div id="actual_price_<%= @language.id %>">
+          <%= link_to number_to_currency(@language.actual_price), { controller: :language_pair_fixed_prices, action: :update_field, field: 'actual_price' }, remote: true %>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Calculated price</td>
+      <td><%= number_to_currency @language.calculated_price %></td>
+    </tr>
+    <tr>
+      <td>Calculated price last year</td>
+      <td><%= number_to_currency @language.calculated_price_last_year %></td>
+    </tr>
+    <tr>
+      <td>Number of transactions</td>
+      <td><%= @language.number_of_transactions %></td>
+    </tr>
+    <tr>
+      <td>Number of translactions last year</td>
+      <td><%= @language.number_of_transactions_last_year %></td>
+    </tr>
+    <tr>
+      <td>Published</td>
+      <td>
+        <%= render partial: '/language_pair_fixed_prices/checkbox_update_form', locals: { resource: @language, field: 'published' } %>
+      </td>
+    </tr>
+    <tr>
+      <td>Created At</td>
+      <td><%= @language.created_at.to_formatted_s(:long)  %></td>
+    </tr>
+  </tbody>
+</table>
+<h1>Translators enabled for this language pair</h1>
+<table id="translatorTable" class="stats" style="width: 100%">
+  <thead>
+  <tr class="headerrow">
+    <th>ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Nickname</th>
+    <th>Rate</th>
+    <th>Enable WebTA Access</th>
+  </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<script>
+  jQuery(document).ready(function() {
+
+    var fields = [
+      {
+        name: 'id', renderOverride: function(full) {
+          return jQuery('<a target="_blank">').text(full.id).attr('href', '/users/'+full.id).get(0).outerHTML
+        }
+      },
+      { name: 'fname', type: 'text'},
+      { name: 'lname', type: 'text'},
+      { name: 'email', type: 'text'},
+      {
+        name: 'nickname', renderOverride: function(full) {
+          return jQuery('<span>').html(
+            full.nickname + ' ' + '<a href="/login/switch_user/'+full.id+'" target="_blank">(switch)</a>'
+          ).get(0).outerHTML
+        }
+      },
+      {
+        name: 'translator_language_assignment.min_price_per_word', renderOverride: function(full) {
+          return formatter.format(full.translator_language_assignment.min_price_per_word)
+        }
+      },
+      {
+        name: 'id', type: 'text', renderOverride: function(full) {
+          return '<div id="webtaAccess" class="webtaAccess_'+full.id+'"><form class="button_to" method="get" action="/users/webta_access/'+full.id+'" data-remote="true"><input data-disable-with="Please wait..." type="submit" value="'+(full.beta_user ? "Disable" : "Enable")+' WebTA access"></form></div>'
+        }
+      }
+    ]
+
+    var columns = [];
+    jQuery.each(fields, function(_idx, field) {
+      columns.push(new DataTableColumn(field).init())
+    });
+
+    var dataTable = new DataTable('#translatorTable', columns, {
+      url: '<%= language_price_details_translators_language_pair_fixed_price_path(params[:id], format: :json) %>',
+      type: 'GET'
+    });
+    dataTable.init();
+
+  });
+</script>

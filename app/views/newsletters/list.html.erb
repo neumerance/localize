@@ -1,0 +1,26 @@
+<div id="newsletter_info">
+
+<p>ICanLocalize newsletter provides tips for running a multilingual business easier.</p>
+
+<%= render(:partial=>'public_newsletter', :collection=>@newsletters) %>
+
+</div>
+
+<br /><hr /><br />
+
+<h3>Want to get updates?</h3>
+<p>You're welcome to subscribe to our
+  <a href="http://feeds2.feedburner.com/IcanlocalizeNewsletter">
+    <%= image_tag 'rss.png', class: '', width: 16, height: 16, alt: 'RSS feed', style: '', align: 'top', border: 0 %>
+  </a>
+  <a href="http://feeds2.feedburner.com/IcanlocalizeNewsletter">newsletter RSS feed</a>.
+</p>
+
+<h4>Prefer to get updates by email?</h4>
+<form action="http://feedburner.google.com/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=IcanlocalizeNewsletter', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+	<p>Enter your email address: <input type="text" style="width:25em;" name="email"/></p>
+	<input type="hidden" value="IcanlocalizeNewsletter" name="uri"/>
+	<input type="hidden" name="loc" value="en_US"/>
+	<input type="submit" value="Subscribe" />
+	<p class="comment">Delivered by <i>FeedBurner</i></p>
+</form>

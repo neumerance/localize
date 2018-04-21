@@ -1,0 +1,9 @@
+<tr>
+	<td><%= user_link(website_translation_contract.translator) %></td>
+	<td><%= contract_status(website_translation_contract, @user) %></td>
+	<td><%= link_to((website_translation_contract.status == TRANSLATION_CONTRACT_NOT_REQUESTED) ? _('Communicate with translator') : _('Communicate with translator and respond to application'),
+				{:controller=>:website_translation_contracts, 
+				:action=>:show, :website_id=>website_translation_contract.website_translation_offer.website_id, 
+				:website_translation_offer_id=>website_translation_contract.website_translation_offer_id,
+				:id=>website_translation_contract.id}) %></td>
+</tr>

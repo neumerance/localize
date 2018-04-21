@@ -1,0 +1,5 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+amir_verification:
+  id: 1
+  normal_user_id: 2
+  status: <%= VERIFICATION_OK %>

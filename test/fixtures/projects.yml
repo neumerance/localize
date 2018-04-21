@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+PB:
+  id: 1
+  name: <%= Faker::App.name %>
+  client_id: 2
+  creation_time: <%= (Time.now()-20*(24*60*60)).to_formatted_s(:db) %>
+SP:
+  id: 2
+  name: <%= Faker::App.name %>
+  client_id: 5
+  creation_time: <%= (Time.now()-15*(12*60*60)).to_formatted_s(:db) %>

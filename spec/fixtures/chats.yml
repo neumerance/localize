@@ -1,0 +1,12 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+PB_amir_orit:
+  id: 1
+  revision_id: 1
+  translator_id: 3
+  translator_has_access: 0
+  
+PB_amir_guy:
+  id: 2
+  revision_id: 1
+  translator_id: 4
+  translator_has_access: 0

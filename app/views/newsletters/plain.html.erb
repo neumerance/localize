@@ -1,0 +1,6 @@
+<h2><%= @newsletter.subject %></h2>
+
+<div style="background-color: #F0F0F0; border: 1pt solid #808080; padding: 1em; margin: 1em;">
+	<%= pre_format(@newsletter.body_plain) %>
+</div>
+<%= link_to('Back to list', {:action=>:index}) %> | <%= link_to('Edit', {:action=>:edit}) %> | <%= link_to('Show as HTML', {:action=>:show}) %> | <%= link_to('Delete', {:action=>:delete, :id=>@newsletter.id}, {'data-confirm'=>'Are you sure you want to delete this newsletter?'}) %> | <%= button_to('Test (send email)', {:action=>:test}, {'data-confirm'=>'Are you sure you want to do a test send?'}) %>

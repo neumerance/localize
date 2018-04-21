@@ -1,0 +1,5 @@
+<% if @warning %>
+	alert('<%= @warning %>')
+<% else %>
+  jQuery('<%= "#deposit#{@account.id}" %>').html('<%= escape_javascript(render partial: 'deposit', object: @account ) %>')
+<% end %>

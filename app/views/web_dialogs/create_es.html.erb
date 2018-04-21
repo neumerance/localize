@@ -1,0 +1,3 @@
+<p>Hemos recibido su mensaje y enviaremos una respuesta a su correo electrónico (<b><%= h(@web_dialog.email) %></b>) con la mayor brevedad posible.</p>
+<p><b><%= RAW_EMAIL_SENDER %></b> ha enviado recientemente un correo electrónico de confirmación a su casilla. Asegúrese de que su filtro SPAM no bloquee esta dirección. El correo electrónico de conformación incluye además un enlace que le permite verificar el progreso de su mensaje.</p>
+<p>Para continuar, envíe otro mensaje o lea nuestra respuesta, puede ingresar además en el <%= link_to('detalle de informe completo', {:action=>:show, :id=>@web_dialog.id, :accesskey=>@web_dialog.accesskey}) %>.</p>

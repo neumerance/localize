@@ -1,0 +1,6 @@
+<%= infotab_top('Recurring translation offers', "You can apply to any of these recurring translation offers") %>
+<%= infotab_header(['Project', 'Payment per word', 'Actions']) %>
+<%= render(:partial=>'website_translation_offer', :collection=>@website_translation_offers) %>
+</table>
+<div class="inter_tab_spacer"></div>
+<%= link_to('&laquo; Home'.html_safe, {:action=>:index}) %>

@@ -1,0 +1,17 @@
+<% if @show_edit_name %>
+	<p><%= _("Select a new name for this revision.") %></p>
+	<%= form_for(:revision, :url => {:action => :edit_name, :req => 'save'}, :remote => true) do |f| %>
+		<p><%= f.text_field :name, :size=>60, maxlength: COMMON_FIELD %></p>
+		<%= submit_tag _('Save'), :name=>'save', data: { disable_with: _('Save') } %>
+	<% end %>
+	<%= form_for(:revision, :url => {:action => :edit_name, :req => 'hide'}, :remote => true) do |f| %>
+		<%= submit_tag _('Cancel'), :name=>'hide', data: { disable_with: _('Cancel') } %>
+	<% end %>
+<% else %>
+	<%= _("This revision of the project is called:") %> <strong><%= h(@revision.name) %></strong>
+	<% if @canedit %>
+		<%= form_tag({ :action => :edit_name, :req=>'show' }, :remote => true) do %>
+			<%= submit_tag _('Edit name'), :name=>'show', data: { disable_with: _('Edit name') } %>
+		<% end %>
+	<% end %>
+<% end %>

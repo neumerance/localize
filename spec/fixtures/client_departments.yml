@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+amir_sales:
+  id: 1
+  web_support_id: 1
+  language_id: 1
+  translation_status_on_create: <%= TRANSLATION_NEEDED %>
+  name: Sales
+
+amir_support:
+  id: 2
+  web_support_id: 1
+  language_id: 3
+  translation_status_on_create: <%= TRANSLATION_NEEDED %>
+  name: Tech support
+
+amir_feedback:
+  id: 3
+  web_support_id: 1
+  language_id: 3
+  translation_status_on_create: <%= TRANSLATION_PENDING_CLIENT_REVIEW %>
+  name: Send Feedback

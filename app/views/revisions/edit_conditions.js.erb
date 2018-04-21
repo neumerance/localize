@@ -1,0 +1,6 @@
+<% if @warning %>
+	alert('<%= @warning %>');
+<% else %>
+  jQuery('#conditions').html('<%= escape_javascript(render :partial => 'conditions') %>');
+  jQuery('#auto_accept_payment').html('<%= escape_javascript(payment_for_auto_accept(@user, @revision)) %>');
+<% end %>

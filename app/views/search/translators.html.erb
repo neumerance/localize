@@ -1,0 +1,10 @@
+<% if @warning %>
+	<div class="errorExplanation"><%= @warning %></div>
+<% end %>
+
+<p>Look up translators according to translation languages.</p>
+<%= form_tag({:action=>:by_language}, :method => :get) do %>
+	<p>From language: <%= select_tag(:source_lang_id, options_for_select(@languages, @source_lang_id)) %></p>
+	<p>To language: <%= select_tag(:target_lang_id, options_for_select(@languages, @target_lang_id)) %></p>
+	<%= submit_tag('Search', data: { disable_with: 'Search' }) %>
+<% end %>

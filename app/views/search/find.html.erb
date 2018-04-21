@@ -1,0 +1,21 @@
+<% if @revisions.length > 0 %>
+	<h2>Projects</h2>
+		<table class="stats">
+			<tr class="headerrow"><th width="15%">Project</th><th width="30%">Description</th><th width="25%">Statistics</th></tr>
+      <% @revisions.each do |revision| %>
+        <%= render(:partial => "revision", :locals => {revision: revision}) %>
+      <% end %>
+		</table>
+<% end %>
+
+<% if @users.length > 0 %>
+	<h2>Users</h2>
+		<table class="stats">
+			<tr class="headerrow"><th width="20%">Name</th><th width="80%">Resume</th></tr>
+			<%= render(:partial => "user", :collection => @users) %>
+		</table>
+<% end %>
+
+<% if (@revisions.length == 0) && (@users.length == 0) %>
+<p>Your search did not return any results. Click <b>BACK</b> in your browser to try again.</p>
+<% end %>

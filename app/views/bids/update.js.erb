@@ -1,0 +1,5 @@
+<% if @show_update %>
+	jQuery("#expiration_date").html('<%= escape_javascript(render partial: 'expiration_date') %>')
+<% elsif @warning %>
+	alert('<%= @warning %>')
+<% end %>

@@ -1,0 +1,15 @@
+<% if @edit_affiliate %>
+	<%= form_tag({ :action => :edit_affiliate }, :remote => true) do %>
+		Enter the nickname of the affiliate for this user: <%= text_field_tag(:nickname, @auser.affiliate ? @auser.affiliate.nickname : '', {:size=>20, maxlength: COMMON_FIELD}) %>
+		<%= submit_tag('Submit', data: { disable_with: 'Submit' }) %>
+	<% end %>
+	
+	<%= form_tag({ :action => :edit_affiliate, :req => 'hide' }, :remote => true) do %>
+		<%= submit_tag('Cancel', data: { disable_with: 'Cancel' }) %>
+	<% end %>
+<% else %>
+	Affiliate: <%= @auser.affiliate ? user_link(@auser.affiliate)  : 'nobody' %>
+	<%= form_tag({ :action => :edit_affiliate, :req => 'show' }, :remote => true) do %>
+		<%= submit_tag('Edit affiliate', data: { disable_with: 'Edit affiliate' }) %>
+	<% end %>
+<% end %>

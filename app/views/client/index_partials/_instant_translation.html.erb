@@ -1,0 +1,15 @@
+<% if web_messages.length > 0 -%>
+	<%= infotab_top(_('Instant translation projects'), web_messages_message) %>
+	<%= render(:partial => "/web_messages/web_messages_list", :object=>web_messages) %>
+	<div class="pager_control" style="position: relative; height: 15px;">
+		<% if @user.is_client? %>
+		  <%= link_to('Create a new instant translation project',
+						{:controller=>:web_messages, :action=>:new}) %> &raquo;
+		<% end %>
+	    <div class="pull-right">
+	    	<%= paginate web_messages, params: { controller: :web_messages, action: :searcher }, remote: true %>
+	    </div>
+	    <div style="clear: both"></div>
+	</div>
+	<div class="inter_tab_spacer"></div>
+<% end %>

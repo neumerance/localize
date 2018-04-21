@@ -1,0 +1,24 @@
+<% 
+  bgcol = user_click.new_session? ? 'FFB7B7' : 'FFFFFF'
+  bgcol = 'FFE0E0' if user_click.error
+%>
+<tr>
+	<td style="<%= "background-color: ##{bgcol}}" %>;"><%= user_click.controller %></td>
+	<td style="<%= "background-color: ##{bgcol}}" %>;"><%= user_click.action %></td>
+	<td style="<%= "background-color: ##{bgcol}}" %>;"><%= user_click.resource_id %></td>
+	<td style="<%= "background-color: ##{bgcol}}" %>;">
+    <%= link_to(truncate(user_click.params, length: 100, omission: '...'), user_user_click_url(user_click.user, user_click.id)) %>
+    <% if user_click.error %>
+    <span> -> 
+      <%= user_click.error %>
+    </span>
+    <% end %>
+  </td>
+	<td style="<%= "background-color: ##{bgcol}}" %>;"><%= disp_time(user_click.created_at) %></td>
+	<td style="<%= "background-color: ##{bgcol}}" %>;">
+    <%= link_to('View', user_user_click_url(user_click.user, user_click.id)) %> 
+    <% if user_click.method == 'get' %>
+      | <%= link_to('Retry', user_click.url, method: user_click.method, target: '_blank') %>
+    <% end %>
+    </td>
+</tr>	

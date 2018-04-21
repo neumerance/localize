@@ -1,0 +1,17 @@
+<h3>Send an invitation to <%= @auser.full_name %></h3>
+
+<%= form_tag({:action=>:invite_to_job, :id=>@auser.id}, :remote => true) do %>
+	<p>Enter a message to the translator, inviting them to apply for your project.</p>
+	<p>If your project doesn't include texts to translate yet, please tell when you're going to send, how much text and the translation deadline.</p>
+	<%= text_area_tag(:message, '', :rows=>6, :cols=>60, :style=>'width:94%; margin: 10px 3%;', maxlength: COMMON_NOTE) %>
+	<%= hidden_field_tag(:div, @div) %>
+	<%= hidden_field_tag(:job_class, @job_class) %>
+	<%= hidden_field_tag(:job_id, @job_id) %>
+	<%= submit_tag('Send invitation', data: { disable_with: 'Send invitation' }) %>
+<% end %>
+<%= form_tag({:action=>:invite_to_job, :id=>@auser.id, :req=>'hide'}, :remote => true) do %>
+	<%= hidden_field_tag(:div, @div) %>
+  <%= hidden_field_tag(:job_class, @job_class) %>
+  <%= hidden_field_tag(:job_id, @job_id) %>
+	<%= submit_tag('Cancel', data: { disable_with: 'Cancel' }) %>
+<% end %>

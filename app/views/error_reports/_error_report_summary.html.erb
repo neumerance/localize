@@ -1,0 +1,8 @@
+<tr>
+	<td><%= link_to(error_report_summary.id, {:action=>:show, :id=>error_report_summary.id}) %></td>
+	<td><%= disp_time(error_report_summary.submit_time) %></td>
+	<td><%= h(error_report_summary.email) %></td>
+	<td><%= "#{h error_report_summary.prog} - #{error_report_summary.version} / #{error_report_summary.os}" %></td>
+	<td><%= resolution_summary(error_report_summary) %></td>
+</tr>
+	

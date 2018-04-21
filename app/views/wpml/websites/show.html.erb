@@ -1,0 +1,204 @@
+<% if @website.can_create_testimonial? && @user.is_client? %>
+  <p class="alert alert-info"><span class="fa fa-exclamation-circle"></span> This job is fully translated now! <a data-toggle="modal" data-target="#testimonial-form"><strong>Add your testimonial</strong></a> of your experience with us and we will feature your app in our website!</p>
+  <%= render partial: 'shared/testimonial/create_form', locals: { 
+    url: create_testimonial_wpml_website_path(@website)
+  } %>
+<% end %>
+<% if !@website.any_content_sent_for_translation? %>
+  <div class="grey_panel">
+    <%= render partial: 'wpml/shared/no_content_submitted' %>
+  </div>
+<% else # website is not empty (it has contents for translation) %>
+  <% if @website.any_content_sent_for_translation? && !@website.user_action_required? %>
+    <div class="green_message" style="margin: 1em 0 0 0;">
+      <%= render partial: 'wpml/shared/no_action_required' %>
+    </div>
+  <% else %>
+    <div class="red_panel">
+      <p style="font-weight: bold; color: red;">This website has pending translation jobs which require actions from you. </p>
+      <%= button_to 'Set up pending translation jobs',
+                    wpml_website_translation_jobs_path(@website.id),
+                    method: :get %>
+    </div>
+  <% end %>
+
+  <% if @user.has_supporter_privileges? %>
+    <h3 style="margin-top: 30px;">Supporter information</h3>
+
+    <%= render 'websites/wp_credentials', website: @website if @website.has_wp_credentials? %>
+
+    <div style="margin:1em;" class="red_message"><p>This project belongs to <%= user_link(@website.client) %></p>
+      <p>Project kind: <b><%= Website::PROJECT_KIND_TEXT[@website.project_kind] %></b></p>
+      <%= form_for(:website, :url=>{controller: '/websites', :action=>:update_supporter_data}) do |f| %>
+        Supporter note:<br />
+        <%= f.text_area(:note, {:rows=>10, :cols=>100, :style=>'width: 100%;', maxlength: COMMON_NOTE}) %>
+        <p>flag: <%= f.select(:flag, {'Normal'=>0,'Flagged'=>1}) %></p>
+        <%= submit_tag('Update', data: { disable_with: 'Update' }) %>
+        <br /><br />
+      <% end %>
+      <% if !@website.word_count.blank? %>
+        <p>Word count: <strong><%= @website.word_count %></strong></p>
+        <p>WC description: <strong><%= h(@website.wc_description) %></strong></p>
+      <% end %>
+      <p>Back to <%= link_to('list of projects',{:controller=> '/supporter', :action=>:cms_projects}) %></p></div>
+  <% end %>
+
+  <% if @error_cms_requests_length > 0 %>
+    <div class="red_panel">
+      <%= _('%d translation jobs need to be retried. Our server will automatically retry them shortly, but you can do this manually too.')%@error_cms_requests_length %>
+      <% if @user.can_modify?(@website) %><%= link_to((_('View error translation jobs &raquo;')).html_safe, {:controller=>'/websites', :action=>:all_comm_errors, :id => @website.id }) %><% end %>
+    </div>
+    <br /><br />
+  <% end %>
+
+  <div class="grey_panel">
+    <p><%= _('There are %d translation jobs in this project.')%@website.cms_requests.size %><br/><br/>
+      <%= link_to((_('View translation jobs')).html_safe, {:controller=>'/cms_requests', :action=>:index, :website_id=>@website.id, :set_args=>1}) %><br/>
+      <%= link_to(_('Translation status report'), {:controller=>'/cms_requests', :action=>:report, :website_id=>@website.id}) %>
+    </p>
+  </div>
+
+  <% if ((@user == @website.client) || @user.has_supporter_privileges?) && @website.support_ticket %>
+    <p><%= _('A support ticket for this website exists.') %> <%= link_to(_('Check progress'), {:controller=>'/support', :action=>:show, :id=>@website.support_ticket.id}) %></p>
+  <% end %>
+
+  <%# "Information about this project" table %>
+  <div style="margin-top: 30px;" id="website_details"><%= render(partial: 'website_details') %></div>
+
+  <% if @user.has_admin_privileges? || (@website.free_usage==1) %>
+    <div class="grey_panel">
+      <h3>Non profit organizations</h3>
+      <% if @user.has_admin_privileges? %>
+        <%= form_for(:website, :url=>{:controller=>'/websites', :action=>:update}, :method => :put) do |f| %>
+          <p><label><%= f.check_box(:free_usage) %> Free system usage</label></p>
+          <%= submit_tag('Update usage fee', data: { disable_with: 'Update usage fee' }) %>
+        <% end %>
+      <% else %>
+        ICanLocalize usage fees have been waived for this website. Site admins can translate it with their own translators without paying for system usage.
+      <% end %>
+    </div>
+  <% end %>
+
+  <%# "Language pairs" table %>
+  <BR><BR>
+  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tbody>
+    <tr>
+      <td class="upperBlock" colspan="4">Language Pairs and Translators</td>
+    </tr>
+    </tbody>
+  </table>
+  <div id="website-show-translation-jobs">
+    <table width="100%"  cellspacing="0" cellpadding="3" class="stats">
+      <tr class="headerrow">
+        <th>Language pair</th>
+        <th>Translator assignment status</th>
+        <% if @user.has_supporter_privileges? %>
+          <th>Reviewer</th>
+        <% end %>
+        <th class="no-wrap">Second review (does not affect existing jobs)
+          <span class="help-tooltip">
+            <span class="fa fa-question-circle"></span>
+            <span class="help-message">
+              Get a second translator to fully review every word. Review costs
+              an additional <%= number_to_percentage(REVIEW_PRICE_PERCENTAGE * 100, precision: 0) %>
+              <BR><BR>
+              This setting does not affect any existing translation jobs, it just
+              sets the default (initial) review status for new translation jobs
+              (contents sent by WPML from now on).
+            </span>
+          </span>
+        </th>
+        <th>Translation jobs</th>
+      </tr>
+      <% @website.website_translation_offers.each do |language_pair| %>
+        <%# language_pair is a WebsiteTranslationOffer instance %>
+        <tr>
+          <td><%= language_pair.from_language.name + ' to ' + language_pair.to_language.name %></td>
+          <td><%= render partial: 'wpml/shared/translator_assignment_and_chat', locals: { language_pair: language_pair,
+                                                                                          user: @user } %></td>
+          <%# For now, only display the reviewer name to supporters. See icldev-2648 %>
+          <% if @user.has_supporter_privileges? %>
+            <td>
+              <%= reviewer_name_and_profile_link(language_pair) %><br><br>
+              <% if language_pair.managed_work.present? && !language_pair.automatic_translator_assignment %>
+                <%= form_tag(assign_reviewer_wpml_website_path(@website, website_translation_offer_id: language_pair.id)) do %>
+                  <%= text_field_tag :nickname, nil, placeholder: ' Reviewer nickname' %>
+                  <%= submit_tag 'Assign', data: { disable_with: 'assigning...' }, class: 'button-light' %>
+                <% end %>
+              <% end %>
+            </td>
+          <% end %>
+          <td>
+            <%= form_tag(toggle_review_wpml_website_path(@website, website_translation_offer_id: language_pair.id), remote: true) do %>
+              <% review_enabled = language_pair.review_enabled_by_default? %>
+              <label class="switch">
+                <%= check_box_tag :review_enabled, 'true', review_enabled, onchange: 'jQuery(this.form).submit()' %>
+                <span class="slider"></span>
+                <span class="switch-on">Yes</span>
+                <span class="switch-off">No</span>
+              </label>
+            <% end # form_tag %>
+          </td>
+          <td><%= link_to "#{language_pair.cms_requests.size} jobs", website_cms_requests_path(@website, to_language_id: language_pair.to_language_id, set_args: 1) %></td>
+        </tr>
+      <% end # loop %>
+    </table>
+  </div>
+
+  <% if ([@user,@user.master_account].include?(@website.client) || @user.has_supporter_privileges?) and @user.can_modify?(@website)%>
+    <div class="grey_panel">
+      <h3>Broadcast a  message to your translators and reviewers</h3>
+      <div>
+        <%= form_tag website_website_translation_contracts_broadcast_path(@website.id), {:method => :post, :multipart => true} %>
+        <%= text_area_tag "body", "", :size => "40x5", maxlength: COMMON_NOTE %>
+        <div class="infobox" style="margin-top: 15px; width: 328px;">
+          <h4>Attachments</h4>
+          <div id="documents_to_upload">
+            <p><%=file_field_tag('file1[uploaded_data]', :size=>40, :id=>'file1_uploaded_data', onchange: "validate_file_size('file1[uploaded_data]', '#{ATTACHMENT_MAX_SIZE}')")%></p>
+          </div>
+          <p><a href="#form_top" onclick="add_another_file(<%= ATTACHMENT_MAX_SIZE %>);">Add another attachment</a></p>
+        </div>
+        <%= submit_tag 'Send message', data: { disable_with: 'Send message' } %>
+        </form>
+      </div>
+    </div>
+  <%end%>
+
+  <%# Translation memory %>
+  <% if @user.has_supporter_privileges? or [@user, @user.master_account].include?(@website.client) %>
+    <div id="tm_controls" style="margin-top: 30px;"><%= render(:partial=>'/wpml/websites/tm_controls') %></div>
+  <% end %>
+
+  <% if @user.has_admin_privileges? || [@user, @user.master_account].include?(@website.client) %>
+    <div class="grey_panel">
+      <h3>Project Administration</h3>
+      <%= infotab_header(['Action','Description']) %>
+
+      <tr>
+        <td style="width:20em;">
+          <%= image_tag 'icons/shortcode2.png', class: '', width: 24, height: 24, alt: 'ICanLocalize', style: '', align: 'middle', border: 0 %>
+          <%= link_to(_('Blocked shortcodes list'), website_shortcodes_path(@website)) %>
+        </td>
+        <td><%= _('Exclude certain [shortcodes] from website translation projects to avoid translating unnecessary content.') %></td>
+      </tr>
+
+      <% if @user == @website.client %>
+        <tr>
+          <td style="width:20em;">
+            <%= image_tag 'icons/transfer.png', class: '', width: 24, height: 24, alt: 'ICanLocalize', style: '', align: 'middle', border: 0 %>
+            <%= link_to(_('Transfer project to a different account'),{:controller=>'/websites', :action=>:request_transfer_account}) %>
+          </td>
+          <td><%= _('Use this if you are building this site for a client and want to transfer the project to their account.') %></td>
+        </tr>
+      <% end %>
+      </table>
+    </div>
+  <% end %>
+<% end # website_translation_offers.size > 0 %>
+
+<BR><BR>
+<%= link_to 'Back', wpml_websites_path if @website.client.websites.size > 1 %>
+
+<%= render partial: '/website_translation_offers/translator_list_modal' %>
+<%= render partial: '/supporter/website_project_auto_assign_modal', locals: { title: 'Assign Translators' } %>

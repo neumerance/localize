@@ -1,0 +1,15 @@
+lp1:
+    id: 1
+    translation_analytics_profile_id: 1
+    from_language_id: 1
+    to_language_id: 2
+    deadline: 2012-01-15
+    estimate_time_rate: 100
+
+
+lp2:
+    id: 2
+    translation_analytics_profile_id: 2
+    #deadline: 2001-01-01
+    from_language_id: 1
+    to_language_id: 2

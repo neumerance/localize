@@ -1,0 +1,24 @@
+﻿<xliff version="1.2" schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="Blueairdev WatchKit App/Base.lproj/Interface.storyboard" source-language="en" datatype="plaintext" target-language="ja">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="6.4" build-num="6E35b"/>
+    </header>
+    <body>
+      <trans-unit id="2JG-at-GoF.title">
+        <source>Power Outage</source>
+        <target>Power Outage</target>
+        <note>Class = "WKInterfaceButton"; title = "Power Outage"; ObjectID = "2JG-at-GoF";</note>
+      </trans-unit>
+      <trans-unit id="6Tp-6E-1JT.text">
+        <source>Unable to connect to Internet</source>
+        <target>Unable to connect to Internet</target>
+        <note>Class = "WKInterfaceLabel"; text = "Unable to connect to Internet"; ObjectID = "6Tp-6E-1JT";</note>
+      </trans-unit>
+<trans-unit id="6Tp-6E-1JQ.text">
+        <source>Unable to switch on the Computer</source>
+        <target>Unable to switch on the Computer</target>
+        <note>Class = "WKInterfaceLabel"; text = "Unable to switch on the Computer"; ObjectID = "6Tp-6E-1JQ";</note>
+      </trans-unit>
+</body>
+  </file>
+</xliff>

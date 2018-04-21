@@ -1,0 +1,22 @@
+Dear <%= @user.full_real_name %>,
+
+Translators from our pool have been notified of your project and you should start receiving applications soon.
+
+Next steps:
+
+ 1. Translators will apply for this work.
+ 2. Choose the translators that you prefer.
+ 3. Go to the Translation dashboard in your site and send document to translation.
+ 4. Deposit payment and the translators will get to work.
+ 5. Completed translations will be returned directly to your website.
+
+Here is a summary of our translators' availability:
+<% for unassigned_offer in @unassigned_offers -%>
+ * <%= "'#{unassigned_offer[0].website.name}' from #{unassigned_offer[0].from_language.name} to #{unassigned_offer[0].to_language.name}: #{(unassigned_offer[1] ? 'We are looking for a translator for this language pair.' : 'We have translators for this language pair.')}" %>
+<% end %>
+
+<% if @missing_translators %>* We will need some information from you in order to recruit new translators for this project. Please contact us.
+<% else %>If you need any help, don't hesitate to contact us. For priority customer support, always log in to your account, and select the 'Support' tab. You can use this link:<% end %>
+<%= url_for({:escape => false, :only_path => false, :controller=>:support, :action=>:new, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+
+<%= EMAIL_SIGNATURE %>

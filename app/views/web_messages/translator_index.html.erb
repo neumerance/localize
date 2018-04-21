@@ -1,0 +1,43 @@
+<% if @messages_to_fix && (@messages_to_fix.length > 0) %>
+	<div class="errorExplanation">
+	<h2>Messages that require editing</h2>
+	<p>The clients for these messages requested that you edit their translation. When you view each message, you'll see the client's comments at the bottom.</p>
+	<p>You can reply to the client, or edit the translation.</p>
+	<%= infotab_header([_('Job ID'), _('Message'), _('Original<br />language'), _('Translation<br />language'), _('Word<br />count')]) %>
+		<%= render(:partial=>'message_for_editing',:collection=>@messages_to_fix) %>
+	</table>
+	</div>
+
+<% elsif @current_message %>
+	<div class="errorExplanation">
+		<p>You need to finish the current message before getting new ones.</p>
+	</div>
+	<%= link_to "Continue translating", edit_web_message_url(@current_message), class: 'rounded_but_orange' %>
+
+
+<% elsif @messages.length > 0 %>
+  <% if @embedded %>
+    <div class="errorExplanation">
+      To begin editing Instant Translation projects, click on 'Instant Translation &rArr; show available work' in <b>Translation Assistant</b>.
+      <%= ta_out_of_date_warning(@user) %>
+    </div>
+  <% end %>
+	<br />
+
+	<p>The following Instant Translation projects are available for you:</p>
+	<%= infotab_header([_('Job ID'), _('Message'), _('Original<br />language'), _('Translation<br />language'), _('Word<br />count'), _('Payment'), _('actions')]) %>
+	<%= render(:partial=>'web_message_for_translator', :collection=>@messages, :locals=>{:review=>false}) %>
+	</table>
+	<br />
+	<p>There is no bidding process for instant messages. <b>The first translator to begin editing an Instant Translation projects wins it automatically.</b></p>
+<% else %>
+	<div class="errorExplanation">
+	<p>There are no Instant Translation projects available for you at this time.</p>
+	<p>Instant Translation projects are automatically won by the first translator who begins editing them. It's possible that other translators already completed all open work.</p>
+	</div>
+<% end %>
+<% if @user.expert? && !@current_message %>
+  <p>
+    <%= link_to "Review instant translation projects instead", review_index_web_messages_path %>
+  </p>
+<% end %>

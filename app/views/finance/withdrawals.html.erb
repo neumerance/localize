@@ -1,0 +1,30 @@
+<% if @user.has_admin_privileges? %>
+	<p>Account owner: <%= account_owner_link(@account).html_safe %></p>
+<% end %>
+
+<br />
+<div class="infobox"><h4>Account information</h4>
+	<table>
+		<tr><td>Name:</td><td><b><%= h(@account.normal_user.full_real_name) %></td></tr>
+		<tr><td>Email:</td><td><b><%= h(@account.normal_user.email) %></td></tr>
+		<tr><td>ICanLocalize user name:</td><td><b><%= h(@account.normal_user.nickname) %></td></tr>
+	</table>
+</div>
+<br />
+
+<!-- % form_tag(:action=>:deposits, :_method=>'GET') do % -->
+<form action="/finance/withdrawals/<%= @account.id %>" method="get">
+<%= render(:partial=>'date_range') %>
+<p><%= submit_tag('Apply', data: { disable_with: 'Apply' }) %></p>
+<!-- % end % -->
+</form>
+
+<p>This is a summary of all your withdrawals from ICanLocalize between <%= disp_date(@start_time) %> and <%= disp_date(@end_time) %>.</p>
+
+  <%= render(:partial=>'account_lines', locals: {account_lines: @account_lines}) %>
+
+<div class="tabbottom">Total: <b><%= @total %></b> USD</div>
+
+<div class="inter_tab_spacer"></div>
+
+<%= render(:partial=>'about_icanlocalize') %>

@@ -1,0 +1,15 @@
+#: app/controllers/web_messages_controller.rb:388
+msgid "Select languages to translate to ☔"
+msgstr ""
+
+#: app/controllers/web_messages_controller.rb:389
+msgid "Original text in %s 🆒"
+msgstr ""
+
+#: app/controllers/web_messages_controller.rb:424
+msgid "No language selected"
+msgstr ""
+
+#: app/controllers/web_messages_controller.rb:388
+msgid "Select source language"
+msgstr ""

@@ -1,0 +1,22 @@
+<%= form_for(:feedback, :url=>{:action=>:create}) do |f| %>
+	<p><%= _('What do you think about the translation?') %></p>
+	<p><label><%= f.radio_button(:rating, 3, :onclick=>"Effect.BlindUp('feedback1', { duration: 0.2 }); Effect.BlindUp('feedback2', { duration: 0.2 });") %><%= _('<strong>Excellent</strong> - job well done!') %></label></p>
+	<p><label><%= f.radio_button(:rating, 2, :onclick=>"Effect.BlindUp('feedback1', { duration: 0.2 }); Effect.Appear('feedback2', { duration: 0.2 });") %><%= _('<strong>Pretty good</strong>, but I have some comments') %></label></p>
+	<div id="feedback2" class="feedback-option" style="display:none;">
+		<p><%= _("Please give your suggestions for improving the translation:") %></p>
+		<%= text_area_tag(:txt2, nil, {:rows=>4, :cols=>80, :style=>'width:100%;', maxlength: COMMON_NOTE} ) %>
+	</div>
+	<p><label><%= f.radio_button(:rating, 1, :onclick=>"Effect.BlindUp('feedback2', { duration: 0.2 }); Effect.Appear('feedback1', { duration: 0.2 });") %><%= _('<strong>Bad</strong> - I see mistakes') %></label></p>
+	<div id="feedback1" class="feedback-option" style="display:none;">
+		<p><%= _("Please tell us what's wrong, so that we can fix it:") %></p>
+		<%= text_area_tag(:txt1, nil, {:rows=>4, :cols=>80, :style=>'width:100%;', maxlength: COMMON_NOTE}) %>
+	</div>
+	<br /><h4><%= _('Contact info (optional)') %></h4>
+	<p><%= _('Name:') %> <%= f.text_field(:name, {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD}) %></p>
+	<p><%= _('Email:') %> <%= f.text_field(:email, {size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD}) %></p>
+	<p class="comment"><%= _('Name and email are optional. Enter them if you want the translator to respond back to you.') %></p>
+	<br />
+	<%= hidden_field_tag(:ot, @owner_type) %>
+	<%= hidden_field_tag(:oi, @owner_id) %>
+	<%= submit_tag(_('Send Feedback'), style: 'padding: 2px 6px;', data: { disable_with: _('Send Feedback') }) %>
+<% end %>

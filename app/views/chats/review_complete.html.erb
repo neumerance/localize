@@ -1,0 +1,11 @@
+<% unless request.referer.nil? %>
+  <%= link_to '<< Back', :back, style: 'float: right' %>
+  <div style="clear: both"></div>
+<% end %>
+<div id="lang<%= @lang_id %>">
+  <%= render(partial: 'show_bid', object: @bid_disp) %>
+</div>
+<br/>
+<div id="review_bids">
+  <%= render(partial: 'bids_to_review') %>
+</div>

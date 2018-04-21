@@ -1,0 +1,4 @@
+<% if @alert_msg %>
+  alert("<%= @alert_msg %>")
+<% end %>
+jQuery("#language<%= @string_translation.language_id %>").html('<%= escape_javascript(render :partial=>'string_translation', :object=>@resource_language.language) %>')

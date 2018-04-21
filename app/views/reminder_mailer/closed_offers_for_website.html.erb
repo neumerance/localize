@@ -1,0 +1,25 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>We've closed your project "<%= @website.name %>" for translators. This is done automatically 14 days after the project is created.</p>
+
+<p>The languages that were closed for translators are:</p>
+<ul>
+  <% for offer in @closed_offers %>
+      <li><%= offer.from_language.name %> to <%= offer.to_language.name %> - <%= offer.website_translation_contracts.count %> application(s) by translators.</li>
+  <% end %>
+</ul>
+
+<p>
+  <% link = url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, controller: '/wpml/websites', :action=>:show, :id=>@website.id } ) %>
+  To review the translators' applications or reopen the project for more applications, visit the project's page: <%= link_to link, link %>
+</p>
+
+<p>== Need help? ==</p>
+
+<p>
+  <% link = url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:support, :action=>:new } ) %>
+  We're always happy to assist. To get priority support, create a new ticket from your ICanLocalize account: <%= link_to link, link %>
+</p>
+
+
+<%= EMAIL_SIGNATURE %>

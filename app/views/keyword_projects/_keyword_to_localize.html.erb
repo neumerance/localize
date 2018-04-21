@@ -1,0 +1,41 @@
+
+<div class="infobox">
+<h4>Keyword <%= keyword_counter+1 %>: <%= keyword.text %></h4>
+
+<div id="keyword_<%=keyword.id%>" data-keyword-id="<%=keyword.id%>" class="keyword-field">
+  <div class="translations">
+    <% keyword.translations.each do |t| %>
+      <div>
+        Translation: <%= text_field_tag "keywords[#{keyword.id}]translations[]text", t.text, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+        Monthly hits: <%= text_field_tag "keywords[#{keyword.id}]translations[]hits", t.hits, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+        <a href="#" onClick="remove_alt(this)">(remove)</a>
+      </div>
+    <% end %>
+
+    <% if keyword.translations.empty? and keyword.alternatives.empty? %>
+      <div>
+        Translation: <%= text_field_tag "keywords[#{keyword.id}]translations[]text", nil, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+        Monthly hits: <%= text_field_tag "keywords[#{keyword.id}]translations[]hits", nil, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+        <a href="#" onClick="remove_alt(this)">(remove)</a>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="terms">
+    <% keyword.alternatives.each do |t| %>
+      <div>
+        Related term: <%= text_field_tag "keywords[#{keyword.id}]terms[]text", t.text, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+        Monthly hits: <%= text_field_tag "keywords[#{keyword.id}]terms[]hits", t.hits, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %>
+        <a href="#" onClick="remove_alt(this)">(remove)</a>
+      </div> 
+    <% end %>
+  </div>
+  
+  <div class="keyword-buttons">
+    <button type="button" onClick="addPossibleTranslation(this);"> Add possible translation</button>
+    <button type="button" onClick="addRelatedTerm(this);"> Add related term</button>
+  </div>
+  <h5>Analysis for this keyword</h5>
+  <%= text_area_tag "keywords[#{keyword.id}]result", keyword.result, :size => "50x6", maxlength: COMMON_NOTE %>
+</div>
+</div>

@@ -1,0 +1,7 @@
+﻿זה הוא קובץ בעברית.
+
+אני שמתמש בו כדי לבדוק המרות.
+
+Some English text.
+Algun texto en español.
+한국 텍스트입니다.

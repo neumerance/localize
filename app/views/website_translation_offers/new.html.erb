@@ -1,0 +1,34 @@
+<%= my_error_messages_for :website_translation_offer %>
+
+<%= form_for(:website_translation_offer, :url=>{:action=>:create}) do |f| %>
+<p>You can offer translators a fixed, per word, rate for working on your website. Interested translators will apply for this work. You will be able to review each application and decide if you want to accept or decline it.</p>
+<h3 style="display: inline;">Languages</h3>
+<p>Select the language to want to translate from and to (you can later add more language pairs).</p>
+<p>Translate from: <%= f.select(:from_language_id, @languages) %> to <%= f.select(:to_language_id, @languages) %></p>
+<br /><br />
+
+<% if @website.platform_kind == WEBSITE_WORDPRESS %>
+<div class="red_message">
+	<h3>ICanLocalize Comments Translator installation instructions</h3>
+	<p>To save back translations you will need to install the <a target="_blank" href="http://wordpress.org/extend/plugins/icanlocalize-comment-translator/">ICanLocalize Comments Translator</a> plugin.</p>
+	<p>This plugin will receive the completed translations from our server and will save them in WordPress.</p>
+</div><br /><br />
+
+<h3>Access to blog</h3>
+<p>We will need access to your blog in order to post back translation results. The recommended user type is <b>editor</b>.</p>
+<table>
+	<tr><td>URL:</td><td><%= f.text_field(:url, :size=>45, maxlength: COMMON_FIELD) %></td></tr>
+	<tr><td>User:</td><td><%= f.text_field(:login, size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD) %></td></tr>
+	<tr><td>Password:</td><td><%= f.password_field(:password, size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD) %></td></tr>
+	<tr><td>Blog ID:</td><td><%= f.text_field(:blogid, size: COMMON_FIELD_SIZE, maxlength: COMMON_FIELD) %></td></tr>
+</table>
+<br /><br />
+<% end %>
+
+<h3 style="display: inline;">Payment per word</h3> &nbsp; (the per-word rate you are willing to pay for the translation work in <%= @website_translation_offer.currency.disp_name %>)
+<div style="margin: 1em;" class="red_message"><p>Please note: this is not a bidding project. The amount that you enter here is what you will pay per word for translation.</p>
+<p>Translators who are interested in working at this rate will apply to your project.</p>
+<p>If you need help determining acceptable payment per word, <%= link_to('contact us',{:controller=>:support, :action=>:new}) %>.</p></div>
+<p>I am willing to pay <span style="padding: 0.2em"><%= money_field_tag_for(f, :amount) %></span> USD per word for this translation.</p>
+<p><%= submit_tag('Submit', :style=>'padding: 0.5em;', data: { disable_with: 'Submit' }) %> &nbsp; | &nbsp; <%= link_to('Cancel', {controller: '/wpml/websites', :action=>:show, :id=>@website.id}) %></p>
+<% end %>

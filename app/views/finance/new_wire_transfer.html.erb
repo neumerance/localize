@@ -1,0 +1,21 @@
+<%= form_tag "/finance/wire_transfer/#{@account.id}" do %>
+  <table>
+    <tr>
+      <td>Transaction type:</td>
+      <td><%= select_tag :type, options_for_select([["-- Select --", nil], ["Withdraw",:withdraw], ["Deposit", :deposit]]) %><td>
+    </tr>
+    <tr>
+      <td>Gross Amount:</td>
+      <td><%= money_field_tag :gross_amount, nil %></td>
+    </tr>
+    <tr>
+      <td>Fee:</td>
+      <td><%= money_field_tag :fee, nil %></td>
+    </tr>
+    <tr>
+      <td>Transaction ID:</td>
+      <td><%= text_field :txn, nil, maxlength: COMMON_FIELD, size: COMMON_FIELD_SIZE %></td>
+    </tr>
+  </table>
+  <%= submit_tag 'Transfer the money', data: { disable_with: 'Transfer the money' } %>
+<% end %>

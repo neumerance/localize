@@ -1,0 +1,66 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+message_for_amir_sales:
+  id: 1
+  visitor_language_id: 3
+  client_language_id: 1
+  owner_id: 1
+  owner_type: WebDialog
+  visitor_body: This is the body of my question
+  create_time: <%= Time.now().to_formatted_s(:db) %>
+  word_count: 7
+  money_account_id: 1
+  translation_status: <%= TRANSLATION_NEEDED %>
+
+standalone_message:
+  id: 2
+  visitor_language_id: 3
+  client_language_id: 1
+  owner_id: 2
+  owner_type: Client
+  visitor_body: Some text that needs to be translated today.
+  create_time: <%= Time.now().to_formatted_s(:db) %>
+  word_count: 8
+  money_account_id: 1
+  translation_status: <%= TRANSLATION_NEEDED %>
+
+message_for_amir_sales_complex:
+  id: 3
+  visitor_language_id: 3
+  client_language_id: 1
+  owner_id: 1
+  owner_type: WebDialog
+  visitor_body: This is the body of my question
+  create_time: <%= Time.now().to_formatted_s(:db) %>
+  word_count: 7
+  money_account_id: 1
+  translation_status: <%= TRANSLATION_NEEDED %>
+  complex_flag_users: "--- \n- 105\n- 142\n"
+
+
+message_for_amir_sales_one_user_flag:
+  id: 4
+  visitor_language_id: 3
+  client_language_id: 1
+  owner_id: 1
+  owner_type: WebDialog
+  visitor_body: This is the body of my question
+  create_time: <%= Time.now().to_formatted_s(:db) %>
+  word_count: 7
+  money_account_id: 1
+  translation_status: <%= TRANSLATION_NEEDED %>
+  complex_flag_users: "--- \n- 105\n"
+
+
+message_for_review:
+  id: 5
+  visitor_language_id: 3
+  client_language_id: 1
+  owner_id: 1
+  owner_type: WebDialog
+  visitor_body: This is the body of my question
+  create_time: <%= Time.now().to_formatted_s(:db) %>
+  word_count: 7
+  money_account_id: 1
+  translation_status: <%= TRANSLATION_COMPLETE %>
+
+

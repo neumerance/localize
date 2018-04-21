@@ -1,0 +1,148 @@
+{
+  "tests":  [
+    {
+      "input": "",
+      "expected_result": 0
+    },
+    {
+      "input": "abc",
+      "expected_result": 1
+    },
+    {
+      "input": "abc abc Abc Abc ABC ABC ABC AbC",
+      "expected_result": 8
+    },
+    {
+      "input": "Sample page Example Content",
+      "expected_result": 4
+    },
+    {
+      "input": "Sample page Second sample page",
+      "expected_result": 5
+    },
+    {
+      "input": "You're gonna need a bigger boat",
+      "expected_result": 6
+    },
+    {
+      "input": "I’m going to make him an offer he can’t refuse",
+      "expected_result": 10
+    },
+    {
+      "input": "You talkin’ to me?",
+      "expected_result": 4
+    },
+    {
+      "input": "Argo f**k yourself",
+      "expected_result": 3
+    },
+    {
+      "input": "He left the bank at 6 P.M",
+      "expected_result": 7
+    },
+    {
+      "input": "She has $100.00 in her bag",
+      "expected_result": 6
+    },
+    {
+      "input": "1. The first item 2. The second item",
+      "expected_result": 6
+    },
+    {
+      "input": "Was sind die Konsequenzen der Abstimmung vom 12. Juni?",
+      "expected_result": 9
+    },
+    {
+      "input": "¡Hola señorita! Espero que muy bien.",
+      "expected_result": 6
+    },
+    {
+      "input": "¡La casa cuesta $170.500.000,00! ¡Muy costosa! Se prevé una disminución del 12.5% para el próximo año.",
+      "expected_result": 16
+    },
+    {
+      "input": "Объем составляет 5 куб.м.",
+      "expected_result": 4
+    },
+    {
+      "input": "Маленькая девочка бежала и кричала: «Не видали маму?",
+      "expected_result": 8
+    },
+    {
+      "input": "Με συγχωρείτε· πού είναι οι τουαλέτες; Τις Κυριακές δε δούλευε κανένας. το κόστος του σπιτιού ήταν £260.950,00.",
+      "expected_result": 17
+    },
+    {
+      "input": "سؤال وجواب: ماذا حدث بعد الانتخابات الايرانية؟ طرح الكثير من التساؤلات غداة ظهور نتائج الانتخابات الرئاسية الايرانية التي أججت مظاهرات واسعة واعمال عنف بين المحتجين على النتائج ورجال الامن. يقول معارضو الرئيس الإيراني إن الطريقة التي اعلنت بها النتائج كانت مثيرة للاستغراب",
+      "expected_result": 42
+    },
+    {
+      "input": "ومن المنتظر أن يكتمل مشروع خط أنابيب نابوكو البالغ طوله 3300 كليومترا في12‪/‬ 08‪/‬2014 بتكلفة تُقدر بـ 7.9 مليارات يورو أي نحو 10.9 مليارات دولار. ومن المقرر أن تصل طاقة ضخ الغاز في المشروع 31 مليار متر مكعب انطلاقا من بحر قزوين مرورا بالنمسا وتركيا ودول البلقان دون المرور على الأراضي الروسية.",
+      "expected_result": 52
+    },
+    {
+      "input": "Ի՞նչ ես մտածում: Ոչինչ:",
+      "expected_result": 4
+    },
+    {
+      "input": "Ապրիլի 24-ին սկսեց անձրևել...Այդպես էի գիտեի:",
+      "expected_result": 7
+    },
+    {
+      "input": "Այսպիսով` մոտենում ենք ավարտին: Տրամաբանությյունը հետևյալն է. պարզություն և աշխատանք:",
+      "expected_result": 10
+    },
+    {
+      "input": "Base64: bGVhc3VyZS4=",
+      "expected_result": 2
+    },
+    {
+      "input": "2/3 cup flour",
+      "expected_result": 3
+    },
+    {
+      "input": "Myself + 3 others cGxlYXN1cmUu",
+      "expected_result": 5
+    },
+    {
+      "input": "PGRpdj4NCjxoMT5IMSBUaXRsZTwvaDE+DQo8cD5QYXJhZ3JhcGggVGV4dDxici8+IDxzdHJvbmc+Qm9sZCBUZXh0PC9zdHJvbmc+PC9wPg0KPC9kaXY+",
+      "expected_result": 1
+    },
+    {
+      "input": "iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+      "expected_result": 1
+    },
+    {
+      "input": "If (1+1=2) - [then] {2+2} equals what?",
+      "expected_result": 6
+    },
+    {
+      "input": "What?! What do you mean: 'I do not know'; But of course you do!",
+      "expected_result": 14
+    },
+    {
+      "input": "\"And the winner is...\"",
+      "expected_result": 4
+    },
+    {
+      "input": "Monday, April 4th, 2011",
+      "expected_result": 4
+    },
+    {
+      "input": "04/04/2011",
+      "expected_result": 1
+    },
+    {
+      "input": "04.04.2011",
+      "expected_result": 1
+    },
+    {
+      "input": "04-04-2011",
+      "expected_result": 1
+    },
+    {
+      "input": "What?! What do you mean: 'I do not know'; But of course you do!",
+      "expected_result": 14
+    }
+  ]
+}

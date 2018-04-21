@@ -1,0 +1,27 @@
+<%= _('Dear %s')%@user.full_real_name %>,
+
+<%= _('%s is interested in translating your project %s from %s to %s for %.2f USD / word.')%[@translator.full_name,@website.name,@website_translation_offer.from_language.nname,@website_translation_offer.to_language.nname,@website_translation_contract.amount] %>
+
+<% if !@message.blank? %>
+----
+
+<%= @message %>
+
+----<% end -%>
+
+<%= _('To respond to this application, click on the link below:') %>
+<%= url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:website_translation_contracts, :action=>:show, :website_id=>@website.id, :website_translation_offer_id=>@website_translation_offer.id, :id=>@website_translation_contract.id, :accesskey=>@website.accesskey } ) %>
+
+== <%= _('About %s')%@translator.full_name %> ==
+
+<% if !@translator.country.blank? %><%= _('Country: %s')%@translator.country.name %><% end %>
+<%= _('Rating in ICanLocalize: %d (out of 100)')%@translator.rating.to_i %>
+<% if @translator.markings.length > 0 %><%= _('Recent feedback from other clients:') %>
+<% @translator.markings.all.order('bookmarks.id DESC').limit(3).each do |bookmark| %>
+  "<%= bookmark.note %>"
+<% end %><% end %>
+
+<%= _('Profile page') %>:
+<%= url_for({:escape => false, :only_path => false, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL, :controller=>:users, :action=>:show, :id=>@translator.id, :wid=>@website.id, :accesskey=>@website.accesskey})  %>
+
+<%= EMAIL_SIGNATURE %>

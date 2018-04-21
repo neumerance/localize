@@ -1,0 +1,264 @@
+.button:hover,
+.button:focus {
+  background-color: #a4bce0
+}
+.button_X {
+  border: 1px solid #3a70c1;
+}
+.button_X:hover,
+.button_X:focus {
+  background-color: #3262ab;
+}
+
+.red_message {
+  margin: 0 0 20px 0;
+  padding: 10px 20px;
+  background: #FFF0E0;
+  border: 1px solid #db7711
+}
+
+.copy-token-message {
+  font-size: 1.1em;
+  margin: 0 0 20px 0;
+  padding: 10px 20px;
+}
+.copy-token-message .token {
+  padding-top: .4em;
+  padding-bottom: .4em;
+  color: #000;
+}
+.copy-token-message .token span {
+  padding: .3em 1em;
+  background: rgba(255, 255, 255, .7)
+}
+.copy-token-message .info {
+  font-size: .85em;
+  margin-bottom: 0;
+}
+.token-video {
+  text-align: center;
+  margin-top: 30px;
+}
+.token-check-again {
+  text-align: center;
+  margin-top: 50px;
+}
+.token-check-again .button_X {
+  padding: .5em 1.5em;
+}
+
+.rounded_but_orange {
+  color: #fff;
+  font-size: 13px;
+  border: 0;
+  background: #db7811;
+  line-height: 1;
+  padding: .7em 1.5em .8em !important;
+  box-shadow: inset 0 -.2em 0 #bd6b16;
+  border-radius: 3px;
+}
+
+a {
+  color: blue;
+  cursor: pointer;
+  text-decoration: underline;
+}
+a:hover {
+  color: #0B3575;
+}
+
+.button:hover,
+.button:focus {
+  background-color: #a4bce0
+}
+
+.button_X {
+  font-weight: bold;
+  color: #FFFFFF;
+  background-color: #3F81E4;
+  border: 1px solid #3a70c1;
+}
+.button_X:hover,
+.button_X:focus {
+  background-color: #3262ab;
+}
+
+table.stats td, table.stats th {
+  border-bottom: 1px solid #C2DAFF;
+  padding: 10px 15px;
+}
+
+table.stats td.manual-translator-assignment {
+  text-align: center;
+}
+
+.lead {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  line-height: 1.4;
+}
+.translator-assignment-control {
+  display: inline-block;
+  margin-top: 8px;
+}
+.translator-assignment-control span {
+  color: #3F81E4;
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: .9em;
+}
+.translator-assignment-control span:hover {
+  color: #0B3575;
+}
+.translator-assignment-control input {
+  display: none;
+}
+.button-light {
+  display: inline-block;
+  color: #3F81E4;
+  padding: .3em 1em;
+  border: 1px solid #C2DAFF;
+  background: white;
+  border-radius: 3px;
+  text-decoration: none;
+  line-height: 1.1;
+  text-align: center;
+}
+.button-light:hover {
+  background: #C2DAFF;
+  color: #3F81E4;
+}
+.pay-begin-form {
+  display: block;
+  margin: 30px 0;
+  text-align: center;
+}
+.pay-begin-form .button_X {
+  padding: 1em 2em;
+  font-size: 1.1em;
+}
+.translation-languages {
+  width: 180px;
+}
+
+/******************************************
+* The switch
+ *
+ * MARKUP:
+        <label class="switch">
+          <input type="checkbox"/>
+          <span class="slider"></span>
+          <span class="switch-on">Yes</span>
+          <span class="switch-off">No</span>
+        </label>
+ *
+ *
+ ******************************************/
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 40px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 20px;
+}
+
+.switch-on, .switch-off {
+  position: absolute;
+  top: 4px;
+  font-size: 11px;
+  color: white;
+  display: block;
+}
+
+.switch-on {
+  left: 8px;
+  display: none;
+}
+
+.switch-off {
+  right: 8px;
+  top: 4px;
+}
+
+input:checked + .slider {
+  background-color: #3F81E4;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(30px);
+  -ms-transform: translateX(30px);
+  transform: translateX(30px);
+}
+
+input:checked ~ .switch-on {
+  display: block;
+}
+
+input:checked ~ .switch-off {
+  display: none;
+}
+/*********************************
+ Help tooltip
+ **********************************/
+.help-tooltip {
+  position: relative;
+}
+.help-tooltip img {
+  vertical-align: bottom;
+  cursor: help;
+}
+.help-tooltip:hover .help-message {
+  display: block;
+}
+.help-message {
+  width: 200px;
+  position: absolute;
+  bottom: 100%;
+  left: -100px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background: #000;
+  color: #fff;
+  font-weight: normal;
+  font-size: .9em;
+  display: none;
+  white-space: normal;
+}
+.help-message:before {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 98px;
+  border: 5px solid transparent;
+  border-top-color: #000;
+}

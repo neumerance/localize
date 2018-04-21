@@ -1,0 +1,37 @@
+<%= show_bid[BID_INFO_COMMENT].html_safe %>
+
+<% if @bid && @bid.status == BID_WAITING_FOR_PAYMENT && @user.can_deposit? %>
+  <%= link_to 'Go to project page to deposit', @revision %>
+<% end %>
+
+<% if show_bid[BID_INFO_ACTIONS_MASK] != 0 -%>
+	<br />
+<% end -%>
+
+<%- for action in bits_list(show_bid[BID_INFO_ACTIONS_MASK]) %>
+    <%= form_tag({:action => ChatsController::BID_ACTION[action],
+                  :bid_id => show_bid[BID_INFO_BID_ID],
+                  :lang_id => show_bid[BID_INFO_LANG_ID]},
+                 "data-confirm" => confirmation_question(action, show_bid[BID_INFO_COMPLETION_PERCENTAGE], @revision.kind == TA_PROJECT),
+                 :remote => true
+        ) do %>
+
+        <%= submit_tag ChatsController::BID_ACTION_NAMES[action], data: { disable_with: ChatsController::BID_ACTION_NAMES[action] } %>
+    <% end %>
+<%- end %>
+
+<% if @bids and @bids.any?{|b| b.blocked?} and @user.kind_of? Supporter %>
+  <%= form_tag reopen_project_revision_chat_path(@project, @revision, @chat) do %>
+    <%= submit_tag :reopen, data: { disable_with: 'Please wait' } %>
+  <% end %>
+<% end %>
+
+<% if @bid_message %>
+	<br /><%= image_tag 'icons/important_16_gray.png', width: 16, height: 16, alt: 'notice' %> &nbsp; <%= link_to(@bid_message[0], {:action=>:show, :id=>@chat.id, :anchor => @bid_message[1]}) %>
+<% elsif show_bid[BID_INFO_CAN_SHOW] -%>
+	<br /><span class="headnote"><%= link_to(show_bid[BID_INFO_SHOW_TEXT], url_for(:controller=>'bids', :action=>'show', :chat_id=>show_bid[BID_INFO_CHAT_ID], :id=>show_bid[BID_INFO_BID_ID])) %></span>
+<% end -%>
+
+<% if @new_translator_msg %>
+  <div><%=@new_translator_msg%></div>
+<% end %>

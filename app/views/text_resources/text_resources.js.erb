@@ -1,0 +1,4 @@
+jQuery('#translation_languages').html('<%= escape_javascript(render :partial=>'translation_languages') %>')
+jQuery('html, body').animate({
+  scrollTop: jQuery("#languages").offset().top
+}, 2000);

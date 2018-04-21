@@ -1,0 +1,20 @@
+<h1>Listing destinations</h1>
+
+<%= infotab_header(['Name','URL','Language','Visits','Actions']) %>
+
+<% for destination in @destinations %>
+  <tr>
+    <td><%=destination.name %></td>
+    <td><%=destination.url %></td>
+    <td><%=destination.lang_name %></td>
+    <td><%= link_to_if(destination.visits.count>0,'%d visits'%destination.visits.count,{:action=>'visits', :id=>destination}) %></td>
+    <td colspan="3"><%= link_to 'Show', destination %> |
+    <%= link_to 'Edit', edit_destination_path(destination) %> |
+    <%= link_to 'Destroy', destination, 'data-confirm' => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New destination', new_destination_path %>

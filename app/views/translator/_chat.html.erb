@@ -1,0 +1,9 @@
+<% if chat.bids.length > 0 %>
+	You have made <%= chat_link(chat,"#{chat.bids.length} bids") %> on this project.
+<% end %>
+
+<% if (chat.messages.length > 0) -%>
+	<%= chat.messages.length %> message(s) in this chat. <%= chat_link(chat,'Reply','reply') %>
+<% else %>
+	<%= chat_link(chat,'Post first message','reply') %>
+<% end -%>

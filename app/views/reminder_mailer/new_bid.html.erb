@@ -1,0 +1,28 @@
+<p>Dear <%= @user.full_real_name %>,</p>
+
+<p>A new bid was posted for translating your project <%= @bid.chat.revision.project.name %> to <%= @bid.revision_language.language.name %>.</p>
+
+<p>
+  <%= @translator.full_name %> is interested to do the work for <%= @bid.amount %> <%= @bid.chat.revision.currency_name_with_units %>.<br />
+  The cost for this job will be <%= @bid.chat.revision.cost_for_bid(@bid) %> <%= @bid.currency.name %>.
+</p>
+
+<p>
+  We recommend that you:<br />
+  1) Review the translator's resume.<br />
+  2) Chat with the translator to learn more about experience in fields relevant to this work.
+</p>
+
+<p>
+  What to do next?<br />
+  1) If you are happy with this bid, you may accept it. In this case, you will need to deposit the payment for the work in escrow and the translator will get to work.<br />
+  2) If you are not yet sure, wait for other bids.<br />
+  3) If you're sure you don't want to accept this bid, you may refuse it.
+</p>
+
+<p>
+  To respond to this bid, chat with the translator or just view the translator's resume, click on the link below:<br />
+  <% link = url_for({:escape => false, :only_path => false, :controller=>:chats, :action=>:show, :project_id=>@bid.chat.revision.project_id, :revision_id=>@bid.chat.revision_id, :id=>@bid.chat.id, :host=>EMAIL_LINK_HOST, :protocol=>EMAIL_LINK_PROTOCOL } ) %>
+  <%= link_to link, link %>
+</p>
+

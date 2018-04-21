@@ -1,0 +1,9 @@
+<% if @website_translation_offers.length > 0 %>
+	<%= infotab_header(['Languages', 'Status']) %>
+  <% @website_translation_offers.each do |website_translation_offer| %>
+    <%= render(:partial=>'website_translation_offer', locals: {website_translation_offer: website_translation_offer}) %>
+  <% end %>
+	</table>
+<% else %>
+	<p>No offers exist yet.</p>
+<% end %>
