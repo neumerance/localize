@@ -39,3 +39,4 @@ public/profile/*
 minitest_reports
 .local
 .byebug_history
+Gemfile.lock
